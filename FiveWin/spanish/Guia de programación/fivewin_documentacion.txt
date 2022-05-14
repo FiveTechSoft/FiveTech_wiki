@@ -1,0 +1,281 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsupport.com
+
+====== Guía de Programación ======
+  * [[fivewin_esp_programming_guide| Introducción]]
+
+
+
+===== Organizando su entorno de trabajo =====
+  * [[fivewin_instalacion| Instalación]]
+  * [[fivewin_esp_tools| Herramientas requeridas]]
+
+
+
+
+
+===== Componentes de aplicaciones Windows =====
+  * [[fivewin_punto_de_vista_de_aplicaciones_negocios| El punto de vista de aplicaciones de negocios]]
+  * [[fivewin_Ventana_principal| La ventana principal]]
+  * [[fivewin_Menu_descolgante| El menú desplegable]]
+  * [[fivewin_barra_de_botones| La barra de botones]]
+  * [[fivewin_Barra_de_mensajes| La barra de mensajes]]
+  * [[fivewin_caja_de_dialogo| La caja de diálogo]]
+  * [[fivewin_manejo_de_controles| Manejo de controles]]
+
+
+
+
+
+
+===== Manejo de recursos =====
+  * [[fivewin_que_son_los_recursos| ¿Qué son los recursos?]]
+  * [[fivewin_recursos_en_EXE_vs_DLL| Recursos en EXE vs. recursos en DLL]]
+  * [[fivewin_aplicaciones_multimedia| Aplicaciones multimedia]]
+
+
+
+
+
+
+
+===== Manejo de Bases de Datos =====
+  * [[fivewin_reuso_diseños_dos| Reusando todos sus diseños DOS]]
+  * [[fivewin_usando_objetos_database| Usando Objetos Database de Fivewin]]
+  * [[fivewin_bases_de_datos_y_programacion_MDI| Bases de datos y programación No-Modal]]
+  * [[fivewin_programacion_en_red| Programación en red]]
+
+
+
+
+
+
+
+
+
+===== Manejo de navegación (Browses) =====
+  * [[fivewin_clase_twbrowse_propia| La Clase TWBrowse propia de Fivewin]]
+  * [[fivewin_clase_txbrowse| La Clase TXBrowse navegación avanzada]]
+  * [[fivewin_browses_en_recursos| Colocando Browses en recursos]]
+  * [[fivewin_clausula_SELECT| Usando archivos indexados Fivewin (Cláusula SELECT)]]
+  * [[fivewin_bitmaps_en_browses| Dibujando bitmaps dentro de los browses]]
+  * [[fivewin_browse_de_arreglos| Navegando en arreglos]]
+  * [[fivewin_browse_todo| Navegue lo que quiera]]
+
+
+
+
+
+
+===== Impresión =====
+  * [[fivewin_conceptos_basicos_de_impresion| Conceptos básicos de la impresión en Windows]]
+  * [[fivewin_tecnicas_rapidas| Técnicas de impresión rápida]]
+  * [[fivewin_objeto_impresora| Manejando la impresora como objeto]]
+  * [[fivewin_reporteador| El generador de reportes de Fivewin]]
+
+
+===== Depuración =====
+  * [[fivewin_uso_del_depurador|Uso del depurador de Fivewin]]
+  * [[fivewin_tecnicas_de_depuracion|Técnicas de depuración]]
+  * [[fivewin_tecnicas_de_depuracion_de bajo_nivel|Técnicas de depuración a bajo nivel]]
+
+
+
+
+===== Documentación =====
+  * [[fivewin_desarrollando_help|Desarrollando archivos de ayuda en Windows]]
+  * [[fivewin_manejando_help|Manejando archivos HLP en sus aplicaciones]]
+  === Funciones para manejar ayuda === 
+  * [[fivewin_funcion_winhelp|Winhelp()]]
+  * [[fivewin_funcion_gethelpfile|GetHelpFile()]]
+  * [[fivewin_funcion_gethelptopic|GetHelpTopic()]]
+  * [[fivewin_funcion_helpindex|HelpIndex()]]
+  * [[fivewin_funcion_helppopup|HelpPopup()]]
+  * [[fivewin_funcion_helpsearch|HelpSearch()]]
+  * [[fivewin_funcion_helpsetpos|HelpSetPos()]]
+  * [[fivewin_funcion_helptopic|HelpTopic()]]
+  * [[fivewin_funcion_sethelpfile|SetHelpFile()]]
+  * [[fivewin_funcion_winhelp|HelpSetTopic()]]
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===== Windows avanzado =====
+=== Manejo de DLLs. Bibliotecas de enlace dinámico ===
+
+  * [[fivewin_que_es_y_como_se_usa_una_DLL|¿Qué es y como usar una DLL?]]
+  * [[fivewin_comandos_xbase_para_DLL| Comandos XBase para el manejo de DLL]]
+
+^^ Ejemplos^^
+|SAMPLES\DllCall.prg|Enlazado dinámico a tiempo de ejecución|
+|SAMPLES\DllClear.prg |Utilidad para remover DLLs abiertas en Windows |
+=== Manejo de DDEs. Intercambio dinámico de datos ===
+
+  * [[fivewin_que_es_DDE|¿Qué es DDE?]]
+  * [[fivewin_Comandos_para_manejar_DDE|Comandos xBase para el manejo de DDE]]
+== Clases ==
+
+  * [[fivewin_clase_TDDEMLServer|DDEMLServer]]
+  * [[fivewin_clase_TDDEMLClient|DDEMLClient]]
+
+^^ Ejemplos^^
+|SAMPLES\DDEMLserver.prg|Servidor DDE|
+|SAMPLES\DDEMLcli.prg |Demostración de la clase TDDEMLClient de Fivewin |
+=== Manejo de MAPI. Servicio de correo ===
+
+  * [[fivewin_que_es_MAPI|¿Qué es MAPI?]]
+  * [[fivewin_comandos_MAPI|Comandos XBase para manejo de MAPI]]
+
+=== Manejo de ODBC y SQL ===
+
+  * [[fivewin_que_es_ODBC|¿Qué es ODBC?]]
+  * [[fivewin_cuando_usar_ODBC|¿Cuándo y por qué usar ODBC?]]
+  * [[fivewin_que_es_sql|¿Qué es SQL?]]
+  * [[fivewin_como_uso_ODBC|¿Cómo uso ODBC?]]
+  * [[fivewin_comandos_para_manejo_ODBC|Comandos xBase para manejo de ODBC]]
+  * [[fivewin_documentacion_Microsoft|Documentación Microsoft]]
+
+^^ Ejemplos^^
+|SAMPLES\ODBC0.prg| Ejemplo 1 de ODBC con Fivewin|
+|SAMPLES\Odbc1.prg |Ejemplo 2 de ODBC con Fivewin |
+|SAMPLES\Odbc2.prg |Ejemplo 3 de ODBC con Fivewin |
+=== Manejo de VBXs. Archivos de control Visual Basic ===
+
+  * [[fivewin_que_es_VBX|¿Qué es y como usar controles VBX?]]
+  * [[fivewin_comandos_VBX|Comando XBase para manejo de controles VBX]]
+
+== Clases ==
+
+  * [[fivewin_clase_TVBControl|VBControl]]
+
+^^ Ejemplos^^
+|SAMPLES\TestVbx1.prg| Demostración de uso de CIRC3.VBX desde una ventana|           
+|SAMPLES\TestVbx2.prg| Demostración de uso de GRAPH.VBX desde una ventana|          
+|SAMPLES\TestVbx3.prg| Demostración de uso de SWITCH.VBX desde una ventana|         
+|SAMPLES\TestBVbx.prg| Demostración de uso de SWITCH.VBX desde una caja de diálogo|
+
+
+=== Programación de manejo de eventos ===
+  * [[fivewin_aplicaciones_controladas_por_eventos|¿Qué son aplicaciones controladas por eventos?]]
+  * [[fivewin_como_controlar_eventos|¿Cómo puedo controlar eventos?]]
+  * [[fivewin_necesito_encargarme_de_eventos|¿Necesito encargarme de los eventos?]]
+  * [[fivewin_comandos_para_manejo_de_eventos|Comandos xBase para manejo de eventos]]
+  * [[fivewin_eventos_y_POO|Manejo de eventos y orientación a objetos]]
+
+
+ 
+=== Extendiendo Fivewin ===
+
+  * [[fivewin_creando_funciones_propias|Creando sus propias funciones Clipper - API de Windows]]
+  * [[fivewin_consideraciones_de_memoria| Consideraciones especiales sobre memoria]]
+
+
+
+===== Programación Orientada a Objetos en FiveWin =====
+  * [[fivewin_arquitectura_POO| Arquitectura de Fivewin ]]
+=== Clases y Objetos ===
+  * [[fivewin_introduccion_clases_y_objetos| Introducción ]]
+  * [[fivewin_que_es_objeto| Qué es un Objeto ]]
+  * [[fivewin_que_es_clase| Qué es una Clase ]]
+== Las tres Reglas Principales de un sistema POO ==
+  * [[fivewin_encapsulamiento| Encapsulamiento ]]
+  * [[fivewin_polimorfismo| Polimorfismo ]]
+  * [[fivewin_herencia| Herencia ]]
+=== Relación entre Fivewin y el API de Windows ===
+  * [[fivewin_introduccion_API_y_fivewin| Introducción ]]
+  * [[fivewin_estructura_mensajes_API| Estructura de los mensajes API de Windows ]]
+  * [[fivewin_estructura_POO_mensajes_API| Estructura de mensajes orientados a Objetos ]]
+  * [[fivewin_equivalencia_API_POO| Equivalencia de elementos y mensajes entre Windows API y POO de Fivewin ]]
+  * [[fivewin_desarrollo_aplicaciones_con_POO| Desarrollo de aplicaciones de negocios usando POO ]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===== Desarrollo para Internet =====
+=== Desarrollando aplicaciones Intranet/Internet usando Fivewin ===
+  * [[fivewin_introduccion_desarrollo_app_web|Introducción]]
+  * [[fivewin_capas_software_internet|Capas de software de Internet]]
+== Clases ==
+
+  * [[fivewin_clase_tsocket|TSocket]]
+  * [[fivewin_clase_twebserver|TWebServer]]
+  * [[fivewin_clase_tinternet|TInternet]]
+  * [[fivewin_clase_tftp|TFTP]]
+  * [[fivewin_clase_tftpfile|TFTPFile]]
+
+^^ Otras Clases ^^
+| [[fivewin_clase_tftpclient|TFTPClient]]| Cliente FTP - no requiere WinINet.dll|
+| [[fivewin_clase_TFTPServer|TFTPServer]]|Servidor FTP - no requiere WinINet.dll|                  
+| [[fivewin_clase_TSMTP|TSMTP]]|SMTP cliente para envío de correo - no requiere WinINet.dll|
+| [[fivewin_clase_TPop3|TPop3]]|SMTP cliente para recibir correo - no requiere WinINet.dll|
+| [[fivewin_clase_TProxy|TProxy]]|Multiprotocolo cliente/servidor |
+
+
+^^ Ejemplos^^
+|SAMPLES\SockServ|Sockets para servidor en cliente/servidor|
+|SAMPLES\ProxOut |Salida por proxy |
+|SAMPLES\FiveGen |Una aplicación con diccionario de datos y manejo WEB|
+|SAMPLES\ProxIn  |Entrada por proxy|
+|SAMPLES\TestSmtp|Envío de correo  más archivos adjuntos|
+|SAMPLES\GALLERY\ICopyFiles| Envío y recepción de archivos vía FTP |
+
+
+
+
+
+====== Guía de Referencia ======
+
+===== Comandos =====
+
+  * [[fivewin_comandos_orden_alfabetico|Ordenados alfabéticamente]]
+  * [[fivewin_comandos_por_categoría|Por Categoría]]
+
+
+===== Clases =====
+  * [[fivewin_classes_ordenadas_alfabeticamente|Ordenadas alfabéticamente]]
+
+  * [[fivewin_classes_por_categoria|Por categoría]]
+
+  * [[fivewin_classes_jerarquia|Jerarquía de Clases]]
+
+===== Funciones =====
+
+  * [[fivewin_funciones_ordenadas_alfabeticamente|Ordenadas alfabéticamente]]
+
+  * [[fivewin_funciones_por_categoria|Por categoría]]
+
+
+====== FAQ ======
+  *[[ADO-Detalles relacionados]]
+  *[[Manipulando MDB]]
+  *[[OLE y Excel]] 
+  *[[xBrowse]]
+  *[[Sistema de Ayuda]] 
+
+====== Recursos ======
+  * [[fivewin_esp_resources|==>]]

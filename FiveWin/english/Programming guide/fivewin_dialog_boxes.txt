@@ -1,0 +1,56 @@
+In Windows, the interaction with the user to get data is done using Dialog Boxes.
+
+Dialog Boxes are specialized Windows containing certain controls through which the user completes some information. You should avoid using the main window of the program to collect data.  Every time you are going to request some information, you will do it through a Dialog Box.
+
+FiveWin implements support for Dialog Boxes constructed and stored as resources and also for Dialog Boxes directly constructed in the source code of your program.
+
+We recommend you to get a resource editor and that you use it to build the Dialog Boxes of your program. Borland usually offers introductory offers, at a very good price, for its products to program in Windows and most of them include the Resource WorkShop which is an excellent resource editor. You should only design Dialog Boxes in source code if you are going to design very easy windows or if you don't have af resource editor.
+
+In Windows, Dialog Boxes fall in two categories: Modal and Non-Modal Dialog Boxes. Modal Dialog Boxes are those that don't let the user do other things until they finish working in that dialog. In DOS we are used to using Modal Dialog Boxes.
+
+Non-Modal Dialog Boxes let us do other things, so we can have many Dialog Boxes opened at the same time. DOS users are not accustomed to non-modal execution, but more and more users are demanding them.
+
+A Dialog Box is an Object, so to create them you will use the typical syntax for creating Objects:
+<code clipper>
+local oDlg
+
+DEFINE DIALOG oDlg ;
+
+[ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+[ NAME <cName> ] ; // Dialog Box resource name
+
+                          // from a DLL built with a resource editor
+</code>
+<cName> is the name we have assigned to that Dialog Box assuming that we have built it using a resource editor.
+
+After that you have to assign the controls it is going to use. If you are designing it from your source code then you will use the familiar xBase syntax:
+<code clipper>
+@ <nRow>, <nCol> ...    OF oDlg
+</code>
+Remember to specify OF <oDlg> clause so the control will know which is its container Object.
+
+If we built the Dialog Box using a resource editor then we have to redefine the controls to associate certain behaviors -review the Windows resources section of this guide-.
+
+Once again everything is ready, we will activate the Dialog Box:
+<code clipper>
+ACTIVATE DIALOG oDlg
+</code>
+That's all. Basically this is the system we are going to use with all Dialog Boxes. Review the examples we provide with FiveWin to understand how this process works in detail.
+
+==== Additional notes about Non Modal dialogs ====
+
+Dialogs are MODAL by default. This means that the PRG execution will wait once the ACTIVATE DIALOG oDlg is called.
+
+Dialogs can also behave as non modal if the clause "NOWAIT" or "NONMODAL" is used:
+
+DEFINE DIALOG oDlg RESOURCE "Test"
+
+ACTIVATE DIALOG oDlg NOWAIT                // Non Modal!!!
+
+Be careful about Non-Modal execution. It is very dangerous if the user is not an expert. When you call a Non-Modal 
+Dialog Box, program execution does not stops there! So you can not Close a DBF you are using from Dialog Controls, 
+also if you are using private variables from a function, they will be released once you return from the function!
+ 
+Also, the user may select that option again and the Dialog Box will be created again and again. Because Clipper keeps 
+'live references' to local variables, there is no conflict with using NonModal Dialogs. 
+

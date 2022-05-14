@@ -1,0 +1,30 @@
+
+La siguiente imagen ilustra las capas sobre las que se basa el Internet de FiveWin:
+
+
+^^  FiveWin Classes  ^^
+| TInternet, TFTP, TFTPFile  |  FiveWin Class TWebServer  |
+|  Microsoft WinINet.dll  |  FiveWin Class TSocket  |
+^^  Berkeley University WinSock.dll  ^^
+^^  Hardware  ^^
+
+
+La capa inferior de software es WinSock.dll, una DLL que llegó con Microsoft y que originalmente se desarrolló en la Universidad de Berkeley University (los famosos sockets!). FiveWin implementa una conexión directa a esta DLL(WINAPI\WinSock.c), y con ello usted puede usar directamente todas estas funciones.
+
+Encima de esta DLL Microsoft construye WinINet.dll de 32 bits, una capa de Internet de alto nivel, la cual es muy útil para manejar servicios de FTP. FiveWin está manejando esta DLL de 32 bits gracias a su propio sistema automático de 16-32 bits, usado cada vez que usted maneja comandos DLL32 de FiveWin DLL32 (DLL.CH). De hecho todos el soporte a WinINet.dll se ha construido usando comandos DLL32 de Fivewin de alto nivel (SOURCE\WINAPI\WinINet.prg).
+
+
+Por encima de la capa de WinINet.dll, FiveWin implementa tres clases que le permiten facilmente el manejo de WinINet.dll de una forma orientada a objeto: Las Clases TInternet, TFTP and TFTPFile. Estas clases simplifican de manera importante el manejo de WinINet.dll. La Clase TFTPFile le permite usar archivos en un sitio FTP remoto como si esos archivos estuvieran en su propia computadora ( FOpen(), FWrite(), etc...). Hay un bonito ejemplo de ello en  SAMPLES\GALLERY\ICOPYFIL que muestra como enviar y recibir archivos FTP directamente de su aplicación Fivewin sin usar software adicional de Internet.
+
+
+Encima de WinSock.dll, FiveWin implementa una poderosa Clase orientada a objeto: Tsocket , esta clase hace muy sencillo el control total de los poderosos sockets Winsock. Con esta clase puede resolver cualquier necesidad de Internet que pudiera tener.
+
+Usando la Clase TSocket hemos implementado la Clase TWebServer, un servidor completo de páginas WEB totalmente interconstruido dentro de su aplicación FiveWin. Su aplicación puede transmitir páginas WEB que sean visibles sobre todo Internet.
+
+El poder real de este diseño esta basado en el fundamento de HTML dinámico propio de Fivewin. Antes de que un Objeto TWebServer envíe páginas WEB en la Internet, FiveWin mezcla código estándar HTML con su propio código xBase requerido. Simplemente coloque cualquier expresión xbase entre <<  >> y esas expresiones se expandirán en sus archivos HTML. Esto quiere decir que tiene acceso en vivo a sus bases de datos y manejo remoto de sus aplicaciones. Microsoft está tratando de implementar un estándar sólido de HTML dinámico. Usted ya tiene todo este poder.
+
+
+La Clase TWebServer de Fivewin maneja de forma transparente las cookies HTTP, consultas, extensiones mime, etc. Finalmente, La Clase TWebServer reconoce  requerimientos Proxy, así que no solo envía archivos HTML a través de la Internet sino que también puede usarlos para permitir a todos los usuario de la Intranet acceder al mundo Internet a través de ella. Las empresas están muy preocupadas por los riesos de seguridad  de Internet por lo que no desean que los empleados accedan directamente a la Internet, por ello es que implementan 'firewalls'. El concepto de 'firewall' requiere de un servidor Proxy que realmente es el que accede a la Internet. La Clase TWebServer de Fivewin le ofrece un servidor Proxy totalmente configurable, y todo esto construido dentro de su aplicación Fivewin.
+
+
+
