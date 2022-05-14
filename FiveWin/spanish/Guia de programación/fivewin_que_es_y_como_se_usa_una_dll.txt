@@ -1,0 +1,40 @@
+En algunos aspectos, puede pensar en una DLL (biblioteca de enlace dinámico) como una versión moderna de los overlays, si bien las DLLs son mucho más potentes.
+
+ 
+
+Una DLL contiene código (funciones que puede usar desde su aplicación) y también datos. Esta es la razón por la que las usamos en FiveWin como forma de almacenamiento externo de los recursos de nuestra aplicaciones.
+
+ 
+
+Las principales ventajas de las DLLs son:
+
+ 
+  * Varias aplicaciones pueden usar las DLLs al mismo tiempo (sólo una instancia de la DLL se carga en Windows).
+  * Las DLLs son independientes del lenguaje de programación (en las situaciones en que las DLLs han sido correctamente diseñadas teniendo en cuenta que otros programadores pueden utilizarlas).
+  * Si desarrolla aplicaciones que soporten varios idiomas, cree una DLL para cada idioma soportado tras traducir los cuadros, cadenas y mensajes a los idiomas correspondiente. A continuación,distribuya la DLL apropiada para cada lenguaje.
+
+ 
+
+Dado que una DLL puede ser usada por varias aplicaciones al mismo tiempo, la DLL usa los datos de variables del programa que utiliza la DLL. Esto es algo por lo que no debe preocuparse, pero es conveniente que lo sepa por si alguna vez decide escribir una DLL. 
+
+ 
+
+No puede utilizar CA-Clipper y FiveWin para crear DLLs. Use C o C++ para desarrollar DLLs en el caso de que las necesite.
+
+ 
+
+Hay dos formas de utilizar una función almacenada en una DLL:
+
+  - Enlazándola en tiempo de ejecución.
+  - Indicando al enlazador que la use.
+
+Los comandos xBase que FiveWin ofrece permiten usar las DLLs en tiempo de ejecución. Esto le da la ventaja de poder elegir cualquier DLL en tiempo de ejecución, pero el inconveniente de que no es tan rápido como si se enlazara.
+
+Si usa la segunda forma, más rápida, es básico que la DLL a la que pretende acceder exista en el ordenador. En otro caso, Windows le avisará de que la aplicación no se puede ejecutar.
+
+ 
+
+Si pretende crear una aplicación que haga uso constante de llamadas a DLLs, es más adecuado que cree un módulo C que acceda a las DLLs.
+
+Los siguientes comandos xBase para el manejo de DLLs le permiten acceder de las dos formas indicadas.
+

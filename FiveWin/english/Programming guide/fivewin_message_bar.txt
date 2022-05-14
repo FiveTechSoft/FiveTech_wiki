@@ -1,0 +1,13 @@
+The message bar has become also a standard component that we may find in almost all Windows applications.
+
+A message bar is a control placed at the bottom of its container window that shows information related to the pulldown menu currently option selected or to the buttonbar button currently under the mouse cursor.
+
+It is also possible to display the messages of a child Dialog Box controls, to help users to understand the meaning of each DialogBox control. (See DialogBoxes explanations.)
+
+FiveWin automatically applies 3D look to the messagebar, and optionally lets selection of a left or center message position (see MessageBar xBase commands).
+
+The next version of FiveWin will offer new and powerful possibilities for messagebar (like the ability of having multiples columns of information on it, and automatic timed messages).
+
+In the source code of the FiveWin IDE you will find samples showing how to place a clock in the messagebar. We plan to extend FiveWin messagebar with all those features.
+
+A well designed application that uses extensive information on the  messagebar to help the user quickly understand, reduces training times for companies and makes software much more human oriented.

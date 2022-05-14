@@ -1,0 +1,62 @@
+ODBC es el estándar propuesto por Microsoft Windows para el uso de bases de datos desde cualquier aplicación Windows. Puede pensar que ODBC es similar al sistema RDD de Clipper.
+
+ 
+
+El sistema RDD de Clipper (controladores de base de datos sustituíbles) es una arquitectura abierta utilizable exclusivamente para aplicaciones Clipper.
+
+ 
+
+El sistema ODBC de Windows (Open DataBase Connectivity) es una arquitectura abierta utilizable en TODAS las aplicaciones Windows.
+
+ 
+
+De la misma forma en que Clipper incluye un motor interno que soporta todas las conexiones RDD, ODBC tiene un motor común (en ODBC.DLL) que permite a todos los controladores ODBC conectarse fácilmente, y de la misma forma.
+
+ 
+
+ODBC se implementa mediante una pequeña DLL (sobre 40 Kb) que sirve como interfaz entre las aplicaciones Windows y cualquier controlador ODBC:
+
+ 
+<code clipper>
+1.Su aplicación          2. ODBC.DLL  de         3. Su controlador       4. Su base
+  Windows          →        Windows          →      ODBC              →     de datos
+</code>
+ 
+
+El controlador ODBC debe seguir las reglas ODBC.DLL, por lo que no debe preocuparse sobre la forma en que se utiliza. Siempre se usa de la misma forma. ODBC permite a las aplicaciones Windows utilizar cualquier clase de base de datos de manera idéntica.
+
+ 
+
+FiveWin encapsula este proceso y le ofrece una potente gestión xBase y OOP:
+<code clipper>
+1. Su aplicación                   2. Objetos ODBC manejados                3. ODBC.DLL de
+   FiveWin            →                fácilmente con xBase        →             Windows
+</code>
+ 
+ 
+
+ODBC.DLL ofrece muchas funciones para manejar diferentes servicios ODBC. FiveWin los maneja a través de los métodos de control de DBFs estándares de Clipper.
+
+ 
+
+Estamos creando un RDD de Clipper para manjear ODBC, por lo que en futuras versiones de FiveWin, este manejo será tan fácil como:
+
+ 
+<code clipper>
+USE "MiBaseDatos" VIA "ODBC"
+</code>
+ 
+
+Actualmente se ofrecen potentes objetos para manejar ODBC. Cuando el RDD de ODBC esté listo, los objetos ODBC de FiveWin interactuarán con dicho RDD de Clipper.
+
+ 
+
+El RDD de ODBC de Clipper se incluirá en FiveWin 2.0.
+
+ 
+ 
+<code clipper>
+1. Su aplicación       2. USE estándar       3. Objetos ODBC                4. ODBC.DLL 
+   FiveWin         →      de Clipper     →      manejados con XBASE     →      de Windows
+</code>
+ 

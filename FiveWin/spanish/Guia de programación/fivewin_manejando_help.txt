@@ -1,0 +1,3 @@
+<code clipper>
+SET HELP TO <cHLPFile>  </code> Establece el archivo predeterminado de ayuda de la aplicación.
+

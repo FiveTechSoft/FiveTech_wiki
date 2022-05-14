@@ -1,0 +1,105 @@
+Desde el nacimiento del ser humano, éste empieza a reconocer y clasificar el mundo que lo rodea. Nuestro cerebro tiene mecanismos automáticos para organizar el mundo en clases.
+
+Un objeto es un conjunto de datos que presenta un comportamiento típico que lo diferencía de otros tipos de objetos.
+
+^Objeto:| Propiedades + Comportamientos-->Propiedades + Métodos|
+^Datos: | Lo que el objeto TIENE.|
+^Comportamientos:|Lo que el objeto HACE.|
+
+Ejemplo: ¿Qué es una silla? Incluso un niño nos dirá:
+
+ 
+
+Una silla tiene (Propiedades) :
+
+  * Cuatro patas
+  * Un determinado color
+  * Unas dimensiones
+  * Un peso
+  * Una superficie donde sentarse
+  * etc...
+
+y unos comportamientos (Métodos) :
+
+  * Puede construirse
+  * Puede moverse de un sitio a otro
+  * Soporta a quien se siente en ella
+  * Puede destruirse
+  * etc...
+ 
+
+En estos comportamientos vemos qué HACE la silla y qué puede HACERSE a la silla:
+
+ 
+            La silla hace: * Soporta a alguien que se siente
+
+ 
+
+            Alguien puede destruir la silla -> Algo se hace a la silla.
+
+ 
+
+Las acciones que SE HACEN sobre un objeto son EVENTOS.
+
+ 
+
+^Propiedades:|Lo que el objeto TIENE.|
+^Comportamientos:|Lo que el objeto HACE.|
+^Eventos:|Lo que SE HACE al objeto.|
+
+ 
+
+Ahora veamos estos conceptos en lenguajes de programación:
+
+ 
+
+¿Qué es una ventana?
+
+Una ventana es un objeto que TIENE:
+
+ 
+
+  * Coordenadas en pantalla
+  * Un título
+  * Algunos controles en su superficie
+  * Un color
+  * etc...
+
+ Una ventana HACE:
+
+  * Cambia de tamaño
+  * Se iconiza
+  * Cambia de posición
+  * etc...
+     
+
+Algunos EVENTOS pueden suceder sobre una ventana:
+
+  * El ratón hace clic en ella
+  * El usuario pulsa una tecla
+  * La ventana recupera su tamaño
+  * etc...
+
+ 
+
+¿Cómo puedo llevar a cabo una acción sobre un objeto?
+
+Envíele un mensaje!
+
+ 
+<code clipper>
+oWindow:Message(parámetros,... )
+</code>
+ 
+
+El mensaje suele tener el mismo nombre que el método:
+
+ 
+<code clipper>
+oWindow:Refresh()→Ejecutará→Método Refresh() de Twindow
+</code>
+ 
+
+
+
+ 

@@ -1,0 +1,80 @@
+
+Multimedia applications typically refers to applications that extensively use sound and vision to interact with the final user. But, in fact, a multimedia application may use more ways to get a better interaction with the final user mainly using new external devices controlled by the application, such as touch screens, electric pens, plastic card readers, fax-modems, voice recorders, artificial vision, etc...
+
+FiveWin offers all the necessary extensions to develop sophisticated multimedia applications. Here we are going to see how to use sound, vision and how to manipulate any external device we may find useful. Also, we are going to explain some techniques that conveniently used will let us make our applications look like any Multimedia app we may have seen.
+
+
+Sound: There are two principal ways to reproduce sounds in our apps: Playing a WAV file and playing a MDI file.
+
+WAV files are digital recordings of sounds. A WAV file it may be a person voice, a song, noises, etc... We have the following functions to reproduce them:
+
+
+·	SndPlaySound( <cFileName>, <nMode> ) --> <lSuccess>
+Plays a WAV file from disk. See Functions2 section SndPlaySound() full explanation)
+
+
+
+·	MsgSound() which it is exactly as the above SndPlaySound()
+Plays a WAV file from disk but using the FiveWin Msg... functions style.
+
+
+
+·	SndPlayRes( <cResName>, <nMode> ) --> <lSuccess>
+Plays a WAV file from resources. See Functions2 section SndPlaySound() full explanation)
+
+
+Vision: There are two principal ways to display images in our apps: Managing Bitmaps BMP files and reproducing animated Video files.
+
+BMP bitmaps files are the way Windows uses to store digital pictures and later show them again at the screen or at the printer. You may store your digital images at any other file format (using some convenient DLLs libraries) but later they will be turned into bitmaps as Windows is the only way that knows to manipulate them. We have the following bitmaps support:
+
+
+
+·	Class TBitmap: Controls that show a related bitmap file.
+
+
+
+·	Class TBtnBmp: Controls that show one or two bitmap files,and that behaves like a PushButton, thus the user may click them and perform an action.
+
+
+
+·	Functions to dynamically load and display a bitmap:
+
+
+<code clipper>
+LoadBitmap( <hInst>, <cBmpName> ) --> <hBitmap>
+(see Functions2 section LoadBitmap() full explanation)
+
+DrawBitmap( <hDC>, <hBitmap>, <nRow>, <nCol>, <nWidth>, <nHeight>,
+            <nRaster> ) --> nil
+(see Functions1 section DrawBitmap() full explanation)
+
+PalBmpDraw( <hDC>, <nCol>, <nRow>, <hPalBmp>, <nWidth>, <nHeight>,
+            <nRaster> ) --> nil
+(see Functions2 section PalBmpDraw() full explanation)
+
+DeleteObject( <hBitmap> ) (for LoadBitmap(), for a TBitmap object
+see TBitmap METHOD End() )
+(see Functions1 section DeleteObject() full explanation)
+
+</code>
+AVI Animated video files is the way Windows stored a sequence of bitmaps mixed with audio (recorded from a video camera, cartoons, etc...). FiveWin implements the Class TVideo to easily reproduce them. (See Class TVideo full explanation).
+
+Windows has a powerful subsystem named MCI (Media Control Interface) that lets you easily access to any kind of device which it is MCI compatible. The first thing you should do when studying a new device to manipulate is to check if it is MCI compatible. FiveWin implements the Class TMCI to easily manage any kind of MCI compatible device (See Class TMCI full explanation).
+
+
+To finally make your application look in a unique way (the final user will not recognize that he is using a Windows application) there are some easy techniques that could be used. You can easily avoid using a frame in your main window, so there will not be a visible caption and typical Windows small pushbuttons on the corners. Basically this can be done doing:
+<code clipper>
+DEFINE WINDOW oWnd STYLE nOr( WS_POPUP, WS_VISIBLE ) COLOR ...
+
+ACTIVATE WINDOW oWnd MAXIMIZED ;
+
+ON PAINT ... (you could draw a full Bitmap on the window surface,
+
+ 			you could fill it with certain drawing effects, etc...)
+</code>
+See SAMPLES\Install.prg for a working sample of this technique of avoiding display the window frame and related buttons.
+
+Multimedia applications open a wide range of possibilities where only your imagination and your Windows expertise are the limits. Once you start practising with these concepts you will easily recognize these elements on most existing Multimedia applications, and you will start incorporating them in your own FiveWin apps.
+
+
+

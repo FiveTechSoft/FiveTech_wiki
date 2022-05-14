@@ -1,0 +1,26 @@
+
+Besides the sophisticated FiveWin Report Engine, FiveWin offers you RAD (rapid application development) techniques to quickly prototype your printouts, with no work at all on your side!:
+
+· Generating a full report from the current workarea:
+
+
+Just call the function Report() and you will get a full paged report automatically generated from the current workarea!
+
+
+· Generating an automatic report from any Browse !!!:
+
+
+If you do <oBrw>:Report() where <oBrw> is a reference to your browse, FiveWin will generate a full report with the same contents of your browse. So, the easiest way to implement a report in your browse is placing a bitmap button on your DialogBox with the   action <oBrw>:Report().
+
+
+· Making a printer HardCopy of any window or control !!!:
+
+
+If you have a Dialog and you want to obtain a printout of it, the easiest way is just doing: <oDlg>:HardCopy( <nZoom> ) where <oDlg> is your Dialog object and <nZoom> is a scale factor - a value of 3 is normally recommended to obtain natural dimensions- You can use a bitmap instead of the Dialog, or any window or control!
+
+
+Combining these techniques you can very quickly prototype your first application printouts. Don't forget them!
+
+Remember to use these techniques on the first stages of your application.
+
+

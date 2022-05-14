@@ -1,0 +1,39 @@
+En Windows, un componente distinto de una caja de diálogo a través del cual el usuario interactua para elegir y completar cierta información es un 'Control'
+
+En Clipper/(x)Harbour, el único control que hemos usado realmente es el típico GET. Con el GET el usuario completa cierta información. En Windows el oncepto GET se extiende y así, el usuario puede usar botones de comando -PushButtons-, cajs de selección -CheckBoxes-, opciones de selección simple -RadioButtons-, etc...
+
+No hay límite en la variedad de controles que podemos encontrar o diseñar en un programa. Esencialmente, un control ha sido diseñado para obtener o mostrar cierta información al usuario del programa.
+
+En xBase, esta clase de acción usualmente se ha identificado con la sintaxis:
+
+@ <nRow>, <nCol> GET ...
+
+Ahora, en Windows xBase extendimos la sintaxis a nuevos tipos de controles:
+
+@ <nRow>, <nCol> BUTTON ...    OF <ContainerObject>
+@ <nRow>, <nCol> CHECKBOX ...  OF <ContainerObject>
+
+etc...
+
+Con cada una de las líneas de código anteriores construimos un Objeto. Un Objeto que hereda des la CLASS TControl de FiveWin TControl la forma especializada que se comporta con el usuario. No tiene que preocuparse demasiado de la existencia de este Objeto, FiveWin controla todos estos procesos automáticamente. Sin embargo, es conveniente entender la base de su funcionalidad.
+
+Los controles pueden ser creado desde dentro del código de su programa, usando la sintaxis que le hemos mostrado:
+<code clipper>
+@ <nRow>, <nCol> <ObjectClass> ... OF <ContainerObject>
+</code>
+Si está usando cajas de diálogo diseñadas con un editor de recursos, entonces tiene que redefinir ciertos comportamientos de esos controles, debido a que esos Objetos ya están "construidos" dentro delos recursos de la ventana:
+
+<code clipper>
+REDEFINE <ObjectClass> ID <nIdentifier> OF <ContainerObject> ;
+....
+</code>
+
+Recuerde que en FiveWin el comando READ se FUE. El programa está en un constante estado de interacción con Windows. Una caja de diálogo inicia su función cuando la activa:
+
+<code clipper>
+ACTIVATE DIALOG <oDlg>
+</code>
+
+Consulte y revise los ejemplos que incluimos con FiveWin. A través de ellos comprenderá el diseño y manejo de los controles de Windows.
+
+Revise el archivo FIVEWIN.CH que se ubica en la carpeta \FIVEWIN\INCLUDE para ver la diferente sintaxis soportada por FiveWin.

@@ -1,0 +1,101 @@
+Los recursos son una de las partes más importantes de la programación Windows. Para comprenderlos debe considerar que su programa puede dividirse en dos partes:
+
+
+·	Lo que el programa hace -comportamiento-
+·	Las diferentes piezas usadas para construir el programa -Datos-
+
+Una vez más hablaremos de la Programación Orientada a Objetos (OOP). Obviamente, ambas partes son altamente dependientes una de la otra.
+
+Algunas de las piezas usadas para construir su programa pueden almacenarse en una archivo .DLL separado o bien dentro del archivo EXE. A esas piezas las llamaremos recursos, pueden manipularse y cambiarse externamente desde el programa. Esta es probablemente la razón más importante que provocó el nacimiento de lo que conocemos como "Programación Visual".
+
+La "Programación Visual" se trata principalmente de recursos. El programado puede dibujar recursos usando el mouse y ciertos programa de diseño. En la siguiente estapa, esos recursos se relacionan con ciertos comportamientos. Desde ese momento usted está construyendo y usando, ¡Objetos!
+
+FiveWin ha sido diseñado para obtener alta eficiencia de los recursos de Windows. FiveWin propone una manera de programar basada en el uso de recursos. Estamos convencidos que dibujar pantallas y otros recursos es la forma más rápida y y sencilla de desarrollar un programa. Gracias a esta tecnología usted puede crear fácilmente programas "Data-driven". Esto significa que su interfase con el usuario en datos externos y modificables. Usted puede fácilmente modificar una pantalla y usarla sin tener que recompilar o reenlazar.
+
+La parte más importante de este proceso es entender como construir un Objeto desde recursos y como definir -redefinir- su comportamiento. Hay tres formas hacerlo en xBase:
+<code clipper>
+1. @ nRow, nCol ...
+</code>
+Esta forma de construcción crea un Objeto y lo despliega. Cuando usted hace, @ ... GET ... está creando un Objeto GET con Clipper, y también lo despliega. Esta forma de construcción de Objects no está basada en recursos.
+
+<code clipper>
+2. DEFINE <ObjectClass> <ObjectName>
+</code>
+Esta es la principal forma de crear un Objeto en xBase. El Objeto es creado pero no mostrado. Para desplegarlo y activarlo usted hace:
+
+<code clipper>
+ACTIVATE <ObjectClass> <ObjectName>
+</code>
+Este sistema fue propuesto y usado por dBase IV, y es la manera más importante de construir Objetos en xBase. Este sistema tampoco se basa en recursos.
+<code clipper>
+
+3. REDEFINE <ObjectClass> <ObjectName> ID <Identifier>
+</code>
+En este caso usted esta usando recursos. El Objeto ya está creado en el recurso, pero necesita una forma de modificar y definir sus comportamientos. Es por eso que el comando REDEFINE va a ser el comando más importante para modificar comportamientos en xBase.
+
+Una vez que ha redefinido sus comportamientos, el Objeto se activará usando el comando:
+<code clipper>
+ACTIVATE <ObjectClass> <ObjectName>
+</code>
+En muchos casos los Objetos están contenido en un Objeto "contenedor". Este sería el caso de una ventna o una caja de diálogo que contiene ciertos controles. Para activar esos conroles no es necesario usar el comando ACTIVATE ... para cada uno de ellos. Es suficiente con activar el Objeto contenedor.
+
+Revisemos ahora, paso a paso, el proceso que debe seguir para usar recursos en sus programas:
+
+1.	Necesita un diseñador de recursos. Nos gusta Borland's Resource WorkShop. Este diseñador viene con los productos de Borland para Windows, tales como C++ and Turbo Pascal. Debe ponerse en contacto con Borland o con un distribuidor de software para conseguirlo!  Nos lo agradecerá!
+
+2.	Usando ese diseñador puede inicar dibujando las diferentes pantallas de su programa. Este es un sistema estándar para programar en Windows. Las pantallas que diseñe debe almacenarlas en dentro de una DLL. En la carpeta \FiveWin\DLL hay una DLL 'vacía' que puede usar para almacenar sus pantallas. (haga una copia para cada nuevo proyecto). Debe decirle al editor de recursos que "abra" y use esa DLL. Seleccione abrir archivo y teclee el nombre para esa DLL.
+
+3.	Cuando diseñe sus pantallas debe darles un nombre a cada una de ellas.   Este nombre le permitirá elegirla desde dentro de su program. Debe especificar un +unico identificador , un número, para cada elemento de una pantalla. Este número será usado por el comando REDEFINE para decirle a FiveWin cual Objeto está usando.
+
+Practique con su editor de recursos para entenderlo y familiarizarse con su uso.
+
+Después de ello, desde su programa debe decirle a FiveWin que su programa va a usar recursos. Para hacerlo, use el siguiente comando al principio de su programa:
+<code clipper>
+#include 'FiveWin.ch'
+
+SET RESOURCES TO <DLLFileName>
+</code>
+Y cuando usted esté cerca del final de la ejecución de su programa, debe decirle a FiveWin que ha finalizado de usarlos:
+
+<code clipper>
+SET RESOURCE TO  // Libera el recurso
+</code>
+Para usar cualquier caja de diálogo debe definir en su DLL todo lo que tiene que hacer es lo siguiente:
+
+<code clipper>
+function TestDialogBox()
+
+
+local oDlg
+
+local cName := "FiveWin"
+
+DEFINE DIALOG oDlg NAME "MyDialog"
+
+REDEFINE GET ID 110 VAR cName OF oDlg
+
+REDEFINE BUTTON ID 120 OF oDlg ACTION nMsgBox( "Hello" )
+REDEFINE BUTTON ID 130 OF oDlg ACTION oDlg:End()
+
+ACTIVATE DIALOG oDlg
+
+return
+</code>
+En este ejemplo estamos construyendo una caja de diálogo desde la pantalla "MyDialog" almacenada dentro de la DLL que hemos especificado en un SET RESOURCES TO "MyDLL.dll" anteriormente en el programa.
+
+En esa pantalla hay un Objeto GET y dos PushButtons (Botones de Comando). Desde el editor de recursos hemos asignado el valor 110 al control GET y 120 al primer botón y 130 al segundo.
+
+Recuerde que la sintaxis para redefinir es:
+
+<code clipper>
+REDEFINE <ObjectClass> <ObjectName> ;
+
+ID <Identifier> ;
+OF <ContainerObjectName> ;
+...
+</code>
+Cada control tiene ciertas extensiones típicas para este comando. Como ejemplo, BUTTON tiene la cláusula ACTION lo que nos permite especificar, que hará el Objeto cuando el botón se presione.
+
+Revise el código fuente de \EXAMPLES\FwBorl.prg donde encontrará varios ejemplos del uso de recursos desde DLLs.
+
+Cuando use este sistema comprenderá que es la forma más simple y sencilla de construir programas.

@@ -1,0 +1,26 @@
+Si nunca ha diseñado una aplicación para red en Clipper, no se asuste! No es tan difícil. Hay algunas reglas que debe seguir:
+
+
+1.	Todas las bases de datos deben abrirse usando 'SHARED' de forma predeterminada, excepto si especifica la cláusula 'EXCLUSIVE', también depende del estado SET EXCLUSIVE ...  (ver comandos  USE... y SET EXCLUSIVE... de Clipper ).
+
+2.	Una vez que la base de datos es abierta (USE) como compartida (SHARED), varios usuarios en una red pueden usarla, o varias ventanas no-modal MdiChild o varias cajas de diálogo no-modal pueden acceder a la información de la base de datos al mismo tiempo.
+
+3.	No puede manipular el contenido de un campo directamente. Antes de reemplazar el valor de una campo tiene que bloquear el registro. Básicamente el procedimiento típico es el siguiente:
+
+<code clipper>
+if MyAlias->( RLock() )			// Bloquea el registro
+
+MyAlias->Field := <NewValue>	// Modifica el contenido
+MyAlias->( DbUnLock() )		// Libera el registro
+
+else
+
+MsgAlert( "The DataBase is in use now! Try again!" )
+
+endif
+</code>
+4.	Algunas operaciones en la base de datos (como la construcción de un INDEX) pueden requerir que abrala base de datos en modo exclusivo (EXCLUSIVE) o que bloquee la base de datos por entero, no solo un registro.
+
+Utilice USE ... EXCLUSIVE para abrir la base de datos como exclusiva o emplee la función FLock() para bloquear un archivo por completo.
+
+5.	Obtenga alguno libros de programación en red para que aprenda algunos trucos y tips ! con lo que se convertirá pronto en un experto programador en red!

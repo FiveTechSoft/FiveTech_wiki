@@ -1,0 +1,14 @@
+Muchos eventos manejados por Windows o por FiveWin (durante la generación de un reporte) Fivewin los maneja automáticamente.
+
+FiveWin ejecuta algunas acciones predeterminadas, o ninguna, dependiendo de la clase de evento. La actividad normal hace que Windows ejecute el procedimiento DefWindowProc() (procedimiento de Windows predeterminado). No tiene que ocuparse de ello, ya que FiveWin lo manejará por Ud.
+
+Para aquellos eventos sobre los que desee tomar control, debe usar la cláusula:
+
+<code clipper>
+ON <EventName> <uAction>
+</code>
+ 
+
+si está definida en FiveWin, o actuar directamente sobre los bloques de código relacionados con esas acciones.
+
+ 

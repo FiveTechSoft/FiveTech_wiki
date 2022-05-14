@@ -1,0 +1,17 @@
+El intercambio dinámico de datos (DDE) es una forma de comunicación entre procesos que utiliza memoria compartida para intercambiar datos entre aplicaciones. Las aplicaciones pueden usar DDE para transferencias de datos puntuales y para intercambios continuos en que las aplicaciones se envían actualizaciones cuando los datos cambian.
+
+ 
+
+El intercambio dinámico de datos difiere del mecanismo de transferencia mediante el portapapeles, que también forma parte de Windows. Una diferencia es que el portapapeles se usa siempre como respuesta de única vez a una acción específica del usuario, como seleccionar el comando Pegar del menú. Aunque DDE también puede ser iniciado por el usuario, habitualmente continúa sin su intervención posterior.
+
+ 
+
+FiveWin implementa dos clases, TDDEMLServer y TDDEMLClient para manejar fácilmente una sesión DDE cliente-servidor.
+
+ 
+
+ 
+
+ 
+
+ 

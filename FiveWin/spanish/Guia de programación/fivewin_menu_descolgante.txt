@@ -1,0 +1,354 @@
+
+La típica estructura de un programa Windows, es construir una ventana y asignarle a ella un menú principal que será muy útil como el principal organizador de la aplicación.
+
+Desde el menú, el usuario puede seleccionar las diferentes tareas de un programa. Gracias a la estructura del menú descolgante de Windows, podemos implementar una interface fácil e intuitiva para el usuario.
+
+Debe intentar usar buenas técnicas de diseño para el menú principal de su aplicación. No hacerla demasiado complicada. La idea es implementar solo unas pocas opciones en la barra de menú y así el usuario fácilmente elegirá lo que necesite, y desde ahí usted debe presentar nuevos submenús qye contendrán todas las posibles opciones.
+
+
+Como FiveWin está diseñado, no necesita codificar opciones DO CASE...ENDCASE  para elegir las diferentes opciones que el usuario pudiera escoger.
+
+Cuando un MenuItem se define, especificaremos la acción que deseamos se ejecute de manera automática cuando el usuario seleccione esta opción. Es muy fácil controlar todas las posibles opciones del programa.
+<code clipper>
+MENU oMenu
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+MENUITEM <cItem> MESSAGE <cMessage>  // Sin acción aquí
+MENU                                     // Submenu
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+ENDMENU
+...
+SEPARATOR
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+ENDMENU
+</code>
+**MESSAGE & ACTION** son cláusulas opcionales. Si una cláusula Action no se define, excepto en el caso de un encabezado de SubMenú , no sucede nada cuando elija dicha opción.
+
+Puede tener tantos SubMenus como necesite. Para crear un SubMenú solo tiene que especificar una nueva combinacion MENU ... ENDMENU debajo de un  MenuItem y completarla como de costumbre.
+<code clipper>
+
+MENUITEM <cItem> MESSAGE <cMessage>
+MENU                               // El SubMenú inicia aquí
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+   ...
+
+ENDMENU
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction> // Más elementos
+</code>
+**Para activar el menú:**
+
+Para activar el menú primero tiene que asignarlo a una ventana. La forma más facil de hacer esto es cuando se construye la ventana:
+
+<code clipper>
+DEFINE WINDOW <oWnd> <otherClauses> ;
+MENU BuildMenu()
+
+...
+
+function BuildMenu()
+
+local oMenu
+
+MENU oMenu
+MENUITEM <cItem> MESSAGE <cMessage> ...
+      ...
+ENDMENU
+
+Return oMenu
+
+o puede hacerlo después usando el comando:
+
+SET MENU OF <oWnd> TO <oMenu>
+
+</code>
+
+
+====== New Syntax Menus and New Features ( 21/08/2016 to 30/06/2017 ) ======
+
+===== Command Menus =====
+
+
+
+==== Menus from code ====
+
+<code clipper>
+
+#xcommand MENU [ <oObjMenu> ] ;
+             [ <of: OF, WINDOW, DIALOG, CONTROL> <oCtrl> ] ;
+             [ <popup: POPUP> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+             [ COLORSELECT <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> [ <nClrToBa>, ] <nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> [ <nClrToBr>, ] <nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lMenuBar: MENUBAR> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ RIGHTSPACE <nRightSp> ] ;
+             [ FACTOR <nFactor> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lInherit: NOINHERIT> ] ;
+             [ <lInvert: INVERT> ] ;
+             [ ROUND <nRound> ] ;
+             [ <lUpper: UPPERMNU> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+             [ <lCenter: NOCENTER> ] ;
+             [ COLORBOX <nClrBox> ] ;
+             [ SELECT <uData> ] ;
+             [ COLUMNS <aCols,...> ] ;
+             [ LIMIT <nLimit> ] ;
+             [ <lExpand: EXPAND> ] ;
+             [ <lForm: NOFORM> ] ;
+             [ HEADERS <aHeads,...> ] ;
+             [ ACTION <uAction,...> ] ;
+
+
+#xcommand ENDMENU
+
+</code>
+
+==== Menus from Resources ====
+
+<code clipper>
+
+#xcommand DEFINE MENU <oMenu> ;
+             [ <res: RESOURCE, NAME, RESNAME> <cResName> ] ;
+             [ <popup: POPUP> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU  <nClrMenu> ,<nClrMenutxt> ] ;
+             [ COLORSELECT  <nClrHiLi> ,<nClrHiLf> ,<nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa> ,<nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT>  <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lMenuBar: MENUBAR> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lInherit: NOINHERIT> ] ;
+             [ <lInvert: INVERT> ] ;
+             [ ROUND <nRound> ] ;
+             [ <lUpper: UPPERMNU> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+
+#xcommand ENDMENU
+
+</code>
+
+==== System Menu of Dialogs and Windows ====
+
+<code clipper>
+
+#xcommand REDEFINE SYSMENU [<oMenu>] ;
+             [ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU  <nClrMenu> ,<nClrMenutxt> ] ;
+             [ COLORSELECT  <nClrHiLi> ,<nClrHiLf> ,<nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa> ,<nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT>  <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+
+#xcommand ENDSYSMENU
+
+</code>
+
+==== MRUs Menus ====
+
+<code clipper>
+
+#xcommand MRU <oMru> ;
+             [ <Ini: INI, ININAME, FILENAME, NAME, DISK> <cIniFile> ] ;
+             [ SECTION <cSection> ] ;
+             [ <size: SIZE, ITEMS> <nItems> ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ ACTION <uAction> ] ;
+             [ <of: OF, MENU> <oMenu> ] ;
+             [ ITEMPOS <nMenuPos> ] ;
+             [ CHARICON <cCharBmp> ] ;
+             [ HSYSBITMAP <hBmp> ] ;
+             [ <lNoNumber: NONUMBER> ] ;
+</code>
+
+===== Command MenuItem =====
+
+==== Menuitems from code ====
+
+<code clipper>
+
+#xcommand MENUITEM [ <oMenuItem> PROMPT ] [<cPrompt>] ;
+             [ MESSAGE <cMsg> ] ;
+             [ <checked: CHECK, CHECKED, MARK> ] ;
+             [ <enable: ENABLED, DISABLED> ] ;
+             [ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+             [ <resource: RESOURCE, RESNAME, NAME> <cResName> ] ;
+             [ ACTION <uAction,...> ] ;
+             [ BLOCK <bAction> ] ;
+             [ <of: OF, MENU, SYSMENU> <oMenu> ] ;
+             [ ACCELERATOR <nState>, <nVirtKey> ] ;
+             [ <help: HELP> ] ;
+             [ <HelpId: HELP ID, HELPID> <nHelpId> ] ;
+             [ WHEN <uWhen> ] ;
+             [ <lDegrade: DEGRADE> ] ;
+             [ <break: BREAK> ] ;
+             [ FONT <oFont> ] ;
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> <nClrToBa> [, <nClrBkBa>] ] ;
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> <nClrToBr> [, <nClrBkBr> ] ] ;
+             [ COLORSELECT  <nClrHiLi>, <nClrHiLf>[, <nClrHitx>] ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <lColors: COLORS> ] ;
+             [ CHARICON <cCharBmp> ] ;
+             [ HSYSBITMAP <hBmp> ] ;
+             [ INDEX <nIndex> ] ;
+             [ <lRight: RIGHT> ] ;
+             [ <lSeparator: SEPARATOR> ] ;
+             [ <lBold: BOLD> ];
+             [ <lItalic: ITALIC> ];
+
+</code>
+
+==== MenuItems from resources ====
+
+<code clipper>
+
+#xcommand REDEFINE MENUITEM [ <oMenuItem> PROMPT ] [<cPrompt>] ;
+             [ ID <nId> ] ;
+             [ <of: OF, MENU> <oMenu> ] ;
+             [ ACTION <uAction> ] ;
+             [ BLOCK  <bAction> ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ <checked: CHECK, CHECKED, MARK> ] ;
+             [ <enable: ENABLED, DISABLED> ] ;
+             [ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+             [ <resource: RESOURCE, RESNAME, NAME> <cResName> ] ;
+             [ ACCELERATOR <nState>, <nVirtKey> ] ;
+             [ <HelpId: HELP ID, HELPID> <nHelpId> ] ;
+             [ WHEN <uWhen> ] ;
+             [ FONT <oFont> ] ;
+             [ COLORMENU  <nClrMenu>, <nClrMenutxt> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa>, <nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT> <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSELECT  <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <lColors: COLORS> ] ;
+             [ CHARICON <cCharBmp> ] ;
+
+</code>
+
+===== Clauses Explain =====
+
+==== Styles ====
+
+  *  <l2007>
+  *  <l2010>
+  *  <l2013>: colors and features, User can be defined 
+  *  <l2015>
+
+All styles, even non style defined, they can be modified and defined by the user with other clauses, but not recommended
+
+
+==== Colors ====
+
+  * COLORMENU
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+  * COLORSELECT
+             [ COLORSELECT <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+  * left: COLORBMP, COLORLEFT, LEFTCOLOR
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> [ <nClrToBa>, ] <nClrBkBa> ] ;
+  * right: COLORPNEL, COLORRIGHT, RIGHTCOLOR
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> [ <nClrToBr>, ] <nClrBkBr> ] ;
+  * COLORSEPARATOR
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+
+             [ <lMenuBar: MENUBAR> ] ;
+
+             [ FONT <oFont> ] ;
+
+             [ <lColors: COLORS> ] ;
+
+             [ <lVert: LINESVERT> ] ;
+
+             [ <lNoBorder: NOBORDER> ] ;
+
+             [ RIGHTSPACE <nRightSp> ] ;
+
+             [ FACTOR <nFactor> ] ;
+
+             [ HEIGHT <nHeight> ] ;
+
+             [ <lInherit: NOINHERIT> ] ;
+
+             [ <lInvert: INVERT> ] ;
+
+             [ ROUND <nRound> ] ;
+
+             [ <lUpper: UPPERMNU> ] ;
+
+             [ <lAdjust: ADJUST> ] ;
+
+             [ LEFTWIDTH <nLeftWidth> ] ;
+
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+
+             [ <file: IMGMENU> <cImg> ] ;
+
+             [ <file: BRUSH> <cBrush> ] ;
+
+             [ <lCenter: NOCENTER> ] ;
+
+             [ COLORBOX <nClrBox> ] ;
+
+             [ SELECT <uData> ] ;
+             [ COLUMNS <aCols,...> ] ;
+             [ LIMIT <nLimit> ] ;
+             [ <lExpand: EXPAND> ] ;
+             [ <lForm: NOFORM> ] ;
+             [ HEADERS <aHeads,...> ] ;
+             [ ACTION <uAction,...> ] ;
+
+
+
+
+
+
+
+
+
+

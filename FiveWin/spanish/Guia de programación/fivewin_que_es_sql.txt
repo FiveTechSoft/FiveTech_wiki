@@ -1,0 +1,54 @@
+Microsoft Windows eligió SQL como el método estándar para manejar los controladores ODBC. SQL es el sistema de programación para manejar la arquitectura ODBC.
+
+ 
+SQL significa Structured Query Language, y en algunos aspectos es similar a los dialectos Clipper y xBase que ya conoce.
+
+ 
+
+Existen diferentes niveles de SQL, de acuerdo con la evolución histórica de este lenguaje. Actualmente, se dispone de los siguientes:
+
+ 
+
+  * SQL - Core Level
+
+  * SQL - Level 1
+
+  * SQL - Level 2
+
+ 
+
+El sistema más básico y estándar corresponde al Core Level. Todos los controladores ODBC aceptan la mayoría de reglas de SQL Core Level. Level 1 y Level 2 ofrecen funciones más potentes. Lo primero que debe identificar al usar un controlador ODBC es el nivel con el que opera. Los fabricantes de controladores ODBC suelen incluir una amplia documentación y ejemplos.
+
+ 
+
+Algunos controladores no aceptan todas las funcionalidades ODBC. Revise la documentación del controlador para conocer sus limitaciones.
+
+ 
+
+SQL se maneja usando funciones y comandos SQL.
+
+ 
+
+Las funciones SQL se manejan de igual forma que las funciones habituales de Clipper. 
+
+Sólo son funciones.
+
+ 
+
+Los comandos SQL son cadenas que contienen la sentencia SQL a ejecutar, como por ejemplo:
+
+ 
+<code sql>
+"SELECT * FROM Dialog"
+</code>
+ 
+
+Para ejecutar esta sentencia, se usa como argumento de una función:
+
+<code sql>
+SQLExecDirect( ..., "SELECT * FROM ..." )
+</code>
+ 
+
+FiveWin ofrece un ODBC que automáticamente lleva a cabo todo este proceso de forma simple.
+

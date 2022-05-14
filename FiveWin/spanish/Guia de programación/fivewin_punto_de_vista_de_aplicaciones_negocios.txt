@@ -1,0 +1,29 @@
+No obstante que Windows ofrece muchas nuevas y poderosas capacidades, insistimos en la idea de que los componentes de una aplicación-de-negocios, siguen siendo los mismos. Si mantenemos esta idea en la cabeza seremos programadores XBase altamente productivos.
+
+En otras palabras, lo que queremos decir es que primero intente cubrir las partes importantes de su aplicación y posteriormente la mejor con todas las nuevas características poderosas y decorativas que Windows ofrece.
+
+**¿Qué son las partes básicas de una aplicación de negocios?**
+
+Desde luego, el corazón de una aplicación de negocios es el diseño e implementación de las bases de datos, y aquí sin duda CA-Clipper/(X)Harbour es el rey. En FiveWin puede mantener todas sus estrategias de bases de datos y sistemas de programación que normalmente usa (Sin embargo le mostraremos como obtener mucho más poder en el desarrollo de bases de datos del que actualmente tiene, a través de los objetos database de FiveWin y el diseño no-modal de Windows).
+
+Enfoquémonos ahora en la interfase de usuario, y en las diferentes partes de una aplicación Windows. En la mayoría de las aplicaciones Windows que usted desarrolle, descubrirá que siempre seguirá por los mismos pasos:
+
+1.	La ventana principal: En Windows, una aplicación siempre se asocia con una ventana. Veremos las diferentes clases de ventas que puede construir y el modo de hacerlo.
+
+2.	El Menú descolgante: Desde la ventana principal el usuario puede seleccionar a través de un menú descolgante todas las diferentes opciones de su aplicación.
+
+3.	La barra de botones de la ventana principal y la barra de mensajes son dos componentes que encontrará en muchas aplicaciones Windows. FiveWin provee todos los ingredientes necesarios para construir estos componentes de manera que sean eficientes y luzcan bien. La barra de botones usualmente ejecuta acciones que también se proveen en el menú descolgante.
+
+4.	desde la ventana principal abrirá cajas de diálogo para interactuar con el usuario. Viniendo de DOS, usted trabaja de manera 'Modal' lo que significa: Hacer justo una cosa a la vez. Pero en Windows puede también tomar la ventaja de la ejecución 'Non-Modal'. Esto significa que puede tener varias cajas de diálogo al mismo tiempo. Aprenderá cuan sencillo es hacerlo con FiveWin.
+
+5.	En algunas de estas cajas de diálogo usará Browses. Normalmente una aplicación de negocios usa Browses exhaustivamente. Aprenderá a usar los browses poderosos de FiveWin, que le permitirán diseñar cualquiera que pudiera necesitar.
+
+6.	Para tener una aplicación de negocios completa necesita imprimir toda clase de reportes, listados y printouts. FiveWin le ofrece una poderosa máquina interconstruida de reportes para diseñar cualquier clase de reporte en unos cuantos minutos.
+
+**Una estructura típica de una aplicación de negocio Windows:**
+
+Diseño e implementación de base de datos -más- diseño Multi Document Interfase MDI
+
+{{:busstruc.jpg|:busstruc.jpg}}
+
+Es muy importante que se enfoque en estas partes, para iniciar rápidamente la construcción de aplicaciones de negocios. Conforme vaya avanzando desde aquí ira aprendiendo muchas cosas nuevas, que seguramente se irán adaptando a sus aplicaciones.

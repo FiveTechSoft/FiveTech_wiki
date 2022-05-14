@@ -1,0 +1,22 @@
+El mismo mensaje enviado a Objetos de diferentes Clases, invoca métodos diferentes.
+
+Suponga que tenemos una pelota y un vaso, luego tomo un martillo y los golpeo:
+
+Mi mensaje   -->  Golpe de martillo
+
+Objeto Pelota  --> comienza a saltar de un lugar a otro.
+
+Objet Vaso --> Se destruye en pedazos.
+
+Ahora tengo un Objeto TReport() y un Objeto TLabel():
+
+Ahora envío el mensaje :Print()
+
+<code clipper>
+oReport:Print()
+oLabel:Print()
+</code>
+
+Obtengo diferentes resultados en mi impresora!
+
+

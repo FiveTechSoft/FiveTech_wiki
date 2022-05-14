@@ -1,0 +1,140 @@
+Para nosotros, un control VBX es un objeto que se utiliza en la aplicación de la misma forma en que se usan los objetos estándares de Windows, como botones, Gets, Says, cuadros, casillas, etc...
+
+ 
+
+Para definir un VBX y utilizarlo en FiveWin, use los siguientes mandatos xBase:
+
+ 
+<code clipper>
+@ <nRow>, <nCol> VBX ... // Sitúa un VBX en una ventana
+
+      REDEFINE VBX oVbx ... // Usa un VBX de un cuadro de   diálogo
+</code>
+ 
+
+FiveWin crea automáticamente una nueva clase interna, que hereda de TVbControl de FiveWin.
+
+ 
+
+No debe preocuparse de la creación de esta clase.
+
+ 
+
+Tan pronto como el objeto VBX se inicializa (Borland se encarga de ello), FiveWin sustituye su objeto TVbControl por un nuevo objeto a partir de la información contenida en el VBX. Todo este complejo proceso se hace automáticamente. Para Ud. es tan fácil como usar los comandos xBase desarrollados.
+
+ 
+
+Consulte la documentación sobre TVbControl para conocer todos los datos y métodos que los controles VBX tienen de forma estándar.
+
+ 
+
+Cuando FiveWin hereda automáticamente la nueva clase VBX, añade nuevos datos y métodos a partir de la información interna del VBX. Todos los VBXs incluyen un archivo de ayuda donde se documentan sus PROPIEDADES y EVENTOS, que FiveWin convierte en nuevos DATOS y MÉTODOS.
+
+ 
+<code clipper>
+1.VBX                        2. Fivewin
+  Propiedades          →        DATA
+  Eventos                       Métodos
+</code>  
+ 
+
+Por ejemplo, suponga que desea usar los controles SWITCH.VBX de Borland.
+
+De acuerdo con la documentación del fabricante, el VBX tiene una nueva propiedad llamada ON, de tipo lógico y que puede ser cierta o falsa (.T. o .F.).
+
+ 
+
+Cuando se pulsa el control VBX, que actúa como un ‘interruptor’, genera dos tipos de eventos: "ON" y "OFF". Desde su aplicación sólo debe hacer:
+
+ 
+<code clipper>
+REDEFINE VBX oVbx ID 110 OF oDlg ; // 110 es el ID asignado
+
+ON ON MsgInfo( "On" ) ;
+
+ON OFF MsgInfo( "Off" )
+</code>
+ 
+
+El objeto Vbx dispone automáticamente del dato On, que además es de tipo lógico.
+
+ 
+
+El extraordinario y potente preprocesador de CA-Clipper permite crear mandatos VBX, de carácter dinámico, y que aceptan cualquier clase de ON __event__ __Action__ que pueda especificar.
+
+ 
+
+Por tanto, no busque en FiveWin.ch cláusulas ON ON u ON OFF. Estas se preprocesan dinámicamente permitiendo codificar cualquier tipo de procesado de eventos (esta es una característica absolutamente increíble que demuestra la potencia de CA-Clipper 5.x).
+
+ 
+
+Algunos eventos, según la documentación del fabricante del VBX, pueden precisar parámetros. FiveWin automáticamente los suministra al bucle de eventos.
+
+ 
+
+Suponga que en el VBX se especifica un evento "DOOROPEN", que recibe automáticamente un parámetro numérico nDirection:
+
+Al usar el VBX en su código debe escribir:
+
+ 
+<code clipper>
+REDEFINE VBX ...;
+
+ON DOOROPEN LaAccion( bP1 ) // LaAccion( nDirection )
+</code>
+ 
+
+LaAccion() puede ser cualquier acción que desee realizar en ese punto. Y, puesto que el fabricante especificó un parámetro para ese evento, sólo recibe bP1 (block parameter 1), que tiene el mismo tipo que nDirection (es el valor de nDirection).
+
+bP1, bP2, bP3,... significan 'block parameter 1, 2, 3, ...'. En el ejemplo anterior, bP1 es numérico, dado que nDirection también lo es.
+
+ 
+
+Otro ejemplo: Suponga que va a usar un VBX, que tiene dos propiedades y tres tipos diferentes de eventos:
+
+ 
+
+Información del fabricante                      (Suponga un imaginario Phone.VBX )
+
+|Propiedades|Descripción|Ejemplo|
+|CDialNumber| Número de teléfono a marcar| "2222222"|
+|LonLine|Si la línea de teléfono está libre|.t.|
+|Eventos| |Parámetros|
+|Dialing|Se está marcando| nTries|
+|OnLine|Ha habido respuesta a la llamada| cConectionTime|
+|HangUp| No hay conexión| cHangUpTime nCallCost|
+ 
+
+ 
+
+Ahora, cHangUpTime vamos a usarlo en FiveWin:
+
+ 
+<code clipper>
+DEFINE DIALOG oDlg RESOURCE "PhoneCall"
+
+REDEFINE VBX oPhone ID ... OF oDlg ;
+
+ON DIALING Dial( bP1 ) ; // Valor nTries
+
+ON ONLINE Connect( bP1 ) ;// cConectionTime
+
+ON HANGUP Finish( bP1, bP2 ) // cHangUpTime y
+
+// coste de la llamada
+
+...
+
+ACTIVATE DIALOG oDlg ;
+
+ON INIT oPhone:cDialNumber := "2222222"
+
+// lOnLine es .f. hasta que no esté conectado
+
+</code> 
+
+El soporte que FiveWin ofrece para VBX es simple e increíble. Estamos seguros que, en pocos días, se convertirá en un experto en VBXs.
+
+ 
+
+ 

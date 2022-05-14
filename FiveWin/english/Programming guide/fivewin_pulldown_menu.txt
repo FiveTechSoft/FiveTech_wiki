@@ -1,0 +1,915 @@
+The typical structure of a Windows program is to build a Window and to assign it a main menu that will be useful as main organizer of the application.
+
+From the menu, the user can select the different tasks of a program. Thanks to the pulldown menu structure of Windows we can implement an easy and intuitive user interface.
+
+You should try to use good design techniques for the main menu of your application. Don't make it too complicated. The idea is to implement just a few main options at the bar menu so the user will easily select what he needs, and from there you should presents new submenus that will contain all the possible options.
+
+FiveWin has been designed so you don't need to code DO CASE...ENDCASE  options to select from the different actions the user may choose.
+
+When a MenuItem is defined, we will specify the action we want to be automatically executed when the user selects that option. It is very  easy to control all the possible options of the program.
+<code clipper>
+MENU oMenu
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+MENUITEM <cItem> MESSAGE <cMessage>  // No action here
+MENU                                     // Submenu
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+ENDMENU
+...
+SEPARATOR
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+ENDMENU
+</code>
+MESSAGE & ACTION are optional clauses.  If an Action clause is not defined, except in the case of a heading for a submenu, then nothing happens when you select that menu option.
+
+You can have as many SubMenus as you need. To create a SubMenu you only have
+ to specify a new MENU ... ENDMENU combination under a MenuItem and complete it as usual.
+<code clipper>
+MENUITEM <cItem> MESSAGE <cMessage>
+MENU                               // The new Submenu starts here
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+   ...
+
+ENDMENU
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction> // More Items
+</code>
+To activate the menu:
+
+To activate the menu first you have to assign it to a Window. The easiest way to do this is when you are building your Window:
+<code clipper>
+DEFINE WINDOW <oWnd> <otherClauses> ;
+MENU BuildMenu()
+
+...
+
+function BuildMenu()
+
+local oMenu
+
+MENU oMenu
+MENUITEM <cItem> MESSAGE <cMessage> ...
+      ...
+ENDMENU
+
+Return oMenu
+</code>
+or you can do it later using the command:
+<code clipper>
+SET MENU OF <oWnd> TO <oMenu>
+</code>
+
+====== New Syntax Menus and New Features ( 21/08/2016 to 30/06/2017 ) ======
+
+===== Command Menus =====
+
+
+
+==== Menus from code ====
+
+<code clipper>
+
+#xcommand MENU [ <oObjMenu> ] ;
+             [ <of: OF, WINDOW, DIALOG, CONTROL> <oCtrl> ] ;
+             [ <popup: POPUP> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+             [ COLORSELECT <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> [ <nClrToBa>, ] <nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> [ <nClrToBr>, ] <nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lMenuBar: MENUBAR> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ RIGHTSPACE <nRightSp> ] ;
+             [ FACTOR <nFactor> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lInherit: NOINHERIT> ] ;
+             [ <lInvert: INVERT> ] ;
+             [ ROUND <nRound> ] ;
+             [ <lUpper: UPPERMNU> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+             [ <lCenter: NOCENTER> ] ;
+             [ COLORBOX <nClrBox> ] ;
+             [ SELECT <uData> ] ;
+             [ COLUMNS <aCols,...> ] ;
+             [ LIMIT <nLimit> ] ;
+             [ <lExpand: EXPAND> ] ;
+             [ <lForm: NOFORM> ] ;
+             [ HEADERS <aHeads,...> ] ;
+             [ ACTION <uAction,...> ] ;
+
+
+#xcommand ENDMENU
+
+</code>
+
+==== Menus from Resources ====
+
+<code clipper>
+
+#xcommand DEFINE MENU <oMenu> ;
+             [ <res: RESOURCE, NAME, RESNAME> <cResName> ] ;
+             [ <popup: POPUP> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU  <nClrMenu> ,<nClrMenutxt> ] ;
+             [ COLORSELECT  <nClrHiLi> ,<nClrHiLf> ,<nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa> ,<nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT>  <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lMenuBar: MENUBAR> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lInherit: NOINHERIT> ] ;
+             [ <lInvert: INVERT> ] ;
+             [ ROUND <nRound> ] ;
+             [ <lUpper: UPPERMNU> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+
+#xcommand ENDMENU
+
+</code>
+
+==== System Menu of Dialogs and Windows ====
+
+<code clipper>
+
+#xcommand REDEFINE SYSMENU [<oMenu>] ;
+             [ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+             [ <l2007: 2007, _2007> ] ;
+             [ <l2010: 2010, _2010> ] ;
+             [ COLORMENU  <nClrMenu> ,<nClrMenutxt> ] ;
+             [ COLORSELECT  <nClrHiLi> ,<nClrHiLf> ,<nClrHitx> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa> ,<nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT>  <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ FONT <oFont> ] ;
+             [ <lColors: COLORS> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <l2013: 2013, _2013> ] ;
+             [ <l2015: 2015, _2015> ] ;
+             [ <lNoBorder: NOBORDER> ] ;
+             [ HEIGHT <nHeight> ] ;
+             [ <lAdjust: ADJUST> ] ;
+             [ LEFTWIDTH <nLeftWidth> ] ;
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+             [ <file: IMGMENU> <cImg> ] ;
+             [ <file: BRUSH> <cBrush> ] ;
+
+#xcommand ENDSYSMENU
+
+</code>
+
+==== MRUs Menus ====
+
+<code clipper>
+
+#xcommand MRU <oMru> ;
+             [ <Ini: INI, ININAME, FILENAME, NAME, DISK> <cIniFile> ] ;
+             [ SECTION <cSection> ] ;
+             [ <size: SIZE, ITEMS> <nItems> ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ ACTION <uAction> ] ;
+             [ <of: OF, MENU> <oMenu> ] ;
+             [ ITEMPOS <nMenuPos> ] ;
+             [ CHARICON <cCharBmp> ] ;
+             [ HSYSBITMAP <hBmp> ] ;
+             [ <lNoNumber: NONUMBER> ] ;
+</code>
+
+===== Command MenuItem =====
+
+==== Menuitems from code ====
+
+<code clipper>
+
+#xcommand MENUITEM [ <oMenuItem> PROMPT ] [<cPrompt>] ;
+             [ MESSAGE <cMsg> ] ;
+             [ <checked: CHECK, CHECKED, MARK> ] ;
+             [ <enable: ENABLED, DISABLED> ] ;
+             [ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+             [ <resource: RESOURCE, RESNAME, NAME> <cResName> ] ;
+             [ ACTION <uAction,...> ] ;
+             [ BLOCK <bAction> ] ;
+             [ <of: OF, MENU, SYSMENU> <oMenu> ] ;
+             [ ACCELERATOR <nState>, <nVirtKey> ] ;
+             [ <help: HELP> ] ;
+             [ <HelpId: HELP ID, HELPID> <nHelpId> ] ;
+             [ WHEN <uWhen> ] ;
+             [ <lDegrade: DEGRADE> ] ;
+             [ <break: BREAK> ] ;
+             [ FONT <oFont> ] ;
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> <nClrToBa> [, <nClrBkBa>] ] ;
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> <nClrToBr> [, <nClrBkBr> ] ] ;
+             [ COLORSELECT  <nClrHiLi>, <nClrHiLf>[, <nClrHitx>] ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <lColors: COLORS> ] ;
+             [ CHARICON <cCharBmp> ] ;
+             [ HSYSBITMAP <hBmp> ] ;
+             [ INDEX <nIndex> ] ;
+             [ <lRight: RIGHT> ] ;
+             [ <lSeparator: SEPARATOR> ] ;
+             [ <lBold: BOLD> ];
+             [ <lItalic: ITALIC> ];
+
+</code>
+
+==== MenuItems from resources ====
+
+<code clipper>
+
+#xcommand REDEFINE MENUITEM [ <oMenuItem> PROMPT ] [<cPrompt>] ;
+             [ ID <nId> ] ;
+             [ <of: OF, MENU> <oMenu> ] ;
+             [ ACTION <uAction> ] ;
+             [ BLOCK  <bAction> ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ <checked: CHECK, CHECKED, MARK> ] ;
+             [ <enable: ENABLED, DISABLED> ] ;
+             [ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+             [ <resource: RESOURCE, RESNAME, NAME> <cResName> ] ;
+             [ ACCELERATOR <nState>, <nVirtKey> ] ;
+             [ <HelpId: HELP ID, HELPID> <nHelpId> ] ;
+             [ WHEN <uWhen> ] ;
+             [ FONT <oFont> ] ;
+             [ COLORMENU  <nClrMenu>, <nClrMenutxt> ] ;
+             [ <left: COLORBMP, COLORLEFT>  <nClrToBa>, <nClrBkBa> ] ;
+             [ <right: COLORPNEL, COLORRIGHT> <nClrToBr> ,<nClrBkBr> ] ;
+             [ COLORSELECT  <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+             [ <lVert: LINESVERT> ] ;
+             [ <lColors: COLORS> ] ;
+             [ CHARICON <cCharBmp> ] ;
+
+</code>
+
+
+===== Clauses Explain ( Command MENU ) =====
+
+==== STYLES ====
+
+  *  <l2007>
+  *  <l2010>
+  *  <l2013>: colors and features, User can be defined 
+  *  <l2015>
+
+All styles, even non style defined, they can be modified and defined by the user with other clauses, but not recommended
+
+
+==== COLORMENU ====
+
+             [ COLORMENU [ <nClrMenu>, ] <nClrMenutxt> ] ;
+
+    Color of background and text of items menu principal
+
+==== COLORSELECT ====
+
+             [ COLORSELECT <nClrHiLi>, <nClrHiLf>, <nClrHitx> ] ;
+
+    Colors background ( gradient if nClrHili != nClrHiLf ) and text item selected
+
+==== COLORBMP, COLORLEFT, LEFTCOLOR ====
+
+             [ <left: COLORBMP, COLORLEFT, LEFTCOLOR> [ <nClrToBa>, ] <nClrBkBa> ] ;
+
+    Colors text and background for left panel ( icons )
+
+==== COLORPNEL, COLORRIGHT, RIGHTCOLOR ====
+
+             [ <right: COLORPNEL, COLORRIGHT, RIGHTCOLOR> [ <nClrToBr>, ] <nClrBkBr> ] ;
+
+    Colors text and background for rigth panel
+
+==== COLORSEPARATOR ====
+
+             [ COLORSEPARATOR  <nClrHiBr> ] ;
+
+    Color of line ( or text ) used for separator item
+
+==== MENUBAR ====
+
+             [ <lMenuBar: MENUBAR> ] ;
+
+    This is a menu of window principal
+    Not is neccesary habitually
+
+==== FONT ====
+
+             [ FONT <oFont> ] ;
+
+    Object Font for items of menu
+
+==== COLORS ====
+
+             [ <lColors: COLORS> ] ;
+
+    Old clausule: define menu with new clausules implemented
+    Not is neccesary now
+
+==== LINESVERT ====
+
+             [ <lVert: LINESVERT> ] ;
+
+    Paint lines verticals in styles they do not paint them by default
+
+==== NOBORDER ====
+
+             [ <lNoBorder: NOBORDER> ] ;
+
+    Remove line of bottom of menu principal
+
+==== RIGHTSPACE ====
+
+             [ RIGHTSPACE <nRightSp> ] ;
+
+    Only for items menu principal
+    Used for adjust spaces when image is defined in items of menu principal
+
+==== FACTOR ====
+
+             [ FACTOR <nFactor> ] ;
+
+    Old clausule
+    Not is neccesary now
+
+==== HEIGHT ====
+
+             [ HEIGHT <nHeight> ] ;
+
+    User define factor height of item ( This factor may be positive or negative )    
+
+==== NOINHERIT ====
+
+             [ <lInherit: NOINHERIT> ] ;
+
+    Default, menus and items inherit properties of your parent menu
+    This clausule cancel this feature
+
+==== INVERT ====
+
+             [ <lInvert: INVERT> ] ;
+
+==== ROUND ====
+
+             [ ROUND <nRound> ] ;
+
+    Level round for box select items
+
+==== UPPERMNU ====
+
+             [ <lUpper: UPPERMNU> ] ;
+
+    Automatically converts the text of the items into capital letters
+
+==== ADJUST ====
+
+             [ <lAdjust: ADJUST> ] ;
+
+    Automatically adjust height each items of Max( ofont:nHeight, oImg:nHeight )
+    This allow see images natural size
+
+==== LEFTWIDTH ====
+
+             [ LEFTWIDTH <nLeftWidth> ] ;
+
+    Configure width of panel images for adjust if you have any problem with logomenu, or if you want to increase this width
+
+==== LOGOMENU ====
+
+             [ <file: LOGOMENU> <cBmpLogo> ] ;
+
+    Image for vertical position in left panel
+
+==== IMGMENU ====
+
+             [ <file: IMGMENU> <cImg> ] ;
+
+    Image for right panel of menu
+
+==== BRUSH ====
+
+             [ <file: BRUSH> <cBrush> ] ;
+
+    Defined user brush for menu
+
+==== NOCENTER ====
+
+             [ <lCenter: NOCENTER> ] ;
+
+    Default items of menu principal align: center
+    Default items of popup menus: left
+    In menu principal, align items left
+
+==== COLORBOX ====
+
+             [ COLORBOX <nClrBox> ] ;
+
+    Color for roundbox items selected
+
+==== SELECT ====
+
+             [ SELECT <uData> ] ;
+
+    Source datas for items ( alias or array )
+
+
+==== COLUMNS ====
+//    ( Only with clause SELECT )//
+             [ COLUMNS <aCols,...> ] ;
+
+    Number of columns for define items  ( 1, 3, 4 )
+
+
+==== LIMIT ====
+//    ( Only with clause SELECT )//
+             [ LIMIT <nLimit> ] ;
+
+    Number of lines show
+
+
+
+
+
+==== EXPAND ====
+//    ( Only with clause SELECT )//
+             [ <lExpand: EXPAND> ] ;
+
+             Create Menu with first column and submenus with others columns defined
+             See: NOFORM
+
+==== NOFORM ====
+//    ( Only with clause SELECT )//
+             [ <lForm: NOFORM> ] ;
+
+
+==== HEADERS ====
+//    ( Only with clause SELECT )//
+             [ HEADERS <aHeads,...> ] ;
+
+    Strings array definitions of headers cols menus
+
+
+==== ACTION ====
+//    ( Only with clause SELECT )//
+             [ ACTION <uAction,...> ] ;
+
+    Codeblock for user action with each item
+    Default, object oItem pressed is passed for parameter of funcion
+    With nPos of oItem or others properties of menuitems, you can easily build your function
+
+
+===== Clauses Explain ( Command MENUITEM ) =====
+
+
+==== PROMPT ====
+
+             [ PROMPT ] [<cPrompt>] ;
+
+     Now this prompt can be defined as a string, an array or a codeblock
+
+
+==== CHARICON ====
+
+             [ CHARICON <cCharBmp> ] ;
+
+     ASCII code for glyphs used as image
+
+==== HSYSBITMAP ====
+
+             [ HSYSBITMAP <hBmp> ] ;
+
+     Number of Bitmap system
+
+==== INDEX ====
+
+             [ INDEX <nIndex> ] ;
+
+     Number order When the selected image contains several images
+
+==== RIGHT ====
+
+             [ <lRight: RIGHT> ] ;
+
+     Align RIGHT prompt items
+
+==== BOLD ====
+
+             [ <lBold: BOLD> ];
+
+     Paint item with font letter bold ( not is neccesary define new font )
+
+==== ITALIC ====
+
+             [ <lItalic: ITALIC> ];
+
+
+     Paint item with font letter italic ( not is neccesary define new font )
+
+
+====== Sample: MNU01.PRG ======
+
+<code clipper>
+#include "Fivewin.ch"
+
+//----------------------------------------------------------------------------//
+//
+// Test Menus
+//
+//----------------------------------------------------------------------------//
+
+Static oWnd
+Static oFont
+Static oFont1
+Static nHFont
+Static cFont
+Static nWFont
+Static oItem
+Static oMenu
+
+Function Main()
+
+   local oBr
+   local cBrush   := "..\bitmaps\backgrnd\confetti.bmp"
+   cFont    := "Segoe UI"
+   nHFont   := 16
+   DEFINE FONT oFont NAME cFont SIZE 0, -nHFont
+   DEFINE FONT oFont1 NAME "Verdana" SIZE 0, -24
+   DEFINE BRUSH oBr FILE cBrush    //RESIZE
+   DEFINE WINDOW oWnd ;
+     TITLE "Test Menu" + " - Ver.: " + FWVERSION + if( IsExe64(), ;
+               "  ( 64", "  ( 32" ) + " bits ) - " + FWString( "User" ) + ;
+               ": " + WNetGetUser() + " - " + hb_Compiler() ;
+     MENU MenuSal() BRUSH oBr
+     
+   ACTIVATE WINDOW oWnd MAXIMIZED
+   RELEASE FONT oFont, oFont1
+   RELEASE BRUSH oBr
+
+Return nil
+
+//----------------------------------------------------------------------------//
+
+Function MenuSal()
+
+   local oMnu
+   local oMnu1
+   local oIt
+
+   MENU oMnu 2015 ;
+      NOBORDER ;
+      ROUND 6 FONT oFont ; //      HEIGHT 3 ;
+      UPPERMNU ADJUST //NOCENTER //Add or Remove clausule and look height of menu bar and items
+
+      MENUITEM "Test 0"
+      MENU oMenu //NOINHERIT //COLORMENU CLR_WHITE
+         MENUITEM "Exit" BOLD ACTION oWnd:End() FILE "..\bitmaps\16x16\exit2.bmp"
+         SEPARATOR
+         MENUITEM "Item 3"
+      ENDMENU
+      MENUITEM "Test" FILE "..\icons\fivewin.ico"  //+ CRLF + "Line 2" 
+      MENU 2007 NOINHERIT   // Remove for inherit clausule ADJUST of MENU BAR
+         MENUITEM "File" CHECKED
+         SEPARATOR
+         MENUITEM "Png" FILE "\fwh\bitmaps\pngs\image2.png"
+         MENUITEM "Jpg" FILE "\Fwh\bitmaps\pngs\pan_setting1.jpg"
+         MENUITEM "AlphaBmp Res" RESOURCE "files"
+         MENUITEM "AlphaBmp File" FILE "\fwh\bitmaps\alphabmp\pocketpc.bmp"
+         MENUITEM "Ico" FILE "\fwh\icons\bitmap.ico"
+            MENU 
+               MENUITEM "File" FILE "\fwh\bitmaps\fivetech.bmp"
+               MENUITEM "Next" WHEN .F.
+            ENDMENU
+         MENUITEM "MultiIcon File" FILE "\fwh\icons\hires\back.ico"
+         SEPARATOR
+         MENUITEM "SEPARATOR" SEPARATOR BOLD
+         MENUITEM "16char" FILE "\fwh\bitmaps\16char.bmp"
+         MENUITEM "b20_open" FILE "\fwh\bitmaps\b20_open.bmp"
+         MENUITEM "16clip" FILE "\fwh\bitmaps\16clip.bmp"
+         MENUITEM "Calendar2" FILE "\fwh\bitmaps\calendar2.bmp"
+         MENUITEM "Chart" FILE "\fwh\bitmaps\chart.bmp"
+         MENUITEM "CharIcon" CHARICON 57731
+         SEPARATOR
+         MENUITEM "Character" CHARICON "K"
+         MENUITEM "Bold" BOLD 
+         MENUITEM "Find2" FILE "\fwh\bitmaps\preview2.bmp" WHEN .F.
+         MENUITEM "Italic" ITALIC
+         MENUITEM "Find2" FILE "\fwh\bitmaps\find2.bmp"
+      ENDMENU
+      //MENUITEM " "
+      MENUITEM "With Font" FILE "..\icons\write2.ico"
+      MENU 2010 FONT oFont NOINHERIT // Remove for inherit clausule ADJUST of MENU BAR
+         MENUITEM "File" CHECKED  WHEN .F.
+         SEPARATOR
+         MENUITEM "Png" FILE "\fwh\bitmaps\pngs\image2.png"  WHEN .F.
+         MENUITEM "Jpg" FILE "\Fwh\bitmaps\pngs\pan_setting1.jpg"
+         MENUITEM "AlphaBmp" FILE "\fwh\bitmaps\alphabmp\visa.bmp"
+         MENUITEM "Ico" FILE "\fwh\icons\bitmap.ico"
+            MENU // 
+               MENUITEM "File" FILE "\fwh\bitmaps\fivetech.bmp"
+               MENUITEM "Next" WHEN .F.
+            ENDMENU
+         MENUITEM "MultiIcon File" FILE "\fwh\icons\hires\back.ico" WHEN .F.
+         MENUITEM "SEPARATOR" SEPARATOR BOLD
+         MENUITEM "16char" FILE "\fwh\bitmaps\16char.bmp"
+         MENUITEM "b20_open" FILE "\fwh\bitmaps\b20_open.bmp"
+         MENUITEM "16clip" FILE "\fwh\bitmaps\16clip.bmp"
+         MENUITEM "Calendar2" FILE "\fwh\bitmaps\calendar2.bmp"  WHEN .F.
+         MENUITEM "Chart" FILE "\fwh\bitmaps\chart.bmp"
+         MENUITEM "CharIcon" CHARICON 57731 WHEN .F.
+         SEPARATOR
+         MENUITEM "Character" CHARICON "K"
+         MENUITEM "Bold" BOLD 
+         MENUITEM "Find2" FILE "\fwh\bitmaps\preview2.bmp"
+         MENUITEM "Italic" ITALIC
+         MENUITEM "Find2" FILE "\fwh\bitmaps\find2.bmp"
+
+      ENDMENU
+
+      MENUITEM "Datos ( 2013 )" FILE "..\icons\search2.ico"  //"bitmaps\16x16\menu.bmp" 
+         MENU FONT oFont 2013 ;
+            COLORMENU CLR_WHITE, CLR_BLUE ;
+            COLORSELECT METRO_STEEL, METRO_STEEL, RGB( 0, 0, 1 ) ;
+            COLORLEFT CLR_WHITE ;
+            COLORRIGHT CLR_WHITE ;
+            COLORSEPARATOR METRO_OLIVE ; //      NOINHERIT ;   //      FACTOR 4 ;
+            LEFTWIDTH 24 ; //HEIGHT 1.0 * 2 ;     //      RIGHTSPACE 10 ; //            ADJUST ;
+            LOGOMENU "..\bitmaps\fivetechv.png" ;  //identify.bmp" ; //
+            IMGMENU "..\bitmaps\AlphaBmp\lock.bmp" ;//fivewing.bmp"
+            BRUSH "..\bitmaps\backgrnd\confetti.bmp"
+
+            MENUITEM "Proveedores" BOLD ACTION MsgInfo( "Proveedores" ) CHECKED
+            MENUITEM "Clientes" BOLD ACTION MsgInfo( "Clientes" ) ITALIC FILE "..\bitmaps\16clip.bmp"
+            SEPARATOR
+            MENUITEM "Articulos" ACTION MsgInfo( "Articulos" ) BOLD CHARICON 57621
+            SEPARATOR
+            MENUITEM "Fichero de Zonas ( 2007 )" COLORMENU CLR_MAGENTA BOLD FILE "..\bitmaps\16code.bmp"
+            MENU 2007
+               MENUITEM "Agentes" ACTION MsgInfo( "Fichero de Agentes" )
+               SEPARATOR
+               MENUITEM "Formas de Pago"
+               MENUITEM "Entidades Bancarias"
+            ENDMENU
+            MENUITEM "Ficheros Auxiliares ( 2015 )" COLORMENU METRO_OLIVE BOLD 
+            MENU 2015
+               MENUITEM "Agentes"
+               SEPARATOR
+               MENUITEM "Formas de Pago" CHARICON 57624
+               MENUITEM "Entidades Bancarias"
+            ENDMENU
+            SEPARATOR
+            MENUITEM "Tools ( 2015 )" BOLD
+            MENU 2010 COLORMENU CLR_RED
+               MENUITEM "Copia de Seguridad"
+               MENUITEM "Herramientas"
+               SEPARATOR
+               MENUITEM "Otros ( 2007 )"
+               MENU 2007
+                  MENUITEM "Item 1"  ACTION MsgInfo( "Item_1" )
+                  SEPARATOR
+                  MENUITEM "Item 2" ACTION MsgInfo( "Item_2" )
+               ENDMENU
+            ENDMENU
+            MENUITEM "Varios" BOLD
+            MENUITEM "Others" BOLD
+         ENDMENU
+      MENUITEM "Others Items ( 2015 )" FILE "..\bitmaps\16x16\people.bmp"
+         MENU oMnu1 2015 FONT oFont ; 
+            COLORMENU RGB( 0, 0, 1 ), CLR_HRED ; //LEFTWIDTH 40
+            LEFTWIDTH 24 ;
+            LOGOMENU "..\bitmaps\menu4v.bmp" ;
+            IMGMENU "..\bitmaps\AlphaBmp\android.bmp" ;
+            BRUSH "..\bitmaps\backgrnd\blustone.bmp"
+            MENUITEM "Item 1" ACTION XBrowse( GetSizeText( oWnd:GetDC(), "Hola" ) )
+            MENUITEM "Change Color Gray" ACTION ( oMnu1:hImg := cColorMenu( oWnd:hWnd, , CLR_GRAY, .T., ) ) //"lock.bmp" ) )
+            MENUITEM "Item 3" ACTION MsgInfo( HBmpBack( oMnu1:hMenu ) ) CHARICON "P"
+            SEPARATOR
+            MENUITEM "Item 4" ACTION MsgInfo( "Item_4" ) CHECKED
+            MENUITEM "Item 5 ( 2010 )" ACTION MsgInfo( "Item_5" ) FILE "..\bitmaps\16clip.bmp"
+            MENU 2010
+               MENUITEM "Item 51" ACTION MsgInfo( "Item_51" )
+               MENUITEM "Item 52" ACTION MsgInfo( "Item_52" )
+               SEPARATOR
+               MENUITEM "Item 53" ACTION MsgInfo( "Item_53" )
+               MENUITEM " -> " SEPARATOR 
+               MENUITEM "Item 54" ACTION MsgInfo( "Item_54" )
+               MENUITEM "Item 55" ACTION MsgInfo( "Item_55" )
+            ENDMENU
+            MENUITEM "Item 6" ACTION MsgInfo( "Item_6" )
+            MENUITEM "Item 7" ACTION MsgInfo( "Item_7" )
+            SEPARATOR
+            MENUITEM "Item 8" ACTION MsgInfo( "Item_8" )
+            MENUITEM "Item 9" ACTION MsgInfo( "Item_9" )
+         ENDMENU
+      MENUITEM "Elements" FILE "..\bitmaps\16x16\design.bmp" 
+         MENU 2015 BRUSH METRO_OLIVE FONT oFont1 ;
+            IMGMENU "D:\Fwh\FwhTeam\bitmaps\olga1.jpg" //
+            MENUITEM "Item 31" ACTION MsgInfo( "Item_31" )
+            MENUITEM "Item 32" ACTION MsgInfo( "Item_32" )
+            SEPARATOR
+            MENUITEM "Item 33" ACTION MsgInfo( "Item_33" )
+            MENUITEM " -> " SEPARATOR 
+            MENUITEM "Item 34" ACTION MsgInfo( "Item_34" )
+            MENUITEM "Item 35" ACTION MsgInfo( "Item_35" )
+         ENDMENU
+      MENUITEM FwString( "Salir" ) FILE "..\bitmaps\16x16\savedbf.bmp"
+         MENU 2010 COLORMENU RGB( 0, 0, 1 ), CLR_HRED ; //LEFTWIDTH 40 
+            LOGOMENU "..\bitmaps\fivetechv.png" ;
+            IMGMENU "..\bitmaps\fivewin.bmp" 
+            MENUITEM "Exit Test" BOLD ACTION oWnd:End() FILE "..\bitmaps\16x16\exit2.bmp"
+            SEPARATOR
+            MENUITEM "Historico" + Chr( 9 ) + "Ctrl + W" BOLD
+            MENUITEM "Simbolo del Sistema ( CMD )"  + Chr( 9 ) + "Ctrl + K" BOLD
+         ENDMENU
+
+   ENDMENU
+                                                           
+Return oMnu
+
+//----------------------------------------------------------------------------//
+
+</code>
+
+{{:wiki:menu14.png|:wiki:menu14.png}}
+
+
+
+====== Sample: MNUSELECT.PRG ======
+
+<code clipper>
+//----------------------------------------------------------------------------//
+//   Sample demo Features MENUS, using databases and arrays
+//----------------------------------------------------------------------------//
+
+#include "FiveWin.ch"
+
+Static oWnd
+Static oFontMnu
+
+function Main()
+
+   local oMenu
+
+   DEFINE FONT oFontMnu NAME "Segoe UI Symbol" SIZE 0, -14
+   
+   DbUseArea( .T., , "Customer.dbf" )
+   DbUseArea( .T., , "utf8_01.dbf" )
+   DbUseArea( .T., , "states.dbf" )
+   //DbGoto( 3 )
+   DEFINE WINDOW oWnd TITLE "Test Menu From Databases and Arrays: " MENU MenuDatabase() ;
+      FROM 20, 40 TO 650, 1200 PIXEL
+
+   oWnd:bRClicked  := { | nR, nC | MenuDatabase( .T., .F., nR, nC ) }
+   CtrlMove( oWnd )
+
+   ACTIVATE WINDOW oWnd ON INIT MenuDatabase( .F., .T., , )
+
+   RELEASE oFontMnu
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function MenuDatabase( lPopup, lSys, nR, nC )
+
+   local oMenu
+   DEFAULT lPopup  := .F.
+   DEFAULT lSys    := .F.
+
+   if !lPopup
+      if !lSys
+         MENU oMenu ;
+            2013 ;
+            COLORMENU METRO_STEEL, CLR_WHITE ;
+            COLORLEFT CLR_WHITE, METRO_STEEL ;
+            COLORRIGHT CLR_WHITE, METRO_STEEL ;
+            COLORSELECT CLR_WHITE, CLR_WHITE, CLR_BLUE ;
+            COLORSEPARATOR CLR_RED ;
+            COLORBOX CLR_WHITE
+      else
+         REDEFINE SYSMENU oMenu OF oWnd 2013 ;
+            COLORMENU METRO_STEEL, CLR_WHITE ;
+            COLORLEFT CLR_WHITE, METRO_STEEL ;
+            COLORRIGHT CLR_WHITE, METRO_STEEL ;
+            COLORSELECT CLR_WHITE, CLR_WHITE, CLR_BLUE ;
+            COLORSEPARATOR CLR_RED ;
+            COLORBOX CLR_WHITE
+         
+         SEPARATOR
+      endif
+   else
+      MENU oMenu 2013 POPUP FONT oFontMnu ;
+         COLORMENU METRO_STEEL, CLR_WHITE ;
+         COLORLEFT CLR_WHITE, METRO_STEEL ;
+         COLORRIGHT CLR_WHITE, METRO_STEEL ;
+         COLORSELECT CLR_WHITE, CLR_WHITE, CLR_BLUE ;
+         COLORSEPARATOR CLR_RED ;
+         COLORBOX CLR_WHITE
+   endif
+   if lPopup
+      MENUITEM "Databases and Arrays Test and Font" SEPARATOR OF oMenu BOLD //ITALIC
+      SEPARATOR
+   endif
+   MENUITEM Alias( 1 ) // COLORMENU CLR_RED, CLR_YELLOW
+      MENU SELECT Alias( 1 ) LIMIT 16 COLUMNS 1, 4, 5
+      ENDMENU
+   MENUITEM Alias( 2 )
+      MENU SELECT Alias( 2 ) LIMIT 06 COLUMNS 1, 2, 3
+      ENDMENU
+   MENUITEM Alias( 3 )
+      MENU SELECT Alias( 3 ) LIMIT -1 COLUMNS 2
+      ENDMENU
+   MENUITEM Alias( 2 ) + "_EXPAND"
+      MENU SELECT Alias( 2 ) LIMIT 06 COLUMNS 1, 2, 3 EXPAND
+      ENDMENU
+   MENUITEM Upper( "FieldNames_" ) + Alias( 1 )
+      MENU SELECT ( Alias( 1 ) )->( DbStruct() ) LIMIT -1 COLUMNS 2, 1, 3 //, 4
+      ENDMENU
+   MENUITEM Upper( "FieldNames_" ) + Alias( 1 ) + "_EXPAND"
+      MENU SELECT ( Alias( 1 ) )->( DbStruct() ) LIMIT -1 COLUMNS 1, 2, 3, 4 ;
+         EXPAND NOFORM HEADERS "Name", "Type", "Length", "Decs"
+      ENDMENU
+   MENUITEM Upper( "FieldNames" ) + "_EXPAND_FORM_ACTIONS"
+      MENU SELECT ( Alias( 1 ) )->( DbStruct() ) LIMIT -1 COLUMNS 1, 2, 3, 4 EXPAND ;
+         HEADERS "Name", "Type", "Length", "Decs" ACTION { | oI | MyAction( oI ) }
+         //LEFTWIDTH if( lSys, 24, 1 ) ;
+         //LOGOMENU "..\bitmaps\fivetechv.png" ;
+      ENDMENU
+   MENUITEM "EXIT" ACTION oWnd:End() WHEN ( !lPopup .and. !lSys )
+   if lPopup
+      ENDMENU
+      if nC < oWnd:nRight - 400
+         ACTIVATE MENU oMenu AT nR, nC OF oWnd  // Limit zone for show menu
+      else
+         oMenu:End()    // Release Menus created
+      endif
+   else
+      if lSys
+         SEPARATOR
+         MENUITEM "Reset Menu"  ACTION oMenu:Reset()
+         ENDSYSMENU
+      else
+         ENDMENU
+      endif
+   endif
+
+Return oMenu
+
+//----------------------------------------------------------------------------//
+
+Function MyAction( oI )
+
+     ? "Object Item: ", oI, ;
+       "Position into Menu Parent: ", oI:nPos, ;
+       "oItem cPrompt:", oI:cPrompt, ;
+       "oItem Id: ", oI:nId, ;
+       "Object Menu Parent of Item: ", oI:oMenu, ;
+       "Position of Menu Parent: ", oI:oMenu:nPos
+
+Return nil
+
+//----------------------------------------------------------------------------//
+
+// All source in SAMPLES of Fivewin
+
+</code>
+
+{{:wiki:mnusel01.png|:wiki:mnusel01.png}}
+
+{{:wiki:mnusel02.png|:wiki:mnusel02.png}}
+
+{{:wiki:mnusel03.png|:wiki:mnusel03.png}}
+
+{{:wiki:mnusel04.png|:wiki:mnusel04.png}}
+
+Also in MENUS POPUPS
+
+{{:wiki:mnusel05.png|:wiki:mnusel05.png}}
+
+
+And SYSMENUs
+
+{{:wiki:mnusel06.png|:wiki:mnusel06.png}}

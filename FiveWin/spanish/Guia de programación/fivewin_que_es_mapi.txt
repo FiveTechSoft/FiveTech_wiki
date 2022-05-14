@@ -1,0 +1,2 @@
+MAPI es la abreviatura de Mail Application Programming Interface. MAPI es un grupo de servicios de Windows específicamente diseñados para el intercambio de correo.
+

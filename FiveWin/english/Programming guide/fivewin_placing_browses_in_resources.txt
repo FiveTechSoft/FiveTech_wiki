@@ -1,0 +1,28 @@
+
+ How to place a FiveWin Browse in a DialogBox:
+
+1. Select the custom control toolbar button (it shows a little key on it).
+
+2. You will be prompted for the name of the custom control to use: Write TWBrowse.
+
+3. Draw the browse area on the Dialog Box and double click on it.
+
+4. Add the following styles at the bottom:
+
+<code clipper>
+... | WS_TABSTOP | WS_BORDER | WS_VSCROLL | WS_HSCROLL
+</code>
+
+5. To check that everything is ok from inside the Resource WorkShop, select the PullDown menu option: "Edit as text"
+
+   The text may show an entry like this:
+
+<code clipper>
+
+CONTROL "", 110, "TWBrowse", 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_VSCROLL | WS_BORDER, 4, 23, 117, 104
+
+</code>
+
+Instead 110 you will select the desired ID for your browse control.
+
+6. Review the RC and DLLs we provide in the SAMPLES directory to see how we do it.

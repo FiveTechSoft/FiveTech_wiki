@@ -1,0 +1,338 @@
+Class TWindow: Methods
+
+^New|Constructor of window class|
+|  |**Sintaxis:** \\ TWindow():New( nTop, nLeft, nBottom, nRight, cTitle, nStyle, oMenu,; \\ oBrush, oIcon, oWnd, lVScroll, lHScroll, nClrFore, nClrBack,;  \\ oCursor, cBorder, lSysMenu, lCaption, lMin, lMax ) --> oTWindow|
+|  |**Parámetros:** \\ **nTop ,nLeft** These two determine the top left corner of the window \\ **nBottom, nRight** The right bottom corner of the window. \\ **cTitle** The title of the window. \\ **nStyle** Determines the characteristics of the window. These characteristics are define by the following constants (defined in WINAPI.CH): \\ **WS_BORDER**  Window has a border. \\ **WS_CAPTION** 	Window has a title bar (implies the WS_BORDER style). This style cannot be used with the WS_DLGFRAME style. \\ **WS_CHILD** A child window.  Cannot be used with the WS_POPUP style. \\ **WS_CHILDWINDOW**  Same as the WS_CHILD style. \\ **WS_CLIPCHILDREN** 	Excludes the area occupied by child windows when drawing within the parent window.  Used when creating the parent window. \\ **WS_CLIPSIBLINGS**  Clips child windows relative to each other; that is, when a particular child window receives a paint message, the WS_CLIPSIBLINGS style clips \\ all other overlapped child windows out of the region of the child window to be updated. (If WS_CLIPSIBLINGS is notspecified and child windows overlap, it is possible, \\ when drawing within the client area of a child window, to draw within the client area of a neighboring child window.) For use with the WS_CHILD style only. \\ **WS_DISABLED** Window will be initially disabled. \\ **WS_DLGFRAME** Defines a window with a double border but no title. \\ **WS_GROUP** Specifies the first control of a group of controls in which the user can move from one control to the next by using the arrow keys. All controls defined with the WS_GROUP style after the first control belong to the same group. \\ The next control with the WS_GROUP style ends the style group and starts the next group (that is, one group ends where the next begins). Only dialog boxes use this style. \\ **WS_HSCROLL** Window has a horizontal scroll bar. \\ **WS_MAXIMIZE** Window should be of maximum size. \\ **WS_MAXIMIZEBOX** Creates a window that has a Maximize button. \\ **WS_MINIMIZE** Define window that is initially minimized. For use with the WS_OVERLAPPED style only. \\ **WS_MINIMIZEBOX** Creates a window that has a Minimize button. \\ **WS_OVERLAPPED** Defines an overlapped window. An overlapped window has a title and a border. \\ **WS_OVERLAPPEDWINDOW** Creates an overlapped window having the WS_OVERLAPPED, WS_CAPTION, WS_SYSMENU,  WS_THICKFRAME, WS_MINIMIZEBOX, and WS_MAXIMIZEBOX styles. \\ **WS_POPUP** Creates a pop-up window. Cannot be used with the WS_CHILD style. \\ **WS_POPUPWINDOW** Creates a pop-up window that has the WS_BORDER, WS_POPUP, and WS_SYSMENUstyles. The WS_CAPTION style must be combined with the WS_POPUPWINDOW style to make the System menu visible. \\ **WS_SYSMENU** Creates a window that has a System-menu box in its title bar. Used only for windows with title bars. \\ **WS_TABSTOP** Specifies one of any number of controls through which the user can move by using the TAB key. The TAB key moves the user to the next control specified by the WS_TABSTOP style. Only dialog boxes use this style. \\ **WS_THICKFRAME** Creates a window with a thick frame that can be used to size the window. \\ **WS_VISIBLE** Creates a window that is initially visible. This applies to overlapped,child, and pop-up windows.  For overlapped windows, the y parameter is used as a ShowWindow function parameter. \\ ** WS_VSCROLL** Creates a window that has a vertical scroll bar. Note: If this parameter is used it will override the values of the following parámetros: \\    **cBorder** \\    **lCaption** \\    **lSysmenu** \\    **lmin** \\    **lMax** \\    **lVScroll** \\    **lHScroll** \\ **oMenu** 	Menu for Window. This parameter should pass on a Tmenu object. \\ **oBrush** The brush used to paint the client area of the window. It is stored in the instance variable::oBrush. If none is passed, it will be created by the method SetColor(). \\ **oIcon** The icon that will be used whenever this window is minimized.  If none is passed the icon is extracted from USER.EXE (which means you get a small MS-WIndows emblem as icon). \\ **oWnd** The TWindow object of which this window is the child window. If this parameter is not passed it means that this window will stand on its own. \\ **lVScroll** Determines whether the window will have a vertical scrollbar. The default value is .F. \\ **lHScroll** Determines whether the window will have a horizontal scrollbar. The default value is .F. \\ **nClrFore** The foreground color (the color that is used to draw on the window). This can either be a MS-Windows COLOR number or a CA-CLipper color string (ie "R/G") in which case the nClrBack parameter will be ignored. \\ **nClrBack** The background color of the window. This has to be a MS-Windows COLOR number. \\ **oCursor** Determines which cursor will be shown when the mouse moves of  the surface of this window. \\ **cBorder** This parameter controls the type of border that the window has. It can be one of the following character strings: \\ NONE The window will be a popup window \\ SINGLE (Default) The window will have a thick frame \\ **lSysMenu** Create window with a system Menu button on the top/left corner of the window. The system menu will only be shown if  the window has a title bar (see lCaption) \\ **lCaption** Determine if the window will have a title bar. Default is .T. \\ **lMin** Determine whether or not the window will have a Minimize box. This box will only be shown if the window has a title bar (see lCaption) \\ **lMax** Determines whether there will be a Maximize box for this window. This box will only be shown if the window has a title bar (see lCaption)|
+|  |**Propósito:** \\ The New() Method creates a TWindow object and initializes a number of instance variables of the TWindow object. \\Note: Do not use the parameters indiscriminately because several parameters have effect upon each other. For example the behaviour determined by the lMin and the lMax parameters will have NO effect if the nStyle parameter is passed.|
+^Activate|Activates a Window|
+|  |**Sintaxis:** \\ TWindow():Activate( cShow, bLClicked, bRClicked, bMoved, bResized, bPainted,; bKeyDown, bInit, bUp, bDown, bPgUp, bPgDown,; bLeft, bRight, bPgLeft, bPgRight, bValid, bDropFiles ) -> Self|
+|  |**Parámetros:** \\ **<cShow>** This character string determines the 'visibility status' of the window when it is displayed. It can be one of the following strings: \\ "NORMAL" Show the window 'normal' ie with the size as defined by ::nTop, ::nLeft, ::nBottom, ::nRight. This is the default value. \\ "ICONIZED" The window will be shown iconized on the desktop. \\ "MAXIMIZED" Show the window in it largest possible size ie it will cover the entire screen. \\ **<bLClicked>** This codeblock will be executed whenever there is a click of the left mouse button on the window. The codeblock will be called with three parámetros: \\ <nRow> The pixel row where the mouse cursor was positioned when the mouse click occurred. \\ <nCol> The pixel column where the mouse cursor was positioned when the mouse click  occurred. \\ <nKeyFlags> Indicates which virtual keys are down and  if the right or the middle mouse button was pressed also.It can be a combination of the following values which have the following constant names in the MS-Windows API description:: \\ MK_RBUTTON	2   The right mouse button was pressed also. \\ MK_SHIFT	4   The <Shift> key was pressed. \\ MK_CONTROL	8  the <ctrl> key was pressed.\\ MK_MBUTTON	16  The middle mouse button was pressed. \\ **<bRClicked>** This codeblock will be executed whenever there is a click of the right mouse button on the window. The codeblock will be called with the same parameters as bLClicked \\ **<bMoved>** Currently not used. \\ **<bResized>** This code block will be called whenever a window is resized. When <bresized> is called it will be passed two parámetros: \\ <nWidth> The new width of the window in pixels. \\ <nHeight> The new height of the window in pixels. \\ **<bPainted>** This code block will be called whenever the window is repainted (ie the window receives a WM_PAINT message from MS-Windows).  When <bPainted> is called it receives one parameter and that is a reference to the TWindow() object. \\ **<bKeyDown>** Whenever the window has focus and a NON-SYSTEM key is pressed (ie the <Alt> key was not pressed in conjunction with this key), this codeblock will be called. When <bKeyDown> is called it receives two parámetros: \\ <nKey> The virtual key code of the key. \\ <nFlags> Specifies several internal values like repeat code and scan code. For more information about these values please read a MS-Windows APIdescription about the WM_KEYDOWN message. \\ **<bInit>** This codeblock will be executed after the window is displayed for the first time. It receives one parameter which is a reference to the tWindow object itself. \\ **<bUp>**  Whenever the VSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the 'up' arrow of the vertical scrollbar is clicked upon. It receives no parameters. \\ **<bDown>** Whenever the VSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the 'down' arrow of the vertical scrollbar is clicked upon. It receives no parameters. \\ **<bPgUp>**  Whenever the VSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the vertical scrollbar receives a 'pageup' message (ie the shaft of the scrollbar was clicked above the scrollbox).  It receives no parameters. \\ **<bPgDown>** Whenever the VSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the vertical scrollbar receives a 'pagedown' message (ie the shaft of the scrollbar was clicked above the scrollbox). It receives no parameters. \\ **<bLeft>** Whenever the HSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the 'left' arrow of the horizontal scrollbar is clicked upon. It receives no parameters. \\ **<bRight>** Whenever the HSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the 'right' arrow of the horizontal scrollbar is clicked upon. It receives no parameters. \\ **<bPgLeft>** Whenever the HSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the horizontal scrollbar receives a 'pageleft' message (ie the shaft of the scrollbar was clicked left of the scrollbox). It receives no parameters. \\ **<bPgRight>** Whenever the HSCROLL keyword is used when a TWindow() object is defined, this codeblock will be called when the vertical scrollbar receives a 'pageright' message (ie the shaft of the scrollbar was clicked to the right of the scrollbox).  It receives no parameters. \\ **<bValid>** If this codeblock is passed it will be called whenever the window should be closed. <bValid> has to return a logical value to indicate whether or not the window is allowed to close. \\ **<bDropFiles>** This codeblock is called whenever files are dropped on the window. When <bDropFiles> is called ir receives three parámetros: \\ <nRow> The row (in pixels) where the file(s) were dropped. \\ <nCol> The column (in pixels) where the file(s) were dropped. \\ <aFileNames> This array contains all the file names of the files that were dropped on the window.|
+|  |**Propósito:** \\ Shows the window and start interacting with it. The Activate method starts the main application event loop if not already working.|
+^AddControl|Adds a new child control|
+|  |**Sintaxis:** \\ TWindow:AddControl( <oControl> ) --> nil |
+|  |**Parámetros:** \\ **<oControl>** Is a reference to the child control to be added.|
+|  |** Propósito:** \\ This method adds a new child control to the window :aControls array,   only if the window is currently visible. If the window is not visible, TWindow:DefControl() is used instead.|
+^BeginPaint|It is automatically called before painting|
+|  |**Sintaxis:** \\ TWindow:BeginPaint()  -> cPS \\ cPS Is the PaintStructure (Windows API) associated to the painting process. The DATA :cPS also keeps that value.|
+|  |**Propósito:** \\ This method is automatically called when a painting process is starting.You may not call this method directly. Instead use TWindow:Refresh() to force a window painting.|
+^Box|Draws a Box on the Window|
+|  |**Sintaxis:** \\ TWindow:Box( nTop, nLeft, nBottom, nRight )  -> nil|
+|  |**Parámetros:** \\ **nTop , nLeft** These two determine the top left corner of the window \\ **nBottom, nRight** The right bottom corner of the window.|
+|  |**Propósito:** \\ Draws a box on the window. The coordinates are expressed in pixels.Note that ::Box() draws a box on the window for which it was called. So the coordinates are relative to the top left of the window.|
+^Capture|Capture all the Mouse activity for the Window|
+|  |**Sintaxis:** \\ TWindow:Capture()  -> hWndPrevious|
+|  |**Devuelve:** \\ The previous hWnd which had the mouse captured.|
+^Center|Centers the window on the screen|
+|  |**Sintaxis:** \\ TWindow:Center( <oWnd> )  --> Nil|
+|  |**Parámetros:** \\ **<oWnd>** The window relative to which this window will be centered. If it is omitted the window will be centered using the dimensions of the desktop.|
+|  |**Propósito:** \\ Centers the window on the screen relative to another window or to thedesktop.|
+^Command|Process a generic command|
+|  |**Sintaxis:** \\ TWindow:Command( <nWParam>, <nLParam> )|
+|  |**Parámetros:** \\ <nWParam> This parameter actually holds two pieces of information which have the following meaning: \\ <nCode> = nHiWord(nWParam). This value specifies the notification code if the message is from a control. If the message is from an accelerator, this parameter is 1.  If the message is from a menu, this parameter is 0. \\nID = nLoWord(wParam); This part represents the  identifier of either an item, a control or an accelerator. \\ **<nLParam>** This value contains the handle of the control sending the message if the message is from a control. Otherwise, this parameter is NULL.|
+|  |**Propósito:** \\ This method is automatically called when processing a WM_COMMAND WinApi message. If a message is processed it should return 0.|
+^Circle|Draws a circle|
+|  |**Sintaxis:** \\ TWindow:Circle( <nRow>, <nCol>, <nWidth> )  --> nil|
+|  |**Parámetros:** \\ **<nRow> <nCol>** These coordinates represent the center of the circle. They are relative to the top left of the window or which this method is called \\ **<nWidth>** The radius of the circle.|
+|  |**Propósito:** \\ This method can be used to draw a circle on the client area of the window.|
+^CoorsUpdate|Updates the coordinates of the window|
+|  |** Sintaxis:** \\ TWindow:CoorsUpdate()  ->nil|
+|  |**Propósito:** \\ The window object has nTop, nLeft, nBottom, nRight DATA, but they   are not automatically updated. Use this method to refresh those values and have the latest values.|
+^Copy|Places a copy of the window image at the clipboard|
+|  |**Sintaxis:** \\ TWindow:Copy( <lAll> )  ->nil|
+|  |**Parámetros:** \\ **<lAll>** Is a logical value meaning if all the surface has to be copied or just the client area of the window.|
+^Create|Generic new Window Class creation|
+|  |**Sintaxis:** \\ TWindow:Create( cClsName )  ->nil \\ Windows API creation process. You should not call this method directly. To create a window, use instead TWindow:New().|
+|  |**Parámetros:** \\ **cClsName** The name of the window class. The class name can be any name registered with the RegisterClass() function or any of the predefined control-class names|
+^CtlColor|Set color of control.|
+|  |**Sintaxis:** \\ TWindow:CtlColor( <hWndChild>, <hDCChild> )|
+|  |**Parámetros:** \\ **<hWndChild>** The handle of the child window \\ **<hDCChild>** The handle of the DC|
+^cTitle|The caption of the Window|
+|  |**Sintaxis:** \\ TWindow:cTitle( <cNewTitle> )  -> cTitle|
+|  |**Parámetros:** \\ **<cNewTitle>** The new value for the title.|
+|  |**Comments:** \\ This is a SETGET method which assigns or retrieve the window caption. You may use it as if it were a DATA (instance variable) of the  TWindow object, but it is in fact a method.|
+^DdeInitiate|Initiate DDE session from the window|
+|  |**Sintaxis:** \\ TWindow:DdeInitiate( <hWndClient>, <nAppName>, <nTopicName> )|
+|  |**Parámetros:** \\ **<hWndClient>** The handle of the client window for which the DDE session has to be initiated. \\ **<nAppName>** The handle to a global atom (created by GetGlobalAtom() ) which contains the name of the DDE server. \\ **<nTopicName>** The handle to a global atom which contains the name of the topic for with which the DDE session is to be initiated.|
+|  |**Propósito:** \\ The DDEInitiate() method is called by the eventhandler of a DDE server(normally themain window of an application) when a DDE client wants to start a session. The method also receives the name of the application that want a connection and the topic the client program wants a DDE link for.|
+^DdeAck|Acknowledge DDE.|
+|  |**Sintaxis:** \\ TWindow:DdeAck( <hWndSender>, <nLParam> ) |
+|  |**Parámetros:** \\ **<hWndServer>**	 It is the handle of the window which it is acting as a server in a DDE conversation. \\ **<nExtraData>** Some extra data sometimes required.|
+|  |**Propósito:** \\ This method is called by the eventhandler of the DDE client window whenever it receives an acknowledgement from the DDE server.|
+^DdeExecute|Execute DDE command|
+|  |**Sintaxis:** \\ TWindow:DdeExecute( <hWndSender>, <nCommand> ) |
+|  |**Parámetros:** \\ **<hWndSender>** The handle off the DDE client window who initiated the command. \\ **<nCommand>** The command sent by the DDE client window. It is actually a handle to  a GLOBAL ATOM.|
+|  |**Propósito:** \\ Whenever the DDE server window receives a DDE command from a client the eventhandler calls this method with information about the application that requested the command an the actual command.|
+^DdeTerminate|Terminate DDE session|
+|  |**Sintaxis:** \\ TWindow:DdeTerminate( <hWndSender> )  |
+|  |**Parámetros:** \\ **<hWndSender>** The DDE window that wants to terminate the DDE session.|
+|  |**Propósito:** \\ Whenever a DDE window receives a signal that the link is to be terminated the eventhandler calls this method.|
+^Destroy|Destroy a window|
+|  |** Sintaxis:** \\ TWindow:Destroy(  )  --> NIL|
+|  |**Propósito:** \\ This method handles the actual removal of a window. It should NOT be called directly. If you want to end a window's existence you should call the End() method. The Destroy() method also destroys (ie releases) the following objects if they were associated with the window: \\         ::oBrush \\        ::oCursor \\        ::oIcon \\        ::oFont \\        ::oMenu \\        ::oSysMenu \\        ::oVScroll \\        ::oHScroll \\ and the handling of Drag-and-Drop if it was installed. If the window was the main window off the application it will also close the main window and proceed with the code behind the activation of the window.|
+^Disable|Disables the Window|
+|  |**Sintaxis:** \\ TWindow:Disable()  ->nil|
+|  |**Propósito:** \\ This method disables all the input to this window. Meanwhile a window is disabled, it can not be selected with the mouse and no keyboard strokes are sent to it.|
+^DrawItem	|Draw item|
+|  |**Sintaxis:** \\ TWindow:DrawItem( <nIdCtl>, <pItemStruct> )   |
+|  |**Parámetros:** \\ **<nIdCtl>** Control Item \\ **<pItemStruct>** handle of Item structure|
+^DropFiles|Handle files dropped on this window|
+|  |**Sintaxis:** \\ TWindow:DropFiles( <hDrop> ) |
+|  |**Parámetros:** \\ **<hDrop>** The handle of the MS-Windows DROP structure.|
+|  |**Propósito:** \\ If a window can accept files that are dropped from the File Manager this method is called by the eventhandler whenever files are dropped on the window. The handle (<hDrop>) points to a MS-Windows DROP structure, from which both the file names of the files dropped on this window can be extracted ant the point ont the window where the files were dropped on.|
+^Enable|Enable Window activity|
+|  |**Sintaxis:** \\ TWindow:Enable()  ->nil|
+|  |**Propósito:** \\ Enables a previous disabled window. When a window is enabled it may be selected using the mouse and the keyboard events are sent to it.|
+^End|End Activity|
+|  |**Sintaxis:** \\ TWindow:End()  ->lSuccess|
+|  |**Propósito:** \\ This method should be called if the window has to be closes. If the VALID clause has been defined, the clause has to return .t. in order to let the window end.|
+^EndPaint|Automatically called when ending painting|
+|  |**Sintaxis:** \\ TWindow:EndPaint() -> nil|
+|  |**Porpósito:** \\ This method ends the painting process of a window. It is called automatically  in response to a WinApi WM_PAINT message. Don't call it directly. To display a window use TWindow:Refresh().|
+^EraseBkGnd|Erase background of window|
+|  |**Sintaxis:** \\ TWindow:EraseBkGnd( <hDC> )   |
+|  |**Parámetros:** \\ **<hDC>** The DEVICE CONTEXT handle of this window.|
+|  |**Propósito:** \\ The purpose of this method is to erase the background of the window.|
+^FloodFill|Fill area from startpoint with color|
+|  |**Sintaxis:** \\ TWindow:FloodFill( <nRow>, <nCol>, <nRGBColor> )   |
+|  |**Parámetros:** \\ **<nRow>** The pixel row that is the top row from which the clientarea that will be filled with color <nRGBColor>. \\ **<nCol>** The pixel column that is the left most pixel row from which the client area of the window is to be filled with the color <nRGBColor>. \\ **<nRGBColor>** A MSWindow color number which represents the color that is to be used.|
+|  |**Propósito:** \\ This method can be used to color a part of the client area of the window. The area is defined by the area enclosed in the rectangle defined by <nRow>,<nCol>, which represent the top left corner of the rectangle and the right bottom of the client area.|
+^FocusNext|Changes the child focus to the next or to the previous|
+|  |**Sintaxis:** TWindow:FocusNext( <hCtrl>, <lPrevious> ) -> nil|
+|  |**Parámteros:** \\ **<hCtrl>** It is the hWnd of the control currently focused. \\ **<lPrevious>** It is a logical value: .t. for the next and .f. for the previous.|
+|  |**Propósito:** \\ This method sets the focused child control of the window to the next one or to the previous according to lPrevious value.|
+^cGenPrg|Generates the source code of the window|
+|  |**Sintaxis:** \\ TWindow:cGenPRG( <cFileName> )   |
+|  |**Parámetros:** \\ **<cFileName>** The file where the generated source code should be written to. The file will be overwritten if it already exists.|
+|  |**Propósito:** \\ This can be a very powerful method in a sense that you can design a window with controls on it and the you can make a call to the cGenPrg() method to generate the source code to generate the window you just designed.|
+^nGetChrHeight|Updates the nChrHeight DATA of the window|
+|  |**Sintaxis:** \\ TWindow:nGetChrHeight()  -> nil|
+|  |**Propósito:** \\ This method calculates the character height of the window based on the current active font and places the result in the :nChrHeight DATA of the window.|
+^GetCliRect|Returns the client window area Return TRect() object with client rectangle of window.|
+|  |**Sintaxis:** \\ TWindow:GetCliRect() -> TRect()|
+|  |**Propósito:** \\ The GetCliRect() method will return a TRect() objects which contains the coordinates describing the client rectangle of the window. Since client rectangle coordinates are relative to the window they will start in the upper left corner of the window with 0,0. The <nBottom>,nRight>pair will give the height and the width of the client rectangle. All coordinates are in pixels.|
+^GetFont|Get font from window|
+|  |**Sintaxis:** \\ TWindow:GetFont()  |
+|  |**Propósito:** \\ This method retrieves the current font object for this window. if ::oFont was not defined for this window GetFont() will retrieve the current font settings for this window, create a font object, place it in ::oFont and returns the information. If on the other hand, ::oFont was defined, GetFont() just returns the FOnt object in ::oFont.|
+^GetRect|Returns the whole area|
+|  |**Sintaxis:** \\ TWindow:GetRect(  )  -> TRect()|
+|  |**Propósito:** \\ The GetRect() method will return a TRect() objects which contains the coordinates describing the bounding rectangle of the window. The coordinates returned are relative to the top-left corner of the screen. They include the border, title bar and scrollbars if they are present. The coordinates are in pixels.|
+^GetDC|Returns the current device context.   if any or request a new one.|
+|  |**Sintaxis:** \\ TWindow:GetDC(  )  |
+|  |**Propósito:** \\ The GetDC() method returns the current DEVICE context for this window. If ::hDC already contains a handle to the window's DEVICE context GetDC() returns that.Otherwise it will retrieve the current DEVICE CONTEXT for this window, store it in ::hDC and return the handle to this DEVICE CONTEXT.|
+^GetDlgCode|Return the kind of Dialog information a window requests|
+|  |**Sintaxis: ** \\ TWindow:GetDlgCode(  )  -> NIL|
+|  |**Propósito:** \\ This is a VIRTUAL method for this class ie for the TWindow class this method performs no action at all.|
+^GetWidth|Get width of string written with certain font|
+|  |**Sintaxis:** \\ TWindow:GetWidth( <cText>, <oFont> )  |
+|  |**Parámetros:** \\ **<cText>** The text string for which the length is to be determined. \\ **<oFont>** The font that should be taken into account when determining the length of the string. If <oFont> is not supplied GetWidth will use the font stored in ::oFont.|
+|  |**Propósito:** \\ This method allows you to determine what the exact length is of a string, when it is written to this window. This can be useful if you want to determine beforehand if a string can be completely written to this window without being 'clipped'. GetWIdth() takes into account the font information supplied by <oFont> (if passed). If <oFont> is not supplied the default font for the window is used.|
+^GoNextCtrl|Goto next control in window|
+|  |**Sintaxis:** \\ TWindow:GoNextCtrl( <hCtrl> )  |
+|  |**Parámetros:** \\ **<hCtrl>** The handle of the control from where the search for the next control on this window should start.|
+|  |**Propósito:** \\ This method will set focus to the next control on this window. GoNextCtrl() will start searching from the control identified by <hCtrl>.|
+^GoPrevCtrl|Goto previous control in window|
+|  |**Sintaxis:** \\ TWindow:GoPrevCtrl( <hCtrl> )  |
+|  |**Parámetros:** \\ **<hCtrl>** The handle of the control from where the search for the previous control on this window should start.|
+|  |**Propósito:** \\ This method will set focus to the previous control on this window. GoNextCtrl() will start searching from the control identified by <hCtrl>.|
+^GotFocus|Called when window got focus|
+|  |**Sintaxis:** \\ TWindow:GotFocus()  |
+|  |**Propósito:** \\ This method is called by the eventhandler of this window whenever the window has received focus. In turn GotFocus() will call the ::bGotFocus codeblock (if specified). This will allow you to perform certain actions whenever the window has received focus.|
+^GoTop|Bring window to top|
+|  |**Sintaxis:** \\ TWindow:GoTop()  |
+|  |**Propósito:** \\ The GoTop() method brings the given pop-up or child window (including an MDI child window) to the top of a stack of overlapping windows. In addition, it activates pop-up, top-level, and MDI child windows. The GoTop() method should be used to uncover any window that is partially or completely obscured by any overlapping windows.|
+^HandleEvent|Generic handle event management|
+|  |**Sintaxis:** \\ TWindow:HandleEvent( <nMsg>, <nWParam>, <nLParam>  )  -> nVal|
+|  |**Propósito:** \\ This method handles all the events for a particular TWindow object. It directly calls a C-function ( WndHandleEvent( ) ). This is done to increase speed. For complete documentation on each and every value of <nMsg> and its associated values of <nWMparam> and <nLParam> please check out a book (or help file) on MS-Windows messages and how they are handled.|
+^HardCopy()|Makes a printout of the Window.|
+|  |**Sintaxis:** \\ TWindow:HardCopy(<nScale>, <lUser>)  -> Nil|
+|  |**Parámetros:** \\ **<nScale>** The scale that will be used when printing the contents of the window. It has to be an integer which is greater or equal to 1. Default is 1. \\ **<lUser>** Determines whether the user of the application will have to choose a printer or if the printing will be done on the default printer. If <lUser> is >T> the user can choose a printer. Default is .T..|
+^Hide|Hide window|
+|  |**Sintaxis:** \\ TWindow:Hide()  |
+|  |**Propósito:** \\ Hides the window, and brings another one to the top.|
+^HScroll|Horizontal scroll method dispatcher|
+|  |**Sintaxis:** \\ TWindow:HScroll( <nWParam>, <nLParam> )  |
+|  |**Parámetros:** \\ **<nLParam>** The high word of this parameter contains the handle of the scrollbar. \\ **<nWParam>** This parameter contains a numerical value that  specifies the action that should be taken. The following messages are processed (these constants are defined in WINAPI.CH): \\ SB_LINEUP \\ SB_LINEDOWN \\ SB_PAGEUP \\ SB_PAGEDOWN \\ SB_THUMBPOSITION \\ SB_ENDSCROLL (only if the method is called for a scrollbar  that is connected to a window).|
+|  |**Propósito:** Processes the WM_HSCROLL messages that are sent to this window object. This method handles both the messages for both a scrollbar that is connected to a window or for a particular horizontal   scrollbar control.|
+^Iconize()|Iconize window|
+|  |**Sintaxis:** \\ TWindow:Iconize()  |
+|  |**Propósito:** \\ This method iconizes (minimizes) the current window. It does NOT destroy the window.For that you should call the End() method.|
+^KeyDown|Key holding down method dispatcher|
+|  |**Sintaxis:** \\ TWindow:KeyDown( <nKey>, <nFlags> ) |
+|  |**Parámetros:** \\ **<nKey>** The value of the non-system key that was pressed. \\ **<nFlags>** Specifies the repeat count, scan code, extended-key flag, context code, previous key-state flag, and transition-state flag, For more information on these flags please consult the MS-Windows API documentation.|
+|  |**Propósito:** \\ This method handles all the WM_KEYDOWN messages Windows sends to this particular object. These messages are sent when a window has keyboard focus and when a NON-SYSTEM key (the <Alt> key was NOT pressed) is pressed. This method receives  both the virtual keycode and a set of flags which can be used to determine more about the non-system key that was pressed.|
+^KeyChar|Key pressed method dispatcher|
+|  |**Sintaxis:** \\ TWindow:KeyChar( <nKey>, <nFlags> )  |
+|  |**Parámetros:** \\ **<nKey>** The value of the key pressed \\ **<nFlags>** Specifies the repeat count, scan code, extended-key flag, context code, previous key-state flag, and  transition-state flag, For more information on these flags please consult the MS-Windows API documentation.|
+|  |**Propósito:** \\ This method handles all the WM_CHAR messages Windows sends to this particular object. This method receives both the keycode and a set of flags which can be used to determine more about the keystroke.|
+^KillFocus|Called when window loses focus|
+|  |**Sintaxis:** \\ TWindow:( <hWndFocus> )|
+|  |**Parámetros:** \\ <hWndFocus>|
+^LButtonDown|Left Mouse button down dispatcher|
+|  |**Sintaxis: ** \\ TWindow::LButtonDown( nRow, nCol, nKeyFlags )|
+|  |**Parámetros:** \\ **<nRow>** The pixel row where the mouse cursor was positioned when the mouse click occurred. \\ **<nCol>** The pixel column where the mouse cursor was positioned when the mouse click  occurred. \\ **<nKeyFlags>** Indicates which virtual keys are down and if the right or the middle mouse button was pressed also. It can be a combination of the following values which have the following constant names in the MS-Windows API description: \\ MK_RBUTTON	2	The right mouse button was pressed also. \\ MK_SHIFT	4	The <Shift> key was pressed. \\ MK_CONTROL	8	The <ctrl> key was pressed. \\ MK_MBUTTON	16	The middle mouse button was pressed.|
+|  |**Propósito:** \\ This method is called whenever the left mouse button is pushed down. lButtonDown() will check to see if the bLClicked instance variable contains a code block. If that is the case the codeblock will be called with the parameters LButtonDown() has received.|
+^LDblClick|Called when left double click occurs|
+|  |**Sintaxis:** \\ TWindow:LDblClick( <nRow>, <nCol>, <nKeyFlags> )  |
+|  |**Parámetros:** \\ **<nRow>** Row where the mouse was pressed \\ **<nCol>** Column where the mouse was pressed \\ **<nKeyFlags>** Indicates which virtual keys are down and if the right or the middle mouse button was pressed also. It can be a combination of the following values which have the following constant names in the MS-Windows API description: \\ MK_RBUTTON	2	The right mouse button was pressed also. \\ MK_SHIFT	4	The <Shift> key was pressed. \\ MK_CONTROL	8	The <ctrl> key was pressed. \\ MK_MBUTTON	16	The middle mouse button was pressed.|
+^Line|Draws a line|
+|  |**Sintaxis:** \\ TWindow:Line( <nTop>, <nLeft>, <nBottom>, <nRight>  ) |
+|  |**Parámetros:** \\ **<nTop>, <nLeft>** These two parameters determine the starting point of the line. \\ **<nBottom>, <nRight>** These two parameters determine the ending point of   the line.|
+|  |**Propósito:** \\ The method Line() will draw a line on th window associated with this TWindow() object. The coordinates that are passed are relative to the top left corner of this window. All coordinates should be in pixels.|
+^Link|Window to OOPS conversion initialization|
+|  |** Sintaxis:** \\ TWindow:Link( <lSubClass> )  |
+|  |**Propósito:** \\ Window to OOPS conversion initialization|
+^LostFocus|Called when window loses focus|
+|  |**Sintaxis:** \\ TWindow:LostFocus()   |
+^lWhen|Evaluate when condition|
+|  |**Sintaxis:** \\  TWindow:lWhen() |
+|  |**Propósito:** \\ The purpose of this method is to make sure that when the window is created the bWhen instance variable will be evaluated. After this theGotFocus method will take care of handling the bWhen instance variable.|
+^Maximize|Maximize window|
+|  |**Sintaxis:** \\ TWindow:Maximize()  |
+|  |**Propósito:** \\ This method allows the programmer to maximize the window during program execution from the code instead of having the user click on the maximize button|
+^MenuSelect|Called when menuitem is selected|
+|  |**Sintaxis:** \\ TWindow:MenuSelect( <nIdItem> ) |
+|  |**Parámetros:** \\ **<nIdItem>** Item identifier|
+^MeasureItem|Measure size of control|
+|  |**Sintaxis:** \\ TWindow:MeasureItem( <nIdCtl>, <pMitStruct> )  |
+|  |**Parámetros:** \\ **<nIdCtl>** Control Id \\ **<pMitStruct>** Handle to the item structure |
+^Minimize|Minimizes the Window|
+|  |**Sintaxis:** \\ TWindow:Minimize(  )  |
+|  |**Propósito:** \\ This function  will minimize the current window and gives focus to the top-level window in the system list.|
+^MouseMove|Called when mouse moves over window|
+|  |**Sintaxis:** \\ TWindow:MouseMove( <nRow>, <nCol>, <nKeyFlags> ) |
+|  |**Parámetros:** \\ **<nRow>** Row where the mouse was pressed \\ **<nCol>** Column where the mouse was pressed \\ **<nKeyFlags>** Indicates which virtual keys are down and if the right or the middle mouse button was pressed also. It can be a combination of the following values which have the following constant names in the MS-Windows API description: \\ MK_RBUTTON	2	The right mouse button was pressed also. \\ MK_SHIFT	4	The <Shift> key was pressed. \\ MK_CONTROL	8	The <ctrl> key was pressed. \\ MK_MBUTTON	16	The middle mouse button was pressed.|
+^Move|Moves the Window|
+|  |**Sintaxis:** \\ TWindow:Move( <nTop>, <nLeft>, <nBottom>, <nRight>, <lRepaint> )  -> NIL|
+|  |**Parámetros:** \\ **<nTop>, <nLeft>** These two determine the top left corner of the window. The coordinates should be given in pixels. \\ **<nBottom>, <nRight>** The right bottom corner of the window.The coordinates should be given in pixels. \\ **<lRepaint>** The <lRepaint> parameter controls whether or not a repaint of the window should occur as soon as the window is moved.If <lRepaint> is .T. the window will be immediately repainted.|
+|  |**Propósito:** \\ The Move() method will move the current window to a new position and change its size. If the window is a top level window, the coordinates are relative to the top left of the screen. If the window is a child window the coordinates ar relative to the top left corner of the parent window. \\ **Observaciones:** \\ If <nRight> is 0 (ie zero), the current width and height of the window are used.|
+^NcActivate| |
+|  |**Sintaxis:** \\ TWindow:NcActivate( <lOnOff> ) |
+|  |**Parámetros:** \\ **<lOnOff>**|
+^Normal|Give window normal size|
+|  |**Sintaxis:** \\ TWindow:Normal()  |
+^Paint|Generic painting method|
+|  |**Sintaxis:** \\ TWindow:Paint()  -> NIL|
+|  |**Propósito:** \\ The method Paint() controls the actual painting of this object. it should NOT be called directly because it should be called between the BeginPaint() and EndPaint() methods. If you want to repaint a window you should call the Refresh() method.|
+^PaletteChanged| |
+|  |**Sintaxis:** \\ TWindow:PaletteChanged( <hWndPalChg> )  |
+|  |**Parámetros:** \\ **<hWndPalChg>**|
+^PostMsg|Post a Windows message|
+|  |**Sintaxis:** \\ TWindow:PostMsg( <nMsg>, <nWParam>, <nLParam> )  ->nRetVal|
+|  |**Parámetros:** \\ **<nMsg>** This parameter should contain one of the MS-Windows API 'messages'. The values are defined in WINAPI.CH. \\ **<nWParam>** The value of this parameter is directly related to the value of <nMsg>. This should be a 16 bit integer. \\ **<nLParam>** The value of this parameter is directly related to the value of <nMsg>. This should be a 32 bit integer.|
+|  |**Propósito:** \\ The PostMsg() method places a API message in the message queue of the window and does not wait for the window to process the message. It can be used to influence the behavior of the window.  However the sending of messages can be very dangerous for your application if it is not done properly.  Before you use the PostMsg() method be sure of what you are doing, which message you are sending and what the values should be of the related parameters.|
+^Print|Prints the Window at the Printer|
+|  |**Sintaxis:** \\ TWindow::Print( <oPrint>, <nRow>, <nCol>, <nZoom> )  |
+|  |**Parámetros:** \\ **<oPrint>** A printer object created by either DEFINE PRINTER or by calling the New() method of the TPrinter() class. \\ **<nRow>**  The pixel row on the paper where the printing of the contents should start. \\ **<nCol>** The pixel column on the paper where the printing of the  contents should start. \\ **<nZoom>** The enlargement factor that will be used when printing. It must be an integer value ( >= 1).|
+|  |**Propósito:** \\ This method will send the contents of the window to a printer object so that it will be printed.The printer is represented by the printer object <oPrint> which should be a valid printer object. The scaling of the picture on the paper can be controlled by <nZoom>.|
+^QueryDragIcon|Icon for dragging|
+|  |**Sintaxis:** \\ TWindow:QueryDragIcon()  |
+^QueryEndSession|End of query|
+|  |**Sintaxis:** \\ TWindow:QueryEndSession()  |
+^QueryNewPalette|  |
+|  |**Sintaxis:** \\ TWindow:QueryNewPalette()  |
+^RButtonDown|Right mouse button down dispatcher|
+|  |**Sintaxis:** \\ TWindow::RButtonDown( nRow, nCol, nKeyFlags )|
+|  |**Parámetros:** \\ **<nRow>** Row where the mouse was pressed \\ **<nCol>** Column where the mouse was pressed \\ **<nKeyFlags>** Indicates which virtual keys are down and if the right or the middle mouse button was pressed also. It can be a combination of the following values which have the following constant names in the MS-Windows API description: \\ MK_RBUTTON	2	The right mouse button was pressed also. \\ MK_SHIFT	4	The <Shift> key was pressed. \\ MK_CONTROL	8	The <ctrl> key was pressed. \\ MK_MBUTTON	16	The middle mouse button was pressed.|
+|  |**Propósito:** \\ This method is called whenever the right mouse button is pushed down. RButtonDown() will check to see if the bRClicked instance variable contains a code block. If that is the case the codeblock will be called with the parameters RButtonDown() has received.|
+^ReleaseDC|Release the previous device context requested|
+|  |**Sintaxis:** \\ TWindow:ReleaseDC(  )  |
+|  |**Propósito:** \\ ReleaseDC() will release the Device Context (DC) that was requested by GetDC() as soon as the instance variable ::nPaintCount, which is decremented first, becomes zero. In this way the DC can be used by other applications. Be sure that if you call ReleaseDC that you have already made a call to the GetDC() method. These calls must ALWAYS come in pairs.|
+^Refresh|Forces a Window to be repainted|
+|  |**Sintaxis: ** \\ TWindow:Refresh( <lErase> ) |
+|  |**Parámetros:** \\ **<lErase>** The <lErase> parameter determines whether or not the background of client area should be erased when the repainting of the window begins. If <lErase> is .T. the background will be erased.  Default is .T..|
+|  |**Propósito:** \\ The Refresh() method will send a message to Windows that the client area of the window should be repainted. This can become necessary if some part of the client area has been overwritten or if there are some changes to the background of the client area. If no parameters are passed to the Refresh() method, the background of the client area will be erased before the window is painted again.|
+^Register|Register a new Window Class|
+|  |**Sintaxis:** \\ TWindow:Register( <nClsStyle>  )|
+|  |**Parámetros:** \\ **<nClsStyle>** The <nClsStyle> parameter determines the style of the window class when it is registered. This in turn determines a great part of the behavior of the window. For more (complete) documentation about this method please read the MS-Windows API on the RegisterClass() function and the WNDCLASS structure member style.|
+|  |**Propósito:** \\ Register the TWindow() class for use by MS-Windows. Before using this  method, please be sure that you are comfortable with CreateWindow() MS-WIndows API function and its parameters.|
+^ReSize|Changes the size of a Window|
+|  |**Sintaxis:** TWindow:ReSize( <nSizeType>, <nWidth>, <nHeight> )|
+|  |**Parámetros:** \\ **<nSizeType>** Determines the type of resize operation that is executed.Specifies the type of resizing requested. This parameter can be one of the following values: \\ SIZE_MAXIMIZED	Window has been maximized. \\ SIZE_MINIMIZED	Window has been minimized. \\ SIZE_RESTORED	Window has been resized, but neither the \\ SIZE_MINIMIZED	nor SIZE_MAXIMIZED value applies. \\ SIZE_MAXHIDE	Message is sent to all pop-up windows when 	some other window is maximized. \\ SIZE_MAXSHOW	Message is sent to all pop-up windows when 	some other window has been restored to its 	former size. \\ #define SIZE_RESTORED	0 \\ #define SIZE_MINIMIZED	1 \\ #define SIZE_MAXIMIZED	2 \\ #define SIZE_MAXSHOW	3 \\ #define SIZE_MAXHIDE	4 \\ **<nWidth>** The new width of the window in pixels. \\ **<nHeight>** The new height of the window in pixels.|
+|  |**Propósito:** \\ This method is called whenever the window is resized. It receives information about the new size and how the resizing came to be (ie the window was maximized, minimized etc.). In turn the Resize() method will call the adjust methods of both Buttonbar and the messagebar (if available) to adjust their size also. After that a call is made to the bResized instance variable (if available) with both the width and the height passes as parameters to the bResized codeblock.|
+^Say|Writes text on a Window|
+|  |** Sintaxis: ** \\ TWindow:Say( <nRow>, <nCol>, <cText>, <ncClrFore>, <nClrBack>, <oFont>,<lPixel> ) -> Nil|
+|  |**Parámetros:** \\ **<nRow>** The row where <cText> will be written. This row is relative to the top of the window. Whether or not this parameter represents pixels or 'characters' depends on <lPixel>. \\ **<nCol>** The column where <cText> will be written. This column is relative to the left side of the window. Whether or not this parameter represents pixels or 'characters' depends on <lPixel>. \\ **<cText>** The text that has to written in the window. \\ **<ncClrFore>** This parameter can be either a character string(1) or a numerical(2). \\ 1. If it is a character string it should be a CA-Clipper color-pair, which determines the foreground and the background color used to write <cText> on the window. If it is a CA-Clipper color string <nClrBack> will be ignored. For example when ncClrFore is "R/G" the text will be  written on the window in red letters on a green  background. \\ 2. When <ncClrFore> is a numerical value it is assumed that this is a valid COLOR value that represents a  color that can be displayed. If <ncClrFore> is omitted the value is used that was stored in the instance variable ::nClrText of the TWindow() object. \\ **<nClrBack>** This parameter is used whenever a numerical value is passed for <ncClrFore>. It then represents the background color that should be used when displaying the text on the window. If used it should be a Windows COLOR numerical.If omitted, and <ncClrFore> is a numerical, then the value of the instance variable ::nClrPane is used. \\ **<oFont>** This font object determines the font that will be used   when <cText> is displayed on the window. It should be a valid TFont() object. If it is omitted the ::oFont instance variable will be used. \\ **<lPixel>** The <lPixel> parameter determines whether the coordinates that were passed on to the Say() method (<nRow> and <nCol>) are to be used as pixel coordinates or character  based coordinates. If <lPixel> is .T. then the coordinates are pixel based. The default value is .F. ie the coordinates are character based.|
+|  |**Propósito:** \\ This method allows the programmer to write something directly to the client area of a window. It gives him/her control over the position, the color and the font used. The Say() method either accepts character based or pixel based coordinates and can handle either CA-Clipper color strings or MS windows numerical COLOR pairs. Note however that the text is 'painted' directly on the window, ie as soon as the window is redrawn the text will disappear. If you want to place text on a window that stays there you should use the @ x,y SAY command or the related TSay() method see also: TSay() TFont() @ SAY|
+^SayRect|Writes text with a box around|
+|  |**Sintaxis:** \\ TWindow:SayRect( <nRow>, <nCol>, <cText>, <nClrFore>, <nClrBack>, <nWidth> ) ->Nil|
+|  |**Parámetros:** \\ **<nRow>** The row from where <cText> will be written. This row is relative to the top of the window. The row is character based. \\ **<nCol>** The column from where <cText> will be written. This column is relative to the left side of the window. \\ **<cText>** The text that has to written in the window. \\ **<nClrFore>** The foreground color that should be used when <cText> is written. This should be a MS-Windows COLOR numerical. If it is omitted CLR_BLACK (a constant defined in WINAPI.CH) is assumed. \\ **<nClrBack>** The background color that should be used when <cText> is written. This should be a MS-Windows COLOR numerical. If it is omitted CLR_WHITE (a constant defined in WINAPI.CH) is assumed. \\ **<nWidth>** The maximum width of the <cText> that should be written on the window. The width is assumed to be on a pixel bases ie if <nWidth> is 16, only 16 pixel columns of the text will be written on the window (which is about two characters for a 'normal font')|
+|  |**Propósito:** \\ The SayRect() method allows the programmer to determine the exact length of a string that is to written to the client area of the window. see also: TWindow:Say()|
+^SendMsg|Send a Windows message|
+|  |**Sintaxis:** \\ TWindow:SendMsg( <nMsg>, <nWParam>, <nLParam> ) ->nSucces|
+|  |**Parámetros:** \\ **<nMsg>** This parameter should contain one of the MS-Windows API 'messages'. The values are defined in WINAPI.CH. \\ **<nWParam>** The value of this parameter is directly related to the value of <nMsg>. This should be a 16 bit integer. \\ **<nLParam>** The value of this parameter is directly related to the value of <nMsg>. This should be a 32 bit integer.|
+|  |**Propósito:** \\ The SendMsg() method places a API message in the message queue of the window and waits for the window to process the message. It can be used to influence the behavior of the window.  However the sending of messages can be very dangerous for your application if it is not done properly.  Before you use the PostMsg() method be sure of what you are doing, which message you are sending and what the values should be of the related parameters.|
+^SelColor|Choose foreground or background color for window|
+|  |**Sintaxis:** \\ TWindow:SelColor( <lFore> )  |
+^SetBrush|Changes the brush of a Window|
+|  |**Sintaxis:** \\ TWindow:SetBrush( <oBrush> )  -> Nil|
+|  |**Parámetros:** \\ **<oBrush>** The TBrush() object that should be used from now on to paint the  background of the window.|
+|  |**Propósito:** \\ With this method you can change the brush that is used to paint the background of this window. This may be used in various ways to indicate a change for the user or just for sheer artistic pleasure <g>.|
+^SetCoors|Changes the coordinates of the Window|
+|  |**Sintaxis** \\ TWindow:SetCoors( <oRect> ) -> Nil|
+|  |**Parámetros:** \\ **<oRect>** A TRect() object with the new coordinate information for the window. The information passed within the TRect() object should be on a pixel basis.|
+|  |**Propósito:** \\ The SetCoors() method can be used to change the coordinates of the window. If the window is the application's main window the coordinates are interpreted as relative to the top-left of the screen. If the window is a client window the coordinates are relative to the top-left of the parent window. see also: Resize()|
+^SetColor|Set foreground/background color and brush|
+|  |**Sintaxis:** \\ TWindow:SetColor( <ncClrFore>, <nClrBack>, <oBrush> ) |
+|  |**Parámetros:** \\ **<ncClrFore>** Determines the foreground color that will be used when something is written to the window. The <ncClrFore> parameter can either be a CA-Clipper color string (eg "R/G" ), or it can be a MS-Windows COLOR number. If <ncClrFore> IS a character string <nClrBack> will be ignored. \\ **<nClrBack>** Determines the background color that will be used When something is written to the window. This must be a MS-Windows color number. \\ **<oBrush>** The TBrush() object that will be used to paint the background of the window before something is written on the window. If this parameter is omitted a TBrush() object will be created which will have the background color.|
+|  |**Propósito:** \\ This method allows you to change the color and brush that are used when a window is repainted. The SetColor() method accepts both CA-Clipper color strings and MS-Windows COLOR numbers, so for a CA-Clipper programmer there is no need to lose her/his favorite color strings.|
+^SetFocus|Gives the focus to a Window|
+|  |**Sintaxis:** TWindow:SetFocus(  )  -> Nil|
+|  |**Propósito:** \\ The SetFocus() method will transfer the keyboard focus to this window, However before the transfer of focus actually takes place first a call is made to the :lWhen() method. If and only if the :lWhen() method returns .T. the current window gets the keyboard focus.|
+^SelFont|Select font for window|
+|  |**Sintaxis:** \\ TWindow:SelFont() |
+|  |**Propósito:** \\ The SelFont() method will display the standard MS-windows 'Select Font' dialog box to the user. After the user has chosen a font this is set as the default font for this window, and the window is repainted using the selected font where applicable.|
+^SetFont|Changes the font of a Window|
+|  |**Sintaxis:** \\ TWindow:SetFont( <oFont> ) |
+|  |**Parámetros:** \\ **<oFont>** The new font object that should be associated with this window. The <oFont> parameter should be a valid TFont() object.|
+|  |**Propósito:** \\ The purpose of this method is to associate a default font with a  window so that it can be used when a control is displayed on the window. It can be used either before or after the Activate() method of the window is called. When SetFont() is called it will first call the End() method of the previous default font (if available) and then it replaces the default font(stored in the ::oFont instance variable) with <oFont>.|
+^SetMenu|Changes the Menu of a Window|
+|  |**Sintaxis:** \\ TWindow:SetMenu( <oMenu> )  -> Self|
+|  |**Parámetros:** \\ **<oMenu>** The new menu object that will be associated with this menu.This should be a valid MENU object, created via the MENU keywords (the easy way) TMENU() and TMENUITEM() (the less easy way).|
+|  |**Propósito:** \\ This method allows the programmer to change the menu during the execution of the program. This can be necessary if at first the user only has a few options like 'Opening a file'. After the file is open a more extensive menu might be necessary.|
+^SetMsg|Changes the message of the bottom of the Window|
+|  |**Sintaxis:** \\ TWindow:SetMsg( <cText> )  -> Nil|
+|  |**Parámetros:** \\ **<cText>** This text will be displayed in the message bar of the window (ie at the bottom of the window).|
+|  |**Propósito:** \\ The method SetMsg() allows you to display a different text at the message bar at the bottom of the window.|
+^SetPixel|Draws a pixel on the Window|
+|  |**Sintaxis:** \\ TWindow:SetPixel( <nX>, <nY>, <nColor> )  -> Nil|
+|  |**Parámetros:** \\ **<nX>** The pixel row where the pixel should be turned on. This row is relative to the top of the window. \\ **<nY>** The pixel column where the pixel should be turned on. This column is relative to the left side of the window. \\ **<nColor>** This determines the color of the pixel. The color should be a MS-Windows COLOR integer.|
+|  |**Propósito:** \\ The SetPixel() method will enable you to set individual pixels on or off. SInce you can control the color of the pixel you can easily turn a pixel 'off' by setting it to the background color of the window (ie stored in the instance variable ::nClrPane)|
+^SetText|Changes the caption of the Window|
+|  |**Sintaxis:** \\ TWindow:SetText( <cText> )  -> Nil|
+|  |**Parámetros:** \\ **<cText>** The new title of the window.|
+|  |**Propósito:** \\ This method enables you to change the title of your window. This can be used to indicate a global change to the user.|
+^Show|Show window|
+|  |**Sintaxis:** \\ TWindow:Show() |
+|  |**Propósito:** \\ This method will show the window. After that it becomes the current window.|
+^SysCommand|System Menu commands dispatcher|
+|  |**Sintaxis:** \\ TWindow:SysCommand( <nWParam>, <nLParam> )  -> Nil|
+|  |**Parámetros:** \\ **<nWParam>** This should be a 16 bit integer value. For precise values please check your Windows API reference under the message WM_SYSCOMMAND. \\ **<nLParam>** This should be a 32 bit integer value. For precise values please check your Windows API reference under the message WM_SYSCOMMAND.|
+|  |**Propósito:** \\ This method should normally not be called directly in an application. SysCommand() will be called by the internal event handler of the window whenever the window receives a WM_SYSCOMMAND message. \\ For more extensive information please check your MS-Windows API reference under  the message WM_SYSCOMMAND.|
+^Timer|Called when timer event occurs for window|
+|  |**Sintaxis:** \\ TWindow:Timer( <nTimerId> ) |
+|  |**Parámetros:** \\ <nTimerId>|
+^UnLink|Disables Window-OOPS connection|
+|  |**Sintaxis:** \\ TWindow:Unlink(  )  -> Nil|
+|  |**Propósito:** \\ This method handles the administration for the destruction of a window.  It removes it from the property list of MS-Windows. \\ This method should not be called by the programmer directly unless she/he has an intimate knowledge of the inter workings of MS-Windows.|
+^Update|Update controls on window|
+|  |**Sintaxis:** \\ TWindow:Update()|
+|  |**Propósito:** \\ The Update() method will call the refresh() method of each control that is associated with the window if the instance variable ::lUpdate of the control is .T.. \\ This allows you to update all the controls (for which the ::lUpdate instance variable is .T. ) on a particular window with just one call. \\ The ::lUpdate instance variable is normally set whenever you use the keyword UPDATE when defining/redefining a control.|
+^lValid|Check valid condition|
+|  |**Sintaxis:** \\ TWindow:lValid()|
+|  |**Propósito:** \\ The lValid() method will check to see if the ::bValid instance variable, when evaluated, returns .T., and returns the result. If there is no code block in the ::bValid instance variable lValid() will just return .T.. This method will NOT end the window, it just checks the ::bValid codeblock (if defined). To end a window use the End() method.|
+^VScroll| Generic vertical scroll dispatcher|
+|  |**Sintaxis:** \\ TWindow:VScroll( nWParam, nLParam ) \\ Processes the WM_VSCROLL messages that are sent to this window object. This method handles both the messages for both a scrollbar that is connected to a window or for a particular vertical  scrollbar control.|
+|  |**Parámetros:** \\ **<nLParam>** The high word of this parameter contains the handle of the scrollbar. \\ **<nWParam>** This parameter contains a numerical value that specifies the action that should be taken. The following messages are processed (these constants are defined in WINAPI.CH): \\ SB_LINEUP \\ SB_LINEDOWN \\ SB_PAGEUP \\ SB_PAGEDOWN \\ SB_THUMBPOSITION \\ SB_ENDSCROLL (only if the method is called for a scrollbar that is connected to a window).|
+^nVertRes()|Vertical resolution of window in pixels|
+|  |**Sintaxis:** \\ TWindow:nVertRes() |
+|  |**Propósito:** \\ This method returns the height of the window in pixels.|
+^nHorzRes|Horizontal resolution of window in pixels|
+|  |**Sintaxis:** \\ TWindow:nHorzRes()|
+|  |**Propósito:** \\ This method returns the width of the window in pixels.|
+^AEvalWhen()|Evaluate when clauses for controls when starting window|
+|  |**Sintaxis:** \\ TWindow:AEvalWhen()  |
+|  |**Propósito:** \\ EL método AEValWhen() evalúa la variable de instancia ::bWhen (sólo si ::bWhen contiene un bloque de código ) desde cada control asociado a esta ventana. When the evaluation of the ::bWhen codeblock (of a particular control) results in .F. that particular control is disabled (ie it will not receive focus when clicked on, and can not be reached by using the keyboard).|
+^VbxFireEvent|A VBX event was triggered|
+|  |**Sintaxis:** \\ TWindow:VbxFireEvent( <pEventInfo> )|
+|  |**Parámetros:** \\ **<pEventInfo>** The <pEventInfo> is a 'pointer' to an event structure used for VBX controls by BIVBX10.DLL.|
+|  |**Propósito:** \\ This method is called by the eventhandler whenever a VBX control generates a WM_VBXFIREEVENT message.The method receives the required information via a pointer to a VBX structure ( <pEventInfo> ).|

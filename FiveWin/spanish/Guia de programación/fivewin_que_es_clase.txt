@@ -1,0 +1,66 @@
+¿Qué es una clase?
+ 
+
+Una clase es un grupo de reglas que controla cómo se crea el objeto y cuáles son sus comportamientos.
+
+ 
+
+Una clase es algo abstracto: un conjunto de reglas inmateriales.
+
+ 
+
+Un objeto es algo real: un conjunto de propiedades. Un objeto es algo material.
+
+ 
+
+Tengo una silla. Puedo tocarla. Puedo usarla. La silla existe.
+
+ 
+
+Si hablo sobre 'sillas' con alguien. No importa sobre qué sillas, es un concepto que existe en la mente de todos, es una abstracción del mundo material.
+
+ 
+
+En informática, una clase es un trozo de código, reglas para crear y gestionar objetos.
+
+ 
+
+En informática, un objeto es un conjunto de propiedades(DATA), información real que se gestiona en base a sus reglas.
+
+ 
+
+¿Cómo se crea una clase con Clipper ?  
+
+<code clipper>
+      TWindow
+
+      DATA nTop, nLeft, nBottom, nRight
+
+      METHOD New() CONSTRUCTOR
+
+      METHOD Display()
+
+      ENDCLASS
+
+</code> 
+
+Esta es la declaración de cabecera, Puede ver las propiedades que tendrá en objeto TWindow: nTop, nLeft, nBottom y nRight y los comportamientos del mismo: New() y Display() 
+
+ 
+
+Generalmente, el comportamiento New() se denomina método CONSTRUCTOR, puesto que permite crear un nuevo objeto.
+
+ 
+
+Cuando ponemos en el código:
+
+<code clipper>
+TWindow():New( 3, 3, 20, 40 )
+</code>
+ 
+
+Estamos creando un objeto!. El objeto es un tipo especial de arreglo en Clipper con algunos datos específicos.
+
+ 
+
+Los propiedades pueden tener valores diferentes de un objeto a otro, pero siempre se trata del mismo tipo de datos.

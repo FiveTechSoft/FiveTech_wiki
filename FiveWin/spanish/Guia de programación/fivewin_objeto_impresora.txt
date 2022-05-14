@@ -1,0 +1,72 @@
+FiveWin maneja la impresora como un objeto, por lo que controlar el proceso de impresión es tan fácil como manipular, desde un punto de vista orientado a objeto, el Objeto impresora.
+
+· Cómo crear el Objeto impresora ?
+
+FiveWin proporciona la Clase [[fivewin_clase_tprinter|TPrinter]] para manejar la impresora como un Objeto, además de unos comandos xBase específicos para hacer su manipulación más sencilla:
+
+<code clipper>
+PRINT oPrn NAME "My Printout" PREVIEW
+PAGE
+...
+oPrn:Say( nRow, nCol, cText, ... )
+...
+ENDPAGE
+ENDPRINT
+</code>
+
+El comando PRINT construye un Objeto impresora. Desde ese momento podemos manipularla directamente, usando todos los DATA y METHODs incluidos en la Clase TPrinter.
+
+· Cómo manipular el Objeto impresora ?
+
+Normalmente usted crea varias páginas usando los comandos:
+
+<code clipper>
+
+PAGE
+...
+ENDPAGE
+</code>
+
+
+Y desde dentro de esa sección usted manda mensajes al Objeto impresora. El mensaje más comúnmente usado es <oPrn>:Say() :
+
+<code clipper>
+
+oPrn:Say( nRow, nCol, cText, ... )
+</code>
+
+
+Recuerde que las coordenadas donde usted está imprimiendo dependen de la resolución específica de la impresora que pudiera estar usando. Para controlar esto tiene que preguntar al Objeto impresora por su resolución específica:
+
+<code clipper>
+
+·	oPrn:nVertRes() es el número de pixeles en vertical
+·	oPrn:nHorzRes() es el número de pixeles en horizontal
+</code>
+
+
+Ahora, divida esos valores entre el número de renglones y columnas que desee manejar, e incremente nRow, nCol de acuerdo al resultado de dichas divisiones. Ver SAMPLES\TestPrn2.prg
+
+· Cómo definir una fuente que se adapte aun Objeto impresora específico ?
+
+Para crear un Objeto fuente que adapte su tamaño a las resolución específica de una impresora, siempre usamos la cláusula contenedora OF :
+
+<code clipper>
+
+local oPrn, oFont
+PRINT oPrn
+DEFINE FONT oFont NAME "Arial" SIZE 0, -10 OF oPrn
+...
+PAGE
+...
+oPrn:Say( nRow, nCol, cText, oFont, ... )
+...
+ENDPAGE
+ENDPRINT
+oFont:End()
+
+</code>
+
+Recuerde destruir la fuente una vez terminada la impresión.
+
+

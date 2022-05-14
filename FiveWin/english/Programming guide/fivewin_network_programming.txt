@@ -1,0 +1,41 @@
+
+If you have never design a NetWork application with Clipper, don't be afraid! They are not so difficult. There are some rules you have to follow:
+
+
+1.	All DataBases will be opened 'SHARED' by default, except if you specify 'EXCLUSIVE' clause, and also depending on your SET EXCLUSIVE ... state (see USE... and SET EXCLUSIVE... Clipper commands).
+
+
+
+2.	Once the DataBase is USEd as SHARED, several users on a NetWork may use it, or several non-modal MdiChild windows or Non-modal DialogBoxes may access the DataBase info at the same time.
+
+
+
+3.	You can not manipulate the contents of a field directly. Before replacing the value of a field you have to lock the record. Basically this is the typical procedure:
+
+
+<code clipper>
+if MyAlias->( RLock() )			// Lock the record
+
+MyAlias->Field := <NewValue>	// Modify the contents
+MyAlias->( DbUnLock() )		// UnLock the record
+
+else
+
+MsgAlert( "The DataBase is in use now! Try again!" )
+
+endif
+
+</code>
+
+4.	Some Database operations (as building an entire INDEX) may require that you open a DataBase in EXCLUSIVE mode or that you lock the entire Database, not just a record.
+
+
+
+Use USE ... EXCLUSIVE to open a DataBase as exclusive or use the function FLock() to entirely lock a file.
+
+
+
+5.	Get yourself some book about NetWork coding for learning advanced tips and tricks! You will become a NetWork programming master pretty soon!
+
+
+
