@@ -1,0 +1,65 @@
+Hay dos formas de almacenar los recursos de su aplicación:
+
+
+1.	Dentro de su archivo .EXE 
+2.	Dentro de una DLL externa
+
+Ambas opciones son muy poderosas, pero hay algunas diferencias importantes que debe saber:
+
+
+1.	El mayor beneficio de almacenar en un archivo. RC (usando el compliador de recursos de Microsoft RC.EXE -inclido con Microsoft, Borland, Symantec...-) es que puede usar DEFINEs como un reemplazo para los IDs de los controles.
+
+Esto significa que no tiene que recordar número "extraños", y también que bajo cualquier modificación al código o a los recursos cometerá menos errores.
+
+Ejemplo:
+
+<code clipper>
+REDEFINE GET cName ID 110 OF oDlg     // usando el número 110 como ID
+
+En lugar de:
+
+#define ID_NAME 110
+
+REDEFINE GET cName ID ID_NAME OF oDlg
+</code>
+Esto tiene el beneficio de que puede crear un archivo .CH con todos esos #define y el editor de recursos le permite usarlo cuando modifique el archivo .RC:
+
+MyApp.RC
+
+#include "WinApi.ch"       // proporcionado con FiveWin
+#include "MyApp.ch"        // sus definiciones de ID están aquí !!!
+
+Clients DIALOG ...
+CONTROL ... ID_NAME,
+
+Basados en nuestra experiencia recomendamos almacenar un archivo .RC dentro de sus .EXEs puesto que es más fácil controlar los IDs y evitar errores.
+
+El archivo de jecución por lotes SAMPLES\Build.bat que proporcionamos con FiveWin, automáticamente llamará a RC.EXE si detecta un archivo con extensión .RC con el mismo nombre de nuestra aplicación. Basicamente lo que hacemos en build.bat es:
+
+RC -K MyApp
+
+Esto almacenará los recursos de MyApp.RC dentro de su archivo MyApp.EXE.
+
+No hay necesidad de especificar un comando SET RESOURCES TO ... en su aplicación si toma esta ruta, puesto que su archivo EXE ya sabe como ubicar los recursos dentro de él.
+
+La única desventaja de este sistema que cada vez que contruya su archivo EXE tiene que compilar el RC y colocarlo dentro del EXE nuevamente -sin embargo este proceso es extremadamente rápido!-
+
+2.	El gran beneficio de almacenar recursos dentro de una DLL es que puede realmente tener cajas de diálogo "Data Driven", puesto que si modifica los recursos de la DLL (usando su editor de recursos) no habrá necesidad de recompilar su EXE nuevamente! Esto puede ser una gran ventaja cuando desarrolle aplicaciones muy grandes.
+
+Proporcionamos una DLL vacía para que pueda copiarla como un nuevo sistema de almacenamiento vacío donde pueda colocar todos sus recursos cuando desarrolle una nueva aplicación:
+
+COPY screens.dll MyApp.dll     // proporcionamos la DLL "vacía" screens.dll
+
+Ahora edítelo con su editor de recursos:
+
+WorkShop MyApp.dll           // O ábralo como una DLL
+
+Posteriormente en su aplicación especifique:
+
+SET RESOURCES TO "MyApp.dll"
+
+Y está listo para iniciar usando sus recursos. Recuerde que si decide poner sus recursos dentro de su aplicación (usando .RC y RC.EXE) no hay necesidad de especificar SET RESOURCES TO... puesto que el .EXE ya los tiene dentro.
+
+La gran desventaja de este sistema es que no se permite usar etiquetas si usa una DLL para almacenar recursos! Ni el editor de recursos de Borland ni el de Microsoft le permiten usar un archivos .CH o .H donde pueda almacenar sus #define si guarda sus recursos dentro de una DLL.
+
+Ambos sistemas son excelentes, y le recomendamos probarlos para que decida cual de ellos se ajusta mejor a sus necesidades.

@@ -1,0 +1,124 @@
+Normalmente, para construir la ventana principal de su aplicación se hace lo siguiente:
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+DEFINE WINDOW oWnd TITLE "My application"
+
+ACTIVATE WINDOW oWnd MAXIMIZED
+return nil
+</code>
+En este ejemplo se elige la ventana más típica, con coordenadas y estilo de predefinidos, iniciando en modo pantalla completa -MAXIMIZADO-. Si desea colocarla en alguna posición, puede especificar:
+<code clipper>
+... FROM nTop, nLeft TO nBottom, nRight ...
+FROM 2, 2 TO 20, 60
+</code>
+Simularemos en estas coordenadas, coordenadas en modo texto.
+
+ACTIVATE WINDOW invocará automáticamente el evento redundante de la aplicación principal, si es que no está trabajando aún. Internamente, la  aplicación solo necesita un evento redundante para todas las ventanas.
+
+Hay tres formas principales para construir su ventana de aplicación:
+
+
+·	Definiendo una ventana estándar  (como en el ejemplo anterior).
+
+·	Definiendo una ventana MDI: Un multi document interface, significa una ventana principal que permitirá varias ventanas hijas corriendo dentro de ella. Pro ejemplo, Windows Program Manager es una ventana MDI .
+
+·	Definiendo una caja de diálogo como la ventana principal de la aplicación: Hay algunas situaciones donde no necesite implementar una ventana principal con menú descolgante, barra de botones, etc... y solo necesite que se realicen algunas operaciones, justo una caja de diáloo debería ser la forma perfecta a usar.
+
+FiveWin le permite iniciar la aplicación con todos los estilos descritos arriba.
+
+En el ejemplo descrito anteriormente el estilo de la ventana predefinido es  OVERLAPPED- WINDOW significa que tiene todas las características que puede encontrar en una ventana típica :  título, menú de sistema, borde de tamaño modificable, botones para minimizar y maximizar.
+
+ISi desea especificar otros estilos, FiveWin le ofrece algunas cláusulas para seleccionarlos:
+
+ ·   NOSYSMENU
+ ·   NOCAPTION
+ ·   NOICONIZE
+ ·   NOZOOM
+
+También puede especificar la combinación que desee, con sólo hacer:
+
+... STYLE nOr( WS_BORDER, WS_MAXIMIZE, ... )
+
+Estos estilos están definidos dentro del archivo de encabezado INCLUDE\WINAPI.CH  - el cual se carga automáticamente con el archivo FiveWin.ch.-
+
+Si desea iniciafr una ventana MDI -Multiple interface document-, solo debe especificar la cláusula MDI:
+<code clipper>
+DEFINE WINDOW oWnd TITLE "Una ventana MDI" MDI
+
+ACTIVATE WINDOW oWnd    // la abrimos ahora en modo normal
+</code>
+// También puede elegir  ACTIVATE WINDOW oWnd ICONIZED
+// que iniciará la aplicación como un icono.
+
+Vea el código fuente de IDE\SOURCE\IDE.prg si quiere ver como construir y manejar apropiadamente ambientes MDI. También existen ejemplos en SAMPLES\TestMdi_.prg.
+
+Los ambientes MDI requieren un nivel mayor de experiencia en Windows de parte de los usuarios de la aplicación. Si su cliente es nuevo en el uso de Windows, puede mejor intentar la forma de la ventana principal estándar.
+
+FiveWin automáticamente controlará todos los mensajes que reciba de Windows. Pero, basados en la sintaxis xBase, usted puede especificar ciertas conductas cuando ocurran algunos eventos ON.
+<code clipper>
+ACTIVATE WINDOW oWnd ;
+ON PAINT ... ;
+ON LEFT CLICK ... ;
+ON RESIZE ... ;
+</code>
+Vea en el archivo FiveWin.ch for una lista de todos los eventos que soportamos. Normalmente esta clase de control no será necesario, pero en algunas circunstancias podría necesitarlos. 
+También, la ventana principal de su aplicación podría incluir barras de desplazamiento. Las típicas barras de desplazamiento de Windows en los bordes de una ventana tienen que construirse cuando se define la ventana:
+
+DEFINE WINDOW oWnd ... VSCROLL
+
+ó
+
+DEFINE WINDOW oWnd ... HSCROLL
+
+o ambas
+
+DEFINE WINDOW oWnd ... VSCROLL HSCROLL
+
+
+Si elige estos estilos, podría interceptar los eventos que generan a través de las cláusulas:
+
+ACTIVATE WINDOW oWnd ...
+
+ON UP ...
+ON DOWN ...
+ON LEFT ...
+ON RIGHT ...
+ON PAGEUP ...
+ON PAGEDOWN ...
+
+Si especifica estos estilos, su objeto ventana oWnd tendrá definidos dos objetos scrollbars:
+
+oWnd:oVScroll .and. oWnd:oHScroll
+
+Por lo que podría modificarlos y controlarlos directamente -vea manejo de barras de desplazamiento-
+
+Al final de la ejecución de su ventana principal -o de cualquier otra ventana o caja de diálogo- use ele método :End():
+
+oWnd:End()
+
+Este método le dice al objeto ventana oWnd que finalice el trabajo. Si especifica una cláusula VALID cuando active la ventana, la cláusula VALID tiene como valor de retorno .t. que permite cerrar la ventana. Esta es una situación típica:
+
+ACTIVATE WINDOW oWnd ;
+
+VALID MsgYesNo( "Desea terminar ?" )
+
+Durante su aplicación, si llama oWnd:End(), o si el usuario da doble click en el botón de cerrar, o si el usuario decide finalizar Windows,  el VALID se ejecutará y de acuerdo a su resultado permitirá o no finalizar la ventana.
+
+Recuerde puede usar oWnd:End() para terminar cualquier clase de ventana o caja de diálogo: oDlg:End().
+
+No hay forma de construir la ventana principal desde recursos, a menos que inicie su aplicación con una caja de diálogo:
+<code clipper>
+DEFINE DIALOG oDlg RESOURCE "Main"
+
+ACTIVATE DIALOG oDlg CENTERED
+</code>
+En esta situación, estamos cargando como una ventana principal de la aplicación la caja de diálogo almacenado en los recursos como "main".
+
+Use una caja de diálogo como su ventana principal únicamente cuando no necesite menú descolgante, ni barra de mensaje o una barra de botones. Recuerde que normalmente una caja de diálogo no maximiza o iconiza, así que planee cuidadosamente que clase de ventana puede usar como su ventana principal de de su aplicación
+
+La mayoría de las veces con usar una ventana principal, será perfecto.

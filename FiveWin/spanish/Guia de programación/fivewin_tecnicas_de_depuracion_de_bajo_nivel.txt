@@ -1,0 +1,37 @@
+Adicionalmente a los errores estándar de HARBOUR/XHARBOUR, el mundo de Windows nos trae una nueva y terrible clase de problemas: GPFs. Como alguna vez un excelente programador Windows los describió: "Go and Pray Faithfully!". (Vaya y rece fervorosamente)
+
+GPF es el nombre corto para General Protection Fault(Falla general de protección). Todos lo programadores que usaron Clipper para crear sus aplicaciones en MsDos en modo protegido experimentaron alguna vez esta clase de problema, Windows trabaja en modo protegido, así que cuando tenga un GPF bajo Windows, estará en una situación muy similar como cuando lo obtenía bajo MsDos.
+
+
+Cuando ocurre un GPF, Windows muestra una pantalla azul muy fea (algunas versiones) en oras una caja de diálogo indicando que ha ocurrido un GPF y reportas el nombre de la aplicación que locausó y la dirección interna donde el error se ha localizado. Si el nombre se la aplicación es una DLL y no el de su aplicación, podría significar que su aplicación hizo algo equivocado que provocó finalmente la caída de una DLL (esto es normalmente cuando experimentamos cualquier GPF en Windows USER.DLL), o que una DLL no está trabajando apropiadamente y está experimentando problemas bajo una cierta circunstancia.
+
+
+Muchos programadores xBase comienzan construyendo sus propias funciones en lenguaje C para usarlas dentro de su código Harbour/xHarbour, y al comienzo es muy normal que generen algunos errores que finalmente se manifiestan como GPFs, en algún caso o en otro, es bueno tener algunos conceptos básicos para resolver un problema de GPF.
+
+Los enlazadores de Borland y Microsoft nos permiten generar un archivo MAP que describe el contenido de su aplicación.
+
+
+Ahora, usando ese archivo MAP podemos ubicar donde se localiza el GPF en código fuente. Windows reporta la dirección del GPF. Esta dirección normalmente se muestra usando el siguiente formato: SSSS:OOOO donde SSSS es el segmento de dirección y OOOO es dirección base. Windows usa base de 32 bits SSSS:0000OOOO. Solo descarte los 0000 más a la izquierda, por lo que debe buscar SSSS:OOOO.
+
+
+Normalmente la dirección que busca no se mostrará exactamente en el archivo MAP, por lo que debe orientarse a un rango. Busque el rango inmediato anterior a la dirección obtenida del GPF. Si revisa su archivo MAP, normalmente será capaz de ubicar la dirección dos veces. La primera se refiere al 'segment code' donde se ubica la función que generó el GPF, y la segunda pudiera ser el código mismo de la función
+
+
+FiveWin incluye una función dummy muy útil llamada __GenGPF() que lo único que hace es generar un GPF. Esta es una buena prueba para que intente ganar algo de experiencia. Simplemente haga un llamado a __GenGPF() en su código y obtendrá un GPF seguro. Vea la dirección que tenemos descrita aquí e intente ubicarla en su archivo MAP. Si tiene éxito haciendo esta prueba debe tener localizada la siguiente dirección:
+
+0002:8E3D 001D0H     TOOLHELP_TEXT          CODE
+
+
+(these figures will be different in your code) and
+
+0002:8FC5  Res  __GENGPF
+
+TOOLHELP es el nombre del módulo C donde __GenGPF() se localiza. Como ve, aqui obtiene una buena retroalimentación para el inicio de la búsqueda de un problema específico. Si no tiene ni idea de porque un cierto GPF ocurre aún si localiza su origen, por favor póngase en contacto con nosotros e intentaremos asistirle.
+
+Otra fuente de problemas que pueden derivar en un GPF, viene del mal uso de ciertos ervicios del API de Windows. Este tipo de error es más difícil de ubicar puesto que el GPF apunta normalmente muy lejos de nuestro código erróneo. Aquí recomendamos una estrategia diferente:
+
+
+Windows provee una utilidad llamada DrWatson.exe que si ocurre un GPF, generará un archivo LOG donde se reportan las últimas fallas en el API de API. Muchas veces esta información es muy útil para ubicar el origen del posible error.
+
+Una vez más el mejor asistente para localizar un error es su experiencia, es por eso que recomendamos ampliamente no luchar tan duro, si no lo resuelve con las recomendaciones anteriores simplemente póngase en contacto con nosotros y trataremos de asistirle.
+

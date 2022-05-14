@@ -1,0 +1,876 @@
+===== Manejando el Reporteador de Fivewin =====
+
+Queremos agradecer a nuestro amigo Ignacio Ortiz de Zuñiga por su excelente trabajo y contribución al Repoteador de FiveWin.
+( muchas gracias también a Roger Seiler por su gran ayuda enla documentación del Reporteador de FiveWin )
+
+Todos los reportes tiene la siguiente construcción:
+
+<code clipper>
+LOCAL oReport
+
+REPORT oReport ...
+COLUMN ...
+COLUMN ...
+END REPORT
+
+ACTIVATE REPORT oReport ...
+
+</code>
+
+Como puede ver la construcción básica es muy simple. Aquí se muestra la sintaxis completa con todas las características opcionales pero no indispensables:
+
+<code clipper>
+
+REPORT [ <oReport> ] ;
+
+[ TITLE <bTitle, ...> [< LEFT|CENTER|CENTERED| RIGHT > ] ];
+[ HEADER <bHead, ...> [<LEFT|CENTER|CENTERED|RIGHT> ] ];
+[ FOOTER <bFoot, ...> [<LEFT|CENTER|CENTERED|RIGHT> ] ];
+[ FONT <oFont, ...> ]  ;
+[ PEN <oPen, ...> ]  ;
+[ < lSum:SUMMARY >  ] ;
+[ < file: FILE |  FILENAME |  DISK >  <cRptFile> ] ;
+[ < resource: NAME |  RESNAME | RESOURCE >  <cResName> ] ;
+[ < toPrint: TO PRINTER >  ] ;
+[ < toScreen: PREVIEW >  ] ;
+[ TO FILE <toFile> ] ;
+[ TO DEVICE <oDevice> ] ;
+
+[ CAPTION <cName> ]
+
+
+
+GROUP [ <oRptGrp> ] ;
+
+[ ON <bGroup> ] ;
+[ HEADER <bHead> ] ;
+[ FOOTER <bFoot> ] ;
+[ FONT <uFont> ] ;
+[ < lEject:EJECT >  ]
+
+
+
+COLUMN [ <oRptCol> ] ;
+
+[ TITLE <bTitle, ...> ] ;
+[ AT <nCol> ] ;
+[ DATA <bData, ...> ] ;
+[ SIZE <nSize> ] ;
+[ PICTURE <cPicture, ...> ] ;
+[ FONT <uFont> ] ;
+[ < total: TOTAL >  [ FOR <bTotalExpr> ] ] ;
+[ < ColFmt:LEFT | CENTER | CENTERED | RIGHT >  ] ;
+[ < lShadow:SHADOW >  ] ;
+[ < lGrid:GRID >  [ <nPen> ] ]
+
+
+    ENDREPORT
+
+
+ACTIVATE REPORT <oReport> ;
+
+[ FOR <for> ] ;
+[ WHILE <while> ] ;
+[ ON INIT <uInit> ] ;
+[ ON END <uEnd> ] ;
+[ ON POSTEND <uPostEnd> ] ;
+[ ON STARTPAGE <uStartPage> ] ;
+[ ON ENDPAGE <uEndPage> ] ;
+[ ON POSTPAGE <uPostPage> ] ;
+[ ON STARTGROUP <uStartGroup> ] ;
+[ ON ENDGROUP <uEndGroup> ] ;
+[ ON POSTGROUP <uPostGroup> ] ;
+[ ON STARTLINE <uStartLine> ] ;
+[ ON ENDLINE <uEndLine> ] 
+[ ON CHANGE <bChange> ]
+</code>
+
+
+Con el comando COLUMN (sintaxis anterior) usted establece todas las columnas que tendrá el reporte, indicando los datos y los títulos para cada una de ellas. Esto puede ser muy simples. Por ejemplo:
+
+<code clipper>
+COLUMN TITLE "Name" DATA Test->Name
+</code>
+
+**IMPLEMENTANDO TOTALES:**
+
+Si desea un Total en cualquier columna solo agregue la palabra TOTAL en el comando, por ejemplo:
+
+
+<code clipper>
+COLUMN TITLE "Salary" DATA Test->Salary TOTAL
+</code>
+
+**ENCABEZADOS Y PIES DE PÁGINA:**
+
+Usted puede poner cualquier encabezado y pie de página en el reporte al declararlos en el comando REPORT. Por ejemplo:
+
+
+<code clipper>
+REPORT oReport TITLE "My First Report" ;
+
+HEADER "This is the header" ;
+FOOTER "This is the footer"
+</code>
+
+Puede especificar coo se escribirán: a la izquierda, centrado o a la derecha, agregando la palabra LEFT, RIGHT or CENTER|CENTERED. Por ejemplo:
+
+
+<code clipper>
+REPORT oReport TITLE "My First Report" ;
+
+HEADER "This is the header" RIGHT ;
+FOOTER "This is the footer" CENTER
+/code>
+
+Recuerde: de manera predeterminada los títulos se centran y los encabezados y pies de página se escriben alineados a la izquierda.
+
+**TÍTULOS MULTILÍNEA, ENCABEZADOS Y PIES DE PÁGINA:**
+
+Si desea más de una línea para el título, sólo ponga una coma entre cada título. Por ejemplo:
+
+
+<code clipper>
+REPORT oReport ;
+
+TITLE "My First Report", "with FiveWin"
+
+</code>
+Lo mismo ocurre con encabezados y pies de página.
+
+El generador de reportes NUNCA pone una línea en blanco entre el encabezado y el título o entre el título y los títulos de las columnas. Depende de usted poner las líneas en blanco donde las desee. Por ejemplo, si desea poner una línea en blanco entre el encabezado y el título, sólo indique una segunda línea en el encabezado con sólo una cadena vacía:
+
+<code clipper>
+
+REPORT oReport TITLE "My Report ;
+
+HEADER "My Header", " "
+
+</code>
+**USANDO EXPRESIONES:**
+
+Puede poner casi cualquier cosa en su reporte debido a que puede usar cualqueir expresiónque devuelva una cadena de caracteres, recuerde esta es la llave para hacer casicualquier cosa que desee. Por ejemplo, si desea poner date() en el reporte más el número de página, haga los siguiente:
+
+
+<code clipper>
+REPORT oReport TITLE "My Report" ,;
+
+"date:"+DtoC(Date())  ;
+FOOTER "Page Number: "+ ;
+Str(oReport:nPage,3)
+
+</code>
+
+Puede poner expresiones además de cadenas de caracteres en casi cualquier parte: Títulos, Encabezados, Pies de página, Títulos de columnas, Datos de columna, etc...
+
+**DESTINO DEL REPORTE:**
+
+De forma predeterminada, el reporte se envía a la impresora, pero usted puede cambiar eso cuando cree el reporte:
+
+
+<code clipper>
+REPORT oReport .... ;
+
+TO PRINTER  => (The default)
+
+
+REPORT oReport .... ;
+
+PREVIEW  => (To Screen)
+
+
+REPORT oReport .... ;
+
+TO FILE <cFile>  => (Txt format)
+
+</code>
+
+Cuando se envía el reporte a la pantalla (PREVIEW), el generador de reportes crea todas las páginas hasta que presione el botón Prever, e inmediatamente se muestra la primera páginada creada.
+
+Cuando cree el reporte puede especificarle una identificación. Esta identificación sería el título de la ventana de vista preliminar si envía el reporte a la pantalla, o será la descripción en la cola de impresión si lo manda a la impresora. (En versiones anteriores usabamos la palabra NAME para esto.)
+
+**USANDO FUENTES:**
+
+Se puede usar cualquier fuente que desee para sus reportes. y esta es la forma de usarlas:
+
+Primero tiene que definirlas con el comando DEFINE FONT oFont ....
+
+
+<code clipper>
+DEFINE FONT oFont1 NAME "ARIAL" SIZE 0,-10
+DEFINE FONT oFont2 NAME "ARIAL" SIZE 0,-10 BOLD
+
+</code>
+
+La especificación SIZE (ancho,altura), usa diferentes unidades de medida, mientras que ne la pantalla las unidades usadas son pixeles, en la impresora las unidades de la fuente son "puntos".  Por lo que para imprimir texto, solamente usamos la segunda especificación de tamaño (altura) para dar el tamaño del punto, dejando el "ancho" como "0".  El tamaño del punto se da como un número negativo, p ej. "10 puntos" es "-10".  Recuerde que el tamaño del punto para tipo espaciado proporcional es diferente a "cpp" que es el término frecuentemente usado para espaciado no-proporcional, como el tipo Courier de "máquina de escribir". El tamaño del punto se refiere a la altura de la letra, mientras que cpp se refiere al número de letras igualmente-espaciadas impresas por pulgada. El tamaño regular para un tipo de máquina de escribir es 10 cpp - 10 letras por pulgada. Pero representado en tamaño de punto, es 12 puntos -- muy confuso puesto que el tipo más pequeño para una máquina de escribir es el "elite" (12 cpp) - 12 letras por pulgada,   que corresponde a 9 puntos.  (Con "cpp" mientras más grande es el número mas pequeño es el tamaño de la fuente -- justo lo contrario a como sucede con el tamaño de "punto".) Para sumarle a la confusión, recuerde que en este Generador de Reportes, le dejamos saber a FiveWin que estamos trabajando con tamaño de punto en lugar de pixeles al usar números negativos para puntos (y debemos usar puntos en lugar de cpp).  En este caso, el signo "-" no es matemático -- no significa (como sugieren las reglas matemáticas) que su tamaño en puntos sea menor mientras el número entero sea mayor.  Justo lo contrario, mientras más grande el número más grande el tamaño del punto.  Si aún está confundido, hay un amigo llamado Guttenberg en CIS que puede explicarle todo.
+
+
+Cuando cree el reporte, debe especificar las fuentes que va a usar separando cada una de ellas con una coma.
+
+Por ejemplo:
+
+
+<code clipper>
+REPORT oReport TITLE ..... ;
+
+FONT oFont1, oFont2, oFont3
+
+</code>
+
+La primera fuente de la lista (oFont1) será la fuente estándar, por lo que si no especifica una fuente para una columna en particular, se usará la fuente estándar (oFont1).
+
+Si desea que una columna use la segunda fuente haga lo siguiente:
+
+<code clipper>
+COLUMN TITLE ... DATA .... FONT 2
+</code>
+
+Como puede ver, usted indica el número ordinal en la lista de fuentes definidas cuando creo el reporte.
+
+Una vez más, puede usar una expresión como esta:
+
+
+<code clipper>
+COLUMN TITLE ... DATA ... ;
+
+FONT iff(Test->Salary>1000,2,1)
+</code>
+
+Recuerde liberar las fuentes después de que se haga el reporte.
+
+**CONFIGURANDO COLUMNAS:**
+
+Cuando cree las columnas, puede especificar muchos comportamientosyou can specify a lot of behavior:
+
+
+-	PICTURE: igual como en GET
+-	SIZE: Longitud de la columna (número de Caracteres)
+-	AT: Imprimir en una columna específica (menor no usarlo)
+-	FONT: Fuente a usar (número en la lista de fuentes)
+-	TOTAL: si la columna debe tener un total
+
+
+Si establece que la columna tiene un total, los DATA deben ser numéricos. Pero si no, no se preocupe -- el generador de reportes no se interrumpe. La cláusula TOTAL puede tener una condición FOR. Por ejemplo:
+
+<code clipper>
+COLUMN DATA ... TOTAL FOR Test->Name = "Peter"
+</code>
+
+LEFT|CENTER|CENTERED|RIGHT: También puede establecer la forma en que el texto se va a imprimir, a la izquierda, centrado o a la derecha. De forma predeterminada, todo se alinea a la izquierda excepto los datos numéricos que se ajustan a la derecha.
+
+**COLUMNAS MULTILÍNEA:**
+
+Esto es algo que realmente amarás: suponga que necesita poner otra columna en el reporte y no cuenta con espacio en el papel para ello.
+
+Podría usar una fuente más pequeña, pero no es la mejor forma. La mejor manera es usar columnas multilínea. Esto Significa que un registro de una base de datos puede usar más de na línea en el reporte. Así que podemos hacer algo como esto:
+
+
+
+|Nombre|Salario|
+|Test->First| |        
+|Test ->Last|Test->Salary|
+
+Es tan simple como:
+
+<code clipper>
+COLUMN DATA Test->First, Test->Last
+</code>
+
+Solo separe con una coma los datos que quiera imprimir.
+
+Puede hacer lo mismo con el título de la columna así:
+
+<code clipper>
+COLUMN DATA Test->First, Test->Last ;
+
+TITLE "First Name" ,"Last Name"
+
+</code>
+Si coloca un TOTAL en esa columna, se sumarán todos los datos numéricos. Todos los datos tendrá la misma máscara (picture), pero explicaremos más tarde como cambiar este comprtamiento.
+
+**HACIENDO GRUPOS:**
+
+To make a group means to have a subtotal on a particular kind of data. With the report form you can make two groups. With other report generators you can make up to 9, but with FiveWin Report Engine you have no limit.
+
+If you want the totals of the groups to be printed you must totalize at least one column.
+
+
+The data, of course, should be sorted in accord with the group expression.
+
+To make a Group just do the following:
+
+<code clipper>
+
+REPORT oReport ....
+
+COLUMN ....
+COLUMN ....
+GROUP ON Test->State EJECT
+
+END REPORT
+
+</code>
+
+The report will totalize each column that has been created with the TOTAL clause for every State and will make a page eject when the State changes.
+
+You can even specify a Header, a Footer and a font to use for that group (just one line on Headers and Footers):
+
+<code clipper>
+
+GROUP ON Test->State ;
+
+FOOTER "Total State:"  ;
+FONT 2 ;
+EJECT
+
+</code>
+
+Remember, you can have all the groups you want.
+
+SUMMARY REPORTS:
+
+If you specify the clause SUMMARY when you create the report:
+
+
+REPORT oReport TITLE ... SUMMARY
+
+
+it will only print the information about groups. So the clause SUMMARY should only be used when there is at least one group defined.
+
+When you use the SUMMARY clause the report engine does not put any group separator line.
+
+CONTROLLING THE FLOW OF THE REPORT:
+
+When you activate the report, it is possible to define FOR and WHILE conditions. For example:
+
+
+<code clipper>
+ACTIVATE REPORT oReport    ;
+
+WHILE Test->State = "A"  ;
+FOR Test->Salary > 1000
+</code>
+
+
+Because the report engine can make a report even from an array, by default the WHILE condition is "!Eof()". So if you change the WHILE condition, you must take care that if you are making a report from a database it is a good practice to include in the WHILE condition the text  ".and. !Eof()":
+
+
+<code clipper>
+ACTIVATE REPORT oReport    ;
+
+WHILE Test->State = "AZ"  .AND. !Eof() ;
+FOR Test->Salary > 100000
+</code>
+
+
+You can even control the flow of the report in the same manner as you do with other windows.
+
+When you activate the report you can indicate functions that will be called when the report is in a particular state:
+
+
+<code clipper>
+ACTIVATE REPORT oReport ;
+
+ON INIT ... ;
+ON END .... ;
+ON STARTPAGE ....;
+ON ENDPAGE ... ;
+ON STARTGROUP .... ;
+ON ENDGROUP .... ;
+ON STARTLINE ... ;
+ON ENDLINE .... ;
+ON CHANGE ...
+</code>
+
+
+The INIT function is called just one time on the first page after the column titles are printed.
+
+The END function is called just one time on the last page after the Grand totals are printed.
+
+The STARTPAGE is called on every start of a page. This is one of the most used because in this clause you will put bitmaps, lines, boxes, etc...
+
+The ENDPAGE is called on every end of a page, when all the text is printed (not very useful).
+
+The STARTGROUP is called on every start of a group and before the header of the group is printed (if there is one).
+
+
+The ENDGROUP is called on every end of a group.
+
+The STARTLINE is called on every start of a line of the report body. When STARTLINE is evaluated, the report engine is controlling if the  following line will fit in the current page, and if not, it will do an Eject and start a new page. Be carefull when using STARTLINE,    because if you use Multiline columns there will be at least two  STARTLINES for each record processed.
+
+The ENDLINE is called on every end of line of the body report. When ENDLINE is evaluated all the line has been printed and the current report line is been incremented.
+
+
+The CHANGE is called on every "SKIP" if you are listing a database. For practical purposes, this function is called before the SKIP and not after. This is also a clause you will use a lot.
+
+In the source code we have include a blank line on StartGroup and a sound beep when the report is finished.
+
+
+IMPORTANT:	Be careful when using these clauses. Remember you are inside the report flow, so you must take care of all the databases, indexes, etc.. that the report is using.
+
+
+UNDERSTANDING THE REPORT OBJECT:
+
+You can access almost any part of the report if you understand how  it works and how it is designed.
+
+The report object has a lot of data and methods that you should know and use.
+
+An object report has at least one object column, one object Line (for the title), one object device and if it has group(s), it will also have a Group object.
+
+The objects TRColumn, TRLine and TRGroup are the basis of the report engine.
+
+TRColumn holds all the columns of the report including its title, data, totals, etc.. (vertical object)
+
+
+TRLine holds all the lines wich go across the report from left to right. You can think of them as horizontal objects. These include Titles, Header and Footers.
+
+TRGroup holds all the information about each group defined in the report.
+
+You can manipulate the behavior of any object modifying its data or using some of its methods.
+
+Take a look at the classes data and methods. You will be impressed about all you can do. The only limit is your imagination.
+
+Examples:
+
+
+1.	Change the TITLE font of column 3 to use the second font. Also because the column is multiline, change the picture of the second  line to "999,999":
+
+
+
+<code clipper>
+LOCAL oColumn
+
+oColumn := oReport:aColumns[3]
+oColumn:bTitleFont := {|| 2}     // It's a block
+oColumn:aPicture[2] := "999,999"
+</code>
+
+
+
+2.	Left Justify the first line of the title using font 2 and right justify the second line using font 3:
+
+
+
+<code clipper>
+#define LINE_LEFT     1
+#define LINE_RIGHT   2
+
+LOCAL oLine
+
+oLine := oReport:oTitle
+oLine:aPad[1]:= LINE_LEFT        // pad of line 1
+oLine:aPad[2]:= LINE_RIGHT       // pad of line 2
+oLine:aFont[1]:= {|| 2}          // font of line 1
+oLine:aFont[2]:= {|| 3}          // font of line 2
+</code>
+
+
+
+As you can see, the object TRLine also holds multiple lines. That way the DATA is mostly arrays.
+
+
+
+3.	On the footer of each group, print the current value of it and the counter of how many records have been included:
+
+
+
+<code clipper>
+GROUP ON Test->State ;
+
+FOOTER "Total State "+;
+oReport:aGroups[1]:cValue+ ;
+str(oReport:aGroups[1]:nCounter)
+</code>
+
+
+GOING BACKWARDS:
+
+Just do a GO BOTTOM, change the way the Report does the skip, and change the while condition:
+
+
+<code clipper>
+USE TEST NEW
+GO BOTTOM
+
+REPORT oReport ....
+     COLUMN ...
+END REPORT
+
+oReport:bSkip := {|| DbSkip(-1)}
+
+ACTIVATE oReport WHILE !Bof()
+</code>
+
+
+PRINTING ARRAYS:
+
+Use a static variable to hold the current array element and change the Skip block and While block.
+
+
+<code clipper>
+STATIC  nField
+
+Function Main()
+
+nField := 1
+
+REPORT oReport ....
+
+COLUMN ...
+COLUMN ...
+
+END REPORT
+
+oReport:bSkip := {|| nField++}
+
+ACTIVATE REPORT oReport ;
+
+WHILE nField <= len(aStructure)
+</code>
+
+
+**SHADOWS & GRIDS:**
+
+There are two clauses that you can use when you create your columns:
+
+- SHADOW: This clause puts the background of a column in light gray.
+
+- GRID: This clause puts two lines vertically on both sides of a column.
+
+For example:
+
+
+COLUMN TITLE ... SHADOW GRID
+
+
+You can modify the type of grid, width and color. To do this you have to create the pens you need:
+
+
+COLUMN TITLE ... GRID <nPen>
+
+
+By default the pen used is black, solid, with a width of 1.
+
+The creation of pens is identical as for fonts. (Consult the Norton Guide for more information about pens.) For example:
+
+
+<code clipper>
+DEFINE PEN oPen WIDTH 5
+
+REPORT oReport PEN oPen
+
+COLUMN TITLE .... GRID 1
+
+END REPORT
+
+ACTIVATE REPORT
+</code>
+
+
+**CHANGING THE ASPECT:**
+
+There is some DATA on the report objects that lets you change the aspect of the report, for example:
+
+
+·	nTotalLine: Is the aspect for total lines. By default it is  RPT_DOUBLELINE (2)
+
+
+
+·	nGroupLine: Is the aspect for group lines. By default it is  RPT_SINGLELINE (1)
+
+
+
+·	nTitleUpLine: Is the aspect for the up lines in column titles. By default it is RPT_DOUBLELINE (2)
+
+
+
+·	nTitleDnLine:  Is the aspect for the down lines in column titles. By default it is RPT_DOUBLELINE (2)
+
+
+
+·	cPageTotal: Is a description for page total. By default it is ""
+
+
+
+·	cGrandTotal: Is a description for grand total. By default it is ""
+
+
+And also some methods like:
+
+
+·	Margin(nValue,nType,nScale): This method lets you change the top, down, left and right margin of the report -- in inches or centimeters.
+
+
+
+·	Say(nCol, xText, nFont, nPad, nRow): This method lets you write the text you want on the report, indicating the column (where the column objects start), the text, the number of font to use, the number of pad(left, right, center) and the Row (by default the current row).
+
+
+BITMAPS:
+
+To put a bitmap on your report is very easy. In the STARTPAGE clause,  just make a call to a function of your own which draws the bitmap via the Saybitmap method() of the class TReport. An example:
+
+
+<code clipper>
+ACTIVATE REPORT oReport ;
+
+ON STARTPAGE Mybitmap()
+
+
+Function Mybitmap()
+
+
+oReport:SayBitmap(.3,.3,"ICO.BMP",.5,.5)
+
+
+RETURN NIL
+</code>
+
+
+These are the parameters of the method Saybitmap:
+
+
+·	nRow
+·	nCol
+·	cBitmap file (only)
+·	nWidth
+·	nHeight
+·	nScale
+
+
+If Scale is in INCHES (1) then 1,2,4 and 5 are in inches, and if  Scale is CMETERS (2) 1,2,4 and 5 are in centimeters.
+
+BOXES & LINES:
+
+To put a box or a line on your report is very easy. On the STARTPAGE clause, just make a call to a function of your own which draws the line or box via the box or line method() of the class TReport. An example:
+
+
+<code clipper>
+ACTIVATE REPORT oReport ;
+
+ON STARTPAGE Mybox()
+
+
+Function Mybox()
+
+oReport:Box(.1, .1, 11.1, 7.6)
+
+RETURN NIL
+</code>
+
+
+These are the parameters of the BOX method:
+
+
+·	nRow
+·	nCol
+·	nBottom
+·	nRight
+·	nPen
+·	nScale
+
+
+If nScale is in INCHES (1) then 1,2,3  and 4 are in inches, and if nScale is CMETERS (2) 1,2,3 and 4 are in centimeters.
+
+The fifth parameter is the number in the list of pens stated when you created the report.
+
+These are the parameters of the LINE method:
+
+
+·	nTop
+·	nLef
+·	nBottom
+·	nRight
+·	nPen
+·	nScale
+
+
+If nScale is in INCHES (1) then 1,2,3  and 4 are in inches, and if nScale is CMETERS (2) 1,2,3 and 4 are in centimeters.
+
+The fifth parameter is the number in the list of pens stated when you created the report.
+
+PRINTING MEMOS:
+
+Printing memos on reports is sometimes a difficult job in other reporting systems, but is quite easy with the FiveWin Report Engine.
+
+Look how we do it:
+
+
+1.	Create a column with empty DATA, but indicating the size (width of line in chars) that you want for the memo:
+
+
+
+COLUMN TITLE "Comments" DATA " " SIZE 50
+
+
+
+2.	Create a function to be called by the ON CHANGE clause, like this:
+
+
+
+<code clipper>
+Function SayMemo()
+
+
+LOCAL nLines, nFor
+nLines := Mlcount(Test->Comment,50)
+
+
+
+/*	
+Since ON CHANGE has caused the line to be incremented, we need to
+decrement the current line once.
+*/
+
+
+
+oReport:BackLine(1)
+
+	
+
+/*
+
+Now we can start the printing. But remember: before we print anything, we have to make a call to StartLine, and also afterwards a call to EndLine. This way the program controls the page breaks.
+
+*/
+
+
+
+FOR nFor := 1 to nLines
+
+oReport:StartLine()
+oReport:Say(nMemoColumn , ;
+MemoLine(Test->Comment,50,nFor)
+oReport:EndLine()
+
+NEXT
+
+
+RETURN NIL
+</code>
+
+
+And that is all there is to it.
+
+PUTTING IT ALL TOGETHER:
+
+Just take a close look at the code for REP21.PRG.
+
+ALL TOGETHER AND WITH COLORS!
+
+You can change the color of each font using the SetTxtColor method.
+
+SetTxtColor() receives two parameters. The first one indicates the  nColor to use (see Colors.ch) and the second one the NUMBER of the Font in the report. For example:
+
+
+oReport:SetTxtColor(CLR_HRED,1)
+
+
+You can also control the color of any Pens just by indicating their colors when you create them. For example:
+
+
+DEFINE PEN oPen COLOR CLR_BLUE
+
+
+If you want to change the color of the horizontal pen used in titles and totals, use the method SetPenColor.  For example:
+
+
+oReport:SetPenColor(CLR_RED)
+
+
+You can also change the color of the shadows using the method SetShdColor(nNewColor), which by default is LIGHTGRAY.
+
+PRINTING FROM A .TXT FILE:
+
+In Rept23.PRG we are using the memo printing technique to print a text file.  This is very useful for quickly converting Clipper DOS reports to windows.
+
+For example, if your DOS application has reports created via the  R&R Code Generator or Bandit, use that DOS report's option to have each report sent to a .TXT file.  Then adapt the simple code in this  example to have FiveWin print the report's .TXT file.  Make sure that the font specified in this code matches the font used in the creation of the report. Guess what this means....you can convert each of your existing DOS reports to windows in 20 minutes each MAX, no matter how intricate they may be!
+
+
+Caveat: of course, whatever user interface screen code you have at the beginning of your DOS report .prg (for prompts/responses to specify various report options) will have to be converted to FiveWin GUI. Still quick -- after you establish a standard and adaptable format for your prompts/responses.
+
+NOTE: When previewing this report, until you zoom out it will appear garbled due to the use of the fixed pitch Courier font.  If you print it, it won't be garbled.
+
+
+
+
+===== Las Clases Report =====
+     -  [[fivewin_clase_treport| TReport]]
+     -  [[fivewin_esp_basic_con_print| TRColumn]]
+     -  [[fivewin_esp_basic_con_print| TRLine]]
+     -  [[fivewin_esp_basic_con_print| TRGroup]]
+     -  [[fivewin_esp_samples_report| Ejemplos de Report]]
+
+===== Mezclando gráficas y texto =====
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep18()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport ;
+          TITLE  "*** Fivewin Report ***"  ;
+          PREVIEW
+
+     COLUMN TITLE "St" DATA Test->State
+
+     COLUMN TITLE "First Name", "Last Name" ;
+            DATA  Test->First, Test->Last
+
+     COLUMN TITLE "Street", "City"  ;
+            DATA  Test->Street, Test->City
+
+     COLUMN TITLE "   Salary"  ;
+            DATA  Test->Salary ;
+            TOTAL
+
+
+     END REPORT
+
+     ACTIVATE REPORT oReport ;
+          ON STARTPAGE Bitmaps()
+
+     CLOSE TEST
+
+RETURN NIL
+
+
+STATIC Function Bitmaps()
+
+     oReport:SayBitmap(.3,.3, "EXIT",.5,.5)
+     oReport:SayBitmap(3,2,  "CONFIDEN.BMP",4,4)
+
+RETURN NIL
+
+</code>
+
+
+
+===== Vista preliminar de impresión =====
+
+Usted puede crear una vista preliminar de sus impresiones, con solo especificar la cláusula PREVIEW cuando construya el Objeto impresora:
+<code clipper>
+PRINT oPrn NAME "My Printout" PREVIEW
+      ...
+PAGE
+         ...
+oPrn:Say( nRow, nCol, cText, ... )
+         ...
+ENDPAGE
+      ...
+ENDPRINT
+</code>
+Esto provocará que la impresión sea revisada primero en pantalla, dando al usuario una vista preliminar de ella, permitiéndole al mismo tiempo elegir lo que desea imprimir o en su caso cancelar la impresión de lo que ve en pantalla.
+
+FiveWin usa archivos estándar "Windows Metafiles" para almacenar las páginas impresas. Para manejar estos metaarchivos, FiveWin se dirige a la carpeta temporal de su computadora. Recuerde ajustar una carpeta TEMP en su configuración:
+
+
+SET TEMP=c:\temp
+
+FiveWin almacenará temporalmente los metaarchivos dentro de esa carpeta, y los eliminara una vez que finalice la vista preliminar. Todas estas operaciones son manejadas automáticamente por FiveWin.
+
+
+

@@ -1,0 +1,20 @@
+Adicionalmente al sofisticado generador de reportes de FiveWin, FiveWin ofrece sus técnicas RAD (rapid application development) para generar rápidamente un prototipo de sus impresiones, sin que usted realice trabajo alguno!:
+
+· Generando un reporte completo del área de trabajo actual:
+
+
+Sólo llame la función Report() y obtendrá automáticamente un reporte paginado completo de su actual área de trabajo!
+
+· Generando un reporte automático de cualquier navegación (Browse) !!!:
+
+
+Si usted hace <oBrw>:Report() donde <oBrw> es una referencia a su navegación, FiveWin creara un reporte completo con el contenido de navegación. Así, la forma más fácil de implementar un reporte en su navegación es colocar un bitmap button en su caja de diálogo con la acción <oBrw>:Report().
+
+· Hacer una impresión directa de cualquier ventana o control !!!:
+
+
+Si tiene un diálogo y desea una copia impresa de él, la forma más fácil es hacer: <oDlg>:HardCopy( <nZoom> ) donde <oDlg> es su Objeto diálogo y <nZoom> es un factor de escala - un valor de 3 normalmente se recomienda para obtener dimensiones naturales- Puede usar un bitmap en lugar del diálogo, o cualquier ventana o control!
+
+Combinando estas técnicas puede muy rápidamente crear prototipos de impresión de su aplicación. No las olvide!
+
+Recuerde usar estas técnicas en las primeras etapas de su aplicación.

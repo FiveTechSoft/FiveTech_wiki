@@ -1,0 +1,682 @@
+====== FiveWin Tutorial ======
+[[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] 
+
+|Sitio web oficial|http://www.fivetechsoft.com|
+|Foros de soporte técnico|http://forums.fivetechsupport.com|
+|Contribuciones libres|http://code.google.com/p/fivewin-contributions/downloads/list|
+|Harbour documentación|http://www.fivetechsoft.com/harbour-docs/harbour.html|
+|Galería de aplicaciones|http://forums.fivetechsupport.com/viewtopic.php?f=17&t=24170&start=0|
+
+====== Hola mundo ======
+tutor01.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   MsgInfo( "Hola mundo!" )
+
+return nil
+</code>
+Para construirlo simplemente haz desde la carpeta FWH\samples:
+<code>
+buildh.bat tutor01
+</code>
+{{:holamundo.png|:holamundo.png}}
+
+
+
+
+
+====== Tu primera ventana ======
+tutor02.prg
+
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "Mi ventana"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+Para construirlo simplemente haz desde la carpeta FWH\samples:
+<code>
+buildh.bat tutor02
+</code>
+{{:miventana.png|:miventana.png}}
+
+
+
+====== Un menú para tu ventana ======
+tutor03.prg
+
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "Mi ventana" MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Mi app"
+      MENU
+         MENUITEM "Acerca de..." ACTION MsgInfo( "Mi applicación FiveWin" )
+         SEPARATOR
+         MENUITEM "Salir..." ACTION If( MsgYesNo( "¿ Desea salir ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+
+return oMenu
+</code>
+Para construirlo simplemente haz desde la carpeta FWH\samples:
+<code>
+buildh.bat tutor03
+</code>
+{{:mimenu.png|:mimenu.png}}
+
+
+====== Una barra de botones y de mensajes para tu ventana ======
+tutor04.prg
+
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+   
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION MsgInfo( "customers" )
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu</code>
+Para construirlo simplemente haz desde la carpeta FWH\samples:
+<code>
+buildh.bat tutor04
+</code>
+{{:mybars.png|:mybars.png}}
+
+
+
+====== Una caja de diálogo para tu aplicación ======
+tutor05.prg
+
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+ 
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION MsgInfo( "customers" )
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         MENUITEM "Customers..." ACTION Customers()
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu
+
+function Customers()
+
+   local oDlg
+   
+   DEFINE DIALOG oDlg TITLE "Customers" SIZE 500, 300
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+return nil   
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor05
+</code>
+{{:mydialog.png|:mydialog.png}}
+
+
+====== Usando controles para introducir datos desde tu diálogo ======
+tutor06.prg
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+ 
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION Customers()
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         MENUITEM "Customers..." ACTION Customers()
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu
+
+function Customers()
+
+   local oDlg, cFirst := Space( 20 ), cLast := Space( 20 ) 
+   
+   DEFINE DIALOG oDlg TITLE "Customers" SIZE 500, 300
+   
+   @ 1.8, 3 SAY "First:" OF oDlg
+   
+   @ 2, 5 GET cFirst OF oDlg
+   
+   @ 3, 3 SAY "Last:" OF oDlg
+   
+   @ 3.4, 5 GET cLast OF oDlg
+   
+   @ 6, 12 BUTTON "Ok" OF oDlg ACTION oDlg:End()
+
+   @ 6, 20 BUTTON "Cancel" OF oDlg ACTION oDlg:End()
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+return nil   
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor06
+</code>
+{{:mycontrols.png|:mycontrols.png}}
+
+
+====== Un folder para tu aplicación ======
+
+Tutor07.prg
+
+<code clipper>
+
+#include "fivewin.ch"
+
+function Main()
+
+   local oDlg, oFld
+
+   DEFINE DIALOG oDlg TITLE "FiveWin Dynamic folders" ;
+      FROM 5, 5 TO 20, 49
+
+   @ 0.5, 1 FOLDER oFld PROMPT "&xBase", "&And OOP", "&Power" ;
+      OF oDlg SIZE 160, 90
+      
+   @ 1, 1 BUTTON "&Hello" OF oFld:aDialogs[ 1 ] ;
+     ACTION MsgInfo( "Hello world!" )
+
+   @ 5.5, 11 BUTTON "Ok" OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED 
+
+return nil
+
+</code>
+Para construir este ejemplo FWH\samples folder.prg
+
+<code>
+buildh.bat tutor07
+</code>
+
+{{:folder1.png|:folder1.png}} 
+
+
+====== ListBox + Barra de mensajes ======
+
+Tutor08.prg
+
+<code clipper>
+
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oLbx, oSay
+   local cItem := "Two"
+ 
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 50 ;
+      TITLE "Testing a ListBox" ;
+      COLOR  rgb(0,0,255), rgb (220,222,229)  
+
+   @ 2, 2 LISTBOX oLbx VAR cItem ;
+      ITEMS { "One", "Two", "Three", "Four", "Five" } ;
+      OF oWnd SIZE 200, 85 ;
+      COLOR  rgb(0,0,255), rgb (238,224,239) ;
+      ON CHANGE oSay:Refresh() ;
+      MESSAGE "Please select an Item"
+      // VALID ( MsgInfo( "Just testing valid clause..." ), .t. )
+
+   @ 2, 40 SAY oSay VAR cItem SIZE 80, 20 OF oWnd
+
+   @ 8, 42 BUTTON "&Add" SIZE 80, 20 OF oWnd ;
+      MESSAGE "Add a new item to the listbox" ;
+      ACTION ( oLbx:Add( Time() ), MsgInfo( Len( oLbx:aItems ) ) )
+
+   @ 11, 42 BUTTON "&End" SIZE 80, 20 OF oWnd ;
+      ACTION oWnd:End() ;
+      MESSAGE "Press me to end this test"
+
+   SET MESSAGE OF oWnd TO "Testing a ListBox"
+
+   ACTIVATE WINDOW oWnd  
+
+return nil
+
+</code>
+
+Para construir este ejemplo FWH\samples testlbx.prg
+
+<code>
+buildh.bat tutor08
+</code>
+
+{{:listbox_barra_de_mensajes.png|:listbox_barra_de_mensajes.png}}
+
+====== ListBox  a base editable ======
+
+Tutor09.prg
+
+<code clipper>
+
+#include "FiveWin.ch"
+
+
+function Main()
+
+   local oDlg, oLbx
+
+   USE Data
+
+   DEFINE DIALOG oDlg FROM 5,10 TO 24, 56 ;
+      TITLE "Browse inline data capture"
+
+   @  1, 0.50 LISTBOX oLbx FIELDS SIZE 175, 95 OF oDlg
+
+   oLbx:lCellStyle = .t.
+   oLbx:lAutoEdit  = .t.
+   oLbx:lAutoSkip  = .t.
+
+   @ 6.8,  4 BUTTON "&Edit" OF oDlg SIZE 40, 12 ;
+      ACTION oLbx:Edit()
+
+   @ 6.8, 12 BUTTON "&OK" OF oDlg SIZE 40, 12 ;
+      ACTION oDlg:End() DEFAULT
+
+   @ 6.8, 20 BUTTON "&Cancel" OF oDlg SIZE 40, 12 ;
+      ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+</code>
+
+Para construir este ejemplo FWH\samples testbrw.prg
+<code>
+buildh.bat tutor09
+</code>
+
+{{:listbox1.png|:listbox1.png}}
+
+====== Meter para tu aplicación ======
+
+Tutor10.prg
+
+<code clipper>
+
+#include "FiveWin.ch"
+
+static oDlg 
+
+function Main()
+
+   local nActual := 0, oMeter
+
+   DEFINE DIALOG oDlg FROM 1, 1 TO 12, 44 ;
+      TITLE "Testing the Meter controls"
+
+   @ 2, 2 METER oMeter VAR nActual TOTAL 50 OF oDlg SIZE 135, 12  
+
+   @ 3, 3 BUTTON "&Decrease" OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual - 1 )
+
+   @ 3, 11 BUTTON "&Increase"   OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual + 1 )  
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+</code>
+
+Para construir este ejemplo FWH\samples testmetr.prg
+
+<code>
+buildh.bat tutor10
+</code>
+
+{{:meter.png|:meter.png}}
+
+====== Múltiples Meter ======
+
+Tutor11.prg
+
+<code clipper>
+
+#include "FiveWin.ch"
+
+function Main()
+
+   LOCAL oWnd, nActual, nActual2, nActual3, nActual4
+   LOCAL oMeter, oMeter2, oMeter3, oMeter4
+
+   DEFINE WINDOW oWnd Title "TestMeter" color rgb(0,0,0),rgb(207,210,221)
+
+   nActual := nActual2 := nActual3 := nActual4 := 0
+   
+   //   meter 1
+   @ 10, 50 METEREX oMeter VAR nActual SIZE 310, 40 BITMAP ".\meterex.bmp" TOTAL 50 PIXEL 
+   @ 60,  50 BUTTON "+" ACTION ( nActual := oMeter:Set( nActual += 1 ) ) SIZE 25, 20 PIXEL
+   @ 60,  80 BUTTON "-" ACTION ( nActual := oMeter:Set( nActual -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 60, 110 BUTTON "Rst" ACTION ( nActual := oMeter:Set( 0 ), oMeter:Refresh() ) SIZE 25, 20 PIXEL
+   @ 60, 140 BUTTON "Auto" ACTION ( Automatic( oMeter, @nActual ) ) SIZE 70, 20 PIXEL
+   @ 60, 215 CHECKBOX oMeter:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 60, 290 CHECKBOX oMeter:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+   
+   // meter 2
+   @ 100, 50 METEREX oMeter2 VAR nActual2 SIZE 310, 20 TOTAL 50 PIXEL;
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } } ;
+             LINECOLORS nRGB( 110, 151,204 ), CLR_WHITE;
+             ROUND INVERTED;
+             ON PAINT( If( nActual2 == oMeter2:nTotal, Msginfo( "Finished" ), ) ) 
+   
+   @ 130,  50 BUTTON "+" ACTION ( nActual2 := oMeter2:Set( nActual2 += 1 ) ) SIZE 25, 20 PIXEL
+   @ 130,  80 BUTTON "-" ACTION ( nActual2 := oMeter2:Set( nActual2 -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 130, 110 BUTTON "Rst" ACTION ( nActual2 := 0, oMeter2:Set( 0 ), oMeter2:Refresh() ) SIZE 25, 20 PIXEL
+   @ 130, 140 BUTTON "Auto" ACTION ( Automatic( oMeter2, @nActual2 ) ) SIZE 70, 20 PIXEL
+   @ 130, 215 CHECKBOX oMeter2:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 130, 290 CHECKBOX oMeter2:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+
+
+   // meter 3
+   @ 180, 50 METEREX oMeter3 VAR nActual3 SIZE 310, 20 TOTAL 50 PIXEL;
+             GRADIENT CHUNK { { 1/2, nRGB( 255, 251, 229 ), nRGB( 250, 223, 143 ) } , ;
+                              { 1/2, nRGB( 244, 194,  51 ), nRGB( 252, 235,  173 ) } };
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } };
+             ROUND LINECOLORS CLR_BLACK, CLR_WHITE
+             
+                
+   @ 210,  50 BUTTON "+" ACTION ( nActual3 := oMeter3:Set( nActual3 += 1 ) ) SIZE 25, 20 PIXEL
+   @ 210,  80 BUTTON "-" ACTION ( nActual3 := oMeter3:Set( nActual3 -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 210, 110 BUTTON "Rst" ACTION ( nActual3 := oMeter3:Set( 0 ), oMeter3:Refresh() ) SIZE 25, 20 PIXEL
+   @ 210, 140 BUTTON "Auto" ACTION ( Automatic( oMeter3, @nActual3 ) ) SIZE 70, 20 PIXEL
+   @ 210, 215 CHECKBOX oMeter3:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 210, 290 CHECKBOX oMeter3:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+   
+   // meter 4 vertical
+   @ 10, 380 METEREX oMeter4 VAR nActual4 SIZE 20, 200 TOTAL 50 PIXEL;
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } } ;
+             LINECOLORS nRGB( 110, 151,204 ), CLR_WHITE;
+             VERTICAL INVERTED
+   
+   @  10, 415 BUTTON "+" ACTION ( nActual4 := oMeter4:Set( nActual4 += 1 ) ) SIZE 25, 20 PIXEL
+   @  40, 415 BUTTON "-" ACTION ( nActual4 := oMeter4:Set( nActual4 -= 1 ) ) SIZE 25, 20 PIXEL
+   @  70, 415 BUTTON "Rst" ACTION ( nActual4 := oMeter4:Set( 0 ), oMeter4:Refresh() ) SIZE 25, 20 PIXEL
+   @ 100, 415 BUTTON "Automatic" ACTION ( Automatic( oMeter4, @nActual4 ) ) SIZE 70, 20 PIXEL
+   @ 130, 415 CHECKBOX oMeter4:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 160, 415 CHECKBOX oMeter4:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12    
+   
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+
+FUNCTION Automatic( oMeter, nActual )
+
+   LOCAL n
+   LOCAL nFrom := nActual
+
+   FOR n = nFrom TO oMeter:nTotal step 0.001
+      nActual = n
+      oMeter:Set( nActual )
+   NEXT
+   nActual = oMeter:nTotal
+   oMeter:Set( nActual )
+   
+RETURN NIL
+
+</code>
+
+Para construir este ejemplo FWH\samples testmex.prg
+
+<code>
+buildh.bat tutor11
+</code>
+{{:meterex.png|:meterex.png}}
+
+====== Controles GETs  ======
+
+Tutor12.prg
+<code clipper>
+
+#include "FiveWin.ch" 
+
+static oWnd 
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 30, 70 ;
+   TITLE "Testing Says/Gets and Get Pictures and Foreground/Background Colors" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO "FiveWin++"
+
+   ACTIVATE WINDOW oWnd MAXIMIZED
+
+return nil 
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Say/Get Testing"
+      MENU
+         MENUITEM "&Build Multi GET Dialog1 with PICTs "  ACTION (BldDlg1())
+         MENUITEM "Item &2"  ACTION MsgInfo("Test Menu Item2")
+         MENUITEM "Item &3"  ACTION MsgInfo("Test Menu Item3")
+         SEPARATOR
+         MENUITEM "Exit" ACTION oWnd:End()
+      ENDMENU
+  ENDMENU
+return oMenu 
+
+function BldDlg1()
+
+   local oDlg, oArial, oFont, oMemo
+   local cName1    := "ONE          "
+   local cName2    := "two        "
+   local cName3    := "3        "
+   local cName4    := "4       "
+   local cName5    := "5        "
+   local cName6    := "54321        "
+   local cName7    := "567890                  "
+   local lRESERVE  := .F.
+   local cPROV_TYPE:= SPACE(20)
+   local cPHONE    := SPACE(18)
+   local dCERT_DATE:= CTOD('  /  /  ')
+   local nPROC_DAYS:= 9876
+   local cTEXT     := "Use Tab or Shift Tab to move to next get."+SPACE(256)
+
+   SET EPOCH TO 1920
+   SET CENTURY ON
+
+   DEFINE DIALOG oDlg FROM 1, 1 TO 600, 800 ;
+          TITLE "Hello Gets!"               ;
+          STYLE  nOr(WS_POPUP,              ;
+                     WS_VISIBLE,            ;
+                     WS_CAPTION,            ;
+                     WS_THICKFRAME,         ;
+                     WS_SYSMENU,            ;
+                     WS_MINIMIZEBOX,        ;
+                     WS_MAXIMIZEBOX)        ;
+          PIXEL OF oWnd                            && Defined by Pixels
+
+
+*   DEFINE FONT oFont NAME "Courier" SIZE 12, -10 WEIGHT 45
+   DEFINE FONT oFont NAME "FIXEDSYS" SIZE 10, -10    && Use a Nonproportional font
+   SET FONT OF oDlg TO oFont                         && so characters line up in Says
+
+   @  00, 03 SAY "Showing how to do SAY/GETs from source code.  No DLLs or RC files. " OF oDlg COLORS CLR_BLACK,CLR_YELLOW BORDER SIZE 300,10
+   @  01, 03 SAY "Navigation Keys to traverse gets are Ret, Arrows, Tab and Shift Tab....ESC to close this Dialog" OF oDlg;
+                  COLORS CLR_WHITE,CLR_BLUE   BORDER SIZE 380,10
+   @  02, 03 SAY "Testing Say with different colors and a border. "  OF oDlg COLORS CLR_HRED   ,CLR_WHITE  BORDER SIZE 200,10
+   @  03, 03 SAY "Testing Say with different colors and no border."  OF oDlg COLORS CLR_HBLUE  ,CLR_WHITE         SIZE 200,10
+   @  05, 19 SAY "Field length" OF oDlg SIZE 65,10  && Use normal colors
+   @  06, 19 SAY "      |     " OF oDlg SIZE 65,10
+
+   @  07, 03 SAY "1  Chr No PICT                       13" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  08, 03 SAY "2  Chr No PICT                       11" OF oDlg COLORS CLR_BLUE  ,RGB(224,102,255) BORDER SIZE 195,10
+   @  09, 03 SAY "3  Chr No PICT                        9" OF oDlg COLORS CLR_RED   ,RGB(224,102,255) BORDER SIZE 195,10
+   @  10, 03 SAY "4  Chr    PICT 'NNNNNNNN'             8" OF oDlg COLORS CLR_HRED  ,RGB(224,102,255) BORDER SIZE 195,10
+   @  11, 03 SAY "5  Chr    PICT 'AAAAAAAAA'            9" OF oDlg COLORS CLR_HGREEN,RGB(224,102,255) BORDER SIZE 195,10
+   @  12, 03 SAY "6  Chr    PICT '9999999999'          13" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  13, 03 SAY "7  Chr    PICT '@K@!@S10'            24" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  14, 03 SAY "   Logic 'T/F or Y/N'                 1" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  15, 03 SAY "   Chr    PICT '@S5'and !EMPTY()     20" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  16, 03 SAY "   Chr    PICT '(999)A99-9!99-9999'  18" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  17, 03 SAY "   Date   !> comp date or empty       8" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10 
+   @  18, 03  SAY "   Num    PICT '99' !>10             10" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+   @  19, 03  SAY "   Memo No PICT                     256" OF oDlg COLORS CLR_BLACK ,RGB(224,102,255) BORDER SIZE 195,10
+
+   @  07, 28 GET cName1     OF oDlg COLORS "B/BG" SIZE 20,10
+   @  08, 28 GET cName2     OF oDlg COLORS CLR_BLACK,CLR_HCYAN
+   @  09, 28 GET cName3     OF oDlg COLORS CLR_BLACK,CLR_YELLOW
+   @  10, 28 GET cName4     OF oDlg PICTURE "NNNNNNNN"
+   @  11, 28 GET cName5     OF oDlg PICTURE "AAAAAAAAA"
+   @  12, 28 GET cName6     OF oDlg PICTURE "9999999999"
+
+   @  13, 28 GET cName7     OF oDlg PICTURE "@K@!@S10"
+   @  14, 28 GET lRESERVE   OF oDlg PICTURE  "Y"  MESSAGE "Please type in a Y or N "
+   @  15, 28 GET cPROV_TYPE OF oDlg PICTURE  "@S5" VALID IF(EMPTY(cPROV_TYPE),(MSGINFO("You have to enter at least 1 Character"),.F.),.T.)
+   @  16, 28 GET cPHONE     OF oDlg PICTURE  "(999)A99-9!99-9999"
+
+*   @  17, 28 GET dCERT_DATE OF oDlg SIZE 36,10
+*   @  17, 28 GET dCERT_DATE OF oDlg SIZE 36,10 NO MODIFY
+*   @  17, 28 GET dCERT_DATE OF oDlg SIZE 36,10 VALID IF(dCERT_DATE>DATE(),(MSGINFO("GREATER!"),.F.),.T.) MESSAGE "Please type in the Certification Date"
+   @  17, 28 GET dCERT_DATE OF oDlg SIZE 50,10 VALID (IF(dCERT_DATE>DATE(),;
+   (MSGINFO("Certification Date must not be greater than Computer Date or blank!"),.F.),.T.)) MESSAGE "Please type in the Certification Date"
+*   @  17, 28 GET dCERT_DATE OF oDlg SIZE 36,10 VALID (IF(dCERT_DATE>DATE().AND.!EMPTY(dCERT_DATE),(MSGINFO("Certification Date must not be greater than Computer Date or blank!"),.F.),.T.)) MESSAGE "Please type in the Certification Date"
+
+   @  18, 28 GET nPROC_DAYS OF oDlg PICTURE "99" VALID (IF(nPROC_DAYS>10,(MSGINFO("Processing Days Must be less that 11 or Empty"),.F.),.T.)) MESSAGE "Please type in the Number of days it took to process"
+*   @  18, 28 GET nPROC_DAYS OF oDlg PICTURE "999,999.99" VALID (IF(nPROC_DAYS>10,(MSGINFO("Processing Days Must be less than 11"),.F.),.T.)) MESSAGE "Please type in the Number of days it took to process"
+*   @  18, 28 GET nPROC_DAYS OF oDlg PICTURE "@K 999"
+*   @  18, 28 GET nPROC_DAYS OF oDlg PICTURE "999,999.99" SIZE 50,10
+*   @  18, 28 GET nPROC_DAYS OF oDlg PICTURE "99999999"
+
+    @  19, 28 GET cText MEMO  OF oDlg SIZE 140,46
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON LEFT CLICK nMsgBox( "Incredible!" )
+   
+return nil
+ 
+</code>
+
+Para construir este ejemplo FWH\samples get.prg
+<code>
+buildh.bat tutor12
+</code>
+{{:gets.png|:gets.png}}
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 

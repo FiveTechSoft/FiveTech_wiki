@@ -1,0 +1,62 @@
+Los Objetos DataBase de Fivewin han sido diseñados con el propósito de reducir el tamaño de su código cuando manipule  una DBF. Simplifican mucho todo la labor que se necesita hacer para trabajar con DataBases y son totalmente compatibles con la forma estándar de manipulación de DBFs en xBase.
+
+1. Qué es un Objeto DataBase ?
+
+Un Objeto DataBase trabaja principalmente como un buffer, donde pueda manipular los datos, para posteriormente grabarlos en la DBF real.
+
+2. Cómo creo un Objeto DataBase ?
+
+Después de hacer el típico USE <cDbfName> ALIAS ..., luego escriba la siguiente sentencia:
+<code clipper>
+local oDbf
+
+USE <cDbfName> [ ALIAS ... INDEX ... ... ]
+
+DATABASE oDbf
+</code>
+FiveWin creará automáticamente un Objeto DataBase y mantendrá su referencia dentro de la variable oDbf.
+
+El Objeto DataBase tendrá como DATA los nombres de los campos de su DBF. Ejemplo:
+
+<code clipper>
+USE Customer      // Customer tiene un campo llamado "First"
+DATABASE oDbf
+
+oDbf:Load()       // Carga los valores desde la DBF real
+
+MsgInfo( oDbf:First )  // Hay un DATA "First" ahí,
+
+// listo para usarse!
+</code>
+3. Por qué un Objeto DataBase de Fivewin reduce mi código ?
+
+Tradicionalmente todos los programadores Clipper necesitan declarar y usar variables LOCAL variables como buffers donde se puedan manipular los valores de la DBF, para después guardar su contenido en la DBF real. Esto se debe hacer si hace código para red, pues no puede manipular directamente los campos cuando comparte una base de datos (tiene que bloquear, reemplazar y luego desbloquear).
+
+Otra alternativa empleada por programadores Clipper es usar un arreglo como un buffer, donde cargan los valores iniciales de la DBF, luego los manipulan y más tarde son guardados en disco. Normalmente esas operaciones son nombradas como Scatter() y Gather(). La desventaja de usar arreglos es que no puede usar los nombres delos campos directamente, en lugar de eso tiene que definir etiquetas (#defines) con el riesgo de alterar esas secuencias y generar errores.
+
+Los objetos DataBase de Fivewin resuelven esos problemas totalmente, pues ya no es necesario declarar variables locales para cada campo, solo se necesita declarar la variable que contendrá al Objeto DataBase.
+
+De hecho, el Objeto DataBase mantiene internamente un arreglo, de la misma forma que usted usa un arreglo para un buffer, pero con el beneficio de que ahora puede usar los nombres de los campos para manipular cada uno de ellos!
+
+4. Qué precauciones debo tener cuando use Objetos DataBase ?
+
+Clipper restringe los nombres de símbolos a un máximo de 10 caracteres de longitud, así que no puede nombres de campo con 10 caracteres, pues en la OOPS de Clipper cuando usted asigna a DATA, Clipper internamente coloca un guión bajo como inicio del nombre DATA:
+
+// ABCDEFGHIJ ==> Su nombre de campo
+
+<code clipper>
+MsgInfo( oDbf:Abcdefghij )	// Funcionará perfecto!
+
+oDbf:Abcdefghij = ...       	// No funcionará!
+
+// como  Clipper hará:
+// oDbf:_Abcdefghij
+// eso excede 10 caracteres
+</code>
+Recuerde: Si va a usar Objetos DataBase de Fivewin entonces no puede usar nombres de campo mayores a 9 caracteres !!!
+
+5. Donde encuentro un ejemplo funcional ?
+
+Vea SAMPLES\Dbf01.prg ahí tiene un ejemplo de Objeto Database de Fivewin.
+
+Disfrute los Objetos DataBase, son extremadamente poderosos y le ahorran mucho trabajo! además de ser 100% compatible con su código existente !!!

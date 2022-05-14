@@ -1,0 +1,96 @@
+====== Algunas notas acerca de xBrowse ======
+Por favor anota en esta página cualquier información relativa al XBrowse que pueda ser útil
+
+
+===== Especificar la alineación de la cabecera =====
+  oCol:nHeadStrAlign := AL_CENTER // ó AL_LEFT ( default ) ó AL_RIGHT
+
+
+
+
+===== Mostrar un botón en una columna =====
+  oCol:nEditType := EDIT_BUTTON
+  oCol:bEditBlock := { || <button action> }
+
+Si quieres que el botón muestre una imagen,
+  oCol:addResource( "ResourceName" )
+  oCol::nBtnBmp := 1         
+
+
+==== Creando columnas calculadas ====
+http://forums.fivetechsupport.com/viewtopic.php?f=3&t=18266
+
+
+===== Mostrar xBrowse en modo deshabilitado =====
+[[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=17412|Please read this thread at the forum]]
+
+
+===== Control oXBrw:report() columns' widthes =====
+XBrowses column object's data nWidth is in pixels. Report class requires data width to be specified in number of characters.
+
+In the recent versions of XBrowse the column object has a new DATA **nDataLen** and **nDataDec** ( in addition to the earlier **cDataType** ).
+
+We can now specify a column with either in pixels by assigning a value to **oCol:nWidth** or in number of characters by assigning value to **oCol:nDataLen**. 
+If we specify **oCol:nDataLen** ( instead of **oCol:nWidth** in pixels ), Xbrowse calculates the pixel width for display depending on the font size. In addition, **oCol:nDataLen** is used to specify the report column width in the Report method.
+
+So, to control the report column widths,
+(1) Use picture clause ( Report allocates as much space that is required )
+or
+(2) Specify **oCol:nDataLen** instead of **oCol:nWidth** while defining the xbrowse column.
+
+While defining Xbrowse in command mode, if we specify sizes as negative numbers in **COLSIZES** clause, they are considered as **nDataLen**.
+
+Example:
+
+  REDEFINE XBROWSE oBrw COLUMNS ..... COLSIZES 80, -12, 100, -15
+
+In this case, 80 and 100 are considered as pixel widths and are assigned to **oCol:nWidth** and 12 and 15 are considered as widths in number of characters and assigned to **oCol:nDataLen**
+
+With this feature we can easily control the Report column widths
+
+Credit: G. N. Rao
+
+
+
+===== Display row numbers =====
+The example given below works for XBrowse of any data ( DBF, ADO, TDataBase, Array or any object being browsed )
+  ADD TO oBrw AT 1 DATA oBrw:KeyNo() HEADER 'No' PICTURE '9999'
+
+
+If you prefer the OOPs way of coding
+  WITH OBJECT oBrw:InsCol( 1 )
+      :bEditValue    := { || oBrw:KeyNo() }
+      :cEditPicture  := '9999'
+      :cHeader       := 'LineNo'
+  END
+
+FWH documentation advises not to use :bStrData directly ( though it works for reasons of backward compatibility). Preferred way is to assign the :bEditValue and assign picture if needed to cEditPicture.
+Credit: G. N. Rao
+
+
+===== Gradient Rows =====
+{{:gradrow.jpg|:gradrow.jpg}}
+
+[[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=17545|Code and pictures at the forum]]
+
+
+
+===== Frequently-used oCol properties =====
+DATA
+----
+::bEditBlock := {|row, col, oCol| MyEdit(row, col, oCol)} // override xBrowse default edit method
+
+::bEditValid := {|oGet, oCol| MyValid(oGet, oCol)} // validation routine
+
+::bEditWhen  := {|oCol| MyWhen( oCol)} 
+
+::bOnPostEdit
+
+::oEditGet // the get object that is used during an edit
+
+METHOD
+------
+::refreshCurrent() // refresh current row only
+===== Sorting =====
+  * Autosort doesn't work if xBrw:lAllowColSwapping = .f.
+    * See http://forums.fivetechsupport.com/viewtopic.php?f=3&t=10729&p=98864#p98864

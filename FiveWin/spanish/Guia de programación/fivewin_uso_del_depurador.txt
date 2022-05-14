@@ -1,0 +1,11 @@
+FiveWin proporciona su propio depurador. Simplemente use **/b** cuando compile sus PRGs y el depurador aparecerá automaticamente.
+
+Para probarlo, sitúese en la carpeta FWH\samples y escriba:
+
+**buildh.bat tutor02 /b**
+
+{{:debugger1.png|:debugger1.png}}
+
+Por otro lado FiveWin genera un archivo Error.log muy completo cuando ocurre un error. Use la información que nos proporciona para que le ayude a encontrar la falla en su aplicación.
+
+Podría usar el depurador de FiveWin únicamente en aquellas circunstancias donde no se encuentre la solución. De todas formas, le recomendamos ampliamente, que se ponga en contacto con nosotros si tiene un problema que no pueda resolver con sus medios (en lugar de pasar mucho tiempo buscando y buscando!)
