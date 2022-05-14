@@ -1,0 +1,21 @@
+
+====== LPToDP() ====== 
+LPToDP()
+
+Converts logical coordinates into device coordinates
+====== Sintaxis ======
+ LPToDP( <hDC>, <aPoint> ) --> lSuccess 
+====== Parámetros ======
+  <hDC>     Identifies the device context. 
+  <aPoint>  Contains a { nRow, nCol } point description to be mapped into device coordinates. 
+====== Devuelve ======
+ <lSuccess> If the operation was completed successfully. 
+
+Observations:
+
+ This function store the new values inside the same aPoint supplied
+array. 
+====== Código fuente ======
+ SOURCE\WINAPI\Point.c 
+====== Ver también ======
+ DPToLP()

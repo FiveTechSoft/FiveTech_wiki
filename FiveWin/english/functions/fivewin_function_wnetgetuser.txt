@@ -1,0 +1,98 @@
+====== WNetGetUser() ====== 
+
+
+WNetGetUser()
+
+Retrieves the actual local Net user
+
+
+====== Syntax ======
+
+
+ WNetGetUser() --> cUserName 
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cUserName> The name of the current station user. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestNet.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Net.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WNetGetUser() WNetError() WNetGetErrorText() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

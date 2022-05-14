@@ -1,0 +1,58 @@
+====== Creating a ClipBoard Object ======
+
+<code clipper>
+ DEFINE CLIPBOARD <oClp> ;  
+ [ FORMAT TEXT | OEMTEXT | BITMAP | DIF ] ;  
+ [ OF <oWnd> ]  
+</code>
+<code clipper>
+ ACTIVATE CLIPBOARD <oClp>  
+</code> 
+
+| <oClp> | A reference to the Clipboard Object. |
+| <oWnd> | The Window which is managing the Clipboard. |
+| <cText> | The Text to place at the Clipboard. |
+
+====== CLAUSES ======
+
+| TEXT OEMTEXT | Normal Text. |
+| BITMAP | Not implemented yet. |
+| DIF | Not implemented yet. |
+
+====== Sample code ======
+\Fwh\Samples\TestClip.Prg
+<code clipper>
+// This sample shows how to use Windows ClipBoard from FiveWin.
+// To FiveWin, the ClipBoard is also an object!
+
+#include "FiveWin.ch"
+
+static oWnd, oClp
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 ;
+      TITLE "Using Windows ClipBoard" 
+
+
+   DEFINE CLIPBOARD oClp OF oWnd
+
+   SET MESSAGE OF oWnd TO FWVERSION CENTERED
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+// To Copy some text to the Clip Board, you may use the following command
+oClp:SetText( "Hello, This is the placed in clipboard now" )
+
+// To retrieve text from the  Clip Board, you may use the following command
+cText := oClp:GetText()
+</code>  
+
+====== Screen snapshot ======
+{{:clipboard.jpg|:clipboard.jpg}}
+
+====== See also ======
+[[fivewin_class_tclipboard | Class TClipboard]]

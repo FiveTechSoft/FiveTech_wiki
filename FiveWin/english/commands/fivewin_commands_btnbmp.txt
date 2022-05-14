@@ -1,0 +1,122 @@
+====== Bitmapped buttons ======
+
+These buttons are also explained on the command Bar, but you also can place them anywhere not only on the tool bar. 
+
+
+====== Creating a bitmap button from source code ======
+
+<code clipper>
+ @ <nRow>, <nCol> BTNBMP [<oBtn>] ;  
+ [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>, cResName3>, cResName4>] ] ;  
+ [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, <cBmpFile3>, <cBmpFile4>]];  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ ACTION <uAction> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ ADJUST ] ;* Obsolete  
+ [ UPDATE ] ;  
+ [ PROPMT < cPrompt> ];  
+ [ FONT <oFont> ];  
+ [ NO BORDER <lNoBorder> ]  
+</code>
+
+
+====== Creating a bitmap button from resources ======
+
+<code clipper>
+ REDEFINE BTNBMP [<oBtn>] ;  
+ [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>,cResname3,cResname4>] ] ;  
+ [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, cBmpFile3, cBmpFile4>]];  
+ [ ACTION | EXEC | ON CLICK <uAction> ] ;  
+ [ ID <nId> ] ;  
+ [ OF <oWnd> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ ADJUST ] ; * Obsolete  
+ [ WHEN <uWhen> ] ;  
+ [ UPDATE <lUpdate> ] ;  
+ [ TOOLTIP <cToolTip> ] ;  
+ [ PROMPT < cPrompt> ];  
+ [ FONT <oFont> ];  
+ [ NO BORDER <lNoBorder> ]  
+</code> 
+ 
+
+| <oBtn> | A reference to the Button Object. |
+| <nRow>, <nCol> | The coordinates on screen. We simulate Text coordinates. |
+| <cResName1>, <cResName2>, <cResName3> | The resource name of the Bitmap to display. If only cResName1 is supplied, all the other button state will use it. cResName2 is the image to display when a button is pressed, cResName3 when disable and cResName4 is on mouse-over. These are used for accessing bitmaps stored in a Resource file (and .rc file or a .dll file) |
+| <cBmpFile1>, <cBmpFile2>, <cBmpFile3> | Similar logic to cResNamex above. These are used for accessing bitmaps stored on the hard disk (my.bmp) |
+| <nWidth>, <nHeight> | The width and height of the buttons of the bar. |
+| <oWnd> | A reference to the container Window. |
+| <uAction> | The action to be performed when clicking the Button. |
+| <cMsg> | The message to display on the message bar of the container Window of the Bar object which contains the BitmapButton. |
+| <uWhen> | An expression that indicates if the button of the buttonbar is enabled or not. |
+| <nId> | The identifier for the button placed at a DialogBox. |
+| <cToolTip> | The text to show on a associated floating tooltip. |
+| <nPos> | An optional left position coordinate. |
+| <cPrompt> | An optional prompt to display. |
+| <oFont> | An optional font to use for the prompt. |
+| <lNoBorder> | To show a flat style. |
+
+====== CLAUSES ======
+| ADJUST | Obsolete      To automatically adjust the bitmap to the size of button. This clause is obsolete and is not supported any more |
+| UPDATE | For bitmap buttons placed on a DialogBox (without a buttonbar). The button will update its image automatically when doing a oDlg:Update(). |    
+
+====== NOTE ======
+The clause ADJUST is not supported because now the bitmaps background color is automatically adjusted to his window or control container. The pixel 0,0 (Left-Top) indicates the mask color to use for the adjustment. It is important that the color in that pixel is not used on any other part of the bitmap except where the mask should be applied. This kind of color adjustment is not possible with bitmap streching 
+
+====== Sample Code ======
+<code clipper>
+#include "Fivewin.ch"
+FUNCTION MAIN()
+
+   Local oFont, oWnd, oBar, b1, b2, b3, b4, b5
+
+   DEFINE FONT oFont NAME "MS Sans Serif" SIZE 0,-10
+
+   DEFINE WINDOW oWnd FROM 0,0 TO 474,639 PIXEL TITLE "Test"
+
+   oWnd:SetFont(oFont)
+
+   DEFINE BUTTONBAR oBar TOP _3D SIZE 80,80 OF oWnd
+
+   DEFINE BUTTON RESOURCE "TOP"     TOP    PROMPT "Top"    NOBORDER OF oBar
+   DEFINE BUTTON RESOURCE "LEFT"    LEFT   PROMPT "Left"   NOBORDER OF oBar
+   DEFINE BUTTON RESOURCE "BOTTOM"  BOTTOM PROMPT "Bottom" NOBORDER OF oBar
+   DEFINE BUTTON RESOURCE "RIGHT"   RIGHT  PROMPT "Right"  NOBORDER OF oBar
+   DEFINE BUTTON RESOURCE "CENTER"  CENTER PROMPT "Center" NOBORDER OF oBar
+
+   @100,100 BTNBMP RESOURCE "TOP"    TOP    PROMPT "Top"    SIZE 80,80 OF oWnd
+   @180, 20 BTNBMP RESOURCE "LEFT"   LEFT   PROMPT "Left"   SIZE 80,80 OF oWnd
+   @260,100 BTNBMP RESOURCE "BOTTOM" BOTTOM PROMPT "Bottom" SIZE 80,80 OF oWnd
+   @180,180 BTNBMP RESOURCE "RIGHT"  RIGHT  PROMPT "Right"  SIZE 80,80 OF oWnd
+   @180,100 BTNBMP RESOURCE "CENTER" CENTER PROMPT "Center" SIZE 80,80 OF oWnd
+
+   @100,400 BTNBMP b1 RESOURCE "TOP","","TOP0"       TOP    PROMPT "Top"    SIZE 80,80 OF oWnd
+   @180,320 BTNBMP b2 RESOURCE "LEFT","","LEFT0"     LEFT   PROMPT "Left"   SIZE 80,80 OF oWnd
+   @260,400 BTNBMP b3 RESOURCE "BOTTOM","","BOTTOM0" BOTTOM PROMPT "Bottom" SIZE 80,80 OF oWnd
+   @180,480 BTNBMP b4 RESOURCE "RIGHT","","RIGHT0"   RIGHT  PROMPT "Right"  SIZE 80,80 OF oWnd
+   @180,400 BTNBMP b5 RESOURCE "CENTER","","CENTER0" CENTER PROMPT "Center" SIZE 80,80 OF oWnd
+
+   b1:Disable()
+   b2:Disable()
+   b3:Disable()
+   b4:Disable()
+   b5:Disable()
+
+   DEFINE MSGBAR OF oWnd PROMPT "Testing bitmaped buttons with captions" ;
+      TIME DATE NOINSET
+
+   ACTIVATE WINDOW oWnd
+
+RETURN
+</code> 
+
+====== Screen Snapshot ======
+{{:btnbmp.jpg|:btnbmp.jpg}} 
+
+====== See also: ======
+[[fivewin_commands_buttons | Tbutton]] \\
+[[fivewin_class_tbutton | Class Tbutton]] \\
+[[fivewin_class_tbuttonbmp | Class TButtonBmp]]
+

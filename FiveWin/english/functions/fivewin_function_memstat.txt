@@ -1,0 +1,124 @@
+====== MemStat() ======
+
+
+
+Returns a Dialog with all memory values
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MemStat()  --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function checks all Clipper memory values. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Memory.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\MemStat.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GlobalFreeSpace() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,108 @@
+====== PolyPolygon() ====== 
+
+
+
+PolyPolygon()
+
+
+
+
+
+
+Draws several polygons
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PolyPolygon( <hDC>, <aPolygon1>, ...<aPolygonN> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the device context where to paint. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aPolygon1> An array where each element is also an array of two numeric
+values identifiying a point. The first and initial points have to be the
+same. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aPolygonN> aPolygon = { { nCol1, nRow1 }, { nCol2, nRow2 }, ... {
+nColN, nRowN }, { nCol1, nRow1 } } 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating that the operation was performed
+successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Drawing.c 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

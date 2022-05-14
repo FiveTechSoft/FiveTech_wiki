@@ -1,0 +1,116 @@
+====== Paint3D() ====== 
+
+
+
+Paint3D()
+
+
+
+
+
+
+Displays text with 3D look
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Paint3D( <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the control we want to look 3D. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This is an old function we used to have 3D look before using SET 3DLOOK
+ON (using Ctl3d.dll). We have left it just a sample. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Paint3d.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SET 3DLOOK ON, TControl:Set3DLook() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

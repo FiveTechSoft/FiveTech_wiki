@@ -1,0 +1,137 @@
+
+====== BuildCommDCB() ======
+
+Translates a device string into a control block 
+
+====== Syntax: ======
+ 
+BuildCommDCB( <cInfoDef>, @<cDevBlock> ) --> lSuccess  
+
+The BuildCommDCB function translates a device-definition string into appropriate serial Device Control Block (DCB) codes.  
+
+====== Parameters: ======
+^Parameter^Description^
+|<cInfoDef>| A string that specifies device-control information. The string has the same form as the parameters used in the MsDos mode command.  |
+|<cDevBlock>| A string passed by reference that will receive the translated string. Its structure defines the control settings for the serial-communications device.  |
+
+====== Returns: ======
+ 
+Returns .T. if everything was OK.
+
+** Observations **
+
+This is a WinApi communication function. 
+
+====== Sample: ======
+See SAMPLES\CommTest.prg  
+<code clipper>
+/*
+   Function to test for Serial ports and their acceptable speeds.  May run
+   differently under different versions of Windows.
+
+   Ned Robertson -- 5/30/2001
+*/
+
+#include 'Fivewin.ch'
+#include 'fileio.ch'
+
+STATIC nComm
+
+//----------------------------------------------------------------//
+
+Function CommTest ()
+
+LOCAL cF := 'commTest.log', cP, cR, j, i
+LOCAL aSpd := { '9600', ; // Ol' Faithful
+               '14400', ; // Common modem speed
+               '19200', ; // Double Ol' Faithful - popular in telephony
+               '28800', ; // Common modem speed
+               '33600', ; // semi-common modem speed
+               '38400', ; // Quadruple Ol' Faithful - popular in telephony
+               '57600', ; // Common modem speed
+              '115200'  } // Upper limit of serial port
+
+FErase( cF )
+
+FOR i = 1 TO 4
+
+   cP := LTrim( Str( i ) )
+
+   IF Empty( CommOpen( cP, aSpd[ 1 ] ) )
+
+      CloseComm( nComm )
+
+      FOR j = 1 TO Len( aSpd )
+
+         cR := CommOpen( cP, aSpd[ j ] )
+
+         IF Empty( cR )
+
+            LogFile( cF, { 'Successful Open of COM' + cP + ' at ' + aSpd[ j ] } )
+
+         ELSE
+
+            LogFile( cF, { cR } )
+
+         ENDIF
+
+         CloseComm( nComm )
+
+      NEXT
+
+   ELSE
+
+      LogFile( cF, { 'No port found at COM' + cP } )
+
+   ENDIF
+
+NEXT
+
+Return NIl
+
+//----------------------------------------------------------------//
+
+Function CommOpen ( cPort, cSpeed )
+
+LOCAL cDcb, cRv := '', cS := 'COM' + cPort + ':' + cSpeed + ',n,8,1'
+
+nComm := OpenComm( 'COM' + cPort, 1024 , 128 )
+
+IF nComm >= 0                     // We have a valid port...
+
+   IF BuildCommDcb( cS, @cDcb ) // Set Speed, etc
+
+      #ifdef __CLIPPER__
+         IF SetCommState( cDcb )
+      #else   
+         IF SetCommState( nComm, cDcb )
+      #endif   
+
+         cRv := ''
+
+      ELSE
+
+         cRv := 'Failed to SetCommState on COM' + cPort + ' at ' + cSpeed
+
+      ENDIF
+
+   ELSE
+
+      cRv := 'Failed to BuildCommDCB on COM' + cPort + ' at ' + cSpeed
+
+   ENDIF
+
+ELSE
+
+   cRv := 'Failed to find COM' + cPort
+
+ENDIF
+
+Return cRv
+
+//----------------------------------------------------------------//
+</code>
+
+====== Source Code: ======
+ 
+ SOURCE\WINAPI\comm.c  

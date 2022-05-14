@@ -1,0 +1,161 @@
+====== WBrwScroll() ====== 
+
+
+
+WBrwScroll()
+
+
+
+Scroll some text lines in a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ WBrwScroll( <hWnd>, <nRows>, <hFont> )  --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the window to scroll some text lines. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRows> The number of rows to scroll. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> The font to use to calculate the rows height. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is used by FiveWin when scrolling some rows in a TWBrowse
+control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\WBrowse.prg METHOD GoUp() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndBrow.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WBrwLine() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,93 @@
+
+======  GetSubMenu() ====== 
+
+
+
+
+
+It returns the handle of a menu pop-up
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetSubMenu( <hMenu>, <nPos> ) --> hMenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMenu> Handle of the menu that contains to the submenu 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPos> Position of the submen� in the main menu. You begins to count
+from the zero. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hMenu> Handle of the submenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

@@ -1,0 +1,72 @@
+
+====== RegisterClass() ====== 
+RegisterClass()
+
+Register a new Windows class
+====== Sintaxis ======
+ RegisterClass( <cClassName>, <nStyle>, <nClsExtra>, <nWndExtra>,
+<hCursor>, <hBrush>, <cMenuName>, <nWndProc> ) --> lSuccess 
+====== Parámetros ======
+  <cClassName> Specifies the name of the new class 
+  <nStyle>     Specifies the class style. These styles can be combined by
+               using the bitwise OR operator. This can be any combination of the
+               following values: 
+
+           Value            Meaning    
+           CS_BYTEALIGNCLIENT   Aligns the client area of a window on the byte 
+                                boundary (in the x-direction).   
+           CS_BYTEALIGNWINDOW   Aligns a window on the byte boundary (in the
+                                x-direction). This flag should be set byapplications
+                                that perform bitmap operations in windows by using
+                                the BitBlt function.
+           CS_CLASSDC           Gives the window class its owndisplay context (shared
+                                by instances).   
+           CS_DBLCLKS           Sends double-click messages to a window.   
+           CS_GLOBALCLASS       Specifies that the window class isan application global
+                                class. An application global class is created by an
+                                application or library and is available to all
+                                applications. The class is destroyed when the application
+                                or library that created the class exits; it is essential,
+                                therefore, that all windows created with the application
+                                global class be closed before this occurs.
+           CS_HREDRAW           Redraws the entire window if the horizontal size changes.   
+           CS_NOCLOSE           Inhibits the close option on the System menu.   
+           CS_OWNDC             Gives each window instance its own display context. Note
+                                that although the CS_OWNDC style isconvenient, it must be
+                                used with discretion because each display context occupies
+                                approximately 800 bytes of memory.
+           CS_PARENTDC          Gives the display context of the parent window to the
+                                window class.   
+           CS_SAVEBITS          Specifies that the system should try to save the screen
+                                image behind a window created from this window class as a
+                                bitmap. Later, when the window is removed, the system uses
+                                the bitmap to quickly restore the screen image. This style
+                                is useful for small windows that are displayed brieflyand
+                                then removed before much other screen activity takes place
+                                (for example, menus or dialog boxes). This style increases
+                                the time required to display the window since the system
+                                must first allocate memory to store the bitmap.
+           CS_VREDRAW           Redraws the entire window if the vertical size changes.   
+  <nClsExtra>  Specifies the number of bytes to allocate following the window class
+               structure. These bytes are initialized to 0. 
+  <nWndExtra>  Specifies the number of bytes to allocate following the window instance.
+               Those bytes are initialized to 0. 
+  <hCursor>    Identifies the class cursor. 
+  <hBrush>     Identifies the class background brush. By default FiveWin assigns dark
+               gray color brush. 
+  <cMenuName>  Identifies the name of a resource menu. 
+  <nWndProc>   A pointer to the window procedure. By default FiveWin uses DefWindowProc(). 
+====== Devuelve ======
+ <lSuccess> If the class is registered successfully. 
+
+Observations:
+
+ FiveWin manages all these functions automatically. We just provide here
+its description with the intention that you get a better understanding,
+but we insist on the idea that you let FiveWin manage all these. 
+====== Ejemplo ======
+ SOURCE\CLASSES\Window METHOD Register() 
+====== Código fuente ======
+ SOURCE\WINAPI\RegClass.c 
+====== Ver también ======
+ Class TWindow METHOD Register

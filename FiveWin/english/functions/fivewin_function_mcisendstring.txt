@@ -1,0 +1,126 @@
+====== MCISendString() ======
+
+
+
+Send a command string to a MCI device
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MCISendString( <cCommandStr>, <@Buffer>, <hWnd> ) --> nError 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ ====== Parameters ====== 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cCommandStr> The command includes the device to which goes directed. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@Buffer> Buffer of return of data 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <nError> The function return 0 if is executed corectly. In another way
+we will have to check the function mciGetErrorString 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\MMEDIA\AVIVIDEO.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MCI.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

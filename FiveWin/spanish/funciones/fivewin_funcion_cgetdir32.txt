@@ -1,0 +1,27 @@
+
+====== cGetDir32() ======
+cGetDir32()
+Dialog box to select directory.
+
+====== Sintaxis ======
+ cGetDir32( <cTitle>, [<cInitDir>] ) --> cDir 
+ This function invokes the 32 bits Windows default select directory
+DialogBox. 
+
+ This function only works on Win 95/98 and NT machines. The file
+RunDlg32.exe must be present on every PC in the \windows or
+\windows\system directory. 
+
+====== Parámetros ======
+ <cTitle> Title of the dialog box 
+ <cInitDir> Initial directory 
+
+====== Devuelve ======
+ <cDir> Selected directory 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\DLGS32.PRG 
+
+====== Ver también ======

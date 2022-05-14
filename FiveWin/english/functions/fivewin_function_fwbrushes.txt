@@ -1,0 +1,23 @@
+====== FwBrushes() ======
+Creates any of the predefined FiveWin bitmaps. This is a FiveWin internal function that creates a bitmap to build the FiveWin extended style brushes.  
+
+====== Syntax ====== 
+FWBrushes( <nBrushId> )  --> <hBitmap>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <nBrushId> | A numeric identifier to select the predefined type of brush. |
+
+====== Return ====== 
+^Returns^Description^
+| <hBitmap> | The handle of the created bitmap. FiveWin uses it to build the brush. The destruction of this bitmap is done automatically.  |
+
+====== Sample ======
+
+
+====== Source Code ====== 
+
+Not provided.  
+
+====== See Also ====== 
+[[fivewin_function_fwbitmap|FWBitmap()]]

@@ -1,0 +1,93 @@
+
+====== DrawText() ======
+DrawText()
+
+Draws formatted text into a given rectangle
+
+====== Sintaxis ======
+ DrawText( <hDC>, <cText>, <aRect>, <nStyle> ) --> nTextHeight 
+
+ This function draws formatted text into the given rectangle. It formats
+text by expanding tabs into appropriate spaces, aligning text to the
+left, right, or center of the rectangle, and breaking text into lines
+that fit within the rectangle. 
+
+ The DrawText function uses the device context's selected font, text
+color, and background color to draw the text. Unless the DT_NOCLIP format
+is specified, DrawText clips the text so that the text does not appear
+outside the given rectangle. All formatting is assumed to have multiple
+lines unless the DT_SINGLELINE format is specified. 
+====== Parámetros ======
+ <hDC> The handle of the device context where to paint. 
+
+ <cText> The string to draw. 
+
+ <aRect> A Clipper array of four elements: { nTop, nLeft, nBottom, nRight
+} 
+
+ <nStyle> The style to use for drawing the text: 
+
+  DT_BOTTOM         Specifies bottom-aligned text. This value must be
+            combined with DT_SINGLELINE.   
+  DT_CALCRECT         Determines the width and height of the rectangle. If
+            there are multiple lines of text, DrawText will use the width of the
+            rectangle pointed by aRect and extend the base of the rectangle to bound
+            the last line of text. If there is only one line of text, DrawText will
+            modify the right side of the rectangle so that it bounds the last
+            character in the line. In either case, DrawText returns the height of the
+            formatted text but does not draw the text.
+  DT_CENTER         Centers text horizontally.   
+  DT_EXPANDTABS      Expands tab characters. The defaul number of
+            characters per tab is eight.   
+  DT_EXTERNALLEADING   Includes the font external leading in line height.
+            Normally, external leading is not included in the height of a line of
+            text.   
+  DT_LEFT         Left-aligns text.   
+  DT_NOCLIP         Draws without clipping. DrawText is somewhat faster
+            when DT_NOCLIP is used.   
+  DT_NOPREFIX         Turns off processing of prefix characters. Normally,
+            DrawText interprets the mnemonic & as a directive to underscore the
+            character that follows, and the mnemonic && as a directive to print a
+            single &. By specifying DT_NOPREFIX, this processing is turned off.
+  DT_RIGHT         Right-aligns text.
+  DT_SINGLELINE      Specifies single line only. Carriage returns and
+            line-feeds do not break the line.   
+  DT_TABSTOP         Sets tab stops. The high-order byte of the fuFormat
+            parameter is the number of characters for each tab. The default number of
+            characters per tab is eight.
+  DT_TOP         Specifies top-aligned text (single line only).   
+  DT_VCENTER         Specifies vertically centered text (single line only).
+  DT_WORDBREAK      Specifies word breaking. Lines are automatically broken
+            between words if a word would extend past the edge of the rectangle
+            specified by aRect parameter. A carriage return/line-feed sequence will
+            also break the line.
+
+ Note that the DT_CALCRECT, DT_EXTERNALLEADING, DT_INTERNAL, DT_NOCLIP,
+and DT_NOPREFIX values cannot be used with the DT_TABSTOP value. 
+
+  #define DT_TOP         x0000   
+  #define DT_LEFT         x0000   
+  #define DT_CENTER         x0001   
+  #define DT_RIGHT         x0002   
+  #define DT_VCENTER         x0004   
+  #define DT_BOTTOM         x0008   
+  #define DT_WORDBREAK      x0010   
+  #define DT_SINGLELINE      x0020   
+  #define DT_EXPANDTABS      x0040   
+  #define DT_TABSTOP         x0080   
+  #define DT_NOCLIP         x0100   
+  #define DT_EXTERNALLEADING   x0200   
+  #define DT_CALCRECT         x0400   
+  #define DT_NOPREFIX         x0800   
+  #define DT_INTERNAL         x1000   
+
+====== Devuelve ======
+
+ <nTextHeight> Specifies the height of the text if the function is
+successful. 
+
+====== Código fuente ======
+ SOURCE\WINAPI\Text.c
+
+====== Ver también ======
+ TextOut() ExtTextOut() 

@@ -1,0 +1,22 @@
+
+====== GetParam() ======
+GetParam()
+
+Retrieves any parameter value from the stack
+====== Sintaxis ======
+ GetParam( <nStackLevel>, <nIndex> ) --> uParameter 
+====== Parámetros ======
+  <nStackLevel> The depth of the activation level to query. (Similar to
+      Clipper ProcName(...) parameters). A 0 value means the current one. 1
+      means the previous, 2 the previous of that one, etc... By default it is
+      0. 
+  <nIndex> The order in which the parameter values were provided to that
+      stack level function. 
+====== Devuelve ======
+ <uParameter> The value of the parameter requested. 
+====== Código fuente ======
+ Not provided. 
+====== Ejemplo ======
+ See SOURCE\FUNCTION\ErrorSysW.prg 
+====== Ver también ======
+ GetLocal()

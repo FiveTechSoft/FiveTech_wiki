@@ -1,0 +1,19 @@
+====== Creates a window from source code ======
+<code clipper>
+DEFINE WINDOW <oWnd> ;
+   [ TITLE <cTitle> ] ;
+   [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;
+   [ TEXTURED ] ; 
+   [ PANELED ]
+</code>
+
+====== Activates the window ======
+<code clipper>
+ACTIVATE WINDOW <oWnd> ;
+   [ ON [ LEFT ] CLICK <uLClicked> ] ;
+   [ VALID <uValid> ]
+</code>
+====== Source code ======
+include\FiveMac.ch
+====== See Also ======
+[[fivemac_class_twindow|Class TWindow]]

@@ -1,0 +1,117 @@
+SetPolyFillMode()
+
+
+
+SetPolyFillMode()
+
+ Previous  Top  Next
+
+
+
+
+Sets the specified polygon filling mode
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetPolyFillMode( <hDC>, <nMode> ) --> nPrevMode 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMode> Poligon filling mode 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ALTERNATE   1 
+
+
+ 
+
+
+ WINDING   2 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nPrevMode> Previous mode. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\DRAWING.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

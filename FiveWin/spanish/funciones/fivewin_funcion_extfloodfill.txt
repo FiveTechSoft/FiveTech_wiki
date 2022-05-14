@@ -1,0 +1,151 @@
+ExtFloodFill()
+
+
+
+ExtFloodFill()
+
+ Previous  Top  Next
+
+
+
+
+Filled a screen area with a certain color
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ExtFloodFill( <hDC>, <nCol>, <nRow>, <nRGBColor>, <nType> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nCol> Row of the point from where you will begin to color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Column of the point from where you will begin to color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRGBColor> Color that will be used to color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> Fill type 
+
+
+ 
+
+
+ 
+
+
+
+
+
+FLOODFILLBORDER      Fill area is bounded by the color specified by the
+nRGBColor parameter.
+FLOODFILLSURFACE      Fill area is defined by the color specified by the
+nRGBColor parameter.Filling continues outward in all directions as long
+as the color is encountered.
+
+
+
+
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Retrives .t. if the function is successful 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\DRAWING.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

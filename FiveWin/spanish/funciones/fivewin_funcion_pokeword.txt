@@ -1,0 +1,19 @@
+
+====== PokeWord() ======
+
+Writes a word of an address of certain memory
+
+====== Sintaxis ======
+ PokeWord( <nSegment>, <nOffset>, <nWord> ) --> nil 
+====== Parámetros ======
+|<nSegment>|Segment of memory to which we will access| 
+|<nOffset>|Displacement of memory inside the segment nSegment| 
+|<nWord>|Word written in the address of given memory| 
+====== Devuelve ======
+|nil|nada| 
+====== Ejemplo ======
+SAMPLES\PokePOKE.PRG 
+====== Código fuente ======
+SOURCE\WINAPI\PokePOKE.C
+====== Ver también ======
+[[fivewin_funcion_peekword|PeekWord()]]

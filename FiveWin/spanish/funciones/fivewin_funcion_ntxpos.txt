@@ -1,0 +1,30 @@
+
+====== NtxPos() ====== 
+NtxPos()
+
+Retrieves the relative index position of a record
+====== Sintaxis ======
+ NtxPos( <nIndexOrd>, <nRecNo> ) --> nRelativeRecNoPos 
+====== Parámetros ======
+  <nIndexOrd>  It is the index order. By default 0. 
+  <nRecNo>     It is the recno to get its relative NTX index position. 
+====== Devuelve ======
+ <nRelativeRecNoPos> It is a numeric value with the resulting relative
+record position. 
+====== Código fuente ======
+ SOURCE\Function\NtxPos.c 
+
+Comments:
+
+ FiveWin provides this function to query a NTX file for a record relative
+position. It is needed for properly update a browse scrollbar after
+performing a seek: 
+<code clipper>
+ SEEK <Expression> 
+ if Found() 
+    <oBrowse>:oVScroll:SetPos( ; 
+    NtxPos( IndexOrd(), RecNo() ) ) 
+ endif 
+</code>
+====== Ver también ======
+ Class TScrollBar METHOD SetPos()

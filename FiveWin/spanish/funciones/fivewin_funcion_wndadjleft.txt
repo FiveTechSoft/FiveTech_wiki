@@ -1,0 +1,127 @@
+WndAdjLeft()
+
+
+
+WndAdjLeft()
+
+ Previous  Top  Next
+
+
+
+
+Align to the left of the window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndAdjLeft( <hWnd>, <hTop>, <hBottom> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hTop> Handle of the oTop object 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBottom> Handle of the oBottom object 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+ 
+
+
+ 
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTALIGN.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

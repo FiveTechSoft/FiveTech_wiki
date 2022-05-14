@@ -1,0 +1,105 @@
+
+======  GetMDIChlProc() ====== 
+
+
+
+
+Processor of messages for defect for MDIChild
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetMDIChlProc() --> nlPointer 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ It returns the procedure that manages the messages that the window
+MDIChild doesn't manage explicitly. The messages of window that
+expecificamente is not processed by the one procedure DefWindowProc will
+spend to DefMDIChildProc. 
+
+
+ 
+
+
+ 
+
+
+
+Observations
+
+
+
+
+
+ All the messages that a window doesn't process are passed to the
+function for defect so that it processes them (DefWinProc). When instead
+of with a normal window we work with windows MDI the procedures call
+themselves of different it forms: DefFrameProc and DefMDIChildProc. Our
+function obtains the procedure DefMDIChildProc. Summarizing is as a curl
+do case... endcase that was treating the possible messages of a window
+and if after checking all the messages doesn't find it it would use the
+action specified in " otherwise ". 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MDI.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

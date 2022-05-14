@@ -1,0 +1,24 @@
+====== Class TFTPServer ======
+
+Internet FTP server class                                                      
+====== DATA ======
+|oSocket|Main listening socket object|
+|aSockets|Clients attending sockets objects|
+|cAddress|Main socket IP address|
+|cDefPath|Default FTP directory|
+|lDebug|Debug mode|
+|cLogFile|Log filename written in debug mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the socket|
+|End|Close the socket|
+|OnAccept|Accept event handler|
+|OnRead|Read event handler|
+|Sockets|Shows the total number of attending sockets|
+|Dir|Returns the contents of the default directory|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TFTPSERVER.PRG

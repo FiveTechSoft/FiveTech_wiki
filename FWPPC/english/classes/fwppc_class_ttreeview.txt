@@ -1,0 +1,58 @@
+====== Class TTreeView ======
+
+Standard Tree view control of Windows 32 bits API (Commoncontrols.dlg).        
+In order to use it from resources you MUST indentify the control as:           
+'SysTreeView32'                                                                
+Inherits from TControl                                                         
+====== DATA ======
+|aItems|Array of TTVItem objects.|
+|oImageList|TImagelist object|
+|bChanged|CodeBlock to evaluate when changing the state of the|
+|Tree|view|
+====== METHODS ======
+|New|Constructor from source code: nTop, nLeft, oWnd,|
+|nClrFore,|nClrBack, lPixel, lDesign, nWidth, nHeight, cMsg|
+|ReDefine|Constructor from resources: nId, oWnd, nClrFore,|
+|nClrBack,|lDesign, cMsg|
+|Add|Add an item to the Tree view. Parameters: cPrompt:|
+|String|for the new item nImage : Ordinal image of the oImageList object|
+|nValue|: A value that can be retrieved later using the function|
+|TVIParam()|Returns a TTVItem object|
+|CollapseAll|Collapses all the TreeView branches|
+|CollapseBranch|Collapses the given item|
+|DeleteAll|Deletes all TTreeview items|
+|Expand|Expands all the TreeView branches|
+|ExpandAll|Expands all the branches of the given item|
+|ExpandBranch|Expands the given item|
+|GetCheck|Returns the checkbox state of an item|
+|GetItem|Returns TTVItem object by ist hanlde Parameter:|
+|hItem:|TTVItem handle|
+|GetSelected|Returns selected TTVItem object|
+|GetSelText|Returns the prompt of current selected item|
+|HitTest|Returns the TTVItem at specific coordinates|
+|Parameters:|nRow, nCol Return a TTVItem object or nil This method can be|
+|used|to change the actual selected Item on left, right or double left|
+|mouse|click.|
+|Select|Selects a specific item. Parameters oItem: TTVItem|
+|object||
+|SelChanged|Selected item change event handler|
+|SetCheck|Sets the checkbox state of an item|
+|SetColor|Sets the foreground and background color of the|
+|control||
+|SetImageList|Sets the Imagelist object. Parameters: oImagList:|
+|TImagelist|object Returns nil|
+|Toggle|Toggles the expanded/collapsed status of all the|
+|TreeView|branches|
+|ToggleAll|Toggles the expanded/collapsed status of all the|
+|branches|of the given item|
+|ToggleBranch|Toggles the expanded/collapsed status of the given|
+|item||
+|See|samples re.prg on your samples directory.|
+|See|also TTVItem object|
+|See|also TImageList object|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTREEVIEW.PRG

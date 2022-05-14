@@ -1,0 +1,168 @@
+SetMinMax()
+
+
+
+SetMinMax()
+
+ Previous  Top  Next
+
+
+
+
+Set minimun and maximum value sizes of a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetMinMax( <pMinMaxInfo>, <aMinMaxInfo> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Set the maximized size and position and the minimum and maximum tracking
+size. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <pMinMaxInfo> MINMAXINFO structure 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <aMinMaxInfo> Array with the news values 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Element 1   Max width size 
+
+
+ 
+
+
+ Element 2   Max height size 
+
+
+ 
+
+
+ Element 3   Max Position x 
+
+
+ 
+
+
+ Element 4   Max Position y 
+
+
+ 
+
+
+ Element 5   Min TrackSize x 
+
+
+ 
+
+
+ Element 6   Min TrackSize y 
+
+
+ 
+
+
+ Element 7   Max TrackSize x 
+
+
+ 
+
+
+ Element 8   Max TrackSize y 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

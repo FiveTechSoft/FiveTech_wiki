@@ -1,0 +1,19 @@
+====== DDEAccessData() ======
+Accesses a DDE global memory object
+
+====== Syntax ======
+DDEAccessData( <pData>, <@nLen> ) --> pBuffer 
+
+====== Parameters ======
+^Parameters^Description^
+|<pData>| Data to connectt |
+|<@nLen>| Length of the data to access |
+
+====== Returns ======
+^Returns^Description^
+|<pBuffer>| Value of the accessed data.|
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 

@@ -1,0 +1,79 @@
+SetWindowExt()
+
+
+SetWindowExt()
+ Previous  Top  Next
+
+Sets the horizontal and vertical extents of the window for a device
+context by using the specified values.
+
+====== Syntax ======
+
+ 
+
+
+ SetWindowExt( <hDC>, <nUnitsWidth>, <nUnitsHeight> ) --> aPrevDimensions 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ <nUnitsWidth> Specifies the window's horizontal extent in logical units. 
+
+
+ 
+
+
+ <nUnitsHeight> Specifies the window's vertical extent in logical units. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <aPrevDimensions> An array with the previous extents. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+
+====== See also ======
+

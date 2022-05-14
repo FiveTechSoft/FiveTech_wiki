@@ -1,0 +1,98 @@
+====== Defining a Browse Object from source code ======
+
+<code clipper>
+ @ <nRow>, <nCol> LISTBOX [ <oBrw> ] ;
+ FIELDS <Flds,...> ; 
+ [ ALIAS <cAlias>] ;  
+ [ FIELDSIZES | SIZE | COLSIZES <aColSizes,...> ] ;  
+ [ HEAD | HEADER | HEADERS | TITLE <aHeaders,...> ] ;  
+ [ SIZE <nWidth>, <nHeigth> ] ;  
+ [ SELECT <cField> FOR <uValue1> [ TO <uValue2>] ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ ON RIGHT CLICK <uRClick> ] ;  
+ [ ON [LEFT] CLICK <uLClick> ] ;  
+ [ ON [LEFT] DBLCLICK <uDblClick> ] ;  
+ [ FONT <oFont>] ;  
+ [ CURSOR <oCursor>] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg>] ;  
+ [ UPDATE ] ;  
+ [ PIXEL ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ DESIGN ] ;  
+ [ VALID <ValidFunc> ] ;  
+ [ ACTION <uAction,...> ] ;  
+ [ OF | DIALOG <oDlg> ]  
+</code> 
+  
+
+====== Redefining a Browse from resources ======
+
+<code clipper>
+ REDEFINE LISTBOX [ <oBrw> ] ;
+ FIELDS [ <cFields,...>] ; 
+ [ ALIAS <cAlias> ] ;  
+ [ ID <nId> ] ;  
+ [ FIELDSIZES | SIZES | COLSIZES <aColSizes,...> ] ;  
+ [ HEAD | HEADER | HEADERS| TITLE <aHeaders,...> ] ;  
+ [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ ON RIGHT CLICK <uRClick> ] ;  
+ [ ON [LEFT] CLICK <uLClick> ] ;  
+ [ ON [LEFT] DBLCLICK <uDblClick> ] ;  
+ [ FONT <oFont> ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <ValidFunc> ] ;  
+ [ ACTION <uAction,...> ] ;  
+ [ OF | DIALOG <oDlg> ]  
+</code> 
+  
+
+| <oBrw> | A reference to the TWBrowse Object. |
+| <nRow>, <nCol> | Position on container window. We simulate text coordinates. | 
+| <Flds...> | A list of text expressions to display as columns. If an expression is of numeric type, TWbrowse will manage it as the handle of a bitmap to be displayed. |
+| <aColSizes> | A list of sizes for each column in pixels. |
+| <aHeaders> | A list of text expressions for headers. |
+| <nId> | Is the numeric identifier of the TWBrowse control. |
+| <nWidth>, <nHeigth> |The desired size of the TWbrowse control in pixels.|
+| <uChange> | An action to be performed when selecting a new row. |
+| <uRClick> | An action to be performed when right clicking. |
+| <uLClick> | An action to be performed when left clicking. |
+| <uLDblClick> | An action to be performed when Double Left clicking. |
+| <oFont> | A reference to the Font Object to be used with the LISTBOX. |
+| <ValidFunc> | An expression or function to be validated when the ListBox loses its focus. |
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string. |
+| <nClrBack> | Background color as a RGB number. |
+| <uAction,...> | A list of actions to be executed when a certain column header is clicked with the mouse. |
+| <cField> | Must be the Field key of the current INDEX !!! |
+| <oDlg> | The object that contain the TWbrowse control. |
+
+ ====== CLAUSES ======
+
+| DESIGN | Allows the user to move and resize with the mouse. |
+| PIXEL | To use pixel coordinates instead of Text coordinates. |
+
+ ====== Sample Prg ======
+\Fwh\Samples\Browse.Prg
+<code clipper>
+#include "FiveWin.ch"
+function Main()
+   USE Customer
+   Browse()
+   USE
+return nil
+</code>  
+
+====== Screen Snapshot ======
+{{:browse.jpg|:browse.jpg}}
+
+====== See also: ====== 
+ [[fivewin_class_twbrowse | Class TWBrowse ]]
+
+ [[fivewin_class_tcbrowse | Class TCBrowse ]]
+
+ [[fivewin_class_txbrowse | Class TXrowse ]]

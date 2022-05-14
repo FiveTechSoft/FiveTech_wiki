@@ -1,0 +1,21 @@
+====== Class TRtfFile ======
+
+RTF (Rich Text Format) class                                                   
+====== DATA ======
+|hFile|The handle to the file|
+|aBitmaps|An array with the bitmaps used in the file|
+|cFileName|The filename|
+====== METHODS ======
+|New|Constructor from source code|
+|WriteShort|Writes a short entry to the file|
+|WriteLong|Writes a long entry to the file|
+|WriteId|Writes a footnote identifier to the file|
+|WriteSeeAlso|Writes a see also list to the file|
+|NewPage|Writes a new page to the file|
+|End|Closes the file|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRTFFILE.PRG

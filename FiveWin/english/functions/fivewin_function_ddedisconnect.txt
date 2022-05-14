@@ -1,0 +1,23 @@
+====== DDEDisconnect() ======
+Terminates a DDE conversation 
+
+====== Syntax: ======
+DDEDisconnect( <hConv> ) --> lSuccess  
+
+====== Parameters: ======
+^Parameter^Description^ 
+|<hConv>| Handle of the conversation  |
+
+====== Returns: ======
+^Returns^Description^
+|<lSuccess>| .T. if the operation is successful.  |
+ 
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\DDEML.C  
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

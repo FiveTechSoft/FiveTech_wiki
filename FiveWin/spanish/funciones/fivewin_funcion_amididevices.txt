@@ -1,0 +1,36 @@
+====== aMidiDevices() ======
+
+Obtiene los dispositivos MIDI del equipo
+
+
+====== Sintaxis ======
+
+aMidiDevices() --> acMidiDevices
+
+
+====== Parámetros ======
+
+ninguno
+
+====== Devuelve ======
+
+|<acMidiDevices>|   Retorna una cadena de caracteres con los dispositivos MIDI que tiene el equipo.|
+
+====== Ejemplo ======
+
+<code clipper> #include "fivewin.ch"  
+ 
+ function main()  
+ wqout( aMidiDevices() )  
+ return nil  
+ 
+ // En el computador en que se ejecutó el ejemplo el resultado fué:  
+ //  
+ // Salida MIDI SB16 [330]  
+ // Creative Music Synth [220] 
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\MIDI.C
+

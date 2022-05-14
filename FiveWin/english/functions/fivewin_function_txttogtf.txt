@@ -1,0 +1,61 @@
+TxtToGTF()
+
+
+TxtToGTF()
+ Previous  Top  Next
+
+It convert a text to GTF format.
+
+====== Syntax ======
+
+
+ TxtToGTF( [<cText>], [<nAlign>], [<oFont>], [<nColor>] ) --> cGTF 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cText> The string to convert 
+
+
+ <nAlign> The alignment (ES_LEFT, ES_RIGHT or ES_CENTER) 
+
+
+ <oFont> The font object to be used 
+
+
+ <nColor> The color expressed as RGB code. 
+
+
+ 
+
+====== Returns ======
+
+
+ <cGTF> The string converted in GTF format 
+
+
+ 
+
+====== Example ======
+
+
+ SAMPLES\ TESTFGET.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\CLASSES\FGET.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

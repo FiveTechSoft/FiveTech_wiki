@@ -1,0 +1,9 @@
+====== Creates a SAY from source code ======
+<code clipper>
+@ <nRow>, <nCol> SAY [ <oSay> PROMPT ] <cPrompt> ;
+   [ OF <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ]</code>
+====== Source code ======
+FMC\source\classes\tsay.prg
+====== See Also ======
+[[fivemac_class_tsay|Class TSay]]

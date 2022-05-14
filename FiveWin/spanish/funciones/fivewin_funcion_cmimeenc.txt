@@ -1,0 +1,15 @@
+
+====== cMimeEnc() ======
+cMimeEnc()
+Mime Based Encoding.
+====== Sintaxis ======
+ cMimeEnc( <cIn> ) --> cOut 
+====== Parámetros ======
+ <cIn> Character string to codifier 
+====== Devuelve ======
+ <cOut> Codified character string. 
+====== Ejemplo ======
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MIME64.C 
+====== Ver también ======

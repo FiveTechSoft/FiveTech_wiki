@@ -1,0 +1,23 @@
+====== ChildWindowFromPoint() ======
+
+Poner ventana secundaria en un punto especificado 
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ ChildWindowFromPoint( <hWnd>, <aPoint> ) --> hChildWnd
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> título de la ventana principal 
+ 
+  <aPoint> matriz con dos valores.  
+
+====== Retorno: ( Returns: ) ======
+
+ <hChildWnd> Título de la ventana hija si se encuentra. Cero en caso contrario.
+
+====== Ejemplo: ( Sample: ) ======
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+SOURCE\WINAPI\GETWND.C 

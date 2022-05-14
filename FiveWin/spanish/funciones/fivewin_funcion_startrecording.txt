@@ -1,0 +1,89 @@
+StartRecording()
+
+
+
+StartRecording()
+
+ Previous  Top  Next
+
+
+
+
+Records messages from the system message queue
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ StartRecording() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PLAYBACK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

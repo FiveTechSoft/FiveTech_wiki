@@ -1,0 +1,38 @@
+====== SetBkColor() ======
+
+SetBkColor() Establece el color de fondo a un color específico.
+
+====== Sintaxis ======
+
+SetBkColor( <hDC>, <nRGBColor> ) --> nPrevious 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hDC>| Dispositivo de contexto en el que se configura el color de fondo|
+|<nRGBColor>| Color RGB de fondo a establecer |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nPrevious>| Color de fondo anterior |
+
+====== Ejemplo ======
+<code>
+local hDC 
+local nPrevious 
+
+hDC := oWnd:GetDC() 
+
+nPrevious := SetBkColor( hDC, CLR_GREEN ) 
+
+TextOut( hDC, 10, 10, "Text" ) 
+
+SetBkColor( hDC, nPrevious ) 
+
+oWnd:ReleaseDC() 
+</code>
+
+====== Código fuente ======
+
+SOURCE\WINAPI\COLOR.C 
+
+====== Ver también ======

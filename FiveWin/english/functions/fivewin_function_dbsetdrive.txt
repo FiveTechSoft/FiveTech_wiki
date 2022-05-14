@@ -1,0 +1,26 @@
+====== DbSetDrive() ======
+Function used to set the default driver or to select a new driver. Function to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbSetDrive( <x> ) --> cControladorActual 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Name of the controller that will be used |
+
+====== Returns ======
+DbSetDriver( x ) 
+
+====== Example ======
+SAMPLES\TESTDRV.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 
+
+
+ 
+
+
+ 
+
+

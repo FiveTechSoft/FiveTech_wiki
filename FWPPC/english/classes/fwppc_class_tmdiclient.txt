@@ -1,0 +1,38 @@
+====== Class TMdiClient ======
+
+MDI Client Window class                                                        
+Inherits from Class TWindow                                                    
+====== DATA ======
+|aWnd|Array of TMDIChild objects|
+====== METHODS ======
+|New|Generic constructor method|
+|Display|Displays the child window|
+|Tile|Tile Child windows|
+|Cascade|Cascade child windows|
+|ArrangeIcons|Arrange all minimized document child windows. It does|
+|not|affect windows that are not minimized.|
+|NextWindow|Set focus to next child window|
+|PrevWindow|Set focus to previous child window|
+|GetActive|Retrieves the TMDIChild window that is active.|
+|Add|Add an TMDIChild object to ::aWnd instance array.|
+|ChildNew|Creates an New TMDIChild object an add it to ::aWnd|
+|ChildActivate|Activate a different TMDICchild window.|
+|ChildMaximize|Maximize a TMDICchild window.|
+|ChildRestore|Restore a TMDICchild window.|
+|ChildClose|Close a MdiChild window|
+|ChildNext|Selects the next MdiChild|
+|Resize|Resizes the MdiClient|
+|GotFocus|Gotfocus event handler|
+|lCloseAll|Closes all the MdiChild Children|
+|IconizeAll|Iconizes all the Mdichild windows|
+|KeyDown|Behavior when pressing a key|
+|MouseMove|Behavior when moving the mouse over|
+|Select|Set focus to nWindow|
+|SetMenu|Sets a new menu object for the window. MDI menu info|
+|will|be shown at nMenuInfo position|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMDICLIENT.PRG

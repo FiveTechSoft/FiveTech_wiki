@@ -1,0 +1,95 @@
+
+====== GetSysDir() ====== 
+
+
+
+
+
+Retrieves the Windows system directory path
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetSysDir() --> cWinSystemPath 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cWinSystemPath> The path of the Windows system directory. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WinExec.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetWinDir() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

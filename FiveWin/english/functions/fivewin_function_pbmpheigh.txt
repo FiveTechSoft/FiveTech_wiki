@@ -1,0 +1,99 @@
+====== pBmpHeigh() ====== 
+
+
+
+pBmpHeigh()
+
+
+
+
+
+
+Return the height of a bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ pBmpHeight( <hBmpPal> ) --> nHeight 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hBmpPal> Handle of the bitmap obtained with PalBmpLoad or PalBmpRead 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nHeight> Height in pixels of a bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\BITMAP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

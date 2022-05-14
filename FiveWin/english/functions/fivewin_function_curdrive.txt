@@ -1,0 +1,20 @@
+====== CurDrive() ====== 
+Retrieves the current drive letter 
+
+====== Syntax ====== 
+CurDrive() --> cCurDrive  
+ 
+
+====== Parameters ====== 
+None  
+ 
+====== Returns ====== 
+| <cCurDrive>| The letter of the currently active drive: "C", "D", "E", ...\\ Please note : There is no :, just the drive letter  |
+ 
+====== Example ======
+<code clipper>
+MsgInfo( CurDrive() )  // Result C    Pls note there is no : along with the output, only the drive letter
+</code>
+====== Source code ======
+
+====== See also ======

@@ -1,0 +1,110 @@
+SQLSetParam()
+
+
+SQLSetParam()
+ Previous  Top  Next
+
+Sets a parameter marker in an SQL statement.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLSetParam( <hStmt>, <nParamOrder>, <nCType>, <nSQLType>, <nPrecision>,
+<nScale>, <ptrData>, <@nLen> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nParamOrder> The parameter number. 
+
+
+ 
+
+
+ <nCType> The C data type of the parameter. 
+
+
+ 
+
+
+ <nSQLType> The SQL data type of the parameter. 
+
+
+ 
+
+
+ <nPrecision> The size of the column. 
+
+
+ 
+
+
+ <nScale> ???. 
+
+
+ 
+
+
+ <ptrData> A pointer to a buffer for the parameter's data. 
+
+
+ 
+
+
+ <nLen> The parameter's length. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

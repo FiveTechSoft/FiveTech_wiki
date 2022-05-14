@@ -1,0 +1,25 @@
+
+====== MsgYesNo() ====== 
+MsgYesNo()
+
+MessageBox YesNo style
+====== Sintaxis ======
+ MsgYesNo( <cMsg>, <cTitle> ) --> lYesNo 
+====== Parámetros ======
+  <cMsg>    The message to display 
+  <cTitle>  The title of the dialogbox. By default "Please, select" 
+====== Devuelve ======
+ <lYesNo> A logical value .t. if the user choosed "Yes". 
+
+Observations:
+
+ This function simplifies the management of the standard WinApi function
+MessageBox() with the proper style to show the question icon and the
+YesNo style. 
+====== Ejemplo ======
+ SAMPLES\TestMsg.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\MsgBox.c 
+====== Ver también ======
+ MsgAlert() MsgInfo() MsgAbout() MsgStop() MsgRetryCancel() MsgBeep()
+MsgMeter() MsgGet()

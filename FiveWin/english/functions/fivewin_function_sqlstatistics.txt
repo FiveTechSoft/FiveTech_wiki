@@ -1,0 +1,71 @@
+====== SQLStatistics() ======
+
+
+Retrieves a list of statistics about a single table and the indexes
+associated with the table.
+
+====== Syntax ======
+
+ 
+
+
+ SQLStatistics( <hStmt>, <cTableName> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cTableName> The table name. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

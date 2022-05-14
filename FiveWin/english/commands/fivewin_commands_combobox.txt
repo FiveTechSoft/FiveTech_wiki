@@ -1,0 +1,98 @@
+====== Creating a ComboBox from source code ======
+
+<code clipper>
+ @ <nRow>, <nCol> COMBOBOX [ <oCbx> VAR ] <cVar> ;  
+ [ ITEMS | PROMPTS <aItems> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ VALID <uValid> ] ;  
+ [ COLOR | COLORS <nClrText>[,<nClrBack>] ] ;  
+ [ PIXEL ] ;  
+ [ FONT <oFont> ] ;  
+ [ UPDATE ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ DESIGN ] ;  
+ [ BITMAPS <acBitmaps> ] ;  
+ [ ON DRAWITEM <uBmpSelect> ] ;  
+ [ STYLE <nStyle> ];  
+ [ PICTURE <cPicture> ];  
+ [ ON EDIT CHANGE <uEChange> ]  
+</code> 
+
+====== Creating a ComboBox from resources ======
+
+<code clipper>
+ REDEFINE COMBOBOX [ <oCbx> VAR ] <cVar> ;  
+ [ ITEMS | PROMPTS <aItems> ] ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ VALID <ValidFunc> ] ;  
+ [ COLOR | COLORS <nClrText>[,<nClrBack>] ] ;  
+ [ UPDATE ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ BITMAPS <acBitmaps> ] ;  
+ [ ON DRAWITEM <uBmpSelect> ] ;  
+ [ STYLE <nStyle> ] ;  
+ [ PICTURE <cPicture> ];  
+ [ ON EDIT CHANGE <uEChange> ]  
+</code>  
+
+| <nRow>, <nCol> | The coordinates of the Button. They mimic text mode coordinates. |
+| <oCbx> | A reference to the ComboBox Object. |
+| <cVar> | A character variable which keeps the actual item selected in the ComboBox. |
+| <aItems> | The items showed on the ComboBox. |
+| <nWidth>, <nHeight> | The dimensions of the ComboBox in pixels. |
+| <oWnd> | The container window of the ComboBox. |
+| <nHelpId> | The help topic numeric identifier of the control. |
+| <uChange> | An action to be performed every time the selected item changes. |
+| <cMsg> | The associated message of this control. |
+| <ValidFunc> | An expression to validate when the control is going to lose the focus. |
+| <nClrText> | Foreground color as a RGB number, or as a xBase string. |
+| <nClrBack> | Background color defined as nClrText. |
+| <oFont> | A reference to the Font Object to be used with the Combobox. |
+| <WhenFunc> | When expression code block. |
+| <nId> | The numeric resource identifier of the Control. |
+| <cBitmaps> | A list of the bitmaps files or resources to use on a ownerdraw ComboBox. |
+| <uBmpSelect> | A codeblock to select which bitmap to paint on a ownerdraw ComboBox. By default, it uses the corresponding index in the bitmaps list. |
+| <nStyle> | To specifiy a dropdown ComboBox style. Use: STYLE CBS_DROPDOWN |
+| <cPicture> | The picture to use for the contained oGet DATA when using a dropdown ComBoBox, if the STYLE CBS_DROPDOWN has been specified. |
+| <uEChange> | An expression to be evaluated when the oGet DATA has changed if the STYLE CBS_DROPDOWN has been specified. |
+
+====== CLAUSES ======
+
+| PIXEL | To use pixel coordinates instead of Text coordinates. |
+| UPDATE | This control may be updated from TDialog:Update() METHOD. |
+| DESIGN | Allows the user to move and resize with the mouse. |
+
+====== Sample code ======
+\Fwh\Samples\Combo3d.Prg
+<code clipper>
+#include "fivewin.ch"
+
+function main()
+
+   local oDlg, cCombo := "2"
+   local aItems := { "1", "2", "3" }
+
+   DEFINE DIALOG oDlg FROM 2, 2 TO 18, 60 TITLE "Test" ;
+      STYLE nOr( DS_MODALFRAME, WS_POPUP, WS_CAPTION, WS_SYSMENU, 4 )
+
+   @ 2, 2 COMBOBOX cCombo ITEMS aItems SIZE 200, 100
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>  
+
+====== Screen snapshot ======
+{{:combobox.jpg|:combobox.jpg}}
+
+====== See also ======
+
+[[fivewin_class_tcombobox | Class TCombobox]]

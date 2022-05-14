@@ -1,0 +1,21 @@
+Base units used by Windows when creating dialog boxes
+
+====== Syntax ======      
+
+GetDlgBase() --> nBaseUnits
+
+Returns the dialog box base units used by Windows when creating dialog boxes. An application should use these values to calculate the average width of characters in the system font.
+
+====== Parameters ======     
+
+None
+
+====== Returns ======        
+
+| The low-order word of the return value contains the width, in pixels, of the current dialog box base-width unit. |
+| The high-order word of the return value contains the height, in pixels. |
+
+====== Example ======
+
+====== Source Code ======     
+SOURCE\WINAPI\DLG2CHR.C

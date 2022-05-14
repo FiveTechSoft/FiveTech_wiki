@@ -1,0 +1,24 @@
+
+====== DDEGetCommand() ======
+DDEGetCommand()
+DDE GetCommand FiveWin management function
+
+====== Sintaxis ======
+ DDEGetCommand( <pGlobalMemory> ) --> cDDECommand 
+
+ This is a FiveWin internal function for DDE support. Use FiveWin DDE
+classes and xBase commands as they are much easier to use and more
+powerful. 
+====== Parámetros ======
+
+ <pGlobalMemory> A numeric value which holds the pointer of a global
+memory to be supplied to DDE services. 
+====== Devuelve ======
+ <cDDECommand> A character expression that holds the DDE order we want to
+process. 
+====== Ejemplo ======
+ SAMPLES\TestDDE.prg DDEClien.prg DDEServe.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\DDExc.c 
+====== Ver también ======
+ DDECommand() DDEGetCommand() DDETerminate() 

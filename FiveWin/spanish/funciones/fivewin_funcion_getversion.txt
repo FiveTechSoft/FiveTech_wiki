@@ -1,0 +1,17 @@
+
+====== GetVersion() ======
+GetVersion()
+
+Retrieves the Windows and MsDos versions numbers
+====== Sintaxis ======
+ GetVersion() --> anVersions 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <anVersions> An array of numbers, with the Windows and MsDos versions: {
+nWindowsVersion, nWindowsSubVersion, nMsDosVersion, nMsDosSubVersion } 
+====== Código fuente ======
+ SOURCE\WINAPI\WinExec.c 
+====== Ejemplo ======
+ SOURCE\FUNCTION\ErrorSysW.prg 
+====== Ver también ======

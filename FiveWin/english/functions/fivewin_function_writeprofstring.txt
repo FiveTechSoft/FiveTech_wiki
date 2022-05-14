@@ -1,0 +1,33 @@
+====== WriteProfString() ======
+Writes an entry in WIN.INI public file 
+
+====== Syntax ======
+
+ WriteProfString( <cSection>, <cEntry>, <cString> ) --> lSuccess    
+
+====== Parameters ======
+
+| <cSection> | Specifies the section containing the entry.|  
+| <cEntry> | The entry whose value is to be written. |  
+| <cString> | The text value to set into the INI.| 
+
+====== Returns ======
+
+| <lSuccess> |A logical value indicating if the operation was performed successfully.|  
+
+
+====== Example ======
+
+SAMPLES\\TestIni.prg  
+
+
+
+====== Source Code ======
+
+  SOURCE\\WINAPI\\Profile.c  
+ 
+  
+
+====== See also ======
+
+ [[fivewin_function_WriteProfString|WriteProfString()]]

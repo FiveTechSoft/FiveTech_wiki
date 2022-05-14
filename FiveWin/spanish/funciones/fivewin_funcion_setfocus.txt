@@ -1,0 +1,121 @@
+SetFocus()
+
+
+
+SetFocus()
+
+ Previous  Top  Next
+
+
+
+
+Selects a window as focused
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetFocus( <hWnd> ) --> hWndPrev 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the window to receive the keyboard input. If this
+parameter is 0, keystrokes are ignored. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hWndPrev> Identifies the window that previously had the focus. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function sends a WM_KILLFOCUS to the window that previously had the
+focus, and a WM_SETFOCUS to the window that recieves the focus. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\SetFocus.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetFocus() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

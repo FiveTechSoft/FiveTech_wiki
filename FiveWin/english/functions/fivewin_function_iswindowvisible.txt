@@ -1,0 +1,78 @@
+====== IsWindowVisible() ======
+
+
+
+
+
+Checks if a window is visible
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsWindowVisible( <hWnd> ) --> lVisible 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window to check if it is visible. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lVisible> A logical value indicating if the window is visible. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndIs.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

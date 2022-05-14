@@ -1,0 +1,93 @@
+======  GlobalData() ====== 
+
+
+
+
+It locates a fact in global memory
+
+
+
+Syntax ======
+
+
+
+
+
+ GlobalData( <hMem>, <cData> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMem> Handle by memory obtained with GlobalAlloc 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cData> I date to locate in memory 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

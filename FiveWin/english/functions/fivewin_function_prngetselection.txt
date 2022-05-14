@@ -1,0 +1,51 @@
+====== PrnGetSelection() ====== 
+
+
+PrnGetSelection()
+
+
+Retrieves the status of the Selection radiobutton of the print dialog.
+
+====== Syntax ======
+
+
+ PrnGetSelection() -?> lSelection 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <lSelection> True if the Selection radiobutton of the print dialog is
+selected, or false otherwise. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\printdc.c 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

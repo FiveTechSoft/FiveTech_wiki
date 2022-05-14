@@ -1,0 +1,113 @@
+
+====== SET HELPFILE TO ======
+
+Selects the Help-File (.HLP or .CHM) to use.
+
+** Syntax: **
+ 
+<code clipper> SET HELPFILE TO <cFile> </code>
+** Parameters: **
+
+| <cFile> | The name of the HLP- or CHM-file to be used by default from our program. |
+
+** Description: **
+
+SET HELPFILE TO selects the default HLP file to be called when requesting help. GetHelpFile() will return the Help file name we select here. Where translated to [[fivewin_function_sethelpfile|SetHelpFile( <cFile> )]]
+====== Headerfile: ======
+ 
+SOURCE\INCLUDE\DIALOG.CH   
+
+====== Sample Code ======
+<code clipper>
+// This sample shows how to use a system windows help.
+
+#include "FiveWin.ch"
+#include "InKey.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   SetKey( K_F1, { | nKey | MsgInfo( "Help" ) } )
+
+   SET HELPFILE TO "Calc.hlp"      // Here you set your default HELP file
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 60 ;
+      TITLE "Testing Windows help system" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO FWVERSION + FWCOPYRIGHT  NOINSET
+
+   ACTIVATE WINDOW oWnd MAXIMIZED
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Help system"
+      MENU
+         MENUITEM "&Call any help file" ;
+            MESSAGE "Use any Windows help file" ;
+            ACTION WinHelp( "ProgMan.hlp" )     // You keep having your
+                                                // default help file
+         SEPARATOR
+
+         MENUITEM "Help Index" ;
+            ACTION HelpIndex() ;
+            MESSAGE "review your help file index"
+
+         MENUITEM "Search..." ;
+            ACTION ( HelpIndex(), HelpSearch( "Hello" ) ) ;
+            MESSAGE "Perform a search in your help file"
+                                         ; // The searched word is optional
+
+         MENUITEM "Topic review" ;
+            ACTION ( HelpIndex(), HelpTopic( "Help keystrokes" ) ) ;
+            MESSAGE "Jump directly to a topic"
+
+         MENUITEM "Set a default topic" ;
+            ACTION HelpSetTopic( "How to make $ from Software" ) ;  // You should identify it by a string or a number
+            MESSAGE "How to set a default help topic"
+
+         MENUITEM "Review the default topic" ;
+            ACTION MsgInfo( If( ValType( GetHelpTopic() ) == "C", GetHelpTopic(), Str( GetHelpTopic() ) ) ) ;  // Requesting default topic
+            MESSAGE "Information about the default topic"
+
+         MENUITEM "Change the position of the help file" ;
+            ACTION ( HelpIndex(), HelpSetPos( 40, 120, 950, 800, .t. ) ) ;
+            MESSAGE "Shows the help file in a specific position"
+                          // Left, top, Width, Height, Maximized
+                          // Width and height in a 0 to 1024 range
+
+         MENUITEM "Default Help File" ;
+            ACTION MsgInfo( GetHelpFile() ) ;
+            MESSAGE "Review the assigned SET HELPFILE TO <file>"
+
+         SEPARATOR
+
+         MENUITEM "&End this demo" ;
+            ACTION  If( MsgYesNo( "Want to end ?" ), oWnd:End(),);
+            MESSAGE "Exit this demo"
+
+      ENDMENU
+
+      MENUITEM "&How to build a Windows Help file" ;
+         ACTION MsgInfo( "You need some tools" ) ;
+         MESSAGE "Microsoft Word, Help compiler or Help creation utility"
+   ENDMENU
+
+return oMenu
+//----------------------------------------------------------------------------//
+</code>
+====== Screen Snapshot ======
+{{:sethelp.jpg|:sethelp.jpg}}
+
+====== see also: ======
+[[fivewin_function_sethelpfile|SetHelpFile()]]

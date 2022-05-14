@@ -1,0 +1,18 @@
+====== GetCursorHand() ======
+Returns the handle of the FiveWin hand cursor.
+
+====== Syntax ======
+GetCursorHand() --> hCursor 
+ 
+====== Parameters ======
+None. 
+
+====== Returns ======
+^Returns^Description^
+|<hCursor>| The handle of the FiveWin hand cursor.|
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\WINAPI\Cursors.c 

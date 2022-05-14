@@ -1,0 +1,21 @@
+====== FindIcon() ======
+Checks if an icon exist in the resources.
+
+====== Syntax ====== 
+FindIcon( <cIconName> ) --> lFound  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cIconName>| The name of the icon to search |
+
+====== Return ====== 
+^Returns^Description^
+| <lFound> |.T. if the icon was found in the resources.|
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\WINAPI\RESOURCE.C 
+
+====== See Also ====== 
+[[fivewin_function_findResource|FindResource()]]

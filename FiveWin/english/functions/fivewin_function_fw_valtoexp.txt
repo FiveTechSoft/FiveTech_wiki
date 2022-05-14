@@ -1,0 +1,74 @@
+====== FW_ValToExp() ======
+Creates character value which can be macro evaluated to return the original value.  
+
+
+====== Syntax ====== 
+FW_ValToExp( <uVal> )  --> <cExpression>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <uVal> | User value which can be of type array,number,date, time etc. Objects are not supported|
+
+====== Return ====== 
+^Returns^Description^
+| <cExpression> | Returns character string which can be macro evaluated to get the original value back|
+
+
+
+
+
+
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch"
+#include "xBrowse.ch"
+//----------------//
+Function Main()
+
+    Local aTest1:={"Tom","John","Harry"}
+    Local aTest2:={ {"Tom",21},{"John",20},{"Harry",28}}
+    Local aTest3:={ {"Tom",21,Date()},{"John",20,Date()},{"Harry",28,Date()}}
+    
+    Local cText,cArray,aArray,cDate,dDate
+ 
+    cText:=FW_ValToExp(aTest1)+CRLF+;
+           FW_ValToExp(aTest2)+CRLF+;
+           FW_ValToExp(aTest3)+CRLF+;
+           FW_ValToExp("Tom")+CRLF+;
+           FW_ValToExp(28)+CRLF+;
+           FW_ValToExp(Date())+CRLF+;
+           FW_ValToExp(Time())
+           
+     MemoWrit("Test.txt",cText)
+     MsgInfo(cText)
+
+     cArray:=FW_ValToExp(aTest3) // Converts the multi dimension array to a Text form which can be later restored back as an array 
+     aArray:= &(cArray)  // Restoring the text as array using a simple macro
+     xBrowser aArray  // The Multi dimension array is displayed using xBrowse
+
+     cDate:=FW_ValToExp(Date())
+     MsgInfo(ValType(cDate))  // Returns C -> Character Type
+     dDate:=&(cDate)
+     MsgInfo(ValType(dDate))  // Returns D -> Date Type
+
+Return nil
+</code>
+
+**The output text in Test.Txt would be**
+<code clipper>
+{[Tom],[John],[Harry]}
+{{[Tom],21},{[John],20},{[Harry],28}}
+{{[Tom],21,SToD("20111012")},{[John],20,SToD("20111012")},{[Harry],28,SToD("20111012")}}
+[Tom]
+28
+SToD("20111012")
+[09:50:38]
+</code>
+
+====== Source Code ====== 
+\fwh\source\function\valtostr.prg
+
+
+====== See also ======
+[[fivewin_function_asave|Function aSave()]]

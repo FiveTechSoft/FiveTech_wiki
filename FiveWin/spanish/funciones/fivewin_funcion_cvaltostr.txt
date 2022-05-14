@@ -1,0 +1,28 @@
+====== cValToStr() ======
+Convierte cualquier valor en una cadena de caracteres. Esta función convierte valores de cualquier tipo en su equivalente expresión caracter.  Esta función está programada en lenguaje C y es extremadamente rápida.  
+
+====== Sintaxis: ======
+cValToStr( <uValue>,<cPic>,<cInternational> ) --> cValue  
+
+====== Parámeters: ======
+^Parámetro^Descripción^
+|<uValue>| Puede ser cualquier valor excepto un arreglo o un objeto.  |
+|<cPic>| Formato de máscara|
+|<cInternational>| Si se pasa "E" como parámetro, entonces uValue se transforma con la máscara '@E'|
+
+====== Devuelve: ======
+^Devuelve^Descripción^
+|<cValue>| Una cadena de caracteres con la expresión caracter de  <uValue>  |
+
+====== Ejemplo: ======
+<code clipper>
+ ? cValToStr( 123 ) --> "123" 
+
+ // This function works independent of the date format setting.
+ // you can use dd, mm, mmm, mmmm in any order
+ ? cValToStr( Date(), 'dd-mmm-yyyy' ) --> "08-Apr-2010" 
+ ? cValToStr( Date(), ''mmmm dd, yyyy' ) --> "October 23, 2010" 
+
+</code>
+====== Código fuente: ======
+FWH\source\function\valblank.prg 

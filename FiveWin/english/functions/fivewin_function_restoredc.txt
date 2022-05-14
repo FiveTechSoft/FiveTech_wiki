@@ -1,0 +1,79 @@
+====== RestoreDC() ======
+
+
+Restore a device context to its old value
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RestoreDC( <nSavedDC> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSavedDC> Device context saved previously with the function SaveDC() 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> This function return .t. if the function is success 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

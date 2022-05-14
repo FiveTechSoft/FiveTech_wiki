@@ -1,0 +1,20 @@
+
+====== GlobalFree() ======
+GlobalFree()
+
+Frees the given global memory object
+====== Sintaxis ======
+ GlobalFree( <hGlobalMem> ) --> lSuccess 
+====== Parámetros ======
+ <hGlobalMem> Identifies the global memory object to freed. 
+====== Devuelve ======
+ <lSuccess> If the function is successful it returns .T., otherwise .F. 
+
+Observations:
+
+ This functions are only recommend for very advanced windows API
+programmers. 
+====== Código fuente ======
+ SOURCE\WINAPI\Mem.c 
+====== Ver también ======
+ GlobalAlloc() GlobalLock() GlobalUnlock()

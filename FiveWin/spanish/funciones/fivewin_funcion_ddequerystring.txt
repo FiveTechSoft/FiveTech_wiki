@@ -1,0 +1,24 @@
+
+====== DDEQueryString()  ======
+
+Copias de texto asociado con una cadena de manejar en un búfer
+
+====== Sintaxis ======
+ 
+ DDEQueryString( <hInst>, <hSZ> ) --> cString 
+
+
+====== Parámetros ======
+
+|<hInst>| identificador de la instancia |
+|<hSZ>| Título de la cadena.  |
+
+====== Retorno ======
+
+| <cstring> | cadena requerida.|
+
+====== Ejemplo ======
+
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DDEML.C 

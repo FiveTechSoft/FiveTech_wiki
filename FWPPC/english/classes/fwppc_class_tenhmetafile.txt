@@ -1,0 +1,35 @@
+====== Class TEnhMetaFile ======
+
+Windows EMF files management                                                   
+Inherits from TControl                                                         
+====== DATA ======
+|hMeta|Handle of the MetaFile.|
+|oPen|Reference to a pen object.|
+|nWidth|Dimensions|
+|nHeight|Dimensions|
+|nXorig|Origin in Por axis.|
+|nYorig|Origin in Y axis.|
+|nXZoom|Horizontal zoom factor.|
+|nYZoom|Vertical zoom factor.|
+|lZoom|If Zoom is enabled.|
+|lShadow|If Shadow|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resource|
+|Display|Displays the control. Use :Refresh() to force repaint|
+|End|Ends control and make it disappear|
+|Hide|Hides the control.|
+|Paint|Draws the control. This process occurs inside|
+|Display.||
+|SetFile|Name of the metafile.|
+|SetOrg|Set the X and Y origin.|
+|SetZoomFactor|Set horizontal and vertical zoom factors.|
+|Shadow|Activate / Deactivate Shadows.|
+|ZoomIn|Zoom in the image.|
+|ZoomOut|Zoom out the image.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TENHMETAFILE.PRG

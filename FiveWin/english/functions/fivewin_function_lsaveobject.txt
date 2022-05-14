@@ -1,0 +1,12 @@
+====== lSaveObject() ====== 
+Saves an object/array to disk
+
+====== Syntax ======             
+
+lSaveObject( <oVar>, <cFile> [,<nOpenMode>] ) \\ nil
+
+====== Parameters ======
+
+| <oVar>      Is the Object or Array to save to disk |
+| <cFile>     Is the name of the file where the Array/Object will be saved to. |
+| <nOpenMode>   Is the DOS File mode in which the file shall be opened. The default value is FO_WRITE and FO_COMPAT. This Function lets you save any object or Array to a File. Please note, that you can not save a codeblock to disc; if an Array element contains such a codeblock, it will be NIL after retrieval.If you need to work with a codeblock in a class, then hardcode the block as a setget method instead of storing it in a instvar slot.|

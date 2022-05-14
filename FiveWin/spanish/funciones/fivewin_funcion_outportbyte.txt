@@ -1,0 +1,31 @@
+
+====== OutPortByte() ====== 
+
+Sends a byte to a hardware port
+
+====== Syntax ======
+
+ OutPortByte( <nPort>, <nByte> ) --> nil 
+
+====== Parámetros ======
+
+ <nPort> The hardware port number (one word: two bytes) to read a byte
+from. 
+
+ <nByte> A numeric value corresponding to the read byte. 
+
+====== Devuelve ======
+
+ nil 
+
+======================Comments:===============================
+
+ Use these functions only to access hardware ports. Communication ports
+must be accessed using special API comm functions. 
+
+======================== Source Code ===========================
+
+ SOURCE\WINAPI\InOut.c 
+
+=================================================================
+ 

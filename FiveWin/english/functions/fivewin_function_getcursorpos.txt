@@ -1,0 +1,23 @@
+====== GetCursorPos() ======
+Retrieves the position of the cursor
+
+====== Syntax ======
+GetCursorPos() --> aPoint 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<aPoint>| Array containing the coordinates of the cursor.|
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\WINAPI\CURSORS.C
+
+====== See also ======
+[[fivewin_function_GetCursorHand|GetCursorHand()]]
+[[fivewin_function_GetCursorDrag|GetCursorDrag()]]
+[[fivewin_function_GetCursorStop|GetCursorStop()]]

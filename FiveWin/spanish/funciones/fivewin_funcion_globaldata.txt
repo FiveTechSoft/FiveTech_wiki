@@ -1,0 +1,16 @@
+
+====== GlobalData() ======
+GlobalData()
+
+It locates a fact in global memory
+====== Sintaxis ======
+ GlobalData( <hMem>, <cData> ) --> nil 
+====== Parámetros ======
+  <hMem> Handle by memory obtained with GlobalAlloc 
+  <cData> I date to locate in memory 
+====== Devuelve ======
+ nil 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MEM.C 
+====== Ver también ======

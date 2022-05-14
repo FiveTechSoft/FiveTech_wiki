@@ -1,0 +1,27 @@
+====== AAT() ======
+Devuelve la posición de una subcadena tomado de una serie dentro de una cadena de caracteres.
+
+====== Syntaxis ======
+
+aAt( <aSearch>, <cTarget> ) --> nPos 
+
+
+====== Parametros ======
+
+| <aSearch> | Matriz de cadenas de caracteres en donde buscar.  |  
+| <cTarget> | Cadena a ser buscada.  | 
+
+====== Devuelve ======
+
+| <nPos> | La posición de la primera instancia de la cadena dentro de cTarget.  |  
+
+La búsqueda se detiene cuando una de las cadenas en aSeach sea encontrada
+
+====== Ejemplo ======
+
+<code clipper>local nPos := AAT( { "Test1", "Test2", "Test3" }, "Test2" )</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\AAT.C
+

@@ -1,0 +1,28 @@
+
+====== MsgRun() ====== 
+MsgRun()
+
+Shows a DialogBox with a msg and executes an action
+====== Sintaxis ======
+ MsgRun( <cMsg> [,<cTitle>], [<bAction>] ) --> nil 
+====== Parámetros ======
+  <cMsg>     The message to display 
+  <cTitle>   The title of the dialogbox. By default "Please, wait..." 
+  <bAction>  The codeblock to execute. By default it just waits 1 second and finish. MsgRun() will
+             end automatically the modal DialogBox once the codeblock action is performed. 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function simplifies the process of showing a brief message to the
+user and issuing an action, without having to design and manage a
+non-modal DialogBox. This function uses a Modal DialogBox which
+guaranties that the application execution will wait until the codeblock
+action is performed. 
+====== Ejemplo ======
+ SAMPLES\TestMsg.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\MsgRun.prg 
+====== Ver también ======
+ All Msg...() functions. They greatly simplify your work! 

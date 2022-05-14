@@ -1,0 +1,83 @@
+====== PrnGetCollate() ====== 
+
+
+PrnGetCollate()
+
+
+Retrieve the collate mode current status.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PrnGetCollate() --> lCollate 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lCollate> True if the collate mode is active, or false otherwise. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\printdc.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

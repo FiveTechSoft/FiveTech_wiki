@@ -1,0 +1,182 @@
+====== MsgToolBar() ======
+
+
+General Tool-bar style Dialog
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MsgToolBar( <oWndParent>, <cTitle>, <aActions>, <aBmps1>, <aBmps2> ) -->
+nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <oWndParent> The reference of the container window object of the toolbar
+to be created. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTitle> The title of the dialogbox to create 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aActions> An array containing several actions in codeblocks, one for
+each button on the ToolBar. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aBmps1> An array with the names of the BMP files or the BMP resources
+to use to display the up state of each toolbar button. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aBmps2> An array with the names of the BMP files or the BMP resources
+to use to display the down state of each toolbar button. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function lets simplifies the design and activation of a floating
+toolbar. Its main goal is to increase productivity with a minimum effort. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ IDE\\SOURCE\\Report.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\MsgTBar.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ MsgAlert() MsgInfo() MsgAbout() MsgYesNo() MsgRetryCancel() MsgBeep()
+MsgMeter() MsgGet() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

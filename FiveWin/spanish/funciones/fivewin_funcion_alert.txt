@@ -1,0 +1,39 @@
+====== Alert() ======
+
+Equivalente en Windows de la función Alert de Clipper
+
+
+====== Sintaxis ======
+
+Alert( [cMsg], [aLegends], [cTitle], [nDefault], [xIcon] ) --> nButton
+
+
+====== Parámetros ======
+
+| <cMsg> | Mensaje a mostrar en la caja de Diálogo  |  
+| <aLegends> | Matriz con los textos para los botones del diálogo  |  
+| <cTitle> | Título del Diálogo  |  
+| <nDefault> | Botón por omisión (default)  |  
+| <xIcon> | Icono en archivo, o nombre del icono en recursos, o identificador del ícono  |  
+
+====== Devuelve ======
+
+| <nButton> | Botón seleccionado. | 
+
+====== Observaciones ======
+
+La nueva función Alert implementa automáticamente la barra de scroll si el tamaño del mensaje es muy grande.
+También le permite operaciones de Copiado y Pegado del mensaje en el diálogo.
+
+ 
+Icon identificadores:  
+      #define IDI_APPLICATION     32512 
+      #define IDI_HAND            32513 
+      #define IDI_QUESTION        32514 
+      #define IDI_EXCLAMATION     32515 
+      #define IDI_ASTERISK        32516
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\\Alert.prg 
+

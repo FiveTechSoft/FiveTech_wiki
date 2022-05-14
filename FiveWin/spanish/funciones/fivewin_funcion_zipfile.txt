@@ -1,0 +1,110 @@
+ZipFile()
+
+
+
+
+
+
+Crea el archivo compactado
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ZipFile( <CmdLnd>, <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <CmdLnd> Línea de comado 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Manejador de la ventana que recibe los mensajes
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nada
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

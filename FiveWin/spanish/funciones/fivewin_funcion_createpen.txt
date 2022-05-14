@@ -1,0 +1,53 @@
+
+====== CreatePen() ======
+
+CreatePen()
+
+
+Creates a pen with the specified style, width & color
+====== Sintaxis ======
+ CreatePen( <nStyle>, <nWidth>, <nRGBColor> ) --> hPen 
+
+ This function creates a pen having the specified style, width and color.
+The pen can be subsequently be selected as the current pen for any
+device. 
+
+====== Parámetros ======
+
+
+ <nStyle> Specifies the pen style. This parameter can be one of the
+following values: 
+
+
+  PS_SOLID      Creates a solid pen.   
+  PS_DASH      Creates a dashed pen. (Valid only when the pen width is 1.) 
+  PS_DOT      Creates a dotted pen. (Valid only when the pen width is 1.)   
+  PS_DASHDOT      Creates a pen with alternating dashes and dots. (Valid
+              only when the pen width is 1.)   
+  PS_DASHDOTDOT   Creates a pen with alternating dashes and double dots.
+              (Valid only when the pen width is 1.)   
+  PS_NULL      Creates a null pen.   
+  PS_INSIDEFRAME   Creates a pen that draws a line inside the frame of
+            closed shapes produced by graphics device interface (GDI) output
+            functions that specify a bounding rectangle (for example, the Ellipse,
+            Rectangle, RoundRect, Pie, and Chord functions). When this style is used
+            with GDI output functions that do not specify a bounding rectangle (for
+            example, the LineTo function), the drawing area of the pen is not limited
+            by a frame.   
+
+ <nWidth> Specifies the width, in logical units, of the pen. If this
+value is zero, the width in device units is always one pixel, regardless
+of the mapping mode. 
+
+ <nRGBColor> Specifies the color of the pen. 
+
+====== Devuelve ======
+
+ <hPen> The handle of the brush or 0 if it was not possible to create it. 
+
+====== Ejemplo ======
+ SAMPLES\TestRpt5.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\CreatePe.c 
+====== Ver también ======
+ See TPen Class and Pen xBase commands. 

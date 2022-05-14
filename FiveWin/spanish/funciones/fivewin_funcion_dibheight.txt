@@ -1,0 +1,22 @@
+
+====== DibHeight() ======
+DibHeight()
+
+Returns the height of a DIB
+====== Sintaxis ======
+ DibHeight( <hDib> ) --> nHeight 
+
+ This function returns the height in pixels of a DIB. 
+====== Parámetros ======
+ <hDIB> The handle of the new DIB. (DIB = Device independent bitmap). 
+====== Devuelve ======
+ <nHeight> The height of the DIB expressed in pixels. 
+
+Observations:
+
+ We strongly recommend you to use TBitmap Class for managing bitmaps.
+FiveWin process all that you need automatically. 
+====== Código fuente ======
+ SOURCE\\WINAPI\\Dib.c 
+====== Ver también ======
+ DibRead() DibPalette() DibWidth() DibHeight() DibWrite()

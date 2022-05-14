@@ -1,0 +1,75 @@
+====== Icon ======
+**Creating an Icon control from source code **
+<code clipper>
+ @ <nRow>, <nCol> ICON [ <oIcon> ] ;  
+ [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+ [ FILE | FILENAME | DISK <cIcoFile> ] ;  
+ [ BORDER ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ ON CLICK <uClick> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ]  </code>   
+
+**Redefing an Icon from Resources **
+<code clipper>
+ REDEFINE ICON <oIcon>  
+ [ ID <nId> ] ;  
+ [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+ [ FILE | FILENAME | DISK <cIcoFile> ] ;  
+ [ ON CLICK <uClick> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ]  </code>
+
+| <nRow>, <nCol> | Are the coordinates on the screen. We simulate text coordinates. |
+| <oIcon> | Is a reference to the Icon Object. |
+| <cResName> | Is the name of the icon resource if we are loading the icon from a RC, RES or a DLL. |
+| <cIcoFile> | Is the name of a ICO file if we are loading the ICO directly from disk. |
+| <uClick> | Is the action to be performed when the mouse clicks over the icon. |
+| <oWnd> | Is the container Object of the Icon. |
+| <WhenFunc> | An expression to evaluate in order to determine if the control is available or not. |
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string |
+| <nClrBack> | Background color as a RGB number |
+
+**Defining an Icon without showing it **
+<code clipper>
+ DEFINE ICON <oIcon> ;  
+ [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+ [ FILE | FILENAME | DISK <cIcoFile> ]  
+ [ WHEN <WhenFunc> ]  </code>
+ 
+| <oIcon> | Is a reference to the Icon Object. |
+| <cResName> | Is the name of the icon resource if we are loading the icon from a RC, RES or a DLL. |
+| <cIcoFile> | Is the name of a ICO file if we are loading the ICO directly from disk. |
+
+**CLAUSES **
+
+| UPDATE | Indicates if this control has to be updated when doing a <oDlg>:Update() of its container. |
+| BORDER | Create a border arround the control.|
+
+====== Sample Code / Usage ======
+.RC File Entry for the Icon
+<code clipper>
+AppIcon    ICON DISCARDABLE "Images/MyAppLogoIco.ico"
+</code>
+In PRG, Sample code to define icon from Resource file 
+<code clipper>
+DEFINE ICON  oAppIcon RESOURCE "AppIcon"
+DEFINE WINDOW oWnd TITLE "My Application Title" MDI ;
+              ICON  oAppIcon 
+</code>
+In PRG, Sample code to define icon, refering an icon file on hard disk
+<code clipper>
+DEFINE ICON oIco FILE "..\icons\fivewin.ico"
+DEFINE WINDOW oWnd TITLE "My Application Title" MDI ;
+              ICON  oIco 
+</code>
+
+====== Screen snapshot ======
+{{:icon.jpg|:icon.jpg}}
+
+
+
+====== See also ======
+[[fivewin_class_ticon | Class TIcon ]], [[fivewin_class_ticongroup | Class TIconGroup ]], [[fivewin_class_ticonget | Class TIconGet ]]

@@ -1,0 +1,52 @@
+====== Creando una Carpeta (folder) desde código fuente ======
+<code clipper>
+@ <nRow>, <nCol> FOLDER [<oFolder>] ;  
+  [ OF | WINDOW | DIALOG <oWnd> ] ;  
+  [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+  [ DIALOG | DIALOGS | PAGE | PAGES <cDlgName1> [,<cDlgNameN>] ] ;
+  [ PIXEL ] ;  
+  [ DESIGN ] ;  
+  [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+  [ OPTION <nOption> ] ;  
+  [ SIZE <nWidth>, <nHeight> ] ;  
+  [ MESSAGE <cMsg> ]  ;
+  [ ADJUST];  
+  [ FONT <oFont> ]  
+</code>  
+
+====== Creando una Carpeta (folder) desde recursos ====== 
+<code clipper>
+REDEFINE FOLDER [<oFolder>] ;  
+  [ ID <nId> ] ;  
+  [ OF | WINDOW | DIALOG <oWnd> ] ;  
+  [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+  [ DIALOG | DIALOGS | PAGE | PAGES <cDlgName1> [,<cDlgNameN>] ;  
+  [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+  [ OPTION <nOption> ] ;  
+  [ ON CHANGE <uChange> ]  
+  [ ADJUST ]  
+</code>  
+  
+====== Parámetros ======
+
+|<nRow>, <nCol>      |Coordenadas donde ubicar el control carpeta (sólo desde código fuente, no desde recursos).|
+|<oFolder>           |Referencia al objeto carpeta recién creado.|
+|<oWnd>              |Objeto contenedor del control carpeta.|
+|<cPrompt,...>       |Lista con el texto a mostrar para cada página.|
+|<cDlgName1,...>     |Lista con los nombres de recurso de los cuadros de diálogo a gestionar.|
+|<nClrFore>          |Color con el que se muestra el texto.|
+|<nClrBack>          |Color de relleno de la superficie de la carpeta.|
+|<nOption>           |Opción que indica la carpeta inicial mostrada.|
+|<nWidth>, <nHeight> |Dimensiones del control de la carpeta.|
+|<cMsg>              |Un mensaje opcional a mostrar en la barra de mensajes del contenedor.|
+|<nId>               |Identificador numérico del control.|
+|<oFont>             |Objeto tipo de letra (font) opcional para usarse en la carpeta.|
+|<uChange>           |Acción a realizar al cambiar la página seleccionada.|
+
+
+====== Cláusulas ======
+
+|PIXEL       |Se utilizan coordenadas en pixels y no de texto.|
+|DESIGN      |Permite al usuario mover y cambiar el tamaño del control de forma interactiva.|
+|ADJUST      |Para usar el ancho total de la carpeta para calcular las dimensiones de las pestañas de las páginas.|
+|FONT        |Indica un tipo de letra opcional (font) a ser usado por la carpeta.|

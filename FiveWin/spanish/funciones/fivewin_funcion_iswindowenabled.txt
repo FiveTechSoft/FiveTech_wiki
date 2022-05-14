@@ -1,0 +1,44 @@
+IsWindowEnabled()
+
+
+IsWindowEnabled()
+ Previous  Top  Next
+
+Checks if a window is enabled.
+
+====== Sintaxis ======
+
+
+ IsWindowEnabled( <hWnd> ) --> lEnabled 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> The handle of the window to test. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lEnabled> A logical value indicating if the window is enabled. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

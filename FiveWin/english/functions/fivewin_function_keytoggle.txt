@@ -1,0 +1,115 @@
+====== KeyToggle() ====== 
+
+
+
+KeyToggle()
+
+
+
+
+
+Toggle a certain key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ KeyToggle( <nKey> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nKey> nKey to Toggle 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations
+
+
+
+
+
+ KeyToggle Toggles the LEDs and BIOS flags for the NUMLOCK, CAPSLOCK and
+SCROLL LOCK keys 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\MSGBAR.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\KEYBRD.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

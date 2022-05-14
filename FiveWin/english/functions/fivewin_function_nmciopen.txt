@@ -1,0 +1,111 @@
+nMciOpen()
+
+
+
+nMciOpen()
+
+ Previous  Top  Next
+
+
+
+
+Initializes a device
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nMciOpen( <cDeviceType>, <cElement> ) --> nId 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cDeviceType> Name of the device type 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cElement> Device-element name (usually a path). 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nId> Device identifier returned to the user. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TMCI.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MCI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

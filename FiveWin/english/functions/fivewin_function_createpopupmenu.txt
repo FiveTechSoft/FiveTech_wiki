@@ -1,0 +1,21 @@
+====== CreatePopUpMenu() ====== 
+Creates an empty pop-up menu
+
+====== Syntax ======
+CreatePopUpMenu() --> hMenu 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<hMenu>| Handle of the new popup menu|
+
+====== Example ======
+SOURCE\CLASSES\MENU.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\MENUS.C 
+
+====== See also ======
+[[fivewin_commands_menus|Command Menu]]

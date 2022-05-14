@@ -1,0 +1,134 @@
+====== Creating a DbCombo from source code ======
+
+<code clipper>
+@ <nRow>, <nCol> DBCOMBO [ <oCbx> VAR ] <cVar> ;
+[ ITEMS <aItems> ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ OF | WINDOW | DIALOG <oWnd> ] ;
+[ HELPID | HELP ID <nHelpId> ] ;
+[ ON CHANGE <uChange> ] ;
+[ VALID <ValidFunc> ] ;
+[ COLOR | COLORS <nClrText>;[,<nClrBack>] ] ;
+[ PIXEL ] ;
+[ FONT <oFont> ] ;
+[ UPDATE ] ;
+[ MESSAGE <cMsg> ] ;
+[ WHEN <WhenFunc> ] ;
+[ DESIGN ] ;
+[ BITMAPS <acBitmaps> ] ;
+[ ON DRAWITEM <uBmpSelect> ] ;
+[ ALIAS <cAlias> ] ;
+[ ITEMFIELD <cFldItem> ] ;
+[ LISTFIELD <cFldList> ] ;
+[ LIST | PROMPTS <aList> ]
+</code>
+
+====== Creating a DbCombo from resources ======
+
+<code clipper>
+REDEFINE DBCOMBO [ <oCbx> VAR ] <cVar> ;
+[ ITEMS | PROMPTS <aItems> ] ;
+[ ID <nId> ] ;
+[ OF | WINDOW | DIALOG <oWnd> ] ;
+[ HELPID | HELP ID <nHelpId> ] ;
+[ ON CHANGE <uChange> ] ;
+[ VALID <ValidFunc> ] ;
+[ COLOR | COLORS <nClrText>;[,<nClrBack>] ] ;
+[ UPDATE ] ;
+[ MESSAGE <cMsg> ] ;
+[ WHEN <WhenFunc> ] ;
+[ BITMAPS <acBitmaps> ] ;
+[ ON DRAWITEM <uBmpSelect> ] ;
+[ ALIAS <cAlias> ] ;
+[ ITEMFIELD <cFldItem> ] ;
+[ LISTFIELD <cFldList> ] ;
+[ LIST | PROMPTS <aList> ]
+</code>
+
+====== Parameters ======
+
+|<nRow>, <nCol>     | The coordinates of the Button. They mimic text mode coordinates. |
+|<oCbx>             | A reference |
+|<cVar>             | A character variable which keeps the actual item selected in the DbCombo. |
+|<aItems>           | The items showed on the DbCombo. |
+|<nWidth>,<nHeight> | The dimensions of the DbCombo in pixels. |
+|<oWnd>             | The container window of the DbCombo. |
+|<nHelpId>          | The help topic numeric identifier of the control. |
+|<uChange>          | An action to be performed every time the selected item changes. |
+|<ValidFunc>        | An expression to validate when the control is going to lose the focus. |
+|<nClrText>         | Foreground color as a RGB number, or as a xBase string. |
+|<nClrBack>         | Background color defined as nClrText. |
+|<oFont>            | A reference to the Font Object to be used with the DbCombo.|
+|<cMsg>             | The associated message of this control. |
+|<WhenFunc>         | When expression code block. |
+|<acBitmaps>        | A list of the bitmaps files or resources to use on a ownerdraw DbCombo. |
+|<uBmpSelect>       | A codeblock to select which bitmap to paint on a ownerdraw DbCombo. By default, it uses the corresponding index in the bitmaps list.|
+|<cAlias>           | The DBF alias from which to retrieve the DbCombo elems. |
+|<cFldItem>         | Field to return in the bound variable. |
+|<cFldList>         | Field to display in the DbCombo. |
+|<aList>            | Array of display items corresponding to aItems. |
+|<nId>              | The numeric resource identifier of the Control. |
+
+====== Clauses ======
+
+|PIXEL  |To use pixel coordinates instead of Text coordinates. |
+|UPDATE |This control may be updated from TDialog:Update() METHOD. |
+|DESIGN |Allows the user to move and resize with the mouse.  |
+
+====== Sample Code ======
+\Fwh\Samples\TestDbc1.Prg
+<code clipper>
+#include "fivewin.ch"
+#include "dbcombo.ch"
+//-------------------------------------------//
+Function Main()
+   Local oDlg, oDBC1, oDBC2, cVar, oCust, cStateID:="  ", oBtn, cState:=""
+   Local cDept:= space(3), oStates, aItems, aList
+   Field NAME
+
+   If File("states.dbf")
+      Use states
+      Index on upper(NAME) to temp
+      Database oStates
+   Else
+      msgInfo("File states.dbf not found.")
+   Endif
+
+   Define Dialog oDlg
+
+   @ 10,30 DBCOMBO oDBC1 var cStateID of oDlg;
+      alias oStates:cAlias;
+      size 100,200 pixel;
+      itemfield "CODE" ;
+      listfield "NAME";
+      update;
+
+   aList:= {"Accounting","HR","Marketing","Production","Research","Shipping","Sales"}
+   aItems:= {"100","200","400","300","600","500","700"}
+
+   @ 30,30 DBCOMBO oDBC2 VAR cDept;
+      Items aItems;
+      Size 100,200 pixel;
+      List aList;
+      OF oDlg;
+      update
+
+
+   @ 50, 50 BUTTTON oBtn PROMPT "Selected";
+      OF oDlg pixel ;
+      Action msgInfo( "cStateId: " +cStateID +CRLF+"DeptNo: "+cDept,"Selected" );
+      Default
+
+   Activate Dialog oDlg Center;
+
+   Ferase("temp.ntx")
+
+Return nil
+</code>  
+
+
+====== Screen Snapshot ======
+{{:dbcombo.jpg|:dbcombo.jpg}}
+
+====== See also ======
+[[fivewin_class_tdbcombo | Class TDbCombo ]]

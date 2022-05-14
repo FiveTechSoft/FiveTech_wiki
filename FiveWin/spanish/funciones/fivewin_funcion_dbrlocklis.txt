@@ -1,0 +1,18 @@
+
+====== DbRLockLis() ======
+DbrLockLis()
+
+Return an array of the current lock list
+====== Sintaxis ======
+ DbRLockList() --> aRecordLocks 
+
+ Function to obtain compatibility with xBase++ 
+
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <aRecordLocks> Array with the numbers of registrations locked in the
+active area 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

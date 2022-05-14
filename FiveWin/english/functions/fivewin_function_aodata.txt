@@ -1,0 +1,35 @@
+====== aOData() ======
+Returns an array with all an Object Class DATA names 
+====== Syntax ======
+aOData( <oObject> ) -> <aClassDataNames>
+====== Parameters ======
+|Parameter ^ Description ^
+|<oObject>|This is an Object.|
+====== Returns ======
+^Returns ^ Description ^
+|<aData>|This function returns an array with the Names of all the Object Class Data.|
+ 
+====== Sample ======
+<code clipper>
+#include 'fivewin.ch'
+
+function Main()
+
+   local ownd, oBar
+
+   DEFINE WINDOW oWnd
+   DEFINE BUTTONBAR oBar OF oWnd SIZE 64,64 //2007
+ 
+   MsgList(aOData(oBar))
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:aodata.jpg|:aodata.jpg}}
+
+====== Source Code ======
+SOURCE\\FUNCTION\\aOData.prg

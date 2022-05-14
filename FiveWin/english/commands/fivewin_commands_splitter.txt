@@ -1,0 +1,187 @@
+====== Splitter ======
+** Creating a splitter from prg **
+<code clipper>
+ @ <nRow>,<nCol> SPLITTER [ <oSplit> ];  
+ [ HORIZONTAL ];  
+ [ VERTICAL ];  
+ [ PREVIOUS CONTROLS <aPrevControls,....> [ NO ADJUST ] ];  
+ [ HINDS CONTROLS <aHindControls,...> [ NO ADJUST ] ];  
+ [ TO MARGIN | LEFT MARGIN <nMargin 1> ];  
+ [ BOTTOM MARGIN | RIGHT MARGIN <nMargin2> ];  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ PIXEL ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ ON CHANGE <uChange,...> ];  
+ [ 3D | 3DLOOK | _3D | _3DLOOK ];  
+ [ COLOR | COLORS <nClrBack> ];  
+ [ DESIGN ];  
+ [ UPDATE ]  
+</code>
+
+** Creating Splitter from resource **
+<code clipper>
+ REDEFINE SPLITTER [ <oSplit> ];  
+ [ ID <nId> ];  
+ [ HORIZONTAL];  
+ [ VERTICAL];  
+ [ PREVIOUS CONTROLS <aPrevControls,....> [ NO ADJUST ] ];  
+ [ HINDS CONTROLS <aHindControls,...> [ NO ADJUST ] ];  
+ [ TO MARGIN | LEFT MARGIN <nMargin 1> ];  
+ [ BOTTOM MARGIN | RIGHT MARGIN <nMargin2> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ ON CHANGE <uChange,...>];  
+ [ 3D | 3DLOOK | _3D | _3DLOOK ];  
+ [ COLOR | COLORS <nClrBack> ];  
+ [ UPDATE ]  
+</code>
+
+^ Parameters  ^ Description           ^ 
+| <oSplit> | The variable to hold this object. | 
+| <nRow>, <nCol> | The row and col coordinates. |
+| <nMargin2>, <nMargin1> | To optionally specify the splitter area margins. |
+| <aPrevControls,....> | An array with the previous splitter controls to be resized. |
+| <nClrBack> | The background color of the splitter. |
+| <aHindControls,...> | An array with the next splitter controls to be resized. |
+| <nId> | The resource identifier for this control.  |
+| <uChange,...> | CodeBlock to perform when moving from row to row  |
+| <oWnd> | The conatiner of this control.  |
+| <nWidth>, <nHeight> | The width and height dimensions of the control. |
+
+**CLAUSES **
+^ Clause  ^ Description           ^ 
+| PIXEL | To specify pixel dimensions. | 
+| UPDATE | To repaint this control when its container gets :Updated() | 
+| DESIGN | To drag around this control using the mouse. | 
+
+====== Sample Code ======
+\Fwh\Samples\TestSpl2.Prg
+<code clipper>
+// Testing FiveWin splitter controls
+
+#include "FiveWin.ch"
+#include "Splitter.ch"
+
+
+static oWnd
+
+static oLbx, oGet
+
+static oSplit
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cTitle := "Testing the Splitter controls"
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 400, 600 PIXEL ;
+      TITLE cTitle
+
+   SELECT 1
+   USE EJEMPLO1.DBF
+
+   @ 0,0 LISTBOX oLbx FIELDS SIZE 500,200 PIXEL OF oWnd
+
+   @ 205,0 GET oGet VAR EJEMPLO1->SINTAX TEXT SIZE 500,150 PIXEL OF oWnd
+
+   oLbx:bChange:={|| oGet:Refresh() }
+
+   @ 200,0  SPLITTER oSplit ;
+            HORIZONTAL ;
+            PREVIOUS CONTROLS oLbx ;
+            HINDS CONTROLS oGet ;
+            TOP MARGIN 80 ;
+            BOTTOM MARGIN 80 ;
+            SIZE 500, 4  PIXEL ;
+            OF oWnd ;
+            _3DLOOK
+
+  ACTIVATE WINDOW oWnd ;
+    ON RESIZE oSplit:AdjClient()
+
+return nil
+</code>
+
+====== Scren Snapshot ======
+{{:splitter.jpg|:splitter.jpg}}
+
+====== Sample code 2 ======
+\Fwh\Samples\TestSpl3
+<code clipper>
+// Testing FiveWin splitter controls
+
+#include "FiveWin.ch"
+#include "Splitter.ch"
+
+static oWnd, oMenu
+static oLbx1, oLbx2, oGet
+static oVSplit, oHSplit
+//----------------------------------------------------------------------------//
+function Main()
+
+   local cTitle := "Testing the Splitter controls"
+   local cInfo  := "Lee las indicaciones que he puesto al final de cada " + ;
+                   "programa fuente." + CRLF + "R.Avendaño."
+
+   MENU oMenu
+        MENUITEM "&Splitters"
+           MENU
+               MENUITEM "&Info" ACTION MsgInfo(cInfo)
+               MENUITEM "&Exit" ACTION oWnd:End()
+           ENDMENU
+   ENDMENU
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 400, 600 PIXEL ;
+      TITLE cTitle ;
+      MENU oMenu
+
+   SELECT 1
+   USE EJEMPLO1.DBF
+
+   @ 0,0 LISTBOX oLbx1 FIELDS SIZE 200,355 PIXEL OF oWnd
+
+   SELECT 2
+   USE EJEMPLO2.DBF
+
+   @ 0,205 LISTBOX oLbx2 FIELDS SIZE 300,200 PIXEL OF oWnd
+
+   @ 205,205 GET oGet VAR EJEMPLO2->SINTAX TEXT SIZE 300,150 PIXEL OF oWnd
+
+   oLbx2:bChange:={|| oGet:Refresh() }
+
+   @ 200,205 SPLITTER oHSplit ;
+             HORIZONTAL ;
+             PREVIOUS CONTROLS oLbx2 ;
+             HINDS CONTROLS oGet ;
+             TOP MARGIN 80 ;
+             BOTTOM MARGIN 80 ;
+             SIZE 300, 4  PIXEL ;
+             OF oWnd ;
+             _3DLOOK
+
+  @ 0,200    SPLITTER oVSplit ;
+             VERTICAL ;
+             PREVIOUS CONTROLS oLbx1 ;
+             HINDS CONTROLS oLbx2, oHSplit, oGet ;
+             LEFT MARGIN 80 ;
+             RIGHT MARGIN 80 ;
+             SIZE 4, 355  PIXEL ;
+             OF oWnd ;
+             _3DLOOK
+
+  ACTIVATE WINDOW oWnd ;
+    ON RESIZE ( oVSplit:AdjLeft(), oHSplit:AdjRight() )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+====== Screen Snapshot 2 ======
+{{:splitter2.jpg|:splitter2.jpg}}
+
+
+====== See also ======
+[[fivewin_class_tsplitter | Class TSplitter ]]
+
+----
+[[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=13996&hilit=splitter|Sample of defining splitter in resource]]

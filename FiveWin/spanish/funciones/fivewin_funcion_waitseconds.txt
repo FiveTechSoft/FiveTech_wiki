@@ -1,0 +1,45 @@
+WaitSeconds()
+
+
+WaitSeconds()
+ Previous  Top  Next
+
+Waits the specified number of seconds.
+
+====== Sintaxis ======
+
+
+ WaitSeconds( <nSecs> ) --> nil 
+
+
+ 
+
+
+====== Parámetros ======
+
+
+ <nSecs> The number of seconds to wait 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ WaitSeconds( 2 ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\MSGRUN.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

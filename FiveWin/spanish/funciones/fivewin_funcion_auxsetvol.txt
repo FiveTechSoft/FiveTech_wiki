@@ -1,0 +1,41 @@
+====== AuxSetVol() ======
+
+Define el volumen en un dispositivo de salida auxiliar.
+
+====== Sintaxis ====== 
+
+ AuxSetVol( <nIdDevice>, <nVolLeft>, <nVolRight> ) --> nSuccess  
+
+====== Parámetros ====== 
+
+| <nIdDevice> | Identificador del dispositivo especificado. |  
+| <nVolLeft> | Volumen del parlante izquierdo.|  
+| <nVolRight> | Volumen del parlante derecho.|  
+
+====== Devuelve ====== 
+
+ <nSucces> Retorna cero si la función fue exitosa. De lo contrario, retorna el numero del error. Posibles errores:
+
+
+#define MMSYSERR_BASE 0 
+
+#define MMSYSERR_BADDEVICEID ( MMSYSERR_BASE + 2 ) 
+
+#define MMSYSERR_NODRIVER ( MMSYSERR_BASE + 6 ) 
+
+  MMSYSERR_BADDEVICEID 
+    La ID del dispositivo identificado está fuera de rango
+  MMSYSERR_NODRIVER 
+    El Driver no se pudo instalar. 
+
+====== Observaciones ====== 
+
+ Para ver si el dispositivo puede manejar el volumen use la función AuxGetCaps().    
+
+====== Ejemplo ====== 
+
+ SAMPLES\MMEDIA\MMEDIA.PRG  
+
+====== Código fuente ====== 
+
+ SOURCE\WINAPI\MCI.C  

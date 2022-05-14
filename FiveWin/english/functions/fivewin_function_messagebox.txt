@@ -1,0 +1,434 @@
+====== MessageBox() ======
+
+
+
+Creates, displays and operates a MessageBox window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MessageBox( <hWnd>, <cText>, <cTitle>, <nStyle> ) --> nRetValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the container window of the messagebox dialog to be
+created. If it is 0, it will not have a container window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cText> The message to be displayed. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTitle> The dialogbox title to be displayed. Default value is "Error". 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nStyle> Specifies the contents and behavior of the DialogBox. This
+parameter can be a combination of the following values: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+Value            Meaning   
+MB_ABORTRETRYIGNORE   The message box contains three push buttons: Abort,
+Retry, and Ignore.   
+MB_APPLMODAL      The user must respond to the message box before
+continuing ork in the window identified by the hwndParent parameter.
+However, the user can move to the windows of other applications and work
+in those windows. MB_APPLMODAL is the default if neither MB_SYSTEMMODAL
+nor MB_TASKMODAL is specified.
+MB_DEFBUTTON1      The first button is the default. Note that the first
+button is always the default unless MB_DEFBUTTON2 or MB_DEFBUTTON3 is
+specified.   
+MB_DEFBUTTON2      The second button is the default.   
+MB_DEFBUTTON3      The third button is the default.   
+MB_ICONASTERISK      Same as MB_ICONINFORMATION.   
+MB_ICONEXCLAMATION   An exclamation-point icon appears in the message
+box.   
+MB_ICONHAND      Same as MB_ICONSTOP.   
+MB_ICONINFORMATION   An icon consisting of a lowercase letter "I" in a
+circle appears in the message box.   
+MB_ICONQUESTION      A question-mark icon appears in the message box.   
+MB_ICONSTOP         A stop-sign icon appears in the message box.   
+MB_OK         The message box contains one push button: OK.   
+MB_OKCANCEL      The message box contains two push buttons: OK and
+Cancel.   
+MB_RETRYCANCEL      The message box contains two push buttons: Retry and
+Cancel.   
+MB_SYSTEMMODAL      All applications are suspended until the user
+responds to the message box. Unless the application specifies
+MB_ICONHAND, the message box does not become modal until after it is
+created; consequently, the parent window and other windows continue to
+receive messages resulting from its activation. System-modal message
+boxes are used to notify the user of serious, potentially damaging errors
+thatrequire immediate attention (for example, running out of memory).
+MB_TASKMODAL      Same as MB_APPLMODAL except that all the top-level
+windows belonging to the current task are disabled if the hwndParent
+parameter is NULL. This flag should be used when the calling application
+or library does not have a window handle available but still needs to
+prevent input to other windows in the current application without
+suspending other applications.
+MB_YESNO         The message box contains two push buttons: Yes and No.   
+MB_YESNOCANCEL      The message box contains three push buttons: Yes, No,
+and Cancel.   
+
+
+
+
+
+ #define MB_OK            0 // 0x0000 
+
+
+ 
+
+
+ #define MB_OKCANCEL         1 // 0x0001 
+
+
+ 
+
+
+ #define MB_ABORTRETRYIGNORE   2 // 0x0002 
+
+
+ 
+
+
+ #define MB_YESNOCANCEL      3 // 0x0003 
+
+
+ 
+
+
+ #define MB_YESNO         4 // 0x0004 
+
+
+ 
+
+
+ #define MB_RETRYCANCEL      5 // 0x0005 
+
+
+ 
+
+
+ #define MB_TYPEMASK         15 // 0x000F 
+
+
+ 
+
+
+ #define MB_ICONHAND         16 // 0x0010 
+
+
+ 
+
+
+ #define MB_ICONQUESTION      32 // 0x0020 
+
+
+ 
+
+
+ #define MB_ICONEXCLAMATION   48 // 0x0030 
+
+
+ 
+
+
+ #define MB_ICONASTERISK      54 // 0x0040 
+
+
+ 
+
+
+ 
+
+
+ #define MB_ICONMASK         240 // 0x00F0 
+
+
+ 
+
+
+ #define MB_ICONINFORMATION      MB_ICONASTERISK 
+
+
+ 
+
+
+ #define MB_ICONSTOP         MB_ICONHAND 
+
+
+ 
+
+
+ #define MB_DEFBUTTON1      0 // 0x0000 
+
+
+ 
+
+
+ #define MB_DEFBUTTON2      256 // 0x0100 
+
+
+ 
+
+
+ #define MB_DEFBUTTON3      512 // 0x0200 
+
+
+ 
+
+
+ #define MB_DEFMASK         3840 // 0x0F00 
+
+
+ 
+
+
+ #define MB_APPLMODAL      0 // 0x0000 
+
+
+ 
+
+
+ #define MB_SYSTEMMODAL      4096 // 0x1000 
+
+
+ 
+
+
+ #define MB_TASKMODAL      8192 // 0x2000 
+
+
+ 
+
+
+ #define MB_NOFOCUS         32768 // 0x8000 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ The return value is 0 if there is no enough memory to create the message
+box. Otherwise, it is one of the following menu-item valuesreturned by
+the dialogbox: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+Value      Meaning   
+IDABORT   Abort button was selected.   
+IDCANCEL   Cancel button was selected.   
+IDIGNORE   Ignore button was selected.   
+IDNO      No button was selected.   
+IDOK      OK button was selected.   
+IDRETRY   Retry button was selected.   
+IDYES      Yes button was selected.   
+
+
+
+
+
+ #define IDOK      1 
+
+
+ 
+
+
+ #define IDCANCEL   2 
+
+
+ 
+
+
+ #define IDABORT   3 
+
+
+ 
+
+
+ #define IDRETRY   4 
+
+
+ 
+
+
+ #define IDIGNORE   5 
+
+
+ 
+
+
+ #define IDYES      6 
+
+
+ 
+
+
+ #define IDNO      7 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ If a message box has a Cancel button, the IDCANCEL value will be
+returned if either the ESC key is pressed or the Cancel button is
+selected. If themessage box has no Cancel button, pressing ESC has no
+effect. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ FiveWin supplies as built-in function the most common used messagebox
+styles. See Msg...() functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestMsg.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\MsgBox.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ MsgInfo() MsgAlert() MsgYesNo() MsgStop() MsgRetryCancel() MsgAbout()
+MsgBeep() MsgMeter() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

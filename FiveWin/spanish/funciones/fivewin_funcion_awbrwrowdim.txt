@@ -1,0 +1,70 @@
+aWBrwRowDim()
+
+
+aWBrwRowDim()
+ Previous  Top  Next
+
+Calculates the vertical coordinates of a row in a Browse.
+
+====== Sintaxis ======
+
+ 
+
+
+ aWBrwRowDim( <hWnd>, <nRow>, <hFont> ) --> aCoords 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> Handle of the object TWBrowse. 
+
+
+ <nRow> Active line of the TWBrowse. 
+
+
+ <hFont> Handle of the object font of the TWBrowse 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <aCoords> Array of top and bottom vertical coordinates of the specified
+row. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\WBRWLINE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

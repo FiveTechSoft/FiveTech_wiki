@@ -1,0 +1,36 @@
+Retrieves the value of a string private INI file
+
+====== Syntax ======
+
+ GetPvProfString( <cSection>, <cEntry>, <cDefault>, <cIniFile> ) --> cValue 
+
+======Parameters======
+| <cSection> | Specifies the section containing the entry. |
+| <cEntry> | The entry whose value is to be retrieved. |
+| <cDefault> | Specifies the default string value to return if the entry cannot be found. |
+| <cIniFile> | It is the name of the private INI file to use. |
+
+====== Returns ======
+| <cValue> | The string value in the INI file that follows the specified entry. |
+
+======Observations======
+
+ This function retrieves a value from a user defined INI file. 
+
+====== Example ======
+ SAMPLES\\TestIni2.prg 
+<code clipper>
+LOCAL cIniFile := GetWinDir()+"\FiveWin.ini"
+LOCAL nExecs   := val( GetPvProfString( "TestIni2", "Executions", "0", cIniFile ) ) + 1
+</code>
+====== Source Code ======
+ SOURCE\\WINAPI\\Profile.c 
+
+
+
+====== See also ======
+
+[[fivewin_function_GetProfInt|GetProfInt()]]
+[[fivewin_function_GetPvProfInt|GetPvProfInt()]]
+[[fivewin_function_GetPvpProfile|GetPvpProfile()]]
+[[fivewin_function_GetProfString|GetProfString()]]

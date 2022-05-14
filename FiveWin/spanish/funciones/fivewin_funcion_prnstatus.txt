@@ -1,0 +1,156 @@
+PrnStatus()
+
+
+PrnStatus()
+ Previous  Top  Next
+
+Retrieves the status of a printer.
+
+
+====== Sintaxis ======
+
+
+
+
+
+ PrnStatus( <cPrinter> ) --> nStatus 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cPrinter> The printer of which the status is to be retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nStatus> One of the following values: 
+
+
+ 
+
+
+ #define PRINTER_STATUS_OK            0 
+
+
+ #define PRINTER_STATUS_PAUSED         1 
+
+
+ #define PRINTER_STATUS_ERROR         2 
+
+
+ #define PRINTER_STATUS_PENDING_DELETION   4 
+
+
+ #define PRINTER_STATUS_PAPER_JAM      8 
+
+
+ #define PRINTER_STATUS_PAPER_OUT      16 
+
+
+ #define PRINTER_STATUS_MANUAL_FEED      32 
+
+
+ #define PRINTER_STATUS_PAPER_PROBLEM      64 
+
+
+ #define PRINTER_STATUS_OFFLINE         128 
+
+
+ #define PRINTER_STATUS_IO_ACTIVE         256 
+
+
+ #define PRINTER_STATUS_BUSY         512 
+
+
+ #define PRINTER_STATUS_PRINTING         1024 
+
+
+ #define PRINTER_STATUS_OUTPUT_BIN_FULL      2048 
+
+
+ #define PRINTER_STATUS_NOT_AVAILABLE      4096 
+
+
+ #define PRINTER_STATUS_WAITING         8192 
+
+
+ #define PRINTER_STATUS_PROCESSING      16384 
+
+
+ #define PRINTER_STATUS_INITIALIZING         32768 
+
+
+ #define PRINTER_STATUS_WARMING_UP      65536 
+
+
+ #define PRINTER_STATUS_TONER_LOW      131072 
+
+
+ #define PRINTER_STATUS_NO_TONER         262144 
+
+
+ #define PRINTER_STATUS_PAGE_PUNT      524288 
+
+
+ #define PRINTER_STATUS_USER_INTERVENTION   1048576 
+
+
+ #define PRINTER_STATUS_OUT_OF_MEMORY      2097152 
+
+
+ #define PRINTER_STATUS_DOOR_OPEN      4194304 
+
+
+ #define PRINTER_STATUS_SERVER_UNKNOWN   8388608 
+
+
+ #define PRINTER_STATUS_POWER_SAVE      16777216 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+====== Ejemplo ======
+
+
+   SAMPLES\prnstat.prg
+
+
+====== Código fuente ======
+
+
+
+
+   SOURCE\WINAPI\printdc.c
+
+
+====== Ver también ======
+

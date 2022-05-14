@@ -1,0 +1,16 @@
+
+====== PrinterSetup() ====== 
+PrinterSetUp()
+
+Show a print setup dialob box
+====== Sintaxis ======
+ PrinterSetup( <hWndOwner> ) --> nil 
+====== Parámetros ======
+ <hWndOwner> Handle of the window to which belongs the dialog box. This
+parameter can be nil if the dialog box not it belongs to any window. 
+====== Devuelve ======
+ nil 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

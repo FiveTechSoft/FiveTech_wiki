@@ -1,0 +1,125 @@
+ChangeProc()
+
+
+
+ChangeProc()
+
+ Previous  Top  Next
+
+
+
+Changes the procedure of a Window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ChangeProc( <hWnd> ) --> nOldProc 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function replaces the procedure that controls the behavior of a
+function, for a FiveWin special one. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ RestProc() replaces again this new procedure for the old one. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> The handle of the window to change its proc. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nOldProc> A number ( long pointer ) of the old procedure. 
+
+
+ 
+
+
+ 
+
+
+
+Observations
+
+
+
+
+
+ This function is used internally by FiveWin to automatically subclass
+windows and controls and to make them compatible with the OOPS
+architecture of FiveWin. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\ChangePr.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

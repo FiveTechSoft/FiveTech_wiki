@@ -1,0 +1,45 @@
+DragQueryFiles()
+
+
+DragQueryFiles()
+ Previous  Top  Next
+
+Retrieves the file names of dropped files that have resulted from a
+successful drag-and-drop operation.
+
+====== Sintaxis ======
+
+
+ DragQueryFiles( <hDrop> ) --> aFiles 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hDrop> Handler of the drag and drop proccess 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <aFiles> An array of names of the dropped files. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\DROPFILE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

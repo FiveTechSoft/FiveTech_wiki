@@ -1,0 +1,71 @@
+
+====== DevMode() ======
+DevMode()
+
+Retrieves information about a printer driver's
+====== Sintaxis ======
+ DevMode( <cDeviceName>, <nSpecVersion> ) --> aDevMode 
+====== Parámetros ======
+ <cDeviceName> Specifies the name of the device the driver supports 
+
+ <nSpecVersion> Specifies the version number of the DEVMODE structure 
+
+====== Devuelve ======
+ <aDevMode> 
+
+DeviceName[CCHDEVICENAM]
+
+SpecVersion
+
+DriverVersion
+
+Size
+
+DriverExtra
+
+Fields
+
+Orientation
+
+PaperSize
+
+PaperLength
+
+PaperWidth
+
+Scale
+
+Copies
+
+DefaultSource
+
+PrintQuality
+
+
+Color
+
+Duplex
+
+YResolution
+
+TTOption
+
+Collate
+
+FormName[CCHFORMNAME]
+
+LogPixels
+
+BitsPerPel
+
+PelsWidth
+
+PelsHeight
+
+DisplayFlags
+
+DisplayFrequency
+
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

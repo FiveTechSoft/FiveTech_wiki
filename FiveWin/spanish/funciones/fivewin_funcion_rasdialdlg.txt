@@ -1,0 +1,65 @@
+RasDialDlg()
+
+
+RasDialDlg()
+ Previous  Top  Next
+
+To establish a RAS connection using a specified phonebook entry.
+
+====== Sintaxis ======
+
+
+ RasDialDlg( <cPhoneBook>, <cEntry>, <cPhoneNumber> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <cPhoneBook> The filename of a phonebook (PBK) file or zero for the
+current. 
+
+
+ 
+
+
+ <cEntry> The phonebook entry to dial. 
+
+
+ 
+
+
+ <cPhoneNumber> The number to dial or empty for the number in cEntry. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Ejemplo ======
+
+   RasDialDlg( 0, "Entryname", "" )
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\RAS32.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

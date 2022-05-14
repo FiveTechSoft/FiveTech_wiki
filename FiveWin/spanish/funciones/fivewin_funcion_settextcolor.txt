@@ -1,0 +1,183 @@
+SetTextColor()
+
+
+
+SetTextColor()
+
+ Previous  Top  Next
+
+
+
+
+Set the text color to the specific color
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetTextColor( <hDC>, <nClrText> ) --> nPrevColor 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <nClrText> RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nPrevColor> Previous text color 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ local hDC 
+
+
+ 
+
+
+ local nOldColor 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ hDC := oWnd:GetDC() 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ nOldColor := SetTextColor( hDC, CLR_YELLOW ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ TextOut( hDC, 10, 10, "Hello" ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ SetTextColor( hDC, nOldColor ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ oWnd:ReleaseDC() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\COLOR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

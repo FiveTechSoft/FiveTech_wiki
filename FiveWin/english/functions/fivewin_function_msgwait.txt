@@ -1,0 +1,36 @@
+
+**MsgWait()** 
+
+Shows a DialogBox with a msg and waits some time.
+  
+**Syntax:** 
+
+ MsgWait( <cMsg> [,<cTitle>], [<nSeconds>] ) --> nil      
+  
+**Parameters:** 
+
+| <cMsg> |  The message to display.|
+| <cTitle> | The title of the dialogbox. By default "Please, wait...".| 
+| <nSeconds> | The time in seconds to wait. By default just waits 4 seconds. MsgWait() will automatically end the DialogBox that appears.|
+
+  
+**Returns:** 
+
+ nil  
+  
+**Observations:** 
+
+ This function simplifies the process of showing a brief message to the user and waiting a little. This function uses a Modal DialogBox which guaranties that the application execution will wait until the DialogBox is removed.
+
+  
+**Sample:** 
+
+ SAMPLES\TestMsg.prg   
+  
+**Source code:** 
+
+ SOURCE\FUNCTION\MsgRun.prg    
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]]

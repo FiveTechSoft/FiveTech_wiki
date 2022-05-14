@@ -1,0 +1,24 @@
+====== CreateEllipticRgnIndirect() ======
+Creates an elliptical region from a rect (array)
+
+====== Syntax ======
+CreateEllipticRgnIndirect( aRect ) --> hRgn
+
+====== Parameters ======
+^Parameter^Description^
+|<aRect>|An array with the rect values { nTop, nLeft, nBottom, nRight }| 
+
+====== Returns ======
+^Returns^Description^
+|<hRgn>|The handle of the region just created| 
+
+
+====== Observations ======
+When you no longer need the HRGN object, call the DeleteObject function to delete it
+
+====== Source Code ======
+SOURCE\WINAPI\REGIONS.c 
+
+
+====== See also ======
+[[fivewin_function_CreateEllipticRgn|CreateEllipticRgn()]]

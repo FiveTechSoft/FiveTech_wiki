@@ -1,0 +1,50 @@
+====== CreateOLEObject() ====== 
+Creates an OLE object
+
+====== Syntax ======
+CreateOLEObject( <cOleName> ) --> oObject 
+
+====== Parameters ======
+^Parameter^Description^
+|<cOleName>| Name from the object to create|
+
+
+====== Returns ======
+^Returns^Description^
+|<oObject>|Created object |
+
+====== Example ======
+\Fwh\Samples\TestOle.Prg
+<code clipper>
+// OLE2 support from FiveWin !!!
+
+//----------------------------------------------------------------//
+
+function Main()
+
+    local hWordOle   := CreateOleObject( "Word.Application" )
+    local hVBE
+    local hMainWnd
+    // local hSpeechOle := CreateOleObject( "Speech.VoiceCommand" )
+
+    // MsgInfo( OleSetProperty( hWordOle, "Visible", .t. ) )
+
+    MsgInfo( OleGetProperty( hWordOle, "Version" ) )
+
+    MsgInfo( hVBE := OleGetProperty( hWordOle, "VBE" ) )
+
+    hMainWnd = OleGetProperty( hVBE, "MainWindow" )
+
+    OleSetProperty( hMainWnd, "Visible", .t. )
+
+    MsgInfo( "FiveWin power!!!" )
+
+    OleUninitialize()
+
+return nil
+
+//----------------------------------------------------------------//
+</code>
+
+====== Source Code ======
+SOURCE\WINAPI\OLE.C 

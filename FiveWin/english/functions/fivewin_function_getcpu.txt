@@ -1,0 +1,28 @@
+====== GetCPU() ======
+Retrieves the CPU type
+
+====== Syntax ======
+GetCPU() --> cCPUType 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<cCPUType>| "286"\\ "386"\\ "486"\\ "Pentium"\\ "Intel Celeron"\\ "Intel Pentium III"\\ "Intel Pentium III Xeon"\\ "Intel Pentium IV"\\ "Pentium MMX"\\ "Pentium classic"\\ "Pentium Pro"\\ "Pentium II"\\ "(PII core) Celeron"\\ "Pentium III"\\ "(PIII core) Celeron"\\ "Pentium IV"|
+
+====== Example ======
+<code clipper>
+#Include "FiveWin.ch"
+Function Main()
+
+   MsgInfo( GetCPU() )
+
+return nil
+</code>
+
+====== Source Code ======
+SOURCE\FUNCTION\DRIVES.C 
+
+====== See also ======
+[[fivewin_function_GetCPUspeed|GetCPUspeed()]]

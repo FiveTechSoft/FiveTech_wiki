@@ -1,0 +1,98 @@
+Time()
+
+
+
+Time()
+
+ Previous  Top  Next
+
+
+
+
+Gives the current time in format 00:00:00
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Time() --> cTime 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Devuelve ======
+
+
+
+ 
+
+
+ 
+
+
+ <cTime> Devuelve la Hora del sistema como una cadena de caracteres en formato "hh:mm:ss" horas, minutos,
+segundos. 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Ejemplo ======
+? time()   //Resultado   11:19:01
+
+
+====== Código fuente ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\WINAPI\TIMERS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

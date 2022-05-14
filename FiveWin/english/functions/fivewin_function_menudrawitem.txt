@@ -1,0 +1,112 @@
+====== MenuDrawItem() ======
+
+
+To draw an item of the menu
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MenuDrawItem( <pDrawItemStruct>, <cPrompt>, <lTop>, <hBitmap> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <pDrawItemStruct> LPDRAWITEMSTRUCT structure 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cPrompt> String of character to draw in the menu item. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lTop> Do not used. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBitmap> Handle of the bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

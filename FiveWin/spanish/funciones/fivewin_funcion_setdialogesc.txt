@@ -1,0 +1,18 @@
+====== SetDialogEsc() ======
+Permite controlar si los diálogos en sus aplicaciones pueden ser cerrados presionando ESC
+
+Fivewin permite, por default, salir de los diálogos con ESC. En caso de que quiera cambier este comportamiento, simplemente digite SetDialogEsc( .F. ) al comienzo de su aplicación.
+====== Sintaxis ======
+ SetDialogEsc( lOnOff )
+
+ Llame a SetDialogEsc( .F. ) al principio de su apliación.
+====== Parámetros ======
+| <lOnOff>| .F. si no quiere que los diálogos en sus aplicaciones sean cerrados con ESC.|
+====== Devuelve ======
+| <lOnOff>| Devuelve el estado previo, por lo que puede guardarlo y cambiarlo dinámicamente durante la ejecución de su aplicación.|
+====== Código Fuente ======
+ SOURCE\CLASSES\Dialog.prg
+====== Devuelve ======
+
+====== Ver también ======
+[[fivewin_clase_tdialog|Class TDialog]]

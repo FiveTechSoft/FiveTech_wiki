@@ -1,0 +1,31 @@
+
+====== aFindFile() ====== 
+
+It locates files recursivity from a certain path 
+
+====== Syntax ====== 
+
+ aFindFile(<cFileName>, <cPath>, <aResult> ) --> aResult  
+ 
+====== Parameters ====== 
+^ Parameter ^ Description  ^
+|<cFileName>|File to search|  
+|<cPath>|Path of beginning of the search|  
+|<aResult>|Array where the result of the search will be stored|  
+ 
+====== Returns ====== 
+^ Return ^ Description  ^
+|<aResult>|Array with the result of the search|  
+ 
+====== Observations ====== 
+
+This function acts recursivity on the path and those possible nested directories that there is from the path given.  
+ 
+====== Example ====== 
+<code clipper>
+ aResult := aFindFiles( "readme.txt","c:")  
+</code> 
+
+====== Source Code ====== 
+
+SOURCE\FUNCTION\FILENAME.PRG  

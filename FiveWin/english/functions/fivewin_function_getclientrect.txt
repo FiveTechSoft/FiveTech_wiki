@@ -1,0 +1,20 @@
+====== GetClientRect() ======
+This function retrieves the dimensions of the window client area. 
+
+====== Syntax ======
+GetClientRect( <hWnd> ) --> aRect 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The handle of the window. |
+
+====== Returns ======
+^Returns^Description^
+|<aRect>| A Clipper array 4 elements namely:{ nTop, nLeft, nBottom, nRight } |
+
+====== Source Code ======
+SOURCE\WINAPI\Rects.c 
+
+====== See also ======
+[[fivewin_function_GetWndRect|GetWndRect()]], [[fivewin_function_FillRect|FillRect()]]
+[[fivewin_function_InvertRect|InvertRect()]], [[fivewin_function_GetCoors|GetCoors()]]

@@ -1,0 +1,24 @@
+====== AnsiLower() ======
+
+Convierte una cadena de texto a minúsculas.
+
+====== Sintaxis ======
+
+AnsiLower( <cString> ) --> cLowerString
+
+====== Parámetros ======
+
+| <cString> | Cadena a convertir. Puede ser sólo una letra.  |
+
+====== Devuelve ======
+
+La cadena en minúsculas
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\ANSIUP.C  
+

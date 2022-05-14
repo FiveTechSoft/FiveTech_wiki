@@ -1,0 +1,80 @@
+IlAddMasked()
+
+
+IlAddMasked()
+ Previous  Top  Next
+
+Adds an image or images to an image list, generating a mask from the
+specified bitmap.
+
+====== Syntax ======
+
+ 
+
+
+ IlAddMasked( <hImageList>, <hImage>, <nClrMask> ) --> nImage 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hImageList> The handle to the imagelist. 
+
+
+ 
+
+
+ <hImage> Handle to the bitmap that contains one or more images. 
+
+
+ 
+
+
+ <nClrMask> Color used to generate the mask. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nIndex> Returns the index of the first new image if successful, or -1
+otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== See also ======
+

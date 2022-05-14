@@ -1,0 +1,93 @@
+ZipSize()
+
+
+
+
+Tamaño de la extracción actual.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+  ZipSize( <nZipInfo> ) --> nSize 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nZipInfo> Estructura PZFILEINFO entregada automáticamente por el bloque de código bZip. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nSize> Size of the a compress file 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

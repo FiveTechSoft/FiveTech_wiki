@@ -1,0 +1,51 @@
+====== MimeExt() ======
+
+
+Returns the mime type of a given extension.
+
+====== Syntax ======
+
+
+ MimeExt( <cExt> ) --> cType 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cExt> The file extension 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <cType> The mime type. 
+
+
+ 
+
+====== Example ======
+
+
+ local cVar := MimeExt( "bmp" ) 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

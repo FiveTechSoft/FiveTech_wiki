@@ -1,0 +1,125 @@
+====== WndBox2007() ====== 
+
+
+WndBox2007()
+
+Draws a box using a specific color.
+
+
+====== Syntax ======
+
+ WndBox2007( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight>, <nColor> ) -->
+nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC>      Identifies the handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop>, <nLeft>, <nBottom>, <nRight>   The coordinates of the box to
+draw. 
+
+
+ 
+
+
+ <nColor>   The color used for the box. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\wndboxes.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WndBox() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,101 @@
+====== Icon Group ======
+
+**Defining a ICON GROUP object from source code:       **
+<code clipper>
+ @ <nRow>, <nCol> ICON GROUP [ <oIGroup> ] ;  
+ [ ICONS <aIcons,...> ] ;  
+ [ PROMPTS <aPrompts,...> ] ;  
+ [ ACTIONS <aActions,...> ] ;  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ OF, WINDOW, DIALOG <oWnd> ] ;  
+ [ HELP | HELPID | HELP ID <nHelpId> ] ;  
+ [ NOBORDER | NO BORDER ] ;  
+ [ COLOR,COLORS> <nClrFore> [,<nClrBack>] ] ;  
+ [ FONT <oFont> ] ;  
+ [ HSCROLL, HORIZONTAL SCROLL ] ;  
+ [ VSCROLL, VERTICAL SCROLL ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ DESIGN ] ;  
+ [ UPDATE ] ;  
+ [ ON CHANGE <uChange> ]  </code>
+ 
+ 
+**Redefining a ICON GROUP object from resources: **
+<code clipper>
+ REDEFINE ICON GROUP [ <oIGroup> ] ;  
+ [ ID <nId> ] ;  
+ [ ICONS <aIcons,...> ] ;  
+ [ PROMPTS <aPrompts,...> ] ;  
+ [ ACTIONS <aActions,...> ] ;  
+ [ OF, WINDOW, DIALOG <oDlg> ] ;  
+ [ HELP, HELPID, HELP ID <nHelpId> ] ;  
+ [ COLOR,COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ FONT <oFont> ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ ON CHANGE <uChange> ] </code>
+ 
+ 
+| <nRow>, <nCol> | The coordinates of the object. We simulate Text coordinates. |
+| <oIGroup> | A reference to the Icon group object. |
+| <aIcons> | Array of icons (ICO file or any file with resources) |
+| <aPrompts> | Array of prompts for every icon in aIcons |
+| <aActions> | An action to perform when clicking any icon of a Icons |
+| <nWidth>, <nHeight> | The width and height dimensions of the control. |
+| <nClrFore>, <nClrBack> | Selector foreground and background colors |
+| <oWnd> | The container dialog of the control. |
+| <nHelpId> | The Help topic identifier of the control. |
+| <cMsg> | The associated message of this control |
+| <oFont> | The default font of the object |
+| <oCursor> | Cursor Object attached to the control |
+| <cMsg> | The associated message of this control |
+| <nId> | The numeric resource identifier of the object. Is has to be assigned from the resource editor. |
+| <nHelpId> | The help topic identifier of the control |
+| <uChange> | An action to be performed when the control changes |
+
+
+**CLAUSES **
+
+| NOBORDER | To remove the border of the control |
+| NO BORDER | To remove the border of the control |   
+| UPDATE | This control may be updated from TDialog:Update() METHOD |
+| PIXEL | To use pixel coordinates instead of Text coordinates. |
+| HSCROLL | Control has an horizontal scroll bar |
+| NO VSCROLL | Control has not a vertical scroll bar |
+| DESIGN | Allows the user to move and resize with the mouse |
+
+====== Sample code / usage ======
+<code clipper>
+@ 0, 0 ICON GROUP oIGroup1 OF oWndChild1 ;
+        HSCROLL VSCROLL ;
+        ICONS cDir + "\CALC.EXE", cDir + "\NOTEPAD.EXE", "FOLDER.ICO" ;
+        PROMPTS "Calculadora de Windows", "Bloc de Notas", "Otras utilidades" ;
+        ACTIONS WinExec( cDir + "\CALC.EXE" ), WinExec( cDir + "\NOTEPAD.EXE" ), NewGroup( oIGroup1:aPrompts[ 3 ] ) ;
+        SIZE 1000, 1000 PIXEL ;
+        MESSAGE "Control Icon Group de Utilidades" ;
+        FONT oFont
+
+@ 0, 0 ICON GROUP oIGroup2 OF oWndChild2 ;
+        HSCROLL VSCROLL ;
+        SIZE 1000, 1000 PIXEL ;
+        MESSAGE "Control Icon Group de Aplicaciones" ;
+        FONT oFont
+
+       For n := 1 to 60
+            oIGroup2:Add( LoadIcon( GetResources(), n ), ;
+                         "Icon "+ AllTrim( Str( n ) ),;
+                         {|| MsgInfo( oIGroup2:aPrompts[ oIGroup2:nFocused ] ) } )
+       next
+
+</code>
+
+Samples: fw\samples\testigro.prg 
+
+====== Screen Snapshot ======
+{{:icogroup.jpg|:icogroup.jpg}}
+
+====== See also ======
+[[fivewin_class_ticon | Class TIcon ]], [[fivewin_class_ticongroup | Class TIconGroup ]], [[fivewin_class_ticonget | Class TIconGet ]]

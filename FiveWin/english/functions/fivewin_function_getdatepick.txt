@@ -1,0 +1,17 @@
+====== GetDatePick() ======
+Retrieves the date of the DatePicker control.
+
+====== Syntax ======
+GetDatePick( <hWnd> ) --> dDate 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The window handle of the DatePicker control.|
+ 
+====== Returns ======
+^Returns^Description^
+|<dDate>| The retrieved date. |
+
+ 
+====== Source code ======
+SOURCE\WINAPI\DATEPICK.C 

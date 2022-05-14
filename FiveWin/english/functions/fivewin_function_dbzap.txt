@@ -1,0 +1,14 @@
+====== DbZap() ======
+Remove all records from the current database file
+
+====== Syntax ======
+DbZap() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+nil 
+
+====== Source Code ======
+SOURCE\FUNCTION\DBTOOLS.PRG 

@@ -1,0 +1,127 @@
+DbCreateIn()
+
+
+
+DbCreateIn()
+
+ Previous  Top  Next
+
+
+
+Create a index file
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ DbCreateIn( <x>, <y>, <z>, <w> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Function to obtain compatibility with xBase++ 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <x> Index name 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <y> Key expression 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <z> CodeBlock with the key expression of the index 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <w> Logic value to create uniques index. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ DbCreateIndex( x, y, z, w ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DB10.PRG 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

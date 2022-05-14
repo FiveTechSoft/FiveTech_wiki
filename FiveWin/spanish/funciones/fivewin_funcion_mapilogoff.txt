@@ -1,0 +1,66 @@
+MAPILogoff()
+
+
+MAPILogoff()
+ Previous  Top  Next
+
+Ends a session with the messaging system.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPILogoff() --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ None. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess> .t. if the function is successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\TESTMAIL.PRG 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

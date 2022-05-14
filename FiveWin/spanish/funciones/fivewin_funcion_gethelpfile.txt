@@ -1,0 +1,11 @@
+
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**ninguno**|
+^Valor de retorno| cHelpFile|
+|  |El nombre del archivo previamente seleccionado|
+^Descripción:| Hemos implementado esta función para fácilmente manejar archivos de ayuda, dejando al usuario elegir el archivo predeterminado |
+|  | HLP al que accedera automáticamente, solicitando diferentes clases de servicios, la función puede llamarse al principio de su aplicación|
+|  | permaneciedno activa durante toda la ejecución del programa| 
+^Ejemplo|MsgInfo( GetHelpFile() ) %%// Muestra cHelpFile%%|
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | WinHelp, GetHelpTopic, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

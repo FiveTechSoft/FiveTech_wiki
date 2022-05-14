@@ -1,0 +1,53 @@
+
+====== DibDraw() ======
+DibDraw()
+FiveWin DIB drawing function.
+
+====== Sintaxis ======  
+
+ DibDraw( <hDC>, <hMemBitmap>, <hPalette>, <nRow>, <nCol>, <nWidth>,
+<nHeight>, <nRasterOp> ) --> lSuccess 
+
+ This function draws a DIB (device independent bitmap) on the device
+context specified by hDC 
+
+====== Parámetros ======
+
+ <hDC> The handle of the device context to use. 
+
+ <hMemBitmap> The handle of the DIB. 
+
+ <hPalette> The handle of the palette associated to the DIB. 
+
+ <nRow>, <nCol> The coordinates in pixels where start drawing. 
+
+ <nWidth>, <nHeight> The dimensions for drawing the DIB. 
+
+ <nRasterOp> Specifies the raster operation to be performed (see
+BitBlt()). 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+
+Observations:
+
+ When we started building FiveWin we first started working with bitmaps.
+Later we discovered that the general recommendation was to work with
+DIBs. So we developed all the necessary functions to work with DIBs. As
+our own experience increased, we believe that there is a better way (a
+mixture of both) that was much faster and easier. 
+
+ We did a lot of different tests, and our systemwas by far the fastest.
+It was a reason based on speed and ease of use, because we wanted FiveWin
+to be extremely fast! <g> 
+
+ This later system is the one we currently use in FiveWin, though we do
+give support for both Bitmaps and DIBs. 
+
+ You don't have to worry at all, just use FiveWin TBitmap Class and place
+yourself at the xBase & OOP level to get the maximum productivity. 
+
+ Concentrate on your application, don't lose yourself in details! 
+====== Código fuente ======
+ SOURCE\WINAPI\Dib.c 
+====== Ver también ======
+ DibRead() DibPalette() DibWidth() DibHeight() DibWrite()

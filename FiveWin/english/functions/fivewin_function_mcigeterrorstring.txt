@@ -1,0 +1,448 @@
+MCIGetErrorString()
+
+
+
+MCIGetErrorString()
+
+ Previous  Top  Next
+
+
+
+
+It returns a description of an error MCI
+
+
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MCIGetErrorString( <nErro> ) --> cString 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nErro> Error code MCI returned by the function mciSendCommand or
+mciSendString. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ It returns 0 if the function is executed correctly. Of another form is
+generated an error code of those that they are enumerated next. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Error values that are returned when a device is being opened are listed
+with the MCI_OPEN message. In addition to the MCI_OPEN error returns,
+this function can return the following values: 
+
+
+ 
+
+
+ 
+
+
+
+MCIERR_BAD_TIME_FORMAT         Illegal value for time format.   
+MCIERR_CANNOT_LOAD_DRIVER      It doesn't load the driver correctly   
+MCIERR_CANNOT_USE_ALL         The name " all " is not allowed for a
+device with this command   
+MCIERR_CREATEWINDOW         You can not create or to use the window   
+MCIERR_DEVICE_LENGTH         The name of the driver or of the device it
+has overcome those 79 characters of longitude.   
+MCIERR_DEVICE_LOCKED         The device this being closed. You wait some
+seconds and attempt it again.   
+MCIERR_DEVICE_NOT_INSTALLED      The device is not installed in the
+system. There is that to install it from the Panel of Control   
+MCIERR_DEVICE_NOT_READY      Non prepared Device.   
+MCIERR_DEVICE_OPEN         The name of the device is already being used.
+Use an unique name alias for it.   
+MCIERR_DEVICE_ORD_LENGTH      Device name or superior driver at 79
+characters.   
+MCIERR_DEVICE_TYPE_REQUIRED      The device is not in the system. Check
+the name and the correct installation of the same one.   
+MCIERR_DRIVER            Uncertain problem. Obtain a new driver.   
+MCIERR_DRIVER_INTERNAL         Uncertain problem. Obtain a new driver.
+MCIERR_DUPLICATE_ALIAS         Alias already in use for another
+application. Use an Alias exclusive.   
+MCIERR_EXTENSION_NOT_FOUND      The specified extension doesn't have a
+type associate. Specify a device type.   
+MCIERR_EXTRA_CHARACTERS      You should contain the string among
+quotation marks. Characters following the closing quotation mark are not
+valid.   
+MCIERR_FILE_NOT_FOUND         The required file is not found. Check the
+path.   
+MCIERR_FILE_NOT_SAVED         The file was not saved. Make sure your
+system has sufficient disk space or has an intact network connection.   
+MCIERR_FILE_READ            A read from the file failed. Make sure the
+file is present on your system or that your system has an intact network
+connection.   
+MCIERR_FILE_WRITE            A write to the file failed. Make sure your
+system has sufficient disk space or has an intact network connection.   
+MCIERR_FLAGS_NOT_COMPATIBLE      The specified parameters cannot be used
+together.   
+MCIERR_FILENAME_REQUIRED      The filename is invalid. Make sure the
+filename is no longer than eight characters, followed by a period and an
+extension.   
+MCIERR_GET_CD            The requested file or MCI device was not found.
+Try changing directories or restarting your system.   
+MCIERR_HARDWARE            The specified device exhibits a problem. Check
+that the device is working correctly or contact the device manufacturer. 
+ 
+MCIERR_ILLEGAL_FOR_AUTO_OPEN MCI   Will not perform the specified command
+on an automatically opened device. Wait until the device is closed, then
+try to perform the command.
+MCIERR_INTERNAL            A problem occurred in initializing MCI. Tr
+restarting the Windows operating system.   
+MCIERR_INVALID_DEVICE_ID         Invalid device ID. Use the ID givien to
+the device when the device was opened.   
+MCIERR_INVALID_DEVICE_NAME      The specified device is not open nor
+recognized by MCI.   
+MCIERR_INVALID_FILE            The specified file cannot be played on the
+specified MCI device. The file may be corrupt or may use an incorrect
+file format.   
+MCIERR_INVALID_SETUP         The current MIDI setup is damaged. Copy the
+original midimap.cfg file to the Windows SYSTEM directory; then, try to
+perform the command again.
+MCIERR_MISSING_INTEGER         The specified command requires an integer
+parameter, which you must supply.   
+MCIERR_MISSING_PARAMETER      The specified command requires a parameter,
+which you must supply.   
+MCIERR_MULTIPLE            Errors occurred in more than one device.
+Specify each command and device separately to identify the devices
+causing the errors.   
+MCIERR_MUST_USE_SHAREABLE      The device driver is already in use. You
+must specify the "shareable" parameter with each open command to share
+the device.   
+MCIERR_NO_ELEMENT_ALLOWED      The specified device does not use a
+filename.   
+MCIERR_NO_INTEGER            The parameter for this MCI command must be
+an integer value.   
+MCIERR_NO_WINDOW            There is no display window.   
+MCIERR_NONAPPLICABLE_FUNCTION      The specified MCI command sequence
+cannot be performed in the given order. Correct the command sequence;
+then, try again.   
+MCIERR_NULL_PARAMETER_BLOCK      A null parameter block was passed to
+MCI.   
+MCIERR_OUT_OF_MEMORY         Your system does not have enough memory for
+this task. Quit one or more applications to increase the available
+memory; then, try to perform the task again.
+MCIERR_OUTOFRANGE         The specified parameter value is out of range
+for this MCI command.   
+MCIERR_SET_CD            The specified file or MCI device is inaccessible
+because the application cannot change directories.   
+MCIERR_SET_DRIVE            The specified file or MCI device is
+inaccessible because the application cannot change drives.   
+MCIERR_UNNAMED_RESOURCE      You cannot store an unnamed file. Specify a
+filename.   
+MCIERR_UNRECOGNIZED_COMMAND      The driver cannot recognize the
+specified command.   
+MCIERR_UNSUPPORTED_FUNCTION      The MCI device driver that the system is
+using does not support the specified command.   
+
+
+
+
+
+ 
+
+
+ 
+
+
+ Return Values for MCI Sequencers 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The following additional return values are defined for the sequencer
+device type: 
+
+
+ 
+
+
+ 
+
+
+
+MCIERR_SEQ_DIV_INCOMPATIBLE      The time formats of the "song pointer"
+and SMPTE are mutually exclusive. You can't use them together.   
+MCIERR_SEQ_NOMIDIPRESENT      This system has no installed MIDI devices.
+Use the Drivers option from the coNtrol Panel to install a MIDI driver.   
+MCIERR_SEQ_PORT_INUSE         The specified MIDI port is already in use.
+Wait until it is free; then, try again.   
+MCIERR_SEQ_PORT_MAPNODEVICE      The current MIDI Mapper setup refers to
+a MIDI device that is not installed on the system. Use the MIDI Mapper
+option from the Control Panel to edit the setup.
+MCIERR_SEQ_PORT_MISCERROR      An error occurred with the specified port.
+  
+MCIERR_SEQ_PORT_NONEXISTENT      The specified MIDI device is not
+installed on the system. Use the Drivers option from the Control Panel to
+install a MIDI device.   
+MCIERR_SEQ_PORTUNSPECIFIED      The system does not have a current MIDI
+port specified.   
+MCIERR_SEQ_TIMER            All multimedia timers are being used by other
+applications. Quit one of these applications; then, try again.   
+
+
+
+
+
+
+
+ Return Values for MCI Waveform Audio Devices 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The following additional return values are defined for the waveaudio
+device type: 
+
+
+ 
+
+
+ 
+
+
+
+MCIERR_WAVE_INPUTSINUSE         All waveform devices that can record
+files in the current format are in use. Wait until one of these devices
+is free; then, try again.   
+MCIERR_WAVE_INPUTSUNSUITABLE      No installed waveform device can record
+files in the current format. Use the Drivers option from the Control
+Panel to install a suitable waveform recording device.
+MCIERR_WAVE_INPUTUNSPECIFIED      You can specify any compatible waveform
+recording device.   
+MCIERR_WAVE_OUTPUTSINUSE      All waveform devices that can play files in
+the current format are in use. Wait until one of these devices is free;
+then, try again.   
+MCIERR_WAVE_OUTPUTSUNSUITABLE   No installed waveform device can play
+files in the current format. Use the Drivers option from the Control
+Panel to install a suitable waveform recording device.
+MCIERR_WAVE_OUTPUTUNSPECIFIED   You can specify any compatible waveform
+playback device.   
+MCIERR_WAVE_SETINPUTINUSE      The current waveform device is in use.
+Wait until the device is free; then, try again to set the device for
+recording.   
+MCIERR_WAVE_SETINPUTUNSUITABLE   The device you are using to record a
+waveform cannot recognize the data format.   
+MCIERR_WAVE_SETOUTPUTINUSE      The current waveform device is in use.
+Wait until the device is free; the, try again to set the device for
+playback.   
+MCIERR_WAVE_SETOUTPUTUNSUITABLE   The device you are using to play back a
+waveform cannot recognize the data format.   
+MCIERR_BAD_CONSTANT         The specified constant is invalid for this
+command.   
+MCIERR_BAD_INTEGER         The specified integer is invalid for this
+command.   
+MCIERR_DUPLICATE_FLAGS         The parameter or value was specified
+twice. Remove the duplicate occurrence of the parameter or value.   
+MCIERR_MISSING_COMMAND_STRING   No command was specified.   
+MCIERR_MISSING_DEVICE_NAME      The specified command requires an alias
+or the name of a file, driver, or device, which you must specify.   
+MCIERR_MISSING_STRING_ARGUMENT   The specified command requires a string
+parameter, which you must supply.   
+MCIERR_NEW_REQUIRES_ALIAS      You must specify an alias when using the
+"new" parameter.   
+MCIERR_NO_CLOSING_QUOTE      The string parameter is missing a closing
+double quotation mark, which you must supply.   
+MCIERR_NOTIFY_ON_AUTO_OPEN      You cannot use the "notify" flag with
+automatically opened device.   
+MCIERR_PARAM_OVERFLOW         The output string was too large to fit in
+the return buffer. Increase the size of the buffer.   
+MCIERR_PARSER_INTERNAL         The device driver returned an invalid
+return type. Check with the device manufacturer about obtaining a new
+driver.   
+MCIERR_UNRECOGNIZED_KEYWORD      The driver cannot recognize the
+specified command parameter.   
+
+
+
+
+
+ MCI error return values 
+
+
+ 
+
+
+ 
+
+
+
+
+
+MCIERR_BASE               256   
+MCIERR_INVALID_DEVICE_ID         (MCIERR_BASE + 1)   
+MCIERR_UNRECOGNIZED_KEYWORD      (MCIERR_BASE + 3)   
+MCIERR_UNRECOGNIZED_COMMAND      (MCIERR_BASE + 5)   
+MCIERR_HARDWARE            (MCIERR_BASE + 6)   
+MCIERR_INVALID_DEVICE_NAME      (MCIERR_BASE + 7)   
+MCIERR_OUT_OF_MEMORY         (MCIERR_BASE + 8)   
+MCIERR_DEVICE_OPEN         (MCIERR_BASE + 9)   
+MCIERR_CANNOT_LOAD_DRIVER      (MCIERR_BASE + 10)   
+MCIERR_MISSING_COMMAND_STRING   (MCIERR_BASE + 11)   
+MCIERR_PARAM_OVERFLOW         (MCIERR_BASE + 12)   
+MCIERR_MISSING_STRING_ARGUMENT   (MCIERR_BASE + 13)   
+MCIERR_BAD_INTEGER         (MCIERR_BASE + 14)   
+MCIERR_PARSER_INTERNAL         (MCIERR_BASE + 15)   
+MCIERR_DRIVER_INTERNAL         (MCIERR_BASE + 16)   
+MCIERR_MISSING_PARAMETER      (MCIERR_BASE + 17)   
+MCIERR_UNSUPPORTED_FUNCTION      (MCIERR_BASE + 18)   
+MCIERR_FILE_NOT_FOUND         (MCIERR_BASE + 19)   
+MCIERR_DEVICE_NOT_READY      (MCIERR_BASE + 20)   
+MCIERR_INTERNAL            (MCIERR_BASE + 21)   
+MCIERR_DRIVER            (MCIERR_BASE + 22)   
+MCIERR_CANNOT_USE_ALL         (MCIERR_BASE + 23)   
+MCIERR_MULTIPLE            (MCIERR_BASE + 24)   
+MCIERR_EXTENSION_NOT_FOUND      (MCIERR_BASE + 25)   
+MCIERR_OUTOFRANGE         (MCIERR_BASE + 26)   
+MCIERR_FLAGS_NOT_COMPATIBLE      (MCIERR_BASE + 28)   
+MCIERR_FILE_NOT_SAVED         (MCIERR_BASE + 30)   
+MCIERR_DEVICE_TYPE_REQUIRED      (MCIERR_BASE + 31)   
+MCIERR_DEVICE_LOCKED         (MCIERR_BASE + 32)   
+MCIERR_DUPLICATE_ALIAS         (MCIERR_BASE + 33)   
+MCIERR_BAD_CONSTANT         (MCIERR_BASE + 34)   
+MCIERR_MUST_USE_SHAREABLE      (MCIERR_BASE + 35)   
+MCIERR_MISSING_DEVICE_NAME      (MCIERR_BASE + 36)   
+MCIERR_BAD_TIME_FORMAT         (MCIERR_BASE + 37)   
+MCIERR_NO_CLOSING_QUOTE      (MCIERR_BASE + 38)   
+MCIERR_DUPLICATE_FLAGS         (MCIERR_BASE + 39)   
+MCIERR_INVALID_FILE            (MCIERR_BASE + 40)   
+MCIERR_NULL_PARAMETER_BLOCK      (MCIERR_BASE + 41)   
+MCIERR_UNNAMED_RESOURCE      (MCIERR_BASE + 42)   
+MCIERR_NEW_REQUIRES_ALIAS      (MCIERR_BASE + 43)   
+MCIERR_NOTIFY_ON_AUTO_OPEN      (MCIERR_BASE + 44)   
+MCIERR_NO_ELEMENT_ALLOWED      (MCIERR_BASE + 45)   
+MCIERR_NONAPPLICABLE_FUNCTION      (MCIERR_BASE + 46)   
+MCIERR_ILLEGAL_FOR_AUTO_OPEN      (MCIERR_BASE + 47)   
+MCIERR_FILENAME_REQUIRED      (MCIERR_BASE + 48)   
+MCIERR_EXTRA_CHARACTERS      (MCIERR_BASE + 49)   
+MCIERR_DEVICE_NOT_INSTALLED      (MCIERR_BASE + 50)   
+MCIERR_GET_CD            (MCIERR_BASE + 51)   
+MCIERR_SET_CD            (MCIERR_BASE + 52)   
+MCIERR_SET_DRIVE            (MCIERR_BASE + 53)   
+MCIERR_DEVICE_LENGTH         (MCIERR_BASE + 54)   
+MCIERR_DEVICE_ORD_LENGTH      (MCIERR_BASE + 55)   
+MCIERR_NO_INTEGER            (MCIERR_BASE + 56)   
+MCIERR_WAVE_OUTPUTSINUSE      (MCIERR_BASE + 64)   
+MCIERR_WAVE_SETOUTPUTINUSE      (MCIERR_BASE + 65)   
+MCIERR_WAVE_INPUTSINUSE         (MCIERR_BASE + 66)   
+MCIERR_WAVE_SETINPUTINUSE      (MCIERR_BASE + 67)   
+MCIERR_WAVE_OUTPUTUNSPECIFIED   (MCIERR_BASE + 68)   
+MCIERR_WAVE_INPUTUNSPECIFIED      (MCIERR_BASE + 69)   
+MCIERR_WAVE_OUTPUTSUNSUITABLE   (MCIERR_BASE + 70)   
+MCIERR_WAVE_SETOUTPUTUNSUITABLE   (MCIERR_BASE + 71)   
+MCIERR_WAVE_INPUTSUNSUITABLE      (MCIERR_BASE + 72)   
+MCIERR_WAVE_SETINPUTUNSUITABLE   (MCIERR_BASE + 73)   
+MCIERR_SEQ_DIV_INCOMPATIBLE      (MCIERR_BASE + 80)   
+MCIERR_SEQ_PORT_INUSE         (MCIERR_BASE + 81)   
+MCIERR_SEQ_PORT_NONEXISTENT      (MCIERR_BASE + 82)   
+MCIERR_SEQ_PORT_MAPNODEVICE      (MCIERR_BASE + 83)   
+MCIERR_SEQ_PORT_MISCERROR      (MCIERR_BASE + 84)   
+MCIERR_SEQ_TIMER            (MCIERR_BASE + 85)   
+MCIERR_SEQ_PORTUNSPECIFIED      (MCIERR_BASE + 86)   
+MCIERR_SEQ_NOMIDIPRESENT      (MCIERR_BASE + 87)   
+MCIERR_NO_WINDOW            (MCIERR_BASE + 90)   
+MCIERR_CREATEWINDOW         (MCIERR_BASE + 91)   
+MCIERR_FILE_READ            (MCIERR_BASE + 92)   
+MCIERR_FILE_WRITE            (MCIERR_BASE + 93)   
+All custom device driver errors must be >= than this value          
+MCIERR_CUSTOM_DRIVER_BASE      (MCIERR_BASE + 256)   
+
+
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MCI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

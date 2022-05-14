@@ -1,0 +1,23 @@
+====== BarInvert() ======
+
+To create the effect of pressing the button bar. 
+
+====== Syntax: ======
+
+BarInvert( <hWnd> ) --> NIL
+
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| Handle of the button bar.  |
+
+====== Returns: ======
+
+NIL  
+
+====== Sample: ======
+
+SOURCE\CLASSES\BAR.PRG  
+
+====== Source code: ======
+
+SOURCE\WINAPI\CTRLDRAW.C  

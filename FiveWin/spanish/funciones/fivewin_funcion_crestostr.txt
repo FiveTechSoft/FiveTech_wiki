@@ -1,0 +1,22 @@
+
+====== cResToStr() ======
+
+cResToStr()
+It loads a resource in a string of characters
+====== Sintaxis ======
+ cResToStr( <cResName>, <cResType> ) --> cInfo 
+====== Parámetros ======
+ <cResName> Name from the resource to load 
+ <cResType> Resource type 
+====== Devuelve ======
+ <cInfo> Resource recovered as text string 
+====== Ejemplo ======
+ SOURCE\CLASSES\TFORM.PRG 
+
+Observations
+
+ It is used to recover resources that were stored previously like a
+string of text. Used in the IDE of FiveWin. 
+====== Código fuente ======
+ SOURCE\WINAPI\RESOURCE.C 
+====== Ver también ======

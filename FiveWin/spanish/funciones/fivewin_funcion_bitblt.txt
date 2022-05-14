@@ -1,0 +1,74 @@
+
+====== BitBlt() ======
+
+Copia un bitmap desde un manejador de conetexto a otro.
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BitBlt( <hdcDest>, <nCol>, <nRow>, <nWidth>, <nHeight>, <hdcOrg>, <nColOrg>, <nRowOrg>, <dwRop> ) --> lResult  
+
+====== Parametros: ( Parameters: ) ======
+
+ <hdcDest> Manejador de Conetexto donde sera transferida la imagen.
+
+ <nCol> Columna de destino.
+
+ <nRow> Fila de destino.
+
+ <nWidth> Ancho del destino.
+
+ <nHeight> Alto del destino.
+
+ <hdcOrg> Manejador de contexto donde se encuentra la imagen original.
+
+ <nColOrg> Columna de origen.
+
+ <nRowOrg> Fila de Origen.
+
+ <dwRop> Especifica la operacion de tramado a realizar.
+
+  BLACKNESS       Torna toda la salida en negro.    
+  DSTINVERT       Invierte el bitmap de destino.    
+  MERGECOPY       Combina el patron y el bitmap de origen usando el operador logico AND.    
+  MERGEPAINT      Combina el bitmap original invertido con el bitmap de destino usando el operador logico OR.    
+  NOTSRCCOPY      Copia el bitmap de origen invertido al destino.    
+  NOTSRCERASE     Invierte el resultado de combinar el bitmap de destino y origen usando el operador logico OR.    
+  PATCOPY         Copia el patron en el bitmap de destino.    
+  PATINVERT       Combina el bitmap de destino con el patron usando el operador logico XOR.    
+  PATPAINT        Combina el bitmap de origen invertido con el patron usando el operador logico OR. Combina el resultado de esta operacion con el bitmap de destino usando el operador logico OR.
+  SRCAND.         Combina pixeles del bitmap de destino y origen usando el operador logico AND.     
+  SRCCOPY         Copia el bitmap de origen en el destino.
+  SRCERASE        Invierte el bitmap de destino y combina el resultado con el bitmap de origen usando el operador logico AND.
+  SRCINVERT       Combina los pixeles del bitmap de origen y destino usando el operador logico XOR.
+  SRCPAINT        Combina los pixeles del bitmap de origen y destino usando el operador logico OR.
+  WHITENESS       Torna toda la salida en blanco.
+
+  Definiciones
+
+  #define SRCCOPY      0x00CC0020L 
+  #define SRCPAINT      0x00EE0086L 
+  #define SRCAND      0x008800C6L 
+  #define SRCINVERT      0x00660046L 
+  #define SRCERASE      0x00440328L 
+  #define NOTSRCCOPY      0x00330008L 
+  #define NOTSRCERASE      0x001100A6L 
+  #define MERGECOPY      0x00C000CAL 
+  #define MERGEPAINT      0x00BB0226L 
+  #define PATCOPY      0x00F00021L 
+  #define PATPAINT      0x00FB0A09L 
+  #define PATINVERT      0x005A0049L 
+  #define DSTINVERT      0x00550009L 
+  #define BLACKNESS      0x00000042L 
+  #define WHITENESS      0x00FF0062L 
+
+====== Retorno: ( Returns: ) ======
+
+ <lResult> .t. si la funcion fue ejecutada sin problemas.
+
+====== Ejemplo: ( Sample: ) ======
+
+  Ninguno.
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\DC.C 

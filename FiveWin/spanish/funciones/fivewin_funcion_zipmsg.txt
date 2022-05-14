@@ -1,0 +1,89 @@
+ZipMsg()
+
+
+
+Texto del mensaje dado automáticamente
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ZipMsg( <nZipInfo> ) --> cMsg 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nZipInfo> Estructura PZFILEINFO entregada automáticamente por el bloque de código bZip. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cMsg> Mensaje de Texto
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

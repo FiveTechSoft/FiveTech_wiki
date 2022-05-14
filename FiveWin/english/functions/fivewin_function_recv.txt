@@ -1,0 +1,115 @@
+Recv()
+
+
+
+Recv()
+
+ Previous  Top  Next
+
+
+
+
+Receive data from a socket
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Recv( <nSocket>, <@cBuffer> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cBuffer> Buffer to recive the data 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> If any error has not happened the number it is returned of
+received bytes. Otherwise a code is returned of more error or equal to
+10000. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TSOCKET.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

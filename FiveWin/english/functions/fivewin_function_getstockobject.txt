@@ -1,0 +1,139 @@
+
+======  GetStockObject() ====== 
+
+
+
+
+Retrieves the handle of a predefined stock pens
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetStockObject( <nObjectType> ) --> hGDIObject 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nObjectType> Specifies the type of stock object for which to retrieve
+the handle. This parameter can be one of the following values: 
+
+
+ 
+
+
+ 
+
+
+
+#define OEM_FIXED_FONT      10   
+#define ANSI_FIXED_FONT      11   
+#define ANSI_VAR_FONT      12   
+#define SYSTEM_FONT         13   
+#define DEVICE_DEFAULT_FONT   14   
+#define DEFAULT_PALETTE      15   
+#define SYSTEM_FIXED_FONT      16   
+#define WHITE_PEN         6   
+#define BLACK_PEN         7   
+#define NULL_PEN         8   
+#define WHITE_BRUSH         0   
+#define LTGRAY_BRUSH      1   
+#define GRAY_BRUSH         2   
+#define DKGRAY_BRUSH      3   
+#define BLACK_BRUSH         4   
+#define NULL_BRUSH         5   
+#define HOLLOW_BRUSH      NULL_BRUSH          
+
+
+
+BLACK_BRUSH         Black brush.   
+DKGRAY_BRUSH         Dark-gray brush.   
+GRAY_BRUSH            Gray brush.   
+HOLLOW _BRUSH         Hollow brush.   
+LTGRAY_BRUSH         Light-gray brush.   
+NULL_BRUSH            Null brush   
+WHITE_BRUSH            White brush.   
+BLACK_PEN            Black pen   
+NULL_PEN            Null pen.   
+WHITE_PEN            White pen.   
+ANSI_FIXED_FONT         Windows fixed-pitch system font.   
+ANSI_VAR_FONT         Windows variable-pitch system font.   
+DEVICE_DEFAULT_FONT      Device-dependent font.   
+OEM_FIXED_FONT OEM      Dependent fixed font.   
+SYSTEM_FONT         System font. By default, Windows uses the system font
+to draw menus, dialog box controls, and other text. In Windows versions
+3.0 and later, the system font is a variable-pitch font width; earlier
+versions of Windows use a fixed-pitch system font.
+SYSTEM_FIXED_FONT         Fixed-pitch system font used in Windows
+versions Earlier than 3.0. This object is available for compatibility
+with earlier versions of Windows.   
+DEFAULT_PALETTE         Default color palette. This palette consists of
+the static colors in the system palette.   
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hGDIObject> The return value is the handle of the specified object if
+the function is successful. Otherwise, it is NULL. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\GetStkOb.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetObject() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

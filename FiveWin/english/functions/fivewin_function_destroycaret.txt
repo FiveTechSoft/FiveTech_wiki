@@ -1,0 +1,19 @@
+====== DestroyCaret() ======
+Destroys the system caret.
+
+====== Syntax ======
+DestroyCaret() --> nil 
+
+====== Parameters ======
+None
+ 
+====== Returns ======
+NIL 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\CARET.C 
+
+====== See also ======
+[[fivewin_function_destroycursor|DestroyCursor()]], [[fivewin_function_destroyicon|DestroyIcon()]], [[fivewin_function_destroywindow|DestroyWindow()]], [[fivewin_function_destroymenu|DestroyMenu()]]

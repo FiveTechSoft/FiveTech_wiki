@@ -1,0 +1,83 @@
+====== Class TAnimate ======
+ 
+Win32 SysAnimate common control support 
+
+Inherits from TControl 
+
+====== DATA ======
+
+|cAvi|                The AVI file| 
+
+====== METHODS ====== 
+
+|New|                 Constructor from source code| 
+|Redefine|            Constructor from resources| 
+|Close|               Closes the animate window| 
+|CopyFile|            Opens the copy file window| 
+|CopyFiles|           Opens the copy files window| 
+|CopyInternet|        Opens the copy internet window| 
+|DelFile|             Opens the delete file window| 
+|DestFile|            Opens the destination file window| 
+|EmptyCan|            Opens the empty can window| 
+|FindFile|            Opens the find file window| 
+|Locate|              Opens the locate window| 
+|Open|                Opens the animate window| 
+|OpenEx|              Opens the animate window| 
+|Play|                Plays the AVI file| 
+|Search|              Opens the search window| 
+|Seek|                Plays the given frame| 
+|Stop|                Stops the AVI file| 
+
+====== example ======
+FWPPC\samples\win32.prg
+<code clipper>
+   oAnimate = TAnimate():Redefine( 160, oDlg )
+
+   REDEFINE BUTTON ID 170 OF oDlg ACTION oAnimate:Play()
+   REDEFINE BUTTON ID 180 OF oDlg ACTION oAnimate:Stop()
+
+   REDEFINE COMBOBOX nAvi ID 190 OF oDlg ;
+      ITEMS { "Search", "FindFile", "Locate", "CopyFiles", "CopyFile",;
+              "DelFile", "EmptyCan", "DestFile", "CopyInternet" } ;
+      ON CHANGE SetCommonAvi( oAnimate, nAvi )
+
+function SetCommonAvi( oAnimate, nAvi )
+
+   do case
+      case nAVI == 1
+           oAnimate:Search()
+
+      case nAVI == 2
+           oAnimate:FindFile()
+
+      case nAVI == 3
+           oAnimate:Locate()
+
+      case nAVI == 4
+           oAnimate:CopyFiles()
+
+      case nAVI == 5
+           oAnimate:CopyFile()
+
+      case nAVI == 6
+           oAnimate:DelFile()
+
+      case nAVI == 7
+           oAnimate:EmptyCan()
+
+      case nAVI == 8
+           oAnimate:DestFile()
+
+      case nAVI == 9
+           oAnimate:CopyInternet()
+   endcase
+
+return nil
+      
+</code>
+
+====== source code ======
+FWPPC\source\classes\tanimate.prg
+
+====== see also ======
+

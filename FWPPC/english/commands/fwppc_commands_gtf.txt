@@ -1,0 +1,107 @@
+
+The file GTF commands, are a set of commands to create formatted documents to be used with the Format Get control.
+With this commands you can create formatted documents directly from source code. 
+
+** Defining a GTF Font **
+
+<code clipper>
+ DEFINE GTF FONT <nFont> ;
+ [ NAME <cName> ] ;
+ [ HEIGHT <nHeight> ] ;
+ [ WIDTH <nWidth> ] ;
+ [ BOLD ] ;
+ [ ITALIC ] ;
+ [ UNDERLINE ] ;
+ [ STRIKEOUT ]
+ 
+| <nFont> | A handle for the font created |
+| <cName> | Font name |
+| <nHeight> | Font height |
+| <nWidth> | Font width |
+</code>
+
+| BOLD | Font boldface |
+| ITALIC | Font italic |
+| UNDERLINE | Font uderline ´|
+| STRIKEOUT | Font strikeout |
+
+
+====== Defining a GTF Format ======
+
+<code clippper>
+ DEFINE GTF FORMAT <nFormat> ;
+ [ ALIGN <nAlign> ] ;
+ [ FONT <nFont> ] ;
+ [ COLOR <nColor> ]
+</code>
+
+| <nFormat> | A handle for the fornat created |
+| <nAlign> | Format align: ES_LEFT(0), ES_RIGHT (2), ES_CENTER (1) |
+| <nFont> | Format ordinal font |
+| <nColor> | Color |
+
+====== Creation of GTF Files ======
+
+<code clipper>
+ GTF <oGtf> [FILE <cFile> ]
+</code> 
+
+| <oGtf> | A reference to the File GTF object |
+| <cFile> | cFilename |
+
+====== Writing to GTF Files ======
+
+<code clipper>
+ GTF WRITE [<uVal>] [OF <oGtf>] ;
+ [ FORMAT <nFormat> ] ;
+ [ ALIGN <nAlign> ] ;
+ [ FONT <nFont> ] ;
+ [ COLOR <nColor> ] ;
+ [ RETURN ]
+</code>
+
+| <uVal> | A handle for the fornat created |
+| <oGtf> | A reference to the file GTF object |
+| <nFormat> | The prefedefined format handle to use |
+| <nAlign> | Format align: ES_LEFT(0), ES_RIGHT (2), ES_CENTER (1) |
+| <nFont> | Format ordinal font |
+| <nColor> | Color |
+
+| RETURN | True if a carriage return should be performed |
+
+====== Writing New empty lines to GTF Files ======
+
+<code clipper>
+ GTF RETURN [OF <oGtf>]
+</code>
+
+| <oGtf> | A reference to the file GTF object |
+
+====== Close GTF Files ======
+
+<code clipper>
+ ENDGTF <oGtf>
+</code>
+
+| <oGtf>  | A reference to the file GTF object |
+
+====== Setting default values on GTF Files ======
+
+<code clipper>
+ SET GTF FORMAT <nFormat>
+
+ SET GTF ALIGN <nAlign>
+
+ SET GTF FONT <nFont>
+
+ SET GTF COLOR <nColor>
+</code>
+
+| <nFormat> | The prefedefined format handle to use |
+| <nAlign> | Format align: ES_LEFT(0), ES_RIGHT (2), ES_CENTER (1) |
+| <nFont> | Format ordinal font |
+| <nColor> | Color |
+
+====== Samples ======
+ fw\samples\testfgtf.prg
+

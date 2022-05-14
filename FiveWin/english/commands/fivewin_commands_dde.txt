@@ -1,0 +1,54 @@
+====== Defining a new DDE connection ======
+<code clipper>
+ DEFINE [ DDE | LINK ] <oDde> ;
+ [ SERVICE <cService> ] ;
+ [ TOPIC <cTopic> ] ;
+ [ ITEM <cItem> ] ;
+ [ ACTION <uAction> ] ;
+ [ VALID <uEnd> ]
+</code>
+====== Activating the DDE ======
+<code clipper>
+ ACTIVATE [ DDE | LINK ] <oDde>
+</code>
+====== Ending the connection ======
+<code clipper>
+ RELEASE [ DDE | LINK ] <oDde>
+</code>
+| <oDde> |            A reference to the DDE Object|
+| <cService> |        The service which establishes the connection|
+| <cTopic> |          The topic which establishes the connection|
+| <cItem> |           The item which establishes the connection|
+| <uAction> |         The action to perform once the connection is established|
+| <uEnd> |            An action to execute when the DDE is finished|
+
+
+====== Sample Code ======
+\Fwh\Samples\DdeServe.Prg
+<code clipper>
+// Using FiveWin as a DDE Server !!!
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "I am a DDE server!"
+
+   oWnd:bDdeInit = { | hWndClient, cAppName, cTopicName | ;
+                     MsgBeep(),;
+                     oWnd:Say( 1, 2, hWndClient ),;
+                     oWnd:Say( 2, 2, cAppName ),;
+                     oWnd:Say( 3, 2, cTopicName ) }
+
+   oWnd:bDdeExecute = { | hWndClient, cCommand | oWnd:Say( 5, 2, cCommand ) }
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>  
+
+
+====== See also ======
+[[fivewin_class_tdde | Class TDde]]

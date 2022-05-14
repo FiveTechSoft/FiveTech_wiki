@@ -1,0 +1,16 @@
+
+====== GetCtrlId() ====== 
+GetCtrlId()
+
+Returns a Identifier of a child window
+====== Sintaxis ======
+ GetCtrlId( <hCtrl> ) --> nId 
+====== Parámetros ======
+ <hCtrl> Handle of the control ( Child window ) 
+====== Devuelve ======
+ <Id> Identifier of the child window or nil if the function is not
+successful. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\GETDLGIT.C 
+====== Ver también ======

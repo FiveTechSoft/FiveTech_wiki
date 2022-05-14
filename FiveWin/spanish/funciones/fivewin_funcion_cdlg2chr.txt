@@ -1,0 +1,30 @@
+
+====== cDlg2Chr() ======
+
+Crea una cadena para crear una caja de dialogo
+
+====== Sintaxis ======
+
+ cDlg2Chr( <nControls>, <nTop>, <nLeft>, <nHeight>, <nWidth>, <cCaption>, <nStyle> ) --> cResult 
+
+====== Parámetros ======
+
+^Parámetro^Descripción^
+| <nControls> | Número de controles de la caja de dialogo | 
+| <nTop> | Coordenada superior de la caja de dialogo | 
+| <nLeft> | Coordenada izquierda de la caja de dialogo |  
+| <nHeight> | Altura de la caja de dialogo | 
+| <nWidth> | Ancho de la caja de dialogo | 
+| <cCaption> | Título del dialogo | 
+| <nStyle> | Estilo del dialogo | 
+
+====== Devuelve ======
+Estructura del dialogo
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\DLG2CHR.C 
+
+====== Ver también ======

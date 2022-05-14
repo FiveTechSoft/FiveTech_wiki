@@ -1,0 +1,16 @@
+
+====== lLfnRmDir() ====== 
+lLfnRmDir()
+
+Delete a directory with long name
+====== Sintaxis ======
+ lLfnRmDir( <cDirName> ) --> lSuccess 
+====== Parámetros ======
+ <cDirName> Name of directory to erase 
+====== Devuelve ======
+ <lSuccess> It returns true if we have been able to erase the directory 
+====== Ejemplo ======
+ SAMPLES\TESTLFN.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MKDIR.C 
+====== Ver también ======

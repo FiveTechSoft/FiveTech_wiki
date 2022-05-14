@@ -1,0 +1,38 @@
+
+====== JoyGetPos() ======
+JoyGetPos()
+
+It returns position and activity of buttons of a JoyStick
+====== Sintaxis ======
+ JoyGetPos( <nIdJoy>, <aStatus> ) --> nError 
+====== Parámetros ======
+  <nIdJoy>   Identifier of the JoyStick 
+  <aStatus>  Array of four positions where it will be stored those following values: 
+     aStatus[1]   Coordinate x   
+     aStatus[2]   Coordinate y   
+     aStatus[3]   Coordinate z   
+     aStatus[4]   Specifies the current state of joystick buttons. It can be any combination of the
+                    following bit flags: JOY_BUTTON1 Set if button 1 is pressed. JOY_BUTTON2 Set if
+                    button 2 is pressed. JOY_BUTTON3 Set if button 3 is pressed. JOY_BUTTON4 Set if
+                    button 4 is pressed.
+     JOY_BUTTON1      1   
+     JOY_BUTTON2      2   
+     JOY_BUTTON3      4   
+     JOY_BUTTON4      8   
+====== Devuelve ======
+ Returns JOYERR_NOERROR if successful. Otherwise, returns one of the
+following error codes: 
+   MMSYSERR_NODRIVER   The joystick driver is not present.   
+   JOYERR_PARMS        The specified joystick device ID wId is invalid.   
+   JOYERR_UNPLUGGED    The specified joystick is not connected to the system.   
+   MMSYSERR_BASE       0   
+   JOYERR_BASE       160   
+   JOYERR_NOERROR      0   
+   MMSYSERR_NODRIVER  (MMSYSERR_BASE + 6)   
+   JOYERR_PARAMS      (JOYERR_BASE+5)   
+   JOYERR_UNPLUGGED   (JOYERR_BASE+7)   
+====== Ejemplo ======
+ SAMPLES\TESTJOY.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\JOYSTICK.C 
+====== Ver también ======

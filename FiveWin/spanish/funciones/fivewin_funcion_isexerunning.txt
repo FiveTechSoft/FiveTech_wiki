@@ -1,0 +1,66 @@
+IsExeRunning()
+
+
+IsExeRunning()
+ Previous  Top  Next
+
+Checks if a given EXE is already running.
+
+====== Sintaxis ======
+
+ 
+
+
+ IsExeRunning( <cExeName> ) --> lRunning 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cExeName> The case sensitive name of the EXE to check. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lRunning> It returns .t. if the EXE is already running, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WINEXEC.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

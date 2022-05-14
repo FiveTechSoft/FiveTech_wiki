@@ -1,0 +1,39 @@
+====== AuxGetVol() ======  
+
+Devuelve el volumen de salida de un dispositivo
+
+====== Sintaxis ====== 
+ 
+ AuxGetVol( <nIdDevice>, <nVolLeft>, <nVolRight> ) --> nSuccess  
+
+====== Parámetros ====== 
+
+| <nIdDevice> | Identificador del dispositivo especificado. |  
+| <nVolLeft> | Volumen del parlante izqquierdo. |  
+| <nVolRight> | Volumen del parlante derecho. |  
+
+====== Devuelve ====== 
+
+ <nSucces> Retorna cero si la función es exitosa. De lo contrario devuelve un error numérico. Posibles errores retornados:
+
+
+#define MMSYSERR_BASE 0
+
+#define MMSYSERR_BADDEVICEID ( MMSYSERR_BASE + 2 )
+
+#define MMSYSERR_NODRIVER ( MMSYSERR_BASE + 6 ) 
+
+   MMSYSERR_BADDEVICEID 
+     Specified device ID is out of range. 
+     ID del dispositivo identificado está fuera de rango
+   MMSYSERR_NODRIVER 
+     El Driver no se pudo instalar. 
+
+====== Ejemplo ====== 
+
+ SAMPLES\MMEDIA\MMEDIA.PRG  
+
+====== Código fuente ====== 
+
+ SOURCE\WINAPI\MCI.C  
+

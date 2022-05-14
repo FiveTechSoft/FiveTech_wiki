@@ -1,0 +1,45 @@
+StopUntil()
+
+
+StopUntil()
+ Previous  Top  Next
+
+Halts the program till a codeblock eval to true.
+
+====== Syntax ======
+
+
+ StopUntil( <bBlock> ) --> nil 
+
+
+ 
+
+
+====== Parameters ======
+
+
+ < bBlock > The codeblock that is evaluated 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\MSGRUN.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

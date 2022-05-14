@@ -1,0 +1,16 @@
+
+====== nRGBGreen() ====== 
+nRGBGreen()
+
+Green component of a RGB color
+====== Sintaxis ======
+ nRGBGreen( <nRBGColor> ) --> nGreen 
+====== Parámetros ======
+ <nRBGColor> RGB color 
+====== Devuelve ======
+ <nGreen> Green component of a RGB color 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\COLORTON.C 
+====== Ver también ======

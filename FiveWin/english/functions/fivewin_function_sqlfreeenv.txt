@@ -1,0 +1,64 @@
+====== SQLFreeEnv() ======
+
+
+Frees resources associated with a specific environment handle.
+
+====== Syntax ======
+
+ 
+
+
+ SQLFreeEnv( <hEnv> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hEnv> The environment handle. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_ERROR, or
+SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

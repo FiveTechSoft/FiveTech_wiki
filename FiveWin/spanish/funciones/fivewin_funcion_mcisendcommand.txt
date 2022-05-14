@@ -1,0 +1,19 @@
+
+====== MCISendCommand() ====== 
+MCISendCommand()
+
+Send a command message to a MCI device
+====== Sintaxis ======
+ MCISendCommand( <nIdDev>, <cCommand>, <nFlags>, <cParam> ) --> nError 
+====== Parámetros ======
+  <nIdDev>    Identifier of device to recive the command 
+  <cCommand>  Command message 
+  <nFlags>    Flags for the command 
+  <cParam>    Strings of parameters 
+====== Devuelve ======
+ Return a 0 if the function is success without errors. In otherwise the
+error one will have to discover with the function mciGetErrorString. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MCI.C 
+====== Ver también ======

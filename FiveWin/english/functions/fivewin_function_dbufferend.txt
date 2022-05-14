@@ -1,0 +1,25 @@
+====== DBufferEnd() ======
+Part of the double buffer painting technique. Updates and reactivates the original DC of the window to be painted. This function
+is to be used from functions, and not from the Method Paint(). Please use FWDispEnd() from the Method Paint().
+
+====== Syntax ====== 
+DBufferEnd( <hDC>, <aInfo> ) --> nil
+
+====== Parameters ====== 
+^Parameter^Description^
+|<hDC>| The memory DC where painting has been done |
+|<aInfo> | An array of information provided by FWDispBegin() or DBufferStart() |
+
+====== Return ====== 
+Nothing
+
+====== Sample ======
+
+
+====== Source Code ====== 
+SOURCE\CLASSES\WINDOW.PRG  
+
+====== See Also ====== 
+[[fivewin_function_dbufferstart|DBufferStart()]]
+[[fivewin_function_fwdispbegin|FWDispBegin()]]
+[[fivewin_function_fwdispend|FWDispEnd()]]

@@ -1,0 +1,349 @@
+MAPISendMail()
+
+
+MAPISendMail()
+ Previous  Top  Next
+
+Sends a message. This function differs from the MAPISendDocuments
+function in that it allows greater flexibility in message generation.
+
+====== Syntax ======
+
+ 
+
+
+ MAPISendMail( [<cSubject>], [<cNoteText>], [<cMsgType>],
+[<cDateReceived>], [<cConversationID>], [<lReceipt>], [<lFromUser>],
+[<aOrigin>], [<aRecipients>], [<aFiles>] ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cSubject> The subject of the message. 
+
+
+ 
+
+
+ <cNoteText> The message text. 
+
+
+ 
+
+
+ <cMsgType> The message type. 
+
+
+ 
+
+
+ <cDateReceived> The date and time when the message was received. 
+
+
+ 
+
+
+ <cConversationID> The conversation id. 
+
+
+ 
+
+
+ <lReceipt> A receipt notification is requested. 
+
+
+ 
+
+
+ <lFromUser> ???. 
+
+
+ 
+
+
+ <aOrigin> An array with the senders of the message. 
+
+
+ 
+
+
+ <aRecipients> An array with the recipients of the message. 
+
+
+ 
+
+
+ <aFiles> An array with the files attached to the message. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: 
+
+
+ 
+
+
+ 
+
+ MAPI_E_AMBIGUOUS_RECIPIENT 
+
+
+ 
+
+
+ 
+
+ A recipient matched more than one of the recipient descriptor structures
+and MAPI_DIALOG was not set. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_ATTACHMENT_NOT_FOUND 
+
+
+ 
+
+ The specified attachment was not found. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_ATTACHMENT_OPEN_FAILURE 
+
+
+ 
+
+
+ 
+
+ The specified attachment could not be opened. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_BAD_RECIPTYPE 
+
+
+ 
+
+
+ 
+
+ The type of a recipient was not MAPI_TO, MAPI_CC, or MAPI_BCC. No
+message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_FAILURE 
+
+
+ 
+
+
+ 
+
+ One or more unspecified errors occurred. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INSUFFICIENT_MEMORY 
+
+
+ 
+
+
+ 
+
+ There was insufficient memory to proceed. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INVALID_RECIPS 
+
+
+ 
+
+
+ 
+
+ One or more recipients were invalid or did not resolve to any address. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_LOGIN_FAILURE 
+
+
+ 
+
+
+ 
+
+ There was no default logon, and the user failed to log on successfully
+when the logon dialog box was displayed. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_TEXT_TOO_LARGE 
+
+
+ 
+
+
+ 
+
+ The text in the message was too large. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_TOO_MANY_FILES 
+
+
+ 
+
+
+ 
+
+ There were too many file attachments. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_TOO_MANY_RECIPIENTS 
+
+
+ 
+
+
+ 
+
+ There were too many recipients. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_UNKNOWN_RECIPIENT 
+
+
+ 
+
+
+ 
+
+ A recipient did not appear in the address list. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_USER_ABORT 
+
+
+ 
+
+
+ 
+
+ The user canceled one of the dialog boxes. No message was sent. 
+
+
+ 
+
+
+ 
+
+ SUCCESS_SUCCESS 
+
+
+ 
+
+
+ 
+
+ The call succeeded and the message was sent. 
+
+
+ 
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== See also ======
+

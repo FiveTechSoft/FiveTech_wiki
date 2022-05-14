@@ -1,0 +1,53 @@
+TabCtrl_GetCurSel()
+
+
+TabCtrl_GetCurSel()
+ Previous  Top  Next
+
+Determines the currently selected tab in a tab control.
+
+====== Sintaxis ======
+
+
+ TabCtrl_GetCurSel( <hWnd> ) --> nItem 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nItem> Returns the index of the selected tab if successful, or -1 if no
+tab is selected. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

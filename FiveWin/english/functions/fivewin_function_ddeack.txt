@@ -1,0 +1,114 @@
+====== DDEAck() ======
+DDE Acknowledge FiveWin management function. This is a FiveWin internal function for DDE support.  Use FiveWin DDE classes and xBase commands as they are much easier to use and more powerful. 
+
+====== Syntax ======
+DDEAck( <hWndServer>, <nExtraData> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWndServer>| The handle of the window which is acting as a server in a DDE conversation. |
+|<nExtraData>| Some extra data sometimes required. |
+
+====== Returns ======
+Nothing. 
+
+====== Example ======
+SAMPLES\\TestDDE.prg DDEClien.prg DDEServe.prg 
+
+<code clipper>
+// This sample shows how to use DDE link.
+// For FiveWin DDE are OBJects too!
+
+#include "FiveWin.ch"
+
+static oWnd, oDde
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 ;
+      TITLE "Dynamic Data Exchange with FiveWin" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO FWVERSION + " " + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Dynamic Data Exchange"
+      MENU
+         MENUITEM "Set a DDE link"  ACTION StartDDE() ;
+            MESSAGE "We are going to communicate with the Program Manager"
+
+         MENUITEM "Test the link..."       ACTION TestDDE() ;
+            MESSAGE "Lets tell it to generate a new group"
+
+         SEPARATOR
+
+         MENUITEM "Lets finish..." ACTION oWnd:End() ;
+            MESSAGE "End of the demo"
+      ENDMENU
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function StartDDE()
+
+   if oDde == nil
+      DEFINE DDE oDde SERVICE "Progman" TOPIC "Progman"
+      ACTIVATE DDE oDde
+      MsgInfo( "Link established" )
+   else
+      MsgInfo( "There was already a link..." )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function TestDDE()
+
+   local cGroup := "FiveWin - DDE Tests"
+
+   MsgInfo( "We are going to create a new group" + Chr( 13 ) + ;
+            "at Windows program manager" )
+
+   MsgInfo( "This is excellent to make, for instance," + ;
+            "an application installer" )
+
+   oDde:Execute( "[CreateGroup(" + cGroup + ")]" )
+
+   oDde:Execute( "[AddItem(" + cGroup + ", Test1 )]" )
+   oDde:Execute( "[AddItem(" + cGroup + ", Test2 )]" )
+   oDde:Execute( "[AddItem(" + cGroup + ", Test3 )]" )
+   oDde:Execute( "[AddItem(" + cGroup + ", Test4 )]" )
+   oDde:Execute( "[AddItem(" + cGroup + ", Test5 )]" )
+
+   oDde:Execute( "[ShowGroup(" + cGroup + ")]" )
+
+   MsgInfo( "Have a look now at the program manager" )
+   MsgInfo( "There has to be a new group there!..." )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Source Code ======
+SOURCE\\CLASSES\\TDDE.prg 
+
+====== See also: ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

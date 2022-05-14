@@ -1,0 +1,85 @@
+CreateBmpCursor()
+
+
+CreateBmpCursor()
+ Previous  Top  Next
+
+Creates a cursor from a BMP handle.
+
+====== Syntax ======
+
+ 
+
+
+ CreateBmpCursor( <hBitmap>, <hPalette>, <nHotRow>, <nHotCol>,
+<lInterval>, <aBlack>, <aWhite>, <aTransparent>, <aInverted> ) -->
+hCursor 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hBitmap>, <hPalette> The BMP handle. 
+
+
+ 
+
+
+ <nHotRow>, <nHotCol> The coordinates of the hot point of the cursor. 
+
+
+ 
+
+
+ <lInterval> Set to .t. to interpret color arrays as color intervals,
+otherwise color arrays are interpret as color lists. 
+
+
+ 
+
+
+ <aBlack>, <aWhite>, <aTransparent>, <aInverted> The color arrays. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <hCursor> The cursor handle. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\CURSORS.C 
+
+
+ 
+
+
+

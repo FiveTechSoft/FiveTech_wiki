@@ -1,0 +1,27 @@
+====== Ellipse() ======
+Draws an ellipse.  This function draws an ellipse inside the specified rectangle coordinates. It uses the currently selected pen and brush in the device
+context of the paint area. 
+
+====== Syntax ======
+Ellipse( <hDC>, <nLeft>, <nTop>, <nRight>, <nBottom> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Descripttion^
+|<hDC>| The handle of the device context. |
+|<nLeft>, <nTop> ,<nRight>, <nBottom>| Are the coordinates of the rectangle of the ellipse. |
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value. True if the operation was successful.|
+
+====== Source Code ======
+SOURCE\\WINAPI\\Ellipse.c 
+
+====== See also ======
+[[fivewin_function_Chord|Chord()]]
+[[fivewin_function_DrawFocusRect|DrawFocusRect()]]
+[[fivewin_function_Pie|Pie()]]
+[[fivewin_function_Polygon|Polygon()]]
+[[fivewin_function_PolyPoligon|PolyPoligon()]]
+[[fivewin_function_Rectangle|Rectangle()]]
+[[fivewin_function_RoundRect|RoundRect()]]

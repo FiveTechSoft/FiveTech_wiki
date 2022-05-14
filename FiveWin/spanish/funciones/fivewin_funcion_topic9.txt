@@ -1,0 +1,120 @@
+AllTrim()
+
+
+
+AllTrim()
+
+ Previous  Top  Next
+
+
+
+It suppresses spaces to left and right of a string
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Alltrim(<cString> ) --> cNewString 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cString> Given string. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cNewString> New string without spaces to the end 
+
+
+ 
+
+
+ 
+
+
+
+
+
+Observations:
+
+
+
+
+
+ Function created for compatibility in xBase++ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ejemplo ======
+
+Local cString := " My string "
+
+Local cNewString
+
+
+
+cNewString := Alltrim( cString )
+
+
+
+Now cNewString will contain "My string"
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DB10.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

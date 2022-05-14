@@ -1,0 +1,216 @@
+====== nAnd() ======
+
+
+
+
+Generates a numeric AND value from some numbers
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nAnd( <nValue1>, <nValue2> [,...<nValueN>] ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nValue1> A numeric value to be bit-ANDed with other numeric values. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nValue2> More numeric values to be bit-ANDded. 
+
+
+ 
+
+
+ <nValueN> 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> A numeric value as result of bit-ANDded all the numeric values
+supplied as parameters. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Just a little remembering: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 1 AND 1 = 1 
+
+
+ 
+
+
+ 1 AND 0 = 0 
+
+
+ 
+
+
+ 0 AND 1 = 0 
+
+
+ 
+
+
+ 0 AND 0 = 0 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This is applicable to each bits in those numeric values 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ MsgInfo( nAnd( 15, 2 ) ) // it will return 2 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ // 15 = '00001111' 
+
+
+ 
+
+
+ // 2 = '00000010' 
+
+
+ 
+
+
+ ------------------------ 
+
+
+ 
+
+
+ // 2 = '00000010' 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Or.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nOr() lAnd() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

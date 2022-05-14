@@ -1,0 +1,87 @@
+StopRecording()
+
+
+
+StopRecording()
+
+ Previous  Top  Next
+
+
+
+
+Stop the record of messages of the system queue
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StopRecording() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PLAYBACK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

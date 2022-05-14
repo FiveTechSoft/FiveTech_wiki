@@ -1,0 +1,167 @@
+====== EndPage() ======
+Ends printing of a page. This function tells the device context that the application has finished writing to a page. Normally we use this function to start working on a new page. 
+
+====== Syntax ======
+EndPage( <hDC> ) --> nReturnCode 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| The handle of the device context.|
+
+====== Returns ======
+^Returns^Description^
+|<nReturnCode>| The result of the operation. Possible return values are follows.\\ **SP_ERROR** General error.\\ **SP_APPABORT** Job was terminated because the application's print-canceling function returned zero.\\ **SP_USERABORT** User terminated the job by using Windows Print Manager (PRINTMAN.EXE).\\ **SP_OUTOFDISK**  Not enough disk space is currently available for spooling, and no more space will become available.\\ **SP_OUTOFMEMORY**  Not enough memory is available for spooling.|
+
+====== Source Code ======
+SOURCE\\WINAPI\\PrintDc.c 
+
+====== Example ======
+<code clipper>
+// Generating mailing labels - using FiveWin Report Preview
+
+#include "fivewin.ch"
+
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+     local oWnd
+
+     SET _3DLOOK ON
+
+     DEFINE WINDOW oWnd TITLE "Labels generation & preview with FiveWin"
+
+     @ 2, 2 BUTTON "&Labels" SIZE 120, 25 OF oWnd ACTION GenerateLabels()
+
+     ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function GenerateLabels()
+
+     LOCAL oPrinter, oFont
+
+     LOCAL nWidth   ,;                           // label Width
+           nHeight  ,;                           // label height
+           nMargin  ,;                           // Printing margin (.2 inches)
+           nLblWid  ,;                           // # labels width  (2)
+           nLblHei                               // # labels height (6)
+
+     LOCAL nCounter ,;                           // counter of lbl on each page
+           nRow     ,;                           // current row
+           nCol     ,;                           // current col
+           nOldRow                               // old row position
+
+     USE TEST
+
+     PRINTER oPrinter FROM USER PREVIEW NAME "Fivewin Label Demo"
+
+     DEFINE FONT oFont FROM USER OF oPrinter
+
+     nLblWid := 2
+     nLblHei := 6
+
+     nWidth  := oPrinter:nHorzRes()/nLblWid
+     nHeight := oPrinter:nVertRes()/nLblHei
+     nMargin := Int(oPrinter:nLogPixelX()*0.2)
+
+     nCounter := 0
+
+     CursorWait()
+
+     DO WHILE !Test->(Eof())
+
+          IF nCounter == 0
+               nRow := nMargin
+               nCol := nMargin
+               oPrinter:StartPage()
+          ENDIF
+
+          nOldRow := nRow
+
+          oPrinter:Box( nRow, nCol, nOldRow + nHeight - 20, nCol + nWidth - 50 )
+          oPrinter:SayBitmap( nRow + nHeight - 300, nCol + nWidth - 400,;
+                              "..\bitmaps\Fw.bmp", 300, 200 )
+          oPrinter:Say( nRow + 15, nCol + 15, Trim( Test->First ) + " " + Test->Last, oFont )
+          nRow += oFont:nHeight
+          oPrinter:Say( nRow + 15, nCol + 15, Test->Street, oFont )
+          nRow += oFont:nHeight
+          oPrinter:Say( nRow + 15, nCol + 15, Test->City, oFont )
+          nRow += oFont:nHeight
+          oPrinter:Say( nRow + 15, nCol + 15, Test->State, oFont )
+          nRow += oFont:nHeight
+          oPrinter:Say( nRow + 15, nCol + 15, Test->Zip, oFont )
+
+          nRow := nOldRow + nHeight
+
+          Test->(DbSkip())
+
+          IF nCounter > 0 .AND. nCounter%nLblHei == 0
+               nRow := nMargin
+               nCol += nWidth
+          ENDIF
+
+          IF nCounter == (nLblHei*nLblWid) .AND. !Test->(Eof())
+               nCounter := 0
+               oPrinter:EndPage()
+          ELSE
+               nCounter++
+          ENDIF
+
+     ENDDO
+
+     CursorArrow()
+
+     oPrinter:EndPage()
+
+     oPrinter:Preview()
+
+     RELEASE FONT oFont
+
+     CLOSE TEST
+
+RETURN (NIL)
+</code>
+
+<code clipper>
+// Printing a whole window sample
+// You may use also :hardCopy() method without creating a PRINT object
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 60 TITLE "Printing a Window"
+
+   @ 3, 3 BUTTON "&Print me" OF oWnd SIZE 80, 20 ;
+      ACTION PrintMe()  // try also with oWnd:HardCopy()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function PrintMe()
+
+   local oPrn
+
+   PRINT oPrn NAME "Test"
+      PAGE
+         oWnd:Print( oPrn, 1, 1, 2 )        // Scale factor 2
+      ENDPAGE
+   ENDPRINT
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See also: ======
+[[fivewin_function_startpage|StartPage()]]

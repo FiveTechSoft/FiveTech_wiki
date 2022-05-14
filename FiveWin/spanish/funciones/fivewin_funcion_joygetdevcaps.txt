@@ -1,0 +1,38 @@
+
+====== JoyGetDevCaps() ======
+JoyGetDevCaps()
+
+To obtain the capabilities of a joystick
+====== Sintaxis ======
+ JoyGetDevCaps( <nIDDevice>, <aDevCaps> ) --> nError 
+====== Parámetros ======
+  <nIDDevice>  Identifier of the joystick ( 0 - JoyGetNumDevs() ) 
+  <aDevCaps>   Array of 12 elements where we will pick up the capabilities of our joysticks We will
+                 initialize it to {0,0," ,0,0,0,0,0,0,0,0,0} so that the function stores in each
+                 element those following values 
+     aDevCaps[ 1]   Manufacturer identifier of the joystick.   
+     aDevCaps[ 2]   Product identifier of the joystick.   
+     aDevCaps[ 3]   Specifies the product name of the joystick   
+     aDevCaps[ 4]   Minimum x-position of the joystick.   
+     aDevCaps[ 5]   Maximum x-position of the joystick.   
+     aDevCaps[ 6]   Minimum y-position of the joystick.   
+     aDevCaps[ 7]   Maximum y-position of the joystick.   
+     aDevCaps[ 8]   Minimum z-position of the joystick.   
+     aDevCaps[ 9]   Maximum z-position of the joystick.   
+     aDevCaps[10]   Number of buttons on the joystick.   
+     aDevCaps[11]   Smallest polling interval supported when captured by the joySetCapture function.   
+     aDevCaps[12]   Largest polling interval supported when captured by joySetCapture.   
+====== Devuelve ======
+  <nError> JOYERR_NOERROR if successful. Otherwise, returns one of the following error codes: 
+     MMSYSERR_NODRIVER   The joystick driver is not present.   
+     JOYERR_PARMS        The specified joystick device ID wId is invalid.   
+     MMSYSERR_BASE      0   
+     JOYERR_BASE      160   
+     JOYERR_NOERROR      0   
+     MMSYSERR_NODRIVER   (MMSYSERR_BASE + 6)   
+     JOYERR_PARAMS      (JOYERR_BASE+5)   
+====== Ejemplo ======
+ SAMPLES\TESTJOY.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\JOYSTICK.C 
+====== Ver también ======

@@ -1,0 +1,19 @@
+====== Creates a COMBOBOX from source code ======
+<code clipper>
+@ <nRow>, <nCol> COMBOBOX [ <oCbx> VAR ] <cVar> ;
+   [ PROMPTS | ITEMS <aItems> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ OF <oWnd> ] ;
+   [ ON CHANGE <uChange> ]
+</code>
+
+====== Example ======
+FiveMac\samples\TestCbx.prg
+
+
+{{:fmc_testcbx.png|:fmc_testcbx.png}}
+
+====== Source code ======
+FMC\source\classes\tcombobox.prg
+====== See Also ======
+[[fivemac_class_tcombobox|Class TComboBox]]

@@ -1,0 +1,34 @@
+====== ASave() ======
+
+Para convertir un arreglo en una cadena.
+
+
+====== Sintaxis: ( Syntax: ) ======
+
+ ASave( <aArray> ) --> cInfo
+
+
+ En el proceso de grabar ventana y sus controles se utiliza la función de ASave () en un caso de los data que son una matriz
+
+
+====== Parámetros: ( Parameters: ) ======
+
+ <aArray> Es el arreglo a convertir
+
+
+====== Retorno: ( Returns: ) ======
+
+ <cInfo> Es la cadena que contiene al arreglo
+
+
+====== Observaciones: ( Observations: ) ======
+
+ La cadena codificada incluye en el primer caracter del arreglo una "A" mas un caracter binario construido con la funcion de Clipper I2Bin() que indica el largo de la cadena mas 2 elementos y la logitud de el arreglo "A"+I2Bin(2+len(cInfo))+I2bin(len(aArray))+cInfo
+
+
+====== Ejemplo: ( Sample: ) ======
+
+
+====== Código Fuente: ( Source code: ) ======
+
+ SOURCE\CLASSES\WINDOW.PRG

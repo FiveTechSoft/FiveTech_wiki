@@ -1,0 +1,56 @@
+====== Comando VBX ======
+
+Creando un VBX desde código (usando un VBX en una ventana):
+
+<code clipper>
+ @ <nRow>, <nCol> VBX [<oVbx>] ;  
+	 [ OF <oWnd> ] ;  
+	 [ SIZE <nWidth>, <nHeight> ] ;  
+	 [ FILE | FILENAME | DISK <cVbxFile> ] ;  
+	 [ CLASS <cVbxClass> ] ;  
+	 [ ON <cClause1> <uAction1> ;  
+	 [ ON <cClauseN> <uActionN> ] ]  
+	 [ WHEN <uWhen> ] ;  
+	 [ VALID <uValid> ] ;  
+	 [ PIXEL ] ;  
+	 [ DESIGN ]  
+</code>
+
+**Cuidado:**
+Algunos controles VBXs necesitan alguna inicializacion de datos especificos, y no pueden no trabajar apropiadamente usando ventanas.
+En estos casos uselos solamente en cajas de dialogo usando REDEFINE VBX ...
+
+Creando un VBX desde recursos (usando un VBX en una caja de dialogo):
+
+<code clipper>
+ REDEFINE VBX [<oControl>] ;  
+	 [ ID <nId> ] ;  
+	 [ OF <oDlg> ] ;  
+	 [ COLOR <nClrFore> [,<nClrBack>] ] ;  
+	 [ ON <cClause1> <uAction1> ;  
+	 [ ON <cClauseN> <uActionN> ] ]  
+</code>
+
+====== Parámetros ======
+|<nRow>, <nCol>|Las coordenadas superior e izquierda del control|
+|<oVbx>|Referencia a un objeto oVbx.|
+|<oWnd> |Referencia a la ventana contenedora del oVbx|
+|<nWidth>, <nHeight>|The dimensions of the oVbx control    |
+|<nWidth>,<nHeight>|Las dimensiones de control oVbx|
+|<cVbxFile>|El nombre de archivos del archivo .VBX |
+|<cVbxClass>|Nombre opcional de clase del VBX especificada por el fabricante|
+|<cClause>|Algun nombre de evento especificada por el fabricante del VBX|
+|<uAction>|Alguna accion a realizar en un evento|
+|<nId>|El ID del control oVbx dentro de la Caja de Dialogo |   
+|<oDlg>|Una referencia al objeto contenedor DialogBox|
+|<nClrFore>,<nClrBack>|Colores del DialogBoxes en el que esta oVbx|    
+|<WhenFunc>|Esta es uan expresion a evaluar que indica si el control esta habilitado o no|
+|<ValidFunc>|Una expresion para validar cuando el control esta perdiendo el foco. |
+
+====== Cláusulas ======
+|PIXEL|Para especificar las cordenadas en pixeles, en vez de coordenadas de texto|
+|DESIGN|Para activate el control en modo diseño, permitiendo al usuario moverlo y cambiarlo de tamaño con el mouse|
+
+====== Vea tambien ======
+[[fivewin_clase_tvbcontrol|Clase VBControl]], [[fivewin_clase_TVbxArray|Clase VbxArray]]
+

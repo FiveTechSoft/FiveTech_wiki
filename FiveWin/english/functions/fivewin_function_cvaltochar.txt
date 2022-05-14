@@ -1,0 +1,31 @@
+====== cValToChar() ======
+Converts any value into a string. This function converts value of any data type into its equivalent character expression.  This function is coded in C language and it is extremely fast.  
+
+====== Syntax: ======
+cValToChar( <uValue> ) --> cValue  
+
+====== Parameters: ======
+^Parameter^Description^
+|<uValue>| It may be any value except an array or an Object.  |
+
+
+
+
+
+
+====== Returns: ======
+^Returns^Description^
+|<cValue>| A string with the character expression of <uValue>. However, please note a code block will always simply return "{|| ...}" and an array "{ ... }"|
+
+
+====== Sample: ======
+<code clipper>
+ ? cValToChar( 123 ) --> "123" 
+ ? cValToChar( Date() ) --> "01/04/2010" // Depending on the date format
+ ? cValToChar( .T. ) --> ".T."
+</code>
+====== Source Code: ======
+FWH\source\function\valblank.prg 
+
+====== See Also ======
+[[fivewin_function_cvaltostr|cValToStr()]]

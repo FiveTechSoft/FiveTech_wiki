@@ -1,0 +1,70 @@
+GetFClipData()
+
+
+GetFClipData()
+ Previous  Top  Next
+
+Gets a GTF text from the clipboard.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetFClipData( <hWnd> ) --> cGTF 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> The handle of the current window. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cGTF> The text pasted from the clipboard. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\FGETCLIP.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

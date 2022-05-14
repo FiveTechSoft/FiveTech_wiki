@@ -1,0 +1,96 @@
+====== Tree ======
+
+**Creating a tree **
+<code clipper>
+ TREE [ <oTree> ] ;  
+    [ BITMAPS <cBmpOpen>, <cBmpClose> ]  
+
+
+    TREEITEM [ <oItem> PROMPT ] <cLabel> ; 
+       [ RESOURCE <cResName1> [, <cResName2> ] ] ;  
+       [ FILENAME <cBmpOpen> [, <cBmpClose> ] ] ;  
+       [ OPENED | OPEN ] ;  
+       [ ACTION <uAction> ]  
+   
+             ... 
+
+    [ TREE <oSubTree> ]  
+       [ TREEITEM ... ]  
+       [ ... ]  
+    [ ENDTREE ]
+  
+ ENDTREE  </code>
+**Parameters**
+| <oTree> | A reference to the TTree object just created. | 
+| <cBmpOpen> | Optional bitmaps files or resources names for the tree nodes open and close | 
+| <cBmpClosed> | states images. | 
+| <oItem> | A reference to the TTreeItem object just created. | 
+| <cLabel> | The prompt of an TreeItem element. | 
+| <cResName1> | Optional bitmaps resources names for the item open and closed states | 
+| <cResName2> | Images. The Tree <cBmpOpen> and <cBmpClosed> are used by default if <cResName1> and <cResName2> are not specified. |
+| <cBmpOpen> | Optional bitmaps file names for the item open and closed |
+| <cBmpClosed> | States images. The Tree <cBmpOpen> and <cBmpClosed> are used by default if <cResName1> and  <cResName2> are not specified.|
+| <uAction> | The action to perform when clicking on the TTreeItem. | 
+| <oSubTree> | A reference to the TTree object just created. | 
+
+**CLAUSES **
+
+| OPENED | To show the TTreeItem in open state. | 
+| OPEN   | To show the TTreeItem in open state. | 
+
+====== Sample Code ======
+\Fwh\Samples\TestTre5.Prg
+<code clipper>
+// Using a TreeView with checkboxes and checking their status
+
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg, oTree
+
+   DEFINE DIALOG oDlg
+
+      oTree = TTreeView():New( 0, 0, oDlg,,,,,200,200,,.t.)
+
+      oTree:OnClick = { || CheckStatus( oTree, oTree:aItems ) }
+
+   ACTIVATE DIALOG oDlg CENTERED ON INIT BuildTree( oTree )
+
+return nil 
+
+function BuildTree( oTree ) 
+
+   local oMenu := Array( 2 ), oSubMenu := Array( 3 ) 
+
+   oMenu[ 1 ]:= oTree:Add( "Principal" ) 
+      oSubMenu[ 1 ]:= oMenu[ 1 ]:Add( "Imprimir..." )
+      oSubMenu[ 1 ]:SetCheck( .T. ) 
+
+   oMenu[ 2 ]:= oTree:Add( "Proyectos" ) 
+      oSubMenu[ 2 ]:= oMenu[ 2 ]:Add( "Definir Proyectos" ) 
+      oSubmenu[ 3 ]:= oMenu[ 2 ]:Add( "Actualización datos" ) 
+
+   oTree:Expand() 
+
+return nil 
+
+function CheckStatus( oTree, aItems )
+
+   local n
+   
+   for n = 1 to Len( aItems )
+      MsgInfo( oTree:GetCheck( aItems[ n ] ) )
+      CheckStatus( oTree, aItems[ n ]:aItems )
+   next
+   
+return nil      
+</code>
+
+====== Screen Snapshot ======
+{{:tree.jpg|:tree.jpg}}
+
+
+
+====== See also ======
+[[fivewin_class_ttreeitem | Class TTreeItem ]], [[fivewin_class_ttreeview | Class TTreeView ]], [[fivewin_class_ttvitem | Class TTvItem ]]

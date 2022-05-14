@@ -1,0 +1,96 @@
+StrCpy()
+
+
+
+StrCpy()
+
+ Previous  Top  Next
+
+
+
+
+Copy a string into other string
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ StrCpy( <cSource>, <cTarget> ) --> cTarget 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cSource> Source string 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTarget> Target string 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cTarget> String of characters. Manage strings > 64 ks 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

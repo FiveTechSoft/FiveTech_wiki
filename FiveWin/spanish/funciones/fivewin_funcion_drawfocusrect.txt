@@ -1,0 +1,30 @@
+
+====== DrawFocusRect() ======
+
+Se dibuja un rectángulo al señalar el enfoque del control
+
+====== Syntaxis ======
+
+DrawFocusRect( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil 
+
+Rectángulo que bordea un control con el foco principalmente en los botones. 
+
+
+====== Parámetros ======
+
+| <hDC> | Contexto de dispositivo del control |
+| <nTop> | Coordenada superior |
+| <nLeft> | Coordenada izquierda |
+| <nBottom> | Coordenada abajo |
+| <nRight> | Coordenada derecha |
+
+====== Devuelve ======
+
+NIL
+
+====== Ejemplo ======
+
+
+====== Código fuente ======
+
+SOURCE\WINAPI\RECTS.C 

@@ -1,0 +1,28 @@
+====== HelpPopup ======
+
+Shows the context popup help.
+
+====== Syntax: ======
+ 
+ HelpPopup( cnHelpId [, nRow [, nCol [, hWnd ]]] ) --> nil
+====== Parameters: ======
+
+ When using CHM-Helpfile:
+| <cnHelpId> | A numeric HelpID from the the embedded popups.txt in the .CHM or an extern file. When cnHelpId is a text then this text is shown as popup. |
+| <nRow> | Y-offset of the popup-window from the active control. [optional] |
+| <nCol> | X-offset of the popup-window from the active control. [optional] |
+| <hWnd> | Handle from the active control. [optional] |
+
+ When using HLP-Helpfile:
+| <cnHelpId> | A numeric HelpID from the the .HLP |
+
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+ HelpPopup() shows a help context popup of the selected help file. 
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP32.PRG

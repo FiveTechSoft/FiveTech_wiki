@@ -1,0 +1,23 @@
+====== Class TFLine ======
+
+Line object for TFGet class                                                    
+====== DATA ======
+|oUp|The up object line|
+|oDown|The down object line|
+|nAlign|The alignment style|
+|aText|Array of text of the line|
+|aFonts|Array of fonts of the line|
+|aColors|Array of colors of the line|
+|lCrLf|.T. if the line has to be CRLF terminated when|
+|retrieved||
+|aBlock|Actions to be performed when ???|
+|nCtrl|???|
+====== METHODS ======
+|New|Constructor from source code|
+|End|Ends the control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TFLINE.PRG

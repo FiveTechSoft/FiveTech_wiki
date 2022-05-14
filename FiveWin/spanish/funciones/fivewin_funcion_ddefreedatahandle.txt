@@ -1,0 +1,17 @@
+
+====== DDEFreeDataHandle() ======
+
+DDEFreeDataHandle()
+
+DDEfreedataHandle() Frees a global memory object and deletes the data
+handle associated with the object
+====== Sintaxis ======
+ DDEFreeDataHandle( <hData> ) --> lSuccess 
+====== Parámetros ======
+====== Devuelve ======
+
+ <lSuccess> .t. if the operation is successful. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\DDEML.C 
+====== Ver también ======

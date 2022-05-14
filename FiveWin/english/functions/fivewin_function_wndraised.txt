@@ -1,0 +1,76 @@
+====== WndRaised() ====== 
+
+WndRaised()
+
+Makes the border of a window look raised
+
+====== Syntax ======
+
+ WndRaised( <hWnd>, <hDC> ) --> nil 
+
+
+====== Parameters ======
+
+
+ <hWnd> Identifies the window to make it look raised. 
+
+
+
+ <hDC> The device context of the window. 
+
+
+====== Returns ======
+
+
+ nil 
+
+
+====== Example ======
+
+
+ CLASS TBar METHOD Paint() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\WndBoxes.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WndBox() WndBoxIn() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

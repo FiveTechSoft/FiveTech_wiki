@@ -1,0 +1,124 @@
+nLoByte()
+
+
+
+nLoByte()
+
+ Previous  Top  Next
+
+
+
+
+Returns the Low byte of a word (two bytes)
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nLoByte( <nWord> ) --> nLoByte 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nWord> A numeric (2 bytes) value 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLoByte> A numeric (1 byte) value 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ A word is made of: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ WORD = LOW_BYTE + HIGH_BYTE 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\HiLoWord.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nLoByte() nHiByte() nLoWord() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

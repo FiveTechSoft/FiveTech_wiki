@@ -1,0 +1,23 @@
+====== DDEGetLastError() ======
+Retrieves the most recent DDE error code.
+
+====== Syntax ======
+DDEGetLastError( <hInst> ) --> nError 
+
+====== Parameters ======
+^Parameter^Description^
+|<hInst>| Instance identifier. |
+
+====== Returns ======
+^Returns^Description^
+|<nError>| The most recent error code. |
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

@@ -1,0 +1,24 @@
+====== PrinterInit() ====== 
+It puts FALSE the flag of printer initialization
+
+====== Syntax ======
+
+ PrinterInit() --> nil 
+
+====== Parameters ======
+
+ None 
+
+====== Returns ======
+ Nil 
+
+======Observation======
+| Function that establishes a flag " bInit " to FALSE. It is used in the process of initialization of the printer. |
+
+====== Example ======
+
+
+====== Source Code ======
+ SOURCE\WINAPI\PRINTDC.C 
+
+====== See also ======

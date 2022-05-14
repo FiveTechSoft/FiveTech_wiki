@@ -1,0 +1,16 @@
+====== DbCopyStru() ======
+Copy the current .dbf structure to a new database (.dbf) file.  Function to obtain compatibility with xBase++ 
+
+====== Syntax ======
+DbCopyStru( <x>, <y> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Group of fields to copy |
+|<y>| Name from the file to generate |
+
+====== Returns ======
+DbCopySruct() 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

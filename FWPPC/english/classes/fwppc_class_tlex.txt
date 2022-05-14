@@ -1,0 +1,28 @@
+====== Class TLex ======
+
+Lexical analizer. It returns the different tokens found inside a file          
+Inherits from TFile                                                            
+====== DATA ======
+|aTokens|Array of string tokens to identify|
+|aIds|Array of numeric identifiers for each found token|
+|lSkipBlank|To automatic skip spaces|
+|lSkipCRLF|To automatic skip carriage-return and line-feed|
+|cToken|Last read token string value|
+|cSeparators|A string with all separators|
+|uValue|The last extracted token|
+|cText|To analyze text from memory|
+|nTxtPos|Text index position when using cText|
+|nTokNum|Token identifier for numbers|
+====== METHODS ======
+|New|Constructor from source code|
+|lEoF|Retrieves the total number of lines.|
+|nGetByte|Get a byte from the file.|
+|nGetToken|Get a token from the file.|
+|SetText|Sets a new text string|
+|Add|Adds a token|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TLEX.PRG

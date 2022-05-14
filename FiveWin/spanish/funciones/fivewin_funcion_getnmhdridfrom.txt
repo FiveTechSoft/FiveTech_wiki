@@ -1,0 +1,101 @@
+GetNMHDRIdFrom()
+
+
+GetNMHDRIdFrom()
+ Previous  Top  Next
+
+Retrieves the identifier of the control sending a notify message.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetNMHDRIdFrom( <nPtrNMHDR> ) --> nIdFrom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nPtrNMHDR> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nIdFrom> The control identifier field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\toolbar.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\notify.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+====== Ver también ======
+

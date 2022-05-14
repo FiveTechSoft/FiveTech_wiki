@@ -1,0 +1,13 @@
+
+====== PrnSetCopies() ======
+To establish the number of copies to print
+====== Sintaxis ======
+ PrnSetCopies( <nCopies> ) --> lSuccess 
+====== Parámetros ======
+|<nCopies>|Number of copies to print. It is indispensable that the printer supports the capacity multicopy| 
+====== Devuelve ======
+ <lSuccess> True 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

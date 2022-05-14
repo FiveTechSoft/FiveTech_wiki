@@ -1,0 +1,16 @@
+====== FAttrib() ======
+Set new attributes to a file  
+
+====== Syntax: ======
+FAttrib(<cFileName> [,<nNewAttrs>] ) --> nAttrs  
+ 
+====== Parameters: ======
+^Parameter^Description^
+| <cFileName> | File Name  |
+| <nNewAttrs> | News attributes :\\ \\ 00       Normal\\ 01       Read-only\\ 02       Hidden\\ 04       System\\ 32       Archive|
+====== Returns: ======
+^Returns^Description^
+|<nAttrs> |Attributes that the file has after the operation |
+
+====== Source code: ======
+SOURCE\FUNCTION\FILES.C  

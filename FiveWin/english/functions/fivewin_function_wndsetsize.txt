@@ -1,0 +1,52 @@
+====== WndSetSize() ====== 
+
+WndSetSize()
+
+Update the size of a window
+
+
+====== Syntax ======
+
+
+ WndSetSize( <hwnd>, <nWidth>, <nHeight>, <lRepaint> ) --> lOk 
+
+
+====== Parameters ======
+
+ <hwnd> Handle of the window 
+
+
+ <nWidth> New width 
+
+
+ <nHeight> New height 
+
+
+ <lRepaint> This value is true if the window has to be repainted 
+
+
+====== Returns ======
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

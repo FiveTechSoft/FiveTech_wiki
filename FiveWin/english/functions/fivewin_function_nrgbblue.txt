@@ -1,0 +1,87 @@
+nRGBBlue()
+
+
+
+nRGBBlue()
+
+ Previous  Top  Next
+
+
+
+
+Blue component of a RGB color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nRGBBlue( <nRGBColor> ) --> nBlue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nRGBColor> RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nBlue> Blue component of a RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\COLORTON.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,33 @@
+TransBmp()
+
+Copy a bitmap on a given device context with transparent effect.
+
+====== Syntax ======
+
+TransBmp( <hBmp>, <nBmpWidth>, <nBmpHeight>, <nClrTransp>, <hDC>,
+<nCol>, <nRow>, <nWidth>, <nHeight> ) --> nil 
+
+====== Parameters ======
+
+|<hBmp>|The handle of the bitmap|
+|<nBmpWidth>|The width of the bitmap|
+|<nBmpHeight>|The height of the bitmap|
+|<nClrTransp>|The transparent color|
+|<hDC>|The handle of the device context|
+|<nCol>|The destination column|
+|<nRow>|The destination row|
+|<nWidth>|The width of the destination|
+|<nHeight>|The height of the destination|
+
+====== Returns ======
+|<nil>|Nil| 
+
+====== Example ======
+
+SAMPLES\bmponbmp.prg
+
+====== Source Code ======
+
+SOURCE\FUNCTION\fwbmp.c 
+
+====== See also ======

@@ -1,0 +1,24 @@
+
+====== CheckmenuItem() ======
+CheckmenuItem()
+
+Add or remove checkmark at pop-up menu item
+
+====== Sintaxis ======
+ CheckMenuItem( <hMenu>, <nItemId>, <nFlags> ) --> nLastState 
+
+====== Parámetros ======
+ <hMenu> The menu proprietor's Handle 
+ <nItemId> Identifier of the menuitem 
+ <nFlags> It specifies the API like to obtain the position of the item in
+the menu: MF_BYCOMMAND or MF_BYPOSITION 
+
+====== Devuelve ======
+ <nLastState> Previous state 
+
+====== Ejemplo ======
+ SOURCE\CLASSES\MENUITEM.PRG 
+
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

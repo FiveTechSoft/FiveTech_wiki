@@ -1,0 +1,110 @@
+
+====== GetVersion() ====== 
+ 
+
+
+Retrieves the Windows and MsDos versions numbers
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetVersion() --> anVersions 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Returns ======
+
+ <anVersions> An array of numbers, with the Windows and MsDos versions: {
+nWindowsVersion, nWindowsSubVersion, nMsDosVersion, nMsDosSubVersion } 
+
+^^Operating system^^Version number^^
+|Windows 7 | 6.1|
+|Windows Server 2008 R2|6.1|
+|Windows Server 2008|6.0|
+|Windows Vista|6.0|
+|Windows Server 2003 R2|5.2|
+|Windows Server 2003|5.2|
+|Windows XP|	5.1|
+|Windows 2000|	5.0|
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== Source Code ======
+
+ SOURCE\WINAPI\WndIs.c 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\ErrorSysW.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+====== See also ======
+[[fivewin_function_cWinVersion|cWinVersion()]], 
+[[fivewin_function_IsWinVista|IsWinVista()]], 
+[[fivewin_function_IsWinXP|IsWinXP()]], 
+[[fivewin_function_IsWin2000|IsWin2000()]], 
+[[fivewin_function_IsWin7|IsWin7()]]

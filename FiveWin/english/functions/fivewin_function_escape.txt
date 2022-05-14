@@ -1,0 +1,23 @@
+====== Escape() ======
+Directly access a device driver
+
+====== Syntax ======
+Escape( <hDC>, <nEscape>, <cInput>, <@cOutPut> ) --> nReturn 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context |
+|<nEscape>| Specifies the escape function to be performed. |
+|<cInput>| Specifies the Input Data required for the specified escape |
+|<@cOutPut>| Buffer passed by Reference, where the output of the Escape is stored. |
+
+====== Returns ======
+A return value less than zero indicates an error. 
+
+^Returns^Description^
+|<nValue>| **Possible Errors**\\ SP_ERROR      General error.\\ SP_OUTOFDISK   Not enough disk space is currently available for spooling,and no more space will become available.\\ SP_OUTOFMEMORY   Not enough memory is available for spooling.\\ SP_USERABORT   User terminated the job through Print Manager.\\ SP_ERROR      (-1)\\ SP_APPABORT   (-2)\\ SP_USERABORT   (-3)\\ SP_OUTOFDISK   (-4)\\ SP_OUTOFMEMORY   (-5)|
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\PRINTDC.C 

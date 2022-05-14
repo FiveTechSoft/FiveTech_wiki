@@ -1,0 +1,21 @@
+====== DeleteMetafile() ======
+Deleted the given metafile handle
+
+====== Syntax ======
+DeleteMetafile( <hMeta> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hMeta>| Handle of metafile to be deleteted. |
+
+====== Returns ======
+^Returns^Description^
+| <lSuccess> | .T. if the operation is successful |
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\METAFILE.C 
+
+====== See also ======
+[[fivewin_function_deleteenhmetafile|DeleteEnhMetafile()]]

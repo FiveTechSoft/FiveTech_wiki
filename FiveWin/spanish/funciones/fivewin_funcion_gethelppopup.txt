@@ -1,0 +1,34 @@
+====== GetHelpPopup() ======
+
+Devuelve un arreglo de 5 elementos con la configuración del archivo de ayuda pop-up activo seleccionado.
+
+====== Sintaxis: ======
+ 
+ GetHelpPopup() --> <aArray>
+====== Parámetros: ======
+
+ninguno
+
+====== Retorno: ======
+
+| <aArray> | Configuración del archivo de ayuda emergente (popup) |
+
+El contenido de la matriz devuelta.
+
+| aArray[1] | El nombre del archivo emergente (popup) |
+| aArray[2] | Desplazamiento en X de la ventana emergente, desde el control activo |
+| aArray[3] | Desplazamiento en Y de la ventana emergente, desde el control activo |
+| aArray[4] | el color del fondo de la ventana emergente |
+| aArray[5] | El color del texto de la ventana emergente |
+
+====== Descripción: ======
+
+Devuelve una matriz con valores de configuración actuales
+
+====== Código fuente: ======
+ 
+ SOURCE\WINAPI\HELPCHM.PRG
+
+====== Ver también: ======
+
+[[fivewin_function_sethelppopup|SetHelpPopup()]]

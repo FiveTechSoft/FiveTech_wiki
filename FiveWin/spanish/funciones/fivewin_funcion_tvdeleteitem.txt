@@ -1,0 +1,64 @@
+TvDeleteItem()
+
+
+TvDeleteItem()
+ Previous  Top  Next
+
+Removes an item and all its children from a tree view control.
+
+====== Sintaxis ======
+
+
+ TvDeleteItem( <hWnd>, <hItem> ) --> lSuccess 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ <hItem> The handle to the item to be removed 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess> Returns .t. if successful, or .f. otherwise. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

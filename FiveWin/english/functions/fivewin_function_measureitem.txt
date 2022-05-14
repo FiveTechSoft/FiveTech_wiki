@@ -1,0 +1,120 @@
+====== MeasureItem() ======
+
+
+
+
+FiveWin function to dispatch WM_MEASUREITEM msgs
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MeasureItem( <nPMeasureItemStruct>, <nHeight> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nPMeasureItemStruct> A pointer ( numeric value ) to a MEASUREITEM
+WinApi struct. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nHeight> The height to be assigned into that MEASUREITEM struct. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If the operation has been performed successfully. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is managed automatically by FiveWin to determinate the
+dimensions of a 'ownerdraw' WinApi control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\MeasureI.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ TWindow:MeasureItem() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

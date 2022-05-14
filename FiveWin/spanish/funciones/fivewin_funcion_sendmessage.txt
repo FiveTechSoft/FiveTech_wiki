@@ -1,0 +1,105 @@
+====== SendMessage() ======
+
+La función SendMessage() envía el mensaje especificado a una o varias ventanas. La función llama al procedimiento de ventana de la ventana especificada y no retorna hasta que el procedimiento de ventana ha procesado el mensaje.
+
+====== Sintaxis ======
+
+ SendMessage( <hWnd>, <nMsg>, <nWParam>, <nLParam> ) --> nLResult 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>|Identifica la ventana cuyo procedimiento de ventana recibirá el mensaje. Si este parámetro es HWND_BROADCAST (-1), el mensaje se envía a todas las ventanas de nivel superior en el sistema, incluyendo las deshabilitadas o invisibles sin dueño, ventanas superpuestas o ventanas pop-up; pero el mensaje no se envía a las ventanas hijas.| 
+|<nMsg>|Especifica el mensaje a enviar.| 
+|<nWParam>| Una valor numérico de 16/32 bits especificando información adicional específica para el mensaje| 
+|<nLParam>| Una valor numérico de 32 bits especificando información adicional específica para el mensaje| 
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nLResult>| El resultado del proceso de mensajes y depende del mensaje enviado| 
+
+====== Ejemplo ======
+
+ SAMPLES\EndApp.prg
+
+ <code>
+ // Sample showing how to activate and to finish an external application
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   WinExec( "Calc" )        // Let's execute the calculator
+
+   MsgInfo( "Now we will close the calculator" )
+
+
+   // Use "Calculator" ( or "calc" ? ) in USA for "Calculadora"
+
+   SendMessage( FindWindow( 0, "Calculadora" ), WM_CLOSE )
+
+
+   MsgInfo( OemToAnsi( "Voil " ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+\\
+\\
+.. y en **WINAPI.Ch** encontramos la siguiente definición de constantes
+
+<code>
+.
+.
+#define WM_NULL                    0    // 0x0000
+#define WM_DESTROY                 2    // 0x0002
+#define WM_MOVE                    3
+#define WM_SIZE                    5    // 0x0005
+#define WM_SETFOCUS                7    // 0x0007
+#define WM_KILLFOCUS               8    // 0x0008
+#define WM_PAINT                  15    // 0x000F
+#define WM_CLOSE                  16    // 0x0010
+#define WM_QUERYENDSESSION        17    // 0x0011
+#define WM_QUIT                   18    // 0x0012
+#define WM_SYSCOLORCHANGE         21    // 0x0015
+#define WM_ENDSESSION             22    // 0x0016
+#define WM_SYSTEMERROR            23    // 0x0017
+#define WM_WININICHANGE           26    // 0x001A
+#define WM_DEVMODECHANGE          27    // 0x001B
+#define WM_FONTCHANGE             29    // 0x001D
+#define WM_TIMECHANGE             30    // 0x001E
+#define WM_SPOOLERSTATUS          42    // 0x002A
+#define WM_COMPACTING             65    // 0x0041
+
+#define WM_GETDLGCODE            135    // 0x0087
+#define WM_CHAR                  258    // 0x0102
+#define WM_COMMAND               273    // 0x0111
+#define WM_MOUSEMOVE             512    // 0x0200
+#define WM_LBUTTONDOWN           513    // 0x0201
+#define WM_LBUTTONUP             514    // 0x0202
+#define WM_RBUTTONDOWN           516    // 0x0204
+#define WM_RBUTTONUP             517    // 0x0205
+#define WM_KEYDOWN               256    // 0x0100
+#define WM_KEYUP                 257    // 0x0101
+#define WM_INITDIALOG            272    // 0x0110
+#define WM_TIMER                 275    // 0x0113
+#define WM_HSCROLL               276    // 0x0115
+#define WM_VSCROLL               277    // 0x0115
+
+#define WM_QUERYNEWPALETTE       783    // 0x030F
+#define WM_PALETTEISCHANGING     784    // 0x0310
+#define WM_PALETTECHANGED        785    // 0x0311
+
+#define WM_USER                 1024    // 0x0400
+.
+.
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\SendMsg.c 
+
+====== Ver también ======
+[[fivewin_funcion_postmessage|PostMessage()]], [[fivewin_funcion_peekmessage|PeekMessage()]], [[fivewin_class_twindow|CLASS TWindow:SendMsg()]]

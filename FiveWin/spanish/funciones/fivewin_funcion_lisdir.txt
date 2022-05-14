@@ -1,0 +1,20 @@
+
+====== lIsDir()====== 
+lIsDir()
+
+Checks the existence of a directory
+====== Sintaxis ======
+ lIsDir( <cDir> ) --> lSuccess 
+====== Parámetros ======
+ <cNewDir> The path of the directory to check if exists. 
+====== Devuelve ======
+ <lSuccess> If the directory <cDir> exist. 
+====== Ejemplo ======
+ MsgInfo( lIsDir( "c:\\win" ) ) 
+====== Código fuente ======
+ SOURCE\FUNCTION\FileName.prg 
+====== Ver también ======
+  lChDir()
+  lRmDir()
+  lMkDir()
+  CurDrive() 

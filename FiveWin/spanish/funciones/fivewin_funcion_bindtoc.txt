@@ -1,0 +1,25 @@
+====== BinToC() ======
+Convierte una matriz de dígitos binarios (expresado como valores lógicos. t. de 1 y. f. por 0) en una cadena de "1" y "0"separadas por un espacio cada cuatro caracteres.
+
+====== Syntaxis ====== 
+BinToC( <aBin>, <lSep> ) --> cValue  
+
+====== Parametros ====== 
+| <aBin >| This is the array of binary digits to convert|
+| <lSep >|If .f. a space is not inserted in the result every four characters|
+
+====== Devuelve ====== 
+| <cValue>| La cadena resultado de la conversión.  |
+
+
+====== Ejemplo ======
+<code clipper>
+local cVar := BinToC( { .f., .t., .f., .f. } ) 
+</code>
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\MATH.PRG   
+
+====== Ver tambien ====== 
+[[fivewin_funcion_BinToN|BinToN()]]
+ 

@@ -1,0 +1,26 @@
+
+====== DelIniSection() ======
+
+Borra una sección en un archivo INI
+
+====== Sintaxis ======
+ 
+ DelIniSection( <cSection>, <cFile> ) --> lSuccess  
+
+====== Parámetros ======
+
+| <cSection> | Sección  |
+| <cFile> | Archivo ini  |
+
+====== Retorno ======
+
+|<lSuccess> | .t. si la operación tiene éxito |
+
+====== Ejemplo ======
+
+
+====== Código Fuente ======
+
+SOURCE\WINAPI\PROFILE.C 
+
+====== Ver también ====== 

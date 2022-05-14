@@ -1,0 +1,40 @@
+
+====== cGetExpression() ======
+cGetExpression()
+General build expression DialogBox
+====== Sintaxis ======
+ cGetExpression( <cInitialExpression>, <cTitle> ) --> cExpression 
+====== Parámetros ======
+ <cInitialExpression> The default expression that appears when invoking
+the cGetExpression() DialogBox. 
+ <cTitle> The title for the DialogBox. By default it shows "Expression
+builder". 
+====== Devuelve ======
+ <cExpression> The expression built by the user. 
+Observations
+ This function is now only available from the IDE. If you want to use it
+in your application you have to copy the RC for the DialogBox from
+IDE.DLL to your application. 
+====== Ejemplo ======
+ ? cGetExpression( "Customer->Name",; "Select a expression to search for"
+) 
+====== Código fuente ======
+ SOURCE\\FUNCTION\\MsgExpr.prg 
+
+See also:
+ The Index builder in the IDE 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver tambi�n ======
+

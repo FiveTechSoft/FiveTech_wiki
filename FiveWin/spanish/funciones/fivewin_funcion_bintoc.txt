@@ -1,0 +1,26 @@
+====== BinToC() ======
+
+Convierte un arreglo de digitos binarios ( expresados como valores logicos, .t. para 1 y .f. para 0 ) en un string de "1" y "0" separados por un espacio cada 4 caracteres.
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BinToC( <aBin>, <lSep> ) --> cValue
+
+====== Parametros: ( Parameters: ) ======
+
+ <aBin> Es el arreglo de digitos binarios a convertir.  
+
+ <lSep> Si es .f. el espacio no es insertado en el resultado cada 4 caracteres.  
+
+====== Retorno: ( Returns: ) ======
+
+ <cValue> El string resultado de la conversion.
+
+====== Ejemplo: ( Sample: ) ======
+<code clipper> 
+ local cVar:=BinToC({.f.,.t.,.f.,.f.})
+</code>
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\MATH.PRG  

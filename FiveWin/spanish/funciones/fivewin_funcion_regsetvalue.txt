@@ -1,0 +1,19 @@
+
+====== RegSetValue() ====== 
+RegSetValue()
+
+Set a string text associates to a key
+====== Sintaxis ======
+ RegSetValue( <nKey>, <cSubKey>, <cValue> ) --> nResult 
+====== Parámetros ======
+  <nKey>     Handle of an open key. Can be 2147483648 that is the
+             HKEY_CLASSES_ROOT. Can not be a nil parameter. 
+  <cSubKey>  String of a subkey 
+  <cValue>   Text string to set 
+====== Devuelve ======
+ <nReturn> If the function is success a zero is returned. In other case a
+numeric error code. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\REGEDIT.C 
+====== Ver también ======

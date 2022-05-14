@@ -1,0 +1,64 @@
+====== BtnBmp ======
+
+Creando un Botón Bipmap desde código:
+
+<code clipper>
+ @ <nRow>, <nCol> BTNBMP [<oBtn>] ;  
+                  [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>, cResName3>] ] ;  
+                  [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, <cBmpFile3>]];  
+                  [ SIZE <nWidth>, <nHeight> ] ;  
+                  [ ACTION <uAction> ] ;  
+                  [ OF | WINDOW | DIALOG <oWnd> ] ;  
+                  [ MESSAGE <cMsg> ] ;  
+                  [ WHEN <uWhen> ] ;  
+                  [ ADJUST ] ;* Obsolete  
+                  [ UPDATE ] ;  
+                  [ PROPMT < cPrompt> ];  
+                  [ FONT <oFont> ];  
+                  [ NO BORDER <lNoBorder> ]  
+</code>
+
+Creando un Botón Bipmap desde Recursos:
+
+<code clipper>
+ REDEFINE BTNBMP [<oBtn>] ;  
+                 [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>,cResname3>] ] ;  
+                 [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, cBmpFile3>]];  
+                 [ ACTION | EXEC | ON CLICK <uAction> ] ;  
+                 [ ID <nId> ] ;  
+                 [ OF <oWnd> ] ;  
+                 [ MESSAGE <cMsg> ] ;  
+                 [ ADJUST ] ; * Obsolete  
+                 [ WHEN <uWhen> ] ;  
+                 [ UPDATE <lUpdate> ] ;  
+                 [ TOOLTIP <cToolTip> ] ;  
+                 [ PROMPT < cPrompt> ];  
+                 [ FONT <oFont> ];  
+                 [ NO BORDER <lNoBorder> ]  
+</code>  
+
+Parámetros:
+
+|<oBtn> |Referencia a un objeto botón con bitmap.|
+|<nRow>/<nCol> |Coordenadas donde colocar la barra de botones, se simulan coordenadas de texto.|
+|<cResName1>/<cResName2>/<cResName3> |El nombre del recurso bitmap a utilizar. Opcionalmente puede especificar un segundo bitmap para realizar un efecto de animación. Un tercer bitmap también puede ser indicado y este se utilizará junto con la expresión <WhenFunc>, para indicar si el botón está o no habilitado.Estos parámetros se usan para tener acceso a bitmaps almacenados en un archivo de recursos (un archivo .RC .DLL)|
+|<cBmpFile1>/<cBmpFile2>/<cBmpFile3> |El nombre del bitmap a utilizar. Opcionalmente puede especificar un segundo bitmap, el cual aparecerá cuando el botón sea presionado y nos permite realizar un efecto de animación. Un tercer bitmap también puede ser indicado y este se utilizará junto con la expresión <WhenFunc>, para indicar si el botón está o no habilitado. Estos parámetros se usan para tener acceso a bitmaps almacenados en archivos .BMP.|
+|<nWidth>/<nHeight> |Ancho y alto de los botones de la barra, el valor predeterminado es de 28×28 pixeles.|
+|<oWnd> |Referencia a la ventana contenedora de la barra.|
+|<uAction> |La acción que se debe ejecutar cuando se presione el botón.|
+|<cMsg> |El mensaje a desplegar en la barra de mensajes de la ventana contenedora que contiene a la barra de botones.|
+|<uWhen> |Expresión que indica si el botón de la barra de botones está habilitado o no.|
+|<nId> |Identificador para el botón colocado en una ventana de diálogo.|
+|<cToolTip> |El texto a mostrar en un “globo de ayuda” (tooltip).|
+|<nPos> |Valor numérico que indica en que posición colocar el botón.|
+|<cPrompt> |An optional prompt to display.|
+|<oFont> |Referencia al objeto Font a utilizar para el texto de botón|
+
+Cláusulas:
+
+|ADJUST * Obsolete |Ajusta automáticamente el bitmap al tamaño del botón. This clause is obsolete and is not supported any more|  
+|UPDATE |Claúsula exclusiva para los botones con bitmaps colocados en una caja de diálogo (sin barra de botones). Se utiliza para que el botón actualice su imagen atomáticamente cuando se ejecute un oDlg:Update().|
+|GROUP |Inicia un nuevo “grupo” de botones en la barra. Puede definir tantos grupos como necesite.|
+
+**Note:** The clause ADJUST is not supported because now the bitmaps background color is automatically adjusted to his window or control conteiner. The pixel 0,0 (Left-Top) indicates the mask color to use for the adjustment. It is important that the color in that pixel is not used on any other part of the bitmap except where the mask should be applied. This kind of color adjustment is not possible with bitmap streching 
+

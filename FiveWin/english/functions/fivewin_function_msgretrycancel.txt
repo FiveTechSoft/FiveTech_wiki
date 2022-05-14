@@ -1,0 +1,31 @@
+
+**MsgRetryCancel()** 
+
+Messages box with buttons Retry and Cancel.
+  
+**Syntax:** 
+
+ MsgRetryCancel( <cMsg>, <cTitle> ) --> lRetry    
+  
+**Parameters:** 
+
+| <cMsg> | Message to show into the box.|
+| <cTitle> | Title of the messages box.|
+
+  
+**Returns:** 
+
+<lRetry> This function returns .t. if the function ends pressing the button Retry and .f. if you presses Cancel.  
+  
+**Sample:** 
+
+ SAMPLES\TESTMSG.PRG  
+  
+  
+**Source code:** 
+
+ SOURCE\FUNCTION\TEST.C  
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]],  [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

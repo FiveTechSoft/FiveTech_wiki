@@ -1,0 +1,103 @@
+====== GlobalLock() ====== 
+
+
+
+
+
+
+
+To obtain address of a block of memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GlobalLock( <hMem> ) --> hFixMem 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMem> Handle of the block of memory to block 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hFixMem> Handle of the block of memory blocked if the function you it
+executes with success or ' nil' if it happens some error. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+Observations:
+
+
+
+
+
+ This function uptade an accountant of protection and also fixed the
+blocks by heart motives until don't be unblocked with the function
+GlobalUnlock. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

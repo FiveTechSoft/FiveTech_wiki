@@ -1,0 +1,30 @@
+====== EmptyClipboard() ======
+
+EmptyClipboard() Vacía el portapapeles.
+
+====== Sintaxis ======
+
+EmptyClipboard() --> lExito 
+
+Esta función vacía el portapapeles y libera el identificador de los en el portapapeles. A continuación, asigna la propiedad del portapapeles a la ventana que tiene abierto el Portapapeles.
+
+====== Parámetros ======
+
+Ninguno. 
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<lExito>| Un valor lógico que es verdad si la operación fue un éxito.|
+
+====== Observaciones ======
+
+El portapapeles debe estar abierto cuando se llama a esta función.
+
+====== Código fuente ======
+
+SOURCE\\WINAPI\\ClpBrd.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_OpenClipboard|OpenClipboard()]], [[fivewin_funcion_SetClipboard|SetClipboard()]], [[fivewin_funcion_EmptyClipboard|EmptyClipboard()]], [[fivewin_funcion_GetClpData|GetClpData()]]
+

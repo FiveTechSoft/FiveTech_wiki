@@ -1,0 +1,85 @@
+MAPIAddress()
+
+
+MAPIAddress()
+ Previous  Top  Next
+
+Creates or modifies a set of address list entries.
+
+====== Syntax ======
+
+ 
+
+
+ MAPIAddress( [<cCaption>], [<cLabels>], [<nEditFields>],
+[<aDefaultAddress>] ) --> nil 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cCaption> The caption. 
+
+
+ 
+
+
+ <cLabels> The labels. 
+
+
+ 
+
+
+ <nEditFields> The number of edit fields. 
+
+
+ 
+
+
+ <aDefaultAddress> An array of default addresses. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,18 @@
+
+====== Listen() ====== 
+Listen()
+
+Establish a socket to listen for incoming connection.
+====== Sintaxis ======
+ Listen( <nSocket>, <nBackLog> ) --> nResult 
+====== Parámetros ======
+  <nSocket>   Socket number 
+  <nBackLog>  The maximum length to which the queue of pending connections may grow. 
+====== Devuelve ======
+ If no error occurs the function return 0,Otherwise, a value of
+SOCKET_ERROR is returned, and a specific error code may be retrieved by
+calling WSAGetLastError(). 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\WINSOCK.C 
+====== Ver también ======

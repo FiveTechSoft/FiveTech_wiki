@@ -1,0 +1,54 @@
+GetCursorDrag()
+
+
+GetCursorDrag()
+ Previous  Top  Next
+
+Returns the handle of the FiveWin drag cursor.
+
+====== Sintaxis ======
+
+
+ GetCursorDrag() --> hCursor 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ None. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <hCursor> The handle of the FiveWin drag cursor. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\Cursors.c 
+
+
+ 
+
+
+
+====== Ver también ======
+

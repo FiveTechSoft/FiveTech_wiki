@@ -1,0 +1,46 @@
+
+====== OpenComm() ======
+OpenComm()
+
+Open the communication port to start using it
+====== Sintaxis ======
+ OpenComm( <cCommName> [,<nSizeIn>] [,<nSizeOut>] ) --> nIdComm 
+====== Parámetros ======
+  <cCommName>  The name of the comm device to open in a format like "COM" + N or "LPT" + N 
+  <nSizeIn>    The size in bytes of the receiving queue. This parameter is ignored for "LPT" devices.
+               By default FiveWin assigns 1024. 
+  <nSizeOut>   The size in bytes of the transmission queue. This parameter is ignored for "LPT"
+               devices. By default FiveWin assigns 128. 
+====== Devuelve ======
+ <nIdComm> A numeric identifier for that opened device. 0 if there was an error. 
+
+ If the function fails, it may return one of the following error values: 
+     Value         Meaning   
+     IE_BADID      The device identifier is invalid or unsupported.   
+     IE_BAUDRATE   The device's baud rate is unsupported.   
+     IE_BYTESIZE   The specified byte size is invalid.   
+     IE_DEFAULT    The default parameters are in error.   
+     IE_HARDWARE   The hardware is not available (is locked by another device).   
+     IE_MEMORY     The function cannot allocate the queues.   
+     IE_NOPEN      The device is not open.   
+     IE_OPEN       The device is already open.   
+
+ If this function is called with both queue sizes set to zero, the return
+value is IE_OPEN if the device is already open or IE_MEMORY if the device
+is not open.indows allows COM ports 1 through 9 and LPT ports 1 through
+3. If the device driver does not support a communications port number,
+the OpenComm function will fail. 
+
+ The communications device is initialized to a default configuration. The
+SetCommState function should be used to initialize the device to
+alternate values. The receiving and transmission queues are used by
+interrupt-driven device drivers. LPT ports are not interrupt driven--for
+these ports, the cbInQueue and cbOutQueue parameters are ignored and the
+queue size is set to zero. 
+====== Ejemplo ======
+ SAMPLES\TestComm.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Comm.c 
+====== Ver también ======
+ CloseComm() WriteComm() ReadComm() BuildCommDcb() SetCommState()
+FlushComm() GetCommError()

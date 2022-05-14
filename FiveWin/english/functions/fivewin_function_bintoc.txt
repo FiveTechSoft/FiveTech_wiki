@@ -1,0 +1,24 @@
+====== BinToC() ======
+
+Converts an array of binary digits (expressed as logical values, .t. for 1 and .f. for 0) to a string of "1" and "0" separated by a space every four characters. 
+
+====== Syntax: ======
+
+ BinToC( <aBin>, <lSep> ) --> cValue  
+
+====== Parameters: ======
+ 
+|< aBin >| This is the array of binary digits to convert .| 
+|< lSep >| If .f. a space is not inserted in the result every four characters  .|
+
+====== Returns: ======
+ 
+ <cValue> The string result of the conversion.  
+
+====== Sample: ======
+ <code clipper> 
+ local cVar := BinToC( { .f., .t., .f., .f. } )  
+</code>
+====== Source Code: ======
+
+ SOURCE\FUNCTION\MATH.PRG  

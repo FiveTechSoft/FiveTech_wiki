@@ -1,0 +1,18 @@
+====== EndDoc() ======
+Ends a print job
+
+====== Syntax ======
+ EndDoc( <hDC> ) --> nSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context of the print job. |
+
+====== Returns ======
+^Returns^Description^
+|<nSuccess>| Return value is greater than or equal to zero if the function is successful.|
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\PRINTDC.C 

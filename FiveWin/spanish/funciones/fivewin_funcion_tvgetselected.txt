@@ -1,0 +1,58 @@
+TvGetSelected()
+
+
+TvGetSelected()
+ Previous  Top  Next
+
+Retrieves the currently selected item in a tree view control.
+
+====== Sintaxis ======
+
+
+ TvGetSelected( <hWnd> ) --> hItem 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hItem> The handle to the selected item. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

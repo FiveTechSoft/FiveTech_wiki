@@ -1,0 +1,15 @@
+
+====== PrnGetName() ====== 
+PrnGetName()
+
+It returns the name of the printer
+====== Sintaxis ======
+ PrnGetName() --> cPrinter 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <cPrinter> Name of the predetermined printer 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

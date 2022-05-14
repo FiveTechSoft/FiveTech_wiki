@@ -1,0 +1,28 @@
+====== ATang() ======
+
+ Calcula el ángulo cuya tangente es el número especificado.
+
+====== Sintaxis: ( Syntax: ) ======
+
+ ATang( <nTang> ) --> nAngle
+
+====== Parámetros: ( Parameters: ) ======
+
+ <nTang>  Es la tangente
+
+====== Retorno: ( Returns: ) ======
+
+ <nAngle> Es el ángulo cuya tangente es el valor especificado expresado en radianes.
+
+====== Observaciones: ( Observations: ) ======
+
+
+====== Ejemplo: ( Sample: ) ======
+
+<code clipper>
+ Local nAng := ATang( 0.5 )
+</code>
+
+====== Codigo Fuente: ( Source code: ) ======
+
+ SOURCE\CLASSES\SELECTOR.PRG

@@ -1,0 +1,21 @@
+
+Returns the number of file handles availables
+
+====== Syntax ======
+GetFreeFileHandles() --> nFileHandles 
+
+Returns the number of file handles available to the current instance. 
+
+====== Parameters ======
+
+ None 
+
+====== Returns ======
+| <nFileHandles> | Number of file handles available to the current instance |
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\SETHANDL.C 
+
+====== See also ======

@@ -1,0 +1,40 @@
+====== Class TDDEMLServer ======
+
+DDEML Server Object management                                                 
+====== DATA ======
+|hInst|A handle of the DDEML instance session|
+|hConv|A handle of the DDEML conversation|
+|cService|The name of the service|
+|hService|The handle of the service|
+|lConnecting|If the server is in the process of connecting with a|
+|Client||
+|hSz2|Some processes require to hold a hSZ2 handle stored|
+|here||
+|aClients|An array with all the attended Clients|
+|bOnConnect|The action to perform when connecting to a client|
+|bOnRequest|The action to perform on a client request|
+|bOnDisconnect|The action to perform when a client disconnects|
+|bOnExecute|The action to perform on a Client Execute command|
+|cPassword1|Optional password|
+|cPassword2|Optional password|
+|nPermit1|For NetDDE|
+|nPermit2|For NetDDE|
+====== METHODS ======
+|New|Constructor METHOD|
+|Connect|Automatically called when a Client wants to connect|
+|ConnectConfirm|Automatically called when a Client has finally|
+|connected||
+|Disconnect|Automatically called when a Client has disconnected|
+|End|Ends the connection|
+|Execute|Automatically called when a Client has sent a command|
+|GetAppName|Returns the filename without extension of the curren|
+|EXE||
+|Request|Automatically called when a Client has done a request|
+|Return|Use this method to return data to a Client Request|
+|SetNetDDE|Sets or reset NetDDE session|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TDDEMLSERVER.PRG

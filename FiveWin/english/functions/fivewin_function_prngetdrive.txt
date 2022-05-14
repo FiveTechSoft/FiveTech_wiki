@@ -1,0 +1,91 @@
+====== PrnGetDrive() ====== 
+
+
+
+PrnGetDrive()
+
+
+
+
+
+
+Name of the file of the impression Driver
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PrnGetDrive() -?> cDriver 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cDriver> Name of the file of the impression Driver without extension 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

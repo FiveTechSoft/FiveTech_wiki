@@ -1,0 +1,298 @@
+WBrwLine()
+
+
+
+WBrwLIne()
+
+ Previous  Top  Next
+
+
+
+
+Draw a line of a WBrowse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WBrwLine( <hWnd>, <hDC>, <nRow>, <aText>, <aSizes>, <nFirstItem>,
+<nClrFore>, <nClrBack>, <hFont>, <lTree>, <aJustify>, <nPressed>,
+<nStyle>, <nFocused> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the browse 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Row to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aText> Array of strings 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aSizes> Array with the sizes of the columns 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFirstItem> First column by the left 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrFore> Fore color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrBack> Background color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Handle of the font 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lTree> If the browse is showing a tree 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aJustify> Array with the text justifications 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPressed> Pressed column 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nStyle> Line style 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ LINES_NONE   0 
+
+
+ 
+
+
+ LINES_BLACK   1 
+
+
+ 
+
+
+ LINES_GRAY   2 
+
+
+ 
+
+
+ LINES_3D   3 
+
+
+ 
+
+
+ LINES_DOTED   4 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lFocused> If the browse has the focus 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+   Nil.
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\TWBROWSE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\WBRWLINE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

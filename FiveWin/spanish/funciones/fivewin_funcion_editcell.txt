@@ -1,0 +1,123 @@
+EditCell()
+
+
+
+EditCell()
+
+ Previous  Top  Next
+
+
+
+
+Cell edition in the TCBrowse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EditCell( <oLbx>, <nRowPix>, <nColPix> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Function used by the class TCBrowse to edit those data of a cell. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <oLbx> Reference to the object Browse 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRowPix> Row expressed in pixels from where you will begin to edit the
+cell. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nColPix> Column expressed in pixels from where you will begin to edit
+the cell 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\EDITCELL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

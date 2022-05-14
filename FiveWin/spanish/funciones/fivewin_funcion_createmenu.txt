@@ -1,0 +1,15 @@
+
+====== CreateMenu() ======
+CreateMenu()
+Create a empty menu
+====== Sintaxis ======
+ CreateMenu() --> hMenu 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <hMenu> Handle of the new menu. Otherwise NULL 
+====== Ejemplo ======
+ SOURCE\CLASSES\MENU.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

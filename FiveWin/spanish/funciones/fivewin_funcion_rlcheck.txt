@@ -1,0 +1,47 @@
+RLCheck()
+
+
+RLCheck()
+ Previous  Top  Next
+
+FiveWin Clipmore equivalent functions.
+
+====== Sintaxis ======
+
+
+ RLCheck( <hGlobalMem>, <nRecNo> ) --> lResult 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hGlobalMem>    Pointer to global memory. 
+
+
+ <nRecNo>       Record number to check. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lResult>       The logical result of checking. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\CLIPMOR.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

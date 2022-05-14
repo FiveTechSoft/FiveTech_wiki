@@ -1,0 +1,36 @@
+====== CreateCDC() ====== 
+Create Compatible Device Context
+
+====== Syntax ======
+CreateCDC( <hDC> ) --> hDCC 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context to create another compatible DC |
+
+====== Returns ======
+^Returns^Description^
+|<hDCC>| Compatible Device Context|
+
+====== Example ======
+This example paints a bitmap directly with the API 
+<code clipper>
+ Local hDC := oWnd:GetDC() 
+ Local hdcMem 
+ Local hbmp, hbmpOld; 
+ Local nWidth, nHeight 
+
+ hbmp = LoadBitmap(GetResources(), "MyBitmap"); 
+ nWidth := pBmpWidth ( hBmp ) 
+ nHeight := pBmpHeight( hBmp ) 
+ hdcMemory = CreateCDC( hDC ) 
+ hbmpOld = SelectObject(hdcMem, hbmp ) 
+
+ BitBlt(hdc, 0, 0, nWidth, nHeight, hdcMem, 0, 0, SRCCOPY) 
+ SelectObject(hdcMem, hbmpOld ) 
+ DeleteDC(hdcMem) 
+ oWnd:ReleaseDC() 
+</code>
+
+====== Source Code ======
+SOURCE\WINAPI\DC.C

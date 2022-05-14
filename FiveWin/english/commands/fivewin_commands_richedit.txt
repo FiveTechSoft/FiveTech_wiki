@@ -1,0 +1,747 @@
+====== RichEdit ======
+** Defining a RichEdit object from source code: **
+<code clipper>
+ @ <nRow>, <nCol> RICHEDIT [ <oRTF> VAR ] <uVar> ; 
+ [ OF | WINDOW | DIALOG <oDlg> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FONT <oFont> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ HSCROLL ] ;  
+ [ READONLY | NO MODIFY ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ DESIGN ] ;  
+ [ HIGHLIGHT ] ;  
+ [ FILE | FILENAME <cFileName> ] ;  
+ [ RTFSIZE <nRTFSize> ] ;  
+ [ NO URL ] ;  
+ [ NO SCROLL ] ;  
+ [ NOBORDER | NO BORDER ]  </code>
+
+** Redefining a RichEdit object from resources **
+<code clipper>
+ REDEFINE RICHEDIT [ <oRTF> VAR ] <uVar> ; 
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oDlg> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ FONT <oFont> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ READONLY | NO MODIFY ] ;  
+ [ HIGHLIGHT ] ;  
+ [ FILE | FILENAME <cFileName> ] ;  
+ [ RTFSIZE <nRTFSize> ] ;  
+ [ NO URL ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON CHANGE <uChange> ]  </code>
+====== Parameters ====== 
+| <nRow>, <nCol> | The coordinates of the RichEdit Object. We simulate Text coordinates. |
+| <oRTF> | A reference to the RichEdit Object. | 
+| <uVar> | The variable which the RichEdit Object is manipulating. | 
+| <oDlg> | The container dialog of the RichEdit control. | 
+| <nWidth>, <nHeigth> | The dimensions of the control. | 
+| <oFont> | A reference to the Font Object to be used with the RichEdit control. | 
+| <cMsg>  | The associated message of this control. | 
+| <uWhen> | When Clause. | 
+| <uValid> | Validating expression or function. | 
+| <uChange> | An action to be performed when the text changes. | 
+| <cFileName> | The filename to be loaded from. | 
+| <nRTFSize> | The maximum allowed text size. | 
+| <nHelpId> | Help topic identifier for RichEdit from resources. | 
+
+====== CLAUSES ======
+
+| PIXEL  | To use pixel coordinates instead of Text coordinates | 
+| HSCROLL | To show the horizontal scrollbar | 
+| READONLY | Disables editing in this control | 
+| NO MODIFY | Disables editing in this control | 
+| DESIGN | Allows the user to move and resize with the mouse | 
+| HIGHLIGHT | To hilight the current line | 
+| NO URL | Disables URL autodetect | 
+| NO SCROLL | Hides scrollbars | 
+| NOBORDER | To not draw the control border | 
+| NO BORDER | To not draw the control border | 
+
+====== Sample code ======
+<code clipper>
+#include "FiveWin.ch"
+#include "RichEdit.ch"
+
+#define COLOR_BTNFACE    15
+
+#define FW_BOLD          700
+
+#define ID_YES           6
+#define ID_NO            7
+
+#define MB_YESNOCANCEL   3
+#define MB_ICONQUESTION  32
+
+static oWndMain, oRTF, oFont
+static lBold, lItalic, lUnderline
+static lNumber, lBullet
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local hDLL := LoadLibrary( "Riched20.dll" )
+
+   DEFINE WINDOW oWndMain FROM 0, 0 TO 23, 79 ;
+          TITLE "Class TRichEdit" ;
+          MENU SetMenu() ;
+          COLOR CLR_BLACK, nil ;
+          MENUINFO 4 ;
+          MDI
+
+   oWndMain:SetIcon( TIcon():New( ,, "WordPad" ) )
+   oWndMain:SetFont( oFont := TFont():New( GetSysFont(), 0, ;
+                                           If( LargeFonts(), -10, -12 ) ) )
+   SetBar()
+
+   SET MESSAGE OF oWndMain TO "Class TRichEdit" DATE TIME ;
+       COLOR CLR_HBLUE, GetSysColor( COLOR_BTNFACE )
+
+   ACTIVATE WINDOW oWndMain MAXIMIZED
+
+   FreeLibrary( hDLL )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function RefreshBar()
+
+   local oBar := oWndMain:oBar:aControls
+
+   if Len( oWndMain:oWndClient:aWnd ) == 1
+      AEval( oBar, { |x,y| If( y == 1, x:Enable(), x:Disable() ) }, 1, 7 )
+      AEval( oBar, { |x| x:Refresh() }, 1, 7 )
+   endif
+
+return .t.
+
+//----------------------------------------------------------------------------//
+
+static function SetMenu()
+
+   local oMenu
+
+   MENU oMenu
+        MENUITEM "&File"
+        MENU
+            MENUITEM "&TRichEdit" RESOURCE "WordPad" MESSAGE "New Class TRichEdit" ;
+                     ACTION New()
+                     // WHEN Len( oWndMain:oWndClient:aWnd ) == 0 ;
+
+            SEPARATOR
+
+            MENUITEM "P&rint Setup..." RESOURCE "Printer" ;
+                     MESSAGE "Changes the printer and printing options" ;
+                     WHEN Len( oWndMain:oWndClient:aWnd ) == 0 ;
+                     ACTION PrinterSetup()
+
+            MENUITEM "Page Set&up..." RESOURCE "Page" ;
+                     MESSAGE "Changes page layout settings" ;
+                     WHEN Len( oWndMain:oWndClient:aWnd ) == 0 ;
+                     ACTION PageSetup()
+
+            SEPARATOR
+            MENUITEM "&Exit" RESOURCE "Exit" ;
+                     MESSAGE "Exit from the aplication" ACTION oWndMain:End()
+        ENDMENU
+
+        MENUITEM "&Box"
+        MENU
+            MENUITEM "P&rint" RESOURCE "Printer" ;
+            MESSAGE "Print in a box" ;
+            WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+            ACTION PrintBox()
+
+            SEPARATOR
+
+            MENUITEM "Print &Preview" RESOURCE "Preview" ;
+            MESSAGE "Print preview in a box" ;
+            WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+            ACTION PrintBox( .t. )
+        ENDMENU
+
+        MENUITEM "&Insert"
+        MENU
+            MENUITEM "&Date/time..." RESOURCE "Date" ;
+            MESSAGE "Inserts today's date and/or time" ;
+            WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+            ACTION Datetime()
+
+            SEPARATOR
+            MENUITEM "&Picture" RESOURCE "Picture" ;
+            MESSAGE "Inserts a picture from a file" ;
+            WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+            ACTION Picture()
+
+            SEPARATOR
+            MENUITEM "&Bitmap" RESOURCE "Bitmap" ;
+            MESSAGE "Inserts a bitmap from resource" ;
+            WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+            ACTION Bitmap()
+        ENDMENU
+
+        MENUITEM "&Window"
+        MENU
+             MENUITEM "&Cascade"             RESOURCE "WND_CAS" ;
+                      MESSAGE "Organize windows on cascade" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:Cascade()
+
+             MENUITEM "&Horizontal mosaic"   RESOURCE "WND_MOH" ;
+                      MESSAGE "Organize windows on horizontal mosaic" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:Tile( .t. )
+
+             MENUITEM "&Vertical mosaic"     RESOURCE "WND_MOV" ;
+                      MESSAGE "Organize windows on vertical mosaic" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:Tile( .f. )
+
+             MENUITEM "&Minimize Windows"    RESOURCE "WND_MIN" ;
+                      MESSAGE "Minimize all Windows" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:IconizeAll()
+
+             MENUITEM "&Restore all windows" RESOURCE "WND_MAX" ;
+                      MESSAGE "Restore all windows" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION ASend( oWndMain:oWndClient:aWnd,"NORMAL" )
+
+             MENUITEM "C&lose windows"       RESOURCE "WND_CLO" ;
+                      MESSAGE "Close all windows" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:CloseAll()
+
+             MENUITEM "&Organize Icons";
+                      MESSAGE "Organize minimized windows" ;
+                      WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+                      ACTION oWndMain:ArrangeIcons()
+          ENDMENU
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+static function SetBar()
+
+   local oBar, oCursor
+
+   DEFINE CURSOR oCursor HAND
+
+   DEFINE BUTTONBAR oBar OF oWndMain _3D SIZE 26, If( LargeFonts(), 23, 27 )
+
+   DEFINE BUTTON RESOURCE "WordPad" OF oBar GROUP ;
+          MESSAGE "New Class TRichEdit" TOOLTIP "TRichEdit" NOBORDER ;
+          ACTION New()
+          // WHEN Len( oWndMain:oWndClient:aWnd ) == 0 ;
+
+   DEFINE BUTTON RESOURCE "WND_CAS" OF oBar GROUP ;
+          MESSAGE "Windows in cascade" ;
+          TOOLTIP "Cascade" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION oWndMain:Cascade()
+
+   DEFINE BUTTON RESOURCE "WND_MOH" OF oBar ;
+          MESSAGE "Windows in horizontal mosaic" ;
+          TOOLTIP "Horizontal mosaic" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION oWndMain:Tile( .t. )
+
+   DEFINE BUTTON RESOURCE "WND_MOV" OF oBar ;
+          MESSAGE "Windows in vertical mosaic" ;
+          TOOLTIP "Vertical mosaic" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION oWndMain:Tile( .f. )
+
+   DEFINE BUTTON RESOURCE "WND_MIN" OF oBar ;
+          MESSAGE "Minimize all windows" ;
+          TOOLTIP "Minimize" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION oWndMain:IconizeAll()
+
+   DEFINE BUTTON RESOURCE "WND_MAX" OF oBar ;
+          MESSAGE "Restore all windows" ;
+          TOOLTIP "Restore" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION ASend( oWndMain:oWndClient:aWnd, "NORMAL" )
+
+   DEFINE BUTTON RESOURCE "WND_CLO" OF oBar ;
+          MESSAGE "Close all windows" ;
+          TOOLTIP "Close" NOBORDER ;
+          WHEN Len( oWndMain:oWndClient:aWnd ) > 0 ;
+          ACTION oWndMain:CloseAll()
+
+   DEFINE BUTTON RESOURCE "Exit" OF oBar GROUP ;
+          MESSAGE "Exit" ACTION oWndMain:End() ;
+          TOOLTIP "Salir" NOBORDER
+
+   oBar:bLClicked := { || nil }
+   oBar:bRClicked := { || nil }
+
+   AEval( oBar:aControls, { |x| x:oCursor := oCursor } )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function New()
+
+   local cRTF   := ""
+   local nSize  := 10
+   local aZoom  := { "500%", "200%", "150%", "100%", "75%", "50%", "25%", "10%" }
+   local cZoom  := aZoom[ 4 ]
+   local aRatio := { { 5, 1 }, { 2, 1 }, { 3, 2 }, { 1, 1 }, ;
+                     { 3, 4 }, { 1, 2 }, { 1, 4 }, { 1, 10 } }
+   local oWnd, oItem, aFonts, cFont, hDC, oSize, oZoom
+   local oMsgBar, oLen, oRow, oCol
+
+   DEFINE WINDOW oWnd FROM 0, 0 TO 300, 937 PIXEL ;
+          MDICHILD OF oWndMain:oWnd ;
+          TITLE "TRichEdit" ;
+          COLOR CLR_BLACK, nil
+
+   oWnd:SetIcon( TIcon():New( ,, "WordPad" ) )
+   oWnd:SetFont( oFont )
+
+   hDC    := GetDC( oWnd:hWnd )
+   aFonts := ASort( GetFontNames( hDC ) )
+
+   ReleaseDC( oWnd:hWnd, hDC )
+
+   @  0, 0 RICHEDIT oRTF VAR cRTF OF oWnd ;
+           FILE "TestRTF.RTF"
+
+   SetChildBar( oWnd )
+
+   @ .27, 46.0 COMBOBOX oZoom VAR cZoom ITEMS aZoom ;
+               SIZE 50, 100 FONT oFont ;
+               ON CHANGE ( oRTF:SetZoom( aRatio[ oZoom:nAt, 1 ], ;
+                                         aRatio[ oZoom:nAt, 2 ] ), oRTF:SetFocus() ) ;
+               OF oWnd:oBar
+
+   oZoom:cToolTip := "Zoom"
+
+   @ .27, 52.5 COMBOBOX oItem VAR cFont ITEMS aFonts ;
+               SIZE 170, 100 FONT oFont ;
+               ON CHANGE ( oRTF:SetFontName( oItem:VarGet() ), oRTF:SetFocus() ) ;
+               OF oWnd:oBar
+
+   oItem:cToolTip := "Font Name"
+
+   @ .38, 74.2 GET oSize VAR nSize OF oWnd:oBar ;
+               FONT oFont SIZE 20, 19 PICTURE "99" ;
+               SPINNER MIN 6 MAX 99 ;
+               ON CHANGE ( oRTF:SetFontSize( oSize:VarGet() ), oRTF:SetFocus() )
+
+   if ! IsAppThemed()
+      oSize:Set3DLook()
+   endif
+
+   oSize:cToolTip := "Font Size"
+
+   DEFINE MSGBAR oMsgBar OF oWnd PROMPT "File: " + oRTF:cFileName ;
+          COLOR CLR_HBLUE, GetSysColor( COLOR_BTNFACE )
+
+   DEFINE MSGITEM oLen PROMPT "0 bytes" SIZE 80 OF oWnd:oMsgBar ;
+          TOOLTIP "Size of the file"
+
+   DEFINE MSGITEM oRow PROMPT "Lin: 0" SIZE 60 OF oWnd:oMsgBar ;
+          TOOLTIP "Line"
+
+   DEFINE MSGITEM oCol PROMPT "Col: 0" SIZE 60 OF oWnd:oMsgBar ;
+          TOOLTIP "Column"
+
+   oRTF:bChange := { || oLen:SetText( Transform( oRTF:Len(), "@E 999,999 bytes" ) ), ;
+                        oRow:SetText( "Lin: " + LTrim( Str( oRTF:GetRow() ) ) ), ;
+                        oCol:SetText( "Col: " + LTrim( Str( oRTF:GetCol() ) ) ), ;
+                        RefreshChildBar( oWnd ) }
+
+   oWnd:SetControl( oRTF )
+
+   oWnd:bInit  := { || RefreshBar() }
+   oWnd:bValid := { || If( Close(), RefreshBar(), .f. ) }
+
+   Eval( oRTF:bChange )
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function RefreshChildBar( oWnd )
+
+   local oBar   := oWnd:oBar:aControls
+   local aChar  := REGetCharFormat( oRTF:hWnd )
+   local nAlign := REGetParaFormat( oRTF:hWnd )
+   
+   oBar[ 13 ]:lPressed := lBold      := aChar[ 5 ] == FW_BOLD
+   oBar[ 14 ]:lPressed := lItalic    := aChar[ 6 ]
+   oBar[ 15 ]:lPressed := lUnderline := aChar[ 7 ]
+   oBar[ 16 ]:lPressed := nAlign == PFA_LEFT
+   oBar[ 17 ]:lPressed := nAlign == PFA_CENTER
+   oBar[ 18 ]:lPressed := nAlign == PFA_RIGHT
+   oBar[ 19 ]:lPressed := nAlign == PFA_JUSTIFY
+   oBar[ 20 ]:lPressed := lNumber := REGetNumbering( oRTF:hWnd )
+   oBar[ 21 ]:lPressed := lBullet := REGetBullet( oRTF:hWnd )
+
+   oBar[ 24 ]:VarPut( aChar[ 14 ] )
+   oBar[ 25 ]:VarPut( aChar[ 1 ] )
+
+   AEval( oBar, { |x| If( x:lWhen(), x:Enable(), x:Disable() ), x:Refresh() }, 8, 23 )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function SetChildBar( oWnd )
+
+   local oBar, oCursor, oClp, oBold, oItalic, oUnderline, oBullet, oNumber
+
+   DEFINE CURSOR oCursor HAND
+
+   DEFINE CLIPBOARD oClp OF oWnd FORMAT TEXT
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D SIZE 26, 27
+
+   DEFINE BUTTON RESOURCE "New" OF oBar GROUP ;
+          MESSAGE "Create a new file" TOOLTIP "New" NOBORDER ;
+          ACTION ( Close(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Open" OF oBar ;
+          MESSAGE "Open a file" TOOLTIP "Open" NOBORDER ;
+          ACTION Open()
+
+   DEFINE BUTTON RESOURCE "Close" OF oBar ;
+          MESSAGE "Close a file" TOOLTIP "Close" NOBORDER ;
+          ACTION Close()
+
+   DEFINE BUTTON RESOURCE "Floppy" OF oBar ;
+          MESSAGE "Save a file" TOOLTIP "Save" NOBORDER ;
+          ACTION Save()
+
+   DEFINE BUTTON RESOURCE "Printer" OF oBar GROUP ;
+          MESSAGE "Print" TOOLTIP "Print" NOBORDER ;
+          ACTION ( oRTF:Print(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Preview" OF oBar ;
+          MESSAGE "Displays full pages" ;
+          TOOLTIP "Print Preview" NOBORDER ;
+          ACTION oRTF:Preview( "Class TRichEdit")
+
+   DEFINE BUTTON RESOURCE "Find" OF oBar GROUP ;
+          MESSAGE "Search" TOOLTIP "Search" NOBORDER ;
+          ACTION ( Find(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Cut" OF oBar GROUP ;
+          MESSAGE "Cut" TOOLTIP "Cut" NOBORDER ;
+          WHEN ( ! Empty( oRTF:GetSel() ) .and. ! oRTF:lReadOnly ) ;
+          ACTION ( oRTF:Cut(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Copy" OF oBar ;
+          MESSAGE "Copy" TOOLTIP "Copy" NOBORDER ;
+          WHEN ( ! Empty( oRTF:GetSel() ) ) ;
+          ACTION ( oRTF:Copy(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Paste" OF oBar ;
+          MESSAGE "Paste" TOOLTIP "Paste" NOBORDER ;
+          WHEN ( ! Empty( oClp:GetText() ) .and. ! oRTF:lReadOnly ) ;
+          ACTION ( oRTF:Paste(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Undo" OF oBar GROUP ;
+          MESSAGE "Undo" TOOLTIP "Undo" NOBORDER ;
+          WHEN ( oRTF:SendMsg( EM_CANUNDO ) != 0 ) ;
+          ACTION ( oRTF:Undo(), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Redo" OF oBar ;
+          MESSAGE "Redo" TOOLTIP "Redo" NOBORDER ;
+          WHEN ( oRTF:SendMsg( EM_CANREDO ) != 0 ) ;
+          ACTION ( oRTF:Redo(), oRTF:SetFocus() )
+
+   DEFINE BUTTON oBold RESOURCE "Bold" OF oBar GROUP ;
+          MESSAGE "Bold" TOOLTIP "Bold" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( lBold := !lBold, ;
+                   oBold:lPressed := lBold, ;
+                   oBold:Refresh(), ;
+                   oRTF:SetBold( lBold ), oRTF:SetFocus() )
+
+   DEFINE BUTTON oItalic RESOURCE "Italic" OF oBar ;
+          MESSAGE "Italic" TOOLTIP "Italic" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( lItalic := !lItalic, ;
+                   oItalic:lPressed := lItalic, ;
+                   oItalic:Refresh(), ;
+                   oRTF:SetItalic( lItalic ), oRTF:SetFocus() )
+
+   DEFINE BUTTON oUnderline RESOURCE "Underline" OF oBar ;
+          MESSAGE "Underline" TOOLTIP "Underline" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( lUnderline := !lUnderline, ;
+                   oUnderline:lPressed := lUnderline, ;
+                   oUnderline:Refresh(), ;
+                   oRTF:SetUnderline( lUnderline ), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Left" OF oBar GROUP ;
+          MESSAGE "Align Left" TOOLTIP "Left" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( oRTF:SetAlign( PFA_LEFT ), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Center" OF oBar ;
+          MESSAGE "Center" TOOLTIP "Center" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( oRTF:SetAlign( PFA_CENTER ), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Right" OF oBar ;
+          MESSAGE "Align Right" TOOLTIP "Right" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( oRTF:SetAlign( PFA_RIGHT ), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Justify" OF oBar ;
+          MESSAGE "Justify" TOOLTIP "Justify" NOBORDER ;
+          WHEN ! oRTF:lReadOnly ;
+          ACTION ( oRTF:SetAlign( PFA_JUSTIFY ), oRTF:SetFocus() )
+
+   DEFINE BUTTON oNumber RESOURCE "Number" OF oBar GROUP ;
+          MESSAGE "Numbering" TOOLTIP "Numbering" NOBORDER ;
+          WHEN ! oRTF:lReadOnly .AND. ! oRTF:GetBullet() ;
+          ACTION ( lNumber := !lNumber, ;
+                   oNumber:lPressed := lNumber, ;
+                   oNumber:Refresh(), ;
+                   oRTF:SetNumbering( lNumber ), oRTF:SetFocus() )
+
+   DEFINE BUTTON oBullet RESOURCE "Bullet" OF oBar ;
+          MESSAGE "Bullets" TOOLTIP "Bullets" NOBORDER ;
+          WHEN ! oRTF:lReadOnly .AND. ! oRTF:GetNumbering() ;
+          ACTION ( lBullet := !lBullet, ;
+                   oBullet:lPressed := lBullet, ;
+                   oBullet:Refresh(), ;
+                   oRTF:SetBullet( lBullet ), oRTF:SetFocus() )
+
+   DEFINE BUTTON RESOURCE "Exit" OF oBar GROUP ;
+          MESSAGE "Exit" ACTION oWnd:End() ;
+          TOOLTIP "Salir" NOBORDER
+
+   AEval( oBar:aControls, { |x| x:nLeft += 272, x:nRight += 272 }, 13 )
+
+   oBar:bLClicked := { || nil }
+   oBar:bRClicked := { || nil }
+
+   AEval( oBar:aControls, { |x| x:oCursor := oCursor } )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function Open()
+
+   local cFile := cGetFile( "Rich Text Format (*.rtf) |*.rtf|" + ;
+                            "Only Text Format (*.txt) |*.txt|" + ;
+                            "All files (*.*) |*.*",, nGetFileFilter() )
+
+   if !Empty( cFile )
+      if nGetFileFilter() == 1
+         oRTF:LoadFromRTFFile( cFile )
+      else
+         oRTF:lHighlight := .t.
+         oRTF:SetText( MemoRead( cFile ) )
+      endif
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function Close()
+
+   local lOk := .t.
+   local nOp
+
+   if oRTF:IsModify()
+      if ( nOp := MsgYesNoCancel( "File is modified. Save changes?", "TRichEdit" ) ) == ID_YES
+         oRTF:SaveToRTFFile( oRTF:cFileName )
+      else
+         lOk := nOp == ID_NO
+      endif
+   endif
+
+   if lOk
+      oRTF:SetText( "" )
+      oRTF:SetClear()
+   endif
+
+return lOk
+
+//----------------------------------------------------------------------------//
+
+static function Save()
+
+   local cFile := cGetFile( "Rich Text Format (*.rtf) |*.rtf|" + ;
+                            "Only Text Format (*.txt) |*.txt", ;
+                            "Please write a filename", nGetFileFilter(),, .t. )
+
+   if !Empty( cFile )
+      cFile := Upper( cFile ) + If( ! "." $ cFile, If( nGetFileFilter() == 1, ".RTF", ".TXT" ), "" )
+
+      oRTF:SaveToRTFFile( cFile )
+      oRTF:SetClear()
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function MsgYesNoCancel( cMsg, cTitle )
+
+return MessageBox( GetActiveWindow(), cMsg, cTitle, ;
+                   nOR( MB_ICONQUESTION, MB_YESNOCANCEL ) )
+
+//----------------------------------------------------------------------------//
+
+static function Find()
+
+   local cFind := Space( 100 )
+   local nDir  := 1
+   local lCase := .f.
+   local lWord := .t.
+   local oDlg, oFind
+
+   DEFINE DIALOG oDlg RESOURCE "Find"
+
+   REDEFINE GET oFind VAR cFind ID 101 OF oDlg UPDATE
+
+   REDEFINE RADIO nDir ID 102, 103 OF oDlg
+
+   REDEFINE CHECKBOX lCase ID 104 OF oDlg
+   REDEFINE CHECKBOX lWord ID 105 OF oDlg
+
+   REDEFINE BUTTON ID 201 ;
+            ACTION ( oRTF:SetFocus(), ;
+                     oRTF:Find( Trim( cFind ), ( nDir == 1 ), lCase, lWord ) )
+
+   REDEFINE BUTTON ID 202 ACTION ( oDlg:End() )
+
+   oDlg:bStart := { || oDlg:SetFocus() }
+
+   ACTIVATE DIALOG oDlg CENTER NOWAIT
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function DateTime()
+
+   local aLbx := REGetDateTime()
+   local nLbx := 1
+   local lOk  := .f.
+   local oDlg, oLbx
+
+   DEFINE DIALOG oDlg RESOURCE "Datetime"
+
+   REDEFINE LISTBOX oLbx VAR nLbx ITEMS aLbx ID 101 OF oDlg
+
+   REDEFINE BUTTON ID 201 ACTION ( lOk := .T., oDlg:End() )
+   REDEFINE BUTTON ID 202 ACTION ( oDlg:End() )
+
+   ACTIVATE DIALOG oDlg CENTER
+
+   if lOk
+      oRTF:InsertRTF( aLbx[ nLbx ] )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function Picture()
+
+   local cFile := cGetFile( "Windows bitmap (*.bmp) |*.bmp|" + ;
+                            "Windows bitmap (*.dib) |*.dib|" + ;
+                            "ICON format (*.ico) |*.ico", ;
+                            "Please choose a file", nGetFileFilter() )
+
+   if ! Empty( cFile )
+      oRTF:InsertPicture( cFile )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function Bitmap()
+
+   local oBmp
+
+   DEFINE BITMAP oBmp RESOURCE "WordPad"
+
+   oRTF:InsertBitmap( oBmp:hBitmap )
+
+   oBmp:Destroy()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function PrintBox( lPreview )
+
+   local oPrn
+   local aRTF := { 100, 1000 }  // { nFrom, nTop }
+
+   DEFAULT lPreview := .f.
+
+   if lPreview
+      PRINT oPrn NAME "FWH RICHEDIT FILE" PREVIEW
+   else
+      PRINT oPrn NAME "FWH RICHEDIT FILE"
+   endif
+
+      if Empty( oPrn:hDC )
+         MsgStop( "Printer not ready!" )
+         return nil
+      endif
+
+      PAGE
+         CursorWait()
+         oPrn:Box( aRTF[ 2 ], 500, aRTF[ 2 ] + 1000, 1500 )
+
+         aRTF := REPrintBox( oRTF:hWnd, If( lPreview, oPrn:hDCOut, oPrn:hDC ), ;
+                             oRTF:IsSelection(), ;
+                             aRTF[ 2 ] + 10, 510, 1490, aRTF[ 2 ] + 990, aRTF[ 1 ] )
+
+         oPrn:Box( aRTF[ 2 ], 500, aRTF[ 2 ] + 1000, 1500 )
+
+         aRTF := REPrintBox( oRTF:hWnd, If( lPreview, oPrn:hDCOut, oPrn:hDC ), ;
+                             oRTF:IsSelection(), ;
+                             aRTF[ 2 ] + 10, 510, 1490, aRTF[ 2 ] + 990, aRTF[ 1 ] )
+
+         oPrn:Box( aRTF[ 2 ], 500, aRTF[ 2 ] + 1000, 1500 )
+
+         aRTF := REPrintBox( oRTF:hWnd, If( lPreview, oPrn:hDCOut, oPrn:hDC ), ;
+                             oRTF:IsSelection(), ;
+                             aRTF[ 2 ] + 10, 510, 1490, aRTF[ 2 ] + 990, aRTF[ 1 ] )
+
+         CursorArrow()
+      ENDPAGE
+
+   ENDPRINT
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+====== Screen Snapshot ======
+{{:richedit.jpg|:richedit.jpg}}
+
+====== Additional Resource ======
+http://www.biblioscape.com/rtf15_spec.htm
+====== See also ======
+[[fivewin_class_trichedit|Class TRichEdit]], [[fivewin_class_tfget|Class TFGet]]

@@ -1,0 +1,16 @@
+
+====== RaHangUp() ====== 
+RaHangUp()
+
+Terminate a RAS conection
+====== Sintaxis ======
+ RaHangUp( <hRas> ) --> lSuccess 
+====== Parámetros ======
+ <hRas> Handle of the RAS conection 
+====== Devuelve ======
+ <lSuccess> Return true if the function is success 
+====== Ejemplo ======
+ SOURCE\CLASSES\TRAS.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\RASAPI.C 
+====== Ver también ======

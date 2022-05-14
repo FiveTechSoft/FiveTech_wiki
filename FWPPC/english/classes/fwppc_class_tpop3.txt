@@ -1,0 +1,29 @@
+====== Class TPOP3 ======
+
+FiveWin Internet incomming mail Class                                          
+====== DATA ======
+|oSocket|Socket used during the mail session|
+|nPort|Default port|
+|User|User name|
+|Pass|User password|
+|lAllOk|All messages received correctly|
+|aMsgs|Array of incoming messages|
+|nAtMsg|Current message processed|
+|cIpServer|IP of the mail server|
+|AllOk|No errors|
+|nStatus|Temporary session status|
+|lDelMsgs|If messages should be deleted from the mail server|
+|bConnecting|Action to perform while trying to connect|
+|bConnected|Action to perform when already connected|
+|bDone|Action to perform when Msg has been already sent|
+====== METHODS ======
+|New|Constructor from source code.|
+|GetMail|Retrieves mail|
+|OnRead|Action to perform on reading|
+|LogError|Generated error log|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPOP3.PRG

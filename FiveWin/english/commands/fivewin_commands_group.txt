@@ -1,0 +1,71 @@
+
+====== Group ======
+<code clipper>
+ @ <nTop> . <nLeft> [ GROUP <oGroup> ] TO <nBottom>, <nRight> ;  
+ [ LABEL | PROMPT <cLabel> ];  
+ [ OF <oWnd> ];  
+ [ COLOR <cClrFore> [, <nClrBack> ] ];  
+ [ PIXEL ];  
+ [ DESIGN ];  
+ [ FONT <oFont> ];  
+ [ TRANSPARENT ]  
+</code>  
+
+<code clipper>  
+ REDEFINE GROUP [ <oGroup> ];  
+ [ LABEL | PROMPT <cLabel> ];  
+ [ ID <nId> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ COLOR <cClrFore> [, <nClrBack> ] ];  
+ [ FONT <oFont> ];  
+ [ TRANSPARENT ]  
+</code>   
+ 
+| <nTop> , <nLeft> | To specify the top and left coordinates. |    
+| <oGroup>  | The variable to containt the object.   |  
+| <nRight>, <nBottom> | To specify the right and bottom coordinates.    | 
+| <cLabel>  | The caption of the group.    | 
+| <oWnd>    | The window or dialogbox container of this control. | 
+| <cClrFore> | The foreground color of the group.   |  
+| <nClrBack> | The background color of the group.    | 
+| <oFont>  | A reference to the font object used for the Group control.    | 
+| <nId>  | The resource identifier for this control.   |  
+
+
+**CLAUSES **
+
+| PIXEL   |       To specify pixel corrdinates.    | 
+| DESIGN  |     To drag around the control using the mouse.     | 
+| TRANSPARENT |   To make the Group transparent.     | 
+
+====== Sample Code / Usage ======
+\Fwh\Samples\TestGrp2.Prg
+<code clipper>
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+    local oDlg, oGrp
+    local cTest := "hello world!"
+    local cValue
+
+    DEFINE DIALOG oDlg TITLE "Testing groups"
+
+    @ 0, 1 GROUP oGrp TO 4, 21.5 PROMPT "Test"
+
+    @ 1, 2 GET cTest
+
+    @ 0.9, 11 LISTBOX cValue ITEMS { "One", "Two", "Three" }
+
+    @ 3.3, 10 BUTTON "Ok" ACTION oDlg:End()
+
+    ACTIVATE DIALOG oDlg CENTERED
+
+return nil</code>  
+
+
+====== Screen Snapshot ======
+{{:group.jpg|:group.jpg}}
+
+====== See also ======
+[[fivewin_class_tgroup | Class TGroup ]]

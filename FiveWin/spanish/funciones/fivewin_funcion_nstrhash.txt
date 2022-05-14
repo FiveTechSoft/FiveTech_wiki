@@ -1,0 +1,39 @@
+
+====== nStrHash() ====== 
+nStrHash()
+
+Returns a unique hash value for a string
+====== Sintaxis ======
+ nStrHash( <cString>, <nHashRange> ) --> nHashValue 
+====== Parámetros ======
+  <cString>     Is the string to calculate a numeric hash value. 
+  <nHashRange>  Is the numeric range for the hash value. 
+====== Devuelve ======
+ <nHashValue> A numeric value corresponding to a unique hash value for
+that specific string. 
+
+Observations:
+
+ Hash techniques is a powerfull way to increase speed doing a search.
+Given a string we calculate its hash value, and using that hashvalue we
+know exactly where a certain string will be located in a given array. 
+====== Ejemplo ======
+
+ local aStrings := Array( 50 ) 
+
+ aStrings[ nStrHash( "Test", 50 ) ] = { "Test",; 
+
+ "related value" } 
+
+ ... 
+
+ MsgInfo( aStrings[ nStrHash( "Test", 50 ) ][ 2 ] ) 
+
+ // we don't need to search "Test", we simply 
+
+ // locate it based on its hash value! 
+
+ // We can do the same with other strings values 
+====== Código fuente ======
+ SOURCE\FUNCTION\\Hash.c 
+====== Ver también ======

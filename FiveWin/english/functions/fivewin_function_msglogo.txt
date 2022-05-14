@@ -1,0 +1,32 @@
+
+**MsgLogo()** 
+
+Shows a floating logo, typically used at start.
+  
+**Syntax:** 
+
+ MsgLogo( <cLogoFile>, [<nSeconds>] ) --> nil      
+  
+**Parameters:** 
+
+| <cLogoFile> | The name of a .BMP bitmap file or the name of a bitmap stored in resources. FiveWin will check for the existence of the <cLogoFile> as a .BMP file, and if it does not exist then it will look for it inside the resources.|
+| <nSeconds> | An optional numeric value, indicating how many seconds the logo has to be shown. By default it waits for four seconds.| 
+
+  
+**Returns:** 
+
+ nil  
+  
+
+**Observations:**
+
+ This function let you show an initial application logo as many products do.  
+
+  
+**Source code:** 
+
+ SOURCE\FUNCTION\MsgLogo.prg  
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

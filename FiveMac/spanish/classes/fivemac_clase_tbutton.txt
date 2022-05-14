@@ -1,0 +1,32 @@
+====== Clase TButton ======
+
+Control para casillas de verificación
+
+Hereda de la [[fivemac_clase_tcontrol|Clase TControl]]                                                         
+
+
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|bAction|Codeblock a evaluar al pulsar el boton.|
+
+
+====== METODOS ======
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente.|
+|Click|Manejdor del evento botón izquierdo del mouse.|
+|SetText|Cambia la leyenda del control|
+|GetText|Obtiene la leyenda del control|
+
+
+====== Ejemplo ======
+<code clipper>
+
+</code>
+
+====== Ver también ======
+
+
+
+====== Código fuente ======
+FMC\SOURCE\CLASSES\button.prg

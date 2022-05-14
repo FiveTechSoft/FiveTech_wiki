@@ -1,0 +1,16 @@
+
+====== IsZip() ======
+IsZip()
+
+Checks a valid ZIP file
+====== Sintaxis ======
+ IsZip( <cZipFileName> ) --> lYesNo 
+====== Parámetros ======
+ <cZipFileName> The name of the ZIP file to check. 
+====== Devuelve ======
+ <lYesNo> A logical value indicating if the file is a valid ZIP file. 
+====== Ejemplo ======
+ SAMPLES\TestZip.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\UnZip.c 
+====== Ver también ======

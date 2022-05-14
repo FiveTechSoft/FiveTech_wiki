@@ -1,0 +1,91 @@
+SysTime()
+
+
+
+SysTime()
+
+ Previous  Top  Next
+
+
+
+
+Changes the time of the system
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SysTime( <nNewTime> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nNewTime> The new time we want to set the system time to. It has to be
+provided in a 'long' ( 4 bytes ) format. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+   nil
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\SetDate.c 
+
+
+ 
+
+
+ 
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ SetDate() 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

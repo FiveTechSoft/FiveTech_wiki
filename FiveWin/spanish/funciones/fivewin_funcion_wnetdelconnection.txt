@@ -1,0 +1,72 @@
+WNetDelConnection()
+
+
+WNetDelConnection()
+ Previous  Top  Next
+
+Cancels an existing network connection.
+
+====== Sintaxis ======
+
+ 
+
+
+ WNetDelConnection( <cLocalName>, <lForce> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cLocalName> The name of the remote network resource to disconnect from. 
+
+
+ 
+
+
+ <lForce> Force the disconnection even if there are open files or jobs. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code. Zero if successful. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\NET.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

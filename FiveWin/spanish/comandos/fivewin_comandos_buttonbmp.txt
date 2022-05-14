@@ -1,0 +1,102 @@
+====== Creando un ButtonBmp desde código fuente ======
+<code clipper>
+@ <nRow>, <nCol> BUTTONBMP [ <oBtn> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ ACTION <uAction> ] ;
+   [ DEFAULT ] ;
+   [ OF | WINDOW | DIALOG <oWnd> ] ;
+   [ HELP | HELPID | HELP ID <nHelpId> ] ;
+   [ FONT <oFont> ] ;
+   [ PIXEL ] ;
+   [ DESIGN ] ;
+   [ MESSAGE <cMsg> ] ;
+   [ UPDATE ] ;
+   [ WHEN <WhenFunc> ] ;
+   [ VALID <uValid> ] ;
+   [ CANCEL ] ;
+   [ BITMAP <cBitmap> ] ;
+   [ PROMPT <cPrompt> ] ;
+   [ TEXTTOP | TEXTBOTTOM | TEXTLEFT | TEXTRIGHT ]
+</code>
+
+====== Creando un ButtonBmp desde recursos ======
+<code clipper>
+REDEFINE BUTTONBMP [ <oBtn> ] ;
+   [ ID <nId> [ OF | WINDOW | DIALOG <oDlg> ] ] ;
+   [ ACTION <uAction,...> ] ;
+   [ HELP | HELPID | HELP ID <nHelpId> ] ;
+   [ MESSAGE <cMsg> ] ;
+   [ UPDATE ] ;
+   [ WHEN <WhenFunc> ] ;
+   [ VALID <uValid> ] ;
+   [ PROMPT <cPrompt> ] ;
+   [ CANCEL ] ;
+   [ BITMAP <cBitmap> ] ;
+   [ TEXTTOP | TEXTBOTTOM | TEXTLEFT | TEXTRIGHT ] ;
+   [ TOOLTIP <cToolTip> ] 
+</code>
+
+====== Ejemplo ======
+FWH\samples\testbubm.prg
+<code clipper>
+#include "FiveWin.ch"
+
+#define COLOR_BTNFACE   15
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oBtnBmp
+
+   DEFINE WINDOW oWnd TITLE "FiveWin Xp Theme-aware bitmaped buttons" ;
+      COLOR 0, GetSysColor( COLOR_BTNFACE )
+
+
+   @ 2, 2 BUTTONBMP oBtnBmp OF oWnd ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp"
+
+   @ 4, 2 BUTTONBMP oBtnBmp OF oWnd ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp" PROMPT "Test" TEXTRIGHT SIZE 80, 25 ;
+      MESSAGE "From source code"
+      
+   oBtnBmp:cToolTip = "Tooltip text"   
+      
+   @ 6, 2 BUTTON "From Resources" OF oWnd SIZE 90, 25 ACTION FromResources()   
+
+   DEFINE STATUSBAR OF oWnd PROMPT "StatusBar"
+      
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function FromResources()
+
+   local oDlg
+   
+   DEFINE DIALOG oDlg RESOURCE "Test"
+   
+   REDEFINE BUTTONBMP ID 10 OF oDlg ;
+      ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp"
+
+   REDEFINE BUTTONBMP ID 20 OF oDlg ;
+      ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp" PROMPT "Test" TEXTRIGHT
+   
+   ACTIVATE DIALOG oDlg
+
+return nil     
+</code>
+
+** Imagen **
+
+{{:buttonbmp.jpg|:buttonbmp.jpg}}
+
+====== Código fuente ======
+FWH\source\classes\buttonb.prg
+
+====== Ver también ======
+[[fivewin_clase_tbuttonbmp|Clase TButtonBmp]]

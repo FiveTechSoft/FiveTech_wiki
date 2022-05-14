@@ -1,0 +1,178 @@
+====== SetDropInfo() ======
+
+
+To define additional information for process Drag & Drop
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetDropInfo( uInfo ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <uInfo> Information of any type that one will keep in mind when you
+liberated the button of the mouse on some object of the window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ When we begin a process Drag & Drop is convenient to include an
+additional information to evaluate in the one moment of liberating the
+mouse (Drop) on a control or window of our application. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ oBtn:bDragBegin = { | nRow, nCol, nKeyFlags | ; 
+
+
+ 
+
+
+ SetDropInfo( Time() ),; 
+
+
+ 
+
+
+ oWnd:SetMsg( "Dragging operation" ) } 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ... 
+
+
+ 
+
+
+ ... 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ oLbx:bDropOver = { | uDropInfo, nRow, nCol, nKeyFlags | ; 
+
+
+ 
+
+
+ oLbx:Add( uDropInfo ), MsgBeep() } 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTDRP3.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

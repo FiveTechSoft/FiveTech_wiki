@@ -1,0 +1,97 @@
+====== ResetDC() ======
+
+
+Update the given device context.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ResetDC( <hDC> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> This function retrive .t. if is success 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ When we call to the dialog printer box it is possible that we choose
+another device. In this case the device context it must be updated to the
+new one since its capacities and characteristics can be different. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

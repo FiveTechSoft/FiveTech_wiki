@@ -1,0 +1,21 @@
+
+====== nMakeLong() ====== 
+nMakeLong()
+
+Generates a long (4bytes) from two words (2bytes)
+====== Sintaxis ======
+ nMakeLong( <nLoWord>, <nHiWord> ) --> nLong 
+====== Parámetros ======
+  <nLoWord>  A numeric (word) value. 
+  <nHiWord>  A numeric (word) value. 
+====== Devuelve ======
+ <nLong> The result numeric (long) value 
+
+Observations:
+
+ A long is made of: 
+ LONG = HIGH_WORD - LOW_WORD 
+====== Código fuente ======
+ SOURCE\FUNCTION\MakeLong.c 
+====== Ver también ======
+ nHiWord() nLoWord() nHiByte() nLoByte()

@@ -1,0 +1,29 @@
+
+====== DelDbfMdx() ======
+
+DelDbfMdx()
+
+Resets the MDX file existence at a DBFMDX Dbf file
+====== Sintaxis ======
+ DelDbfMdx( <cDbfFileName> ) --> lSuccess 
+====== Parámetros ======
+ <cDbfFileName> The name of the DBF file to reset its MDX flag. 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+
+Observations:
+
+ This function has been created to be able to reindex from scratch a MDX
+file (as a MDX index would never be reindexed as it gets corrupted!). 
+
+The steps to follow are:
+
+  1.    Close the DBF file. 
+  2.    Erase the MDX file. 
+  3.    Call DelDbfMdx( <cDbfFileName> ) 
+  4.    Open the DBF file in anormal way. 
+  5.    Index it. 
+====== Código fuente ======
+ SOURCE\FUNCTION\NtxTools.c 
+====== Ver también ======
+ cNtxPos() cNtxKey() 

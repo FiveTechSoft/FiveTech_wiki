@@ -1,0 +1,84 @@
+====== WndAdjClient() ====== 
+
+WndAdjClient()
+
+Adjust to the client area of the window.
+
+====== Syntax ======
+
+ WndAdjClient( <hWnd>, <hTop>, <hBottom>, <hLeft>, <hRight>,
+<bMdiClient>, <nBevel> ) --> nil 
+
+
+
+====== Parameters ======
+
+ <hWnd> Handle of the control to adjust 
+
+
+ 
+
+
+ <hTop> Handle of the oTop object 
+
+
+ 
+
+
+ <hBottom> Handle of the oBottom object 
+
+
+ 
+
+
+ <hLeft> Handle of the oLeft object 
+
+
+ 
+
+
+ <hRight> Handle of the oRight object 
+
+
+ 
+
+
+ <bMdiClient> Logic flag for the Mdi-Window 
+
+
+ 
+
+
+ <nBevel> Bevel amount 
+
+
+ 
+
+====== Returns ======
+
+
+ Nothing 
+
+
+ 
+
+====== Example ======
+
+
+ SAMPLES\TESTALIGN.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+
+====== See also ======
+

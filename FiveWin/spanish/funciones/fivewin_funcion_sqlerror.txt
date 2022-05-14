@@ -1,0 +1,98 @@
+SQLError()
+
+
+SQLError()
+ Previous  Top  Next
+
+Returns the current SQL error.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLError( <hEnv>, <hDbc>, <hStmt>, <@cErrorClass>, <@nType>,
+<@cErrorMsg> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hEnv> The environment handle. 
+
+
+ 
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cErrorClass> The error class. 
+
+
+ 
+
+
+ <nType> The error type. 
+
+
+ 
+
+
+ <cErrorMsg> The error message text. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

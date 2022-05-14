@@ -1,0 +1,22 @@
+====== DelIniSection() ======
+It erases a section from an INI file
+
+====== Syntax ======
+DelIniSection( <cSection>, <cFile> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+| <cSection> | Section to be erased/deleted|
+| <cFile> | Ini file name. |
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess> | .T. if the operation is successful |
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\PROFILE.C 
+
+====== See also ======
+[[fivewin_function_delinientry|DelIniEntry()]]

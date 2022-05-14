@@ -1,0 +1,74 @@
+SQLRowCount()
+
+
+SQLRowCount()
+ Previous  Top  Next
+
+Returns the number of rows affected by an UPDATE, INSERT, or DELETE
+statement.
+
+====== Syntax ======
+
+ 
+
+
+ SQLRowCount( <hStmt>, <@nRow> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nRow> The resulted number of rows. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

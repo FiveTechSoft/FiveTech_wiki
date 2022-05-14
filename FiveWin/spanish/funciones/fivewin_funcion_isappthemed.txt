@@ -1,0 +1,80 @@
+IsAppThemed()
+
+
+IsAppThemed()
+ Previous  Top  Next
+
+
+
+It detects if Windows and the application are using or not a theme.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ IsAppThemed() --> lThemed 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+   None
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lThemed> Returns .T. if Windows and the application are using a theme,
+or .F. otherwise. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ver también ======
+

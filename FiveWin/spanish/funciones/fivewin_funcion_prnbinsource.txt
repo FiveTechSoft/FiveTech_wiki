@@ -1,0 +1,30 @@
+
+====== PrnBinSource() ======
+It establishes the feeding of the paper of the printer.
+====== Sintaxis ======
+ PrnBinSource( <nBin> ) --> nPrevBin 
+====== Parámetros ======
+|<nBin>|Bin from which the paper is fed.Can be one of the following values:| 
+|DMBIN_FIRST| |
+|DMBIN_UPPER| |
+|DMBIN_UPPER|1| 
+|DMBIN_ONLYONE|1| 
+|DMBIN_LOWER|2| 
+|DMBIN_MIDDLE|3| 
+|DMBIN_MANUAL|4| 
+|DMBIN_ENVELOPE|5| 
+|DMBIN_ENVMANUAL|6|
+|DMBIN_AUTO|7|
+|DMBIN_TRACTOR|8|
+|DMBIN_SMALLFMT|9|
+|DMBIN_LARGEFMT|10|
+|DMBIN_LARGECAPACITY|11|
+|DMBIN_CASSETTE|14|
+|DMBIN_LAST| |
+|DMBIN_CASSETTE | |
+====== Devuelve ======
+|<nPrevBin>|The previous bin source| 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

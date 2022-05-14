@@ -1,0 +1,251 @@
+EnumFontFamilies()
+
+
+
+EnumFontFamilies()
+
+ Previous  Top  Next
+
+
+
+
+Enumerates the fonts in a specified font family
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EnumFontFamilies( <hDC>, <cFamily>, <bCallBack> ) --> uVal 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cFamily> Family name of the desired fonts 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <bCallBack> Codeblock to be executed inside the function 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ It returns the last value returned by the codeblock bCallBack. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTFFAM.PRG 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ // EnumFontFamilies() sample 
+
+
+ 
+
+
+ #include "FiveWin.ch" 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ function Main() 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ local oPrn 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ PRINTER oPrn 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ EnumFontFamilies( oPrn:hDC,,; 
+
+
+ 
+
+
+ { | aLogFont, aPhyFont, nType | ; 
+
+
+ 
+
+
+ MsgInfo( aLogFont[ 14 ] ),; 
+
+
+ 
+
+
+ MsgInfo( Len( aPhyFont ) ),; 
+
+
+ 
+
+
+ MsgInfo( nType ) } ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ENDPRINT 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ MsgInfo( "ok" ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ return nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,27 @@
+====== Class TMru ======
+
+MRU means: "Most Recent Used" and let you automatically manage                 
+MRU lists on your menus !!! See SAMPLES\TestMru.prg for a test!                
+====== DATA ======
+|aItems|Array of MenuItems|
+|nMaxItems|Max Number of Items in the list.|
+|cIniFile|Name of the associated ini file.|
+|cSection|Section in the ini file|
+|cMsg|Message for all MRU MenuItems|
+|oMenu|oMenu container of the MRU list|
+|oSeparator|A reference of the SEPARATOR menuitem created above|
+|the|Mru|
+|nMenuPos|oMenu container position of the MRU list|
+|bAction|Action to perform when selecting any of the MRU|
+|MenuItems||
+====== METHODS ======
+|New|Constructor from source code.|
+|Save|Add a new element to the MRU list.|
+|Clear|Clear all Mru items and also release the INI related|
+|section||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMRU.PRG

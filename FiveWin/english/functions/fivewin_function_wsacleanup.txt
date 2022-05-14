@@ -1,0 +1,22 @@
+====== WSACleanUp() ====== 
+Terminate use of the Windows Sockets DLL. 
+
+====== Syntax ====== 
+
+ WSACleanUp() --> nError  
+ 
+====== Parameters ====== 
+
+ None  
+ 
+====== Returns ====== 
+
+|<nError>| If the function is success return 0. Other wise a value retrieved by calling WSAGetLastError().|  
+ 
+====== Sample ====== 
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\WINSOCK.C
+
+====== See Also ======

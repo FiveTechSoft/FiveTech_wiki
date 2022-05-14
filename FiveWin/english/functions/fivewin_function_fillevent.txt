@@ -1,0 +1,22 @@
+====== FillEvent() ======
+To provide value to the members of the structure EVENTMSG.  Function related with the process of recording of macros and play-back features. 
+
+====== Syntax ======
+FillEvent( <&event>, <&delay>, <message>, <paramL>, <paramH>, <time> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<&event>| EVENTMSG structure |
+|<&delay>| Delay |
+|<message>| Message| 
+|<paramL>| First message parameter as an INTEGER |
+|<paramH>| Second message parameter as a LONG |
+|<time>| Hour |
+
+====== Returns ======
+NIL 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\PLAYBACK.C 

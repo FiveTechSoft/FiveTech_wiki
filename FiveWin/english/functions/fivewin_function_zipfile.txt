@@ -1,0 +1,27 @@
+====== ZipFile() ======
+Create zip file
+
+====== Syntax ======
+ZipFile( <CmdLnd>, <hWnd> ) --> nil 
+
+====== Parameters: ======
+^Parameter^Description^
+|<CmdLnd>| Command line |
+|<hWnd>| Handle of the window that receive the messages.| 
+
+====== Return ======
+Nothing 
+
+====== Sample ======
+SAMPLES\TESTZIP.PRG 
+
+====== Source Code======
+SOURCE\FUNCTION\CLIPZIP.C 
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_GetFirstInZip|GetFirstInZip()]]
+[[fivewin_function_ZipMsg|ZipMsg()]]
+[[fivewin_function_ZipName|ZipName()]]
+[[fivewin_function_ZipSize|ZipSize()]]
+[[fivewin_function_ZipType|ZipType()]]

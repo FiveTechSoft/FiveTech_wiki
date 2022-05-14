@@ -1,0 +1,60 @@
+
+======  GetLabelDim() ====== 
+
+
+
+
+Draws a specified text and returns its sizes.
+
+====== Syntax ======
+
+
+ GetLabelDim( <hWnd>, <cText>, <hFont> ) --> aDim 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the window where to draw. 
+
+
+ 
+
+
+ <cText> The text to draw. 
+
+
+ 
+
+
+ <hFont> The handle of the font to be used. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <aDim> An array with right and bottom sizes of the text. 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\RECTS.C 
+
+
+ 
+
+
+
+====== See also ======
+

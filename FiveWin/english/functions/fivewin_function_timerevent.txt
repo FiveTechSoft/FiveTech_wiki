@@ -1,0 +1,22 @@
+====== TimerEvent() ======
+It evaluates the action assigned to an object TTimer 
+
+====== Syntax ====== 
+
+ TimerEvent( <nId> ) --> 0  
+ 
+====== Parameters ====== 
+
+|<nId>| Identifier of the object TTimer|  
+ 
+====== Returns ====== 
+
+ 0  
+ 
+====== Observations ====== 
+
+ When creating an object TTimer it is also believed an array where it will leave storing references to all the Timers created. The parameter <nId> is used for to identify the Timer that is being called in that moment. Whenever the object TTimer is active you it will evaluate the action that has associate.  
+
+====== Source code ======
+ 
+ SOURCE\CLASSES\TIMER.PRG

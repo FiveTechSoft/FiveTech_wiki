@@ -1,0 +1,37 @@
+
+====== DbClearRel() ====== 
+
+Borra la relación que tenga el área de trabajo activa.
+
+====== Sintaxis ====== 
+
+ DbClearRel() --> nil  
+
+ 
+ Función para tener compatilidad con xBase++  
+
+====== Parámetros ====== 
+
+ Ninguno
+
+====== Devuelve ======  
+
+ DbClearRelation()  
+
+====== Ejemplo ======  
+
+<code clipper>USE Empleado NEW
+USE Departamento NEW INDEX Dept
+SELECT Empleado
+DBSETRELATION("Departamento", ;
+              {|| Empleado->Dept}, "Empleado->Dept")
+LIST Empleado->Nombre, Departamento->Nombre
+DBCLEARRELATION()</code>
+
+====== Código Fuente ====== 
+
+ SOURCE\FUNCTION\DB10.PRG
+
+====== Ver también ====== 
+
+

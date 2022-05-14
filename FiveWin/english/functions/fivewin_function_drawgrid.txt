@@ -1,0 +1,19 @@
+====== DrawGrid() ======
+It draws a grid of points in a design window.
+
+====== Syntax ======
+DrawGrid( <hWnd>, <hDC>, <@cPS>, <wGridX>, <wGridY> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The handle of the window where we will paint.| 
+|<hDC>| Device context where we will paint.| 
+|<@cPS>| Not used |
+|<nGridX>| Horizontal separation of the points.| 
+|<nGridY>| Vertical separation of the points.| 
+
+====== Returns ======
+NIL
+
+====== Source Code ======
+SOURCE\FUNCTION\DRAWGRID.C 

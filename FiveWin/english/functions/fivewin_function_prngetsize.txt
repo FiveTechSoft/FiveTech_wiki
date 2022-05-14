@@ -1,0 +1,88 @@
+====== PrnGetSize() ====== 
+
+
+
+PrnGetSize()
+
+
+
+
+
+Phisical page size of the printer
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PrnGetSize( <hDC> ) --> aPoint 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context of the printer 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aPoint> Array with the dimensions of the page of the current printer.
+First element will be the dimension x and the segund the dimension and in
+device units. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

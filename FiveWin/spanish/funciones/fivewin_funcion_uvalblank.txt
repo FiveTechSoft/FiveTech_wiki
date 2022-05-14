@@ -1,0 +1,78 @@
+uValBlank()
+
+
+
+
+Devuelve el correspondiente valor en "blanco" de cualquier variable.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ uValBlank( <uValue> ) --> uBlankValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <uValue> Una variable cuyo valor va a ser "blanqueado"
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <uBlankValue> El mimso valor pero "blanqueado"
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\ValBlank.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+ [[fivewin_funcion_cvaltochar|cValToChar()]] [[fivewin_funcion_uchartoval|uCharToVal()]]  
+

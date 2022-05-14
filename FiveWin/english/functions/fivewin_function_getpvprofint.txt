@@ -1,0 +1,89 @@
+GetPvProfInt()
+
+
+GetPvProfInt()
+ Previous  Top  Next
+
+Retrieves the value of an int in a private INI file.
+
+====== Syntax ======
+
+
+ GetPvProfInt( <cSection>, <cEntry>, <nDefault>, <cIniFile> ) --> nValue 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <cSection> Specifies the section containing the entry. 
+
+
+ 
+
+
+ <cEntry> The entry whose value is to be retrieved. 
+
+
+ 
+
+
+ <nDefault> Specifies the default int value to return if the entry cannot
+be found. 
+
+
+ 
+
+
+ <cIniFile> It is the name of the private INI file to use. 
+
+
+ 
+
+====== Returns ======
+
+
+ <nValue> The int value in the INI file that follows the specified entry. 
+
+
+ 
+
+Observations:
+
+
+ This function retrieves a value from a user defined INI file. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\Profile.c 
+
+
+ 
+
+See also:
+
+
+ GetProfInt(), GetPvpProfString() 
+
+
+ 
+
+
+
+====== See also ======
+

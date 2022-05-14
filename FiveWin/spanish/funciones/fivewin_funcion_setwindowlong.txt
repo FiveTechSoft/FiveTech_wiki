@@ -1,0 +1,25 @@
+====== SetWindowLong() ======
+
+SetWindowLong() Cambia un atributo de la ventana especificada.
+
+====== Sintaxis ======
+
+SetWindowLong( <hWnd>, <nType>, <nValue> ) --> nOldValue 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>| El identificador de la ventana. |
+|<nType>| El tipo de información a ser cambiada:\\ **GWL_EXSTYLE**      Recupera los estilos de ventana extendida.\\ **GWL_STYLE**     Recupera los estilos de ventana.\\ **GWL_WNDPROC**   Recupera la dirección del procedimiento de la ventana,\\ o un identificador que representa la dirección del procedimiento de la ventana.\\ **GWL_HINSTANCE**   Recupera el identificador de instancia de la aplicación.\\ **GWL_HWNDPARENT**   Recupera el identificador de la ventana principal, si lo hay.\\ **GWL_ID**      Recupera el identificador de la ventana.\\ **GWL_USERDATA**   Recupera el valor de 32 bits asociado con la ventana. \\ Cada ventana tiene su correspondiente valor de 32 bits diseñado para ser utilizado por la aplicación que creó la ventana.\\ Este valor es inicialmente cero.|
+|<nValue>| El nuevo valor. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nOldValue>| El valor previo. |
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+SOURCE\WINAPI\WNDIS.C 
+
+====== Ver también ======

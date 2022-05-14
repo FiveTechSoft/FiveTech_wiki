@@ -1,0 +1,80 @@
+SQLGetInfo()
+
+
+SQLGetInfo()
+ Previous  Top  Next
+
+Returns general information about the driver and data source associated
+with a connection.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLGetInfo( <hDbc>, <nType>, <@cResult> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <nType> The type of information. 
+
+
+ 
+
+
+ <cResult> The buffer in which to return the information. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

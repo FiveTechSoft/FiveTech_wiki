@@ -1,0 +1,25 @@
+====== CloseComm() ======
+Closes the communication device and frees memory.  The CloseComm function closes the specified communications device and frees any memory allocated for the device's transmission and receiving queues. All characters in the output queue are sent before the communications device is closed. 
+
+====== Syntax ======
+CloseComm( <nDeviceId> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<nDeviceId>| Specifies the device to be closed. The OpenComm function returns this value ie nDeviceId.|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value indicating if the operation was successful or not.|
+
+
+====== Example ======
+See SAMPLES\\TestComm.prg 
+
+
+====== Source Code ======
+SOURCE\\WINAPI\\Comm.c 
+
+
+====== See also ======
+[[fivewin_function_OpenComm|OpenComm()]], [[fivewin_function_WriteComm|WriteComm()]], [[fivewin_function_ReadComm|ReadComm()]], [[fivewin_function_BuildCommDcb|BuildCommDcb()]], [[fivewin_function_SetCommState|SetCommState()]], [[fivewin_function_FlushComm|FlushComm()]], [[fivewin_function_GetCommError|GetCommError()]] 

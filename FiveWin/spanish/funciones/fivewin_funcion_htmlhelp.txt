@@ -1,0 +1,88 @@
+HTMLHelp()
+
+
+HTMLHelp()
+ Previous  Top  Next
+
+Activate the specified CHM file.
+
+====== Sintaxis ======
+
+
+ HTMLHelp( <hWnd>, <cChmFile>, <nCommand>, <nTopic> ) --> hChmWnd 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle of the parent window. 
+
+
+ <cChmFile> Filename of the CHM file to open. 
+
+
+ <nCommand> The action to perform (see above). 
+
+
+ <nTopic> The id of the topic to show. 
+
+
+ 
+
+
+ 
+
+ These are some of the valid values for nCommand parameter (check MSDN
+for a more complete description): 
+
+
+ 
+
+
+ #define HH_DISPLAY_TOPIC   0 
+
+
+ #define HH_DISPLAY_INDEX   2 
+
+
+ #define HH_HELP_CONTEXT   15 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+ 
+
+
+ 
+
+ <hChmWnd> The handle of the help window or zero in case of failure. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ HTMLHelp( 0, "C:\TEST\MYHELP.CHM", HH_DISPLAY_INDEX, 0 ) 
+
+
+ 
+
+Source:
+
+
+ SOURCE\WINAPI\HELP32.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

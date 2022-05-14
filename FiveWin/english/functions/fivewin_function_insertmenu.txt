@@ -1,0 +1,209 @@
+InsertMenu()
+
+
+
+InsertMenu()
+
+ Previous  Top  Next
+
+
+
+
+It inserts a menuitem in a menu
+
+
+
+====== Syntax ======
+
+
+
+
+
+ InsertMenu( <hMenu>, <nIdItem>, <nFlags>, <nNewItem>, <cPrompt> ) -->
+lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMenu> Handle of the menu where we will insert the menuitem 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIdItem> Identifier of the menuitem. It will depend on that that let us
+indicate in nFlags so that it is an identifier that is to say the
+position of the Menuitem inside the menu. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFlags> Constant MF_BYCOMMAND or MF_BYPOSITION that it will indicate as
+nIdItem should be interpreted. It combines with those following constants
+to indicate that class of menuitem is inserting in our menu. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+MF_BITMAP         4   It contains a bitmap   
+MF_CHECKED         8   Marked Menuitem   
+MF_DISABLED         2   Disabled Menuitem   
+MF_ENABLED         0   Enabled Menuitem   
+MF_POPUP         16   It contains submenu   
+MF_GRAYED         1   Gray Menuitem   
+MF_MENUBARBREAK      32   Break in the menu bar   
+MF_MENUBREAK      64   Break in a vertical menu   
+MF_OWNERDRAW      256   Owner draw   
+MF_SEPARATOR      2048   Separator   
+MF_UNCHECKED      0   Normal state of the menuitem   
+MF_BYCOMMAND      0   nIdItem is identifier   
+MF_BYPOSITION      1024   nIdItem is position based 0   
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ <nNewItem>n New identifier for the menuitem. If nFlags contains MF_POPUP
+in nNewItem the handle of the submenú will be stored. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cPrompt>n String to indicate in the menuitem. If nFlags contains
+MF_BITMAP this parameter will be the Handle of the bitmap. If
+MF_OWNERDRAW contains the parameter it will be included in those it
+structures DRAWITEMSTRUCT and MEASUREITEMSTRUCT that Windows sends when
+it has to draw elements of owner draw. (to see method DrawItem and
+MeasureItem in the class TWindow). 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\MENU.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ InsertMenu( ::hMenu, oPrevItem:nId, nOr( MF_POPUP,; 
+
+
+ 
+
+
+ If( oMenuItem:lHelp, MF_HELP, 0 ),; 
+
+
+ 
+
+
+ If( oMenuItem:lBreak, MF_BREAK, 0 ) ),; 
+
+
+ 
+
+
+ oMenuItem:bAction:hMenu,; 
+
+
+ 
+
+
+ oMenuItem:cPrompt ) 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

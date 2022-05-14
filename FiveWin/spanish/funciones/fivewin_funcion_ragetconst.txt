@@ -1,0 +1,63 @@
+
+====== RaGetConSt() ====== 
+RaGetConSt()
+
+Get information about the current conection status
+====== Sintaxis ======
+ RaGetConSt( <hRas>, <aStatus> ) --> nil 
+====== Parámetros ======
+  <hRas>     Handle of the current RAS conection 
+  <aStatus>  Array to recive status data 
+====== Devuelve ======
+ Nothing 
+
+Observations:
+
+ We will receive the data in the same array that we indicate as parameter. 
+
+ aStatus[1] Size in bytes of the structure RASCONSTATE.It is important to
+know it because later on we will have to use this structure. 
+
+ aStatus[2] It indicates the current state of the connection. Those value
+of special significance they are those of connection and disconection. 
+
+    RASCS_OpenPort      Opening port of communications   
+    RASCS_PortOpened      Open port correctly   
+    RASCS_ConnectDevice      Connecting with the device   
+    RASCS_DeviceConnected   Connected device   
+    RASCS_AllDevicesConnected   All the connected devices   
+    RASCS_Authenticate      Verifying name and password   
+    RASCS_AuthNotify      Name and correct password   
+    RASCS_AuthRetry      Retrying confirmation of identity   
+    RASCS_AuthCallback      Authenticate by means of call return   
+    RASCS_AuthChangePassword   Obligation of changing the password   
+    RASCS_AuthProject      RASCS_AuthProject   
+    RASCS_AuthLinkSpeed      Verifying connection speed   
+    RASCS_AuthAck      Verifying connection authenticate   
+    RASCS_ReAuthenticate      Repeating authenticate   
+    RASCS_Authenticated      Authenticated   
+    RASCS_PrepareForCallback   Preparing for call return   
+    RASCS_WaitForModemReset   Waiting initialization of the modem   
+    RASCS_WaitForCallback   Waiting llamda return   
+    RASCS_PAUSED = &H1000   It PAUSES   
+    RASCS_RetryAuthentication   Retrying authenticate   
+    RASCS_CallbackSetByCaller   Return of call requested by who calls   
+    RASCS_PasswordExpired   The password has expired   
+    RASCS_DONE = &H2000   Connected correctly   
+    RASCS_Disconnected      It has been disconnected   
+
+ aStatus[3] It indicates the reason of the failure 
+    ERROR_NOT_ENOUGH_MEMORY   6 
+    ERROR_INVALID_HANDLE      8 
+ aStatus[4] Type of the current device: 
+    "modem" 
+    "pad" 
+    "switch" 
+    "isdn" 
+    "null" 
+ aStatus[5] Name of the current device 
+====== Ejemplo ======
+ SOURCE\CLASSES\TRAS.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\RASAPI.C 
+====== Ver también ======

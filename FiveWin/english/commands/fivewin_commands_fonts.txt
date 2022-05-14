@@ -1,0 +1,74 @@
+====== Font ======
+
+**Defining a font**
+<code clipper>
+DEFINE FONT <oFont> ;  
+ [ NAME <cName> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FROM USER ] ; 
+ [ BOLD ] ;  
+ [ ITALIC ] ;  
+ [ UNDERLINE ] ; ; 
+ [ PITCHFAMILY <nPitchFamily> ] ;  
+ [ WEIGHT <nWeight> ] ;  
+ [ OF <oDevice> ] ;  
+ [ NESCAPEMENT <nEscapement> ] ; 
+ [ CHARSET <nCharSet> ] 
+
+ ACTIVATE FONT <oFont>  
+ 
+ DEACTIVATE FONT <oFont>  
+ 
+ RELEASE FONT <oFont>  
+ 
+ SET FONT ;  
+ [ OF <oWnd> ] ;  
+ [ TO <oFont> ]  
+</code>  
+  
+
+| <oFont> | A reference to the Font Object. | 
+| <cName> | The name of the font. Example: Arial, Roman, etc... | 
+| <nWidth>, <nHeight> | Dimensions of the font. | 
+| <oWnd> | A reference to the Window container. | 
+| <oDevice> | The device owner of the font. | 
+| <nPitchFamily> | The pitch family of the font. |
+| <nWeight> | The weight of the font. | 
+| <nEscapement> | The escapement of the font. | 
+| <nCharSet> | Font's character set. See [[http://msdn.microsoft.com/en-us/library/dd183499(v=vs.85).aspx|fdwCharSet]] for more info | 
+
+
+**CLAUSES **
+
+| FROM USER | Displays the Font selection Dialog Box. | 
+| BOLD |   To create the font with bold feature.    | 
+| ITALIC |   To create the font with italic feature.  |   
+| UNDERLINE | To create the font with underline feature. |    
+
+====== Sample Code / Usage ======
+<code clipper>
+// Testing fonts
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oWnd, fntArial
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 80 ;
+      TITLE "Testing Fonts"
+
+   DEFINE FONT fntArial NAME "Arial" SIZE 0, -25
+
+   @ 2, 2 SAY "Hello world" FONT fntArial SIZE 180, 80
+
+   ACTIVATE WINDOW oWnd
+
+   fntArial:End()
+
+RETURN NIL
+</code>  
+====== Screen Snapshot ======
+{{:font.jpg|:font.jpg}}
+
+====== See also ======
+[[fivewin_class_tfont | Class TFont ]]

@@ -1,0 +1,7 @@
+====== Descripción ======
+====== Sintaxis ======
+====== Parámetros ======
+====== Devuelve ======
+====== Ejemplo ======
+====== Código fuente ======
+====== Ver también ======

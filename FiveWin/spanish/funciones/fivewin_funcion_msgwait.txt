@@ -1,0 +1,43 @@
+
+====== MsgWait() ======
+
+Presenta una calculadora para seleccionar una fecha.
+
+====== Syntaxis ======
+
+MsgWait( <cMsg> [,<cTitle>], [<nSeconds>]  ) --> NIL    
+ 
+====== Parámetros ======
+
+| <cMsg>| Mensaje a mostrar.  |
+| <cTitle> | titulo del cuadro de dialogo. |
+| <nSeconds> | Tiempo en segunda de la espera. Por defecto es de 4 segundos. |
+
+====== Devuelve ======
+
+| <> | NIL. |
+
+====== Observaciones ======
+
+Esta funcion, simplifica un poco el proceso de mostrar un breve mensaje a el usuario y esperar un poco.
+Esta funcion usa un dialogo modal el cual garantiza que la aplicacion continuara ejecutandose hasta que el dialogo sea removido.
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+
+   MsgRun( "Este mensaje se autodestruira en 5 segundo",;
+           "MENSAJAE DE ALERTA",;
+           5 )
+      
+RETURN    
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\MSGRUN.PRG
+
+====== Ver también ======
+Ninguno. 

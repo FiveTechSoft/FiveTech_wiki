@@ -1,0 +1,86 @@
+
+====== DeviceCapabilities() ======
+
+DeviceCapabilities() recupera las capacidades del controlador de dispositivo de impresora.
+
+====== Sintaxis ======
+ 
+ DeviceCapabilities( <cDevice>, <nCapability>, <@cBuffer> ) --> nRetCode   
+
+
+====== Parámetros ======
+
+| <cDevice>| nombre de dispositivo | 
+| DC_BINNAMES| Copia una matriz que contiene una lista de los nombres de los contenedores de papel. | 
+| DC_BINS| recupera una lista de contenedores disponibles. | 
+| DC_COPIES| Retorna el número de copias que el dispositivo puede imprimir. | 
+| DC_DRIVER| Retorna el número de versión del controlador de impresora.|  
+| DC_DUPLEX| Retorna el nivel de apoyo a dos caras. | 
+| DC_ENUMRESOLUTIONS| Devuelve una lista de resoluciones disponibles. | 
+| DC_EXTRA| Retorna el número de bytes necesarios para thedevice porción específica de la estructura DEVMODE para  el controlador de impresora. | 
+| DC_FIELDS| Retorna el miembro dmFields de la estructura de la impresora driver's DEVMODE.|  
+| DC_FILEDEPENDENCIES| Retorna una lista de archivos que también deben ser cargados cuando se instala un controlador. | 
+| DC_MAXEXTENT| Retorna una estructura Point que contiene el tamaño máximo de papel que los miembros  dmPaperLength y dmPaperWidth de la estructura DEVMODE el controlador de impresora puede especificar.|  
+| DC_MINEXTENT| Retorna una estructura Point que contiene el tamaño de papel mínimo que los miembros dmPaperLength y dmPaperWidth de la estructura DEVMODE el controlador de impresora puede especificar.|  
+| DC_ORIENTATION| Retorna la relación entre retrato y paisaje orientaciones para un dispositivo, en términos del número de grados que se gira la orientación vertical en sentido contrario para producir una orientación horizontal. | 
+| DC_PAPERNAMES| Recupera una lista de nombres de papel admitidos - por ejemplo, Carta o Legal. | 
+| DC_PAPERS| recupera una lista de tamaños de papel admitidos. | 
+| DC_PAPERSIZE| Copia las dimensiones de todos los tamaños de papel admitidos, en décimas de milímetro, a una matriz de estructuras Point apuntado por el parámetro de lpszOutput.|  
+| DC_SIZE| Retorna el miembro de la estructura de dmSize DEVMODE el controlador de la impresora.|  
+| DC_TRUETYPE| Recupera la capacidad del conductor para utilizar fuentes TrueType. | 
+| DC_VERSION| Retorna la versión de la especificación a la que el controlador de la impresora se ajusta.| 
+| DC_FIELDS |1 |
+| DC_PAPERS |2 |
+| DC_PAPERSIZE | 3 |
+| DC_MINEXTENT | 4 | 
+| DC_MAXEXTENT | 5 |
+| DC_BINS  | 6 |
+| DC_DUPLEX  | 7 |
+| DC_SIZE  | 8 |
+| DC_EXTRA   | 9 |
+| DC_VERSION  | 10 |
+| DC_DRIVER   | 11 |
+| DC_BINNAMES  | 12 |
+| DC_ENUMRESOLUTIONS | 13 |
+| DC_FILEDEPENDENCIES | 14| 
+| DC_TRUETYPE   | 15 |
+| DC_PAPERNAMES  | 16 |
+| DC_ORIENTATION | 17 |
+| DC_COPIES  | 18 |
+| <nCapability> | capacidad del dispositivos para la consulta |
+| <@cBuffer> | Buffer para obtener el resultado |
+
+====== Retorno ======
+
+| <nRetCode> | El valor de retorno es -1 si la función falla. |
+
+====== Ejemplo ======
+
+<code clipper>
+#include "FiveWin.ch"  
+#define DC_DUPLEX 7  
+#define DC_PAPERNAMES 16  
+ 
+ function Main()  
+ 
+ local cInfo  
+ 
+ if DeviceCapabilities( "Epson Stylus Color",;  
+  DC_DUPLEX ) == 0  
+  MsgInfo( "No DC_DUPLEX supported by this driver" )  
+  endif  
+ 
+ if DeviceCapabilities( "Epson Stylus Color",;  
+  DC_PAPERNAMES, @cInfo ) != 0  
+  MsgInfo( cInfo )  
+ endif  
+ 
+ return nil  
+</code>
+
+====== Código Fuente ======
+
+SOURCE\WINAPI\DEVICE.C  
+
+====== Ver también ====== 
+

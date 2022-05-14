@@ -1,0 +1,18 @@
+====== DrawGrayed() ======
+It draws a button with the disabled look.  Used to draw the buttons disabled in the bars of buttons. 
+
+====== Syntax ======
+DrawGrayed( <hDC>, <hBitmap>, <nRow>, <nCol> ) --> nil 
+
+====== Parameters ======
+^Parameters^Description^
+|<hDC>| Device Context of the control that contains the bitmap.|
+|<hBitmap>| Handle of the bitmap that we will draw in gray tones.|
+|<nRow>| Top coordinate |
+|<nCol>| Left coordinate |
+
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\WINAPI\BMPDRAW.C 

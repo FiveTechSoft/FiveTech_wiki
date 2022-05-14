@@ -1,0 +1,261 @@
+====== Creating a Button Bar from source code ======
+<code clipper>
+ DEFINE BUTTONBAR [ <oBar> ] ;
+ [ SIZE | BUTTONSIZE | SIZEBUTTON <nWidth>,;<nHeight> ] ;
+ [ 3D | 3DLOOK | _3D | _3DLOOK ] ;
+ [ TOP | LEFT | RIGHT | DOWN | FLOAT ] ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ CURSOR <oCursor> ]
+ [ 2007 ]
+</code>
+====== Creating a ButtonBar from source code and placing it at a specific location ======
+<code clipper>
+ @ <nRow>, <nCol> BUTTONBAR [ <oBar> ] ;
+ [ SIZE <nWidth>, <nHeight> ] ;
+ [ BUTTONSIZE <nBtnWidth>, <nBtnHeight> ] ;
+ [ 3D | 3DLOOK | _3D | _3DLOOK ] ;
+ [ TOP | LEFT | RIGHT | BOTTOM | FLOAT ] ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ CURSOR <oCursor> ]
+</code>
+====== Defining a button of the buttonbar ======
+<code clipper>
+ DEFINE BUTTON [<oBtn>] ;
+ [ OF | BUTTONBAR <oBar> ] ;
+ [ NAME | RESNAME | RESOURCE <cResName1>] ;
+ [,<cResName2>, <cResname3>, <cResname4>] ] ;
+ [ FILE | FILENAME | DISK <cBmpFile1>;
+ [,<cBmpFile2>, <cBmpFile3>, <cBmpFile4>] ] ;
+ [ ACTION | EXEC <uAction> ] ;
+ [ GROUP ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ ADJUST ] ; * Obsolete
+ [ WHEN <uWhen> ] ;
+ [ TOOLTIP <cToolTip> ] ;
+ [ PRESSED <lPressed> ] ;
+ [ ON DROP <bDrop>] ;
+ [ AT <nPos> ] ;
+ [ PROMPT < cPrompt> ] ;
+ [ FONT <oFont> ] ;
+ [ NO BORDER | FLAT ] ;
+ [ MENU <oPopup> ] ;
+ [ CENTER | TOP | LEFT | BOTTOM | RIGHT ]
+</code>
+====== To redefine a button placed on a dialogbox in a resource. ======
+(just a button, not a buttonbar). This lets you have buttons with bitmaps inside DialogBoxes without having to use Borland's BWCC.DLL
+<code clipper>
+ REDEFINE BTNBMP [<oBtn>] ;
+ [ ID <nId> ] ;
+ [ OF | BUTTONBAR <oBar> ] ;
+ [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>,cResname3>] ] ;
+ [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, <cBmpFile3>] ] ;
+ [ ACTION | EXEC | ON CLICK <uAction> ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ ADJUST ] ; * Obsolete
+ [ WHEN <uWhen> ] ;
+ [ UPDATE <lUpdate> ] ;
+ [ TOOLTIP <cToolTip> ] ;
+ [ PROMPT < cPrompt> ] ;
+ [ FONT <oFont> ] ;
+ [ NO BORDER <lNoBorder> ] ;
+ [ CENTER | TOP | LEFT | BOTTOM | RIGHT ]
+</code>
+====== To create a bitmap button from source code and place it at any container window ======
+<code clipper>
+ @ <nRow>, <nCol> BTNBMP [<oBtn>] ;
+ [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>, <cResName3>] ] ;
+ [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>, <cBmpFile3>] ] ;
+ [ SIZE <nWidth>, <nHeight> ] ;
+ [ ACTION <uAction> ] ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ WHEN <uWhen> ] ;
+ [ ADJUST ] ; * Obsolete
+ [ UPDATE ] ;
+ [ PROMPT < cPrompt> ] ;
+ [ FONT <oFont> ] ;
+ [ NO BORDER <lNoBorder> ] ;
+ [ CENTER | TOP | LEFT | BOTTOM | RIGHT ]
+</code>
+
+| <oBar> | A reference to the Bar Object|
+| <nWidth>, nHeight | The width and height of the buttons of the bar. By default is 28x28 pixels|
+| <oWnd> | A reference to the container Window of the bar|
+| <oCursor> | A reference to the mouse cursor object to use for the bar|
+| <oBtn> | A reference to the BitmapButton Object|
+| <cBmpFile1> | The name of the Bitmap file to display for normal state. |
+| <cBmpFile2> | Pressed state (optional). |
+| <cBmpFile3> | Disabled state (optional). |
+| <cBmpFile4> | Mouse-over state (optional). |
+| <cResName1> | The resource name of the Bitmap to display. This is used for accessing bitmaps stored in a Resource file (a .rc file or .dll file). |
+| <cResName2> | Pressed state (optional). |
+| <cResName3> | Disabled state (optional). |
+| <cResName4> | Mouse-over state (optional). |
+| <uAction> | The action to be performed when clicking the Button|
+| <cMsg> | The message to display on the message bar of the container Window of the Bar object which contains the BitmapButton|
+| <uWhen> | An expression that indicates if the button of the buttonbar is enabled or not|
+| <nId> | The identifier for the button placed at a DialogBox|
+| <cToolTip> | The text to show on a associated floating tooltip|
+| <bDrop> | The action to be performed when|
+| <nPos> | An optional left position coordinate|
+| <cPrompt> | An optional prompt to display|
+| <oFont> | An optional font to use for the prompt|
+| <bDrop> | The action to perform when an object is droped over the button|
+| <lPressed> | To show the button as pressed|
+| <oPopup> | Object Menu Popup to show when the button is pressed|
+
+====== CLAUSES ======
+
+| 3D 3DLOOK _3D _3DLOOK | To display the buttonbar with a gray 3D look. |
+| TOP LEFT RIGHT BOTTOM | Buttonbar alignment. Clicking on the buttonbar also popups a menu to select dinamically a new position. |
+| FLOAT | Places the buttonbar on a floating window. |
+
+**For the buttons on the buttonbar (BTNBMP)**
+
+| ADJUST | To automatically adjust the bitmap to the size of button. |
+| GROUP | Starts a new "group" of buttons in the ButtonBar.You may have as many groups as you need. |
+| UPDATE | For bitmap buttons placed on a DialogBox (without a buttonbar). The button will update its image automatically when doing a oDlg:Update(). |
+| NOBORDER | To show a flat style. |
+| FLAT | To show a flat style. |
+| CENTER TOP LEFT BOTTOM RIGHT | Button alignment |
+
+====== Note ======
+The clause ADJUST is not supported because now the bitmaps background color is automatically adjusted to his window or control conteiner. The pixel 0,0 (Left-Top) indicates the mask color to use for the adjustment. It is important that the color in that pixel is not used on any other part of the bitmap except where the mask should be applied. This kind of color adjustment is not possible with bitmap streching
+You may also place a buttonbar on a DialogBox. To do it, just create the buttonbar from the ON INIT clause when activating the DialogBox.
+At the ON INIT clause, a DialogBox behaves like a standard window.
+
+====== Example ======
+<code clipper>
+DEFINE BUTTONBAR oBar OF oWnd SIZE 80, 80 2007
+
+DEFINE BUTTON OF oBar PROMPT "Upload Stock" TOOLTIP "Upload your stock" ;
+       RESOURCE "Upload" ;
+       ACTION UploadStk()
+
+DEFINE BUTTON OF oBar PROMPT "Quick Search" TOOLTIP "Make a quick search" ;
+       RESOURCE "Search" ;
+       ACTION QuickSearch()
+    
+DEFINE BUTTON OF oBar PROMPT "Stock List" TOOLTIP "View the Central Database stock list" ;
+       RESOURCE "Table" ;
+       ACTION ShowAllStk()
+</code>  
+
+SAMPLES\TestBar.prg
+
+====== Screen SnapShot =====
+{{:buttonbar.jpg|:buttonbar.jpg}}
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   local oBar, oPopup, oBtn   
+
+   SetBalloon( .T. ) // Balloon shape required for tooltips
+
+   DEFINE WINDOW oWnd TITLE "FWH - Office 2007 look in your ButtonBars, MsgBar and Menus" ;
+      MENU BuildMenu() MDI
+
+   DEFINE BUTTONBAR oBar OF oWnd SIZE 60, 60 2007
+
+   DEFINE BUTTON OF oBar ACTION Print() ;
+      RESOURCE "attach" PROMPT "Attach" TOOLTIP "Attach"
+
+   DEFINE BUTTON OF oBar ACTION MsgInfo( "calendar" ) ;
+      RESOURCE "calendar" PROMPT "Calendar" WHEN .F. TOOLTIP "Calendar"
+
+   MENU oPopup POPUP
+      MENUITEM "One" ACTION MsgInfo( 1 )
+      MENUITEM "Two" ACTION MsgInfo( 2 )
+   ENDMENU
+
+   DEFINE BUTTON oBtn OF oBar ACTION oBtn:ShowPopup() ;
+      RESOURCE "people" PROMPT "Clients" GROUP ;
+      MENU oPopup TOOLTIP "Clients"
+
+   DEFINE BUTTON OF oBar ACTION Test() ;
+      RESOURCE "print" PROMPT "Print" TOOLTIP "Print"
+
+   SET MESSAGE OF oWnd TO "Testing the ButtonBar 2007 Office look" ;
+      CENTERED CLOCK KEYBOARD 2007
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Do you want to end?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu 2007
+      MENUITEM "&DataBases"
+      MENU
+         MENUITEM "&Clients..." FILENAME "..\bitmaps\16x16\favorite.bmp"
+         MENUITEM "&Report..."
+         MENU
+            MENUITEM "&One..." DISABLED
+            MENUITEM "&Two..." CHECKED
+            MENUITEM "&Three..." WHEN .F.
+         ENDMENU
+         SEPARATOR
+         MENUITEM "&End" ACTION oWnd:End()
+      ENDMENU
+      
+      MENUITEM "Edit" WHEN .F.
+      
+      oMenu:AddHelp()
+      
+      MENUITEM "Another item"
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function Print()
+
+   local oPrn
+   
+   PRINTER oPrn PREVIEW
+      PAGE
+         oPrn:Say( 2, 2, "Hello" )
+      ENDPAGE
+      PAGE
+         oPrn:Say( 2, 2, "Bye" )
+      ENDPAGE
+   ENDPRINT
+   
+return nil         
+
+//----------------------------------------------------------------------------//
+
+function Test()
+
+   local oDlg, cPass := Space( 4 )
+   
+   DEFINE DIALOG oDlg RESOURCE "test"
+   
+   REDEFINE GET cPass ID 100 OF oDlg
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+   MsgInfo( GetGuiResources() )
+   
+return nil   
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:buttonbar2007.jpg|:buttonbar2007.jpg}}
+
+====== See Also ======
+[[fivewin_class_tbar | Class TBar]]

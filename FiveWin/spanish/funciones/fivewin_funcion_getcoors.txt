@@ -1,0 +1,20 @@
+
+====== GetCoors() ======
+GetCoors()
+
+Returns an array with four coordinates values
+====== Sintaxis ======
+ GetCoors( <hWnd> ) --> aCoors 
+
+ This is a FiveWin function that retrieves the absolute coordinates of a
+window or a control. 
+====== Parámetros ======
+ <hWnd> The handle of the window. 
+====== Devuelve ======
+ <aCoors> A Clipper array of 4 elements: { nTop, nLeft, nBottom, nRight } 
+====== Ejemplo ======
+ See IDE\SOURCE for some working samples. 
+====== Código fuente ======
+ SOURCE\WINAPI\Rects.c 
+====== Ver también ======
+ GetClientRect() GetWndRect()

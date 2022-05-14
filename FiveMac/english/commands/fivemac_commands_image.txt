@@ -1,0 +1,13 @@
+====== Creates a IMAGE from source code ======
+<code clipper>
+@ <nRow>, <nCol> IMAGE [ <oImg> ] ;
+   [ OF <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ FILENAME <cFileName> ] 
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\timage.prg
+====== See Also ======
+[[fivemac_class_timage|Class TImage]]

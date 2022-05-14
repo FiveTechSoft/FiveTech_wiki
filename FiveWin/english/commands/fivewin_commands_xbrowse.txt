@@ -1,0 +1,851 @@
+====== Setting Default XBrowse Class ======
+
+Default XBrowse class is TXBrowse(). 
+It is possible to derive a class from TXBrowse() and set it as default browse class for all browses created till the default setting is changed.
+
+<code clipper>
+   SET XBROWSE TO <bInheritedClass>
+   [ SAVE PREVIOUS TO <bPrevClass> ]
+</code>
+OR
+<code clipper>
+   bPrev := SetXBrowse( { || TMyXBrowse() } )
+</code>
+
+After execution of this command (or function) all commands XBROWSE, XBROWSER create browses using the new default class.
+
+The code
+<code clipper>
+oBrw := TXBrows():New( oWnd ) // Note: Not TXBrowse():New()
+</code>
+also creates xbrowse using default browse set.
+
+====== Creating a XBrowse from source code / resource ======
+<code clipper>
+<nRow>, <nCol> [ COLUMN ] XBROWSE  <oBrw>  ;
+   [ SIZE <nWidth>, <nHeigth> ] ;
+   [ PIXEL> ] ;
+   [ ID <nID> ] ; // Resource ID
+   [ OF | DIALOG <oWnd> ] ;
+   [ DATASOURCE | ALIAS | ARRAY | RECSET | RECORDSET | OBJECT  <uDataSrc> ] ;
+   [ FIELDS <aFlds>] ; // Do not use. See notes.
+   [ AUTOCOLS ] ;
+   [ COLS | COLUMNS <aCols> ] ;
+   [ HEAD | HEADER | HEADERS <aHeaders> ] ;
+   [ FIELDSIZES | SIZES | COLSIZES <aColSizes> ] ;
+   [ PICS | PICTURE | PICTURES <aPics> ] ;
+   [ SORT | ORDERS <aSort> ] ;
+   [ JUSTIFY <aJust> ] ;
+   [ ROWS <aRows> ] ;
+   [ AUTOSORT ] ;
+   [ FOOTERS ] ;
+   [ FASTEDIT ] ;
+   [ ON CHANGE <uChange> ] ;
+   [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;
+   [ ON RIGHT CLICK <uRClick> ] ;
+   [ FONT <oFont> ] ;
+   [ CURSOR <oCursor> ] ;
+   [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+   [ MESSAGE <cMsg> ] ;
+   [ UPDATE ] ;
+   [ WHEN <uWhen> ] ;
+   [ VALID <uValid> ] ;
+   [ DESIGN ] ;
+   [ CELL ] ;
+   [ LINES ] ;
+   [ STYLE <c2KStyle: FLAT | STANDARD | 2007 | 2010 | 2013 | 2015 ] ;
+   [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ; // Ignored. Do not use
+   [ BACKGROUND <uBack> TILED | STRETCH | FILL | VERTICAL | HORIZONTAL ] ;
+   [ TRANSPARENT ] ;
+   [ NOBORDER ] ;
+   [ CLASS <bClass> ] ;
+</code>
+
+In this command if the clause **ID <nResourceID>** is used, this command creates **XBrowse from Resources**, ignoring <nRow>.<nCol>,<nWidth> and <nHeight>. 
+
+====== Creating XBrowse from Resource ======
+
+<code clipper>
+   REDEFINE [ COLUMN ] XBROWSE  <oBrw> [<clauses,...>] 
+   ID <nID> 
+   [<moreClauses,...>]
+</code>
+All clauses are same as classes in the preceding command, excepting <nRow>,<nCol> and SIZE clause.
+
+
+| <nRow>, <nCol> | The coordinates of the XBrowse. They mimic text mode coordinates by default. Treated as pixels if PIXEL clause is speicifed|
+| <oBrw> | Variable to hold the XBrowse object created by the command|
+| <nWidth>, <nHeight> | The sizes of the XBrowse in pixels. Values 0 or -values indicate margins from Right / Bottom of parent window/dialog. These margins are preserved when resized|
+| PIXEL | Specifies that <nRow>, <nCol> are in pixels|
+| <nID> | Specify ResourceID in case of Resource. This ignores <nRow>,<nCol>,<nWidth>,<nHeight>|
+| <oWnd> | A reference to the container object of the XBrowse, normally a window or a DialogBox|
+| <uDataSrc> | Datasource from which data is to be read. Can be Alias, RecordSet, Array, Query, Object, etc. The <uDataSrc> is examined and appropriate method is used to create the xbrowse|
+| <aFlds> | A list of fields to be used for column data\\ Do not use. FIELDS clause was originally included to help migration of LISTBOX command of WBrowse. Please use COLUMNS clause instead|
+| AUTOCOLS | Includes all columns from datasource.\\ AUTOCOLS and COLUMNS clauses are mutually exclusive|
+| <aCols> | List or Array of column expressions (case insensitive) / codeblocks. Eg: [{] "FIRST", "CITY", "SALARY + 100", "DATE()-DUEDATE", { //||// Int * FIELD->AMOUNT} [}]. |
+| <aHeaders> | A list or Array of column headers. Nil of no value defaults to column expression|
+| <aColSizes> | A list or Array of column sizes to override calculated widths.\\ Values indicate column width in pixels. Negative values indicate width in characters. XBrowse calculates required width based on font used. If character constant is provided, width is calcuated to accommodate the string value|
+| <aPics> | List or array of pictures to override default pictures provided by xbrowse. These values are stored in oCol:cEditPicture|
+| <aSort> | List or array of Sort Orders/Index Tags to override defaults provided by xbrowse for autosort. These values are stored in oCol:cSortOrder|
+| <aJust> | List or array of Align values to override default alignment of xbrowse.\\ .F. or AL_LEFT / AL_CENTER / .T. or AL_RIGHT.\\ By default XBrowse aligns Numerics, Dates and Timestamps to right and others to left\\ These values are stored in oCol:nDataStrAlign|
+| <aRows> | Optional Array of RecNos/BookMarks. If provided only those records are shown in the order of the array\\ This is not consistent with AUTOSORT|
+| AUTOSORT | Enables sorting of column's data when clicked on header. Sets oBrw:lAutoSort := .t.|
+| FOOTERS | Displays footers.|
+| FASTEDIT | Sets oBrw:lFastEdit := .t. Enables invoking inline edit when any text key is pressed and after edition, moves to next editable cell|
+| <uChange> | The action to be executed when changing the current row. If oBrw:lColChangeNotify := .t., executed when column is changed also|
+| <uLDblClick> | The action to be executed when double clicking on a row. oCol:bLDClickData takes precedence over this.|
+| <uRClick> | The action to be executed when right clicking on a row. Order of preference: 1. Popup, 2. oCol:bRClickData, 3. oBrw:bRClicked|
+| <oFont> | The font used for the XBrowse|
+| <oCursor> | The cursor used for the XBrowse|
+| <nClrFore> | The color of the text of the XBrowse|
+| <nClrBack> | The color of the background of the XBrowse|
+| <cMsg> | The message to show at the messageBar of the XBrowse container if defined (a window or a DialogBox normally)|
+| UPDATE | Container window/dialog's update method refreshes the browse|
+| <uWhen> | The condition that has to be respected for the XBrowse to be initially active (ie. not disabled)|
+| <uValid> | The condition that has to be respected for change the focus from the XBrowse|
+| DESIGN | Sets the control in design mode|
+| CELL | Sets oBrw:nMarqueeStyle := MARQSTYLE_HIGHLCELL (3)|
+| LINES | Sets horizontal and vertical lines to black and full vertical lines |
+| STYLE | Default 2007. Can be changed with this clause|
+| <uBack> | Sets an image or gradient as background of the browse and also makes the browse cells transparent |
+| TRANSPARENT | Sets oBrw:lTransparent to .T.|
+| NOBORDER | Default WS_BORDER style is not used. Ignored for resources. |
+| <bClass> | bClass can be a class inherited from XBrowse. This instance is created using the class specified. Usage: CLASS { //||// TMyClass() } or CLASS TMyClass(). If this class is not derived from TXBrowse() but derived from TXBrwColumn(), browse is created using default class and all columns are created using this class |
+
+**DATASOURCE:**
+
+It is important to specify the DATASORUCE. Browse system examines the type of <uDataSrc>, whether RDD,RecordSet,oQry,oTree,etc. and applies appropriate method to build the navigational, data access and seek blocks.
+
+
+**COLUMNS CLAUSE:**
+
+Instead of using separate clauses for COLUMNS, HEADERS, PICTURES, COLSIZES, JUSTIFY, SORT it is also possible to use single multi-dimentional array with COLUMNS clause.
+
+The array should be of this format:
+<code clipper>
+aCols := ;
+{ { <colExpr1>, [<cHeader1>], [<cPicture1>], [<nWidth1>], [<nAlign1>], [<cnSortOrder1>] }, ;
+  ...
+  { <colExprN>, [<cHeaderN>], [<cPictureN>], [<nWidthN>], [<nAlignN>], [<cnSortORderN>] }  }
+
+@ r,c XBROWSE <clauses> ;
+      COLUMNS aCols ;
+      [<moreClauses>]
+</code>
+
+Both approaches provide identical functionality.
+
+It is highly recommended that columns are created by using COLUMNS clause. This enables xbrowse to match the column names / expressions with the field structure of the data source to ascertain field type, length, decimals, whether readonly, corresponding index tag, etc and decide suitable picture format, alignment, sortorder, bEditvalue, bOnPostEdit, etc. This also enables portable code across different datasources of tables with similar structures.
+
+====== Adding columns to a XBrowse ======
+
+This command was created to fecilitate migration from TCBrowse. It is recommended that all columns be created using COLUMNS clause with XBROWSE command. In cases that is not possible, this command can be used to add/insert additional columns.
+
+
+<code clipper>
+ ADD [ COLUMN ] TO XBROWSE <oBrw> ;
+ [ DATA | SHOWBLOCK <uData> ] ;
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+ [ ALIGN ] [ LEFT | CENTERED | CENTER | RIGHT ] ;
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ] ;
+ [ PICT | PICTURE <cPicture> ] ;
+ [ BITMAP [BMPDATA <uBmpData>] [ IN <aBmp> ] ] ;
+ [ EDITABLE ] ;
+ [ ON EDIT <bOnPostEdit> ] ;
+ [ MESSAGE <cMsg> ] ;  // Ignored
+ [ VALID <uValid> ] ;
+ [ ERROR [MSG] [MESSAGE] <cErr> ] ; // Ignored
+ [ NOBAR | NOHILITE ] ; // Ignored
+ [ ORDER | INDEX | TAG <cOrder> ]
+ [ HIDE | HIDDEN ] ;
+ [ TOTAL <nTot> ] ;
+ [ FOOTER <uFooter> ];
+ [ CARGO <uCargo> ]
+</code>
+| <uData> | The expression that is evaluated to retrieve the column data. Eg: FIELD->CITY\\ Recommended to specify a SETGET block. Eg: {%%|x|%%If( x == nil, FIELD->CITY,FIELD->CITY := x }|
+| <cHead> | The header of the column|
+| <nWidth> | The width of the column|
+| <cPicture> | The picture of the column|
+| <bOnPostEdit> | The codeblock that is evaluated after the column editing is finished.\\ Recommended to omit if SETGET block is specified for DATA|
+| <cOrder> | The order to be used to sort the data|
+
+====== CLAUSES ======
+|LEFT, CENTER, RIGHT| To align the column data|
+|BITMAP| To specify a bitmap column|
+|EDITABLE| To specify that the column will be editable|
+
+====== Sample Code 1 ======
+
+** Xbrowse used to display directory tree, similar to Windows Explorer, The sample also shows how to use Tree object along with xBrowse **
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, oTree, oFont, b
+
+   SET DATE ITALIAN
+
+   oTree := MakeTree()
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      TITLE 'Directory' ;
+      FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE 300,200 PIXEL OF oDlg
+
+   oBrw:SetTree( oTree, { "CLOSE", "OPEN", "TXTMIN" } )
+   oBrw:bKeyChar  := { |nKey| If( nKey == VK_RETURN .and. ! Empty( oBrw:oTreeItem:bAction ), ;
+                                Eval( oBrw:oTreeItem:bAction, oBrw:oTreeItem ), nil ) }
+ 
+
+   WITH OBJECT oBrw:aCols[ 1 ]
+
+      :nWidth     := 300
+      :cHeader    := 'File/Folder'
+      b           := :bLDClickData
+
+      :bLDClickData  := { |r,c,f,o| ToggleFolder( r,c,f,o,b ) }
+
+      :bBmpData   := { || If( 'D' $ oBrw:oTreeItem:Cargo[ 5 ], ;
+                          If( oBrw:oTreeItem:lOpened, 1, 2 ), ;
+                           3 ) ;
+                     }
+
+   END
+
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 2 ] ;
+         PICTURE '@EZ 999,999,999' HEADER 'Bytes'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 3 ] HEADER 'Date'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 4 ] HEADER 'Time'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 5 ] HEADER 'Attr'
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTER
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function ToggleFolder( r, c, f, oCol, b )
+
+   local oBrw  := oCol:oBrw
+   local oItem := oBrw:oTreeItem
+
+   If ! oItem:lOpened .and. ! Empty( oItem:bAction )
+      Eval( oItem:bAction, oItem )
+   endif
+
+   Eval( b, r, c, f, oCol )
+
+return nil
+
+
+//----------------------------------------------------------------------------//
+static function MakeTree()
+
+   local oTree, oItem
+   local cPath := 'D:\FWH'
+
+   TREE oTree
+      TREEITEM oItem PROMPT cPath
+      oItem:Cargo    := { cPath, 0, CtoD( '' ), Space( 8 ), 'D', cPath }
+      oItem:SetTree( SubTree( oItem ) )
+      oItem:Open()
+   ENDTREE
+
+return oTree
+
+//----------------------------------------------------------------------------//
+
+static function SubTree( oParent )
+
+   local oTree, n, oItem, nLevel
+   local cFolder := oParent:Cargo[ 6 ]
+   local aDir     := Directory( cFolder + '\*.*', 'D' )
+
+   nLevel   := oParent:nLevel + 1
+
+   TREE oTree
+   for n := 1 to Len( aDir )
+      if ! ( aDir[ n ][ 1 ] = '.' )
+
+         TREEITEM oItem PROMPT aDir[ n ][ 1 ]
+
+         oItem:nlevel := nLevel
+         oItem:Cargo  := aDir[ n ]
+
+         AAdd( oItem:Cargo, cFolder + '\' + aDir[ n ][ 1 ] )
+
+         if 'D' $ aDir[ n ][ 5 ]
+            oItem:bAction  := { |o| o:SetTree( SubTree( o ) ), o:bACtion := nil }
+         else
+            oItem:bAction  := { |o| MsgInfo( o:cPrompt ) }
+         endif
+      endif
+   next
+   ENDTREE
+
+return oTree
+//----------------------------------------------------------------------------//
+</code> 
+
+** Screen Snapshot **
+
+{{:xbrowse1.jpg|:xbrowse1.jpg}}
+
+====== Sample Code 2 ======
+
+** A sample demonstrating the capability of displaying Alpha Channel Images on Header, Footer and Data Rows **
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+REQUEST DBFCDX
+
+static hLib
+
+function main()
+
+   local oDlg
+   local oBrw
+   local nI
+   local hBitMap1, hBitMap2, hBitMap3, hBitMap4
+   local aArray:={}
+   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\text.bmp", 50 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\phone.bmp", 100 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\ichat.bmp", 150 } )   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\settings.bmp", 200 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\movie.bmp", 255 } )      
+
+
+   DEFINE DIALOG oDlg title "TEST" size 800,600
+
+   @ 0,0 XBROWSE oBrw OF oDlg columns {1,2,3};
+      Array aArray sizes {100,300, 100} LINES CELL autocols fastedit
+
+   oBrw:nMarqueeStyle              := 1
+   oBrw:nRowHeight                 := 100
+   oBrw:lFooter                    := .t.
+        
+   oBrw:aCols[ 1 ]:nEditType       := TYPE_IMAGE
+   oBrw:aCols[ 1 ]:lBmpStretch     := .f.
+   oBrw:aCols[ 1 ]:lBmpTransparent := .t.
+   oBrw:aCols[ 1 ]:bStrImage       := {|oCol, oBrw| oBrw:aRow[ 2 ] }
+   oBrw:aCols[ 1 ]:nDataBmpAlign   := AL_CENTER
+   oBrw:aCols[ 1 ]:bPopUp          := { | o | ColMenu( o ) } 
+   oBrw:aCols[ 1 ]:bAlphaLevel     := { | o | o:oBrw:aRow[ 3 ] }
+   
+   oBrw:aCols[ 2 ]:nEditType       := EDIT_BUTTON
+   oBrw:aCols[ 2 ]:bEditBlock      := {|nRow, nCol, oCol| oCol:Value := cGetFile( "*.*", "Select a file" )  }
+   oBrw:aCols[ 2 ]:AddBmpFile( "..\bitmaps\AlphaBmp\sound.bmp" )
+   oBrw:aCols[ 2 ]:nHeadBmpNo      := 1
+   
+   
+   oBrw:aCols[ 3 ]:nEditType       := 1
+   oBrw:aCols[ 3 ]:bOnPostEdit     := {|oCol, xVal, nKey| oCol:Value( xVal ) }
+   oBrw:aCols[ 3 ]:AddBmpFile( "..\bitmaps\AlphaBmp\video.bmp" )
+   oBrw:aCols[ 3 ]:nFootBmpNo      := 1
+   
+   oDlg:oClient                    := oBrw
+   
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED ON INIT oDlg:Resize()
+
+return nil 
+
+static function ColMenu( ocol )
+
+   local oPop
+
+   MENU oPop POPUP 2007
+      MENUITEM "Left Align" WHEN oCol:nDataBmpAlign > 0 ;
+         ACTION ( oCol:nDataBmpAlign:= AL_LEFT, oCol:oBrw:Refresh() )
+      MENUITEM "Center Align" WHEN oCol:nDataBmpAlign != AL_CENTER ;
+         ACTION ( oCol:nDataBmpAlign := AL_CENTER, oCol:oBrw:Refresh() )
+      MENUITEM "Right Align" WHEN oCol:nDataBmpAlign != AL_RIGHT ;
+         ACTION ( oCol:nDataBmpAlign := AL_RIGHT , oCol:oBrw:Refresh() )
+
+      MenuAddItem( "Transparent", ,oCol:lBmpTransparent, .t., ;
+         { |oItem| oCol:lBmpTransparent := !oCol:lBmpTransparent, ;
+            oItem:SetCheck( oCol:lBmpTransparent ), ;
+            oCol:oBrw:refresh() } )
+
+      MenuAddItem( "Stretch", ,oCol:lBmpStretch, .t., ;
+         { |oItem| oCol:lBmpStretch := !oCol:lBmpStretch, ;
+            oItem:SetCheck( oCol:lBmpStretch ), ;
+            oCol:oBrw:refresh() } )
+
+   ENDMENU
+
+return oPop
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot 2 **
+
+{{:xbrowsealpha.jpg|:xbrowsealpha.jpg}}
+
+====== Sample Code 3 ======
+
+** A sample demonstrating the capability of displaying Gradient colors **
+\Fwh\Samples\XbrGrad.Prg
+<code clipper>
+/*
+*  xbrgrad.prg
+*  Grandient fills on Xbrowse
+*  Dynamic modifications
+*
+*/
+
+#include 'fivewin.ch'
+#include 'ord.ch'
+#include 'xbrowse.ch'
+
+REQUEST DBFCDX
+
+static aStack  := {}
+static cGrad
+static nGrad := 50
+
+//------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, cAlias := cGetNewAlias( "CUST" )
+   local oBr, oFont
+   local aGrad := ;
+      { ;
+         { 0.5,    RGB( 140,  56,   6 ),  RGB( 237, 234, 109 )   }, ;
+         { 0.5,    RGB( 237, 234, 109 ),  RGB(  85,  62,  84 )   }  ;
+      }
+   SET DATE ITALIAN
+   SET CENTURY ON
+   XBrNumFormat( 'E', .t. )
+   SetBalloon( .t. )
+
+   USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+   SET ORDER TO TAG FIRST
+   GO TOP
+
+   DEFINE FONT oFont   NAME "TAHOMA" SIZE 0,-11 BOLD
+   DEFINE BRUSH oBr    RESOURCE "beige2"
+
+   DEFINE DIALOG oDlg SIZE 760,460 FONT oFont BRUSH oBr ;
+      TITLE 'Xbrowse Color Gradient Designer'
+
+   @ 10,10 XBROWSE oBrw  ;
+            COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+            COLSIZES nil,10 OF oDlg ;
+            SIZE 360,170 PIXEL ;
+            ALIAS cAlias AUTOSORT FOOTERS LINES CELL ;
+            BACKGROUND aGrad VERTICAL
+
+   oBrw:nStretchCol   := 2
+   oBrw:Married:SetCheck( , .t. )
+
+   WITH OBJECT oBrw:Salary
+      :nTotal   := 0 ; :lTotal   := .t. ; :nEditType := EDIT_GET
+   END
+
+   oBrw:MakeTotals()
+   oBrw:CreateFromCode()
+
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+
+   @ 189,354 BUTTONBMP BITMAP 'COPY' SIZE 16,16 PIXEL OF oDlg ;
+      ACTION CopyToClipBoard( oBrw )
+   ATail( oDlg:aControls ):cToolTip :=  'Copy Gradient Array to Clip Board'
+
+   @ 185, 10 SAY 'Gradient Array :' SIZE 60,10 PIXEL OF oDlg TRANSPARENT
+
+   @ 195, 10 GET cGrad ;
+         SIZE 340,10 PIXEL OF oDlg COLOR CLR_BLACK,CLR_WHITE UPDATE ;
+         VALID { |oGet| SetGradArray( oGet, oBrw ) }
+
+   @ 210, 10 BUTTON 'Orientation'  SIZE 40,12 PIXEL OF oDlg ;
+      ACTION oBrw:SetBackGround( ,!oBrw:oBrush:Cargo[2] )
+   ATail( oDlg:aControls ):cToolTip := 'Change Orientaion of Gradient'
+
+   @ 210, 52 BUTTON 'Top Color'    SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 1 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Top Color of Gradient'
+
+   @ 210, 94 BUTTON 'Center Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 2 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Center Color of Gradient'
+
+   @ 210,136 BUTTON 'Bottom Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 3 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Bottom Color of Gradient'
+
+   @ 210,178 BUTTON 'Undo' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION ( oBrw:SetBackGround( ATail( aStack ) ), ;
+               ASize( aStack, Len( aStack ) - 1 ), ;
+               oDlg:Update(), oDlg:aEvalWhen() ) ;
+      WHEN Len( aStack ) > 0
+   ATail( oDlg:aControls ):cToolTip := 'Undo Last Change'
+
+   @ 210,220 GET nGrad PICTURE '999 %' SIZE 20,12 PIXEL OF oDlg ;
+      SPINNER MIN 10 MAX 90 RIGHT UPDATE ;
+      ON CHANGE SetGradTrans( Self, oBrw ) ;
+      VALID { |oGet| SetGradTrans( oGet, oBrw ) }
+
+   @ 210,330 BUTTON 'Close' SIZE 40,12 PIXEL OF oDlg CANCEL ;
+      ACTION oDlg:End()
+   ATail( oDlg:aControls ):cToolTip := 'Exit Application'
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   RELEASE BRUSH oBr
+   RELEASE FONT oFont
+
+   CLOSE (cAlias)
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function SelBrwGradClr( oBrw, nPart )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+   local aSave := AClone( aGrad )
+   local lVert := oBrw:oBrush:Cargo[ 2 ]
+   local nClr
+
+   nClr  := If( nPart == 1, aGrad[ 1 ][ 2 ], If( nPart == 2, aGrad[ 1 ][ 3 ], aGrad[ 2 ][ 3 ] ) )
+   nClr  := ChooseColor( nClr )
+   SetBrwGradClr( oBrw, nPart, nClr )
+   AAdd( aStack, aSave )
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+   oBrw:oWnd:Update()
+   oBrw:oWnd:aEvalWhen()
+   oBrw:SetFocus()
+
+return aSave
+
+//------------------------------------------------------------------//
+
+static function SetBrwGradClr( oBrw, nPart, nClr )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+
+   if nPart == 1
+      aGrad[ 1 ][ 2 ] := nClr
+   elseif nPart == 2
+      aGrad[ 1 ][ 3 ] := aGrad[ 2 ][ 2 ] := nClr
+   elseif nPart == 3
+      aGrad[ 2 ][ 3 ] := nClr
+   endif
+   oBrw:SetBackGround( aGrad )
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradTrans( oGet, oBrw )
+
+   local n  := oGet:oGet:VarGet() * 0.01
+   local aGrad := AClone( oBrw:oBrush:Cargo[ 1 ] )
+
+   if n >= .1 .and. n <= .9
+      aGrad[ 1 ][ 1 ] := n; aGrad[ 2 ][ 1 ] := 1 - n
+      oBrw:SetBackGround( aGrad )
+      cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+      oBrw:oWnd:Update()
+
+   endif
+
+return .t.
+
+//------------------------------------------------------------------//
+
+static function CopyToClipBoard( oBrw )
+
+   local oClip
+
+   DEFINE CLIPBOARD oClip OF oBrw:oWnd
+
+   if oClip:Open()
+      oClip:SetText( cClrToCode( oBrw:oBrush:Cargo[ 1 ] ) )
+      oClip:Close()
+   endif
+   oClip:End()
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradArray( oGet, oBrw )
+
+   local lValid   := .f.
+   local cText := StrTran( AllTrim( oGet:oGet:VarGet() ), 'RGB','nRGB' )
+   local aGrad
+
+   TRY
+      aGrad := &cText
+      if IsVaildGradArray( aGrad )
+         AAdd( aStack, oBrw:oBrush:Cargo[ 1 ] )
+         oBrw:SetBackGround( aGrad )
+         cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+         oBrw:oWnd:Update()
+         oBrw:oWnd:aEvalWhen()
+         lValid   := .t.
+      endif
+   CATCH
+      oGet:oGet:VarPut( PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 ) )
+      oGet:Refresh()
+   END
+
+   if ! lValid
+      MsgInfo( 'Not a valid Gradient Array' )
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+
+static function IsVaildGradArray( aGrad )
+
+   local lValid   := .t.
+   local n, x
+
+   if Len( aGrad ) == 2
+      for n := 1 to 2
+         if Len( aGrad[ n ] ) == 3
+            if ( ( x := aGrad[ n ][ 1 ] ) > 0 .and. x < 1 ) .and. ;
+               ( ( x := aGrad[ n ][ 2 ] ) >= 0 .and. x <= CLR_WHITE ) .and. ;
+               ( ( x := aGrad[ n ][ 3 ] ) >= 0 .and. x <= CLR_WHITE )
+            else
+               lValid   := .f.
+               exit
+            endif
+         else
+            lValid   := .f.
+            exit
+         endif
+      next n
+   endif
+
+   if lValid
+      aGrad[ 2 ][ 1 ] = 1 - aGrad[ 1 ][ 1 ]
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+static function GradStr( aGrad )
+return StrTran(StrTran( cClrToCode( aGrad ), ';' + CRLF, '' ),' ','' )
+//------------------------------------------------------------------//
+
+EXTERNAL nRGB
+</code>
+
+** Screen Snapshot 3 **
+
+{{:xbrowsegradient.jpg|:xbrowsegradient.jpg}}
+
+
+====== Sample Code 4 ======
+
+** A sample demonstrating the the usage of Windows 7 row selection colors in xBrowse **
+
+\Fwh\Samples\Xbrwin7.Prg
+<code clipper>
+// Using Windows 7 row selection colors in xbrowse
+
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+function Main()
+
+   local oDlg, oBrw, oFont
+
+   USE CUSTOMER ALIAS CUST
+
+   DEFINE FONT oFont NAME 'Tahoma' SIZE 0, -14
+   
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      FONT oFont TITLE 'XBrowse Gradient Rows'
+
+   @ 10, 10 XBROWSE oBrw OF oDlg ;
+      SIZE 300, 200 PIXEL ;
+      AUTOCOLS ALIAS 'CUST' BACKGROUND ""
+      
+   oBrw:nRowDividerStyle = LINESTYLE_NOLINES
+   oBrw:nColDividerStyle = LINESTYLE_NOLINES
+   oBrw:nMarqueeStyle    = MARQSTYLE_HIGHLROW
+
+   AEval( oBrw:aCols, { | oCol | oCol:bPaintText := { | oCol, hDC, cData, aRect | ;
+          PaintCol( oCol, hDC, cData, aRect ) } } )
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oFont:End()
+
+return nil
+
+static function PaintCol( oCol, hDC, cData, aRect )
+
+   if oCol:oBrw:VGetPos() == Cust->( OrdKeyNo() )
+      GradientFill( hDC, aRect[ 1 ] - 2, aRect[ 2 ] - 3, aRect[ 3 ] + 1, aRect[ 4 ] + 5,;
+                    { { 1, RGB( 220, 235, 252 ), RGB( 193, 219, 252 ) } }, .T. )
+      RoundBox( hDC, 2, aRect[ 1 ] - 1, WndWidth( oCol:oBrw:hWnd ) - 22, aRect[ 3 ] + 1, 2, 2,;
+                RGB( 235, 244, 253 ), 1 ) 
+      RoundBox( hDC, 1, aRect[ 1 ] - 2, WndWidth( oCol:oBrw:hWnd ) - 21, aRect[ 3 ] + 2, 2, 2,;
+                RGB( 125, 162, 206 ), 1 ) 
+   endif
+
+   SetTextColor( hDC, 0 )
+   DrawTextEx( hDC, cData, aRect, oCol:nDataStyle )
+
+return nil
+</code>
+
+** Screen Snapshot 4 **
+
+{{:xbrowsewin7.jpg|:xbrowsewin7.jpg}}
+
+====== Sample Code 5 ======
+
+** A sample demonstrating the Vertical font headers in xBrowse **
+
+\Fwh\Samples\TestXbr5.Prg
+<code clipper>
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+static oFont, ovFont
+
+function main()
+
+   local oWnd, oBrw
+
+   use customer
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE FONT oVfont NAME 'TAHOMA' SIZE 0,-12 NESCAPEMENT 900
+
+   DEFINE WINDOW oWnd
+   oWnd:SetFont( oFont )
+
+   @ 0,0 XBROWSE oBrw ;
+      COLUMNS 'First', 'Last', 'Age' ;
+      OF oWnd ;
+      ALIAS 'CUSTOMER' ;
+      LINES CELL
+
+   WITH OBJECT oBrw:oCol( "Age" )
+      :oHeaderFont := oVFont
+      :cHeader := "Age Of Employee"
+      :AddBmpFile( '..\bitmaps\attach.bmp' )
+      :nHeadBmpNo := 1
+   END
+
+
+   oBrw:CreateFromCode()
+   oWnd:oClient := oBrw
+
+   SET MESSAGE OF oWnd TO "XBrowse Vertical Fonts" 2007
+   ACTIVATE WINDOW oWnd
+
+return nil
+//===========================
+</code>
+
+** Screen Snapshot 5 **
+
+{{:xbrowsevertical.jpg|:xbrowsevertical.jpg}}
+
+** Sample 6: How to use xBrowse to display data from multiple Alias **
+
+//Difference between COLUMNS and FIELDS//
+
+COLUMNS CLAUSE is a list of column names of the Alias assigned to the browse.
+FIELDS clause is for any expressions. FIELDS clause is to be used for data from other related Aliases or any complext expressions.
+
+When we want to display any field of the alias assigned to XBrowse, it is desirable to use COLUMNS clause but not FIELDS clause. When we use COLUMNS clause, XBrowse automatically reconginses fieldtype,fieldlen, fielddec and suitably decides, alignment, picture clauses and also automatically generates bOnPostEdit blocks and cSortOrder. We forgo this advantage if we use FIELDS clause or use OOPS syntax of creating columns by oBrw:AddCol(), etc. methods. We deirve the maximum power of XBrowse when we use the COMMAND syntax.
+
+When both COLUMNS and FIELDS clauses are speicified, XBrowse places the columns first and then the fields. We can later rearrange the sequence of xbrowse columns.
+
+Here is an example assuming 2 DBFs BILLS and CUSTOMER.
+
+<code clipper>
+USE BILLS
+USE CUSTOMER ALIAS CUST
+SET ORDER TO CUSTID
+SELECT BILLS
+SET RELATION TO CUSTID INTO CUST
+
+@ 10,10 XBROWSE oBrw SIZE 400,300 PIXEL OF oDlg ;
+  COLUMNS 'NUMBER', 'CUSTID', 'QUANTITY', 'RATE' ;
+  FIELDS CUST->CUSTNAME, CUST->STATE, BILLS->QUANTITY * BILLS->RATE ;
+  HEADERS 'BillNo', 'ID', 'Quantity', 'Rate', 'Customer', 'State', 'Amount' ;
+  PICTURES nil, nil, nil, nil, nil, nil, '999,999.99' ;
+  ALIAS BILLS
+
+  // we defined picture clause only for the last calculated column.
+  // XBrowse automatically decides picture clauses for NUMBER,CUSTID,QUANITY and RATE
+  // based on the DbStruct() of BILLS.
+
+  oBrw:ReArrangeCols( 'BillNo', 'ID', 'Customer', 'State', 'Quantity', 'Rate', 'Amount' )
+  oBrw:nStretchCol := STRETCHCOL_WIDEST
+</code>
+
+FiveWin discourages use of bStrData directly. This should be left for internal use by the XBrowse column object. Instead, it is desirable to assign the codeblock to oCol:bEditValue and specify the picture in oCol:cEditPicture. Still it is a lot more advantageous to use the COMMAND syntax rather than the OOPS style.
+
+** Sample 7: How to use xBrowse to display Array Data **
+
+Using command syntax helps faster, shorter, bug-free and portable coding than using methods like oBrw:SetArray, oBrw:SetRDD, etc. This approach also helps taking the best advantage of the full built-in power of xBrowse.
+
+<code clipper>
+#include "FiveWin.Ch"
+#include "xbrowse.ch"
+
+//-----------------------//
+Function Main()
+
+   Local aData := { ;
+     { 1, 'One',     45, date(),   .t. }, ;
+     { 2, 'Two',   2222, date()-1, .f. } , ;
+     { 3, 'Three', 3333, date()-2, .t. }, ;
+     { 4, 'Four',  4444, date()-3, .f. } }
+   Local oDlg, oBrw, oFont
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 440,240 PIXEL FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE -10,-10 PIXEL OF oDlg ;
+      COLUMNS 1, 2, 3, 5, 4 ;
+      HEADERS 'No', 'Description', 'Number', 'Status', 'Date' ;
+      PICTURES '99', nil, '@E 99,999.99', nil, 'dd-mmm-yyyy' ;
+      ARRAY aData CELL LINES NOBORDER FASTEDIT
+
+   oBrw:Status:SetCheck( , .t. )
+   AEval( oBrw:aCols, { |o| o:nEditType := EDIT_GET } )
+
+   oBrw:nStretchCol  := STRETCHCOL_WIDEST
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+   RELEASE FONT oFont
+
+Return ( 0 )
+</code>
+
+{{:xbrarr.jpg|:xbrarr.jpg}}
+
+
+====== See also ======
+[[fivewin_class_txbrowse | Class TxBrowse ]], [[fivewin_class_tcbrowse | Class TcBrowse ]], [[fivewin_class_twbrowse | Class TwBrowse ]] \\
+[[xbrowse| xBrowse Miscellaneous Notes]]

@@ -1,0 +1,29 @@
+====== DDECreateDataHandle() ======
+Crea un manejador que identifica los datos especificados.
+
+====== Sintaxis: ======
+DDECreateDataHandle( <hInst>, <cBuffer>, <nLen>, <nOffset>, <nItem>, <nClipFmt>, <nFlags> ) --> hData  
+ 
+====== Parámetros: ======
+^Parámetro^Descripción^
+|<hInst>| Identificador de instancia.|
+|<cBuffer>| El buffer de datos a ser copiados desde el objeto DDE.|
+|<nLen>| La cantidad de bytes a copiar desde el buffer.  |
+|<nOffset>| El desplazamiento, en bytes, desde el principio del buffer.  |
+|<nItem>| El manejador de una cadena previamente creada por un llamado a DDECreateStringHandle().|
+|<nClipFmt>| Formato de datos del portapapeles.|
+|<nFlags>| Especifica la creación de banderas.|
+ 
+====== Retorno: ======
+^Retorno^Descripción^
+|<hData>| El manejador de datos. Cero en caso de fallo.  |
+
+====== Ejemplo: ======
+
+====== Código fuente: ======
+SOURCE\WINAPI\DDEML.C  
+
+====== Ver también ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

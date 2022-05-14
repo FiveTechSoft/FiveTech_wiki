@@ -1,0 +1,34 @@
+
+====== DestroyWindow() ======
+DestroyWindow()
+
+Destroys the specified window
+====== Sintaxis ======
+ DestroyWindow( <hWnd> ) --> lSuccess 
+
+ The DestroyWindow function destroys the specified window. The function
+sends appropriate messages to the window to deactivate it and remove the
+input focus. It also destroys the window's menu, flushes the application
+queue, destroys outstanding timers, removes clipboard ownership, and
+breaks the clipboard-viewer chain (if the window is at the top of the
+viewer chain). 
+
+ It sends WM_DESTROY and WM_NCDESTROY messages to the window. If the
+given window is the parent of any windows, DestroyWindow automatically
+destroys these child windows when it destroys the parent window. The
+function destroys child windows first, and then the window itself. 
+
+ The DestroyWindow function also destroys modelessdialog boxes created by
+the CreateDialog function. 
+
+ FiveWin manages all these functions through Classes.Use FiveWin Classes
+as they are much easier to use and more powerful. 
+
+====== Parámetros ======
+ <hWnd> The handle of the window to be destroyed. 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+====== Código fuente ======
+ SOURCE\WINAPI\WndDestr.c 
+====== Ver también ======
+ CreateWindow()

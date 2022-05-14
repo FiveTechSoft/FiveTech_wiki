@@ -1,0 +1,76 @@
+====== Class TMultiGet ======
+
+Memo Get class                                                                 
+Inherits from TControl                                                         
+====== DATA ======
+|lReadOny|If the text does not allows editing|
+|nPos|The cursor position inside the control|
+|hHeap|Global memory handle|
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|AdjClient|Adjust its dimensions to its container object|
+|Copy|Copy the selected text into the clipboard|
+|Create|Specific interface to WinApi CreateWindow|
+|cToChar|Generates a data template to build a Dialog|
+|Cut|Deletes the selected text and copies it into|
+|Clipboard||
+|Default|Default object initialization|
+|Del|Deletes the selected text without affecting the|
+|Clipboard||
+|DelLine|Deletes the specified line number. Default current|
+|one||
+|Destroy|Destroys the control|
+|Display|Displays the control|
+|DlgGoLine|Shows a dialog for selecting a line number where to|
+|move|the cursor|
+|Find|Standard search text DialogBox|
+|GetLine|Retrieves the specified line number. Default current|
+|one||
+|GetLineCount|Retrieves the number of text lines|
+|GetCol|Retrieves the current cursor col|
+|GetRow|Retrieves the current cursor row|
+|GotFocus|Action to perform when getting the focus|
+|Initiate|Generic initialization|
+|LostFocus|Action to perform when losing the focus|
+|MouseMove|Action to perform when moving the mouse over it|
+|Move|Moves the control|
+|Print|Prints the text|
+|Refresh|Updates the text shown and forces repainting|
+|SaveToFile|Saves the text to a filename|
+|SetCoors|Sets new coordinates and moves the control|
+|VScroll|Vertical scrollbar events dispatcher|
+|HScroll|Horizontal scrollbar events dispatcher|
+|KeyChar|Process the keyboard input|
+|SetPos|Changes the cursor position|
+|Paint|Draws the text|
+|cText|Get / Set the text of de TMultiGet Object.|
+|GetSel|Retrieves the selection from the TMultiGet editing|
+|buffer.||
+|GetSelPos|Retrieves the start and end position of the currently|
+|selected|text.|
+|Append|Appends cText at the end of the text control|
+|GoBottom|Go to the end of the text control|
+|Goto|Go to a specefic text line|
+|HideSel|Hides Selection|
+|LButtonDown|Action to be performed when clicking the mouse.|
+|LButtonUp|Action to be performed when unclicking the mouse|
+|Len|Len of the control text string|
+|LimitText|Sets unlimited text size.|
+|LineIndex|Number of characters from the beginning of the edit control|
+|to|the specified line|
+|Paste|Paste cText to the edit control a the current cursor|
+|position||
+|RButtonDown|Action to be performed when clicking the right mouse|
+|button||
+|Replace|Replace the current selected text with cText|
+|SelectAll|Select all the edit control text|
+|SetSel|Select from nStart to nEnd|
+|KeyDown|Action to be performed when key strokes|
+|UnDo|Undo changes|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMULTIGET.PRG

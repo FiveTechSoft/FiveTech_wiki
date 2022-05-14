@@ -1,0 +1,76 @@
+====== RLNew() ======
+
+
+
+FiveWin Clipmore equivalent functions
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RLNew() --> hGlobalMem 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hGlobalMem> Pointer to global memory initialized to zeros. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPMORE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

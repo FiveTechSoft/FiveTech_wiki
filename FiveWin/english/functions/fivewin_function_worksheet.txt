@@ -1,0 +1,88 @@
+====== WorkSheet() ====== 
+
+
+WorkSheet()
+
+
+Prints a sheet with horizontal and vertical scale
+
+
+====== Syntax ======
+
+
+ WorkSheet( <cPort> ) --> nil 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cPort> Port for which will be printed. LPT1 for defect. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The impression is carried out in TWO.The function prints a leaf with
+vertical rules and horizontal to be able to take measures and to have one
+it indexes certain of the place where we will print. Let us remember in
+in TWO the impression is made in way character in lines and columns. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\TDOSPRN.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

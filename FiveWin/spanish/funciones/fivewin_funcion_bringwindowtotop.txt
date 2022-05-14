@@ -1,0 +1,27 @@
+
+====== BringWindowToTop() ======
+
+Pone la ventana en la primera posicion de una lista de ventanas superpuestas.
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BringWindowToTop( < hWnd > ) --> lResult
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> Es el manejador de la ventana.
+
+
+
+====== Retorno: ( Returns: ) ======
+
+ <lResult> Es .t. si la operacion fue realizada con exito.
+
+====== Ejemplo: ( Sample: ) ======
+
+SOURCE\CLASSES\WINDOW.PRG
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\WNDMOVE.C  
+

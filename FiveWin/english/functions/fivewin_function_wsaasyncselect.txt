@@ -1,0 +1,25 @@
+====== WSAAsyncSelect() ====== 
+Request event notification for a socket. 
+
+====== Syntax ====== 
+
+ WSAAsyncSelect( <nSocket>, <nHWnd>, <nMsg>, <nModes> ) --> nReturn  
+ 
+====== Parameters ====== 
+
+|<nSocket>| Socket number|  
+|<hWnd>| Handle of the window that receive the messages|  
+|<nMsg>| The message received|  
+|<nModes>| Combination of network events|  
+
+====== Returns ====== 
+
+|<nReturn>| This value is 0 if the function is success otherwise an error number may be retrieved by calling WSAGetLastError().|  
+ 
+====== Sample ====== 
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\WINSOCK.C
+
+====== See Also ======

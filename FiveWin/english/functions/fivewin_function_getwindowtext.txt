@@ -1,0 +1,73 @@
+
+====== GetWindowText() ====== 
+
+Returns the caption of a window or a control.
+
+====== Syntax ======
+
+ 
+
+
+ GetWindowText( <hWnd> ) --> cText 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the window or control whose text is to be
+retrieved. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <cText> The retrieved text. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\NEWHELP.PRG 
+
+
+ SAMPLES\RCIMPORT.PRG 
+
+
+ SAMPLES\TESTCAPT.PRG 
+
+
+ SAMPLES\TESTMDIY.PRG 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\GETTEXT.C 
+
+
+ 
+
+
+
+====== See also ======
+

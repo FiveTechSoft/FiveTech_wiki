@@ -1,0 +1,23 @@
+
+====== WinHelp() ======
+
+Call the Windows WinHelp program.
+
+====== Syntax: ======
+ 
+ WinHelp( <cHelpFile>, <nHelpType>, <ncAditionalData> ) --> <lSuccess>
+====== Parameters: ======
+
+| <cHelpFile> | Name of the help file to use. Those files have HLP extension and use a Windows own format. |
+| <nHelpType> | Selects the kind of service to execute. Windows offers multiple services through this function so it may be quite confusing to obtain all its posibilities. This is the reason why we have created Help...() functions, which are special functions based on WinHelp(). | 
+| <ncAditionalData> | Certain parameters acording to the requested WinHelp() service. | 
+====== Returns: ======
+
+| <lSuccess> | |  
+
+====== Description: ======
+
+Windows implements all its help system through WinHelp() function.This function calls WINHELP.EXE which is who manipulate HLP files. 
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP32.PRG   

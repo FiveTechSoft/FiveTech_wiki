@@ -1,0 +1,21 @@
+====== DragFinish() ======
+Finish the dragfile operation
+
+====== Syntax ======
+DragFinish( <hDrop> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDrop>| Handle that identifies the process of drag and drop|
+
+====== Returns ======
+NIL 
+
+====== Samples ======
+CLASSES\WINDOW.PRG 
+
+====== Source Code ======
+SOURCE\WINAPI\DROPFILE.C 
+
+====== See also ======
+[[fivewin_function_dragacceptfiles|DragAcceptFiles()]], [[fivewin_function_dragqueryfiles|DragQueryFiles()]]

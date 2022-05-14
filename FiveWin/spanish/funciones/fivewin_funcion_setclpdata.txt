@@ -1,0 +1,182 @@
+SetClpData()
+
+
+
+SetClpData()
+
+ Previous  Top  Next
+
+
+
+
+Changes the contents of the clipboard
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetClpData( <nFormat>, <uData> )  --> <lSuccess> 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nFormat> Specifies the format of the data. It can be any one of the
+system-defined formats or a format registered by the
+RegisterClipboardFormat function. 
+
+
+ 
+
+
+ 
+
+
+
+CF_BITMAP       The data is a bitmap.   
+CF_DIB       The data is a memory object containing a BITMAPINFO
+structure followed by the bitmap data.   
+CF_DIF       The data is in Data Interchange Format (DIF).   
+CF_DSPBITMAP       The data is a bitmap representation of a private
+format. This data is displayed in bitmap format in lieu of the privately
+formatted data.   
+CF_DSPMETAFILEPICT       The data is a metafile representation of a
+private data format. This data is displayed in metafile-picture format in
+lieu of the privately formatted data.   
+CF_DSPTEXT       The data is a textual representation of a private data
+format. This data is displayed in text format in lieu of the privately
+formatted data.   
+CF_METAFILEPICT       The data is a metafile (see the description of the
+METAFILEPICT structure.   
+CF_OEMTEXT       The data is an array of text characters in the OEM
+character set. Each line ends with a carriage returnlinefeed (CR-LF)
+combination. A null character signals the end of the data.   
+CF_OWNERDISPLAY       The data is in a private format that the clipboard
+owner must display.   
+CF_PALETTE       The data is a color palette.   
+CF_PENDATA       The data is for the pen extensions to theWindows
+operating system.   
+CF_RIFF       The data is in Resource Interchange File Format (RIFF).   
+CF_SYLK       The data is in Symbolic Link (SYLK) format.   
+CF_TEXT       The data is an array of text characters. Each line ends
+with a carriage return linefeed (CR-LF) combination. A null character
+signals the end of the data.   
+CF_TIFF       The data is in Tag Image File Format (TIFF).   
+CF_WAVE       The data describes a sound wave. This is a subset of the
+CF_RIFF data format; it can be used only for RIFF WAVE files.   
+
+
+
+
+
+ Private data formats in the range CF_PRIVATEFIRST through CF_PRIVATELAST
+are not automatically freed when the data is removed from the clipboard.
+Data handles associated with these formats should be freed upon receiving
+a WM_DESTROYCLIPBOARD message. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Private data formats in the range CF_GDIOBJFIRST through CF_GDIOBJLAST
+will be automatically removed by a call to the DeleteObject function when
+the data is removed from the clipboard. If Windows Clipboard is running,
+it will not update its window to show the data placed in the clipboard by
+the SetClipboardData until after the CloseClipboard function is called. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ <uData> The handle of the data to place at the Clipboard. Right now
+FiveWin only supports text, due not to a FiveWin limitation since that
+all formats have not yet been implemented. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestClip.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\ClpBrd.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ OpenClipboard() CloseClipboard() GetClpData() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

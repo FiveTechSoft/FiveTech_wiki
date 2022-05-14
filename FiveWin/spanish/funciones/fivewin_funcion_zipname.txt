@@ -1,0 +1,92 @@
+ZipName()
+
+
+
+Nombre del archivo que se está descompactando.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ZipName( <nZipInfo> ) --> cZipName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nZipInfo> Estructura PZFILEINFO entregada automáticamente por el bloque de código bZip. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cZipName> Name of the file that is extracting now. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

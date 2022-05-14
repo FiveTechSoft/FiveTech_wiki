@@ -1,0 +1,26 @@
+
+====== MGetCreate() ====== 
+MGetCreate()
+
+Create a multiline box of edition
+====== Sintaxis ======
+ MGetCreate( <cClassName>, <cTitle, <nStyle>, <nLeft>, <nTop>, <nWidth>,
+<nHeight>, <hWndOwner>, <hMenu>, <cExtraData> ) --> hWnd 
+====== Parámetros ======
+  <cClassName> Class 
+  <cTitle Title 
+  <nStyle> Style 
+  <nLeft> Left coordinate 
+  <nTop> Top coordinate 
+  <nWidth> Width 
+  <nHeight> Height 
+  <hWndOwner> Handle of the window parent 
+  <hMenu> Handle of the menu 
+  <cExtraData> Address Window-Creation-Data 
+====== Devuelve ======
+ <hWnd> Handle of the control created 
+====== Ejemplo ======
+ SOURCE\CLASSES\MGET.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\MGETCREA.C 
+====== Ver también ======

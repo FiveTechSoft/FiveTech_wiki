@@ -1,0 +1,25 @@
+====== Create a menu ======
+<code clipper>
+DEFINE MENU <oMenu> ;
+   [ <res: RESOURCE, NAME, RESNAME> <cResName> ] ;
+   [ BITMAPS <nBmpID> ] ;
+   [ IMAGES <nBmpImages> ]
+</code>
+^parameter^type^description^
+|<oMenu>| |The menu object to be created||
+|<cResName>| |The resource name that defines the menu, from a RC file||
+|<nBmpID>|optional|The bitmaps ID to be used with the menu from the RC file||
+|<nBmpImages|optional|The number of images contained in the used bitmap||
+====== create a menuitem ======
+<code clipper>
+REDEFINE MENUITEM [<oMenuItem>] ;
+   [ ID <nId> <of: OF, MENU> <oMenu> ] ;
+   [ ACTION <uAction> ] ;
+   [ WHEN <uWhen> ]
+</code>
+^parameter^type^description^
+|<oMenuItem>| |The menuitem object to be created|
+|<nId>| |The menuitem (numeric) ID from the resources|
+|<oMenu| |The menu object parent of this menuitem|
+|<uAction>| |The action to execute when the menuitem is selected|
+|<uWhen>|optional|A logical expression to evaluate to enable or disable the menuitem|

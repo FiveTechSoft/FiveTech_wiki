@@ -1,0 +1,27 @@
+====== Class TStatusBar ======
+
+Win32 common controls StatusBar                                                
+Inherits from TControl                                                         
+====== DATA ======
+|cMsgDef|The default status bar message|
+|oTimer|The timer used for the clock|
+|nPartTime|The number of parts|
+====== METHODS ======
+|New|Constructor from source code|
+|CheckTimer|Activates the timer if it is not already active|
+|ClockOn|Activates the clock|
+|Display|Displays the control|
+|EraseBkGnd|Erase the background of the control|
+|GetParts|Returns the number of parts|
+|Paint|Paints the control|
+|SetMsg|Sets the statusbar message|
+|SetParts|Sets the number of parts and the coordinate of the|
+|right|edge of each part.|
+|SetPartText|Sets the text in the specified part.|
+|SetPrompts|Sets the specified texts.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TSTATUSBAR.PRG

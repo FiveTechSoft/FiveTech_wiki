@@ -1,0 +1,72 @@
+====== WSay() ====== 
+
+WSay()
+
+Write a text value into a window
+
+====== Syntax ======
+
+ WSay( <hWnd>, <hDC>, <nRow>, <nCol>, <cText>, <nClrFore>, <nClrBack>,
+<hFont>, <lPixel>, <lTransparent>, <nAlign> ) --> nil 
+
+====== Parameters ======
+
+ <hWnd> Handle of the window 
+
+ <hDC> Device context 
+
+ <nRow> Row 
+
+ <nCol> Column 
+
+ <cText> Text to draw 
+
+ <nClrFore> Text color 
+
+ <nClrBack> Back color 
+
+ <hFont> Handle of the font 
+
+ <lPixel> Meausures in pixels or in text mode 
+
+ <lTransparent> Transparent background 
+
+ <nAlign> Text align ( to see SetTextAlign() ) 
+
+
+====== Returns ======
+
+
+   Nil.
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDSAY.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+====== See also ======
+

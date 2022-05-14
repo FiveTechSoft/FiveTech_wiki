@@ -1,0 +1,65 @@
+TvGetCheck()
+
+
+TvGetCheck()
+ Previous  Top  Next
+
+Gets the check state of the specified item.
+
+====== Sintaxis ======
+
+
+ TvGetCheck( <hWnd>, <hItem> ) --> lSuccess 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <hItem>   The handle to the item to be checked. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess>   Returns .t. if successful, or .f. otherwise. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+====== Ver también ======
+

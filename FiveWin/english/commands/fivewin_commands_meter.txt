@@ -1,0 +1,82 @@
+====== Meter ======
+
+**Creating a Meter from source code **
+<code clipper>
+ @ <nRow>, <nCol> METER [ <oMeter> VAR ] <nActual> ;  
+ [ TOTAL <nTotal> ] ;  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ OF <oWnd> ] ;  
+ [ UPDATE ] ;  
+ [ PIXEL ] ;  
+ [ FONT <oFont> ] ;  
+ [ PROMPT <cPrompt> ] ;  
+ [ NOPERCENTAGE ] ;  
+ [ COLOR | COLORS <nClrPane>, <nClrText> ] ;  
+ [ BARCOLOR <nClrBar>, <nClrBText> ] ;  
+ [ DESIGN ]  </code>
+ 
+**Creating a Meter from resources **
+<code clipper>
+ REDEFINE METER [ <oMeter> VAR ] <nActual> ;  
+ [ TOTAL <nTotal> ] ;  
+ [ ID <nId> ] ;  
+ [ OF <oWnd> ];  
+ [ UPDATE ] ;  
+ [ FONT <oFont> ] ;  
+ [ PROMPT <cPrompt> ] ;  
+ [ NOPERCENTAGE ] ;  
+ [ COLOR | COLORS <nClrPane>, <nClrText> ] ;  
+ [ BARCOLOR <nClrBar>, <nClrBText> ]  </code>
+
+^ Data           ^ Description                                                  ^
+| <nRow>, <nCol> | The coordinates on the screen. We simulate text coordinates. | 
+| <oMeter> | A reference to the Meter Object. | 
+| <nActual> | The numerical variable represented by the Meter. | 
+| <nTotal> | The total amount represented by the Meter. | 
+| <nWidth>, <nHeight> | The dimensions of the Meter in pixels. | 
+| <oWnd> | A reference to the container Window Object of the Meter. | 
+| <nId>  | A numerical value identifying the Meter from resources. | 
+| <oFont> | The font to use to display the percentage of the meter. |   
+| <cPrompt> | To display an optional text inside the meter. | 
+| <nClrPane> <nClrText> | The colors of the unfilled parts of the meter | 
+| <nClrBar> <nClrBText> | The colors of the filled parts of the meter. | 
+
+**CLAUSES **
+^ Clause ^ Description                                                                           ^
+| UPDATE | If this control has to be updated everytime its container is updated <oDlg>:Update(). | 
+| PIXEL | If the coordinates of the meter are pixel based. | 
+| NOPERCENTAGE | To avoid showing the '%' sign. | 
+| DESIGN | Allows the user to move and resize with the mouse | 
+
+====== Sample Code ======
+\Fwh\Samples\TestMetr.Prg
+<code clipper>
+// Testing FiveWin own meter controls
+#include "FiveWin.ch"
+static oDlg
+
+//----------------------------------------------------------------------------//
+function Main()
+
+   local nActual := 0, oMeter
+
+   DEFINE DIALOG oDlg FROM 1, 1 TO 12, 44 ;
+      TITLE "Testing the Meter controls"
+
+   @ 2, 2 METER oMeter VAR nActual TOTAL 50 OF oDlg SIZE 135, 12
+
+   @ 3, 5 BUTTON "&Decrease" OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual - 1 )
+
+   @ 3, 16 BUTTON "&Increase"   OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual + 1 )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+====== Screen Snapshot ======
+{{:meter.jpg|:meter.jpg}}
+
+====== See Also ======
+[[fivewin_class_tmeter | Class TMeter ]], [[fivewin_class_tprogress | Class TProgress ]]

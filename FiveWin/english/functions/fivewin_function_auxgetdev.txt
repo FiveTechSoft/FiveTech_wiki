@@ -1,0 +1,13 @@
+====== AuxGetDev() ======
+Number of Auxiliary devices. 
+====== Syntax ======
+AuxGetDev() --> nDevices  
+====== Parameters ======
+None
+====== Returns ======
+^Returns^Description^
+|<nDevices>|Number of Auxiliary devices.|
+====== Sample ======
+SAMPLES\MMEDIA\MMEDIA.PRG  
+====== Source Code ======
+SOURCE\WINAPI\MCI.C

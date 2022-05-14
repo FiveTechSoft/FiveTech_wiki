@@ -1,0 +1,32 @@
+====== EnableCommNotification() ======
+
+Activa o desactiva el mensaje WM_COMMNOTIFY anuncio a la ventana dada
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+  EnableCommNotification( <nComDev>, <hWnd>, <nInBytes>, <nOutBytes> ) --> lSucces  
+
+Si una aplicación especifica -1 para el parámetro nInBytes, el mensaje WM_COMMNOTIFY se envía a la ventana especificada para CN_EVENT y notificaciones CN_TRANSMIT pero no para las notificaciones CN_RECEIVE. Si se especifica -1 para el nOutBytes CN_EVENT CN_RECEIVE y notificaciones se envían notificaciones CN_TRANSMIT pero no lo son. 
+ 
+  Si se produce un tiempo de espera antes de tantos bytes como se especifica en el parámetro nInBytes se escriben en la cola de entrada, un mensaje de WM_COMMNOTIFY se envía con el indicador CN_RECEIVE. Cuando esto ocurre, otro mensaje no se enviará hasta que el n bytes en la cola de entrada cae por debajo del número especificado en el parámetro nInBytes. Del mismo modo, un mensaje WM_COMMNOTIFY en el que se establece el indicador CN_RECEIVE es enviado sólo cuando la cola de salida es mayor que el número de bytes especificado nOutBytes parámetro. 
+
+====== Parametros: ( Parameters: ) ======
+ 
+ <nComDev> dispositivo-Comunicaciones Identificador 
+   
+ <hWnd> Título de la ventana de la recepción de mensajes 
+ 
+ <nInBytes> Número de bytes escritos antes de la notificación 
+ 
+ <nOutBytes> número de bytes en cola de salida 
+ 
+
+====== Retorno: ( Returns: ) ======
+
+ Retrives. T. si la función tiene éxito.
+
+====== Ejemplo: ( Sample: ) ======
+ 
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\COMM.C  

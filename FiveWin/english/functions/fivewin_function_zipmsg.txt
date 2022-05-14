@@ -1,0 +1,27 @@
+====== ZipMsg() ======
+Text message given automatically
+
+====== Syntax ======
+ZipMsg( <nZipInfo> ) --> cMsg 
+
+====== Parameters: ======
+^Parameter^Description^
+|<nZipInfo>| Structure PZFILEINFO is delivered automatically for the bZip codeblock.|
+
+====== Return ======
+^Returns^Description^
+|<cMsg>| Text message. |
+
+====== Sample ======
+SAMPLES\TESTZIP.PRG 
+
+====== Source Code======
+SOURCE\FUNCTION\CLIPZIP2.C 
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_ZipFile|ZipFile()]]
+[[fivewin_function_GetFirstInZip|GetFirstInZip()]]
+[[fivewin_function_ZipName|ZipName()]]
+[[fivewin_function_ZipSize|ZipSize()]]
+[[fivewin_function_ZipType|ZipType()]]

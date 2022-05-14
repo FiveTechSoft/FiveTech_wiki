@@ -1,0 +1,15 @@
+
+====== GetCPU() ======
+GetCPU()
+
+Retrieves the CPU type
+====== Sintaxis ======
+ GetCPU() --> cCPUType 
+====== Par�metros ======
+ None 
+====== Devuelve ======
+ <cCPUType> "286" "386" "486" "Pentium" 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\DRIVES.C 
+====== Ver también ======

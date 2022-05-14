@@ -1,0 +1,26 @@
+====== Description ======
+
+Paints a bitmap with transparencies (alpha channel support)
+
+====== Syntax ======
+ABPaint( hDC, nX, nY, hBitmap, nAlphaLevel ) --> nil
+
+====== Parameters ======
+|hDC|Device context handle where to paint|
+|nX, nY|coordinates|
+|hBitmap|handle of the bitmap|
+|nAlphaLevel|transparency level (0-255)| 
+
+====== Returns ======
+|nil|nothing|
+
+====== Example ======
+FWH\samples\TestWMar.prg
+
+
+{{:abpaint.png|:abpaint.png}}
+
+====== Source code ======
+
+====== See also ======
+[[fivewin_function_drawbitmap|DrawBitmap()]], [[fivewin_function_transbmp|TransBmp()]], [[fivewin_class_timage|Class TImage]], [[fivewin_function_fwwatermark|function FWWaterMark()]]

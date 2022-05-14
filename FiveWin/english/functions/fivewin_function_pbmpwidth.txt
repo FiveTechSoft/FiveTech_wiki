@@ -1,0 +1,102 @@
+====== pBmpWidth() =====
+
+
+
+pBmpWidth()
+
+
+
+
+
+
+Retrieve the width in pixels of a bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ pBmpWidth( <hBmpPal> ) --> nWidth 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hBmpPal> Handle of the bitmap obtained with PalBmpLoad o PalBmpRead 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nWidth> Width in pixels of a bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+
+
+ SOURCE\CLASSES\BITMAP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

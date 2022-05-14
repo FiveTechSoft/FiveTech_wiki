@@ -1,0 +1,166 @@
+====== SetBkColor() ======
+
+
+Set the background to a specific color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetBkColor( <hDC>, <nRGBColor> ) --> nPrevious 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context where we set the bacground color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRGBColor> RGB background color 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nPrevious> Previous background color 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ local hDC 
+
+
+ 
+
+
+ local nPrevious 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ hDC := oWnd:GetDC() 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ nPrevious := SetBkColor( hDC, CLR_GREEN ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ TextOut( hDC, 10, 10, "Text" ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ SetBkColor( hDC, nPrevious ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ oWnd:ReleaseDC() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\COLOR.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

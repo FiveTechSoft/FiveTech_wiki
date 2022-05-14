@@ -1,0 +1,23 @@
+
+====== MenuBegin() ====== 
+MenuBegin()
+
+Begins a new menu definition. Internally used.
+====== Sintaxis ======
+ MenuBegin( <lPopup>, <lSystem>, <oWnd> ) --> oMenu 
+====== Parámetros ======
+  <lPopup>   If it is going to be a popup menu 
+  <lSystem>  If it is going to be a system menu 
+  <oWnd>     The window container of this menu 
+====== Devuelve ======
+ <oMenu> The menu object already built and initialized 
+
+Observations:
+
+ This function is used automatically by FiveWin from the xBase commands. 
+====== Ejemplo ======
+ SAMPLES\TestMenu.prg 
+====== Código fuente ======
+ SOURCE\CLASSES\PdMenu.prg 
+====== Ver también ======
+ Class TMenu Class TMenuItem

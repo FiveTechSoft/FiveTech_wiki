@@ -1,0 +1,77 @@
+====== WndHasScrolls() ====== 
+
+WndHasScrolls()
+
+Test if a window has scroll bars
+
+
+====== Syntax ======
+
+ WndHasScrolls( <hWnd> ) --> lHasScroll 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the window to test 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lHasScroll> This function return true if the window has vertical or
+horizontal scroll bar. It is possible that the window style has
+WS_VSCROLL or WS_HSCROLL and the scroll bars are hides. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDISOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

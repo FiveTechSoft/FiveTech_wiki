@@ -1,0 +1,100 @@
+WndWidth()
+
+
+
+WndWidth()
+
+ Previous  Top  Next
+
+
+
+
+Update the window width
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndWidth( <hWnd> [,<nNewWidth> ] ) --> nWidth 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Window handle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewWidth> New width 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nWidth> If <nNewWidth> is nil return the current Width 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

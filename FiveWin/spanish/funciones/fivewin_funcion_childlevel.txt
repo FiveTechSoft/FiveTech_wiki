@@ -1,0 +1,57 @@
+ChildLevel()
+
+
+ChildLevel()
+ Previous  Top  Next
+
+Returns 1 if the first parameter is an object of the same class or of a
+derived class of the second parameter, otherwise it returns 0.
+
+====== Sintaxis ======       
+
+ ChildLevel( <oObject>, <oClass> ) --> nResult 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <oObject> The object to find the child level of 
+
+
+ 
+
+
+ <oClass> The object for the reference class 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nResult> The child level (1 or 0). 
+
+
+ 
+
+====== Ejemplo ======
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\HARBOUR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

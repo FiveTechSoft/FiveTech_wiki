@@ -1,0 +1,109 @@
+====== SetCaretPos() ======
+
+
+Sets the position of the caret
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetCaretPos( <nCol>, <nRow> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nCol> Left coordinate of the new position of cursor 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Top coordinate of the new position of cursor 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The coordinates are client coordinates 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CARET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

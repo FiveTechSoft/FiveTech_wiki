@@ -1,0 +1,16 @@
+
+====== nHex() ====== 
+nHex()
+
+To convert a hexadecimal to decimal
+====== Sintaxis ======
+ nHex( <cHex> ) --> nResult 
+====== Parámetros ======
+ <cHex> String that represents a number in code hexadecimal 
+====== Devuelve ======
+ <nResult> Decimal number. 
+====== Ejemplo ======
+ SOURCE\CLASSES\TWEBSERV.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\RANDOM.PRG 
+====== Ver también ======

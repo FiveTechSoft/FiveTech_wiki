@@ -1,0 +1,17 @@
+====== DecodeText() ======
+
+Decoding of a RTF text
+
+====== Syntax ======
+DecodeText( <cText> ) --> cDecodedText 
+
+====== Parameters ======
+^Parameter^Description^
+|<cText>| The RTF text to decode. |
+
+====== Returns ======
+^Returns^Description^
+|<cDecodedText>| The decoded text. |
+
+====== Source Code ======
+SOURCE\FUNCTION\codegtf.c 

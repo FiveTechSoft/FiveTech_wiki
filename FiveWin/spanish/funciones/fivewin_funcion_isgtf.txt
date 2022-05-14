@@ -1,0 +1,46 @@
+IsGTF()
+
+
+IsGTF()
+ Previous  Top  Next
+
+It checks if a text is in GTF format.
+
+====== Sintaxis ======
+
+
+ IsGTF( <cText> ) --> lGTF 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cText> Text to check 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lGTF> Return .t. if the text is in GTF format, otherwise .f. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\GTF.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

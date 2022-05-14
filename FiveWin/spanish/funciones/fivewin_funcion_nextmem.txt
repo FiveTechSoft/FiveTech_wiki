@@ -1,0 +1,16 @@
+
+====== nExtMem() ====== 
+nExtMem()
+
+Amount of memory of the computer
+====== Sintaxis ======
+ nExtMem() --> nMemory 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nMemory> Amount of memory of the computer 
+====== Ejemplo ======
+ SOURCE\FUNCTION\ERRSYSW.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MEMSTAT.PRG 
+====== Ver también ======

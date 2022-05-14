@@ -1,0 +1,55 @@
+TabCtrl_AdjustRect()
+
+
+TabCtrl_AdjustRect()
+ Previous  Top  Next
+
+Calculates a tab control's display area given a window rectangle, or
+calculates the window rectangle that would correspond to a specified
+display area.
+
+====== Syntax ======
+
+
+ TabCtrl_AdjustRect( <hWnd> ) --> aRect 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <aRect> Returns an array with top, left, bottom and right coordinates of
+the control. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+

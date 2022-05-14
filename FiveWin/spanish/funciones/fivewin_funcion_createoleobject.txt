@@ -1,0 +1,90 @@
+
+====== CreateOLEObject() ======
+
+CreateOLEObject()
+
+
+It creates an OLE object
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ CreateOLEObject( <cOleName> ) --> oObject 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cOleName> Name from the object to create 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <oObject> Created object 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\OLE\OLE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\OLE.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======

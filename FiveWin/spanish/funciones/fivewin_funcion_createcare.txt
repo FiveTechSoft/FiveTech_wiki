@@ -1,0 +1,23 @@
+
+====== CreateCaret() ======
+
+Crear nuevo cursor de sistema
+
+====== Sintaxis ======
+ 
+CreateCaret(<hWnd>, <hBitmap>, <nWidth>, <nHeight> ) --> nil
+
+====== Parámetros ======
+
+| <hWnd>| título de la ventana|
+| <hBitmap>| título de bitmap para el cursor nuevo. cursor cero a cursor sólidos y del 1 al gris |
+| <nWidth>| Ancho de bitmap |
+| <nHeight>| Altura de bitmap|   
+
+====== Retorno ======
+
+nil  
+
+====== Código Fuente ======
+ 
+SOURCE\WINAPI\CARET.C

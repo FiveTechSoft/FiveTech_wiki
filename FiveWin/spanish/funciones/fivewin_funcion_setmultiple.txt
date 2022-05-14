@@ -1,0 +1,89 @@
+SetMultiple()
+
+
+
+SetMultiple()
+
+ Previous  Top  Next
+
+
+
+
+Permits multiple same FW applications
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetMultiple( <lOnOff> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <lOnOff> Permits or not permits multiple instances 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WINEXEC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

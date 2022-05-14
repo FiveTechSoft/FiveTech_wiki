@@ -1,0 +1,29 @@
+====== DDECreateDataHandle() ======
+Creates a handle that identifies the specified data. 
+
+====== Syntax: ======
+DDECreateDataHandle( <hInst>, <cBuffer>, <nLen>, <nOffset>, <nItem>, <nClipFmt>, <nFlags> ) --> hData  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|<hInst>| Instance identifier.  |
+|<cBuffer>| The buffer of data to be copied to the DDE object.  |
+|<nLen>| The amount of bytes to copy from the buffer.  |
+|<nOffset>| The offset, in bytes, from the beginning of the buffer.  |
+|<nItem>| The handle of a string previously created by a call to DDECreateStringHandle().  |
+|<nClipFmt>| Clipboard data format.  |
+|<nFlags>| Specifies the creation flags. |
+ 
+====== Returns: ======
+^Returns^Description^
+|<hData>| The data handle. Zero in case of failure.  |
+
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\DDEML.C  
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

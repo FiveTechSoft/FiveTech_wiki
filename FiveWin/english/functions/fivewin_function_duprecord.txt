@@ -1,0 +1,14 @@
+====== DupRecord() ======
+Duplicates current record.  This function adds a record as the last record of the dbf with the same data as the current record.  In unable to lock the record in use then it will generate an error message. 
+
+====== Syntax ======
+DupRecord() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\FUNCTION\DBTOOLS.PRG 

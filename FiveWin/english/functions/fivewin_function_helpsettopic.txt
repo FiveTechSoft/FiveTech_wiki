@@ -1,0 +1,23 @@
+====== HelpSetTopic() ======
+
+Selects a help default topic 
+
+====== Syntax: ======
+ 
+ HelpSetTopic( <cTopic> ) --> nil
+====== Parameters: ======
+
+| <cTopic> | A string that let us specify the default topic where automatically show help. |
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+It lets us select a help default topic. We may change this topic from inside different parts of our program.
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C
+====== see also: ======
+
+[[fivewin_commands_helptopic|SET HELPTOPIC TO]]

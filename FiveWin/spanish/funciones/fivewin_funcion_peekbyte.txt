@@ -1,0 +1,18 @@
+
+====== PeekByte() ======
+
+Reads a byte of a position of memory
+
+====== Sintaxis ======
+ PeekByte( <nSegment>, <nOffset> ) --> nByte 
+====== Parámetros ======
+|<nSegment>|Segment of memory| 
+|<nOffset>|Displacement of memory inside the segment nSegment| 
+====== Devuelve ======
+|<nByte>|It returns the read byte of the address of memory given| 
+====== Ejemplo ======
+SAMPLES\PEEKPOKE.PRG 
+====== Código fuente ======
+SOURCE\WINAPI\PEEKPOKE.C 
+====== Ver también ======
+[[fivewin_funcion_pokebyte|PokeByte()]]

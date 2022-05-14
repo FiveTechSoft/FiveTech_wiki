@@ -1,0 +1,105 @@
+SysWait()
+
+
+
+SysWait()
+
+ Previous  Top  Next
+
+
+
+
+Waits of <n> seconds processing the pending messages
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SysWait( <nLong> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nLong> Time that will be the function processing messages. For defect
+0.1 seconds 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function will be used when it is needed to wait to that some
+process ends before continuing with the one normal flow of the program.
+While one waits it is continued assisting the one processed of messages
+of Windows. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\FOLDER.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

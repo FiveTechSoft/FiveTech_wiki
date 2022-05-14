@@ -1,0 +1,99 @@
+
+ ======  GetServByName() ====== 
+
+
+
+
+
+Port number at which the service may be contacted
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetServByName( <cServerName> ) --> nPort 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cServerName> Service name 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nPort> Port number at which the service may be contacted 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ A specific error number may be retrieved by calling WSAGetLastError(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

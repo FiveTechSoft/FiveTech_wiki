@@ -1,0 +1,80 @@
+TvSetTextImage()
+
+
+TvSetTextImage()
+ Previous  Top  Next
+
+Sets the prompt of a specific image of an item of a treeview control.
+
+====== Syntax ======
+
+
+ TvSetTextImage( <hWnd>, <hItem>, <cText>, <nImage> ) --> nil 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <hItem>   The handle to the item. 
+
+
+ 
+
+
+ <cText>   The text for the item. 
+
+
+ 
+
+
+ <nImage>   The index of the image to set. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

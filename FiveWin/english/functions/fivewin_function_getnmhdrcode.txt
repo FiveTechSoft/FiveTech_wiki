@@ -1,0 +1,99 @@
+GetNMHDRCode()
+
+
+GetNMHDRCode()
+ Previous  Top  Next
+
+Retrieves the notification code of a notify message.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetNMHDRCode( <nPtrNMHDR> ) --> nCode 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nPtrNMHDR> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nCode> The notification code field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\window.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\notify.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

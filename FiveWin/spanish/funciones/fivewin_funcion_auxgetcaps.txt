@@ -1,0 +1,34 @@
+====== AuxGetCaps() ======  
+
+Obtiene las características de un dispositivo.
+
+====== Sintaxis ====== 
+
+ AuxGetCaps( <idDevice>, <@aDev> ) --> nSuccess  
+
+====== Parámetros ====== 
+
+| <idDevice> | Identificados al periférico a examinar. -1 por defecto. |
+| <@aDev> | Matriz con las características del dispositivo examinado |
+
+====== Devuelve ====== 
+
+ <nSuccess> Retorna cero si la función es exitosa. De lo contrario retorna el número del error: 
+
+  #define MMSYSERR_BASE 0
+  #define MMSYSERR_BADDEVICEID (MMSYSERR_BASE + 2) 
+  #define MMSYSERR_NODRIVER (MMSYSERR_BASE + 6) 
+
+  Posibles errores de retorno: 
+  MMSYSERR_BADDEVICEID 
+    Specified device ID is out of range. 
+  MMSYSERR_NODRIVER 
+    The driver failed to install. 
+
+====== Ejemplo ====== 
+
+ SAMPLES\MMEDIA\MMEDIA.PRG  
+
+====== Código fuente ====== 
+
+ SOURCE\WINAPI\MCI.C  

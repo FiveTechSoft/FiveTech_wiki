@@ -1,0 +1,93 @@
+SQLSCol()
+
+
+SQLSCol()
+ Previous  Top  Next
+
+Retrieves special informations about columns within a specified table.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLColumns( <hStmt>, <nOption1>, <cTableName>, <nOption2>, <nOption3> )
+--> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nOption1> Type of column to return. 
+
+
+ 
+
+
+ <cTableName> The table name. 
+
+
+ 
+
+
+ <nOption2> Minimum required scope of the rowid. 
+
+
+ 
+
+
+ <nOption3> Determines whether to return special columns that can have a
+NULL value. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

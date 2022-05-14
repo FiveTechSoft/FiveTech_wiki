@@ -1,0 +1,109 @@
+fMimeDec()
+
+
+
+
+fMimeDec()
+
+ Previous  Top  Next
+
+
+
+
+Decript of a MIME file
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ fMimeDec( <cIn>, <cOut> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cIn> Name from the file to decript 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cOut> Name of the file decripted. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

@@ -1,0 +1,33 @@
+====== PeekMessage() ======
+
+Recupera un mensaje de la lista de mensajes de la aplicación y lo coloca en la estructura especificada. 
+
+====== Sintaxis ======
+
+ PeekMessage( @<cMsg>, <hWnd>, <nFilterFirst>, <nFilterLast>, <nRemove> ) --> lExito 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<cMsg>|Una cadena suministrada por referencia, donde FiveWin colocará una estructura MSG en un formato de cadena| 
+|<hWnd>|Identifica la ventana cuyos mensajes seran examinados| 
+|<nFilterFirst> <nFilterLast>|Indica el primer y ultimo valor, en el rango de mensaje, a ser examindos| 
+|<nRemove>|Indica como se manejara los mensajes | 
+
+====== Devuelve ======
+^Nombre^Descripción^
+|lExito|Un valor logico que indica si la operacion tuvo exito| 
+
+El resultado es almacenado por referencia en <cMsg> 
+
+===== Observaciones ======
+
+Estas funciones son automáticamente gestionados por FiveWin. 
+Nos limitamos a documentar aquí con el deseo de una mejor comprensión, pero hacemos hincapié en la idea de que usted debería dejar a FiveWin gestionar toda esta complejidad.
+
+====== Código fuente ======
+
+SOURCE\WINAPI\PeekMsg.c 
+
+====== Ver también ======
+[[fivewin_funcion_sendmessage|SendMessage()]], [[fivewin_funcion_postmessage|PostMessage()]] 
+

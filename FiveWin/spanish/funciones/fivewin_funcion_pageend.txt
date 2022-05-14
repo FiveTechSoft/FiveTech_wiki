@@ -1,0 +1,44 @@
+PageEnd()
+
+
+PageEnd()
+ Previous  Top  Next
+
+It calls to the method EndPage () of the class TPrinter.
+
+====== Sintaxis ======
+
+
+ PageEnd() --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

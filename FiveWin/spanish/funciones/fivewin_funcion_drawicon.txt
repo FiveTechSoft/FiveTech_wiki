@@ -1,0 +1,29 @@
+
+====== DrawIcon() ======
+DrawIcon()
+
+Draws an Icon
+====== Sintaxis ======
+ DrawIcon( <hDC>, <nRow>, <nCol>, <hIcon> ) --> lSuccess 
+
+ This function draws an icon at the specified device context. 
+====== Parámetros ======
+ <hDC> The handle of the device context where to draw. 
+
+ <nRow>, <nCol> The coordinates where to paint. 
+
+ <hIcon> The handle of the icon. 
+====== Devuelve ======
+ <lSuccess> A logical value that it is true if the operation was
+successful. 
+
+Observations:
+
+ The handle of the icon must be loaded with LoadIcon() 
+
+ We strongly recommend use of FiveWin TIcon Class as it is much more
+powerful and easy to use. 
+====== Código fuente ======
+ SOURCE\WINAPI\Icons.c 
+====== Ver también ======
+ LoadIcon() ExtractIcon() nIcons()

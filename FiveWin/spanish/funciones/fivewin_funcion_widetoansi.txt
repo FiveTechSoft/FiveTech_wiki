@@ -1,0 +1,67 @@
+WideToAnsi()
+
+
+WideToAnsi()
+ Previous  Top  Next
+
+Translates an unicode wide string into the equivalent ansi string.
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WideToAnsi( <cWideStr> ) --> cAnsiStr 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cWideStr>    The unicode wide string to convert into its equivalent
+ansi string. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cAnsiStr>    The equivalent ansi string. 
+
+
+ 
+
+
+ 
+
+
+
+
+See Also:
+
+   AnsiToWide()
+
+
+
+====== Ver también ======
+

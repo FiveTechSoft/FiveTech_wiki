@@ -1,0 +1,40 @@
+
+====== MsgCalc() ======
+
+Muestra una calculadora.
+
+====== Syntaxis ======
+
+MsgCalc( <>nValor ) --> nResultado
+ 
+====== Parámetros ======
+
+| <nValor> | EL valor inicial.  |
+
+====== Devuelve ======
+
+| <nResultado> | El valor actual del resultado. |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+
+   MsgCalc()
+      
+RETURN    
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\MSGCALC.PRG
+
+====== Ver también ======
+[[fivewin_funcion_messagebeep|MessageBeep()]]
+[[fivewin_funcion_msgalert|MsgAlert()]]
+[[fivewin_funcion_msginfo|MsgInfo()]]
+[[fivewin_funcion_msgstop|MsgStop()]]
+[[fivewin_funcion_msgyesno|MsgYesNo()]]
+[[fivewin_funcion_msgnoyes|MsgNoYes()]]
+[[fivewin_funcion_msgdate|MsgDate()]]

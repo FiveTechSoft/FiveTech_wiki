@@ -1,0 +1,25 @@
+
+====== Bin2D() ======
+
+Convierte un string de 4 bytes en un numero doble 
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ Bin2d( <cValue> ) --> nValue    
+
+====== Parametros: ( Parameters: ) ======
+
+ <cValue> Es el valor a convertir
+
+
+====== Retorno: ( Returns: ) ======
+
+ <nValue> es el valor numerico doble
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ Ninguno
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\B2BIN.C 

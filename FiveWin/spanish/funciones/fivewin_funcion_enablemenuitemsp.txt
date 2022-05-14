@@ -1,0 +1,47 @@
+====== EnableMenuItem() ======
+Activa, Desactiva un Elemento del Menú
+
+====== Syntaxis ====== 
+EnableMenuItem( <hMenu>, <nIdItem>, <nFlags> ) --> lSuccess   
+
+
+
+====== Parametros ====== 
+
+| <hMenu>| Handler del menu propietario del MenuItem  |
+| <nIdItem>| Identificador del MenuItem  |
+| <nFlags>| Especifica la Acción a Ejecutar|
+
+MF_BYCOMMAND   Especifica que el parámetro nIdItem.
+ 
+MF_BYPOSITION   Especifica que el parámetro nidItem da la posición del elemento de menú (el primer elemento está en la posición cero).   
+
+MF_DISABLED      Deshabilita el Menú Ítem.    
+
+MF_ENABLED      Habilita el Menú Ítem.    
+
+MF_GRAYED      Coloca el Menú en Gris.     
+
+MF_BYCOMMAND   0    
+
+MF_ENABLED      0    
+
+MF_UNCHECKED   0    
+
+MF_GRAYED      1    
+
+MF_DISABLED      2    
+
+MF_CHECKED      8    
+
+MF_BYPOSITION   1024    
+
+====== Devuelve ====== 
+.t. Si se ejecuto correctamente.
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\MENUS.C  
+ 
+====== Ver tambien ====== 
+
+ 

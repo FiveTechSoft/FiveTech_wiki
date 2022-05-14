@@ -1,0 +1,242 @@
+MAPILogon()
+
+
+MAPILogon()
+ Previous  Top  Next
+
+Begins a Simple MAPI session, loading the default message store and
+address book providers.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPILogon( [<cUsername>], [<cPassword>], [<nFlags>] ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cUsername> The username. 
+
+
+ 
+
+
+ <cPassword> The password. 
+
+
+ 
+
+
+ 
+
+ <nFlags> The following flags can be set: 
+
+
+ 
+
+
+ MAPI_FORCE_DOWNLOAD 
+
+
+ 
+
+
+ An attempt should be made to download all of the user's messages before
+returning. If the MAPI_FORCE_DOWNLOAD flag is not set, messages can be
+downloaded in the background after the function call returns. 
+
+
+ 
+
+
+ MAPI_NEW_SESSION 
+
+
+ 
+
+
+ An attempt should be made to create a new session rather than acquire
+the environment's shared session. If the MAPI_NEW_SESSION flag is not
+set, MAPILogon uses an existing shared session. 
+
+
+ 
+
+
+ MAPI_LOGON_UI 
+
+
+ 
+
+
+ A logon dialog box should be displayed to prompt the user for logon
+information. If the user needs to provide a password and profile name to
+enable a successful logon, MAPI_LOGON_UI must be set. 
+
+
+ 
+
+
+ MAPI_PASSWORD_UI 
+
+
+ 
+
+
+ MAPILogon should only prompt for a password and not allow the user to
+change the profile name. Either MAPI_PASSWORD_UI or MAPI_LOGON_UI should
+not be set, since the intent is to select between two different dialog
+boxes for logon. 
+
+
+ 
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: 
+
+
+ 
+
+
+ 
+
+ MAPI_E_FAILURE 
+
+
+ 
+
+
+ 
+
+ One or more unspecified errors occurred during logon. No session handle
+was returned. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INSUFFICIENT_MEMORY 
+
+
+ 
+
+
+ 
+
+ There was insufficient memory to proceed. No session handle was
+returned. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_LOGIN_FAILURE 
+
+
+ 
+
+
+ 
+
+ There was no default logon, and the user failed to log on successfully
+when the logon dialog box was displayed. No session handle was returned. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_TOO_MANY_SESSIONS 
+
+
+ 
+
+
+ 
+
+ The user had too many sessions open simultaneously. No session handle
+was returned. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_USER_ABORT 
+
+
+ 
+
+
+ 
+
+ The user canceled the logon dialog box. No session handle was returned. 
+
+
+ 
+
+
+ 
+
+ SUCCESS_SUCCESS 
+
+
+ 
+
+
+ 
+
+ The call succeeded and a Simple MAPI session was established. 
+
+
+ 
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\TESTMAIL.PRG 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,108 @@
+FieldWBloc()
+
+
+
+FieldWBloc()
+
+ Previous  Top  Next
+
+
+
+
+Return a set-get code block for a field in a given work area
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FieldWBloc( <cFieldName>, <nWorkArea> ) --> bBlock 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Function to obtain compatibility with xBase++ 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cFieldName> Is the name of the field specified as a character string. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWorkArea> Is the work area number where the field resides specified as
+a numeric value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ FieldWBlock( cFieldName, nWorkArea ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ \SOURCE\FUNCTION\DB10.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

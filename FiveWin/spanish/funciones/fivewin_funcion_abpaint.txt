@@ -1,0 +1,23 @@
+====== Descripción ======
+Paints a bitmap with transparencies (alpha channel support)
+
+
+====== Sintaxis ======
+ABPaint( hDC, nX, nY, hBitmap, nAlphaLevel ) --> nil
+
+
+====== Parámetros ======
+|hDC|Device context handle where to paint|
+|nX, nY|coordinates|
+|hBitmap|handle of the bitmap|
+|nAlphaLevel|transparency level (0-255)| 
+
+
+====== Devuelve ======
+|nil|nothing|
+
+====== Ejemplo ======
+====== Código fuente ======
+
+====== Ver también ======
+[[fivewin_function_drawbitmap|DrawBitmap()]], [[fivewin_function_transbmp|TransBmp()]], [[fivewin_class_timage|Class TImage]], [[fivewin_funcion_fwwatermark|funcion FWWaterMark()]]

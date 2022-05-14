@@ -1,0 +1,22 @@
+====== ThisStruct() ======
+Reference to a structure in definition process. 
+
+====== Syntax ======
+
+  ThisStruct( <oStruct> ) --> oStruct  
+ 
+====== Parameters ======  
+ 
+|<oStruct>| Structure in definition process|  
+ 
+====== Returns ====== 
+
+|<oStruct>| Structure in definition process|  
+ 
+====== Observations ====== 
+
+ This function provides the object TStruct in the one definition process to be able to refer to the one with syntax xBase.  
+ 
+====== Source Code ====== 
+
+ SOURCE\CLASSES\TSTRUCT.PRG 

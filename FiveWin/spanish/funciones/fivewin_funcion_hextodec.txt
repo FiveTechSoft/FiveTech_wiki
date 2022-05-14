@@ -1,0 +1,15 @@
+
+====== HexToDec() ======
+HexToDec()
+
+It converts a chain hexadecimal to a decimal number
+====== Sintaxis ======
+ HexToDec( <cHexNumber> ) --> nDecNumber 
+====== Parámetros ======
+ <cHexNumber> Hexadecimal strint to convert 
+====== Devuelve ======
+ <nDecNumber> Decimal number converted 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\HEX2DEC.C 
+====== Ver también ======

@@ -1,0 +1,40 @@
+====== Class TToolBar ======
+
+Win32 common controls ToolBar                                                  
+Inherits from TControl                                                         
+====== DATA ======
+|nBtnWidth|The width of the buttons|
+|nBtnHeight|The height of the buttons|
+|aButtons|An array with the action codeblocks and the tooltips|
+|of|the buttons|
+|oImageList|The imagelist object associated with the buttons|
+|lTTBalloon|True to set the balloon style for the tooltip|
+====== METHODS ======
+|New|Constructor from source code|
+|AddButton|Adds a button to the toolbar|
+|AddMenu|Adds a menu button to the toolbar|
+|AddSeparator|Adds a separator to the toolbar|
+|ChangeBitmap|Changes the bitmap for a button of the toolbar|
+|Create|Creates the control|
+|DelButton|Removes the specified button from the toolbar|
+|EnableButton|Enables or disables the specified button|
+|HideButton|Hides the specified button|
+|IsButtonHidden|Returns .T. if the specified button is hidden|
+|IsChecked|Returns .T. if the specified button is checked|
+|SetChecked|Sets or resets the checked status of the specified|
+|button||
+|SetMessage|Sets the message for the specified button|
+|SetPressed|Sets or resets the pressed status of the specified|
+|button||
+|SetTextSets|the text of the specified button|
+|SetTextRows|Sets the maximum number of text rows displayed on a|
+|button||
+|SetTooltip|Sets the tooltip for the specified button|
+|ShowButton|Shows the specified button|
+|ToggleCheck|Toggles the checked status of the specified button|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTOOLBAR.PRG

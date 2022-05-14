@@ -1,0 +1,126 @@
+====== WNetAddConnection() ====== 
+
+
+
+WNetAddConnection()
+
+
+Redirects the local device to the remote server.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ WNetAddConnection( <cRemoteName>, <cPassword>, <cLocalName> ) -->
+nRetCode 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cRemoteName> Network device 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cPassword> Password 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cLocalName> Local device 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ One of the following: 
+
+
+ 
+
+
+ 
+
+
+
+WN_SUCCESS         0   The function was successful.   
+WN_NOT_SUPPORTED   1   The function was not supported.   
+WN_OUT_OF_MEMORY   11   The system was out of memory.   
+WN_NET_ERROR      2   An error occurred on the network.   
+WN_BAD_POINTER      4   The pointer was invalid.   
+WN_BAD_NETNAME      50   The network resource name was invalid.   
+WN_BAD_LOCALNAME   51   The local device name was invalid.   
+WN_BAD_PASSWORD      6   The password was invalid.   
+WN_ACCESS_DENIED      7   A security violation occurred.   
+WN_ALREADY_CONNECTED   53   The local device was already connected to a
+remote resource.   
+
+
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\NET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

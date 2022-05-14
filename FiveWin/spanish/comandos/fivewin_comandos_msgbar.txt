@@ -1,0 +1,58 @@
+====== Creando una MsgBar desde código fuente (al estilo dBase) ======
+<code clipper>
+ SET MESSAGE [ OF <oWnd> ];  
+    [ TO <cMsg> ];  
+    [ CENTERED | CENTER ] ;  
+    [ FONT <oFont> ] ;  
+    [ CLOCK | TIME ] ;  
+    [ DATE ] ;  
+    [ KEYBOARD ] ;  
+    [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+    [ NOINSET | NO INSET]  
+</code>
+====== Forma alternativa de creación (tipo DEFINE de objetos) ======
+<code clipper>
+ DEFINE MESSAGE [ BAR ] [ <oMsg> ];  
+    [ OF <oWdn> ];  
+    [ PROMPT <cMsg> ]  
+    [ CENTERED | CENTER ] ;  
+    [ FONT <oFont> ] ;  
+    [ CLOCK | TIME ] ;  
+    [ DATE ] ;  
+    [ KEYBOARD ] ;  
+    [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+    [ NOINSET | NO INSET ]
+</code>
+====== Definiendo tus propios MsgItems ======
+<code clipper>
+ DEFINE MSGITEM [ <oMsgItem> ] ;  
+    [ OF <oMsgBar> ] ;  
+    [ PROMPT <cMsg> ] ;  
+    [ SIZE <nSize> ] ;  
+    [ FONT <oFont> ] ;  
+    [ COLOR | COLORS <nClrFore> [, <nClrBack>] ] ;  
+    [ ACTION <uAction> ] ;
+    [ BITMAP, BITMAPS <cBitmap1> [, <cBitmap2> ] ] ;  
+    [ TOOLTIP <cToolTip> ]  
+</code>
+====== Parámetros ======  
+|<oWnd>|A reference to its container window|    
+|<cPrompt>|The default msg to show|    
+|<oFont>|An optional reference to a font object to use to display the msg| 
+|<nClrFore>|Foreground color as a RGB number, or as a xBase string|    
+|<nClrBack>|Background color as a RGB number|    
+|<oMsgItem>|A reference of the MsgItem object|    
+|<oMsgBar>|A reference of its container MsgBar|    
+|<nSize>|Size of the MsgItem|    
+|<uAction>|The action to perform when the mouse is clicked over|    
+|<cBitmap1>, <cBitmap2>|Bitmaps to show for active and inactive state of the Msgitems|    
+|<cToolTip>|Msgitem tooltip text|    
+
+====== Cláusulas ======
+|CENTERED|If the text should show centered|    
+|CLOCK , TIME|Time in the MsgBar|    
+|DATE|Date in the MsgBar|    
+|KEYBOARD|Keyboard status in the MsgBar|    
+|NOINSET|For a non-inset MsgBar appearance|
+====== Ver también ======
+[[fivewin_clase_tmsgbar|Clase TMsgBar]]    

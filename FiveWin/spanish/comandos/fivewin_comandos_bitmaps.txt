@@ -1,0 +1,123 @@
+====== Mapas de Bits (Bitmaps) ======
+
+Creación de un bitmap a partir de código fuente:
+
+<code clipper>
+@ <nRow>, <nCol> BITMAP [ <oBmp> ] ;
+                 [ NAME | RESNAME | RESOURCE <cResName> ] ;
+                 [ FILE | FILENAME | DISK <cBmpFile> ] ;
+                 [ NOBORDER | NO BORDER ] ;
+                 [ SIZE <nWidth>, <nHeight> ] ;
+                 [ OF | WINDOW | DIALOG <oWnd> ] ;
+                 [ ON CLICK | ON LEFT click <uLClick> ] ;
+                 [ ON RIGHT CLICK <uRClick> ] ;
+                 [ SCROLL ] ;
+                 [ ADJUST ] ;
+                 [ CURSOR <oCursor> ] ;
+                 [ PIXEL ] ;
+                 [ MESSAGE <cMsg> ] ;
+                 [ UPDATE ] ;
+                 [ WHEN <WhenFunc> ] ;
+                 [ VALID <uValid> ] ;
+                 [ DESIGN ] ;
+</code>
+
+Creación de un bitmap a partir de recursos:
+
+<code clipper>
+REDEFINE BITMAP [ <oBmp> ] ;
+         [ ID <nId> ] ;
+         [ OF | WINDOW | DIALOG <oWnd> ] ;
+         [ NAME | RESNAME | RESOURCE <cResName> ] ;
+         [ FILE | FILENAME | DISK <cBmpFile> ] ;
+         [ ON ClICK | ON LEFT click <uLClick> ] ;
+         [ ON RIGHT CLICK <uRClick> ] ;
+         [ SCROLL ] ;
+         [ ADJUST ] ;
+         [ CURSOR <oCursor> ] ;
+         [ MESSAGE <cMsg> ] ;
+         [ UPDATE ] ;
+         [ WHEN <WhenFunc> ] ;
+         [ VALID <uValid> ] ;
+</code>
+
+Parámetros:
+
+|<nRow>/<nCol> |Coordenadas en pantalla. Se simulan coordenadas de texto|
+|<oBmp> |Referencia al objeto bitmap|
+|<cResName> |Nombre del bitmap cuando este se carga desde un archivo .RC, .RES o DLL.|
+|<cBmpFile> |Nombre del archivo BMP que contiene el bitmap a cargar|
+|<nWidth> |Ancho deseado del bitmap|
+|<nHeight> |Altura deseada del bitmap.|
+|<oWnd> |Ventana contenedora del control bitmap.|
+|<uLClick> |La(s) acción(es) a realizarse cuando se da un click izquierdo sobre el bitmap.|
+|<uRClick> |La(s) acción(es) a realizarse cuando se da un click derecho sobre el bitmap|
+|<oCursor> |Una referencia al objeto cursor que se va desplegar sobre este control.|
+|<cMsg> |Mensaje asociado de este control|
+|<nId> |El identificador numérico del recurso del control.|
+|<WhenFunc> |Expresión que indica cuando este control estará activo o no..|
+
+Cláusulas:
+
+|NO BORDER |Inidica que no debe ponerse un borde alrededor del control.|
+|UPDATE |Indica que control podrá actualizarse atravéz del método TDialog:Update().|
+|PIXEL |Indica que se deben utilizar coodenadas en pixeles en vez de coordenadas de texto.|
+|SCROLL |Habilita el uso de barras de desplazamiento sobre el área visible del bitmap. Esto permite al usuario visualizar completamente los bitmaps que sean mas grandes que el tamaño del control.|
+|ADJUST |Ajusta automáticamente el bitmap al tamaño del control.|
+|DESIGN |Le permite al usuario mover y cambiar el tamaño con el mouse.|
+
+
+Implementación del comando:
+
+<code clipper>
+#xcommand @ <nRow>, <nCol> BITMAP [ <oBmp> ] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName> ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+[ <NoBorder:NOBORDER, NO BORDER> ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+[ <lClick: ON CLICK, ON LEFT CLICK> <uLClick> ] ;
+[ <rClick: ON RIGHT CLICK> <uRClick> ] ;
+[ <scroll: SCROLL> ] ;
+[ <adjust: ADJUST> ] ;
+[ CURSOR <oCursor> ] ;
+[ <pixel: PIXEL> ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ WHEN <uWhen> ] ;
+[ VALID <uValid> ] ;
+[ <lDesign: DESIGN> ] ;
+=> ;
+[ <oBmp> := ] TBitmap():New( <nRow>, <nCol>, <nWidth>, <nHeight>,;
+<cResName>, <cBmpFile>, <.NoBorder.>, <oWnd>,;
+[\{ |nRow,nCol,nKeyFlags| <uLClick> \} ],;
+[\{ |nRow,nCol,nKeyFlags| <uRClick> \} ], <.scroll.>,;
+<.adjust.>, <oCursor>, <cMsg>, <.update.>,;
+<{uWhen}>, <.pixel.>, <{uValid}>, <.lDesign.> )
+#xcommand REDEFINE BITMAP [ <oBmp> ] ;
+[ ID <nId> ] ;
+[ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName> ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+[ <lClick: ON ClICK, ON LEFT CLICK> <uLClick> ] ;
+[ <rClick: ON RIGHT CLICK> <uRClick> ] ;
+[ <scroll: SCROLL> ] ;
+[ <adjust: ADJUST> ] ;
+[ CURSOR <oCursor> ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ WHEN <uWhen> ] ;
+[ VALID <uValid> ] ;
+=> ;
+[ <oBmp> := ] TBitmap():ReDefine( <nId>, <cResName>, <cBmpFile>,;
+<oWnd>, [\{ |nRow,nCol,nKeyFlags| <uLClick> \}],;
+[\{ |nRow,nCol,nKeyFlags| <uRClick> \}],;
+<.scroll.>, <.adjust.>, <oCursor>, <cMsg>, <.update.>,;
+<{uWhen}>, <{uValid}> )
+#xcommand DEFINE BITMAP [<oBmp>] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName> ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile> ] ;
+[ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+=> ;
+[ <oBmp> := ] TBitmap():Define( <cResName>, <cBmpFile>, <oWnd> )
+</code>

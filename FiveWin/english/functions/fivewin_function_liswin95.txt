@@ -1,0 +1,38 @@
+====== IsWin2000() ======
+
+It checks if the version of Windows is 95/98.
+
+====== Syntax ======
+
+
+ IsWin95() --> lYesNo 
+
+
+====== Parameters ======
+
+
+ None 
+
+
+====== Returns ======
+
+|<lYesNo>|This function returns .t. if we are executing the application under Windows 95 or 98 | 
+
+
+====== Example ======
+<code clipper>
+   MsgInfo( IsWin98() )
+</code>
+
+
+====== Source Code ======
+
+ SOURCE\WINAPI\wndis.c 
+
+====== See also ======
+[[fivewin_function_iswin64|function IsWin64()]],
+[[fivewin_function_liswin2000|function lIsWin2000()]],
+[[fivewin_function_liswinnt|function lIswinNT()]],
+[[fivewin_function_liswinxp|function lIsWinXP()]],
+[[fivewin_function_liswin95|function lIsWin95()]]
+

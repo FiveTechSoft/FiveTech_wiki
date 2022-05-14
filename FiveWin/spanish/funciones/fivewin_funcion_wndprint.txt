@@ -1,0 +1,149 @@
+WndPrint()
+
+
+
+WndPrint()
+
+ Previous  Top  Next
+
+
+
+
+Prints the image of a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndPrint( <hWnd>, <hDCDestination>, <nRow>, <nCol>, <nScale> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> The handle of a window to make a printout. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDCDestination> Identifies the device context where the window image is
+going to be copied. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates were to place the image. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nScale> An optional zoom factor. By default is 1. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ CLASS TWindow METHOD Print() 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WndPrint.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ CLASS TWindow 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

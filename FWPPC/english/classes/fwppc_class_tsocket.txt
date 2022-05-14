@@ -1,0 +1,52 @@
+====== Class TSocket ======
+
+InterNet TCP/IP sockets support                                                
+====== DATA ======
+|nPort|Socket port number|
+|cIPAddr|Socket IP address|
+|nTimeOut|Connection timeout value|
+|nBackLog|Listen backlog value|
+|nSocket|Socket handle|
+|hFile|Handle of a file transmited in chunks|
+|bAccept|Codeblock to evaluate on accept event.|
+|bRead|Codeblock to evaluate on read event.|
+|bWrite|Codeblock to evaluate on write event|
+|bClose|Codeblock to evaluate on close event.|
+|bConnect|Codeblock to evaluate on connect event.|
+|bOOB|Codeblock to evaluate on out-of-band event.|
+|lDebug|If in debug mode.|
+|cLogFile|Log filename.|
+|cMsg|Not used ???.|
+|nRetCode|Receive and listen operations return code.|
+|Cargo|Generic cargo slot.|
+|aBuffer|Data sending buffer.|
+|lSending|Sending in progress.|
+|aSockets|Array of attending sockets.|
+====== METHODS ======
+|New|Constructor. nPort = port to use for the socket.|
+|Accept|Constructor. Builds a new socket to accept a|
+|incomming|connection|
+|End|Generic destructor.|
+|HandleEvent|Manages asyncronous connections events.|
+|GetData|Retrieves incomming data.|
+|SendBin|Sends binary data.|
+|SendChunk|Sends chunks of a file (::hFile ).|
+|SendFile|Sends a file.|
+|SendData|Sends data.|
+|Listen|Sets the socket in listening state.|
+|Close|Closes the socket.|
+|Connect|Connects to a specified IP address.|
+|Refresh|Determines the status of the socket.|
+|OnAccept|Accept incomming event method.|
+|OnRead|Read incomming event method|
+|OnWrite|Write incomming event method.|
+|OnClose|Close event action.|
+|OnConnect|On connect event method.|
+|OnOOB|Out-of-band event handler.|
+|ClientIP|Returns the client IP address.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TSOCKET.PRG

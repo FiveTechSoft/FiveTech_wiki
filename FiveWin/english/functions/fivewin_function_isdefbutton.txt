@@ -1,0 +1,93 @@
+====== IsDefButton() ======
+
+
+
+It checks if it is the button for defect
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsDefButton( <hWnd> ) --> lDefault 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the proven button 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lDefault> This function returns true if the window indicated for hWnd
+contains the style BS_DEFPUSHBUTTON. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ BS_DEFPUSHBUTTON 1 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,47 @@
+
+Definición de un nuevo DDE:
+
+ 
+<code clipper>
+DEFINE [ DDE | LINK ] <oDde> ;
+
+connection [ SERVICE <cService> ] ;
+
+[ TOPIC <cTopic> ] ;
+
+[ ITEM <cItem> ] ;
+
+[ ACTION <uAction> ] ;
+
+[ VALID<uEnd> ] ;
+
+</code> 
+
+Activación del DDE:
+
+ 
+<code clipper>
+ACTIVATE [ DDE | LINK ] <oDde>
+</code>
+Desactivación del DDE:
+
+ 
+<code clipper>
+DEACTIVATE [ DDE | LINK ] <oDde>
+</code>
+ 
+
+Finalización de la conexión:
+
+ 
+<code clipper>
+RELEASE [ DDE | LINK ] <oDde>
+</code>
+ 
+^DATA^  Descripción  ^
+^<oDde>|Referencia al objeto DDE.|
+^<cService>|Servicio que establece la conexión.|
+^<cTopic>|Tema que establece la conexión.|
+^<cItem>|Elemento que establece la conexión.|
+^<uAction>|Acción a ejecutar.|
+^<uEnd> |Acción a ejecutar cuando DDE finalice.|

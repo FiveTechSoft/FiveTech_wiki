@@ -1,0 +1,113 @@
+FWBitmap()
+
+
+
+
+FWBitmap()
+
+ Previous  Top  Next
+
+
+
+
+Creates the FiveWin own icon-alike bitmap
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FWBitmap( <hDC> ) --> hBitmap 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This an internal function of FiveWin that returns a handle of a FiveWin
+logo built from memory. It is used in the FiveWin error Dialog Box. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hBitmap> The handle of the just created bitmap. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This handle is automatically destroyed by FiveWin. 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

@@ -1,0 +1,24 @@
+====== Chord() ======  
+Draws a chord 
+
+====== Syntax ======  
+Chord( <hDC>, <nLeftRect>, <nTopRect>,<nRightRect>, <nBottomRect>, <nXStartLine>, <nYStartLine>, <nXEndLine>, <nYEndLine> ) --> lSuccess  
+
+====== Parameters ======  
+^Parameter^Description^
+| <hDC> | Identifies the device context where to paint |  
+| <nLeftRect> | The rect of the bounding rectangle where to place the chord. |  
+| <nTopRect> | |
+| <nRightRect> | |
+| <nBottomRect> | |
+| <nXStartLine> | The origin and end of the line that intersects with the ellipse forming the chord|  
+| <nYStartLine > | |  
+| <nXEndLine> | |
+| <nYEndLine> | |
+
+====== Returns ======  
+^Parameter^Description^
+|<lSuccess>| A logical value indicating if the operation was performed successfully.|
+
+====== Source Code ======  
+SOURCE\WINAPI\Drawing.c  

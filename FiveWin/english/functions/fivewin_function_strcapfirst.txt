@@ -1,0 +1,113 @@
+StrCapFirst()
+
+
+
+StrCapFirst()
+
+ Previous  Top  Next
+
+
+
+
+Capitalize the first and lowercase
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StrCapFirst( <cString> ) --> cCnvString 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function capitalize the first character and transform the other
+charaters to lowercase. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cString> String to convert 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cCnvString> Converted string 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ local cString := "text TO CONVERT" cString := StrCapFirst( cString ) ?
+cString --> "Text to convert" 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

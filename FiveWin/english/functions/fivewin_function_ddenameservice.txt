@@ -1,0 +1,26 @@
+====== DDENameService() ======
+Registers or unregisters the service names that a dynamic data exchange(DDE) server supports.
+
+====== Syntax ======
+DDENameService( <hInst>, <hText>, <nReserved>, <nFlags> ) --> hDDEData 
+
+====== Parameters ======
+^Parameters^Description^
+| <hInst> | Instance identifier |
+| <hText> | Handle of service-name string |
+| <nReserved> | Reserved |
+| <nFlags> | Service-name flags |
+
+====== Returns ======
+^Returns^Description^
+|<hDDEData>| != 0 if the function is successful. Otherwise 0. | 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

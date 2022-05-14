@@ -1,0 +1,81 @@
+====== SaveDC() ======
+
+
+Save a specific device context
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SaveDC( <hDC> ) --> nSavedDev 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context to save 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nSavedDev> Value that identifie the saved device context. This
+information can be used to restore this device context with the RestoreDC
+function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,62 @@
+
+====== cGetFile32() ======
+
+
+cGetFile32()
+File selection standard 32 bits DialogBox
+
+====== Sintaxis ======
+
+ cGetFile32( <cFileMask>, <cTitle>, [<nDefaultMask>],
+[<cInitialDirectory>], [lSave], [nFlags], [cInitialFile] )  --> cFileName 
+
+ This function invokes the 32 bits Windows default select a file
+DialogBox. 
+
+ This function only works on Win 95/98 and NT machines. The file
+RunDlg32.exe must be present on every PC in the \windows or
+\windows\system directory. 
+
+====== Parámetros ======
+
+ <cFileMask> A string that contains a default filename, or a list of
+possible file types to select: 
+
+ ? cGetFile( "Hello.prg", "Select a file" ) 
+
+ In this case "Hello.prg" is shown as the default filename. 
+
+ If you want to specify some different types of files the following
+format must be used: 
+
+ "DataBase | *.dbf |" + ; 
+ "Index | *.cdx |" + ; 
+ "Bitmap | *.bmp" 
+
+ <cTitle> The title of the DialogBox. By default "Select a file" is
+shown. 
+
+ <nDefaultMask> An optional numeric value in case that you want to start
+the DialogBox with a certain file type selected (if you are using the
+multiple file types format). To request lately what was the file type
+selected, you may use the function nGetFileFilter(). 
+
+ <cInitialDirectory> The initial directory where to start looking for
+files. By default it uses ".\\" 
+
+ <lSave> If true then the SaveFilename dialog will be displayed 
+
+ <nFlags> Special flag to use on the dialog (consult WinAPI
+documentation) 
+
+ <cInitialFile> Initial file to use 
+
+====== Devuelve ======
+ A string with the name of the filename selected. 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\Dlg32.prg 
+====== Ver también ======
+nGetFileFilter()

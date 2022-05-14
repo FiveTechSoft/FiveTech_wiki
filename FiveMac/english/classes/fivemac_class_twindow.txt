@@ -1,0 +1,313 @@
+====== Class TWindow ======
+
+
+====== DATA ====== 
+^ Data ^ Description ^
+|hWnd|Window handle hWnd|
+|nOldProc|Old window procedure when SubClassing| 
+|bInit|Code Block to execute on initialization| 
+|bMoved|Code Block to execute after moving the window| 
+|bLClicked|Code Block to execute when left clicking with the mouse |
+|bLButtonUp|Code Block to execute when left button of the mouse is released |
+|bKeyDown|Code Block to execute when pressing a key |
+|bPainted|Code Block to execute when painting the Window| 
+|bMButtonDown|Code Block to execute when middle clicking with the mouse |
+|bMButtonUp|Code Block to execute when middle button of the mouse is released |
+|bRClicked|Code Block to execute when right clicking with the mouse |
+|bRButtonUp|Code Block to execute when right button of the mouse is released |
+|bResized|Code Block to execute after resizing a Window |
+|bLDblClick|Code Block to execute when left double clicking the mouse |
+|bWhen|Code Block for WHEN clause |
+|bValid|Code Block for VALID clause |
+|bKeyChar|Code Block to execute when pressing a no-control key |
+|bMMoved|Code Block to execute when moving the mouse |
+|bGotFocus|Code Block to execute when receiving the focus | 
+|bLostFocus|Code Block to execute when losing the focus| 
+|bDropFiles|Code Block to execute when dropping files| 
+|bDdeInit|Code Block to execute when initializing DDE| 
+|bDdeExecute|Code Block to execute when executing DDE| 
+|bCommNotify|Code Block to execute when notifying data comm receive| 
+|bMenuSelect|Code Block to execute when clicking a menu item| 
+|bZip|Code Block to execute when zipping files| 
+|bUnZip|Code Block to execute when unzipping files| 
+|bDropOver|Code Block to execute when dropping| 
+|bCopy|Code Block to execute when copy| 
+|bCut| Code Block to execute when cut| 
+|bFind| Code Block to execute when find| 
+|bPaste| Code Block to execute when paste| 
+|bPrint| Code Block to execute when print| 
+|bUnDo| Code Block to execute when undo| 
+|bReDo| Code Block to execute when redo| 
+|bDelete| Code Block to execute when delete| 
+|bSelectAll| Code Block to execute when select all| 
+|bFindNext| Code Block to execute when find next| 
+|bReplace| Code Block to execute when replace| 
+|bProperties| Code Block to execute when properties| 
+|cCaption| The caption of the Window| 
+|cPS| Paint structure meanwhile painting| 
+|cVarName| A variable name to identifier this object| 
+|nPaintCount| Nº of times painting procedure has been invoked| 
+|cMsg| The text for the default message on the MsgBar| 
+|cToolTip| The tooltip text| 
+|Cargo| Standard Clipper general purpose user defined DATA| 
+|hDC| Window Device Context handle while painting| 
+|nId| Numeric identifier of the Window| 
+|lActive| If the window is active| 
+|lCancel| If the window is cancelled| 
+|lVisible| If the window is visible| 
+|lFocused| If the window has the focus| 
+|lDesign| If the window is in design mode| 
+|lVbx| If the window contains a VBX| 
+|nStyle| Numeric windows style value| 
+|nChrHeight| Standard height for characters of the window| 
+|nChrWidth| Standard width for characters of the window| 
+|nLastKey| Last key pressed on the window| 
+|nTop| Window coordinates| 
+|nLeft| Window coordinates| 
+|nBottom| Window coordinates| 
+|nRight| Window coordinates| 
+|nClrPane| Color of the background of the window| 
+|nClrText| Color of the foreground of the window| 
+|nResult| Numerical value after last activation| 
+|lValidating| If the window is in a process of validating a control| 
+|nHelpId| The help topic identifier for this window| 
+|hCtlFocus| Handle of the child control which has the focus| 
+|aControls| An array holding all the controls of the window| 
+|aMinMaxInfo| An array holding the minmax info of the window| 
+|oBar| Bar Object attached to the window| 
+|oBrush| Brush Object attached to the window| 
+|oCursor| Cursor Object attached to the window| 
+|oFont| Font Object attached to the window| 
+|oIcon| Icon Object attached to the window| 
+|oMenu| Menu Object attached to the window| 
+|oSysMenu| SysMenu Object attached to the window| 
+|oPopup| Temporary popup menu acting over the window| 
+|oMsgBar| MsgBar Object attached to the window| 
+|oWnd| Window Object container of the window| 
+|oVScroll| Vertical scrollbar Object attached to the window| 
+|oHScroll| Horizontal scrollbar Object attached to the window| 
+|oDragCursor| Cursor object to use for a drop&drag process| 
+|oTop| Control object to be placed on the top| 
+|oLeft| Control object to be placed on the left| 
+|oBottom| Control object to be placed on the bottom| 
+|oRight| Control object to be placed on the right| 
+|oClient| Control object to be placed on the client area| 
+|bSocket| Code Block to execute on socket activities| 
+|bTaskBar| Code Block to execute when clicking the taskbar| 
+|bEraseBkGnd| Code Block to execute when the background is erased| 
+|OnClick| Code Block to execute when left button of the mouse is released| 
+|OnMouseMove| Code Block to execute when moving the mouse| 
+|OnKeyDown| Code Block to execute when pressing a key| 
+|OnMove| Code Block to execute when moving the window| 
+|OnPaint| Code Block to execute when the window is painted| 
+|OnResize| Code Block to execute when the window is resized| 
+|nExStyle| Numeric windows extended style value| 
+|lRegistered| ClassData to store the WinApi registered state of the Class| 
+|oMItemSelect| ClassData to store the currently selected menu item| 
+
+====== METHODS ======
+^Method  ^ Description ^
+| New( nTop, nLeft, nBottom, nRight, cTitle, nStyle, oMenu,;\\ oBrush, oIcon, oParent, lVScroll, lHScroll,;\\  nClrFore, nClrBack, oCursor, cBorder, lSysMenu, lCaption,;\\ lMin, lMax, lPixel ) CONSTRUCTOR | |
+| Activate( cShow, bLClicked, bRClicked, bMoved, bResized, bPainted,;\\ bKeyDown, bInit,;\\ bUp, bDown, bPgUp, bPgDn,;\\ bLeft, bRight, bPgLeft, bPgRight, bValid, bDropFiles,;\\ bLButtonUp )| |
+| AddControl( oControl )                                                     |    |
+| AsyncSelect( nSocket, nLParam )                                            |    |
+| Box( nTop, nLeft, nBottom, nRight )                                        |    |
+| Capture()                                                                  |    |
+| Center( oWnd )                                                             |    |
+| CheckToolTip()                                                             |    |
+| Close()                                                                    |    |
+| Command( nWParam, nLParam )                                                |    |
+| CommNotify( nDevice, nStatus )                                             |    |
+| Circle( nRow, nCol, nWidth )                                               |    |
+| CoorsUpdate()                                                              |    |
+| Copy()                                                                     |    |
+| Create( cClsName )                                                         |    |
+| CtlColor( hWndChild, hDCChild )                                            |    |
+| cTitle( cNewTitle )                                                        |    |
+| Cut() INLINE If( ::bCut != nil, Eval( ::bCut ),)                           |    |
+| DdeInitiate( hWndClient, nAppName, nTopicName )                            |    |
+| DdeAck( hWndSender, nLParam ) INLINE  DdeAck( hWndSender, nLParam )        |    |
+| DdeExecute( hWndSender, nCommand )                                         |    |
+| DdeTerminate( hWndSender ) INLINE DdeTerminate( hWndSender )               |    |
+| Delete() INLINE If( ::bDelete != nil, Eval( ::bDelete, Self ),)            |    |
+| DestroyToolTip()                                                           |    |
+| Disable()                                                                  |    |
+| DispBegin( lCreateDC )                                                     |    |
+| DispEnd( aRestore )                                                        |    |
+| DrawItem( nIdCtl, pItemStruct )                                            |    |
+| DropFiles( hDrop )                                                         |    |
+| DropOver( nRow, nCol, nKeyFlags )                                          |    |
+| Enable()                                                                   |    |
+| End()                                                                      |    |
+| EndPaint()                                                                 |    |
+| EraseBkGnd( hDC )                                                          |    |
+| Event( nEvent )                                                            |    |
+| EveCount() INLINE Len( ::aEvents )                                         |    |
+| Find()                                                                     |    |
+| FindNext()                                                                 |    |
+| FirstActiveCtrl()                                                          |    |
+| FloodFill( nRow, nCol, nRGBColor )                                         |    |
+| GenDbf()                                                                   |    |
+| cGenPrg()                                                                  |    |
+| nGetChrHeight()                                                            |    |
+| GetCliRect()                                                               |    |
+| GetFont()                                                                  |    |
+| GetRect()                                                                  |    |
+| GetDC()                                                                    |    |
+| GetDlgCode( nLastKey )                                                     |    |
+| GetMinMaxInfo( pMinMaxInfo )                                               |    |
+| GetWidth( cText, oFont )                                                   |    |
+| GetText()                                                                  |    |
+| GoNextCtrl( hCtrl )                                                        |    |
+| GoPrevCtrl( hCtrl )                                                        |    |
+| GotFocus()                                                                 |    |
+| GoTop()                                                                    |    |
+| HardCopy( nScale, lFromUser )                                              |    |
+| nHeight( nNewHeight ) SETGET                                               |    |
+| Help()                                                                     |    |
+| HelpF1()                                                                   |    |
+| Hide()                                                                     |    |
+| HScroll( nWParam, nLParam )                                                |    |
+| Iconize()                                                                  |    |
+| InitMenuPopup( hPopup, nIndex, lSystem )                                   |    |
+| Inspect( cData )                                                           |    |
+| KeyDown( nKey, nFlags )                                                    |    |
+| KeyChar( nKey, nFlags )                                                    |    |
+| KillFocus( hWndFocus )                                                     |    |
+| LastActiveCtrl()                                                           |    |
+| LButtonDown( nRow, nCol, nKeyFlags )                                       |    |
+| LButtonUp( nRow, nCol, nKeyFlags )                                         |    |
+| LDblClick( nRow, nCol, nKeyFlags )                                         |    |
+| Line( nTop, nLeft, nBottom, nRight )                                       |    |
+| Link( lSubClass )                                                          |    |
+| Load( cInfo )                                                              |    |
+| LoadFile( cFileName )                                                      |    |
+| LostFocus( hWndGetFocus )                                                  |    |
+| MenuChar( nAscii, nType, nHMenu )                                          |    |
+| MenuSelect( nIdItem, nFlags, nHMenu )                                      |    |
+| Moved( nRow, nCol )                                                        |    |
+| NcActivate( lOnOff )                                                       |    |
+| NcMouseMove( nHitTestCode, nRow, nCol )                                    |    |
+| lWhen()                                                                    |    |
+| Maximize()                                                                 |    |
+| MButtonDown( nRow, nCol, nKeyFlags )                                       |    |
+| MButtonUp( nRow, nCol, nKeyFlags )                                         |    |
+| MeasureItem( nIdCtl, pMitStruct )                                          |    |
+| Minimize()                                                                 |    |
+| MouseMove( nRow, nCol, nKeyFlags )                                         |    |
+| MouseWheel( nKey, nDelta, nXPos, nYPos )                                   |    |
+| Move( nTop, nLeft, nWidth, nHeight, lRepaint )                             |    |
+| Normal()                                                                   |    |
+| Notify( nIdCtrl, nPtrNMHDR )                                               |    |
+| NcPaint()                                                                  |    |
+| nWidth( nNewWidth ) SETGET                                                 |    |
+| Paint()                                                                    |    |
+| PaletteChanged( hWndPalChg )                                               |    |
+| Paste()                                                                    |    |
+| PostMsg( nMsg, nWParam, nLParam )                                          |    |
+| Print( oTarget, nRow, nCol, nScale )                                       |    |
+| Property( n )                                                              |    |
+| Properties()                                                               |    |
+| PropCount()                                                                |    |
+| QueryDragIcon()                                                            |    |
+| QueryEndSession()                                                          |    |
+| QueryNewPalette()                                                          |    |
+| RButtonDown( nRow, nCol, nKeyFlags )                                       |    |
+| RButtonUp( nRow, nCol, nKeyFlags )                                         |    |
+| Restore()                                                                  |    |
+| Destroy()                                                                  |    |
+| ReDo()                                                                     |    |
+| ReleaseDC()                                                                |    |
+| Refresh( lErase )                                                          |    |
+| Register( nClsStyle )                                                      |    |
+| ReSize( nSizeType, nWidth, nHeight )                                       |    |
+| ReadFile( cFileName )                                                      |    |
+| Replace()                                                                  |    |
+| Save()                                                                     |    |
+| SaveFile( cFileName )                                                      |    |
+| SaveToBmp( cBmpFile )                                                      |    |
+| SaveToText( nIndent )                                                      |    |
+| Say( nRow, nCol, cText, nClrFore, nClrBack, oFont, lPixel,;\\ lTransparent, nAlign ) |    |
+| SayBitmap( nRow, nCol, coBitmap, nWidth, nHeight )                         |    |
+| SayRect( nRow, nCol, cText, nClrFore, nClrBack, nWidth )                   |    |
+| SelColor( lFore )                                                          |    |
+| SelectAll()                                                                |    |
+| SendMsg( nMsg, nWParam, nLParam )                                          |    |
+| SetBounds( nLeft, nTop, nRight, nBottom )                                  |    |
+| SetBrush( oBrush )                                                         |    |
+| SetColor( nClrFore, nClrBack, oBrush )                                     |    |
+| SetCoors( oRect )                                                          |    |
+| SelFont()                                                                  |    |
+| SetFont( oFont )                                                           |    |
+| SetIcon( oIcon )                                                           |    |
+| SetMenu( oMenu )                                                           |    |
+| SetMsg( cText, lDefault )                                                  |    |
+| SetPixel( nX, nY, nColor )                                                 |    |
+| SetSize( nWidth, nHeight, lRepaint )                                       |    |
+| SetText( cText )                                                           |    |
+| Show()                                                                     |    |
+| ShowToolTip( nRow, nCol, cToolTip )                                        |    |
+| SysCommand( nWParam, nLParam )                                             |    |
+| TaskBar( nWParam, nLParam )                                                |    |
+| Timer( nTimerId ) INLINE  TimerEvent( nTimerId )                           |    |
+| ToolWindow()                                                               |    |
+| UnDo()                                                                     |    |
+| UnLink()                                                                   |    |
+| UnZip( nPercent )                                                          |    |
+| ClientEdge()                                                               |    |
+| Zip( nZipInfo )                                                            |    |
+| Update()                                                                   |    |
+| nVertRes()                                                                 |    |
+| nHorzRes()                                                                 |    |
+| AEvalWhen()                                                                |    |
+| VbxFireEvent( pEventInfo )                                                 |    |
+
+
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+static oWnd
+
+//----------------------------------------------------------------------------//
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "Testing Window" ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Call a Dialog" ACTION TestDlg()
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function TestDlg()
+
+   local oDlg, oVbx
+
+   DEFINE DIALOG oDlg FROM 5, 5 TO 20, 40 TITLE "Testing Dialog"
+
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:window.jpg|:window.jpg}}
+
+====== See also ======
+[[fivemac_commands_window | Window commands ]], [[fivemac_class_tdialog | Class TDialog ]]

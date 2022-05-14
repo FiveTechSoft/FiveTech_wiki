@@ -1,0 +1,115 @@
+====== WndAdjLeft() ====== 
+
+WndAdjLeft()
+
+Align to the left of the window
+
+
+====== Syntax ======
+
+ WndAdjLeft( <hWnd>, <hTop>, <hBottom> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hTop> Handle of the oTop object 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBottom> Handle of the oBottom object 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTALIGN.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

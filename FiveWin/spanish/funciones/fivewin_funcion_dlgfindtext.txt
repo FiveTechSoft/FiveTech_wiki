@@ -1,0 +1,19 @@
+
+====== DlgFindText() ======
+DlgFindText()
+
+Standard Common Dialog FindText
+====== Sintaxis ======
+ DlgFindText( <cText>, <oEdit> ) --> oDlg 
+====== Parámetros ======
+ <cText> Text to search 
+
+ <oEdit> Edit box where the text is located where we will carry out the
+search. 
+====== Devuelve ======
+ <oDlg> Commun dialog box of search of texts. 
+====== Ejemplo ======
+ SOURCE\CLASSES\MGET.PRG ( to see method Find () ) 
+====== Código fuente ======
+ SOURCE\CLASSES\DLGFIND.PRG 
+====== Ver también ======

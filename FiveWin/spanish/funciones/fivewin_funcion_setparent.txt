@@ -1,0 +1,140 @@
+SetParent()
+
+
+
+SetParent()
+
+ Previous  Top  Next
+
+
+
+
+Changes the parent of a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetParent( <hWndChild>, <hWndParent> ) --> hWndOldParent 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWndChild> Identifies the child window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWndParent> Identifies the new parent window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hWndOldParent> The handle of the old parent window. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ If the child window is visible it gets properly painted. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestFold.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Getparen.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetParent() IsChild() 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

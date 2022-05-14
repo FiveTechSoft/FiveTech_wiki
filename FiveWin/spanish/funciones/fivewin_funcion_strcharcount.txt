@@ -1,0 +1,73 @@
+StrCharCount()
+
+
+StrCharCount()
+ Previous  Top  Next
+
+Counts the occurrence of a given character inside a string.
+
+====== Sintaxis ======
+
+ 
+
+
+ StrCharCount( <cString>, <cChar> ) --> nTimes 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cString> The string to be searched. 
+
+
+ <cChar> The character to search. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nTimes> The number of occurrence of cChar inside cString. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ local nTimes := StrCharCount( "Bla bla bla", "a" ) 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,125 @@
+====== Scan() ======
+
+
+
+Writes in file the name of a variable and their value
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Scan( u, hFile [,cData ] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <u> Variable 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFile> Handler of the file where it will be written. Logically the file
+will be opened previously. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cData> Value of the variable 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ In case the variable is an object or an array you they will produce
+called recursives until it writes in the one file all the data or
+elements of the variable. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\STATICS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

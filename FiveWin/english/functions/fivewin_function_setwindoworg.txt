@@ -1,0 +1,20 @@
+====== SetWindowOrg() ======
+Specifies which window point maps to the viewport origin (0,0).
+
+====== Syntax ======
+ SetWindowOrg( <hDC>, <nXOrg>, <nYOrg> ) --> aPrevOrg 
+ 
+====== Parameters ======
+| <hDC> | The handle of the device context. |
+| <nXOrg> | Specifies the logical x-coordinate of the new window origin. |
+| <nYOrg> | Specifies the logical y-coordinate of the new window origin. |
+ 
+====== Returns ======
+| <aPrevOrg> | An array with the previous origin coordinates. |
+ 
+====== Example ======
+ 
+====== Source code ======
+ SOURCE\WINAPI\WNDCENTE.C 
+
+====== See also ======

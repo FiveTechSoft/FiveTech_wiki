@@ -1,0 +1,38 @@
+====== Class TTxtFile ======
+
+Ascii files management as objects. See Also Class TTxtEdit for editing         
+text files.                                                                    
+====== DATA ======
+|cLine|The latest ascii line read from the file|
+|nTLines|The number of lines contained inside the ascii file|
+|nLine|Current ascii line number|
+|nMaxLineLength|The maximum ascii line size permitted to be read.|
+|Default|1024|
+|nOffset|The binary position inside the ascii file|
+====== METHODS ======
+|New|Constructor method|
+|Add|Adds a new line to the ascii file|
+|AppendLn|Adds a new line to the ascii file|
+|Advance|Skips to the next ascii line|
+|DelLine|Deletes an ascii line|
+|GetValue|Retrieves an ascii INI file section and key value|
+|GoTo|Jumps to a specific ascii line number|
+|GoTop|Jumps to the beginning of the ascii file|
+|GoBottom|Jumps to the end of the ascii file|
+|InsLine|Insert an ascii line in the current line position|
+|LastRec|Returns number of ascii text lines|
+|nRecno|Returns the current ascii line number|
+|ReadLine|Returns the current ascii line text|
+|ReadLn|Returns the current ascii line text|
+|RecCount|Returns the number of ascii text lines|
+|RecNo|Returns the current ascii line number|
+|RepLine|Duplicates the current ascii text line|
+|Rewind|Skips to a previous line position|
+|SetValue|Changes an ascii INI file section and key value|
+|Skip|Skips a certain number of ascii text lines|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTXTFILE.PRG

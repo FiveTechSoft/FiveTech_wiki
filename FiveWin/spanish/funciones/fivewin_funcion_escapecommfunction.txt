@@ -1,0 +1,53 @@
+===== EscapeCommFunction() =====
+
+
+
+Dirige el dispositivo especificado de comunicaciones a ejecutar una función extendida. 
+
+
+
+
+===== Sintaxis: ===== 
+
+
+
+
+ EscapeCommFunction( <nComDev>, <nFunctionCode> ) --> lSuccess  
+
+
+
+
+
+
+===== Parámetros: ===== 
+
+
+
+^Parámetro^Descripción^
+| <nComDev>| Identifica el dispositivo de comunicaciones.|
+| <nFunctionCode> |** Código de la función extendida.** \\ **SETXOFF**      Causa que la transmisión actúe como si se recibiera un caracteras XOFF. \\ **SETXON**      Causa que la transmisión actúe como si recibiera un caracter XON. \\ **SETRTS**      Envía la señal RTS (request-to-send). \\ **CLRRTS**      Limpia la señal RTS (request-to-send). \\ **SETDTR**      Envía la señal DTR (data-terminal-ready). \\ **CLRDTR**      Limpia la señal DTR (data-terminal-ready). \\ **RESETDEV**      Reinicia la impresora si el parámetro idComDev especifica un puerto LPT. No se realizar otra función si idComDev especifica un puerto COM. \\ **GETMAXLPT**      Devuelve el identificador de máximo de puertos LPT soportados por el sistema. El rango para este valor va de 0x80 a 0xFF, donde 0x80 correspondes a LPT1, 0x81 a LPT2, 0x82 a LPT3, y así sucesivamente. \\ **GETMAXCOM**      Devuelve el identificador de puertos COM soportados por el sistema. El rango de valores va de 0x00 a 0x7F, donde 0x00 corresponde a COM1, 0x01 a COM2, 0x02 a COM3, y así sucesivamente. |
+
+
+
+
+
+
+
+
+===== Devuelve: ===== 
+
+
+
+
+ Devuelve .t. si la función tiene éxito. 
+ 
+
+Sample: 
+
+
+===== Código fuente: =====
+
+
+
+
+ SOURCE\WINAPI\COMM.C  

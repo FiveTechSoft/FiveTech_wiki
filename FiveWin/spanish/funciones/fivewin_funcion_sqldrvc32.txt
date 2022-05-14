@@ -1,0 +1,33 @@
+====== SQLDrvC32() ====== 
+
+Establece conexiones a un Driver y una fuente de datos.
+
+====== Sintaxis ======
+
+SQLDrvC32( <hDbc>, <hWnd>, <cConnectString>, <Reserved>, <@cBuffer>,
+<Reserved>, <@nLen>, <nDrvCompletion> ) --> nRetCode 
+
+
+
+
+====== Parámetros ======
+
+| <hDbc> | El controlador de conexión. |
+| <hWnd> | El controlador de la ventana padre. |
+| <cConnectString> | La cadena de connexión. |
+| <cBuffer> | Una memoria intermedia llena con la cadena de conexión completa. |
+| <nLen> | El número total de carácteres (excluyendo el carácter de terminación nulo) disponible para devolver en cBuffer. |
+| <nDrvCompletion> | Bandera que indica si el Administrador de controladores (Driver Manager) o el driver debe solicitar más información sobre la conexión: SQL_DRIVER_PROMPT, SQL_DRIVER_COMPLETE, SQL_DRIVER_COMPLETE_REQUIRED, or SQL_DRIVER_NOPROMPT |
+
+====== Devuelve ======
+
+<nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,SQL_NO_DATA, SQL_ERROR, or SQL_INVALID_HANDLE. 
+ 
+====== Ejemplo: ====== 
+ 
+====== Código fuente: ====== 
+
+SOURCE\WINAPI\ODBC32X.C 
+
+====== Ver también ======
+

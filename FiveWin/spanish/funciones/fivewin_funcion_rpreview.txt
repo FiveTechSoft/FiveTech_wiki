@@ -1,0 +1,20 @@
+
+====== RPreview() ====== 
+RPreview()
+
+Viewer of listings of FiveWin
+====== Sintaxis ======
+ RPreview( <oDevice> ) --> nil 
+
+ Function that generates a window to visualize those diverse "MetaFiles"
+that believes the generator of reports of FiveWin. From this window we
+can thumb through the files being able to to make successive
+amplifications of the same ones and their later one impression for the
+peripheral that we choose. 
+====== Parámetros ======
+ <oDevice> Peripheal where the listing will be drawn. For defect the printer. 
+====== Devuelve ======
+ Nil 
+====== Código fuente ======
+ SOURCE\CLASSES\RPREVIEW.PRG 
+====== Ver también ======

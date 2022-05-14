@@ -1,0 +1,24 @@
+====== TvGetParent() ======
+
+Devuelve el manejador (handle) del padre de Un tree (Rama) Especifico.
+
+====== Syntaxis ====== 
+
+ TvGetParent( <hWnd>, <hItem> ) --> hParentItem 
+
+====== Parametros ====== 
+
+| <hWnd> | Ventana Contenedora del Control  |
+| <hItem>| ID del Elemento|
+
+
+====== Devuelve ====== 
+
+| <hParentItem> | El handle (manejador)del elemento contenedor (padre)  |
+
+
+====== Codigo fuente ====== 
+
+SOURCE\WINAPI\TREEVIEW.C  
+
+====== Ver también ====== 

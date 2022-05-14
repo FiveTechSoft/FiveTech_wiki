@@ -1,0 +1,71 @@
+Hex2Str()
+
+
+Hex2Str()
+ Previous  Top  Next
+
+Converts a hexadecimal representation of a string in its corresponding
+ASCII format.
+
+====== Sintaxis ======
+
+ 
+
+
+ Hex2Str( <cHex> ) --> cString 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cHex> The hexadecimal string to convert. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cString> The converted ASCII string. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ SAMPLES\TESTHEX2.PRG 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\STR2HEX.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

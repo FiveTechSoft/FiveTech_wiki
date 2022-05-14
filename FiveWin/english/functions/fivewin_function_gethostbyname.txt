@@ -1,0 +1,85 @@
+ 
+====== GetHostByName() ====== 
+
+
+
+
+
+It returns the address IP of one it schemes for their name
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetHostByName( <cHostName> ) --> cIPAddress 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cHostName> Standard host name for the local machine 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cIPAddress> It returns the address IP of the machine whose name we
+give. The address IP has the format "999.999.999.999" being able to be
+groups of a, two or three figures. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,105 @@
+====== Creating a ListBox from source code ======
+<code clipper>
+ @ <nRow>, <nCol> LISTBOX [ <oLbx> VAR ] <cnVar> ;  
+ [ ITEMS | PROMPTS <aList> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ VALID <uValid> ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ PIXEL ] ;  
+ [ DESIGN ] ;  
+ [ FONT <oFont> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ]  ;
+ [ BITMAPS <acBitmaps> ] ;  
+ [ ON DRAWITEM <uBmpSelect> ] ;  
+ [ MULTI | MULTIPLE | MULTISEL ] ;  
+ [ SORT ]  </code>
+ 
+
+====== Creating a ListBox from resources ======
+<code clipper>
+ REDEFINE LISTBOX [ <oLbx> VAR ] <cnVar> ;  
+ [ ITEMS | PROMPTS <aItems> ] ;  
+ [ FILES | FILESPEC <cFileSpec> ] ;  
+ [ ID <nId> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ VALID <uValid> ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ]  ;
+ [ BITMAPS <acBitmaps> ] ;  
+ [ ON DRAWITEM <uBmpSelect> ]  
+</code>
+====== Parameters ======
+|<nRow>, <nCol>| The coordinates of the ListBox. They mimic text mode coordinates.|
+|<oLbx>| A reference to the ListBox object.|
+|<cnVar>| A Clipper variable, string or numeric, where FiveWin will automatically select the item selected in the ListBox.|
+|<aList>| An Clipper array of strings, used to fill the ListBox items.|
+|<nWidth>, <nHeight>| The dimensions of the ListBox in pixels.|
+|<uChange>| A codeblock to evaluate everytime a item of the ListBox is selected.|
+|<uLDblClick>| A codeblock to evaluate when the user left double clicks the mouse over the listbox.|
+|<oWnd>| A reference to the container object of the ListBox, normally a window or a DialogBox.|
+|<uValid>| A codeblock that holds the VALID clause of the ListBox.|
+|<nClrFore>| The color of the text of the ListBox items.|
+|<nClrBack>| The color of the background of the ListBox items.|
+|<oFont>| An optional font object to use when painting the ListBox items.|
+|<cMsg>| The message to show at the messageBar of the ListBox container if defined (a window or a DialogBox normally).|
+|<uWhen>| A codeblock that holds the WHEN clause of the ListBox.|
+|<cFileSpec>| A 'mask' to use to automatically show files from disk. i.e.: "*.*"|
+|<nId>| The control numeric identifier when managing resources.|
+|<nHelpId>| The help identifier for the ListBox.|
+|<acBitmaps>| An optional array of bitmaps names when doing a ownerdraw ListBox.|
+|<uBmpSelect>| A codeblock to evaluate everytime a bitmap is going to be draw on a ownerdraw ListBox. This codeblock lets select the index of different bitmap to paint.|
+
+====== CLAUSES ======
+
+| PIXEL  | To specify that <nRow> and <nCol> must be trated as pixels,and not simulated as MsDos text rows and cols. | 
+| DESIGN | To let the user move around the control with the mouse. | 
+| UPDATE | To specify that this control should be repainted (:Refresh()) when issuing a <oDlg>:Update() of its container DialogBox. | 
+| MULTI / MULTIPLE / MULTISEL | Alows Multiple selection. | 
+| BITMAPS | To specify an array of bitmaps names to be used on a ownerdraw ListBox. | 
+| ON DRAWITEM | To specify a certain bitmap index to paint on a ownerdraw ListBox. |  
+| SORT | To show the ListBox containts sorted by name. | 
+
+====== Sample Code ======
+Refer \Fwh\Samples\TestLbx2.Prg
+<code clipper>
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oDlg, oLbx, cItem := "One"
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg TITLE "Bitmaps in ListBoxes" ;
+      FROM 5, 5 TO 20, 45
+
+   @ 0.5, 0.5 LISTBOX oLbx VAR cItem ;
+      ITEMS { "One", "Two", "Three", "Four" } ;
+      BITMAPS { "..\bitmaps\level1.bmp",;
+                "..\bitmaps\level2.bmp",;
+                "..\bitmaps\level3.bmp",;
+                "..\bitmaps\level4.bmp" } ;
+      SIZE 100, 100
+
+   @ 0.5, 18 BUTTON "&Ok" ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:listbox.jpg|:listbox.jpg}}
+
+====== See Also ======
+[[fivewin_class_tlistbox|Class TListBox]], [[fivewin_class_txbrowse | Class TXBrowse ]]

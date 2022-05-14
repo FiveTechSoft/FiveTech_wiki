@@ -1,0 +1,12 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**<nRow>, <nColumn>**|
+|  | Valores numéricos que especifican las coordenadas donde aparece WinHelp. Windows asigna dimensiones de 1024x1024 puntos de la superficie de la pantalla |
+|  |**<nWidth>, <nHeight>**|
+|  | Es el tamaño de la ventana|
+|  |**<nMax>**|
+|  | Valor que indica como motrar la ventana (ver ShowWindow())|
+^Valor de retorno| Nil|
+^Descripción:| Puede elegir la posición donde quiera que aparezca el WinHelp |
+^Ejemplo|HelpSetPos( 200, 200 ) |
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | WinHelp, GetHelpTopic, HelpIndex, GetHelpFile, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

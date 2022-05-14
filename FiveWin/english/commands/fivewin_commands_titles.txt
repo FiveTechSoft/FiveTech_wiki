@@ -1,0 +1,151 @@
+====== Creating a Title from source code ======
+<code clipper>
+@ <nRow>, <nCol> TITLE [ <oTitle> ] ;
+             [ <wnd: OF, WINDOW, DIALOG > <oWnd> ] ;
+             [ SIZE <nWidth>, <nHeight> ] ;
+             [ TEXT <cText> ];
+             [ <lRound: ROUND> ];
+             [ <lNoBorder: NOBORDER> ];
+             [ <lTrans: TRANSPARENT> ];
+             [ <lBase: BASE> ];
+             [ <ColorBox: COLORBOX> <nClrBoxOut>,<nClrBoxIn> ] ;
+             [ SHADOW <shadow: TOPLEFT, TOPRIGHT, BOTTOMLEFT, BOTTOMRIGHT> ] ;
+             [ SHADOWSIZE <nSSize> ]
+</code>
+
+====== Adding a Title image ======
+<code clipper>
+@ <nRow>, <nCol> TITLEIMG ;
+             [ <tit: OF, TITLE> <oTitle> ] ;
+             [ <bm: BITMAP, HBITMAP, FILE, NAME, RESNAME> <cnName> ];
+             [ SIZE <nWidth>, <nHeight> ];
+             [ <alpha: ALPHALEVEL, LEVEL, ALPHA> <nAlphaLevel> ];
+             [ <lReflex: REFLEX> ];
+             [ <lTrans: TRANSPARENT> ];
+             [ <lAnima: ANIMA> ];
+             [ ACTION <uAction> ]
+</code>
+
+
+
+
+
+
+
+
+
+
+====== Adding a Title text ======
+<code clipper>
+@ <nRow>, <nCol> TITLETEXT ;
+             [ <tit: OF, TITLE> <oTitle> ] ;
+             [ <txt: TEXT, CAPTION, TITLE> <cText> ]; 
+             [ <lJustify: JUSTIFY > ];
+             [ <br: BRUSH, HBRUSH> <ohBrush> ];
+             [ <pn: PEN, HPEN> <ohPen> ];
+             [ SHADOW <shadow: TOPLEFT, TOPRIGHT, BOTTOMLEFT, BOTTOMRIGHT> ];
+             [ <ft: FONT> <ohFont> ];
+             [ COLOR <nTextClr> ];
+             [ <look3d: 3D, RELIEVE> ]
+</code>
+|<oTitle>|The created object TTitle|
+|<oWnd>|The parent container object (window, dialog or control)|
+|<nWidth>,<nHeight>|The dimensions of the title control|
+|<nAlphaLevel>|The transparency level to use for the title display|
+|<lRound>|Use round corners|
+|<lNoBorder>|Don't use a border for the title|
+|<lTrans>|make it transparent|
+|<ColorBox>|Colors to use for the out and in colors of the title|
+|<nSSize>|The shadow size to use|
+|<cnName>|The name of the file or resource for the image to display|
+|<cText>|The text to show|
+|<ohBrush>|A brush object or a brush windows handle|
+|<ohPen>|A pen object or a pen windows handle|
+|<shadow>|the shadow location|
+|<nTextClr|The color for the text|
+|<look3d>|To use 3D look|
+
+
+====== Example ======
+<code clipper>
+// FiveWin Class TTitle
+
+#include "fivewin.ch"
+#include "ttitle.ch"
+
+Function main()
+
+    local oWnd
+    local oTitle1, oTitle2, oTitle3, oTitle4, oTitle5
+    local oBrush1, oBrush2, oBrush3, oBrush4
+    LOCAL oFont1, oFont2, oFont3
+    
+    DEFINE BRUSH oBrush1 FILE "..\bitmaps\backgrnd\paper.bmp"
+    DEFINE BRUSH oBrush2 FILE "..\bitmaps\backgrnd\iron.bmp"
+    DEFINE BRUSH oBrush3 STYLE "NULL"
+    DEFINE BRUSH oBrush4 FILE "..\bitmaps\backgrnd\wood.bmp"
+    
+    DEFINE WINDOW oWnd TITLE "TTitle Class Test"  BRUSH oBrush1 
+
+    DEFINE FONT oFont1 NAME "Blackoak Std" size 30, 60  
+    DEFINE FONT oFont2 NAME "Times New Roman" size 10, 30  
+    DEFINE FONT oFont3 NAME "Blackoak Std" size 30, 60  NESCAPEMENT 900
+
+
+    // Title 1  Horizontal ( top )
+    @ 015,150 TITLE oTitle1 size 460, 60 of oWnd SHADOW TOPRIGHT 
+    oTitle1:aGrdBack = { { 1, nRGB( 129, 130, 138 ), nRGB( 59, 60, 62 ) } }
+    oTitle1:nShadowIntensity = 70
+    @  10,  10  TITLETEXT OF oTitle1 TEXT "FIVEWIN 9.07"  FONT oFont1 BRUSH oBrush1
+
+ 
+    // Title 2  Vertical( Left )
+    @  50,  80  TITLE oTitle2 size 60, 460 of oWnd SHADOW topleft SHADOWSIZE 5
+    @ 450,  10  TITLETEXT OF oTitle2 TEXT "FIVEWIN 9.07"  FONT oFont3 PEN GetStockObject( 8 )
+
+    
+    //Title 3 Horizontal ( Center )
+    @ 250, 150 TITLE oTitle3 size 460, 60 of oWnd SHADOW topleft BASE TRANSPARENT NOBORDER 
+    @   2,  20 TITLETEXT OF oTitle3 TEXT "FIVEWIN 9.07" FONT oFont1 brush oBrush4 3D SHADOW TOPLEFT
+
+    
+    //Title 4 Vertical ( Right )
+    @  50, 630 TITLE oTitle4 size 60, 460 of oWnd SHADOW TOPRIGHT 
+    @   5,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @  65,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    @ 125,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @ 185,   5 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\movie.BMP"    SIZE 50, 60 ANIMA LEVEL 100
+    @ 245,   5 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\movie.bmp"    SIZE 50, 60 ANIMA LEVEL 255
+    @ 305,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    @ 365,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @ 425,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    
+
+    //Title 5 Horizontal( Down )
+    @ 480, 150  TITLE oTitle5 size 460, 60 of oWnd SHADOW BOTTOMLEFT SHADOWSIZE 2
+    @   5,  10  TITLEIMG  OF oTitle5 BITMAP "../bitmaps\32X32\keys.bmp" SIZE 30, 30 REFLEX TRANSPARENT ANIMA
+    @  20,  60  TITLETEXT OF oTitle5 TEXT "<== Move over me"  COLOR CLR_BLACK   
+    @ 14,  220  TITLETEXT OF oTitle5 TEXT "FIVEWIN 9.07"  COLOR CLR_BLACK FONT oFont2 3d
+    @  5,  400  TITLEIMG  OF oTitle5 BITMAP "../bitmaps\fivetech.bmp" SIZE 30, 30 REFLEX 
+    oTitle5:nShadowIntensity = 70
+
+    activate window oWnd maximized
+    
+    oBrush4:end()
+    oBrush3:end()
+    oBrush2:End()
+    oBrush1:End()
+    oFont1:End()
+    oFont2:End()
+    oFont3:End()
+ 
+return nil
+</code>
+{{:titles.jpg|:titles.jpg}}
+
+====== Source code ======
+FWH\include\TTitle.ch
+
+====== See Also ======
+[[fivewin_class_ttitle|Class TTitle]]
+

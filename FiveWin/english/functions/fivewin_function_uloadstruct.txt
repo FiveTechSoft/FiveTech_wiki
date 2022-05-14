@@ -1,0 +1,34 @@
+
+====== uLoadStruct() ======
+
+Restore an array or an object from disk
+
+====== Syntax ======
+
+ uLoadStruct( <cObjFile> )  --> <oObject> 
+
+====== Parameters ======
+
+|<cObjFile>|The name of a file on disk which contains an array or an object previously saved with lSaveStruct()| 
+
+====== Returns ======
+
+|<oObject>|A reference of the array or the object just beeing created| 
+
+====== Observations ======
+
+n order to let Clipper properly rebuild a specific class object, an external reference to that class must be specified 
+<code clipper>
+ // Place this at the beginning of your app 
+ // change TWindow for the name of the class 
+ // of that object 
+
+ extern TWindow 
+</code>
+====== Source Code ======
+
+Not provided 
+
+====== See also ======
+
+[[fivewin_function_lsavestruct|lSaveStruct()]]

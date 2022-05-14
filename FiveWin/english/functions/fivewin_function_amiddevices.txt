@@ -1,0 +1,107 @@
+
+**aMidiDevices()** 
+
+
+
+
+
+It describes the capabilities of to MIDI output device 
+
+
+
+**Syntax:** 
+
+
+
+
+ aMidiDevices() \\ acMidiDevices  
+ 
+  
+ 
+  
+
+
+
+**Parameters:** 
+
+
+
+
+ None  
+ 
+  
+ 
+  
+
+
+
+**Returns:** 
+
+
+
+
+ It Returns a strings array with the capabilities Midi that the team has.  
+ 
+  
+ 
+  
+
+
+
+**Sample:** 
+
+
+
+
+#include "fivewin.ch"  
+
+ 
+function main()  
+
+wqout( aMidiDevices() )  
+
+return nil  
+ 
+  
+ 
+  
+ 
+  
+ 
+ // In the computer in that the result was proven it was:  
+ 
+  
+ 
+ //  
+ 
+  
+ 
+ // Salida MIDI SB16 [330]  
+ 
+  
+ 
+ // Creative Music Synth [220]  
+ 
+  
+ 
+  
+
+
+
+**Source Code:** 
+
+
+
+
+ SOURCE\WINAPI\MIDI.C  
+ 
+  
+ 
+  
+
+
+
+
+
+
+

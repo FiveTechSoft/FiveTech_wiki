@@ -1,0 +1,44 @@
+====== Font ======
+
+**Defining a font**
+<code clipper>
+DEFINE FONT <oFont> ;  
+ [ NAME <cName> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FROM USER ] ; 
+ [ BOLD ] ;  
+ [ ITALIC ] ;  
+ [ UNDERLINE ] ; ; 
+ [ WEIGHT <nWeight> ] ;  
+ [ OF <oDevice> ] ;  
+ [ NESCAPEMENT <nEscapement> ] 
+
+
+ ACTIVATE FONT <oFont>  
+ 
+ DEACTIVATE FONT <oFont>  
+ 
+ RELEASE FONT <oFont>  
+ 
+ SET FONT ;  
+ [ OF <oWnd> ] ;  
+ [ TO <oFont> ]  
+</code>  
+  
+
+| <oFont> | A reference to the Font Object. | 
+| <cName> | The name of the font. Example: Arial, Roman, etc... | 
+| <nWidth>, <nHeight> | Dimensions of the font. | 
+| <oWnd> | A reference to the Window container. | 
+| <oDevice> | The device owner of the font. | 
+| <nWeight> | The weight of the font. | 
+| <nEscapement> | The escapement of the font. | 
+
+
+**CLAUSES **
+
+| FROM USER | Displays the Font selection Dialog Box. | 
+| BOLD |   To create the font with bold feature.    | 
+| ITALIC |   To create the font with italic feature.  |   
+| UNDERLINE | To create the font with underline feature. |    
+

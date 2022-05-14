@@ -1,0 +1,118 @@
+====== nDlgBox() ======
+
+
+
+Automatic DialogBox testing function.
+
+
+
+====== Syntax ======
+
+
+
+   nDlgBox( <cDlgName> ) --> nResult
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cDlgName> The name of the resource of a dialogbox to quickly execute
+and test. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> The value supplied to EndDlg() to end the dialog. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function was developed with the intention of quickly test dialog
+boxes, in a prototype stage. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ nDlgBox( "Customers" ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\dlogbox.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Dialog xBase commands - Class TDialog 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

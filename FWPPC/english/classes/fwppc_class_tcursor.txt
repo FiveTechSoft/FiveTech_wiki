@@ -1,0 +1,18 @@
+====== Class TCursor ======
+
+Mouse cursors managed as objects.                                              
+====== DATA ======
+|hCursor|Handle of the cursor.|
+|lPredef|If it is a Windows system predefined cursor: ARROW,|
+|IBEAM,|WAIT, CROSS, UPARROW, SIZE, ICON, SIZENWSE, SIZENESW, SIZEWE,|
+|SIZENS,|HAND, STOP, DRAG|
+====== METHODS ======
+|New|Constructor from source code|
+|NewBmp|Constructor from source code (bitmap cursor)|
+|End|Destroys the cursor object|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TCURSOR.PRG

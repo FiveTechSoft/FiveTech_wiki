@@ -1,0 +1,24 @@
+====== BinToN() ======
+
+Converts an array of binary digits (expressed as logical values, .t. for 1 and .f. for 0) to its decimal integer value. 
+
+====== Syntax: ======
+ 
+ BinToN( <aBin> ) --> nValue  
+
+====== Parameters: ======
+ 
+|< aBin >| This is the array of binary digits to convert.  |
+
+====== Returns: ======
+ 
+ <nValue> The integer value result of the conversion.  
+
+====== Sample: ======
+<code clipper> 
+ local nVar := BinToN( { .f., .t., .f., .f. } )  
+</code>
+====== Source Code: ======
+
+ SOURCE\FUNCTION\MATH.PRG  
+ 

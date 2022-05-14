@@ -1,0 +1,136 @@
+====== WNetBrowseDialog() ====== 
+
+WNetBrowseDialog()
+
+Shows a DialogBox to browse resources in a Net
+
+====== Syntax ======
+
+
+ WNetBrowseDialog( <hWnd>, <nType>, <cPath> ) --> nRetCode 
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window to be the parent of the dialogbox to
+display. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> The type of resources to browse: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ #define TYPE_DRIVE   1 
+
+
+ 
+
+
+ #define TYPE_FILE   2 
+
+
+ 
+
+
+ #define TYPE_PRINTER   3 
+
+
+ 
+
+
+ #define TYPE_COMM   4 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nRetCode> 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestNet.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Net.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WNetGetUser() WNetError() WNetGetErrorText() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

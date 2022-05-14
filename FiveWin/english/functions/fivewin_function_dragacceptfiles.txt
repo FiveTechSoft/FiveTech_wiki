@@ -1,0 +1,23 @@
+====== DragAcceptFiles() ======
+This window accepts the dropped files.  When an application calls DragAcceptFiles with lOnOff set to .T., the
+user will receive an array "aFiles" with the names of the files each time the user drops a file in that window. 
+
+====== Syntax ======
+DragAcceptFiles( <hWnd>, <lOnOff> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| Handle of the window that accept files.|
+|<lOnOff>| Accept or not accept files.|
+
+====== Returns ======
+NIL 
+
+====== Example ======
+CLASSES\WINDOW.PRG 
+
+====== Source Code ======
+SOURCE\WINAPI\DROPFILE.C 
+
+====== See also ======
+[[fivewin_function_dragfinish|DragFinish()]], [[fivewin_function_dragqueryfiles|DragQueryFiles()]]

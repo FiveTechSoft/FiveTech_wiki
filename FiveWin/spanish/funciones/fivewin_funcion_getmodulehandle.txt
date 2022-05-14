@@ -1,0 +1,48 @@
+GetModuleHandle()
+
+
+GetModuleHandle()
+ Previous  Top  Next
+
+Retrieves a module handle for the specified module if the file has been
+mapped into the address space of the calling process.
+
+====== Sintaxis ======
+
+
+ GetModuleHandle( <cModuleName> ) --> hModule 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cModuleName> The name of the module 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <hModule> If the function succeeds, the return value is a handle to the
+specified module. If the function fails, the return value is zero. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\REGCLASS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

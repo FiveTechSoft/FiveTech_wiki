@@ -1,0 +1,146 @@
+====== ScrollBars ======
+
+**Creating a ScrollBar from source code **
+<code clipper>
+ @ <nRow>, <nCol> SCROLLBAR [<oSbr>] ;  
+ [ HORIZONTAL | VERTICAL ] ;  
+ [ RANGE <nMin>, <nMax> ] ;  
+ [ PAGESTEP <nPgStep> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ UP | ON UP <uUpAction> ] ;  
+ [ DOWN | ON DOWN <uDownAction> ] ;  
+ [ PAGEUP | ON PAGEUP <uPgUpAction> ] ;  
+ [ PAGEDOWN | ON PAGEDOWN <uPgDownAction> ] ;  
+ [ ON THUMBPOS <uPos> ] ;  
+ [ PIXEL ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ DESIGN ] ;  
+ [ OF <oWnd> ]  </code>
+ 
+**Creating a ScrollBar from resources **
+<code clipper>             
+ REDEFINE SCROLLBAR [ <oSbr> ] ;  
+ [ ID <nID> ] ;  
+ [ RANGE <nMin>, <nMax> ] ;  
+ [ PAGESTEP <nPgStep> ] ;  
+ [ UP | ON UP | ON LEFT <uUpAction> ] ;  
+ [ DOWN | ON DOWN | ON RIGHT <uDownAction> ] ;  
+ [ PAGEUP | ON PAGEUP <uPgUpAction> ] ;  
+ [ PAGEDOWN | ON PAGEDOWN <uPgDownAction> ] ;  
+ [ ON THUMBPOS <uPos> ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ OF <oDlg> ]  ;
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ]  </code>
+
+**For 'non-true ScrollBars' (when using WS_VSCROLL or WS_HSCROLL styles ) **
+<code clipper>
+ DEFINE SCROLLBAR [ <oSbr> ] ;  
+ [ HORIZONTAL | VERTICAL ] ;  
+ [ RANGE <nMin>, <nMax> ] ;  
+ [ PAGESTEP <nPgStep> ] ;  
+ [ UP | ON UP <uUpAction> ] ;  
+ [ DOWN | ON DOWN <uDownAction> ] ;  
+ [ PAGEUP | ON PAGEUP <uPgUpAction> ] ;  
+ [ PAGEDOWN | ON PAGEDOWN <uPgDownAction> ] ;  
+ [ ON THUMBPOS <uPos> ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ];  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ]  </code>
+**Parameters** 
+^ Parameter      ^ Description                                                     ^
+| <nRow>, <nCol> | The coordinates of the ScrollBar. We simulate Text coordinates. |
+| <oSbr> | A reference to the ScrollBar Object. |
+| <oDlg> | The container window of the ScrollBar. |
+| <nMin>, <nMax> | The range of values to be represented by the scrollbar. |
+| <nPgStep> | The increment of value when PageUp or PageDown is selected on the Scrollbar. That is, when clicking between the thumb and the top arrow or when clicking between the thumb and the bottom arrow. |
+| <nWidth> <nHeight> | The dimensions in pixels of the ScrollBar. |
+| <uUpAction> | An action to be performed when going up is selected on the scrollbar. That is, when clicking on the top arrow or when pressing the key K_UP. |
+| <uDownAction> | An action to be performed when going down is selected on the scrollbar. That is, when clicking on the bottom arrow or when pressing the Key K_DOWN. |
+| <uPgUpAction> | An action to be performed when page up is selected on the scrollbar. That is, when clicking between the thumb and the top arrow. |
+| <uPgDownAction> | An action to be performed when page down is selected on the Scrollbar. That is, when clicking between the thumb and the bottom arrow. |
+| <uPos> | An action to be performed when the thumb is moved by the user and left on a different position. The new position is automatically provided as nPos value. |
+| <nId> | The numeric resource identifier of the Control. |
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string |
+| <nClrBack> | Background color as a RGB number |
+| <uValid> | An expression to validate when the control is going to lose the focus. |
+| <cMsg> | The associated message of this control |
+| <uWhen> | It is an expression to evaluate indicating if the control is or not enable. |
+
+**CLAUSES **
+^ Clause     ^ Description                                                     ^
+| HORIZONTAL VERTICAL |To use a horizontal or vertical scrollbar. Only useful when creating from source code. |
+| PIXEL | To use pixel coordinates instead of Text coordinates. | 
+| DESIGN | Allows the user to move and resize with the mouse | 
+| UPDATE | This control may be updated from TDialog:Update() METHOD | 
+
+====== Sample Code ======
+\Fwh\Sample\TestScrl.Prg
+<code clipper>
+// Sample how to use ScrollBars
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 TITLE "Testing ScrollBars" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO FWVERSION + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Add &ScrollBar" ACTION AddSbr()
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function AddSbr()
+
+   static lAdded
+
+   if lAdded == nil
+      lAdded = .t.
+
+      @ 2, 5 SCROLLBAR OF oWnd ;
+        ON UP   nMsgBox( "Hey!, Go Up" ) ;
+        ON DOWN nMsgBox( "Going down man" )
+
+      @ 2, 15 SCROLLBAR OF oWnd ;
+        ON UP   oWnd:Say( 2, 30, Time() ) ;
+        ON DOWN oWnd:Say( 4, 30, "Hello!" )
+
+   endif
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+====== Screen Snapshot ======
+{{:scrollbar.jpg|:scrollbar.jpg}}
+
+====== See also ======
+[[fivewin_class_tscrollbar | Class TScrollBar ]]

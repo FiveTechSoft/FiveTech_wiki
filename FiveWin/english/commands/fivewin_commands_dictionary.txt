@@ -1,0 +1,25 @@
+====== Defining a new dbms ======
+
+<code clipper>
+ DEFINE DBMS <oDict> FILE <cFile>
+</code>
+
+<code clipper>
+ END DBMS <oDict>
+</code>
+
+
+====== Redefining a dbms ======
+
+<code clipper>
+ REDEFINE DBMS <oDict> ;
+ [ FILE <cFile> ]  
+</code>  
+
+| <oDict> | A reference to the dbms object. |
+| <cFile> | The dbms filename. |
+
+
+
+====== See also ======
+[[fivewin_class_tdbms | Class TDbms ]], [[fivewin_class_tdbfcomp | Class TDbfcomp ]], [[fivewin_class_tdbm | Class TDbm]]

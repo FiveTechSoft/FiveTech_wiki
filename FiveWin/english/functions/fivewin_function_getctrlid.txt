@@ -1,0 +1,19 @@
+====== GetCtrlId() ======
+Returns a Identifier of a child window
+
+====== Syntax ======
+GetCtrlId( <hCtrl> ) --> nId 
+
+====== Parameters ======
+^Parameter^Description^
+|<hCtrl>| Handle of the control ( Child window ) |
+
+====== Returns ======
+^Returns^Description^
+|<Id>| Identifier of the child window or nil if the function is not successful. |
+
+====== Example ======
+\Fwh\Samples\RcImport.Prg
+
+====== Source Code ======
+SOURCE\WINAPI\GETDLGIT.C 

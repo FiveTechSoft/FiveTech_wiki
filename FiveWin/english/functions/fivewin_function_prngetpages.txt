@@ -1,0 +1,48 @@
+====== PrnGetPages() ====== 
+
+
+PrnGetPages()
+
+
+Retrieves the range of pages to print.
+
+====== Syntax ======
+
+
+ PrnGetPages() -?> aRange 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <aRange> An array containing From page and To page range values. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== See also ======
+

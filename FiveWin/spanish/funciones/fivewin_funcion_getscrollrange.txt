@@ -1,0 +1,71 @@
+GetScrollRange()
+
+
+GetScrollRange()
+ Previous  Top  Next
+
+To obtain the scroll range of a scrollbar.
+
+====== Sintaxis ======
+
+
+ GetScrollRange( <hWnd>, <nFlags> ) --> aRange 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handler of the scroll bar 
+
+
+ 
+
+
+ <nFlags> Scroll bar flags 
+
+
+ 
+
+      
+SB_CTL   2   Retrieves the position of a scroll bar control. In this
+case, the hwnd parameter must be the window handle of a scroll bar
+control.   
+SB_HORZ   0   Retrieves the position of a window's horizontal scroll bar.
+  
+SB_VERT   1   Retrieves the position of a window's vertical scroll bar.   
+
+
+====== Devuelve ======
+
+
+ It returns the current scroll range of a scrollbar. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\SCROLL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

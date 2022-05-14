@@ -1,0 +1,97 @@
+WndLeft()
+
+
+
+WndLeft()
+
+ Previous  Top  Next
+
+
+
+
+Update the left coordinate of a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndLeft( <hWnd> [,<nNewLeft> ] ) --> nNewLeft 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Window handle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewLeft> New left value 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nNewLeft> New left value or current value if the second parameter is
+nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

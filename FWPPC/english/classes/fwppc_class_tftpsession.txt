@@ -1,0 +1,18 @@
+====== Class TFTPSession ======
+
+Internet FTP session class (used by TFTPServer)                                
+====== DATA ======
+|cUserName|Username|
+|cPassword|Password|
+|cCurDir|Client current directory|
+|cIP|FTP client IP (PORT command info)|
+|nPort|FTP client port (PORT command info)|
+|oSocket|Response socket|
+====== METHODS ======
+|New|Constructor from source code|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TFTPSESSION.PRG

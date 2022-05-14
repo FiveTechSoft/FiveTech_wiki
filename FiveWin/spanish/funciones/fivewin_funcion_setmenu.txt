@@ -1,0 +1,105 @@
+SetMenu()
+
+
+
+SetMenu()
+
+ Previous  Top  Next
+
+
+
+
+Sets the menu for a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetMenu( <hWnd>, <hMenu> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the window whose menu is be changed. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hMenu> Handle of the menu 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> This value is true if the function is successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,62 @@
+====== Creando un control imagen desde código fuente ======
+<code clipper> 
+@ <nRow>, <nCol> IMAGE [<oImg> ];  
+   [ NAME | RESNAME | RESOURCE <cResName> ];  
+   [ FILE | FILENAME | DISK <cBmpFile> ];  
+   [ NO BORDER | NOBORDER ];  
+   [ SIZE <nWidth>, <nHeight> ];  
+   [ OF | WINDOW | DIALOG <oWnd> ];  
+   [ ON CLICK | ON LEFT CLICK <uLclick> ];  
+   [ ON RIGHT CLICK <uRclick> ];  
+   [ SCROLL ];  
+   [ ADJUST ];  
+   [ CURSOR <oCursor> ];  
+   [ PIXEL];  
+   [ MESSAGE <cMsg> ];  
+   [ UPDATE ];  
+   [ WHEN <uWhen> ];  
+   [ VALID <uValid> ];  
+   [ DESIGN ]  
+</code>
+
+====== Creando un control imagen desde recursos ====== 
+<code clipper>  
+ REDEFINE IMAGE [ <oImg> ];  
+   [ ID <nId> ];  
+   [ OF | WINDOW | DIALOG <oWnd> ];  
+   [ NAME | RESNAME | RESOURCE <cResName> ];  
+   [ FILE | FILENAME | DISK <cBmpFile> ];  
+   [ ON CLICK | ON LEFT CLICK <uLclick> ];  
+   [ ON RIGHT CLICK <uRclick> ];  
+   [ SCROLL ];  
+   [ ADJUST ];  
+   [ CURSOR <oCursor> ];  
+   [ MESSAGE <cMsg> ];  
+   [ UPDATE ]  ;
+   [ WHEN <uWhen> ];  
+   [ VALID <uValid> ]
+</code>
+
+====== Parámetros ======  
+|<uValid>|Code Block for VALID clause|    
+|<cMsg>|The text for the default message on the MsgBar|    
+|<uWhen>|Code Block for WHEN clause|    
+|<oCursor>|An optional cursor object to use|    
+|<uLClick>|An optional action to perform when the mouse is left clicked|    
+|<nWidth>, <nHeight>|The width and height dimensions of the control|    
+|<cResName>|The resource name for the image to display|    
+|<nId>|The resource identifier for this control|    
+|<uRClick>|An optional action to perform when the mouse is right clicked|    
+|<cBmpFile>|The name of the image file to display|    
+|<oWnd>|The window or dialog container object of this control|    
+|<oImg>|The variable to hold this object|    
+
+====== Cláusulas ======
+|SCROLL|To automatically show both scrollbars on the control|    
+|ADJUST|To adjust the image to the control dimensions|    
+|PIXEL|To specify pixel coordinates|    
+|UPDATE|To repaint this control when its container gets :Updated()|    
+|DESIGN|To drag around this control using the mouse|    
+
+====== Ver también ====== 
+[[fivewin_clase_timage|Clase TImage]] 

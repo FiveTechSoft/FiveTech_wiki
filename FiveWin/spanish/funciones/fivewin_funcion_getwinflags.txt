@@ -1,0 +1,31 @@
+
+====== GetWinFlags() ======
+GetWinFlags()
+
+Retrieves the current Windows system and memory configuration
+====== Sintaxis ======
+ GetWinFlags() --> nFlags 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nFlags> It will be a combination of the following values: 
+    WF_80x87      System contains an Intel math coprocessor.   
+    WF_CPU286     System CPU is an 80286.   
+    WF_CPU386     System CPU is an 80386.   
+    WF_CPU486     System CPU is an i486.   
+    WF_ENHANCED   Windows is running in 386-enhanced mode.   
+    WF_PAGING     Windows is running on a system with paged memory.   
+    WF_PMODE      Windows is running in protected mode. In Windows 3.1, this
+                   flag is always set.   
+    WF_STANDARD   Windows is running in standard mode.   
+    WF_WIN286     Same as WF_STANDARD.   
+    WF_WIN386     Same as WF_ENHANCED.   
+====== Ejemplo ======
+Observations:
+
+ The form of checking these values is using it with the function lAnd (): 
+
+ if lAnd( WF_CPU386, GetWinFlags() ) ... 
+====== Código fuente ======
+ SOURCE\WINAPI\WNDIS.C 
+====== Ver también ======

@@ -1,0 +1,14 @@
+====== DbCommitAl() ======
+Writes in the disk all the pending updates of the work areas.  Function to obtain compatibility with xBase++ 
+
+====== Syntax ======
+DbCommitAl() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+DbCommitAll() 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

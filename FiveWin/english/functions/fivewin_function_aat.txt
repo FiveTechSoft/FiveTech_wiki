@@ -1,0 +1,24 @@
+
+====== AAt() ======
+
+Returns the position of a string from an array of strings
+
+====== Syntax ======
+ AAt( <aSearch>, <cTarget> ) --> nPos  
+====== Parameters: ======
+^ Parameter ^ Description                         ^
+| <aSearch> | The array of strings where to search|
+| <cTarget> | The string to be searched|
+ 
+====== Returns ======
+^ Returns ^ Description                         ^
+| <nPos> | The position of the first instance of the substring within cTarget. The search stops when one of the substrings in aSearch is found. |
+ 
+====== Sample ======
+ <code clipper>
+ local nPos := AAT( { "Test1", "Test2", "Test3" }, "Test2" ) // Result 2 
+ </code>
+====== Source code: ======
+ 
+ SOURCE\FUNCTION\AAT.C   
+

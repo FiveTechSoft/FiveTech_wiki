@@ -1,0 +1,29 @@
+====== nStrCrc() ======
+
+Returns a CRC checksum for a text
+
+====== Syntax ======
+
+ nStrCrc( <cText> ) --> nCRCValue 
+
+====== Parameters ======
+
+| <cText> | The text from where we want to generate a 32 bits CRC checksum value |
+
+====== Returns ======
+
+| <nCRCValue> | A numeric value with the checksum CRC | 
+
+====== Example ======
+
+ MsgInfo( nStrCrc( "Hello world!" ) )
+
+====== Source Code ======
+
+ Not provided. 
+
+
+
+====== See also ======
+
+[[ fivewin_function_nfilecrc | nFileCRC() ]]

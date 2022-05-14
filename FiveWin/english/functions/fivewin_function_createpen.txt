@@ -1,0 +1,99 @@
+====== CreatePen() ======
+
+Creates a pen with the specified style, width & color. This function creates a pen having the specified style, width and color. The pen can be subsequently be selected as the current pen for any device. 
+
+====== Syntax ======
+CreatePen( <nStyle>, <nWidth>, <nRGBColor> ) --> hPen 
+
+====== Parameters ======
+^Parameter^Description^
+|<nStyle>| Specifies the pen style. This parameter can be one of the following values:\\ \\PS_SOLID -> Creates a solid pen\\ PS_DASH -> Creates a dashed pen (Valid only when the pen width is 1)\\ PS_DOT -> Creates a dotted pen (Valid only when the pen width is 1)\\ PS_DASHDOT -> Creates a pen with alternating dashes and dots (Valid only when the pen width is 1)\\ PS_DASHDOTDOT -> Creates a pen with alternating dashes and double dots (Valid only when the pen width is 1)\\ PS_NULL -> Creates a null pen\\ PS_INSIDEFRAME -> Creates a pen that draws a line inside the frame of closed shapes produced by graphics device interface (GDI) output functions that specify a bounding rectangle (for example, the Ellipse,Rectangle, RoundRect, Pie, and Chord functions). When this style is used with GDI output functions that do not specify a bounding rectangle (for example, the LineTo function), the drawing area of the pen is not limited by a frame.|   
+|<nWidth>|Specifies the width, in logical units, of the pen. If this value is zero, the width in device units is always one pixel, regardless of the mapping mode.| 
+|<nRGBColor>|Specifies the color of the pen.| 
+
+====== Returns ======
+^Returns^Description^
+|<hPen>|Returns the handle of the brush or 0 if it was unsuccessful| 
+
+====== Example ======
+SAMPLES\TestRpt5.prg 
+<code clipper>
+#include "Fivewin.ch"
+
+Function Test()
+  Local oDlg, oFont, oBmp
+
+  DEFINE BITMAP oBmp FILE "..\bitmaps\back.bmp"
+  DEFINE FONT oFont NAME "Arial" SIZE 0,-36 BOLD NESCAPEMENT 300 //Texto 45º
+
+  DEFINE DIALOG oDlg FROM 0,0 to 18,40 TITLE "Texto sin relleno"
+
+  ACTIVATE DIALOG oDlg CENTERED ON PAINT;
+    (DrawBitmap(oDlg:hDC,oBmp:hBitmap,0,0,oDlg:nWidth,oDlg:nHeight),;
+     HollowText(oDlg,200,20," Texto sin relleno ",oFont,CLR_GREEN,2))
+
+  RELEASE FONT oFont
+  RELEASE BITMAP oBmp
+
+Return nil
+*************************************************************************
+*
+* Function HollowText(oDlg,y,x,cText,oFont,nColor,nWidth,nStyle)
+*
+* Draw outline only of the text
+*  oDlg: Container
+*  y,x : Coordinates
+*  oFont: Font
+*  nColor, nWidth, nStyle: Color, Border width,Style
+*  
+*  César E. Lozada          cesarlozada@hotmail.com
+*  Los Teques, Venezuela    17-Apr-2003
+*
+*************************************************************************
+Function HollowText(oDlg,y,x,cText,oFont,nColor,nWidth,nStyle)
+  Local hDC:=oDlg:hDC
+  Local nOldFont, hPen, hOldPen 
+  DEFAULT oFont:=oDlg:oFont, nColor:=oDlg:nClrText,;
+          nWidth:=1, nStyle:=0 //PS_SOLID 
+
+  nOldFont:=SelectObject(hDC,oFont:hFont)
+  hPen:=CreatePen(nStyle,nWidth,nColor)
+  hOldPen:=SelectObject(hDC,hPen)
+
+  BeginPath(hDC)
+  TextOut(hDC,y,x,cText,Len(cText))
+  EndPath(hDC)
+  StrokePath(hDC)
+
+  SelectObject(hDC,nOldFont)
+  SelectObject(hDC,hOldPen)
+  DeleteObject(hPen)
+
+return nil
+*************************************************************************
+DLL32 STATIC FUNCTION BeginPath;
+      ( hdc AS LONG ) ;
+   AS LONG PASCAL; 
+   LIB "GDI32"
+
+DLL32 STATIC FUNCTION EndPath;
+      ( hdc AS LONG ) ;
+   AS LONG PASCAL; 
+   LIB "GDI32"
+
+DLL32 STATIC FUNCTION StrokePath;
+      ( hdc AS LONG ) ;
+   AS LONG PASCAL; 
+   LIB "GDI32"
+*************************************************************************
+</code>
+
+** Screen Snapshot **
+
+{{:createpen.jpg|:createpen.jpg}}
+
+====== Source Code ======
+SOURCE\WINAPI\CreatePe.c 
+
+====== See also ======
+[[fivewin_class_tpen|Class TPen]] [[fivewin_commands_pen|Command Pen]]

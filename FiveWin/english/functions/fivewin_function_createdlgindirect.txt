@@ -1,0 +1,26 @@
+====== CreateDlgIndirect() ======
+Creates a modeless DialogBox from memory resources
+
+====== Syntax ======    
+CreateDlgIndirect( <hInstance>, <cMemTemplate>, <hWndOwner> )
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hInstance> | Identifies an instance of the module that will create the Dialog Box. |
+| <cMemTemplate> | A string that contains the binary description of the Dialog Box template. |
+| <hWndOwner> | The handle of the window which is the owner of the DialogBox. By default it is GetActiveWindow(). |
+
+====== Returns ====== 
+^Returns^Description^
+| <hDlg> | The handle ( like hWnd ) of the Dialog Box. |
+
+
+====== Source Code ======        
+
+Not provided. See SOURCE\WINAPI\DlgBox.c
+
+====== See also ======           
+
+[[fivewin_function_createDlg|CreateDlg()]]
+[[fivewin_function_dialogBox|DialogBox()]]
+[[fivewin_function_dialogBoxIndirect|DialogBoxIndirect()]]

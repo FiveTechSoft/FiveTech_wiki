@@ -1,0 +1,22 @@
+====== AppendMenu() ======
+Appends a new item to the end of a menu. 
+====== Syntax ======
+AppendMenu(<hMenu>,<nFlags>,<cPrompt>  ) --> lSucces  
+====== Parameters ======
+^Parameter ^ Description ^
+|<hMenu>| Handle of the menu that we are going to modify|
+|<nFlags>| The following flags are supported\\ **MF_ENABLED** 0 -> Normal\\ **MF_GRAYED** 1 -> Disabled and gray\\ **MF_DISABLED** 2 -> Disabled and not gray\\ **MF_BITMAP** 4 -> Single Bitmap\\ **MF_CHECKED** 8 -> It marks of elect\\ **MF_POPUP** 16 -> The item has menu associate popup\\ **MF_BREAK** 64 -> Menu with several columns\\ **MF_OWNERDRAW** 256 -> The item has own drawing\\ **MF_SEPARATOR** 2048 -> Separator\\ **MF_HELP** 16384 -> Item to right of horizontal bar|
+|<cPrompt>| Text of the item|
+ 
+====== Returns ======
+^Returns  ^ Description^
+|<lSucces>| .T. if the function executed successfully, .F. if failed|
+====== Source Code ======
+SOURCE\FUNCTION\MENUS.C 
+
+
+
+
+
+
+

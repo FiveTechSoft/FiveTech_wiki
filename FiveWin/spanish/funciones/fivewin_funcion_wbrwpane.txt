@@ -1,0 +1,240 @@
+WBrwPane()
+
+
+
+WBrwPane()
+
+ Previous  Top  Next
+
+
+
+
+Draw all lines of a TWBrowse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WBrwPane( <hWnd>, <hDC>, <Self>, <bLine>, <aSizes>, <nFirstItem>,
+<nClrFore>, <nClrBack>, <hFont>, <aJustify>, <nStyle>, <nFocused> ) -->
+nRowsSkipped 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the browse 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <Self> Object reference 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <bLine> Codeblock line to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aSizes> Array of Sizes for each column 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFirstItem> First item to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrFore> Fore color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrBack> Back color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Handle of the font to use 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aJustify> Array with justification for each column 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nStyle> Style to draw the separation lines 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFocused> Focus flag 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nRowsSkipped> Number of lines skipped 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\WBROWSE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\WBRWLINE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

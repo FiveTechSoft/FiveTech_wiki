@@ -1,0 +1,21 @@
+
+====== GetDrawMenu() ======
+GetDrawMenu()
+
+Handle of the menu containing the item.
+====== Sintaxis ======
+ GetDrawMenu( <pDrawItemStruct> ) --> hMenu 
+====== Parámetros ======
+ <pDrawItemStruct> DRAWITEMSTRUCT structure 
+====== Devuelve ======
+ <hMenu> Handle del menú que necesita ser dibujado. 
+====== Ejemplo ======
+Observation
+
+ The DRAWITEMSTRUCT structure provides information the owner needs to
+determine how to paint an owner-drawn control. The owner of the
+owner-drawn control receives a pointer to this structure as the lParam
+parameter of the WM_DRAWITEM message. 
+====== Código fuente ======
+ Not provided. 
+====== Ver también ======

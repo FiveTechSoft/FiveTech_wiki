@@ -1,0 +1,95 @@
+
+====== GetWndTask() ====== 
+ 
+
+
+
+Retrieves the window associated task handle
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetWndTask( <hWnd> ) --> hTask 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window whose task is to be retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hTask> The handle of the task in which that particular window has been
+created. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\GetWnd.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetTasks() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,73 @@
+SQLSetCursorName()
+
+
+SQLSetCursorName()
+ Previous  Top  Next
+
+Associates a cursor name with an active statement.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLSetCursorName( <hStmt>, <cName> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cName> The cursor name. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

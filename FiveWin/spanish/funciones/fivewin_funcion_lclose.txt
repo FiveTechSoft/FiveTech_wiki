@@ -1,0 +1,15 @@
+
+====== lClose() ====== 
+lClose()
+
+Closes the given file. Long Names
+====== Sintaxis ======
+ lClose( <hFile> ) --> nError 
+====== Parámetros ======
+ <hFile> Handle del fichero que se va a cerrar 
+====== Devuelve ======
+ <nError> It returns 0 if the function has been executed correctly 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\LONGNAME.C 
+====== Ver también ======

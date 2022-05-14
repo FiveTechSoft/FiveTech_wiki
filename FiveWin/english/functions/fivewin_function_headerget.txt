@@ -1,0 +1,93 @@
+====== HeaderGet() ======
+
+
+
+Retrieves the item of a header control.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ HeaderGet( <hWnd>, <nIndex> ) --> aInfo 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the header control. 
+
+
+ 
+
+
+ <nIndex> The index of the item to be retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aInfo> An array containing the width and the caption of the item. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

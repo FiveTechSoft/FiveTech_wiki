@@ -1,0 +1,18 @@
+====== DbfCdx() ======
+Just to avoid removing extern DBFCDX
+
+====== Syntax ======
+DbfCdx() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nil 
+
+
+====== Observations =======
+just to avoid removing extern DBFCDX 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

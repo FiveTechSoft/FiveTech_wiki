@@ -1,0 +1,28 @@
+
+====== CursorSize() ======
+CursorSize()
+
+Selects the Windows default Size cursor
+====== Sintaxis ======
+ CursorSize() --> nil 
+ This function changes the mouse cursor into a hand in a 'resize' shape.
+(the one that we see when the mouse resizes a window). 
+====== Parámetros ======
+ None. 
+====== Devuelve ======
+ Nothing. 
+
+Observations:
+
+ These functions let us change the mouse cursor temporarily while we are
+doing other tasks. As soon as the API takes control it will restore the
+mouse cursor to the one associated with the window which is below the
+cursor. 
+
+====== Ejemplo ======
+ SAMPLES\TestCurs.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+====== Ver también ======
+ CursorWait() CursorCatch() CursorArrow() CursorWE() CursorHand()
+CursorIbeam() 

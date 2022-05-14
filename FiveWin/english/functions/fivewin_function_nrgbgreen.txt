@@ -1,0 +1,87 @@
+nRGBGreen()
+
+
+
+nRGBGreen()
+
+ Previous  Top  Next
+
+
+
+
+Green component of a RGB color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nRGBGreen( <nRBGColor> ) --> nGreen 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nRBGColor> RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nGreen> Green component of a RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\COLORTON.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

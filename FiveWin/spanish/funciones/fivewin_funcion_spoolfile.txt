@@ -1,0 +1,128 @@
+SpoolFile()
+
+
+
+SpoolFile()
+
+ Previous  Top  Next
+
+
+
+
+Puts a file into the spooler queue
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SpoolFile( <cPrinter>, <cPortName>, <cJobName>, <cFileName> ) -->
+hSpooler 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <cPrinter> Printer name for example "HP LASERJET II" 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cPortName> Port name for example "LPT1:" 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cJobName> Job name 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cFileName> File name 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hSpooler> Handle of the spooler if the function is success 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

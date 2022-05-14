@@ -1,0 +1,70 @@
+====== Class TOutLook ======
+
+Outlook control class                                                          
+Inherits from Tcontrol                                                         
+====== DATA ======
+|oDragYes|Cursor object for dragging enable operations|
+|oDragNo|Cursor object for dragging disable operations|
+|oBtnTop|Button object for scrolling up|
+|oBtnBottom|Button object for scrolling down|
+|aGroup|Array that hold all the group information|
+|nActual|Actual group active|
+|nDesp|Number of items displace|
+|nDrag|Internal data to control if we are in a dragging|
+|operation||
+|lCaptured|Internal data to control if items Say control is|
+|captured||
+====== METHODS ======
+|New|Creates a new outlook object. Consult the command|
+|guide|for more information. New( nTop, nLeft, nWidth, nHeight, nClrFore,|
+|nClrBack,|nStyle, oBrush, oFont, lPixel, cMsg, oWnd, nHelpID, bRClick )|
+|End|Destroys the Outlook object End()|
+|Display|Displays the outlook control. Used internally|
+|Display()||
+|Paint|Displays the outlook control. Used internally Paint()|
+|DrawButtons|Displays the outlook control items. Used internally|
+|DrawButtons()||
+|AddGroup|Adds a new group to the outlook object. Consult the|
+|command|guide for more information. AddGroup( cPrompt, bAction, bWhen,|
+|cMsg,|oFont )|
+|AddItem|Adss a new item to any Outlook object group. Consult|
+|the|command guide for more information. AddItem( cPrompt, cBitmap,|
+|cResource,|bAction, nGroup, bWhen, cMsg, bRClick, oFont, lAdjust,|
+|lNoBorder,|cToolTip, lIcon )|
+|Set|Sets the active group. You can specify the item|
+|number|or the group by his caption, not bouth at the same time Set(nItem,|
+|cGroup|)|
+|Destroy|Destroys the Outlook object Destroy()|
+|SetColor|Sets the foreground and background color of the|
+|Outlook|control. SetColor( nClrFore, nClrBack )|
+|GetPos|Retrieves the ordinal position of a specefic Item, it|
+|can|be the Btnbmp or the Say object of any item. GetPos( oItem )|
+|DeleteItem|Deletes a specific item from a group. DeteleItem(|
+|oItem|)|
+|MoveToGroup|Moves a specific item to an other group. MoveToGroup(|
+|xItem,|nGroup, [lRefresh] ) xItem is the item to move (object or ordinal|
+|item|position on active group) nGroup is the target group to move|
+|lRefresh,|by default .T. if the control should be refreshed|
+|SwapItems|Swap the order of two items on the same group|
+|MoveToGroup(|xItem1, xItem2, [lRefresh] ) xItem1 is the first item to|
+|swap|(object or ordinal item position on active group) xItem2 is the|
+|second|item to swap (object or ordinal item position on active group)|
+|lRefresh,|by default .T. if the control should be refreshed|
+|SaveOrder|Returns a string with the current group and item|
+|order|SaveOrder()|
+|RestoreOrder|Restores the order of a previous saved order with the|
+|method|SaveOrder RestoreOrder( cString )|
+|GroupBtn|Retrieves the button object of a specific group. By|
+|default|nGroup is the current active group. GroupBtn( nGroup )|
+|GroupBmps|Retrieves an array with all the Btnbmp objects of a|
+|specific|group. By default nGroup is the current active group. GroupBmps(|
+|nGroup|)|
+|GroupSays|Retrieves an array with all the Says objects of a|
+|specific|group. By default nGroup is the current active group. GroupSays(|
+|nGroup|)|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TOUTLOOK.PRG

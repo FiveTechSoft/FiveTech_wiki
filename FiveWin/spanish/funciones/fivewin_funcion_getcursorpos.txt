@@ -1,0 +1,15 @@
+
+====== GetCursorPos() ======
+GetCursorPos()
+
+Obtain the position of the cursor
+====== Sintaxis ======
+ GetCursorPos() --> aPoint 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <aPoint> Array with the coordenates of the cursor 
+====== Ejemplo ======
+====== Código fuente ======
+   SOURCE\WINAPI\CURSORS.C
+====== Ver también ======

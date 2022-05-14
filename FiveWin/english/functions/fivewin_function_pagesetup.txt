@@ -1,0 +1,89 @@
+====== PageSetup() ====== 
+
+
+PageSetup()
+
+
+Shows the page layout setting dialog.
+
+
+====== Syntax ======
+
+
+
+
+
+ PageSetup( [<hWnd>], [<nTop>], [<nLeft>], [<nRight>], [<nBottom>] ) -->
+nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window to which the page setup dialog will
+belong. 
+
+
+ 
+
+
+ <nTop> The default page margins that will be shown in the dialog. 
+
+
+ 
+    <nLeft>
+    <nRight>
+    <nBottom>
+
+
+====== Returns ======
+
+
+
+
+
+ Nil. 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\printdc.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+   
+
+
+
+====== See also ======
+

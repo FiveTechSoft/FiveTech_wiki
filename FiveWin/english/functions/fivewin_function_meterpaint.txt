@@ -1,0 +1,245 @@
+====== MeterPaint() ======
+
+
+
+Paints the FiveWin meter
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MeterPaint( <hWnd>, <hDC>, <nActual>, <nTotal>,  <nPercentage>, <cText>,
+<lPercentage>,<nClrPane>, <nClrText>, <nClrBar>, <nClrBackText>, <hFont>
+) --> 0 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the control beeing painted 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> The handle of the device context of that window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nActual> The actual value represented by the meter 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTotal> The total value represented by the meter 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPercentage> The percentage value represented by the meter 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cText> A text to be displayed inside the meter 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lPercentage> If the percentage has to be displayed 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrPane> 4 different RGB colors to use to paint all different
+components. 
+
+
+ 
+
+
+ <nClrText> 
+
+
+ 
+
+
+ <nClrBar> 
+
+
+ 
+
+
+ <nClrBackText> 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> The handle of the font to be used to display the cText 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Always 0 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is automatically used by FiveWin from inside the Class
+TMeter. This function was designed to speed up the paint process. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Install.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\MetPaint.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+Class TMeter MsgMeter()
+
+
+
+
+
+
+
+
+
+====== See also ======
+

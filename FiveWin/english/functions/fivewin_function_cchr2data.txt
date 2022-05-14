@@ -1,0 +1,32 @@
+
+====== cChr2Data() ======
+
+It converts all characters to lowercase except the 2nd character. The second character is always converted to uppercase
+
+====== Syntax ====== 
+
+cChr2Data( <cString> ) --> cString  
+ 
+====== Parameters ====== 
+^Parameter^Description^ 
+| <cstring> | String to convert |  
+
+====== Returns ====== 
+^Returns^Description^
+|<cString>| Returns the converted String. The second character of the returned string is always in uppercase and the rest of the string in lowercase | 
+
+====== Sample ====== 
+\Fwh\Samples\ObjInsp.Prg
+<code clipper>
+ #include "FiveWin.ch" 
+//------------------------------//
+Function Main()  
+
+MsgInfo(cChr2Data( "antony" ))  // Result aNtony
+MsgInfo(cChr2Data( "Test" ))   // Result tEst
+MsgInfo(cChr2Data( "This is a Test" )) // Result tHis is a test
+Return nil  
+</code>
+
+====== Source Code ====== 
+SOURCE\FUNCTION\CHR2DATA.C  

@@ -1,0 +1,14 @@
+====== nTxtLines() ====== 
+Devuelve el número de líneas que tiene un fichero de texto (ascii)
+
+====== Sintaxis ======
+ nTxtLines( <cFileName> ) --> nLines 
+====== Parámetros ======
+ <cFileName> File name 
+====== Devuelve ======
+ <nLines> Number of lines of a file. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\FTEXT.C 
+
+====== Ver también ======

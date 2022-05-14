@@ -1,0 +1,30 @@
+====== RemoveFontResource() ======
+
+Elimina una fuente de la lista de fuentes disponibles
+
+====== Syntaxis ====== 
+
+RemoveFontResource( <cFontName> ) --> lSuccess 
+ 
+====== Parametros ====== 
+
+| <cFontName>| Identifica el nombre del archivo de recursos de fuente o el mango de un módulo de carga que haya suministrado la fuente.  |
+
+====== Devuelve ====== 
+
+| <lSuccess> | Verdadero si la operación fue ejecutada exitosamente.  |
+
+====== Observaciones ======
+Cualquier aplicación que agrega o quita fuentes de la tabla de fuente de Windows debe enviar un mensaje WM_FONTCHANGE a todas las ventanas de nivel superior en el sistema utilizando la función SendMessage con el parámetro hwnd establece en -1 (HWND_BROADCAST).
+En algunos casos, la función RemoveFont no podrá retirar el recurso de la fuente de inmediato. Si hay referencias pendientes al recurso, que permanece cargado hasta la última fuente lógica con que se ha eliminado (borrado) utilizando la función DeleteObject.
+
+
+====== Codigo fuente ====== 
+SOURCE\WINAPI\FontCrea.c  
+
+
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_addfontresource|AddFontResource()]]
+

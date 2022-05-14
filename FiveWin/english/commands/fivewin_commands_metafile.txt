@@ -1,0 +1,43 @@
+====== MetaFile ======
+<code clipper>
+ @ <nRow>, <nCol> METAFILE [ <oMeta> ];  
+ [ FILE | FILENAME | DISK <cMetafile> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ SIZE <nHeight> <nWidth> ];  
+ [ COLOR | COLORS <nClrFore> [, <nClrBack> ] ];  
+
+ REDEFINE METAFILE [ <oMeta> ];  
+ [ ID <nId> ];  
+ [ FILE | FILENAME | DISK <cMetafile> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ COLOR | COLORS <nClrFore> [, <nClrBack> ] ];  
+</code>
+
+^ Data       ^  Description                    ^
+| <nRow> <nCol> | The row and col coordinates. |
+| <oMeta> | The variable to hold this object. | 
+| <cMetafile> | The name of the metafile file. |   
+| <oWnd> | The container of this control. |
+| <nHeight>, <nWidth> | The height and width dimensions of this control. |
+| <nClrFore>, <nClrBack> | The foreground color of the control. The background color of the control. |
+| <nId> | The resource identifier for this control. |
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+//----------------------------//
+Function Main()
+
+  local Odlg, odeliv
+
+  DEFINE WINDOW oDlg TITLE "Database LAB"
+
+  @ 1, 1 metafile odeliv file "invoice.wmf" of odlg
+
+  ACTIVATE WINDOW oDlg maximized
+
+return nil
+</code>
+
+====== See also ======
+[[fivewin_class_tmetafile | Class TMetaFile ]]

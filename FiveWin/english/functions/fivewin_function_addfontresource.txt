@@ -1,0 +1,22 @@
+
+====== AddFontResource() ======
+Adds a new font to the Windows font table. This function add a font resource to the Windows font table. Any application can then use the font.
+
+====== Syntax: ======
+
+ AddFontResource( <cFontFile> | <hFontResource> )  --> <nFontsAdded>  
+
+====== Parameters: ======
+^ Parameter   ^ Description                                                                                     ^
+| <cFontFile> | The name of an external file where we have stored some fonts we want to use in our application. | 
+| <hFontResource> | The handle of a module (DLL) where we have stored some fonts we want to use in our application. | 
+
+====== Returns: ======
+^ Returns   ^ Description                                       ^
+| <nFontsAdded> | The number of fonts the system successfully added. | 
+
+====== Sample: ======
+<code clipper>AddFontResource( "MyApp.dll" )</code>  
+
+====== Source Code: ======
+SOURCE\WINAPI\FontCrea.c

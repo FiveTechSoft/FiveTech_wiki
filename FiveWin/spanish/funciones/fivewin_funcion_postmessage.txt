@@ -1,0 +1,37 @@
+====== PostMessage() ======
+
+La función PostMessage coloca (postea) un mensaje en la cola de mensajes asociada con el proceso que creó la ventana especificada y después retorna sin esperar a que el mensaje sea procesado. Los menajes en la cola de mensajes son recuperados por llamada a la funcion PeekMessage.
+
+====== Sintaxis ======
+
+ PostMessage( <hWnd>, <nMsg>, <nWParam>, <nLParam> ) --> lExito
+=
+===== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>|Identifica la ventana cuyo procedimiento de ventana recibirá el mensaje. Si este parámetro es HWND_BROADCAST (-1), el mensaje se envía a todas las ventanas de nivel superior en el sistema, incluyendo las deshabilitadas o invisibles sin dueño, ventanas superpuestas o ventanas pop-up; pero el mensaje no se envía a las ventanas hijas.| 
+|<nMsg>|Especifica el mensaje a ser colocado.| 
+|<nWParam>| Una valor numérico de 16/32 bits especificando información adicional específica para el mensaje| 
+|<nLParam>| Una valor numérico de 32 bits especificando información adicional específica para el mensaje| 
+
+====== Devuelve ======
+^Nombre^Descripción^
+|lExito|Un valor logico que indica si la operacion tuvo exito| 
+
+====== Ejemplo ======
+
+ SOURCE\CLASSES\Window METHOD PostMsg 
+
+<code>
+.
+.
+METHOD PostMsg( nMsg, nWParam, nLParam ) INLINE  PostMessage( ::hWnd, nMsg, nWParam, nLParam )
+.
+.
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\PostMsg.c 
+
+====== Ver también ======
+[[fivewin_funcion_sendmessage|SendMessage()]], [[fivewin_funcion_peekmessage|PeekMessage()]] 

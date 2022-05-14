@@ -1,0 +1,144 @@
+====== lAnd() ====== 
+
+
+
+lAnd()
+
+
+
+
+
+Retrieves the logical AND of some numeric values
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lAnd( <nValue1>, <nValue2> ) --> lResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nValue2> A numeric value to be bit-anded with nValue2. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nValue1> A numeric value to be bit-anded with nValue1. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lResult> A logical value with the result of the bit-and operation. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function basically checks if a certain bit flag is active in a
+numeric value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\Classes\\TGet:Init() METHOD. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Or.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nAnd() nOr() lOr() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

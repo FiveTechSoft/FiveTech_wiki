@@ -1,0 +1,118 @@
+nHiWord()
+
+
+
+nHiWord
+
+ Previous  Top  Next
+
+
+
+
+Returns the HiWord of a long (four bytes)
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nHiWord( <nLong> ) --> nHiWord 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nLong> A numeric (4 bytes) value 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nHiWord> A numeric (2 byte) value 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ A long is made of: 
+
+
+ 
+
+
+ LONG = LOW_WORD + HIGH_WORD 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\HiLoWord.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nLoByte() nHiByte() nLoWord() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

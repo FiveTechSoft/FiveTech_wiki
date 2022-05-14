@@ -1,0 +1,14 @@
+====== DrawMenuBar() ======
+It draws the horizontal bar of menu
+
+====== Syntax ======
+DrawMenuBar( <hMenu> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hMenu> | Handler of the window where we will paint the menu |
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\FUNCTION\MENUS.C 

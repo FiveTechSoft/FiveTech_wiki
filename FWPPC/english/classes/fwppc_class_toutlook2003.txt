@@ -1,0 +1,28 @@
+====== Class TOutLook2003 ======
+
+Outlook 2003 control class                                                     
+Inherits from Tcontrol                                                         
+====== DATA ======
+|oHeader|Header object|
+|aGroups|Array of prompts used for the groups|
+|aDialogs|Array of dialogs used for the groups|
+|oFontHeader|Font object used for the header|
+|oFontGroup|Font object used for the groups|
+|nOver|Used internally|
+|bChange|A codeblock that is evaluated when a group has|
+|activated||
+====== METHODS ======
+|New|Costructor from source code|
+|Redefine|Costructor from resources|
+|AddGroup|Adds a new group to the control|
+|AtGroup|Returns the index of the group that is at the|
+|specified|row and column coordinates|
+|SetOption|Activates the group that is at the specified index|
+|position||
+|AdjustDialogs|Resize the dialogs to the specified width and height|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TOUTLOOK2003.PRG

@@ -1,0 +1,79 @@
+====== FlushComm() ======
+This function flushes all characters from the transmision or receiving queue of the specified communications device.  
+
+====== Syntax ====== 
+FlushComm( <nIdComDev>, <nQueue> )  --> <nReturn>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <nIdComDev> | Identifies the communication device to be flushed. The OpenComm function returns this value.  |
+| <nQueue> | Specifies the queue to be flushed. If this parameter is zero, the  transmission queue is flushed. If the parameter is 1, the receiving queue is flushed.  |
+
+====== Return ====== 
+^Returns^Description^
+| <nReturn> | The return value is zero if the function is successful. It is less than zero if nIdComDev is not a valid device or if nQueue is not a valid device. The return value is positive if there is an error for the specified device. For a list of the possible error values, see the GetCommError function.  |
+
+====== Sample ======
+<code clipper>
+// FiveWin - Windows Communications Sample
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local cDcb, nBytes
+   local nComm := OpenComm( "COM1", 1024, 128 )
+   local nError
+
+   if ! BuildCommDcb( "COM1:9600,n,8,1", @cDcb )
+      nError = GetCommError( nComm )
+      MsgInfo( "BuildCommDcb Error: " + Str( nError ) )
+   endif
+
+   #ifdef __CLIPPER__
+      if ! SetCommState( cDcb )
+   #else   
+      if ! SetCommState( nComm, cDcb )
+   #endif   
+      nError = GetCommError( nComm )
+      MsgInfo( "SetCommState Error: " + Str( nError ) )
+   endif
+
+   if ( nBytes := WriteComm( nComm, "ATZ0" + Chr( 13 ) ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if ( nBytes := WriteComm( nComm, "ATDT 952834830" + Chr( 13 ) ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if FlushComm( nComm, 0 ) != 0
+      nError = GetCommError( nComm )
+      MsgInfo( "FlushComm Error: " + Str( nError ) )
+   endif
+
+   if ! CloseComm( nComm )
+      nError = GetCommError( nComm )
+      MsgInfo( "CloseComm Error: " + Str( nError ) )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Source Code ====== 
+SOURCE\\WINAPI\\Comm.c  
+
+====== See Also ====== 
+[[fivewin_function_getcommerror|GetCommError()]]
+[[fivewin_function_opencomm|OpenComm()]]

@@ -1,0 +1,22 @@
+
+====== DibPalette() ======
+DibPalette()
+
+Returns the palette handle of a DIB
+====== Sintaxis ======
+ DibPalette( <hDIB> ) --> hPalette 
+
+ This function retrieves the handle of the palette associated to the DIB. 
+====== Parámetros ======
+ <hDIB> The handle of the new DIB. (DIB = Device independent bitmap). 
+====== Devuelve ======
+ <hPalette> The handle of the palette associated with the bitmap. 
+
+Observations:
+
+ We strongly recommend you to use TBitmap Class for managing bitmaps.
+FiveWin process all that you need automatically. 
+====== Código fuente ======
+ SOURCE\WINAPI\Dib.c 
+====== Ver también ======
+ DibRead() DibPalette() DibWidth() DibHeight() DibWrite()

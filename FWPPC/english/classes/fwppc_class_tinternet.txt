@@ -1,0 +1,17 @@
+====== Class TInternet ======
+
+Microsoft 32 bits WinINet.dll object oriented support                          
+====== DATA ======
+|hWinINet|Handle to opened WinINet.dll|
+|hSession|Handle of current session|
+|aFTPs|Array of all TFTP objects in use|
+====== METHODS ======
+|New|Constructor|
+|End|Generic destructor|
+|FTP|Generates a new TFTP object and connects to it|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TINTERNET.PRG

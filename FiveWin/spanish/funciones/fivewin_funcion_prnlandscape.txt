@@ -1,0 +1,15 @@
+
+====== PrnLandscape() ====== 
+PrnLandscape()
+
+To establish the orientation from the paper to LANDSCAPE
+====== Sintaxis ======
+ PrnLandscape() --> lSuccess 
+====== Parámetros ======
+   None.
+====== Devuelve ======
+ <lSuccess> TRUE 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

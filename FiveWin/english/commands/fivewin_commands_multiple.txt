@@ -1,0 +1,18 @@
+====== Set Multiple ======
+
+**Running multiple instances of a FiveWin EXE (only woks under Win 3.1) **
+
+<code clipper> SET MULTIPLE [ ON | OFF ]  </code>
+
+In 32 bits the same can be achieved by using the following code
+<code clipper>
+// Check whether the application is already running in the same PC
+if IsExeRunning( cFileName( HB_ARGV( 0 ) ) )
+   MsgWait( "Another instance of this application is already running in this PC", "Multiple Instance not allowed" )
+   Return NIL
+endif
+</code>
+
+ 
+  
+

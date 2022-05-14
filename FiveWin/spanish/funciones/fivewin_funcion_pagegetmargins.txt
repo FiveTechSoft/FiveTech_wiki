@@ -1,0 +1,79 @@
+PageGetMargins()
+
+
+PageGetMargins()
+ Previous  Top  Next
+
+Retrieves the current page margins.
+
+
+====== Sintaxis ======
+
+
+
+
+
+ PageGetMargins() --> aMargin 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <aMargin> An array containing { top, left, right, bottom } margins of
+the printer page. 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\printdc.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+   
+
+
+====== Ver también ======
+

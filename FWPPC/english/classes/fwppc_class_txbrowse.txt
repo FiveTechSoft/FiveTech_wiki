@@ -1,0 +1,201 @@
+====== Class TXBrowse ======
+
+Class TXBrowse                                                                 
+Inherits from TControl                                                         
+This control intends to substitute completely all the previous Browse          
+control developed by FiveTech. Due his complexity there are no commands        
+available to use, but in his counterpart there are not functions or            
+methods that receive an enormous quantity of parameters.                       
+The first thing you should be aware is that the construction of the            
+control is done in two phases:                                                 
+�      Creation of the TXBrowse control                                        
+�      Creation of the Windows API control based on the TXBrowse control       
+====== DATA ======
+|This|modification has been done in order to let the programmer the|
+|assignment|of any object property before the window is truly created. For|
+|example,|you may disable a scrollbar easily just changing the data|
+|lVScroll|or lHScroll before the window is created.|
+|As|usual on all Fivewin controls the creation of the object is done with|
+|constructor|'New' which now only receives one parameter which its|
+|container|window:|
+|oMyBrw|:= TXBrowse():New( oWnd )|
+|Afterwards|you can change any property of the control, adding columns to|
+|it,|etcetera. When the entire configuration has been made then you call|
+|the|window creation method which can be:|
+|�|CreateFromCode|
+|�|CreateFromResource( nId )|
+|The|methods name are self explanatory, the first one creates a TXBrowse|
+|window|as you would done with the typical '@ nRow, nCol' and the second|
+|one|is used when creating the control from resources and you give as|
+|parameter|just the ID of the control.|
+|The|TXBrowse class also uses another class for his columns with the name|
+|TXBrwColumn,|to add a new column to the TXBrowse object you only need to|
+|call|the method 'AddCol'|
+|oCol|:= oBrw:AddCol()|
+|The|TXBrowse control internally calls the method 'Adjust' when is|
+|completely|created. This method is the responsible of calculating the|
+|dimension|of every column data, header and footer and adjusts the browse|
+|adequately.|The method 'Adjust' is also present on every column object|
+|and|is also called within TXBrowse 'Adjust' method. The method 'Adjust'|
+|only|modifies the properties of the object if they were 'nil' before the|
+|method|is called. So if you call the method 'Adjust' manually you should|
+|be|aware that you also will need to assign to 'nil' all the properties|
+|that|you want to be recalculated like for example the header height.|
+|We|highly recommend looking at the sample Testxbrw.prg to gain a better|
+|understanding|of the TXBrowse control.|
+====== DATA ======
+|oSeek|Optional TSay control to display the value of current|
+|::cSeek|value|
+|aSelected|Currently records selected (only use with marquee|
+|style|MARQSTYLE_HIGHLROWMS|
+|aArrayData|Array data filled by SetArray() method|
+|bGoTop|Codeblock for going to first row|
+|bGoBottom|Codeblock for going to last row|
+|bSkip|Codeblock for skiping rows, it receives the number of|
+|rows|to skip. IT SHOULD RETURN THE NUMBER OF ROWS SKIPPED|
+|bBof|Codeblock to check if we are at the first row|
+|bEof|Codeblock to check if we are at the bottom row|
+|bKeyNo|SETGET codeblock to be used for positioning the|
+|vertical|scrollbar. When no parameter is passed it should return the|
+|actual|position, when a parameter is passed should perform a jump to that|
+|position|. The codeblock also receives a second parameter with a|
+|reference|to Self For example: {|n| iif( n == nil, OrdKeyNo(),|
+|OrdKeyGoto(n)|}|
+|bKeyCount|Codeblock that returns the total number of rows.|
+|bBookMark|SETGET codeblock to be used for bookmarking a|
+|specific|row. When no parameter is passed it should return a bookamark|
+|value,|when a parameter is passed should return to that bookmark|
+|position.|For example: {|n| iif( n == nil, Recno(), DbGoto(n) }|
+|bSeek|Block expresion for autoincremental search. It should|
+|return|.T. when found. It receives the proposed seek string.|
+|bPastEof|Block to evaluate if trying to go down after the last|
+|row||
+|bClrHeader|Default color pair for header. This code-block should|
+|return|an two dimension array with {nFore, nBack} colors|
+|bClrFooter|Default color pair for footer. This code-block should|
+|return|an two dimension array with {nFore, nBack} colors|
+|bClrStd|Default color pair for normal rows. This code-block|
+|should|return an two dimension array with {nFore, nBack} colors|
+|bClrSel|Default color pair for selected row. This code-block|
+|should|return an two dimension array with {nFore, nBack} colors|
+|bClrSelFocus|Default color pair for selected row when control has|
+|focus.|This code-block should return an two dimension array with {nFore,|
+|nBack}|colors|
+|cAlias|Alias when accesing via RDD|
+|cSeek|String that hold the current string searched (for|
+|autoincremental|seek)|
+|nRowSel|Current row selected based on current display|
+|nColSel|Current columns based on current display|
+|nFreeze|Number of columns to freeze|
+|nColOffset|Actual first column to be shown after freeze|
+|nHeaderLines|Number of lines of the header|
+|nFooterLines|Number of lines of the footer|
+|nDataLines|Number of lines of the data rows|
+|nDataType|Data type to be used: 0->rdd, 1->array, ... (more to|
+|come)|If navigation codeblocks are not specified then get automatically|
+|initialized|when adjusting the browse depending on this DATA value|
+|nHeaderHeight|Header height. If this value is NIL, the is|
+|calculated|on the Adjust method|
+|nFooterHeight|Footer height. If this value is NIL, the is|
+|calculated|on the Adjust method|
+|nRowHeight|Data row height. If this value is NIL, the is|
+|calculated|on the Adjust method|
+|nRecSelColor|Background color for the record selector column, by|
+|default|uses the backgrounf footer|
+|nRowDividerStyle|Row divider style: 0 No lines 1 Black line 2 Dark|
+|gray|line 3 Raised 4 Inset 5 Fore Color 6 Light gray|
+|nColDividerStyle|Column divider style: 0 No lines 1 Black line 2 Dark|
+|gray|line 3 Raised 4 Inset 5 Fore Color 6 Light gray|
+|nMarqueeStyle|Marquee style (row selected) 0 No Marquee 1 Dotted|
+|cell|2 Solid cell 3 Highlight cell 4 Highlight row & Raise Cell 5|
+|Highlight|row 6 Highlight row & multiselect|
+|nLastEditCol|Last edited column (display based)|
+|lRecordSelector|If true a record selector column is displayed|
+|lHScroll|Horizontal Scrollbar, it should be assigned before|
+|the|createfrom..() method|
+|lVScroll|Vertical Scrollbar, it should be assigned before the|
+|createfrom..()|method|
+|lAllowRowSizing|If true horizontal row sizing is allowed|
+|lAllowColSwapping|If true column swapping is allowed|
+|lAllowColHiding|If true column hiding is allowed|
+|lColDividerComplete|If true the vertical lines are displayed to the|
+|bottom|of the browse even there are not enough data rows|
+|lFastEdit|If true, editable columns go to edit mode just|
+|pushing|an alpha or digit character. This feature is incompatible with|
+|Incremental|seek and is only available when the marquee style is cell|
+|based.||
+|l2007|If true the 2007 look is activated|
+|lHeader|Browse has header, if this value is nil then is|
+|initialized|automatically on the Adjust method|
+|lFooter|Browse has footer|
+|oRS|The ADO recordset object if SetADO() method was used|
+|METHODS:||
+|New|Constructor. Receives the parent window or dialog|
+|control||
+|End|Destructor|
+|nAt|Returns the currently selected column|
+|SetRDD|Sets the navigation code blocks to RDD database|
+|navigation||
+|SetArray|Sets the navigation code blocks to array navigation.|
+|Receives|the array to use and a second optional parameter to indicate if|
+|auto|sort and incremental seek should be available, By default is false|
+|AddCol|Adds a TXBrwColumn object|
+|InsCol|Inserts TXBrwColumn object at nPos position|
+|DelCol|Deletes TXBrwColumn object at nPos position|
+|SwapCols|Swaps to column. The columns to swap can be|
+|referenced|by his position in the array property aCols or directly|
+|indicating|the objects|
+|CreateFromCode|Creates the TXBrowse from code|
+|CreateFromResource|Creates the TXBrowse from resource. It receives the|
+|control|identifier as first and only parameter|
+|SelectCol|Moves the browse to nCol (based on displayed cols)|
+|GoLeft|Moves the browse one column to the left|
+|GoRight|Moves the browse one column to the right|
+|GoLeftMost|Moves the browse to this first column|
+|GoRightMost|Moves the browse to this last column|
+|GoUp|Moves the browse one row up|
+|GoDown|Moves the browse one row down|
+|PageUp|Moves the browse a page up|
+|PageDown|Moves the browse a page down|
+|GoTop|Moves the browse to the beginning of data|
+|GoBottom|Moves the browse to the end of data|
+|KeyCount|Counts the number of available rows and updates that|
+|information|internally. It should be used after any scope, filter, append|
+|or|delete operation.|
+|Skip|Skips 'nSkip' rows and returns the exactly skipped|
+|rows||
+|Bof|True if at the beginning of data|
+|Eof|True if at the end of data|
+|SaveState|Saves the actual browse state to a string|
+|RestoreState|Restores the browse state saved with SaveState method|
+|Seek|Seeks the string cSeek, if found updates the data row|
+|Select|Select operation when Multiselect marquee is used: 0|
+|->|Delete all keys 1 -> Add current key 2 -> Swap current key|
+|(Ctrl+lClick)|3 -> Typical Shift with mouse 4 -|
+|>|Select all|
+|SelectAll|The same as Select(4)|
+|SelectNone|The same as Select(0)|
+|Adjust|Adjust all the browse dimensions. Used internally|
+|from|the Create method, but you can call it manually afterwards, but you|
+|should|assign to 'nil' the properties that|
+|you|wan to be recalculated.|
+|Report|Prints an automatic customizable report from the|
+|current|browse|
+|Refresh|Refresh the control. It completely redraws the|
+|Xbrowse|control|
+|SetAdo|Sets the browse to display data from an ADO recordset|
+|SelFont|Shows the font selection dialog allowing the user to|
+|choose|a font for the browse and then apply it to all the column of the|
+|browse|itself|
+|VUpdatePos|Updates the vertical scrollbar position. It should be|
+|used|after a change of current Tag.|
+|VUpdateAll|Updates the vertical scrollbar range and position. It|
+|calls|first the method KeyCount() and then adjust the scrollbar values.|
+|See|also TXBrwColumn control|
+====== Example ======
+
+====== See Also ======
+
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\XBROWSE.PRG

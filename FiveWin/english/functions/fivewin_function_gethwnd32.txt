@@ -1,0 +1,84 @@
+
+======  GethWnd32() ====== 
+
+
+
+
+
+
+To convert a window Handle from 16 to 32 bits
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GethWnd32( <hWnd16> ) --> hWnd32 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd16> Handle of window of 16 bits 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hWnd32> Handle of window of 32 bits 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CALDLL32.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

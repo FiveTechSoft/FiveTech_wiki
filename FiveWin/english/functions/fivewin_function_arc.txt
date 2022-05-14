@@ -1,0 +1,23 @@
+====== Arc() ======
+Draws an elliptical arc 
+====== Syntax ======
+Arc( <hDC>, <nLeftRect>, <nTopRect>,<nRightRect>, <nBottomRect>,<nXStartArc>, <nYStartArc>,<nXEndArc>, <nYEndArc> ) -> <lSuccess> 
+====== Parameters ======
+^Parameters^ Description                                    ^
+|<hDC>| Identifies the device context where the arc is drawn|
+|<nLeftRect>| The dimensions of the rect where the arc is placed|
+|<nTopRect>| | 
+|<nRightRect>| |  
+|<nBottomRect>| |  
+|<nXStartArc>| The coordinates of starting point of the arc.|
+|<nYStartArc>| |
+|<nXEndArc>| The coordinates of ending point of the arc.|
+|<nYEndArc>| |
+
+====== Returns ======
+^Returns ^ Description ^
+|<lSuccess>| A logical value indicating that the operation was performed successfully or not.|
+
+
+====== Source Code ======
+SOURCE\WINAPI\Drawing.c

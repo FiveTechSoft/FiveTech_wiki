@@ -1,0 +1,57 @@
+TimeFromStart()
+
+
+TimeFromStart()
+ Previous  Top  Next
+
+Gives the time elapsed since the application was started.
+
+====== Sintaxis ======
+
+
+ TimeFromStart() --> cTime 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+ 
+
+
+ <cTime> String of characters in format "00:00:00" hours, minutes,
+seconds. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ local cTime := TimeFromStart() 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\CLASSES\MSGBAR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

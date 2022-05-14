@@ -1,0 +1,101 @@
+HeaderLayout()
+
+
+HeaderLayout()
+ Previous  Top  Next
+
+Retrieves the correct size and position of a header control within the
+parent window.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ HeaderLayout( <hWnd> [,<aRect> ) --> aInfo 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the header control. 
+
+
+ 
+
+
+ <aRect> Optional left, top, right and bottom coordinates of the header
+control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aInfo> An array of 7 items containing the handle, the Z order position,
+the left and the top coordinates and the width and height of the header
+control. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+====== See also ======
+

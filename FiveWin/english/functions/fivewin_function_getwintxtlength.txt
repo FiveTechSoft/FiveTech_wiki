@@ -1,0 +1,81 @@
+
+====== GetWinTxtLength() ====== 
+
+
+
+Length of the text inside a multiline get control.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetWinTxtLength( <hMultiGet> ) --> nLen 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMultiGet> The handle of the multiline get control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLen> Length of the text that the multiline Get contains. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\GETTEXT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,27 @@
+====== ASend() ====== 
+Send an OOP message to an array of Objects 
+
+====== Syntax ====== 
+ASend( <aArray>, <cMsg>, <uParam1>, ..., <uParamN> )  
+ 
+====== Parameters ====== 
+^Parameter^Description^
+| <aArray>| An array of objects.  |
+| <cMsg>| A literal describing the OOP message to send to the object. It is the same as doing the below given code, but in a much more efficient way, and without having to know in advance which OOP message will be sent to the array of objects:|  
+| <uParam1>| A list of optional parameters to be supplied as parameters to the method.| 
+|<uParamN>|...|  
+<code clipper>
+local n 
+for n = 1 to Len( <aArray> ) 
+   <aArray>[ n ]:<cMsg>( <uParam1>, ..., <uParamN> ) 
+next 
+</code>
+
+====== Returns ====== 
+NIL
+ 
+====== Source Code ====== 
+source\function\harbour.prg
+
+====== See also ====== 
+[[fivewin_function_osend|OSend()]]

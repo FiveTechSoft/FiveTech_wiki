@@ -1,0 +1,98 @@
+====== Lfn2Sfn() ====== 
+
+
+
+Lfn2Sfn()
+
+
+
+
+
+Long FileName To short FileName
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Lfn2Sfn( <cLongFileName> ) --> cshortFileName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cLongFileName> Long file name 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cshortFileName> Long name transformed to short name 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\LONGNAME2.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FILES.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,99 @@
+GetNMListViewItem()
+
+
+GetNMListViewItem()
+ Previous  Top  Next
+
+Retrieves the index of the item of a list view sending a notify message.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetNMListViewItem( <nPtrNMV> ) --> nIndex 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nPtrNMV> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nIndex> The item index field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\tlistvie.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\listview.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== Ver también ======
+

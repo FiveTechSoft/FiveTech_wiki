@@ -1,0 +1,15 @@
+
+====== IsMenu() ======
+IsMenu()
+
+It checks if a handle is of a menu
+====== Sintaxis ======
+ IsMenu( <hMenu> ) --> lMenu 
+====== Parámetros ======
+ <hMenu> Handle to check 
+====== Devuelve ======
+ <lMenu> This function return true if the handle given is amenu handle. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

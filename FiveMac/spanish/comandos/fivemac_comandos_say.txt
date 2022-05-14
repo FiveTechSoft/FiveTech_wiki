@@ -1,0 +1,7 @@
+====== Definición de un objeto SAY mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> SAY [ <oSay> PROMPT | VAR ] <cText> ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ SIZE <nWidth>, <nHeight> ] ;  
+   [ RAISED ]  
+</code>  

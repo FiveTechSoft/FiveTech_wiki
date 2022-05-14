@@ -1,0 +1,20 @@
+
+====== GetFTime() ======
+GetFTime()
+
+Retrieves the time and date of a file
+====== Sintaxis ======
+ GetFDate( <hFile> ) --> aDateTime 
+====== Parámetros ======
+  <hFile> Identifies the handle of an opened file. Use FOpen() to get this
+       handle. 
+  <cTime> Specifies a different time to be set to the file. Use the
+       format: "HH:MM:SS". 
+  <cdDate> Specifies a different date to be set to the file. Use the
+       format: "DD:MM:YYYY". You can use both a date or a string type. 
+====== Devuelve ======
+ <aDateTime> An array of two elements with the time and date of the file.
+The time has the format "HH:MM:SS", and the date is a Clipper date. 
+====== Código fuente ======
+ SOURCE\FUNCTION\Files.c 
+====== Ver también ======

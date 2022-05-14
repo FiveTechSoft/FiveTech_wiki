@@ -1,0 +1,22 @@
+====== SetHelpFile() ======
+ 
+Selects the Help-File (.HLP or .CHM) to use.
+
+====== Syntax: ======
+ 
+ SetHelpFile( <cHelpFile> ) --> nil
+====== Parameters: ======
+
+| <cHelpFile> | The name of the HLP- or CHM-file to be used by default from our program. |
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+SetHelpFile() Selects the default HLP file to be called when requesting help. GetHelpFile() will return the Help file name we select here.
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C   
+====== see also: ======
+[[fivewin_commands_helpfile|SET HELPFILE TO]]

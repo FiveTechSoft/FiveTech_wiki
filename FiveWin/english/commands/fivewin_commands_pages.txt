@@ -1,0 +1,94 @@
+====== Pages ======
+**Creating a pages control from resources        **
+<code clipper>
+ REDEFINE PAGES <oPag> ;  
+ [ ID <nId> ] ;  
+ [ OF <oWnd> ] ;  
+ [ DIALOGS <DlgName,...> ] ;
+ [ HELPTOPICS <cnHelpids,...> ] ;
+ [ OPTION <nOption> ]  
+ [ ON CHANGE <uChange> ];  
+ [ FONT <oFont> ]  
+</code>
+**Parameters**
+| <oPag> | A reference to the TPages object just created. |    
+| <nId> | The numeric resource identifier of the control. |     
+| <oWnd> | The container object of the TPages control. | 
+| <DlgName,...> | A list with the resources names of the DialogBoxes to manage. Important: These DialogBoxes must have the style STYLE WS_CHILD or WS_VISIBLE at the RC or DLL file. | 
+| <cnHelpids,...> | A list with the help-IDs for the pages. This can be a number or a string or mixed as defined in helpfile.| 
+| <nOption> | An optional initial option to use different from 1. | 
+| <uChange> | An action to perform when a different page is selected on the same pages control. | 
+| <oFont> | An optional font object to be used for the pages control. | 
+
+**CLAUSES **
+
+| ON CHANGE | To specify an action to perform when a different page is selected on the same pages control. |
+| FONT | To specify an optional font object to be used for the pages control. |
+
+====== Sample Code ===
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg
+
+   DEFINE DIALOG oDlg TITLE "Calculator"
+
+   ACTIVATE DIALOG oDlg ;
+      ON INIT BuildPages( oDlg )
+
+return nil
+
+function BuildPages( oDlg )
+
+   local oPages := TPages():New( 0, 0, oDlg:nWidth(), oDlg:nHeight(), oDlg )
+   local oDlg1, oDlg2
+
+   oDlg:SetMenu( BuildMenu( oPages, oDlg ) )
+   
+   oDlg:oClient = oPages
+   oDlg:ReSize()
+
+   DEFINE DIALOG oDlg1 STYLE WS_CHILD OF oPages
+
+   @ 0.5, 1 BUTTON "+" OF oDlg1 SIZE 10, 10
+
+   @ 3, 2 SAY "Normal" OF oDlg1
+   
+   oPages:AddPage( oDlg1 )
+
+   DEFINE DIALOG oDlg2 STYLE WS_CHILD OF oPages
+
+   @ 0.5, 1 BUTTON "Sin" OF oDlg2 SIZE 10, 10
+
+   @ 3, 2 SAY "Scientific" OF oDlg2
+   
+   oPages:AddPage( oDlg2 )
+   
+   oPages:SetOption( 1 )
+   
+return nil
+
+function BuildMenu( oPages, oDlg )
+
+   local oMenu
+   
+   MENU oMenu 2007
+      MENUITEM "Type"
+      MENU
+         MENUITEM "Normal"     ACTION ( oPages:SetOption( 1 ), oDlg:SetSize( 255, 245 ) )
+
+         MENUITEM "Scientific" ACTION ( oPages:SetOption( 2 ), oDlg:setsize( 485, 245 ), oDlg:SetMenu( oMenu ) )
+      ENDMENU
+   ENDMENU
+   
+return oMenu         
+</code>
+
+====== Screen Snapshot ======
+{{:pages1.jpg|:pages1.jpg}}
+{{:pages2.jpg|:pages2.jpg}}
+
+====== See Also ======
+[[fivewin_class_toutlook | Class TOutLook ]], [[fivewin_class_ttitle | Class TTitle ]]

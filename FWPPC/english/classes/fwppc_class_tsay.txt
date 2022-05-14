@@ -1,0 +1,27 @@
+====== Class TSay ======
+
+Say Objects                                                                    
+Inherits from Tcontrol                                                         
+====== DATA ======
+|l3D|If the Say has to be shown 3DLook|
+|cPicture|The picture of the Say|
+|bGet|A codeblock containing the caption of the Say|
+|lWantClick|.T. if the say has to react to the mouse click|
+====== METHODS ======
+|New|Constructor from source code.|
+|Redefine|Constructor from resources.|
+|cToChar|Generates a data template to build a Dialog.|
+|Default|Default initialization of the control.|
+|cGenPRG|Returns a string with the source code of the control.|
+|EraseBkGnd|Erases the background of the control.|
+|HandleEvent|Generic event handler.|
+|Initiate|Initializes the control.|
+|Refresh|Refreshes the contro.|
+|SetText|Changes the caption of the Say.|
+|VarPut|Changes the values associated with bGet codeblock.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TSAY.PRG

@@ -1,0 +1,28 @@
+
+====== DefWindowProc() ======
+
+Llamada al procedimiento de ventana predeterminado.
+
+====== Sintaxis ======
+ 
+DefWindowProc( <hWnd>, <nMsg>, <nParam, <nlParam> ) --> nResult
+
+====== Parámetros ======
+
+| <hWnd> |Título de la ventana que recibe el mensaje |
+| <nMsg> |Mensaje recibido |
+| <nParam> |primer parámetro como INTEGER |
+| <nlParam> |El segundo parámetro como Long |
+
+====== Retorno ======
+
+| <nResult> |variable en función de la restitución de la transformación del mensaje.|
+
+====== Ejemplo ======
+
+====== Código Fuente ======
+
+SOURCE\WINAPI\WINDOWS.C
+
+====== Ver también ====== 
+

@@ -1,0 +1,91 @@
+====== SymStat() ======
+
+
+To know if is it a symbol of a static symbol
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SymStat( <hSymbol> ) --> lStatic 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hSymbol> Handle of the symbol obtained with the function SymTblAt() 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lStatic> Retrieve true if the symbol is a symbol of a static symbol 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TSYMBOL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\SYMTABL.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,18 @@
+====== FDate()======
+Recupera la fecha de un Archivo sin Abrirlo
+
+====== Syntaxis ====== 
+FDate( <cFileName> ) --> dFileDate  
+
+====== Parametros ====== 
+| <cFileName> | Ruta y Nombre del Archivo.  |
+
+====== Devuelve ====== 
+| <dFileDate>| La Fecha del Archivo.  |
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\FileName.prg  
+
+
+====== Ver tambien ====== 
+[[fivewin_funcion_FTimesp|FTime()]] 

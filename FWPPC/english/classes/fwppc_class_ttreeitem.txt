@@ -1,0 +1,41 @@
+====== Class TTreeItem ======
+
+Trees TreeItems in FiveWin                                                     
+See Class TLinkList and xBase TREE ... ENDTREE command for an explanation      
+of Trees under FiveWin.                                                        
+====== DATA ======
+|cDraw|Contains the draw characters for this item.|
+|cPrompt|Contains the associated text label of the item.|
+|oPrev|Reference to previous TreeItem object.|
+|oNext|Reference to next TreeItem object.|
+|oTree|Reference to a contained tree object.|
+|lOpened|If the contained tree object is opened or not.|
+|nLevel|Ident level of the item.|
+|hBmpOpen|Handle of the bitmap for opened state.|
+|hBmpClose|Handle of the bitmap for closed state.|
+|Cargo|Generic cargo slot.|
+====== METHODS ======
+|New|Constructor from source code|
+|End|Ends control and make it disappear|
+|Add|Adds a new following item.|
+|Close|Closes the the treeitem.|
+|ColSizes|Returns an array with colsizes to use for painting|
+|the|browse row.|
+|Delete|Deletes treeitem.|
+|Draw|Draws the item.|
+|GetLabel|Retrieves the treeitem label.|
+|GetNext|Retrieves the next treeitem.|
+|GetPrev|Retrieves the previus treeitem.|
+|GetText|Retrieves the treeitem prompt.|
+|Open|Opens the optional tree contained by the TreeItem.|
+|SetNext|Set a new value for the next treeitem.|
+|SetText|Set a new prompt for the current treeitem.|
+|Skip|Goes to the next treeitem.|
+|Toggle|Change the treeitem status if it's open closes it,|
+|else|opens it.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTREEITEM.PRG

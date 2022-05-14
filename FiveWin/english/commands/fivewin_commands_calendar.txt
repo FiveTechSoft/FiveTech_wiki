@@ -1,0 +1,91 @@
+====== Creating a Calendar from source code ======
+
+<code clipper>
+@ <nRow>, <nCol> CALENDAR [ <oCalendar> VAR ] <uVar> [,<uVar2>] ;
+            OF <oWnd> ;
+            [ VALID <ValidFunc> ] ;
+            [ COLOR|COLORS <nClrFore> [,<nClrBack>] ] ;
+            [ SIZE <nWidth>, <nHeight> ]  ;
+            [ FONT <oFont> ] ;
+            [ DESIGN> ] ;
+            [ CURSOR <oCursor> ] ;
+            [ PIXEL> ] ;
+            [ MESSAGE <cMsg> ] ;
+            [ UPDATE> ] ;
+            [ MULTISELECT> ] ;
+            [ WHEN <uWhen> ] ;
+            [ ON CHANGE <uChange> ] ;
+            [ HELPID|HELP ID <nHelpId> ] ;
+            [ WEEKNUMBER ];
+            [ NOTODAYCIRCLE ];
+            [ NOTADAY ];
+            [ DAYSTATE ];            
+            [ ACTION <bAction> ];
+            [ DBLCLICK <bLDblClick> ]
+
+</code>
+
+
+====== Creating a Calendar using resource ======
+
+<code clipper>
+REDEFINE CALENDAR [ <oCalendar> VAR ] <uVar>, <uVar2> ;
+             [ MULTISELECT> ] ;
+             [ ID <nId> ] ;
+             [ OF <oWnd> ] ;
+             [ HELPID|HELP ID <nHelpId> ] ;
+             [ COLOR|COLORS <nClrFore> [,<nClrBack>] ] ;
+             [ FONT <oFont> ] ;
+             [ CURSOR <oCursor> ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ UPDATE ] ;
+             [ WHEN <uWhen> ] ;
+             [ VALID <uValid> ] ;
+             [ ON CHANGE <uChange> ] ;
+             [ ACTION <bAction> ];
+             [ DBLCLICK <bLDblClick> ]
+</code>  
+
+| <nRow>, <nCol> | The coordinates of the Calendar. They mimic text mode coordinates. |
+| <oCalendar> | A reference to the TCalendar Object. |
+| <uVar>, <uVar2> | The variable that hold the date(s) selected. uVar2 is only relevant if MULTISELECT is used. |
+| <nId> | The numeric resource identifier of the control. |
+| <oWnd> | The container window of the Calendar. |
+| <nWidth>, <nHeight> | The dimensions of the CheckBox in pixels. |
+| <nHelpId> | The help topic value of the calendar. |
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string. |{{:calendar1.gif|:calendar1.gif}}
+| <nClrBack> | Background color as a RGB number. |
+| <oFont> | A reference to the Font Object to be used with the CheckBox. |
+| <oCursor> |  |
+| <cMsg> | The associated message of this control. |
+| <WhenFunc>, <uWhen> | When expression code block. |
+| <ValidFunc> | An expression or function to be validated when the calendar loses its focus. |
+| <uChange> | An action to be performed when user click on different date. |
+| <bAction> |  |
+| <bLDblClick> | Action to be performed when user double-click on a date |
+
+
+
+
+====== Description ======
+{{:calendar1.gif|:calendar1.gif}}
+Calendar control is a wrapper for native windows month calendar control but with some enhancements so the behaviour is more in line with what we are used to. For instance, the ability to tie an action to a double-click.
+
+How many months are displayed depends on the size of the control. \\ 
+Note it is the size of the control itself not its container (dialog/window)
+
+
+
+====== Sample code ======
+\Fwh\Samples\TestCal.Prg \\ 
+\Fwh\Samples\TestCal2.Prg \\ 
+\Fwh\Samples\TestCalr.Prg
+
+
+
+
+
+====== See also ======
+[[fivewin_class_tcalendar | Class TCalendar ]] \\ 
+[[http://www.functionx.com/win32/controls/monthcalendar.htm|Win32 Controls - Month Calendar]] \\ 
+[[http://dcs.isa.ru/www/vladimirv/inetsdk/inet0197.htm|Month Calendar Control Reference]]

@@ -1,0 +1,58 @@
+
+======  GetTextHeight() ====== 
+
+
+
+
+Retrieves the height of a selected font.
+
+====== Syntax ======
+
+
+ GetTextHeight( <hWnd>, [<hDC>] ) --> nFontHeight 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hWnd> The handle of the window whose font height is to be retrieved. 
+
+
+ 
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+====== Returns ======
+
+
+ <nFontHeight> The height of the currently selected font for that window. 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\GetTextW.c 
+
+
+ 
+
+See also:
+
+
+ GetTextWidth() 
+
+
+ 
+
+
+
+====== See also ======
+

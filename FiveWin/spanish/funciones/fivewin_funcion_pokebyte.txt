@@ -1,0 +1,25 @@
+
+====== PokeByte() ======
+
+To write a byte in a position of memory
+
+====== Sintaxis ======
+
+ PokeByte( nSegment, nOffset, nByte ) --> nil 
+
+====== Parámetros ======
+
+|<nSegment>|Segment of memory| 
+|<nOffset>|Offset of memory inside the segment nSegment|
+|<nByte>|Byte that we will write in the memory address given| 
+
+====== Devuelve ======
+|nil|nada| 
+
+====== Ejemplo ======
+SAMPLES\PEEKPOKE.PRG 
+
+====== Código fuente ======
+SOURCE\WINAPI\PEEKPOKE.C 
+====== Ver también ======
+[[fivewin_funcion_peekbyte|PeekByte()]]

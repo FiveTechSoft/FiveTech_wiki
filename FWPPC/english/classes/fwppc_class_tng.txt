@@ -1,0 +1,17 @@
+====== Class TNg ======
+
+Norton Guides files management                                                 
+====== DATA ======
+|hFile|The handle to the file|
+====== METHODS ======
+|New|Constructor from source code|
+|WriteShort|Writes a short entry|
+|WriteLong|Writes a long entry|
+|WriteSeeAlso|Writes a see also entry|
+|End|Closes the file|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TNG.PRG

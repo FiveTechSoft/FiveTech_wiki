@@ -1,0 +1,18 @@
+====== CheckMenu() ======
+Add or remove check mark to a popup menu item
+
+====== Syntax ====== 
+CheckMenu(<hMenu> , <nItemId>, <nFlags>  ) \\  nLastState
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hMenu> | The Handle of the menu. |
+| <nItemId> | Identifier of the menuitem. |
+| <nFlags>  | It specifies the API, like to obtain the position of the item in the menu: MF_BYCOMMAND or MF_BYPOSITION. | 
+
+====== Returns ====== 
+^Returns^Description^
+| <nLastState> | Previous state. |
+
+====== Source Code ======     
+SOURCE\FUNCTION\MENUS.C

@@ -1,0 +1,38 @@
+====== CreatePatternBrush() ======
+This function creates a brush whose pattern is specified by a bitmap. The brush can be subsequently be selected for any device that support raster operations.  
+
+====== Syntax: ======
+CreatePatternBrush( <hBitmap> ) --> hBrush  
+
+====== Parameters: ======
+^Parameter^Description^
+|<hBitmap>| Identifies the bitmap. | 
+
+====== Returns: ======
+^Returns^Description^
+|<hBrush>| Returns the handle of the brush. Returns 0 if it was not successful|
+
+====== Example ======
+
+<code clipper> 
+function GradientBrush( oDlg, aColors )
+   local hDC, hBmp, hBmpOld, oBrush
+   if Empty( oDlg:oBrush:hBitmap )
+      hDC = CreateCompatibleDC( oDlg:GetDC() )
+      hBmp = CreateCompatibleBitMap( oDlg:hDC, oDlg:nWidth, oDlg:nHeight )
+      hBmpOld = SelectObject( hDC, hBmp )
+      GradientFill( hDC, 0, 0, oDlg:nHeight, oDlg:nWidth, aColors )
+      DeleteObject( oDlg:oBrush:hBrush )
+      oDlg:oBrush:hBitmap = hBmp
+      oDlg:oBrush:hBrush = CreatePatternBrush( hBmp ) 
+      SelectObject( hDC, hBmpOld )
+      oDlg:ReleaseDC()
+   endif   
+return nil
+</code>
+
+====== Source Code: ======
+SOURCE\WINAPI\CreatePa.c  
+
+====== See also: ======
+[[fivewin_function_CreateHatchBrush|CreateHatchBrush()]]

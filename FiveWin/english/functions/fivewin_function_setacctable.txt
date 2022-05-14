@@ -1,0 +1,63 @@
+====== SetAccTable() ======
+
+
+Sets the accelerator table.
+
+====== Syntax ======
+
+ 
+
+
+ SetAccTable( <aItems> ) --> hAccel 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <aItems> The array of the accelerators to be defined. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <hAccel> The handle to the accelerator table. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ACCELERA.C 
+
+
+ 
+
+
+
+====== See also ======
+

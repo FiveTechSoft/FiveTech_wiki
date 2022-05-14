@@ -1,0 +1,66 @@
+TvSelect()
+
+
+TvSelect()
+ Previous  Top  Next
+
+Selects the specified tree view item, scrolls the item into view, or
+redraws the item in the style used to indicate the target of a
+drag-and-drop operation.
+
+====== Syntax ======
+
+
+ TvSelect( <hWnd>, <hItem> ) --> lSuccess 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ <hItem> The handle to the item to be selected 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> Returns .t. if successful, or .f. otherwise. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== See also ======
+

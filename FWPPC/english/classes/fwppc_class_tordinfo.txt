@@ -1,0 +1,21 @@
+====== Class TOrdInfo ======
+
+Index order info used by TDbOdbc                                               
+====== DATA ======
+|cTagName|Tag name|
+|cBagName|Name of the index file|
+|cExpKey|Key expression in string form|
+|aFieldName|Array of field names|
+|aFieldAD|Array of ascending/discending info for fields|
+|bExpKey|Key expression in codeblock form|
+|lUnique|If the index has the unique attribute|
+====== METHODS ======
+|New|Creates a new index or tag|
+|SqlOrder|Generates the ORDER BY clause|
+|SqlDeclare|Generates the SELECT field declaration|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TORDINFO.PRG

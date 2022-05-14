@@ -1,0 +1,77 @@
+====== IsAnsiLower() ====== 
+
+
+
+It checks if a string ansi is in lowercase
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsAnsiLower( <cAnsiStr> ) --> lAnsi 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cAnsiStr> String of characters to check 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lAnsi> Return .t. if the string is ANSI and is in lowercase. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\ANSIUP.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

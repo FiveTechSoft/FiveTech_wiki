@@ -1,0 +1,40 @@
+====== ChildLevel() ======
+
+Returns 1, if the first parameter is an object of the same class or of a derived class of the second parameter, otherwise it returns 0. 
+
+====== Syntax: ======
+
+ ChildLevel( <oObject>, <oClass> ) --> nResult  
+
+====== Parameters: ======
+^Parameter^Description^
+|<oObject>| The object to find the child level of  |
+|<oClass>| The object for the reference class  |
+ 
+====== Returns: ======
+^Returns^Description^
+|<nResult>| The child level (1 or 0).  |
+ 
+====== Example: ======
+<code clipper> 
+ METHOD ClassTree()
+  LOCAL ;
+     cx ,;
+     nClassH,;
+     cClasses := "Tree: " + CRLF
+     cx := 1
+     nClassH := ::xClient:ClassH
+     WHILE cx < nClassH
+        IF !( ::xClient:childLevel( __CLASSINS( cx )) == 0 )
+           cClasses += __CLASSNAME( cx ) + CRLF
+        ENDIF
+        cx++
+     END
+ RETURN MsgInfo( cClasses + ::xClient:ClassName() )
+</code>
+<code clipper> 
+function ChildLevel();   return 0
+</code>
+
+====== Source Code: ======
+SOURCE\FUNCTION\HARBOUR.PRG  

@@ -1,0 +1,17 @@
+
+====== RptEnd() ====== 
+RptEnd()
+
+The definition of the object Report concludes
+====== Sintaxis ======
+ RptEnd() --> oReport 
+
+ In this function the objects TRColumn is added and TRGroup to the object
+TReport and the phase ends of definition. 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <oReport> TReport object 
+====== Código fuente ======
+ SOURCE\CLASSES\PDREPORT.PRG 
+====== Ver también ======

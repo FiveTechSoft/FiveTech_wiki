@@ -1,0 +1,99 @@
+====== WNetConnect() ====== 
+
+WNetConnect()
+
+Show a dialog box for connecting to network resources
+
+
+====== Syntax ======
+
+ WNetConnect( <hWndOwner>, <nType> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWndOwner> Handle of window owning dialog box 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> Resource type to allow connections to 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> If the function is success no error return If the user abort
+the dialog box a 0xFFFFFFFF is returned Otherwise a error code is
+returned 
+
+
+ 
+
+
+ 
+
+
+
+ERROR_EXTENDED_ERROR      1208   A network-specific error occurred.   
+ERROR_INVALID_PASSWORD      86   The specified password is invalid.   
+ERROR_NO_NETWORK      1222   No network is present.   
+ERROR_NOT_ENOUGH_MEMORY   8   There is insufficient memory to start the
+dialog box.   
+
+
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\NET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

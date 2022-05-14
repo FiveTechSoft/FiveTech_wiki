@@ -1,0 +1,27 @@
+====== Creación de una página (solo desde recursos) ======
+<code clipper>
+REDEFINE PAGES <oPag> ;  
+   [ ID <nId> ] ;  
+   [ OF <oWnd> ] ;  
+   [ DIALOGS <DlgName,...> ] ;  
+   [ OPTION <nOption> ]  
+   [ ON CHANGE <uChange> ];  
+   [ FONT <oFont> ]  
+</code>  
+
+====== Parámetros ======
+|<oPag>          |Referencia al objeto TPages recién creado.|
+|<nId>           |Identificador numérico del control.|
+|<oWnd>          |Objeto contenedor del control TPages.|
+|<DlgName,...>   |Lista con los nombres de recurso de los cuadros de diálogo a gestionar. Importante: Estos cuadros de diálogo deben tener el estilo  STYLE WS_CHILD   WS_VISIBLE en el archivo RC o DLL.|
+|<nOption>       |Página inicial opcional diferente de 1.|
+|<uChange>       |Acción a ejecutar cuando una página diferente es seleccionada sobre las mismas páginas del control.|
+|<oFont>         |Un objeto Font opcional a ser usado por las páginas del control.|
+
+====== Cláusulas ====== 
+
+|ON CHANGE  |Indica una acción a ejecutar cuando una pagina diferente es seleccionada en las misma páginas del control.|
+|FONT       |Especifica un objeto Font opcional a ser usado para las páginas del control.|
+
+====== Ver también ======
+[[fivewin_clase_tpages|Clase TPages]]

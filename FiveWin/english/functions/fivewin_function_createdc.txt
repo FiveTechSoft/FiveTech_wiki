@@ -1,0 +1,41 @@
+====== CreateDC() ======
+Creates a device context for the given device
+
+====== Syntax ======
+CreateDC( <cDriver>, <cDevice>, <cOutPut>, <cInitData> ) --> hDC 
+
+====== Parameters ======
+^Parameter^Description^
+|<cDriver>|MsDos filename of the device driver (i.e.: "Epson" )| 
+|<cDevice>|Name of the specific device to be supported ( i.e. "Epson FX-80" )| 
+|<cOutPut>|MsDos filename or device name of the physical output medium (file or output port)| 
+|<cInitData>|Additional information specific to that device| 
+
+====== Returns ======
+^Returns^Description^
+|<hDC>|The handle of the device context just created| 
+
+====== Observations ======
+hDCs created with CreateDC() must be released with DeleteDC(), and hDCs created with GetDC() must be released with ReleaseDC(). 
+
+====== Sample Code ======
+<code clipper>
+Function ScrResolution( nWidth, nHeight)
+
+LOCAL hDC
+
+hDC := CreateDC("DISPLAY", "", "")
+nWidth := GetDeviceCaps(hDC, HORZRES)
+nHeight := GetDeviceCaps(hDC, VERTRES)
+
+DeleteDC(hDc)
+
+Return {nWidth, nHeight}
+</code>
+
+
+====== Source Code ======
+SOURCE\WINAPI\DC.c 
+
+====== See also ======
+[[fivewin_function_deletedc|DeleteDC()]]

@@ -1,0 +1,60 @@
+LogStack()
+
+
+LogStack()
+ Previous  Top  Next
+
+To write call stack information in a LOG file.
+
+====== Sintaxis ======
+
+
+ LogStack() --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+Observations:
+
+
+ The function LogFile() is used to write call stack info to stack.txt. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ LogStack() 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\FILENAME.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

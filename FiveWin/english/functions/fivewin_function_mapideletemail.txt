@@ -1,0 +1,151 @@
+MAPIDeleteMail()
+
+
+MAPIDeleteMail()
+ Previous  Top  Next
+
+Deletes a message.
+
+====== Syntax ======
+
+ 
+
+
+ MAPIDeleteMail( [<cMsgId>] ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cMsgId> The message id. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: 
+
+
+ 
+
+
+ 
+
+ MAPI_E_FAILURE 
+
+
+ 
+
+
+ 
+
+ One or more unspecified errors occurred while deleting the message. No
+message was deleted. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INSUFFICIENT_MEMORY 
+
+
+ 
+
+
+ 
+
+ There was insufficient memory to proceed. No message was deleted. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INVALID_MESSAGE 
+
+
+ 
+
+
+ 
+
+ An invalid message identifier was passed in the lpszMessageID parameter.
+No message was deleted. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INVALID_SESSION 
+
+
+ 
+
+
+ 
+
+ An invalid session handle was passed in the lhSession parameter. No
+message was deleted. 
+
+
+ 
+
+
+ 
+
+ SUCCESS_SUCCESS 
+
+
+ 
+
+
+ 
+
+ The call succeeded and the message was deleted. 
+
+
+ 
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== See also ======
+

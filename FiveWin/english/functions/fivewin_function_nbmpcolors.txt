@@ -1,0 +1,49 @@
+====== nBmpColors() ======
+
+
+It returns the number of colors of a Bitmap.
+
+====== Syntax ======
+
+
+ nBmpColors( <hPalette> ) --> nColors 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hPalette> Handle of the bitmap. 
+
+
+ 
+
+====== Returns ======
+
+
+ <nColors> Number of colors of the bitmap. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,119 @@
+RegEnumValue()
+
+
+RegEnumValue()
+ Previous  Top  Next
+
+Enumerates the values of a specific key.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RegEnumValue( <nKey>, <nIndex>, <@cKey>, <@uValue> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nKey>      Handle of a specific open key 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIndex>   Index of value based to zero. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cKey>   Buffer to retrieve the name of the subkey. 
+
+
+ 
+
+
+ <@uValue>   The retrieved value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Return zero if the function is success. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+   SAMPLES\regenum.prg
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\regedit.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

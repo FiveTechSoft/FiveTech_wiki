@@ -1,0 +1,48 @@
+====== PrnGetCopies() ====== 
+
+
+PrnGetCopies()
+
+
+Retrieves the number of copies to print.
+
+====== Syntax ======
+
+
+ PrnGetCopies() -?> nCopies 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <nCopies> The number of copies to print. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== See also ======
+

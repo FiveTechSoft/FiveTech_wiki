@@ -1,0 +1,125 @@
+====== Creando un menu de RadioButtons desde código fuente ======
+<code clipper>
+ @ <nRow>, <nCol> RADIO [ <oRadMenu> VAR ] <nVar> ;  
+ PROMPT | ITEMS <cItems,...> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId,...> ] ;  
+ [ ON CLICK | ON CHANGE <uChange> ]  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ VALID <uValid> ] ;  
+ [ DESIGN ] ;  
+ [ 3D ] ;  
+ [ PIXEL ]  
+</code>
+
+====== Creando un menu de RadioButtons desde recursos ======
+<code clipper>
+ REDEFINE RADIO [ <oRadMenu> VAR ] <nVar> ;  
+ [ ID <nId,...> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId,...> ] ;  
+ [ ON CLICK | ON CHANGE <uChange> ]  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ]  
+</code>
+
+====== Parámetros ======
+| <nRow>, <nCol> | The coordinates of the RadioButton Menu. We simulate text coordinates.| 
+| <oRadMenu> | A reference to the RadMenu Object. | 
+| <nVar> | The numeric variable which controls the RadioButton Menu. | 
+| <cItems> | A list of strings defining the prompts to be used as radio elements. | 
+| <oWnd> | A reference to the container Window of the Radio Button Menu. | 
+| <nHelpId> | A list of numeric help identifier to associate to each radio control. | 
+| <uChange> | An action to be performed when a new radio is selected at the RadioButton Menu. | 
+| <cMsg> | The associated message of this control | 
+| <WhenFunc> | It is an expression to evaluate indicating if the control is or not enable. | 
+| <nWidth> <nHeigth> | The dimensions of the control. | 
+| <uValid> | An expression to validate when the control is going to lose the focus. | 
+
+====== Cláusulas ======
+
+| 3D  | 3D look |
+| UPDATE | This control may be updated from TDialog:Update() METHOD |
+| DESIGN | Allows the user to move and resize with the mouse | 
+| PIXEL | To use pixel coordinates instead of Text coordinates |    
+
+====== Ejemplos ======
+\Fwh\Samples\TestRad.Prg
+
+===== Creating Radio using resources ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oDlg, oRadMenu, oBrush
+   local nOption := 2
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Radios"
+
+   REDEFINE RADIO oRadMenu VAR nOption ID 110, 120, 130, 140, 150 OF oDlg ;
+      ON CHANGE MsgBeep()
+
+   REDEFINE BUTTON ID 100 OF oDlg ACTION oRadMenu:GoNext() ;
+      WHEN nOption == 3
+
+   REDEFINE BUTTON ID 102 OF oDlg ACTION oRadMenu:GoPrev()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oRadMenu:aItems[ 1 ]:SetText( "Hello" )
+
+   SET _3DLOOK OFF
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+===== Screen snapshot of the above sample =====
+{{:radio1.jpg|:radio1.jpg}}
+
+===== Sample showing how to create Radio from Prg =====
+
+\Fwh\Samples\TestRad5.Prg
+<code clipper>
+// Radios and WHEN on a GET
+
+#INCLUDE "FIVEWIN.CH"
+
+FUNCTION MAIN()
+
+   LOCAL oDlg, oRadio1, oGet1
+   LOCAL cCurrency := "USD    "
+   LOCAL nOption := 1
+
+   DEFINE DIALOG oDlg                                       ;
+      FROM 1, 1 TO 20, 50
+
+   @ 3, 1 RADIO oRadio1 VAR nOption OF oDlg  UPDATE         ;
+      PROMPT "Porcent ", "Money      "
+
+   @ 8,0 SAY "Currency: " OF oDlg UPDATE
+
+   @ 8,10 GET oGet1 VAR cCurrency OF oDlg UPDATE ;
+      WHEN nOption == 2
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+RETURN NIL
+</code>
+
+===== Screen Snapshot of the above sample =====
+{{:radio2.jpg|:radio2.jpg}}
+
+====== Ver también ======
+[[fivewin_clase_tradmenu|Clase TRadMenu]], [[fivewin_clase_tradio|Clase TRadio]]

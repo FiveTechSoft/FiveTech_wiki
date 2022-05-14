@@ -1,0 +1,24 @@
+====== BindToPort() ======
+
+A Socket associates with a certain port 
+
+====== Syntax: ======
+ 
+BindToPort( <nSocket>, <nPort> ) --> lSuccess  
+
+====== Parameters: ======
+^Parameter^Description^
+|<nSocket>| Socket number.  |
+|<nPort>| Port number. | 
+
+====== Returns: ======
+^Returns^Description^ 
+|<lSuccess>| Returns .T. if the association is successful|
+
+====== Sample: ======
+
+SOURCE\CLASSES\TSOCKET.PRG  
+
+====== Source Code: ======
+
+SOURCE\WINAPI\WINSOCK.C  

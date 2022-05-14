@@ -1,0 +1,19 @@
+====== Class TImage ======
+
+Image object from any of the following formats: JPG, JIF, GIF, BMP, DIB,       
+RLE, TGA, PCX.                                                                 
+Inherits from TBitmap                                                          
+====== DATA ======
+|nProgress|If 1 a load progress info is shown .|
+====== METHODS ======
+|New|Constructor from source code|
+|Define|Constructor from resources|
+|LoadImage|Load image from resources or file|
+|Progress|If lMode is TRUE the a load progress info is shown|
+|Note:|Check TBitmap class for more info about his DATAs & METHODs|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TIMAGE.PRG

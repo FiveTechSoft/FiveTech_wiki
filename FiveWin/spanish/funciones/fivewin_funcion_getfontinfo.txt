@@ -1,0 +1,22 @@
+====== GetFontInfo ======         
+
+Recupera altura de la fuente, el ancho y negrita
+
+====== Sintaxis ======         
+GetFontInfo( <hFont> )  --> <aFontInfo>
+
+Esta es una función FiveWin para obtener información específica de fuentes utilizadas en algunas clases
+
+====== Parámetros ======
+| <hFont> | El manejador del font. |
+
+====== Retorno ======
+| <aFontInfo> | Una matriz Clipper de cuatro elementos: | { nHeight, nWidth, lBold, cFacename } |
+
+====== Código fuente ======
+
+SOURCE\\WINAPI\\FontCrea.c
+
+====== Ver también ======  
+ [[fivewin_function_CreateFont|CreateFont()]]       
+ [[fivewin_function_ChooseFont|ChooseFont()]]   

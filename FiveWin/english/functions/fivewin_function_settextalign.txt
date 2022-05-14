@@ -1,0 +1,236 @@
+SetTextAlign()
+
+
+
+SetTextAlign()
+
+ Previous  Top  Next
+
+
+
+
+Selects the kind of text aligment
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetTextAlign( <hDC>, <nAlignMode> ) --> nOldAlign 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nAlignMode> A numeric value specifying the align mode: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The flags specify the relationship between a point and a rectangle that
+bounds the text. The point can be either the current position or
+coordinates specified by a text-output function (such as the ExtTextOut
+function). The rectangle that bounds the text is defined by the adjacent
+character cells in the text string. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The <nAlignMode> parameter can be one or more flags from the following
+three categories. 
+
+
+ 
+
+
+ 
+
+
+ Choose only one flag from each category. The first category affects text
+alignment in the x-direction: 
+
+
+ 
+
+
+ 
+
+
+
+Value         Meaning   
+TA_CENTER      Aligns the point with the horizontal center of the
+bounding rectangle.   
+TA_LEFT      Aligns the point with the left side of the bounding
+rectangle. This is the default setting.   
+TA_RIGHT      Aligns the point with the right side of the bounding
+rectangle.   
+
+
+
+
+
+
+
+
+
+ The second category affects text alignment in they-direction: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+Value         Meaning   
+TA_BASELINE      Aligns the point with the base line of the chosen font. 
+ 
+TA_BOTTOM      Aligns the point with the bottom of the bounding
+rectangle.   
+TA_TOP      Aligns the point with the top of the bounding rectangle. This
+is the default setting.   
+
+
+
+
+
+ The third category determines whether the current position is updated
+when text is written: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+Value         Meaning   
+TA_NOUPDATECP   Does not update the current position after each call to a
+text-output function. This is the default setting.   
+TA_UPDATECP      Updates the current x-position after each call to a
+text-output function. The new position is at the right side of the
+bounding rectangle for the text. When this flag is set, the coordinates
+specified in calls to the TextOut function are ignored.
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nOldAlign> The previous text-alignment settings, if the function is
+successful. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This align flags are used by the TextOut() and ExtTextOut() functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Text.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ TextOut() ExtTextOut() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

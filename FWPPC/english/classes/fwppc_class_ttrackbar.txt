@@ -1,0 +1,28 @@
+====== Class TTrackBar ======
+
+Win32 TrackBar common control support                                          
+Inherits from TControl                                                         
+====== DATA ======
+|nMin|The minimum position for the slider|
+|nMax|The maximum position for the slider|
+|nPos|The current position of the slider|
+|nFreq|The interval frequency for tick marks|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Change|Change event handler|
+|Default|Default initialization of the control|
+|EraseBkGnd|Erases the background of the control|
+|GetPos|Retrieves the current position of the slider|
+|Initiate|Initializes the control|
+|MouseMove|Mouse move event handler|
+|Notify|Notify event handler|
+|SetPos|Sets the current position of the slider|
+|SetRange|Sets the minimum and maximum position for the slider|
+|SetTickFreq|Sets the interval frequency for tick marks|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTRACKBAR.PRG

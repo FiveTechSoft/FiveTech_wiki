@@ -1,0 +1,25 @@
+====== DeleteObject() ======
+
+Deletes an object from memory freeing all its used resources.
+This function deletes a GDI object from memory, freeing all system storage associated (objects include pens, brushes, fonts, bitmaps, regions, and palettes).
+
+====== Syntax ======
+DeleteObject( <hGDIObject> ) --> lSuccess 
+ 
+
+====== Parameters ======
+^Parameter^Description^
+|<hGDIObject>|The handle of the GDI object. (We get the handle while creating the object using its corresponding create function)|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>|A logical value indicating if the operation was successful|
+
+====== Observations ======
+FiveWin internally manages a resources control system in order to avoid and control the problems related with system resources leakage. 
+
+====== Source Code ======
+SOURCE\WINAPI\delobjec.c
+
+====== See also ======
+[[fivewin_function_selectobject|SelectObject()]], [[fivewin_function_delresource|DelResource()]]

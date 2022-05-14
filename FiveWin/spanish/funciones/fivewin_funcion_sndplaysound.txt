@@ -1,0 +1,169 @@
+SndPlaySound()
+
+
+
+SndPlaySound()
+
+ Previous  Top  Next
+
+
+
+
+Plays a WAV sound file
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SndPlaySound( <cSndName>, <nMode> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <cSndName> Specifies the name of the sound to play. The function
+searches the [sounds] section of WIN.INI for an entry with this name and
+plays the associated waveform file. If no entry by this name exists, then
+it assumes the name is the name of a waveform file. If this parameter is
+0, any currently playing sound is stopped. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMode> Specifies options for playing the sound using one or more of the
+following flags: 
+
+
+ 
+
+
+ 
+
+
+
+SND_SYNC      The sound is played synchronously and the function does not
+return until the sound ends.   
+SND_ASYNC      The sound is played asynchronously and the function
+returns immediately after beginning the sound. To terminate an
+asynchronously-played sound, call sndPlaySound with cSndName set to 0.
+SND_NODEFAULT   If the sound can't be found, the function returns
+silently without playing the default sound.   
+SND_MEMORY      The parameter specified by cSndName to an in-memory image
+of a waveform sound.   
+SND_LOOP      The sound will continue to play repeatedly until
+sndPlaySound is called again with the cSndName parameter set to 0. You
+must also specify the SND_ASYNC flag to loop sounds.
+SND_NOSTOP      If a sound is currently playing, the function will
+immediately return FALSE without playing the requested sound.   
+
+
+
+
+
+
+
+#define SND_SYNC      0   
+#define SND_ASYNC      1   
+#define SND_NODEFAULT   2   
+#define SND_MEMORY      4   
+#define SND_LOOP      8   
+#define SND_NOSTOP      16   
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value indicating if the operation was performed
+successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestBmp2.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Sound.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ MsgBeep() MessageBeep() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

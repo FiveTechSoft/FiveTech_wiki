@@ -1,0 +1,19 @@
+====== RestoreDC() ====== 
+
+Restaura el dispositivo de contexto de una ventana
+
+====== Sintaxis ======
+ RestoreDC( <nSavedDC> ) --> lSuccess 
+
+====== Parámetros ======
+|<nSavedDC>|Dispositivo de ventana salvado previamente con la función SaveDC()|
+
+====== Devuelve ======
+|<lSuccess>|Un valor verdadero si la función tiene éxito|
+
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\DC.C 
+
+====== Ver también ======
+[[fivewin_funcion_savedc|SaveDC()]]

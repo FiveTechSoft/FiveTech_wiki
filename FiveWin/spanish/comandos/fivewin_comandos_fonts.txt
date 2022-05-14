@@ -1,0 +1,48 @@
+====== Definición de un tipo de letra ====== 
+<code clipper>
+DEFINE FONT <oFont> ;  
+  [ NAME <cName> ] ;  
+  [ SIZE <nWidth>, <nHeight> ] ;  
+  [ FROM USER ];  
+  [ BOLD ] ;  
+  [ ITALIC ] ;  
+  [ UNDERLINE ] ;  
+  [ PITCHFAMILY <nPitchFamily> ] ;  
+  [ WEIGHT <nWeight> ] ;  
+  [ OF <oDevice> ] ;  
+  [ NESCAPEMENT <nEscapement> ]  
+</code>  
+
+**Activación del tipo de letra**
+
+ACTIVATE FONT <oFont>  
+
+ 
+**Desactivación del tipo de letra**
+ 
+DEACTIVATE FONT <oFont>  
+
+**Liberación del tipo de letra**
+
+RELEASE FONT <oFont>  
+
+**Fijar un tipo de letra para una ventana ** 
+
+SET FONT [ OF <oWnd> ] [ TO <oFont> ]  
+
+====== Parámetros ======
+|<oFont>              |Una referencia al Objeto Font.|
+|<cName>              |El nombre del tipo de letra. Ejemplo: Arial, Roman, etc...|
+|<nWidth>, <nHeight>  |Dimensiones del tipo de letra.|
+|<oWnd>               |Referencia a la ventana contenedora.|
+|<oDevice>            |Dispositivo propietario del tipo de letra.|
+|<nPitchFamily>       |La "pitch family" del tipo de letra.|
+|<nWeight>            |Peso del tipo de letra.|
+|<nEscapement>        |La orientación del tipo de letra.|
+
+
+====== Cláusulas ======
+|FROM USER            |Muestra el cuadro de selección de tipos de letra.|
+|BOLD                 |Crea un tipo de letra con el atributo negrita.|
+|ITALIC               |Crea un tipo de letra con el atributo cursiva.|
+|UNDERLINE            |Crea un tipo de letra con el atributo subrayado.|

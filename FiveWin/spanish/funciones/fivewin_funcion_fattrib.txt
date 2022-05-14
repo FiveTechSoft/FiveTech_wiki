@@ -1,0 +1,41 @@
+====== FAttrib() ======
+
+
+Selecciona un nuevo atributo para un archivo.
+
+====== Syntaxis ======
+
+FAttrib(  <cFileName> [,<nNewAttrs>] ) --> nAttrs  
+ 
+====== Parametros ======
+
+| <cFileName>| Nombre del archivo.  |
+| <nNewAttrs>| Nuevo atributto. ( 00=Normal, 01=Solo Lectura, 02=Oculto, 04=Sistema, 32=Archivo) |
+
+====== Devuelve ======
+
+| <nAttrs> |  Attributos que tiene el archivo luego de la operacion. |
+
+====== Ejemplo ======
+<code clipper>
+
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   LOCAL cText := "This is a text"
+   
+   Memowrite( "C:\TEST.TXT", cText )
+         
+   MsgInfo( FAttrib( "C:\TEST.TXT", 32 )  )    //Oculta archivo.
+   
+RETURN    
+
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\FILES.C 
+
+====== Ver tambien ======
+
+Ninguno.

@@ -1,0 +1,13 @@
+====== Creates a FOLDER from source code ======
+<code clipper>
+@ <nRow>, <nCol> FOLDER [ <oFld> ] ;
+   [ OF <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ PAGES <pages,...> ]
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\tfolder.prg
+====== See Also ======
+[[fivemac_class_tfolder|Class TFolder]]

@@ -1,0 +1,39 @@
+======  xBrwAddColumn() ====== 
+Sets and adds a column to a xBrowse object. 
+
+====== Syntax ====== 
+
+ xBrwAddColumn( <oBrw>, <cHeader>, <bData>, <cPicture>, <nClrFore>, <nClrBack>, <cAlign>, <nWidth>, <lBitmap>, <lEdit>, <bOnPostEdit>, <cMsg>, <bValid>, <cError>, <lHilite>, <cOrder> ) --> oCol  
+ 
+====== Parameters ====== 
+
+|<oBrw>| The xBrowse object.|  
+|<cHeader>| The header of the column.|  
+|<bData>| A codeblock to display as data.|  
+|<cPicture>| The picture to format the data.|  
+|<nClrFore>| The text color for the column.|  
+|<nClrBack>| The background color for the column.|  
+|<cAlign>| The column alignment ('R' = right, 'C' = center, default left).|  
+|<nWidth>| The width of the column.|  
+|<lBitmap>| Unused.|  
+|<lEdit>| True if the column can be edited.|  
+|<bOnPostEdit>| A codeblock that is evaluated after the editing.|  
+|<cMsg>| A text to be displayed in the message bar when the xbrowse get the focus.|  
+|<bValid>| A codeblock that evaluates in a logical value indicating if the edited value is acceptable.|  
+|<cError>| Unused.|  
+|<lHilite>| Unused.|  
+|<cOrder>| The name of the order to be activated when the column get the focus.|  
+ 
+====== Returns ====== 
+
+|<oCol>| The newly created column object.|  
+ 
+====== Sample ====== 
+
+
+====== Source Code ====== 
+
+ SOURCE\CLASSES\xbrowse.prg  
+
+====== See Also ======
+ 

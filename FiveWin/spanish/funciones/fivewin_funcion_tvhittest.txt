@@ -1,0 +1,72 @@
+TvHitTest()
+
+
+TvHitTest()
+ Previous  Top  Next
+
+Determines the location of the specified point relative to the client
+area of a tree view control.
+
+====== Sintaxis ======
+
+
+ TvHitTest( <hWnd>, <nRow>, <nCol> ) --> hItem 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ <nRow> The row coordinate 
+
+
+ 
+
+
+ <nCol> The column coordinate 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hItem> The handle to the tree view item that occupies the specified
+point, or zero if no item occupies the point. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

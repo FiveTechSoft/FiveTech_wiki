@@ -1,0 +1,88 @@
+====== CallDll() ======
+
+Calls a function placed in a DLL
+
+====== Syntax ======
+
+CallDll( <cFuntionDef>, <uParam1>, ..., <uParamN> ) --> uResult
+
+====== Parameters ======
+^Parameter^Description^
+| <cFunctionDef> | A special string which holds all the necessary information to execute a certain action. This string is automatically produced by the function GetProcAddress().|
+| <uParam1> | Are the parameters supplied to the called function. This depends on the DLL function we are going to call.  |
+| <uParamN |  |
+
+====== Returns ======
+
+The returned value from the DLL function.
+
+====== Observations ======
+
+See INCLUDE\DLL.CH for the xBase way of doing this DLLs functions calls.
+
+====== Sample ======
+See SAMPLES\DllCall.prg
+\Fwh\Samples\Dlls\FiveDll\ExeCode.Prg
+<code clipper>
+// Building and using DLLs with Clipper code
+
+#include "FiveWin.ch"
+
+static oWnd
+static hDLL
+
+//-------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "Using DLLs with FiveDLL and FiveWin" ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+   FreeLibrary( hDLL )
+
+return nil
+
+//-------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Call DLL" ACTION UseDLL( "Func1", "DllCode.dll" )
+      MENUITEM "&Exit" ACTION oWnd:End()
+   ENDMENU
+
+return oMenu
+
+//-------------------------------------------------------------------------//
+
+function UseDLL( cFuncName, cDllName )
+
+   local cFarProc
+
+   if hDLL == nil
+      hDLL = LoadLibrary( cDllName )
+   endif
+
+   if hDll > 32
+      cFarProc := GetProcAddress( hDLL, "DLLSYMINIT", .T., _INT )
+      CallDLL( cFarProc )
+
+      Eval( &( "{||" + cFuncName + "() }" ) )
+   endif
+
+return nil
+
+//-------------------------------------------------------------------------//
+</code>
+
+====== Source Code ======
+
+SOURCE\WINAPI\CallDll.c
+
+====== See also ======
+
+[[fivewin_function_loadlibrary|LoadLibrary()]], [[fivewin_function_freelibrary|FreeLibrary()]], [[fivewin_function_getProcAddress|GetProcAddress()]]

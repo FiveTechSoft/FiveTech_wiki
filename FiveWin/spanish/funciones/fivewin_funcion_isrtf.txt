@@ -1,0 +1,46 @@
+IsRTF()
+
+
+IsRTF()
+ Previous  Top  Next
+
+It checks if a text is in RTF format.
+
+====== Sintaxis ======
+
+
+ IsRTF( <cText> ) --> lRTF 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cText> Text to check 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lRTF> Return .t. if the text is in RTF format, otherwise .f. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\GTF.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,65 @@
+====== Class TRdd ======
+
+Virtual RDD                                                                    
+====== DATA ======
+|bAddField|Action to perform when adding a field|
+|bAppend|Action to perform when appending a record|
+|bBof|Action to perform when going to beginning of file|
+|bCloseArea|Action to perform when closing the database|
+|bEof|Action to perform when going to end of file|
+|bGetValue|Action to perform when retrieving a field value|
+|bGoTop|Action to perform when going to top|
+|bOpen|Action to perform when opening a database|
+|bPutValue|Action to perform when assigning a value to a field|
+|bRecCount|Action to perform when counting records|
+|bRecNo|Action to perform when querying for the current|
+|record|number|
+|bSkip|Action to perform when skipping|
+|bStructSize|Action to perform when asking the size of the|
+====== DATA ======
+|bSysName|Action to perform when asking the database system name|
+|lDebug|If in debug mode|
+====== METHODS ======
+|New|Constructor from source code|
+|AddField|Adds a new field to the database|
+|AddFields|Adds fields to the database|
+|Alias|Retrieves the alias of a given workarea|
+|Append|Appends a blank record|
+|Bof|If begining of file is encountered|
+|Delete|Deletes the current record|
+|Deleted|If the current record is deleted|
+|CloseArea|Closes a workarea|
+|CreateField|Creates a new field|
+|Eof|If end of file is encountered|
+|FieldInfo|Retrieves field informations|
+|Found|If the last search operation was successful|
+|GetValue|Retrieves a field value|
+|GoBottom|Moves the record pointer to the last record|
+|GoToId|Moves the record pointer to the given record id|
+|GoTop|Moves the record pointer to the first record|
+|Lock|Applies a lock to the current record or file|
+|Open|Open a database|
+|OrdCreate|Creates a new index|
+|OrdInfo|Retrieves index informations|
+|OrdListAdd|Add an index to the index list|
+|OrdListClear|Empties the index list|
+|OrdListFocus|Sets the active index|
+|Pack|Compacts the database|
+|PutValue|Assigns a value to a field|
+|Recall|Restores a deleted record|
+|RecCount|Returns the total number of records|
+|RecNo|Returns the current record number|
+|Seek|Seeks a record|
+|SetFilter|Activates a filter|
+|SetRdd|Sets the active RDD object|
+|Skip|Moves the record pointer|
+|StructSize|Returns the size of the database structure|
+|SysName|Returns the database system name|
+|Testing|Used for debugging|
+|UnLock|Remove the lock from the current record or file|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRDD.PRG

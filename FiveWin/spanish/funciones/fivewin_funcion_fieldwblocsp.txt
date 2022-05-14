@@ -1,0 +1,26 @@
+====== FieldWBloc() ======
+
+Devuelve un set-get code block para un campo en una determinada área de trabajo
+
+
+====== Syntaxis ====== 
+
+FieldWBloc( <cFieldName>, <nWorkArea> ) --> bBlock
+
+Requiere Compatibilidad con xBase + + 
+
+====== Parametros ====== 
+
+| <cFieldName>| Es el nombre del campo especificado como una cadena de caracteres. |
+| <nWorkArea> | Es el número de área de trabajo donde reside el campo especificado como un valor numérico.|
+
+====== Devuelve ====== 
+FieldWBlock( cFieldName, nWorkArea )  
+
+====== Codigo fuente ====== 
+
+\SOURCE\FUNCTION\DB10.PRG  
+ 
+====== Ver tambien ====== 
+
+ 

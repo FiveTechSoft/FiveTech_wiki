@@ -1,0 +1,71 @@
+====== Class TActiveX ====== 
+
+ActiveX support class 
+
+Inherits from TControl 
+
+====== DATA ====== 
+
+|hActiveX|ActiveX object handle| 
+|cProgID|The program ID| 
+|cString|The class ID| 
+|aProperties|Not used| 
+|aMethods|Not used| 
+|aEvents|Array of the events supported by the ActiveX object| 
+|bOnEvent|A codeblock that is executed on the event trigger| 
+|oOleAuto|tOleAuto Object | 
+
+====== METHODS ====== 
+
+|New|Constructor from source code| 
+|Redefine|Constructor from resources| 
+|Do|Calls the specified method of the ActiveX object| 
+|GetProp|Retrieves the value of the specified ActiveX object property| 
+|ReadTypes|Fills aEvent data with the events supported by the ActiveX object| 
+|ReSize|Resizes the ActiveX object| 
+|SetProp|Sets the value of the specified ActiveX object property|
+
+====== example ======
+FWPPC\samples\word.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oActiveX
+
+   DEFINE WINDOW oWnd TITLE "FiveWin ActiveX Support"
+
+   oActiveX = TActiveX():New( oWnd, "Word.Application" )
+
+   oWnd:oClient = oActiveX // To fill the entire window surface
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+FWPPC\samples\webexp2.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg, oActiveX
+
+   DEFINE DIALOG oDlg RESOURCE "Test"
+
+   REDEFINE ACTIVEX oActiveX ID 10 OF oDlg PROGID "Shell.Explorer"
+   
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oActiveX:Do( "Navigate2", "http://www.google.com" )
+
+return nil
+</code>
+
+====== source code ======
+FWPPC\source\classes\activex.prg
+
+====== see also ======
+
+ 

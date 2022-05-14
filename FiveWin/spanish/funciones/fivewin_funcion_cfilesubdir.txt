@@ -1,0 +1,14 @@
+
+====== cFileSubDir() ======
+cFileSubDir()
+Retrieves the subdir name from a filename
+====== Sintaxis ======
+ cFileSubDir( <cFileName> ) --> cDirName 
+====== Parámetros ======
+ <cFileName> The full filename including path and optional extension. 
+====== Devuelve ======
+ <cDirName> Just the path name specified inside the full filename,
+excluding the drive name. 
+====== Código fuente ======
+ SOURCE\\FUNCTION\\FileName.prg 
+====== Ver también ======

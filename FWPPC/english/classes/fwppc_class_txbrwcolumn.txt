@@ -1,0 +1,125 @@
+====== Class TXBrwColumn ======
+
+TXBrowse column objects                                                        
+====== DATA ======
+|oBrw|XBrowse container|
+|oDataFont|Data font object, by default oBrw:oDataFont|
+|oHeaderFont|Header font object, by default oBrw:oHeaderFont|
+|oFooterFont|Footer font object, by default oBrw:oFooterFont|
+|oBtnList|Button for edit with listbox|
+|oBtnElip|Button for edit with user code-block|
+|oEditGet|Get object for editing|
+|oEditLbx|Listbox object for editing|
+|aBitmaps|Four dimension arrays that holds all the bitmaps|
+|added:|aBitmaps[n, 1] -> handle aBitmaps[n, 2] -> palette aBitmaps[n, 3]|
+|->|width aBitmaps[n, 4] -> heigth|
+|aEditListTxt|Array with all the literals to be shown on the Edit|
+|listbox||
+|aEditListBound|Array with all the data to bound to the the edit get|
+|.|Wen this array is nil then aEditListTxt act as the bound array|
+|bStrData|String data codeblock (returns a string)|
+|bBmpData|Ordinal bitmap data codeblock (returns a number in|
+|the|range 1-len(aBitmaps))|
+|bEditValue|Codeblock to retrieve the value of the edit, if nil|
+|then|bstrData is used|
+|bEditValid|Codeblock to validate edit gets|
+|bEditBlock|Codeblock to evaluate for the "..." button. It|
+|receives|the row, the column and a reference to the column object,|
+|bOnPostEdit|Codeblock to be evaluated after the edition of the|
+|column.|It receives the following parameters: 1) Edit with TGet: Column|
+|object,|current get value, last key pressed 2) Edit with list box: Column|
+|object,|current list value 3) Edit with button: Column object, value|
+|returned|by bEditBlock|
+|bLClickHeader|Codeblock to be evaluated when left clicking on the|
+|header||
+|bRClickHeader|Codeblock to be evaluated when right clicking on the|
+|header||
+|bLClickFooter|Codeblock to be evaluated when left clicking on the|
+|footer||
+|bRClickFooter|Codeblock to be evaluated when right clicking on the|
+|footer||
+|bLDClickData|Codeblock to be evaluated when left double clicking|
+|on|the data|
+|bRClickData|Codeblock to be evaluated when right clicking on the|
+====== DATA ======
+|bClrHeader|Color pair for header. This code-block should return|
+|a|two dimension array with {nFore, nBack} colors. Defaults to|
+|oBrw:bClrHeader||
+|bClrFooter|Color pair for footer. This code-block should return|
+|a|two dimension array with {nFore, nBack} colors. Defaults to|
+|oBrw:bClrFooter||
+|bClrStd|Color pair for normal rows. This code-block should|
+|return|a two dimension array with {nFore, nBack} colors. Defaults to|
+|oBrw:bClrStd||
+|bClrSel|Color pair for selected rows. This code-block should|
+|return|a two dimension array with {nFore, nBack} colors. Defaults to|
+|oBrw:bClrSel||
+|bClrSelFocus|Color pair for selected and focused rows. This|
+|code-block|should return a two dimension array with {nFore, nBack}|
+|colors.|Defaults to oBrw:bClrSelFocus|
+|bClrEdit|Color pair for edition. This code-block should return|
+|a|two dimension array with {nFore, nBack} colors. Defaults to|
+|oBrw:bClrSelStd||
+|cHeader|Header string|
+|cFooter|Footer string|
+|cEditPicture|Picture mask to be used for Get editing|
+|cOrder|Used internally for autoshoring (""->None,|
+|"A"->Ascending,|"D"->Descending)|
+|bFooter|Optional codeblock to calculate the footer content|
+|nWidth|Column width. Calculated on Adjust method if nil|
+|nDisplayCol|Actual column display value in pixels|
+|nCreationOrder|Ordinal creation order of the columns|
+|nPos|Actual column position in the browse. If columns is|
+|not|visible nPos == 0|
+|nDataStrAlign|Data|
+|nHeadStrAlign|Header|
+|nFootStrAlign|Footer string alignment (0-left,1-center, 2-right)|
+|nDataBmpAlign|Data bitmap alignment (0-left or 2-right)|
+|nHeadBmpAlign|Header bitmap alignment (0-left or 2-right)|
+|nFootBmpAlign|Footer bitmap alignment (0-left or 2-right)|
+|nDataStyle|Style for data string (DrawTextEx() API function|
+|flags)||
+|nHeadStyle|Style for header string (DrawTextEx()API function|
+|flags)||
+|nFootStyle|Style for footer string (DrawTextEx()API function|
+|flags)||
+|nHeadBmpNo|Header ordinal bitmap to use of ::aBitmaps|
+|nFootBmpNo|Footer ordinal bitmap to use of ::aBitmaps|
+|hEditType|Edit type: 0-> None, 1-> Get 2-> ListBox 3-> User|
+|block|4-> Get+ListBox 5-> Get+User block|
+|lAllowSizing|If true Column visual resizing is allowed|
+|lEditBorder|If true Edit Get has border|
+|lHide|If true the column is not visible|
+|lOnPostEdit|It is true during bPostEdit evaluation|
+|Cargo|For your own use|
+|METHODS:||
+|New|Creates a new instance of the class|
+|End|Destroys the object|
+|Edit|Goes to Edit mode (::nEditMode should be 1,2, 0 3).|
+|When|nEditMode is greater than 0,this method is called automatically when|
+|doubleclicling|with the mouse. Note: On multiline gets Ctrl+Enter is used|
+|to|add new lines to the get control.|
+|nEditType|Returns and optionally set the edit mode: 0=none,|
+|1=Get,|2=Listbox, 3=block, 4=Get+Listbox, 5=Get+block|
+|AddResource|Adds a new bitmap to the ::aBitmpas array giving his|
+|resource|name|
+|AddBmpFile|Adds a new bitmap to the ::aBitmpas array giving his|
+|file|name|
+|AddBmpHandle|Adds a new bitmap to the ::aBitmpas array giving his|
+|bitmap|handle|
+|DefStyle|Aid method to set the flag style for draw text|
+|operation|Draw Text operations are based on the Windows API function|
+|DrawTextEx().This|method receives two parameters: the alignment and if is|
+|a|single line or multiline.|
+|Show|Shows the column|
+|Hide|Hides the column|
+|Adjust|Adjust all the column dimensions. Used internally|
+|from|the Create method, but you can call it manually afterwards, but you|
+|should|assign to 'nil' the properties that you wan to be recalculated.|
+|See|also TXBrowse control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TXBRWCOLUMN.PRG

@@ -1,0 +1,25 @@
+====== DDECreateStringHandle() ======
+Crea un manejador que identifica la cadena especificada.
+
+====== Sintaxis: ======
+DDECreateStringHandle( <hInst>, <cText>, <nCodePage> ) --> hText  
+ 
+====== Parámetros: ======
+^Parámetro^Descripción^
+|<hInst>| Identificador de instancia.|
+|<cText>| La cadena de nombre de servicio.|
+|<nCodePage>| El identificador codepage para la cadena.|
+
+====== Retorno: ======
+^Retorno^Descripción^ 
+|<hText>| El manejador de la cadena de nombre de servicio.|
+ 
+====== Ejemplo: ======
+
+====== Código fuente: ======
+SOURCE\WINAPI\DDEML.C 
+
+====== Ver también ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

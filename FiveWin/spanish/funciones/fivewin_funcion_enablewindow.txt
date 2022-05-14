@@ -1,0 +1,99 @@
+EnableWindow()
+
+
+
+EnableWindow()
+
+ Previous  Top  Next
+
+
+
+
+Enables or disables mouse and keyboard activity
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EnableWindow( <hWnd>, <lEnable> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function enables or disables mouse and keyboard input to the given
+function or control. When input is disabled, the window ignores input
+such as mouse clicks and key presses. When input is enabled, the window
+processes all input. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> The handle of the window or control. In FiveWin: oWnd:hWnd. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lEnable> A logical value indicating if perform an enable or disable
+operation. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value true if the operation was successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+====== Ver también ======
+

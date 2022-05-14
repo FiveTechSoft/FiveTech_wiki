@@ -1,0 +1,70 @@
+DiskChange()
+
+
+DiskChange()
+ Previous  Top  Next
+
+Change the current drive.
+
+====== Sintaxis ======
+
+ 
+
+
+ DiskChange( <cDrive> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cDrive> The new current drive. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess> .t. if the drive is successfully changed, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ local lSuccess := DiskChange( "E:" ) 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\DISK.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,29 @@
+====== Creación de un Objeto ActiveX desde código fuente ======
+<code clipper>
+@ <nRow>, <nCol> ACTIVEX [ <oActX> ] ; 
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ PROGID <cProgId> ] ;  
+   [ SIZE <nWidth>, <nHeight> ]  
+</code>  
+
+====== Creación de un Objeto ActiveX desde recursos ======
+<code clipper>
+REDEFINE ACTIVEX [ <oActX> ] ; 
+   [ ID <nId> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ PROGID <cProgId> ]  
+</code>  
+
+====== Parámetros ======
+
+|<nRow>, <nCol>        |Coordenadas en la pantalla. Simulamos las coordenadas de texto|    
+|<oActX>               |Una referencia al objeto ActiveX|    
+|<oWnd>                |La ventana contenedora del control ActiveX|    
+|<cProgId>             |Identificación del programa (program id)|    
+|<nWidth>              |Ancho deseado del objeto ActiveX|    
+|<nHeight>             |Alto deseado del objeto ActiveX|    
+|<nId>                 |Identificación numérica del control en los recursos|    
+
+====== Ver también ======
+
+[[fivewin_clase_tactivex|Clase TActiveX]]

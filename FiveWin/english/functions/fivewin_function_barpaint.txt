@@ -1,0 +1,24 @@
+====== BarPaint() ======
+
+It draws the buttons bar 
+
+====== Syntax: ======
+
+BarPaint( <hWnd>, <hDC> ) --> nil  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| Handle of the buttons bar .| 
+|<hDC>| Device context of the buttons bar . |
+ 
+====== Returns: ======
+ 
+Nil  
+
+====== Sample: ======
+
+SOURCE\CLASSES\BAR.PRG  
+
+====== Source Code: ======
+
+SOURCE\FUNCTION\WNDBOXES.C  

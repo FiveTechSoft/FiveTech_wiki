@@ -1,0 +1,22 @@
+
+====== CPUType() ======
+CPUType()
+To check the type of CPU
+====== Sintaxis ======
+ CPUType() --> nCPUType 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+<nCPUType>
+
+1       8086   
+2       80286   
+3       80386   
+4       80486   
+5       Pentium   
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\CPUID.C 
+====== Ver también ======

@@ -1,0 +1,25 @@
+Make a vertical scroll in the TCBrowse 
+
+====== Syntax ======
+
+ TCBrwScroll( <hWnd>, <nRows>, <hFont> ) --> nil    
+
+====== Parameters ======
+
+| <hWnd> | TCBrowse handle  |  
+| <nRows> | Quantity of lines that has to displace |  
+| <hFont> | Font handle used to paint the TCBrowse   |  
+
+====== Returns ======
+
+| NIL |  
+
+====== SAMPLE ======
+
+SOURCE\CLASSES\TCBROWSE.PRG  
+
+
+====== Source Code ======
+
+ SOURCE\FUNCTION\TCBFUNCS.C 
+

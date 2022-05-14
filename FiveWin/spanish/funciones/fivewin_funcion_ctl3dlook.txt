@@ -1,0 +1,72 @@
+
+====== Ctl3DLook()======
+
+
+
+Ctl3DLook()
+
+
+Makes 3D any Control
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Ctl3dLook( <hWnd>, <lOnOff> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the control 
+
+
+ <lOnOff> Logical value indicating if the control has to be made 3D or
+not 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> Return .t. if the operation was successfully 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\CTL3D.C 
+====== Ver también ======

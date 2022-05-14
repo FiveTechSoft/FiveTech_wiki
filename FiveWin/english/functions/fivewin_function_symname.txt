@@ -1,0 +1,87 @@
+====== SymName() ======
+
+
+Get the name of a Clipper internal symbol
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SymName( <hSymbol> ) --> cSymName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hSymbol> Handle obtained with the function SymTblAt() 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cSymName> Symbol name 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\FUNCTION\SYMTABL.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== See also ======
+

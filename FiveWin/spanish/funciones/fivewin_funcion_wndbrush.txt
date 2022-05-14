@@ -1,0 +1,84 @@
+WndBrush()
+
+
+
+WndBrush()
+
+ Previous  Top  Next
+
+
+
+
+Create a tiled brush
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndBrush() --> hBrush 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hBrush> Handle of the tiled brush 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDBRUSH.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

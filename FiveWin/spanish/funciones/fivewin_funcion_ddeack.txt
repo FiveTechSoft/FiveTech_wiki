@@ -1,0 +1,25 @@
+
+====== DDEAck() ======
+DDEAck()
+
+DDE Acknowledge FiveWin management function
+====== Sintaxis ======
+ DDEAck( <hWndServer>, <nExtraData> ) --> nil 
+
+ This is a FiveWin internal function for DDE support. 
+
+ Use FiveWin DDE classes and xBase commands as they are much easier to
+use and more powerful. 
+====== Parámetros ======
+ <hWndServer> The handle of the window which it is acting as a server in
+a DDE conversation. 
+
+ <nExtraData> Some extra data sometimes required. 
+====== Devuelve ======
+ Nothing. 
+====== Ejemplo ======
+ SAMPLES\TestDDE.prg DDEClien.prg DDEServe.prg 
+====== Código fuente ======
+ SOURCE\CLASSES\TDDE.prg 
+====== Ver también ======
+ DDECommand() DDEGetCommand() DDETerminate() 

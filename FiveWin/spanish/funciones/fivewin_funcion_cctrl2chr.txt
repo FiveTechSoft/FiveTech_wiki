@@ -1,0 +1,38 @@
+
+====== cCtrl2Chr() ======
+
+Genera una cadena con la estructura de un control
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ cCtrl2Chr( <nTop>, <nLeft>, <nBottom>, <nRight>, <nId>, <nStyle>, <cClassName>, <cCaption> ) --> cControlString  
+
+ Esta funcion traduce la informacion de un control en una cadena especial para ser usada en la creacion de plantillas de recursos de windows creadas en memoria. 
+
+====== Parametros: ( Parameters: ) ======
+
+^Parameter^Description^
+| <nTop> | Coordenadas de control. Arriba |  
+| <nLeft> | Coordenadas de control. Izquierda|  
+| <nBottom> | Coordenadas de control. Abajo| 
+| <nRight> | Coordenadas de control. Derecha|
+| <nId> | Es el número de ID del control |  
+| <nStyle> | Es un numero con la descripcion del estilo del control|  
+| <cClassName> | El nombre de la clase de control definido en el winapi|  
+| <cCaption> | El título del control.|  
+
+====== Retorno: ======
+
+ Una cadena con la informacion binaria que describe estos valores.
+
+====== Observaciones: ====== 
+ 
+ Es usada internamente por Fivewin para crear dialogos en tiempos de ejecucion.
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\Ctl2Chr.c  
+
+====== Vea también ====== 
+
+See TControl:cToChar() METHOD

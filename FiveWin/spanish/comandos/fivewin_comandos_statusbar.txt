@@ -1,0 +1,57 @@
+====== Creando una StatusBar desde código fuente ======
+<code clipper>
+DEFINE STATUSBAR [ <oStatusBar> ] ;
+   [ OF <oWnd> ] ;
+   [ PROMPT | TEXT <cText> ] ;
+   [ SIZES <aWidths,...> ] ;
+   [ PROMPTS <aTexts,...> ] ;
+   [ CLOCK, TIME ] 
+</code>
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oStatusBar
+
+   DEFINE WINDOW oWnd TITLE "Testing Win32 StatusBar" ;
+      MENU BuildMenu()
+
+   @ 2, 2 BUTTON "Set Part Text" SIZE 100, 20 ;
+      ACTION oStatusBar:SetPartText( 2, "Works!" )
+
+   @ 5, 2 BUTTON "Clock On" SIZE 100, 20 ;
+      ACTION oStatusBar:ClockOn()
+
+   DEFINE STATUSBAR oStatusBar PROMPT "  Win32 StatusBar" OF oWnd ;
+      SIZES 150, 200, 240 ;
+      PROMPTS "One", "Two", "Three"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+   
+   MENU oMenu
+      MENUITEM "&One" MESSAGE "One"
+      MENU
+         MENUITEM "First"  MESSAGE "First"
+         MENUITEM "Second" MESSAGE "Second"
+      ENDMENU
+      
+      MENUITEM "&Two" MESSAGE "Two"
+      MENUITEM "T&hree" MESSAGE "Three"
+   ENDMENU
+   
+return oMenu   
+</code>
+
+{{:statusbar.jpg|:statusbar.jpg}}
+
+====== Ver también ======
+[[fivewin_clase_tstatusbar|Clase TStatusBar]]

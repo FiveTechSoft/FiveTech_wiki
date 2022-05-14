@@ -1,0 +1,177 @@
+====== Creando un menu de persiana desde código fuente ======
+<code clipper>
+ MENU [ <objMenu> ] [POPUP]  
+
+    MENUITEM [ <oMenuItem> PROMPT ] <cPrompt> ;  
+       [ MESSAGE <cMsg> ];  
+       [ CHECK | CHECKED | MARK ] ;  
+       [ ENABLED | DISABLED ] ;  
+       [ FILE | FILENAME | DISK <cBmpFile> ];  
+       [ RESOURCE | RESNAME | NAME <ResName> ];  
+       [ ACTION <uAction> ] ;  
+       [ BLOCK <bAction> ] ;  
+       [ OF | MENU | SYSMENU <oMenu> ];  
+       [ ACCELERATOR <nState>, <nVirtKey> ] ;  
+       [ HELP ] ;  
+       [ HELP ID | HELPID <nHelpId> ] ;  
+       [ WHEN <uWhen> ];  
+       [ BREAK ]  
+ 
+    SEPARATOR [<oMenuItem>]  
+
+    MRU <oMru> ;  
+       [ INI | ININAME | FILENAME | NAME | DISK <cIniFile> ]  
+       [ SECTION <cSection> ] ;  
+       [ SIZE | ITEMS <nItems> ] ;  
+       [ MESSAGE <cMsg> ] ;  
+       [ ACTION <uAction> ]  
+
+ ENDMENU  
+</code> 
+====== Creando un menú de persiana desde recursos ======
+<code clipper>
+ DEFINE MENU <oMenu> ;  
+ [ RESOURCE | NAME | RESNAME <cResName> ];  
+ [ POPUP ] ;  
+ 
+    REDEFINE MENUITEM [ <oMenuItem> ;PROMPT <cPrompt> ] ;  
+       [ ID <nId> OF | MENU <oMenu> ] ;  
+       [ ACTION <uAction> ] ;  
+       [ BLOCK <bAction> ] ;  
+       [ MESSAGE <cMsg> ] ;  
+       [ CHECK | CHECKED | MARK ] ;  
+       [ ENABLED | DISABLED ] ;  
+       [ FILE | FILENAME | DISK <cBmpFile> ];  
+       [ RESOURCE | RESNAME | NAME <cResName> ] ;  
+       [ ACCELERATOR <nState>, <nVirtKey> ] ;  
+       [ HEPL ID | HELPID <nHelpId> ];  
+       [ WHEN <uWhen> ]  
+ 
+ DEFINE MENU <oMenu> OF <oWnd>  
+ 
+ SET MENU OF <oWnd> TO <oMenu>  
+</code> 
+====== Activando un menu popup ======
+<code clipper>
+ ACTIVATE POPUP | MENU <oMenu> ;  
+    [ AT <nRow>, <nCol> ] ;  
+    [ OF | WINDOW | DIALOG <oWnd> ]  
+<code> 
+  
+====== Redefiniendo el menu de sistema de una ventana ======
+<code clipper> 
+ REDEFINE SYSMENU <oMenu> ;  
+    [ OF | WINDOW | DIALOG <oWnd> ]  
+ 
+    MENUITEM ...
+
+ ENDSYSMENU  
+</code>
+====== Parámetros ====== 
+| <oMenu> | A reference to the Menu Object. |
+| <oMenuItem> | A reference to one of the menuitems of the menu. Each menuitem of a menu object is also an object. SEPARATOR clause also may specify an  optional menuitem variable to store its related value. |
+| <cMsg> | The associated message of this control. | 
+| <cBmpFile> | The name of a BMP file to be used as the label for a menuitem of the menu.| 
+| <cResName> | The resource name of the menu. | 
+| <uAction> | The action to be performed for a specific menuitem. | 
+| <bAction> | The same action as above expressed as a codeblock. | 
+| <nRow>, <nCol> | The coordinates where to place the Popup Menu. |   
+| <oWnd> | The container window of the Menu. | 
+| <nState> | The state of they accelerator key (see VKEY.CH) | 
+| <nVirtKey> | ASCII value of the accelerator key.  | 
+| <nHelpId> | The help topic identifier of a specific menuitem. | 
+| <uWhen> | An expression to be bloquified and evaluated to check if a menuitem should be enabled or disabled. | 
+| <nId> | The numeric resource identifier of the menuitem. | 
+| <cPrompt> | The label of the menuitem. | 
+| <bAction> | The action to be performed when the Button is pressed. | 
+| <oMru> | A reference to a new MRU object created | 
+| <cIniFile> | The name of the related INI file to use with a MRU object. | 
+| <cSection> | The section inside the INI file where to store the MRU items. | 
+| <nItems> | The number of items to be managed by the MRU object. | 
+| <uAction>  | The action to perform when selecting a MRU item. | 
+
+====== Cláusulas ======
+
+| CHECK CHECKED MARK | If the menuitem has to appear initially as checked. | 
+| ENABLED | If the menuitem has to appear initially as enabled. by default it is enabled. | 
+| DISABLED | If the menuitem has to appear initiall as disabled. | 
+| HELP | If the menuitem has to appear by the op right of the pulldown menu. | 
+| POPUP | To create a popup menu instead of a pulldown menu. | 
+
+====== Ejemplo ======
+\FWH\Samples\TestMnu4.Prg
+<code clipper>
+// Some PullDown menu samples
+#include "FIVEWIN.CH"
+static oWnd
+
+//------------------------------------------------------------//
+
+FUNCTION Main()
+
+   DEFINE WINDOW oWnd                                       ;
+      TITLE "Testing PullDown Menus"                        ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+
+//------------------------------------------------------------//
+
+FUNCTION BuildMenu()
+
+   local oMenu, oMenu1, oMenu2
+   local oSub1,oSub2,oSub3
+   MENU oMenu
+   MENUITEM oMenu1 PROMPT "Test &1"
+     MENU
+       MENUITEM oSub1 PROMPT "Subject&1" CHECKED
+         /*
+         MENU
+           MENUITEM "Choice 1"
+           MENUITEM "Choice 2"
+           MENUITEM "Choice 3"
+         ENDMENU */
+       MENUITEM "Subject&2"
+         MENU
+           MENUITEM "Option 1"
+           MENUITEM "Option 2"
+           MENUITEM "Option 3"
+           MENU
+             MENUITEM "Selection 1"
+             MENUITEM "Selection 2"
+             MENUITEM "Selection 3"
+             MENU
+               MENUITEM "Sub-selection 1"
+               MENUITEM "Sub-selection 2"
+               MENU
+                 MENUITEM "Sub-sub-selection 1"
+                 MENUITEM "Sub-sub-selection 2"
+                 MENUITEM "Sub-sub-selection 3"
+                 MENU
+                   MENUITEM "Lowest level 1"
+                   MENUITEM "Lowest level 2"
+                 ENDMENU
+               ENDMENU
+             ENDMENU
+             MENUITEM "Selection 4"
+           ENDMENU
+         ENDMENU
+      MENUITEM "Toggle Subject 1 Check" ACTION oSub1:SetCheck( ! oSub1:lChecked )
+     ENDMENU
+   MENUITEM "Test 2"
+     MENU
+       MENUITEM "Item 1"
+       MENUITEM "Item 2"
+     ENDMENU
+   ENDMENU
+   // oMenu2:Disable()
+RETURN (oMenu)
+</code>
+
+====== Imagen ======
+{{:menu.jpg|:menu.jpg}}
+
+====== Ver también ======
+[[fivewin_clase_tmenu | Clase TMenu]]

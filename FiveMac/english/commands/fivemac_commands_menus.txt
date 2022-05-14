@@ -1,0 +1,18 @@
+====== Creates a Menu from source code ======
+<code clipper>
+MENU [<oMenu>]
+
+   MENUITEM [ <oMenuItem> PROMPT ] [<cPrompt>] ;
+      [ ACTION <uAction,...> ] ;
+      [ ACCELERATOR <cKey> ]
+
+   SEPARATOR
+
+   ...
+
+ENDMENU
+</code>
+====== Source code ======
+FMC\include\FiveMac.ch
+====== See Also ======
+[[fivemac_class_tmenu|Class TMenu]]

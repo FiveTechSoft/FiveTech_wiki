@@ -1,0 +1,83 @@
+
+======  GetIP() ====== 
+
+
+
+
+Address IP associated to a certain socket
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetIP( <nSocket> ) --> cIPAddress 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number of which we look for the address IP 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cIPAddress> Address IP associated to a certain socket. The address IP
+comes in format "999.999.999.999 99" 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

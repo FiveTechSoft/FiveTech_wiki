@@ -1,0 +1,17 @@
+====== nSerialHD() ====== 
+Devuelve el número de serie del disco duro
+
+====== Sintaxis ======
+ nSerialHD( [<cDrive>] ) --> nSerialHD 
+====== Parámetros ======
+ <cDrive> The root of the drive whose serial number is retrieved (default "C:\"). 
+====== Devuelve ======
+ <nSerialHD> Serial number of the hard disk 
+====== Ejemplo ======
+  SAMPLES\TESTHARD.PRG 
+  SAMPLES\TESTHD.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\HARDDISK.C 
+
+====== Ver también ======
+[[fivewin_funcion_nseriala|nSerialA()]]

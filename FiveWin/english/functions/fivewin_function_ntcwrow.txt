@@ -1,0 +1,128 @@
+nTcwRow()
+
+
+
+nTcwRow()
+
+ Previous  Top  Next
+
+
+
+
+It calculates the line of the TCBrowse, depending on a given height
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nTcwRow( <hWnd>, <hDC>, <nGraphRow>, <hFont> ) --> nTextRow 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context where the TCBrowse is drawing 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nGraphRow> Line in pixels to calculate the line in way Text 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Handle of the used Font 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Line in function of the height of the font used in en the control
+TCBrowse. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\TCBFUNCS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

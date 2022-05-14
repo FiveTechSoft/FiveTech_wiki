@@ -1,0 +1,24 @@
+====== AnsiUpper() ======
+
+Convierte una cadena de texto a mayúsculas.
+
+====== Sintaxis ======
+
+AnsiUpper( <cString> ) --> cUpperString  
+
+====== Parámetros ======
+
+| <cString> | Cadena a convertir. Puede ser sólo una letra.  |  
+
+====== Devuelve ======
+
+La cadena en mayúsculas
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\ANSIUP.C
+

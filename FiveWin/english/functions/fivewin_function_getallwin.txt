@@ -1,0 +1,15 @@
+====== GetAllWin() ======
+Returns an array with all window objects created by our application.
+
+====== Syntax ======
+GetAllWin() --> aWindows 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<aWindows>|An array with all window objects created by our application.|
+
+====== Source Code ======
+SOURCE\CLASSES\WINDOW.PRG 

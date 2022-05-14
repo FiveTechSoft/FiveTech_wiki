@@ -1,0 +1,22 @@
+======  GetCursorStop() ====== 
+Returns the handle of the FiveWin stop cursor.
+
+====== Syntax ======
+GetCursorStop() --> hCursor 
+
+====== Parameters ======
+None. 
+
+====== Returns ======
+^Returns^Description^
+|<hCursor>| The handle of the FiveWin stop cursor. |
+
+====== Example ======
+ 
+
+====== Source Code ======
+SOURCE\WINAPI\Cursors.c 
+
+====== See also ======
+[[fivewin_function_GetCursorHand|GetCursorHand()]]
+[[fivewin_function_GetCursorDrag|GetCursorDrag()]]

@@ -1,0 +1,109 @@
+xPadC()
+
+
+
+
+Centrar llenando una cadena de caracteres hasta alcanzar un cierto tamaño en pixeles
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ xPadC( <cText>, <nPixels> [,<cChar>] ) --> cNewText 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cText> El texto cuya longitud en caracteres se ajutará. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPixels> La longitud total en pixeles. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cChar> Un caracter opcional para usarse en el rellenado de ambos lados de la cadena de caracteres <cText>. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cNewText> Una nueva cadena de caracteres cuyos extremos se les ha agregado caracteres extra  <cChar> hasta alcanzar el tamaño <nPixels>. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\WBrowse.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\xPad.prg 
+
+
+ 
+====== Ver también ======
+[[fivewin_funcion_xPadL |xPadL()]][[fivewin_funcion_xPadR |xPadR()]]

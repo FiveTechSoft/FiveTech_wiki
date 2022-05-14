@@ -1,0 +1,73 @@
+SQLPrep32()
+
+
+SQLPrep32()
+ Previous  Top  Next
+
+Prepares an SQL string for execution.
+
+====== Syntax ======
+
+ 
+
+
+ SQLPrep32( <hStmt>, <cCommand> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cCommand> SQL statement to be prepared. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

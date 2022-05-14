@@ -1,0 +1,24 @@
+====== Class TProgress ======
+
+Progress control support                                                       
+Inherits from TControl                                                         
+====== DATA ======
+|nMin|Minimum position|
+|nMax|Maximum position|
+|nPos|Current position|
+|nStep|Step increment|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|DeltaPos|Advances the current position by the given increment|
+|SetPos|Sets the current position|
+|SetRange|Sets minimum and maximum positions|
+|nPosition|Returns the current position|
+|SetStep|Sets the step increment|
+|StepIt|Advances the current position by the step increment|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPROGRESS.PRG

@@ -1,0 +1,17 @@
+
+====== nNot() ====== 
+nNot()
+
+This function carries out a logical NOT to an operator
+====== Sintaxis ======
+ nNot( <nOp1> ) --> nResult 
+====== Parámetros ======
+ <nOp1> Operador 
+====== Devuelve ======
+ <nResult> Logical Not of the operator nOp1. The zeros of the operator at
+bits level they are put to one and the ones to zeros. 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\OR.C 
+====== Ver también ======

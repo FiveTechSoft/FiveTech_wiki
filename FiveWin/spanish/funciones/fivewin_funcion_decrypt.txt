@@ -1,0 +1,30 @@
+
+====== Decrypt() ====== 
+
+Desencripta un texto encriptado con una clave opcional
+
+====== Syntaxis ====== 
+
+Decrypt( <cTextoEncriptado> [,<cClave> ] ) --> cTexto  
+
+====== Parámetros ====== 
+
+| <cTextoEncriptado> | Es el texto encriptado.  |
+| <cClave> | Es una clave opcional de texto a usar para generar el codigo desencriptado.|
+
+====== Devuelve ====== 
+
+| <cTexto>| El texto original.  |
+
+====== Ejemplo ======
+<code clipper>
+MsgInfo( Decrypt( ..., "miclave" ) )</code>
+====== Código fuente ======
+
+ No se proporciona para garantizar la seguridad de este sistema de encriptacion.  
+ 
+
+====== Ver también ====== 
+
+[[fivewin_funcion_encrypt|Encrypt()]]
+ 

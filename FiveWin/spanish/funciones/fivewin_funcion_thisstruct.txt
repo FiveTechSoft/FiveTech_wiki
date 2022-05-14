@@ -1,0 +1,101 @@
+ThisStruct()
+
+
+
+ThisStruct()
+
+ Previous  Top  Next
+
+
+
+
+Reference to a structure in definition process.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+  ThisStruct( <oStruct> ) --> oStruct 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <oStruct> Structure in definition process 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <oStruct> Structure in definition process 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function provides the object TStruct in the one definition process
+to be able to refer to the one with syntax xBase. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\TSTRUCT.PRG 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

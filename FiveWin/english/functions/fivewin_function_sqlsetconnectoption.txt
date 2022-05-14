@@ -1,0 +1,75 @@
+====== SQLSetConnectOption() ======
+
+Sets attributes that govern aspects of connections.
+
+====== Syntax ======
+
+ 
+
+
+ SQLSetConnectOption( <hDbc>, <nOption>, <cnData> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <nOption> The attribute to set. 
+
+
+ 
+
+
+ <cnData> The value to be associated with the attribute. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

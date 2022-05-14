@@ -1,0 +1,16 @@
+
+====== cNtxKey() ======
+cNtxKey()
+Returns the index expression of a NTX index file
+====== Sintaxis ======
+ cNtxKey( <cNtxFileName> ) --> cIndexKey 
+
+ This function opens a NTX file and retrieves the ascii description of
+the index key used. 
+====== Parámetros ======
+ <cNtxFileName> The name of the NTX file. 
+====== Devuelve ======
+ <cIndexKey> A string with the key description. 
+====== Código fuente ======
+ SOURCE\FUNCTION\NtxTools.c 
+====== Ver también ======

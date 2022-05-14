@@ -1,0 +1,67 @@
+====== Bases de datos (DATABASE) =======
+
+Definiendo una base de datos:
+
+<code clipper>
+DEFINE DATABASE <oDb> OF <oDict> ;
+       [ ALIAS <cAlias> ] ;
+       [ FILE <cFile> ] ;
+       [ DRIVER <cDriver> ] ;
+       [ SHARED ] ;
+       [ READONLY ] ;
+</code>
+
+Definiendo campos de la base de datos:
+<code clipper>
+FIELD <cField> ;
+      [ AS <STRING|NUMBER|LOGIC|DATE|MEMO> ] ;
+      [ LEN <nLen> ] [ DEC <nDec> ] ;
+</code>
+
+Definiendo índices para la bases de datos:
+<code clipper>
+INDEX <cName> ON <key> [TO <cFile>];
+      [ FOR <for> ] [ FILTER <for> ] [ UNIQUE ] ;
+</code>
+
+Terminando la definción de la base de datos
+<code clipper>
+ENDATABASE
+</code>
+
+Activando la base de datos definida
+<code clipper>
+ACTIVATE DATABASE <oDb>
+</code>
+
+Cerrando archivos de bases de datos
+<code clipper>
+DEACTIVATE DATABASE <oDb>
+</code>
+
+Creando una estructura de base de datos:
+<code clipper>
+CREATE DATABASE <oDb>
+</code>
+
+Parámetros:
+
+|<oDb> |Referencia al objeto base de datos.|
+|<oDict> |Referencia al objeto dictionary.|
+|<cAlias> |Cadena de caracteres con el alias de la base de datos|
+|<cFile> |Cadena de caracteres con el nombre del archivo .DBF de referencia.|
+|<cDriver> |Cadena de caracteres con el nombre del driver a utilizar.|
+|<cField> |Nombre del campo|
+|<nLen> |Longitud del campo|
+|<nDec> |Número de decimales que debe tener el campo|
+|<cName> |Nombre de la etiqueta dentro del archivo índice que identifica a un orden. Esta claúsula solo es aplicable para aquellos drivers que soporten varios índices dentro del mismo archivo|
+|<key> |Expresión sobre la cual se va a indexar la base de datos.|
+|<cFile> |Nombre del archivo que contendrá el índice|
+|<for> |Condición para filtrar o indexar la base de datos.|
+
+Cláusulas:
+
+|SHARED |Indica que se debe abrir la base de datos como compartida|
+|READONLY |Indica que la base de datos es de solo lectura.|
+|STRING,NUMBER,LOGIC,DATE,MEMO |Tipo de campo|
+|UNIQUE |Indica que la llave en el índice no debe repertirse|

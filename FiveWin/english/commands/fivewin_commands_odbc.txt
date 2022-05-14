@@ -1,0 +1,165 @@
+====== ODBC ======
+
+**Using a DataBase through ODBC **
+<code clipper>
+ DEFINE ODBC <oDbc> ;  
+ [ NAME <cName> ] ;  
+ [ USER <cUser> ] ;  
+ [ PASSWORD <cPassword> ]  
+</code> 
+
+**Executing a SQL statement **
+<code clipper> ODBC <oDbc> [ SQL | EXECUTE ] <cCommand>  </code>
+^Parammeters ^ Description                                          ^
+| <oDbc> | A variable which holds the reference to the object ODBC. | 
+| <cName> | The name of the DataBase to use. | 
+| <cUser> | The name of the user who is going to manage the DataBase. | 
+| <cPassword> | An optional password required to use the DataBase. | 
+| <cConnect> |  Some ODBC drivers require a connection string, which normally includes the <cName>, <cPassword>, and other extra required information. |
+| <cCommand> | A character string which holds the ODBC statement to execute. | 
+
+**CLAUSES **
+
+^ Clause    ^ Description                                                     ^
+| FROM USER | Means that we want to select interactively the DataBase to use. |
+
+====== Sample Code ======
+\Fwh\samples\TestOdbc.Prg
+<code clipper>
+
+#include "FiveWin.ch"
+#include "sql.ch"
+
+//----------------------------------------------------------------//
+
+function Main()
+
+   Local oDlg
+   Local aDsn
+   local cDsn, cName, cPass, cFile
+
+   SET _3DLOOK ON
+
+   aDsn    := OdbcDsnEntries()
+   cName   := ""
+   cPass   := ""
+   cFile   := ""
+
+   if len(aDsn) == 0
+      MsgAlert("You must create a ODBC DSN configuration from your control panel",;
+               "ODBC DSN selection")
+      return nil
+   endif
+
+   cDsn := aDsn[1]
+
+   DEFINE DIALOG oDlg RESOURCE "ODBCLOGIN"
+
+   REDEFINE COMBOBOX cDsn ID 101 ITEMS aDsn OF oDlg
+   REDEFINE GET cName ID 102 OF oDlg MEMO
+   REDEFINE GET cPass ID 103 OF oDlg MEMO
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION OpenOdbc(cDsn, cName, cPass)
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg
+
+return nil
+
+STATIC FUNCTION OpenOdbc(cDsn, cName, cPass)
+
+   Local oOdbc, oDlg
+   local aFiles
+   local cTable
+   local lAsync
+
+   oOdbc := TOdbc():New(cDsn, cName, cPass)
+
+   If !oOdbc:lSuccess
+      oOdbc:ShowErrorList("ODBC session not successfully initialized, aborting...")
+      oOdbc:End()
+      return nil
+   Endif
+
+   CursorWait()
+   aFiles := oOdbc:GetTables("*", .F. )
+   CursorArrow()
+
+   if len(aFiles) == 0
+      MsgAlert("There are not tables on that database, aborting...",;
+               "ODBC Table selection")
+      oOdbc:End()
+      return nil
+   endif
+
+   cTable := aFiles[1]
+
+   DEFINE DIALOG oDlg RESOURCE "ODBCTABLE"
+
+   REDEFINE LISTBOX cTable ID 101 ITEMS aFiles OF oDlg ;
+      ON DBLCLICK OpenTable(cTable, oOdbc, oDlg, lAsync)
+
+   REDEFINE CHECKBOX lAsync ID 102 OF oDlg
+
+   REDEFINE BUTTON ID IDOK OF oDlg ;
+      ACTION OpenTable(cTable, oOdbc, oDlg, lAsync)
+
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ;
+      ACTION oDlg:End()
+
+   oDlg:lhelpIcon := .f.
+
+   ACTIVATE DIALOG oDlg
+
+   oOdbc:End()
+
+return nil
+
+STATIC FUNCTION OpenTable(cTable, oOdbc, oDlg, lAsync)
+
+   local oDbf
+
+   oDbf := oOdbc:Query( "SELECT * FROM " + cTable )
+
+   oDbf:lDateAsStr := .t.
+
+   oDbf:Open()
+
+   if lAsync
+      oDbf:AutoFill(oDlg,,{|n| ChkCursor(n, oDbf, oDlg) } )
+   else
+      aSend(oDlg:aControls, "disable()")
+      oDlg:bValid := {|| .f. }
+      oDlg:BMMoved := {|| CursorWait()}
+      oDbf:Complete()
+      aSend(oDlg:aControls, "enable()")
+      oDlg:bValid := nil
+      oDlg:BMMoved := nil
+      oDbf:Gotop()
+   endif
+
+   Browse()
+
+   oDbf:End()
+
+Return nil
+
+STATIC FUNCTION ChkCursor(n, oDbf, oDlg)
+
+   local hWnd := GetActiveWindow()
+
+   if hWnd != oDlg:hWnd
+      if n == 0
+         SetWindowText(hWnd, "Rows completally retrieved: "+ Transform(oDbf:RecCount(), "999,999"))
+      else
+         SetWindowText(hWnd, "Rows retrieved so far: " + Transform(n, "999,999"))
+      endif
+   endif
+
+
+return nil
+
+Return
+</code>
+
+====== See Also ======
+[[fivewin_class_todbc | Class TOdbc ]], [[fivewin_class_trddodbc | Class TRddOdbc]], [[fivewin_class_trdd | Class Trdd ]]

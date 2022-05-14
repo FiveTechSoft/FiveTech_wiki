@@ -1,0 +1,24 @@
+====== DibRead() ======
+Reads a DIB from disk.  This function generates a DIB in memory by reading from a .BMP file in disk. 
+
+**Note:**
+We strongly recommend you to use TBitmap Class for managing bitmaps. FiveWin process all that you need automatically. 
+
+
+====== Syntax ======
+DibRead( <cBitmapFile> ) --> hDIB 
+
+====== Parameters ======
+^Parameter^Description^
+|<cBitmapFile>| The filename of the BMP file in disk.|
+
+====== Returns ======
+^Returns^Description^
+|<hDIB>| The handle of the new DIB. (DIB = Device independent bitmap).|
+
+====== Source Code ======
+SOURCE\\WINAPI\\Dib.c 
+
+====== See also ======
+[[fivewin_function_DibRead|DibRead()]], [[fivewin_function_DibPalette|DibPalette()]], [[fivewin_function_DibWidth|DibWidth()]],
+[[fivewin_function_DibHeight|DibHeight()]], [[fivewin_function_DibWrite|DibWrite()]]

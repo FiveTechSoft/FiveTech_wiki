@@ -1,0 +1,74 @@
+GetPMetaFile()
+
+
+GetPMetaFile()
+ Previous  Top  Next
+
+Creates a handle that identifies the placeable Windows metafile stored in
+the specified file.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetPMetaFile( <cMetaFile>, <@aInfo> ) --> hMeta 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cMetaFile> The filename of a placeable Windows metafile. 
+
+
+ 
+
+
+ <aInfo> An array that will receive the coordinates of the Windows
+metafile. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hMeta> The handle of the Windows metafile. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\METAFILE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

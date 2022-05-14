@@ -1,0 +1,106 @@
+
+GetTasks()
+
+ Previous  Top  Next
+
+Returns an array with the names of all the active Tasks running in Windows
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetTasks() --> aTasks 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Function used in the handler of errors of FiveWin. Their mission is
+locating the tasks running in Windows in a certain moment. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aTasks> Array of strings with all the active tasks in Windows 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\FUNCTION\ERRSYSW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\GETTASKS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

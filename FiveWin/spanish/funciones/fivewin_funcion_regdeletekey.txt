@@ -1,0 +1,22 @@
+
+====== RegDeleteKey() ====== 
+RegDeleteKey()
+
+Delete the specific key
+====== Sintaxis ======
+ RegDeleteKey( <hKey>, <cSubKey> ) --> nResult 
+====== Parámetros ======
+  <nKey>     Handle of an open key 
+  <cSubKey>  String of character of the a subkey to delete 
+====== Devuelve ======
+ <nResult> Return a zero if the function is success, otherwise return a
+error code. 
+====== Ejemplo ======
+Observations:
+
+ When we erase a key, all the subkeys is erased. We will be careful to
+specify the second parameter if what we want is to erase simplmente it is
+a subkey 
+====== Código fuente ======
+ SOURCE\WINAPI\REGEDIT.C 
+====== Ver también ======

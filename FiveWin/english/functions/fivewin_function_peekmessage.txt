@@ -1,0 +1,138 @@
+====== PeekMessage() ====== 
+
+
+
+PeekMessage()
+
+
+
+
+
+
+Extract a message from the message queue
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PeekMessage( @<cMsg>, <hWnd>, <nFilterFirst>, <nFilterLast>, <nRemove> )
+--> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cMsg> A string supplied by reference, where FiveWin will place a MSG
+struct in a string format. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <hWnd> Identifies a window whose messages are to be examined 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFilterFirst> <nFilterLast> Specifies the first and last values in the
+range of messages to be examined 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRemove> Specifies how messages are handled 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating if the operation was successfully.
+The result is stored by reference inside <cMsg> 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This functions are automatically managed by FiveWin. We just document
+them here with the wish of a better understanding, but we stress on the
+idea that you should let FiveWin manage all these complexity. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\PeekMsg.c 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

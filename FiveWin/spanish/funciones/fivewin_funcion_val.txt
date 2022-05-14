@@ -1,0 +1,35 @@
+====== Val() ======
+
+Devuelve el valor numérico de una cadena de caracteres
+
+====== Syntaxis ====== 
+
+Val() --> cCaracteres  
+ 
+
+====== Parametros ====== 
+
+Ninguno
+
+====== Devuelve ====== 
+
+| <cCaracteres>| Valor Numérico.  |
+
+
+====== Ejemplo ======
+<code clipper>
+vTotal:="123456"
+MsgInfo( Val(vTotal) ) 
+</code>
+
+====== Codigo fuente ====== 
+
+Buscando
+ 
+
+regards, saludos
+
+ 
+
+
+ 

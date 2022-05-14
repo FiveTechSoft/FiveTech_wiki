@@ -1,0 +1,7 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**ninguno**|
+^Valor de retorno| <cHelpTopic> El tema de ayuda predeterminado.|
+^Descripción:| Puede elegir el tema predeterminado de ayuda cada ves que solicite el help|
+^Ejemplo| GetHelpTopic()  |
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | GetHelpFile, WinHelp, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

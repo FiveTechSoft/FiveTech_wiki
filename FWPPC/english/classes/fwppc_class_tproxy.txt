@@ -1,0 +1,22 @@
+====== Class TProxy ======
+
+Internet proxy (multi-protocol) server                                         
+====== DATA ======
+|oSocket|Main listening socket object|
+|cAddress|Proxy server address|
+|cServerIP|Proxy server IP address|
+|lDebug|If in debug mode|
+|nPort|Port number|
+|cLogFile|Log filename|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the proxy server|
+|End|Ends the proxy server|
+|OnAccept|Accept event handler|
+|OnRead|Read event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPROXY.PRG

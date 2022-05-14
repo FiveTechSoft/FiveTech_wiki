@@ -1,0 +1,22 @@
+===== TabCtrl_AdjustRect() =====
+
+Calcula el área de despliegue del control tab dando una rectángulo de ventana, o calcula el rectángulo de la ventana que correspondería a un área de despliegue especificada. 
+
+
+==== Sintaxis: ====
+
+ TabCtrl_AdjustRect( <hWnd> ) --> aRect  
+
+==== Parámetros: ==== 
+^Parámetro^Descripción^
+| <hWnd> | Manejador del control tab.|
+ 
+==== Devuelve: ====
+^Valor^Descripción^
+| <aRect> |Devuelve un arreglo con las coordenadas del control en la forma: top, left, bottom and right.|  
+
+Sample: 
+
+==== Código fuente: ====
+
+ SOURCE\WINAPI\TABCTRL.C  

@@ -1,0 +1,26 @@
+====== SetWindowWord() ======
+
+SetWindowWord() cambia un atributo de la ventana especificada.
+
+====== Sintaxis ======
+
+SetWindowWord( <hWnd>, <nType>, <nValue> ) --> nOldValue 
+
+====== Parámetros ======
+
+^Nombre^Descripción^
+|<hWnd>| El identificador de la ventana. |
+|<nType>| El tipo de información a ser cambiada:\\ **GWL_HINSTANCE**   Recupera un identificador de la instancia de la aplicación.\\ **GWL_ID** Recupera el identificador de la ventana.|
+|<nValue>| El nuevo valor. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nOldValue>| El valor previo. |
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+SOURCE\WINAPI\WNDIS.C 
+
+====== Ver también ======

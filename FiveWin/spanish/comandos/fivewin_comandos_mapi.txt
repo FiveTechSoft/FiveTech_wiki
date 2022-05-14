@@ -1,0 +1,148 @@
+Creación de objetos de correo:
+
+<code clipper>
+DEFINE MAIL [<oMail>] ;
+
+[ SUBJECT <cSubject> ] ;
+
+[ TEXT <cText> ] ;
+
+[ TYPE <cType> ] ;
+
+[ DATE <dDate> ] ;
+
+[ TIME <cTime> ] ;
+
+[ CONVERSATION <cConversation> ] ;
+
+[ <rec: RECEIPT> ] ;
+
+[ <user: FROM USER> ] ;
+
+[ ORIGIN <cOrigin> [,<cOriginAddress>] ] ;
+
+[ TO <cTarget1> [,<cTargetAddress1>] ;
+
+[ <cTargetN> [,<cTargetAddressN>] ] ]
+</code>
+ 
+
+Activación del objeto correo:
+
+ 
+<code clipper>
+
+ACTIVATE MAIL <oMail> => <oMail>:Activate()
+
+</code>
+ 
+
+ 
+
+Envío del correo:
+
+ 
+<code clipper>
+
+SEND MAIL <oMail> => <oMail>:Activate()
+</code>
+
+Ejemplo
+
+ 
+<code clipper>
+#include "FiveWin.ch"
+
+#include "Mail.ch"
+
+static oWnd
+
+//----------------------------------------------------//
+
+function Main()
+
+local oBar
+
+DEFINE WINDOW oWnd TITLE "Uso de los servicios MAIL"
+
+DEFINE BUTTONBAR oBar 3D SIZE 33, 33 OF oWnd
+
+DEFINE BUTTON OF oBar ACTION MsgInfo( MAPILogOn() ) ;
+
+MESSAGE "LogOn al sistema de correo" TOOLTIP "LogOn"
+
+DEFINE BUTTON OF oBar ;
+
+ACTION ( MAPILogOff(), MsgInfo( "LogOff realizado" ) ) ;
+
+MESSAGE "LogOff del sistema de correo" TOOLTIP "LogOff"
+
+DEFINE BUTTON OF oBar GROUP ;
+
+ACTION InteractiveMessage() ;
+
+MESSAGE "Enviar mensaje interactivo" ;
+
+TOOLTIP "Interactive"
+
+DEFINE BUTTON OF oBar ;
+
+ACTION DirectMessage();
+
+MESSAGE "Enviar mensaje directo" TOOLTIP "Direct"
+
+DEFINE BUTTON OF oBar GROUP ACTION oWnd:End() TOOLTIP "End"
+
+SET MESSAGE OF oWnd TO "FiveWin - Soporte MAIL" CENTERED
+
+ACTIVATE WINDOW oWnd ;
+
+VALID MsgYesNo( "¿Desea acabar?" )
+
+return nil
+
+//----------------------------------------------------//
+
+function InteractiveMessage()
+
+local oMail
+
+DEFINE MAIL oMail ;
+
+SUBJECT "Probando..." ;
+
+TEXT "Potencia xBase real a su alcance" ;
+
+FROM USER ;
+
+RECEIPT
+
+ACTIVATE MAIL oMail
+
+MsgInfo( oMail:nRetCode )
+
+return nil
+
+//-----------------------------------------------------//
+
+function DirectMessage()
+
+local oMail
+
+DEFINE MAIL oMail ;
+
+SUBJECT "FiveWin Mail-control total" ;
+
+TEXT "Potencia xBase real a su alcance" ;
+
+TO "LOLO", "Lolo Linares"
+
+ACTIVATE MAIL oMail
+
+MsgInfo( oMail:nRetCode )
+
+return nil
+
+//-----------------------------------------------------//
+
+</code>

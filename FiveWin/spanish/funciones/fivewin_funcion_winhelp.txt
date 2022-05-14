@@ -1,0 +1,13 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**<cHelpFile>**|
+|  |Nombre del archivo de ayuda. Estos archivos tiene extensión HLP o CHM y usan el formato propietario de Windows|
+|  |**<nHelpType>**|
+|  |Elige la clase de servicio a ejecutar. Windows ofrece múltiples servicios con esta función que puede ser algo confuso obtener todas sus posibilidades |
+|  |Esta es la razón por la que hemos creado las funciones Help...() que son funciones especiales basadas en WinHelp()| 
+|  |**<ncAditionalData>**|
+|  | Ciertos parámetros de acuerdo al servicio solicitado a WinHelp()|
+^Valor de retorno| lSuccess|
+^Descripción:| Windows implementa todos sus sistemas de ayuda a través de la función WinHelp(). esta función llama a WINHELP.EXE|
+|  | que se encarga de manipular los archivos HLP| 
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | GetHelpFile, GetHelpTopic, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

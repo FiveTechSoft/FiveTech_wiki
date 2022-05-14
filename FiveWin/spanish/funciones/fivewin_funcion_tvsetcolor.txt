@@ -1,0 +1,73 @@
+TvSetColor()
+
+
+TvSetColor()
+ Previous  Top  Next
+
+Sets the text and background colors of a treeview control.
+
+====== Sintaxis ======
+
+
+ TvSetCheck( <hWnd>, <nClrFore>, <nClrBack> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <nClrFore>   The foreground color. 
+
+
+ 
+
+
+ <nClrBack>   The background color. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+
+
+====== Ver también ======
+

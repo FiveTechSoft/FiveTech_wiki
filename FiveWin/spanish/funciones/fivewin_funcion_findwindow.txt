@@ -1,0 +1,112 @@
+FindWindow()
+
+
+
+
+FindWindow()
+
+ Previous  Top  Next
+
+
+
+
+It looks for a window and their manipulator returns
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FindWindow( <cClassName>, <cTitle> ) --> hWnd 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cClassName> Name of the window class. In Fivewin, for defect is TWINDOW 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTitle> Title of the window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Handle of the window if has found. Otherwise is nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ Observation Child doesn't work with windows 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

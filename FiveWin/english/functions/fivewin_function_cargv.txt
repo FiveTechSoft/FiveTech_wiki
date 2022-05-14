@@ -1,0 +1,70 @@
+
+====== cArgV() ======
+
+Retrieves the command line parameter passed to the application (like in C argv). 
+
+====== Syntax ====== 
+
+cArgV( <nOrder> ) --> cCommandLineParam  
+
+
+====== Parameters ====== 
+^Parameter^Description^
+| <nOrder> | The parameter order passed to the application.|  
+
+====== Returns ====== 
+^Returns^Description^
+|<cCommandLineParam>| A string with the specified command line parameter.|
+
+====== Sample ====== 
+See SAMPLES\TestArgs.prg  
+<code clipper>
+// Testing command line parameters
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main( cParam1, cParam2, cParam3 )
+
+   local n
+
+   ? cParam1
+   ? cParam2
+   ? cParam3
+
+   MsgInfo( "Total number of command line parameters: " + Str( PCount() ) )
+
+   Another()
+
+   // To retrieve the name of your EXE use this:
+
+   MsgInfo( GetModuleFileName( GetInstance() ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function Another()
+
+   local n
+
+   MsgInfo( "From everywhere you can use nArgC() - 1 " + ;
+            "to retrieve the same value as PCount() at the " + ;
+            "beginning of the app" )
+
+   for n = 1 to nArgC() - 1   // Windows always provides one extra parameter
+      MsgInfo( cArgV( n ) )
+   next
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Source Code ====== 
+SOURCE\FUNCTION\Arg.c  
+
+====== See also ====== 
+[[fivewin_function_nargc|nArgC()]], [[fivewin_function_pcount|PCount()]], [[fivewin_function_param|Param()]]
+

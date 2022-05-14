@@ -1,0 +1,36 @@
+====== IsWinVista() ======
+
+Verifica si la aplicación se esta ejecutando en Windows Vista 32 bits.
+
+====== Syntaxis ======
+
+IsWinVista() --> lEsWinVista
+ 
+====== Parámetros ======
+
+| <> | Ninguno.  |
+
+====== Devuelve ======
+
+| <lEsWinVista> | Si la aplicacion se esta ejecutando en Windows Vista, retorna .T., de lo contrario retorna .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( iif( IsWinVista(), "Ejecutandose en Windows Vista", "No se esta ejecutando en windows Vista" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\WNDIS.C   
+
+====== Ver también ======
+
+[[fivewin_funcion_liswin2000|lIsWin2000()]]
+[[fivewin_funcion_liswin64|lIsWin64()]]
+[[fivewin_funcion_liswinnt|lIswinNT()]]
+[[fivewin_funcion_liswinxp|lIsWinXP()]]
+[[fivewin_funcion_liswin95|lIsWin95()]]

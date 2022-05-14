@@ -1,0 +1,44 @@
+GetWndDefault()
+
+
+GetWndDefault()
+ Previous  Top  Next
+
+Retrieve the current default window.
+
+====== Sintaxis ======
+
+
+ GetWndDefault() --> oWnd 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <oWnd> The current default window 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,81 @@
+
+====== GetTimePick() ====== 
+
+
+Retrieves the currently selected time from a date and time picker control.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetTimePick( <hWnd> ) --> cTime 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the date and time picker control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cTime> The currently selected time. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\timepick.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

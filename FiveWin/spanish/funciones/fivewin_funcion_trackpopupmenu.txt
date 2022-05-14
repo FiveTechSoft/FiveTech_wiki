@@ -1,0 +1,185 @@
+TrackPopUpMenu()
+
+
+
+TrackPopUpMenu()
+
+ Previous  Top  Next
+
+
+
+
+Displays the given floating pop-up menu
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TrackPopUpMenu( <hMenu>, <nFlags>, <nLeft>, <nTop>, <nReserved>, <hWnd>
+) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hMenu> Handle of the menu 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFlags> Screen-position and mouse-button flags FiveWin set this flat to
+2 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The screen-position flag can be one of the following: 
+
+
+ 
+
+
+ 
+
+
+
+TPM_CENTERALIGN   4   Centers the pop-up menu horizontally relative to
+the coordinate specified by the x parameter   
+TPM_LEFTALIGN   0   Positions the pop-up menu so that its left side is
+aligned with the coordinate specified by the x parameter.   
+TPM_RIGHTALIGN   8   Positions the pop-up menu so that its right side is
+aligned with the coordinate specified   
+
+
+
+
+
+
+
+ The mouse-button flag can be one of the following: 
+
+
+ 
+
+
+ 
+
+
+
+TPM_LEFTBUTTON   0   Causes the pop-up menu to track the left mouse
+button.   
+TPM_RIGHTBUTTON   2   Causes the pop-up menu to track the right mouse
+button instead of the left.   
+
+
+
+
+
+
+
+ <nLeft> Left coordinate of the menu 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> Superior coordinate of the menu 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nReserved> 0 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the parent window 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

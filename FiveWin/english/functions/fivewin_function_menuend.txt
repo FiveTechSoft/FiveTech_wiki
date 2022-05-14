@@ -1,0 +1,123 @@
+====== MenuEnd() ======
+
+
+
+
+Ends a menu definition. Internally used.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MenuEnd() --> oMenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oMenu> The menu object already initialized and with all its submenus
+built and initialized. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is used automatically by FiveWin from the xBase commands. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestMenu.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\CLASSES\\PdMenu.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TMenu Class TMenuItem 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

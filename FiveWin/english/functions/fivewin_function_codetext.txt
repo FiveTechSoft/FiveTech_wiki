@@ -1,0 +1,73 @@
+CodeText()
+
+
+CodeText()
+ Previous  Top  Next
+
+RTF encoding of a text
+
+
+
+====== Syntax ======
+
+
+
+
+
+ CodeText( <cText> ) --> cEncodedText 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cText> The text to encode. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cEncodedText> The encoded text. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\codegtf.c 
+
+
+ 
+
+

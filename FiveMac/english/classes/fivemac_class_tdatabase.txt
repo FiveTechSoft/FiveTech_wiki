@@ -1,0 +1,118 @@
+====== TDataBase ======
+Management of DataBases as objects. DataBase OOPS management 
+
+====== DATAS ======
+^Name^Description^
+|cAlias| The workarea alias where the DataBase object has been created|    
+|cFile| The name of the DBF file associated|    
+|cDriver| The name of the driver associated|    
+|lShared| If the workarea is shared|    
+|lReadOnly| If the workarea is readonly|    
+|bBoF| CodeBlock to execute when BoF()|    
+|bEoF| CodeBlock to execute when EoF()|    
+|bNetError| CodeBlock to execute when Net error|    
+|nArea| The workarea order used (i.e.: 1,2,3, ... )|    
+|lBuffer| To use or not a buffer. It is a must for NetWorking!|    
+|aBuffer| An editing buffer holding fields temporary data.| 
+
+The big benefit of using a TDataBase object is the editing where we may drastically reduced our source code size. aBuffer keeps an array with the same number of elements as fields are on the workarea. This buffer may be loaded from the record or saved to the record. So there is no need to work with local variables (normally used with this same purpose, to work as a field buffer), and just one TDataBase object will be enough and perfect to hold all temporary fields values. 
+
+|lOemAnsi| Oem to Ansi translation|    
+|lTenChars| If fields have ten chars, used internally|    
+|aFldNames| Array with all the field names|    
+
+
+====== METHODS ======
+^Name^Description^
+|New | Constructor|    
+|Activate | Select its workarea as the one currently active|    
+|AddIndex | Adds a new index|    
+|Append | Adds a new record|    
+|AnsiToOem | Ansi to Oem translation|    
+|Blank | Empties the editing buffer|    
+|Bof | Checks if beginning of file|    
+|Close | Closes the workarea|    
+|CloseIndex | Closes an index|    
+|Commit | Flushes pending file buffers|    
+|Create | Creates a new database|    
+|CreateIndex | Creates a new Index|    
+|ClearRelation | Clear active relations|    
+|DeActivate | Closes the database. It acts like DbCloseArea()|    
+|DbCreate | Creates the DBF file from its structure in a array|    
+|Delete | Mark a record for deletion|    
+|Deleted | Return the deleted status of the current record|    
+|DeleteIndex | Remove a specified order from an order bag|    
+|Eof | Determine when End of file is encountered|    
+|Eval | Evaluates a codeblock for records matching a scope/condition|    
+|FCount | Return the number of fields in the current DBF file|    
+|FieldGet | Retrieve the value of a field variable|    
+|FieldName(nField) | Name of the field at nField position|    
+|FieldPos(cField) | Position of the field cField|    
+|FieldPut | Set the value of a field variable|    
+|Found | Determine if the previous search operation succeeded|    
+|GoTo | Move to the record having the specified record number|    
+|GoTop | Move to the first logical record|    
+|GoBottom | Move to the last logical record|    
+|IndexKey | Return the key expression of a specified index|    
+|IndexName | Return the name of an order in the Order list|    
+|IndexBagName | Return the Order bag name of a specified Order|    
+|LastRec | Determine the number of records in the current DBF file|    
+|IndexOrder | Return the position of an Order in the current Order List|    
+|Lock | Lock an open and shared database file|    
+|Load | Loads the record contents into the editing buffer|    
+|ReCall | Restore records marked for deletion|    
+|Modified | If .t. the database buffer hasa been modified|    
+|OemToAnsi | Oem to Ansi translation|    
+|OnError | Error handler|    
+|Pack | Removes all record marked for deletion|    
+|RecCount | Determine the number of records in the current DBF file|    
+|RecLock | Lock the current record|    
+|RecNo | Return the current record number|    
+|Save | Saves the editing buffer contents into the DBF file|    
+|SetBuffer | Activates/Deactivates the editing buffer| 
+
+<code clipper>
+Syntax: <oWrk>:SetBuffer( <lOnOff> ) \\ <lPrevious> 
+Parameters: <lOnOff> A logical value to activate or deactivate the workarea associates editing buffer 
+Returns: A logical value indicating if the buffer is or not active </code>
+
+|Seek | Move to the record having the specified key value|    
+|SetOrder | Set focus to an order in an Order list|    
+|SetRelation | Relate two work areas|    
+|Skip | Move relative to the current record|    
+|Skipper | Move relative to the current record using _DbSkipper()|    
+|UnLock | Release all locks for the current work area|    
+|Zap | Remove all records from the current database file|    
+|Used | Determine whether a database file is in USE|
+
+====== Example ======
+<code clipper>
+#Include "FiveWin.ch"
+#include "xBrowse.ch"
+//--------------------------------
+Function Main()
+
+   LOCAL cAlias,oWnd,oBrw,oCust
+
+   USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+   GO TOP
+   oCust    := TDataBase():New( Select( cAlias ) )
+
+   DEFINE WINDOW ownd TITLE "TDataBase Object"
+
+   @ 0,0 XBROWSE oBrw ;
+         COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+         PICTURES ,,,,,,"999,999,999.99" ; // nil or ommit for default formatting
+         OF ownd ;                         // automatic justification
+         OBJECT oCust ;
+         FOOTERS FASTEDIT ;
+         AUTOSORT ;
+         LINES CELL
+
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+</code>  
+
+====== See also ======
+[[fivemac_commands_database | Command Database ]]

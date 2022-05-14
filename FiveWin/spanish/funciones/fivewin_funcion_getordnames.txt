@@ -1,0 +1,52 @@
+====== GetOrdNames() ======
+
+Encripta un texto con una clave opcional
+
+====== Syntaxis ======
+
+GetOrdNames() --> aTagsName 
+
+====== Parámetros ======
+
+| <>| Ninguno.  |
+
+====== Devuelve ======
+
+| <aTagsName> | Arreglo con los nombre de los tag de un Indice en una tabla DBF.  |
+
+
+====== Ejemplo ======
+<code clipper>
+
+#include "fivewin.ch"
+
+PROCEDURE Main()   
+   LOCAL aWorkAreaInUse, nCount, x
+   
+   USE clients NEW
+   USE invoice NEW
+   USE items NEW
+   
+   dbselectarea( "CLIENTS" ) 
+
+   aTags := CLIENTS->( GetOrdNames() )
+   
+   ?"Alias", alias()
+
+   FOR x:=1 TO len( aTags )
+      ?"Tag incluidos en el indice:", aTags[ x ]
+   NEXT
+   
+RETURN 
+
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\DBTOOLS.PRG  
+ 
+
+====== Ver también ======
+
+[[fivewin_funcion_agetworkareas|aGetWorkAreas()]]
+[[fivewin_funcion_cgetnewalias|cGetNewAlias()]]

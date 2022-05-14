@@ -1,0 +1,103 @@
+nExtMem()
+
+
+
+nExtMem()
+
+ Previous  Top  Next
+
+
+
+
+Amount of memory of the computer
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nExtMem() --> nMemory 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <nMemory> Amount of memory of the computer 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\FUNCTION\ERRSYSW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MEMSTAT.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

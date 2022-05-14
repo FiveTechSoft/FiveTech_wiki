@@ -1,0 +1,50 @@
+====== Class TMenuItem ======
+
+TMenuItem class                                                                
+====== DATA ======
+|cPrompt|The label of the MenuItem|
+|cMsg|The text to be shown on the MsgBar of the main Window|
+|cVarName|A variable name to identifier this object|
+|nId|A numeric identifier for this menuitem|
+|nHelpId|A numeric help topic identifier used to select|
+|invoked|help|
+|bAction|The action to be performed when selecting the|
+|MenuItem||
+|bWhen|A codeblock to be avaluated to enable/disable the|
+|menuitem||
+|lChecked|Logical value if the menuitem is checked|
+|lActive|Logical value if the menuitem is enabled|
+|lHelp|If this is a menuitem help type (right placed)|
+|oMenu|A reference of its container Menu object|
+|hBitmap|A handle to a Bitmap if defined|
+|nVKState|Accelerator value|
+|nVirtKey|Accelerator value|
+|lBreak|Separator|
+|Cargo|Generic cargo slot|
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor from resource|
+|cCaption|Sets and return the menuitem prompt|
+|Destroy|Called when the menuitem is destroyed.|
+|Disable|Disable the item.|
+|Enable|Enable the item.|
+|End|Ends control and make it disappear.|
+|EveCount|Number of total events for this class (used by the|
+|Object|Inspector).|
+|Event|Retrieve the event from the event array.|
+|HelpTopic|Activates the help topic page|
+|Load|Set the properties of the menuitem based on a|
+|supplied|binary information.|
+|PropCount|Number of total property.|
+|Property|Retrieves the property from the property array.|
+|Save|Generates a binary representation of this object.|
+|SetCheck|Enables / Disables check.|
+|SetPrompt|Changes the associated menuitem prompt.|
+|HelpTopic|Method invoked when pressing F1 when this menuitem is|
+|selected.||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMENUITEM.PRG

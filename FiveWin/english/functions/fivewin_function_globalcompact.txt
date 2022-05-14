@@ -1,0 +1,104 @@
+====== GlobalCompact() ====== 
+
+
+
+
+Rearranges memory currently allocated to the global heap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GlobalCompact( <nMinFree> ) --> nFreeB 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nMinFree> I number of bytes that we want to liberate. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nFreeB> It returns the biggest object she/he liberates by heart in the
+Heap. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+Observations:
+
+
+
+
+
+ This function reorganizes the heap memory until it liberates a quantity
+by heart as which we indicate him. If it can not liberate this whole
+memory it liberates all the one that be he possible. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

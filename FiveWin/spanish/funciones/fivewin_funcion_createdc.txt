@@ -1,0 +1,23 @@
+
+====== CreateDC() ======
+CreateDC()
+Creates a device context for the given device
+====== Sintaxis ======
+ CreateDC( <cDriver>, <cDevice>, <cOutPut>, <cInitData> ) --> hDC 
+====== Parámetros ======
+ <cDriver> MsDos filename of the device driver (i.e.: "Epson" ) 
+ <cDevice> Name of the specific device to be supported ( i.e. "Epson
+FX-80" ) 
+ <cOutPut> MsDos filename or device name of the physical output medium
+(file or output port) 
+ <cInitData> Additional information specific of that device. 
+====== Devuelve ======
+ <hDC> The handle of the device context just created. 
+
+Observations
+ hDCs created with CreateDC() must be released with DeleteDC(), and hDCs
+created with GetDC() must be released with ReleaseDC(). 
+====== Código fuente ======
+ SOURCE\WINAPI\DC.c 
+====== Ver también ======
+ DeleteDC() 

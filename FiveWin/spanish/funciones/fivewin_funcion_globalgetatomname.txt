@@ -1,0 +1,87 @@
+GlobalGetAtomName()
+
+
+
+GlobalGetAtomName()
+
+ Previous  Top  Next
+
+
+
+
+It returns the string associated to a global atom
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GlobalGetAtomName( <hAtom> ) --> cAtom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hAtom> Handle of a global atom 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cAtom> String that associated to the atom specified by means of hAtom 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\ATOM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

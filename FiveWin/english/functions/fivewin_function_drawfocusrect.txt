@@ -1,0 +1,19 @@
+====== DrawFocusRect() ======
+It draws a rectangle to point out the focus of the control
+
+====== Syntax ======
+DrawFocusRect( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+| <hDC> | Device context of the control |
+| <nTop> | Top coordinate |
+| <nLeft> | Left coordinate |
+| <nBottom> | Down coordinate |
+| <nRight> | Right coordinate |
+
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\WINAPI\RECTS.C 

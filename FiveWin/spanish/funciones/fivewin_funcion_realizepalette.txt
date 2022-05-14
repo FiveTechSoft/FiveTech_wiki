@@ -1,0 +1,25 @@
+
+====== RealizePalette() ====== 
+RealizePalette()
+
+Maps a palette to the system palette
+====== Sintaxis ======
+ RealizePalette( <hDC> ) --> nEntries 
+====== Parámetros ======
+ <hDC> Device context 
+====== Devuelve ======
+ <nEntries> Number of entries in the palette that they have been maped in
+the palette of the system. 
+
+Observations:
+
+ Usually each bitmap that we paint in our windows associate takes a
+palette of different colors. For to prevent not wanted effects, this
+function is used to accommodate the palette selected in the current one
+device context to the palette of the system and to prepare of all the
+colors used simultaneously in the screen in damage of those that in that
+moment not you be using. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PALETTE.C 
+====== Ver también ======

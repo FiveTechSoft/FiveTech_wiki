@@ -1,0 +1,18 @@
+====== DDEUninitialize() ======
+Frees all DDEML resources associated with the application.
+
+====== Syntax ======
+DDEUninitialize( <hInst> ) --> lResult 
+
+====== Parameters ======
+^Parameter^Description^
+| <hInst> | Instance identifier |
+
+====== Returns ======
+^Returns^Description^
+| <lResult> | .T. if the function is successful. |
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 

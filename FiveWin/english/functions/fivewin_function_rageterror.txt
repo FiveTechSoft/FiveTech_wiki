@@ -1,0 +1,108 @@
+RaGetError()
+
+
+
+RaGetError()
+
+ Previous  Top  Next
+
+
+
+
+Retrieve a string with the message of a numeric code
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RaGetError( <nError>, <@cBuffer> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nError> Error code return by one RAS function 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cBuffer> String of characters corresponding to a numeric error code. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> Zero if successful, or non zero otherwise. 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TRAS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

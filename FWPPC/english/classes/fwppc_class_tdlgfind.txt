@@ -1,0 +1,15 @@
+====== Class TDlgFind ======
+
+Windows standard Common Dialog FindText                                        
+Inherits from TDialog                                                          
+====== DATA ======
+|nFindMsgString|A CLASSDATA containing an internal used handle|
+====== METHODS ======
+|New|Constructor from source code|
+|HandleEvent|Generic event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TDLGFIND.PRG

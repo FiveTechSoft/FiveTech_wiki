@@ -1,0 +1,27 @@
+====== AnsiToOem() ======
+
+Convierte una cadena de texto desde formato Windows a formato OEM MsDos
+
+====== Sintaxis ======
+
+AnsiToOem( <cWindowText> ) --> cOemText 
+
+====== Parámetros ======
+
+| <cWindowText> | Cadena a convertir en formato OEM.  |
+
+====== Devuelve ======
+
+<cOemText>  Cadena en formato OEM
+
+====== Observaciones ======
+
+Normalmente los textos que se incluyen un una table DBF desde MSDos son guardados en formato OEM.
+En este caso puede llamar a OemToAnsi() para una correcta visualización en formato Windows.
+
+El texto que se digita desde Windows queda en formato Ansi. Para usarlo desde MSDos guárdelo usando AnsiToOem().  
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\OemAnsi.c
+

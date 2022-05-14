@@ -1,0 +1,20 @@
+====== Creating a ClipBoard Object ======
+
+<code clipper>
+ DEFINE CLIPBOARD <oClp> ;  
+ [ FORMAT TEXT | OEMTEXT | BITMAP | DIF ] ;  
+ [ OF <oWnd> ]  
+</code>
+<code clipper>
+ ACTIVATE CLIPBOARD <oClp>  
+</code> 
+
+| <oClp> | A reference to the Clipboard Object. |
+| <oWnd> | The Window which is managing the Clipboard. |
+| <cText> | The Text to place at the Clipboard. |
+
+====== CLAUSES ======
+
+| TEXT OEMTEXT | Normal Text. |
+| BITMAP | Not implemented yet. |
+| DIF | Not implemented yet. |

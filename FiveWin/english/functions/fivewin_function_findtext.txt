@@ -1,0 +1,24 @@
+====== FindText() ======
+Show the common dialog box to search text in a document. The application should carry out the search. This function just shows the window.  
+
+====== Syntax ====== 
+FindText(<cText>, <hWnd>, <oWnd>, <@nFindMsgString> ) --> hWnd  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cText> | Text to search for  |
+| <hWnd> | Handle of the window  |
+| <oWnd> | Not used  |
+| <@nFindMsgString> | Variable given by reference to pick up the FINDREPLACE that will be filled in the function structures. |
+
+====== Return ====== 
+^Returns^Description^
+| |Handle of the dialog box if the function is successful. Otherwise, it is NULL.|
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\WINAPI\FINDTEXT.C 
+
+====== See Also ====== 
+[[fivewin_function_DlgFindText|DlgFindText()]]

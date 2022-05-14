@@ -1,0 +1,37 @@
+
+====== MsgAbout() ====== 
+MsgAbout()
+
+MessageBox about style
+====== Sintaxis ======
+ MsgAbout( <cMsg> [,<cTitle>] ) --> nil 
+====== Parámetros ======
+  <cMsg>    The message to display on the about dialogbox. 
+  <cTitle>  The title of the dialogbox. By default is "About" 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function automatically calls the undocumented WinApi function
+ShellAbout(), which it is the one used by Windows in all standard
+applications when. you select about. 
+
+ The standard dialogbox shows an icon, by default it is a windows logo.
+To provide your icon to MsgAbout() you should define an icon with the
+number 1 as identifier: 
+
+ MyApp.rc 
+
+ 1 ICON "MyApp.ico" 
+
+ and then: 
+
+ rc -K MyApp.rc MyApp.exe 
+====== Ejemplo ======
+ SAMPLES\TestMsg.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\MsgBox.c 
+====== Ver también ======
+ MsgInfo() MsgAlert() MsgStop() MsgBeep() MsgYesNo() MsgRetryCancel()
+MsgMeter() MsgGet()

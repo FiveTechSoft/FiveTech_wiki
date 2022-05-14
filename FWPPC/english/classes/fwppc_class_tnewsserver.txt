@@ -1,0 +1,26 @@
+====== Class TNewsServer ======
+
+Internet news server (NNTP protocol)                                           
+====== DATA ======
+|oTimer|Internal timer|
+|oSocket|Socket object|
+|oDbfNewsGrp|DBF object for newsgroups|
+|oDbfAccGrp|DBF object for group account|
+|oDbfAccount|DBF object for account|
+|aInstances|Clients attending socket objects|
+|cAddress|Server address|
+|cDefPath|Server default directory|
+|cLogFile|Log filename|
+|lDebug|If in debug mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the server|
+|End|Ends the server|
+|OnAccept|Accept event handler|
+|Timer|Internal timer action|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TNEWSSERVER.PRG

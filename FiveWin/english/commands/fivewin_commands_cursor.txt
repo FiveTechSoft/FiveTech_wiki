@@ -1,0 +1,83 @@
+====== Creating a cursor from resources ======
+
+<code clipper>
+ DEFINE CURSOR <oCursor> ;  
+ [ RESOURCE | RESNAME | NAME <cResName> ] ;  
+ [ ARROW | ICON | SIZENS | SIZEWE | SIZENWSE,;  
+ SIZENESW | IBEAM | CROSS | SIZE | UPARROW | WAIT | HAND ]  
+</code>  
+ 
+| <oCursor> | A reference to the cursor object. |
+| <cResName> | A string with the name of the cursor resource name. It may also be a numeric identifier. |
+
+====== Styles ======
+
+| ARROW | Arrow design |
+| ICON | Icon design |
+| SIZENS | North-South arrow design |
+| SIZEWE | West-east arrow design |
+| SIZENWSE | Nort-South & West-east arrow design |
+| SIZENESW | North-East & South-west arrow design |
+| IBEAM | Ibeam design |
+| CROSS | Cross design |
+| SIZE | Size adjustment design |
+| UPARROW | Up arrow design |
+| WAIT | Hour-glass design |
+| HAND | Hand design |
+
+====== Sample code ======
+\Fwh\Samples\TestCurs.Prg
+<code clipper>
+// Testing Cursors !!!
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+function Main()
+
+   local oWnd, oBrush, oBar
+   local oCrsArrow, oCrsLogo, oCrsFW, oCrsHand, oCrsClock
+
+   DEFINE BRUSH oBrush RESOURCE "SoftYello"
+
+   DEFINE CURSOR oCrsArrow RESOURCE "OS2"
+   DEFINE CURSOR oCrsLogo  RESOURCE "OS2Logo"
+   DEFINE CURSOR oCrsFW    RESOURCE "FiveWin"
+   DEFINE CURSOR oCrsHand  RESOURCE "Hand"
+   DEFINE CURSOR oCrsClock RESOURCE "Clock"
+
+   DEFINE WINDOW oWnd FROM 5, 5 TO 20, 60 ;
+      TITLE "OS2 Look-Alike..." ;
+      BRUSH  oBrush ;
+      CURSOR oCrsArrow
+
+   DEFINE BUTTONBAR oBar OF oWnd ;
+      CURSOR oCrsHand
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsArrow ;
+      MESSAGE "Use OS2 style cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsLogo ;
+      MESSAGE "Use OS2 Logo cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsFW ;
+      MESSAGE "Use FiveWin style cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsClock ;
+      MESSAGE "Use OS2 clock cursor..."
+
+   @ 4, 2 BUTTON "&Hide" SIZE 80, 25 OF oWnd ACTION oBar:Hide()
+
+   @ 7, 2 BUTTON "&Show" SIZE 80, 25 OF oWnd ACTION oBar:Show()
+
+   SET MESSAGE OF oWnd TO "Changing cursors on the fly!!!"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>  
+
+====== Screen Snapshot ======
+{{:cursor.jpg|:cursor.jpg}}
+
+====== See also ======
+[[fivewin_class_tcursor | Class TCursor]]

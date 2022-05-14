@@ -1,0 +1,37 @@
+
+====== IsWinNT() ======
+
+Verifica si la aplicación se esta ejecutando en Windows NT.
+
+====== Syntaxis ======
+
+IsWinNT() --> lEsWinNT
+ 
+====== Parámetros ======
+
+| <> | Ninguno.  |
+
+====== Devuelve ======
+
+| <lEsWinNT> | Si la aplicacion se esta ejecutando en Windows NT, retorna .T., de lo contrario retorna .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( iif( IsWinNT(), "Ejecutandose en Windows NT", "No se esta ejecutando en windows NT" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\WNDIS.C   
+
+====== Ver también ======
+
+[[fivewin_funcion_liswin2000|lIsWin2000()]]
+[[fivewin_funcion_liswin64|lIsWin64()]]
+[[fivewin_funcion_liswin95|lIswin95()]]
+[[fivewin_funcion_liswinxp|lIsWinXP()]]
+[[fivewin_funcion_liswinvista|lIsWinVista()]]

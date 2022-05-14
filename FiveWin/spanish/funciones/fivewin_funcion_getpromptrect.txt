@@ -1,0 +1,82 @@
+GetPromptRect()
+
+
+GetPromptRect()
+ Previous  Top  Next
+
+Returns the coordinate of a prompt.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetPromptRect( <hDC>, <cPrompt>, <hFont> ) --> aRect 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ <cPrompt> The prompt. 
+
+
+ 
+
+
+ <hFont> The handle of the font of the prompt. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <aRect> The coordinates of the prompt. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\DRAWICON.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

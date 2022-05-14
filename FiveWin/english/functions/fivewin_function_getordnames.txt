@@ -1,0 +1,96 @@
+GetOrdNames()
+
+
+
+GetOrdNames()
+
+ Previous  Top  Next
+
+
+
+
+Returns an array with all index TAGs names
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetOrdNames() --> aTagNames 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aTagNames> Array with all the labels of the file of indexes 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TDICT.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\DBTOOLS.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

@@ -1,0 +1,72 @@
+====== FindWindow() ======
+It searches for a window and returns its handle, if found.
+
+====== Syntax ====== 
+FindWindow(<cClassName>,   <cTitle> ) --> hWnd  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cClassName> | Name of the window class. In Fivewin, by default it is TWINDOW  |
+| <cTitle> | Title of the window.  |
+
+====== Return ====== 
+^Returns^Description^
+|hWnd| Handle of the window if found. Otherwise is nil  |
+
+====== Observations ======
+Observation Child doesn't work with windows  
+
+====== Example ======
+<code clipper>
+// Sample showing how to activate and to close an external application
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   WinExec( "Calc" )        // Let's execute the calculator
+
+   MsgInfo( "Now we will close the calculator" )
+
+   SendMessage( FindWindow( 0, "Calculator" ), WM_CLOSE )
+
+   MsgInfo( "Closed Calculator" )
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+** Sample 2**
+
+<code clipper>
+#include "FiveWin.ch" 
+#define GW_CHILD      5 
+#define GW_HWNDNEXT   2 
+//----------------------------------------//
+FUNCTION Main() 
+
+ LOCAL oWnd, hWnd, hCtrl, cClassName, cTitle 
+ cTitle := PADR("TEST", 200) 
+ IF MsgGet( "Enter the title os an open window", "Title:", @cTitle) 
+    hWnd := FindWindow( 0, ALLTRIM(cTitle)) 
+    IF hWnd <= 0 
+       MsgInfo("Could not find the specified window") 
+    ELSE 
+       hCtrl := GetWindow( hWnd, GW_CHILD ) 
+       WHILE hCtrl != 0 
+             cClassName := Upper(GetClassName(hCtrl)) 
+             IF cClassName = "EDIT" 
+                ? cClassName+"  "+GetWindowText(hCtrl) 
+             ENDIF 
+             hCtrl = GetWindow( hCtrl, GW_HWNDNEXT ) 
+       END 
+    ENDIF 
+ ENDIF 
+RETURN NIL 
+</code>
+
+====== Source Code ====== 
+SOURCE\WINAPI\WNDIS.C   
+
+====== See Also ====== 

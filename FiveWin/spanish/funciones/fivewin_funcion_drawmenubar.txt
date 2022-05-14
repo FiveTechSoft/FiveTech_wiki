@@ -1,0 +1,27 @@
+
+====== DrawMenuBar() ======
+
+Se señala a la barra horizontal de menú
+
+====== Sintaxis ======
+ 
+ DrawMenuBar( <hMenu> ) --> nil
+
+====== Parámetros ======
+
+|<hMenu>| controlador de la ventana donde se va a pintar el menú.| 
+
+====== Retorno ======
+
+ nil
+
+====== Ejemplo ======
+
+====== Código Fuente ======
+ 
+ SOURCE\FUNCTION\MENUS.C 
+
+====== Ver también ======
+
+[[fivewin_funcion_MenuDrawItem|MenuDrawItem()]]
+

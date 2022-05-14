@@ -1,0 +1,101 @@
+====== OutPortWord() ====== 
+
+
+
+OutPortWord()
+
+
+
+
+
+
+Sends a word (2 bytes) to a hardware port
+
+
+
+====== Syntax ======
+
+
+
+
+
+ OutPortWord( <nPort>, <nWord> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+<nPort> The hardware port number (one word: two bytes) to read a word
+from.
+
+
+
+<nWord> A numeric value corresponding to the read word.
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil. 
+
+
+ 
+
+
+ 
+
+
+
+Comments:
+
+
+
+
+
+ Use these functions only to access hardware ports. Communication ports
+must be accessed using special API comm functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\\WINAPI\\InOut.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

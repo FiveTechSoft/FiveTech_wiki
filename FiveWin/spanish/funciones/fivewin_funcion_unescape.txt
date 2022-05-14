@@ -1,0 +1,101 @@
+UnEscape()
+
+
+
+UnEscape()
+
+ Previous  Top  Next
+
+
+
+
+Transforms characters hexadecimales to text ASCII
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ UnEscape( <cText> ) --> cString 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cText> String to transform. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cString> Transformed string. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ When we receive a client's data or a web server it can happen that we
+receive characters hexadecimals blended with text ASCII. These characters
+you they transform to their corresponding ASCII with this function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\TWEBSERV.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

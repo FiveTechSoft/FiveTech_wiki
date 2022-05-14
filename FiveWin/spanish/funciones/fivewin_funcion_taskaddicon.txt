@@ -1,0 +1,66 @@
+TaskAddIcon()
+
+
+TaskAddIcon()
+ Previous  Top  Next
+
+Adds an icon to the taskbar.
+
+Syntax
+
+
+ TaskAddIcon( <oWnd>, <oIcon>, <cToolTip> ) --> oNotifyIconData 
+
+
+ 
+
+
+ 
+Parameters
+
+
+ <oWnd> The parent window. 
+
+
+ <oIcon> The icon to show on the taskbar. 
+
+
+ <cToolTip> The tooltip for the icon. 
+
+
+ 
+
+Returns
+
+
+ <oNotifyIconData> The handle of the added taskbar icon. 
+
+
+ 
+
+
+ 
+Sample
+
+
+ 
+
+
+ 
+
+
+ 
+Source code
+
+ 
+
+
+ SOURCE\WINAPI\SHELLAPI.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

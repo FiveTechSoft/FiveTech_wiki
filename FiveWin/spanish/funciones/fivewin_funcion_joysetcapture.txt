@@ -1,0 +1,22 @@
+
+====== JoySetCapture() ======
+JoySetCapture()
+
+Causes joystick messages to be sent to the specified window.
+====== Sintaxis ======
+ JoySetCapture( <hWnd>, <nIdJoy>, <nPollingMS>, <lChanged> ) --> nRetCode 
+====== Parámetros ======
+  <hWnd>        Handle of window that receives messages 
+  <nIdJoy>      Identifies device to capture 
+  <nPollingMS>  Polling rate in milliseconds 
+  <lChanged>    Send messages only above threshold 
+====== Devuelve ======
+ <nRetCode> Returns JOYERR_NOERROR if successful or one of the following error values: 
+     MMSYSERR_NODRIVER   The joystick driver is not present.   
+     JOYERR_NOCANDO      Cannot capture joystick input because a required service (such as a Windows
+                              timer) is unavailable.   
+     JOYERR_UNPLUGGED      The specified joystick is not connected to the system.   
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\JOYSTICK.C 
+====== Ver también ======

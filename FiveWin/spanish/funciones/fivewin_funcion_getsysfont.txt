@@ -1,0 +1,14 @@
+
+====== GetSysFont() ======
+GetSysFont()
+
+Retrieves the Windows default font facename
+====== Sintaxis ======
+ GetSysFont() --> cWindowsFontFacename 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <cWindowsFonFaceName> Windows default font facename. 
+====== Código fuente ======
+ SOURCE\WINAPI\GetSysIn.prg 
+====== Ver también ======

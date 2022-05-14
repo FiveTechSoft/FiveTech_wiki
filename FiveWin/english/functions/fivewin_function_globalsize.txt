@@ -1,0 +1,100 @@
+====== GlobalSize() ====== 
+
+
+
+
+
+
+It returns the real size of a block of memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GlobalSize( <hMem> ) --> nSize 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMem> Handle of block of memory of which we want to know its real size. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nSize> Real size of the block of specified memory 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ In some occasions the real size of the block of memory requested it is
+bigger than the one that we have reserved. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

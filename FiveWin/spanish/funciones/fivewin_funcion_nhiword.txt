@@ -1,0 +1,20 @@
+
+====== nHiWord() ====== 
+nHiWord
+
+Returns the HiWord of a long (four bytes)
+====== Sintaxis ======
+ nHiWord( <nLong> ) --> nHiWord 
+====== Parámetros ======
+ <nLong> A numeric (4 bytes) value 
+====== Devuelve ======
+ <nHiWord> A numeric (2 byte) value 
+
+Observations:
+
+ A long is made of: 
+ LONG = LOW_WORD + HIGH_WORD 
+====== Código fuente ======
+ SOURCE\FUNCTION\HiLoWord.c 
+====== Ver también ======
+ nLoByte() nHiByte() nLoWord()

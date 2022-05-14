@@ -1,0 +1,83 @@
+====== IsWin95() ======
+
+
+
+
+
+It checks if the version of Windows is the 95.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsWin95() --> lWin95 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lWin95> This function returns .t. if we are executing the one under
+Windows 95 program 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

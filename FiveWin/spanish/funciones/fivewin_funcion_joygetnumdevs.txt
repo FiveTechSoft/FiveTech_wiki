@@ -1,0 +1,17 @@
+
+====== JoyGetNumDevs() ======
+JoyGetNumDevs()
+
+Number of joystick devices supported by the system.
+====== Sintaxis ======
+ JoyGetNumDevs() --> nNumDevs 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nNumDevs> Returns the number of joystick devices supported by the
+joystick driver. If no driver is present, the function returns zero. 
+====== Ejemplo ======
+ SAMPLES\TESTJOY.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\JOYSTICK.C 
+====== Ver también ======

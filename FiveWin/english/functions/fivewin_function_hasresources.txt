@@ -1,0 +1,79 @@
+====== HasResources() ======
+
+
+
+It checks if a file contains resources
+
+
+
+====== Syntax ======
+
+
+
+
+
+ HasResources( <cExeName> ) --> lHasResources 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cExeName> File to check. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lHasResources> It returns true if the file contains resources, false in
+case contrary. Equally it informs by means of a dialog box when the file
+is not a format file Windows or when the file doesn't contain resources. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

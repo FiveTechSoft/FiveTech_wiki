@@ -1,0 +1,17 @@
+====== GetActiveWindow() ====== 
+ Obtiene el identificador de la ventana activa
+====== Sintaxis ======
+ GetActiveWindow() --> hWnd 
+
+
+ Esta función obtiene el identificador de la ventana activa
+====== Parámetros ======
+ Ninguno
+====== Devuelve ======
+ <hWnd> El identificador de la ventana o NULL si no hay ninguna venta activa
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\ActWnd.c 
+====== Ver también ======
+

@@ -1,0 +1,142 @@
+====== MoveTo() ======
+
+
+Changes the painting coordinates
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MoveTo( <hDC>, <nCol>, <nRow> ) --> nLOldPos 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> The handle of the device context where where are going to paint. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nCol>, <nRow> The coordinates where to start painting. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLOldPos> A numeric LONG ( four bytes ) value that stores the old
+position. The LOWORD( <nLOldValue> ) contains the old nCol and the
+HIWORD( <nLOldValue> ) contains the old nRow. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Some API GDI painting functions requires to previously determinate the
+position where to start painting. MoveTo() lets do that. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Lines.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\MoveTo.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ LineTo() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

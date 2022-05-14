@@ -1,0 +1,114 @@
+FWBrushes()
+
+
+
+
+FWBrushes()
+
+ Previous  Top  Next
+
+
+
+
+Creates any of the predefined FiveWin bitmaps
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FWBrushes( <nBrushId> ) --> hBitmap 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This is a FiveWin internal function that creates a bitmap to build the
+FiveWin extended style brushes. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <nBrushId> A numeric identifier to select the predefined type of brush. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hBitmap> The handle of the just created bitmap. FiveWin uses it to
+build the brush. The destruction of this bitmap is done automatically. 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ FWBitmap() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

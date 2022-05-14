@@ -1,0 +1,24 @@
+
+====== DDEFreeStringHandle() ======
+
+Libera a una cadena de título en la aplicación que lo llamada.
+
+====== Sintaxis ======
+ 
+ DDEFreeStringHandle( <hInst>, <hText> ) --> lSuccess
+
+
+====== Parámetros ======
+
+|<hInst> | identificador de la instancia |
+|<hText> | Título de la cadena  |
+
+====== Retorno ======
+
+ 
+====== Ejemplo ======
+
+ 
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DDEML.C

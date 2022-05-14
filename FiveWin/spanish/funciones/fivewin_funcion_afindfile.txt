@@ -1,0 +1,46 @@
+====== aFindFile() ======
+
+Localiza archivos en un determinado directorio
+
+
+====== Sintaxis ======
+
+aFindFile( <cFileName>, <cPath>, <aResult> ) --> aResult  
+
+
+====== Parámetros ======
+
+| <cFileName> | Archivo a buscar.  |  
+| <cPath> | Ruta para iniciar la búsqueda.  |  
+| <aResult> | Matriz en donde se guardará el resultado de la búsqueda.  |  
+
+====== Devuelve ======
+
+| <aResult> | Matriz con el resultado de la búsqueda. |
+
+====== Observaciones ====== 
+
+Esta funcion actúa recursivamente sobre la ruta y los directorios dependientes que hay en la ruta dada.
+
+====== Ejemplo ======
+
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   LOCAL x
+   LOCAL aResult := {}
+   
+   aResult := aFindFiles( "readme.txt","c:")
+         
+   FOR x:=1 to len( aResult )
+      ?aResult[x]
+   NEXT      
+   
+RETURN   
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\FILENAME.PRG
+

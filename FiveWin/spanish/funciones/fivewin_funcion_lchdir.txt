@@ -1,0 +1,35 @@
+
+====== lChDir() ======
+
+Cambia de un directorio a otro.
+
+====== Syntaxis ======
+
+lChDir( <cDirectorio> ) --> lCambio  
+ 
+====== Parámetros ======
+
+| <cDirectorio> | Ruta y nombre del directorio a cambiar.  |
+
+====== Devuelve ======
+
+| <lCambio> | Si el directorio existe y lChDir pudo cambiarse a ese directorio, retorna .T., de lo contrario retorna .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( lChDir( "C:\Windows" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\FUNCTION\CHDIR.C  
+
+====== Ver también ======
+
+[[fivewin_funcion_lrmdir|lRmDir()]]
+[[fivewin_funcion_lmkdir|lMkDir()]]
+[[fivewin_funcion_lisdir|lIsDir()]]

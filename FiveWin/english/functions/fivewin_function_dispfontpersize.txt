@@ -1,0 +1,26 @@
+====== DispFontPerSize() ======
+Returns the ratio between the standard font used and the normal font.
+
+====== Syntax ======
+DispFontPerSize() --> nRatio 
+ 
+====== Parameters ======
+NONE 
+
+====== Returns ======
+^Returns^Description^
+|<nRatio>| The calculated ratio.|
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch"
+//-----------------------------------//
+Function Main()
+  local nRatio := DispFontPerSize() 
+  MsgInfo(nRatio) // Returns 1.000000
+
+Return NIL
+</code>
+
+====== Source Code ======
+SOURCE\FUNCTION\HARBOUR.PRG 

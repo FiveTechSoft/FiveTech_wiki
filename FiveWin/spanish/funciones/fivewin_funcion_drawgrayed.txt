@@ -1,0 +1,22 @@
+====== DrawGrayed() ======
+
+Dibuja un bitmap en modo "deshabilitado"
+
+====== Sintaxis ======
+ DrawGrayed( <hDC>, <hBitmap>, <nRow>, <nCol> ) --> nil 
+
+Usado para dibujar los botones deshabilitados en barras de botones, etc
+
+====== Parámetros ======
+|hDC| Disposivo de contexto del control que contiene el bitmap| 
+|hBitmap| Manjador del bitmap que será dibujado en tonos grises| 
+|nRow| Coordenada superior| 
+|nCol| Coordenada izquierda|
+
+====== Devuelve ======
+ nil 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\BMPDRAW.C 
+====== Ver también ======

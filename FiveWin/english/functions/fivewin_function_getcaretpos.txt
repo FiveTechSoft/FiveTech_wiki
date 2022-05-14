@@ -1,0 +1,20 @@
+====== GetCaretPos() ======
+Retrieves the current position of the caret.  This function returns the position of the caret. 
+
+====== Syntax ======
+GetCaretPos() --> aPoint 
+
+====== Parameters ======
+None. 
+
+====== Returns ======
+^Returns^Description^
+|<aPoint>| A Clipper array with two numeric values representing a POINT structure: { nRow, nCol }|
+
+====== Source Code ======
+SOURCE\WINAPI\GetCaret.c 
+
+====== See also ====== 
+[[fivewin_function_CreateCaret|CreateCaret()]], 
+[[fivewin_function_DestroyCaret|DestroyCaret()]], 
+[[fivewin_function_ShowCaret|ShowCaret()]]

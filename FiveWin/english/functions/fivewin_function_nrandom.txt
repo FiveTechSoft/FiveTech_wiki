@@ -1,0 +1,129 @@
+nRandom()
+
+
+
+nRandom()
+
+ Previous  Top  Next
+
+
+
+
+Generates a random number
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nRandom( [<nRange>] ) --> nRandom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nRange> An optional numeric value to set the range from where we want
+to generate a random number. By default a 65535 numeric range is used. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nRandom> A random number in the range 0 - <nRange>. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+ 
+
+
+ 
+
+
+ MsgInfo( nRandom( 100 ) ) // returns any number 
+
+
+ 
+
+
+ 
+
+
+ // in the range 0 - 100 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Random.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Numeric manipulation functions 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

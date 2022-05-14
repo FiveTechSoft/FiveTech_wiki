@@ -1,0 +1,19 @@
+
+====== DragFinish() ======
+DragFinish()
+
+Finish the dragfile operation
+====== Sintaxis ======
+ DragFinish( <hDrop> ) --> nil 
+====== Parámetros ======
+ <hDrop> Handle that identifies the process of drag and drop 
+====== Devuelve ======
+ nil 
+
+====== Samples ======
+
+ CLASSES\WINDOW.PRG 
+
+====== Código fuente ======
+ SOURCE\WINAPI\DROPFILE.C 
+====== Ver también ======

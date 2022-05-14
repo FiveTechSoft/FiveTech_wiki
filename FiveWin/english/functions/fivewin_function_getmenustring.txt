@@ -1,0 +1,62 @@
+
+======  GetMenuString() ====== 
+
+
+
+
+It returns the text string of the specified menu item.
+
+====== Syntax ======
+
+
+ GetMenuString( <hMenu>, <nId>, <nFlags> ) --> cText 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hMenu> Handle of the menu 
+
+
+ 
+
+
+ <nId> Identifier position of the MenuItem 
+
+
+ 
+
+
+ <nFlags> Type of identification of the menuitem 
+
+
+ 
+
+
+MF_BYCOMMAND   0   In which case nId will be the idenfier of the one 0
+menuitem   
+MF_BYPOSITION   1024   In which case nId will be inside the position of
+the menu that occupies the menuitem counting from 0.   
+
+
+====== Returns ======
+
+
+ <cText> The text string of the specified menu item. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+   SOURCE\FUNCTION\MENUS.C
+
+
+====== See also ======
+

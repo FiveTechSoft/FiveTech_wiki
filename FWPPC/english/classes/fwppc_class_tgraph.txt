@@ -1,0 +1,94 @@
+====== Class TGraph ======
+
+Graphics class                                                                 
+Inherits from TControl                                                         
+====== DATA ======
+|l3D|Show 3D|
+|lxGrid|Show grid|
+|lyGrid|Show grid|
+|lDotted|Grid dotted|
+|lxVal|Show xValues|
+|lyVal|Show yValues|
+|nBarD|Deep bar|
+|lTitle|Show title|
+|lLegends|Show legends|
+|nType|Graph type|
+|cTitle|Graph title|
+|cPicture|Mask values|
+|aSeries|Series|
+|aData|Data|
+|aSTemp|Series|
+|aDTemp|Data|
+|aYVals|yValues|
+|aYTemp|yValues|
+|aFont|Title, xFont, yFont, Legends, Subtitle, xTitle,|
+|yTitle,|Values|
+|nClrT|Color titles|
+|nClrX|Color x labels|
+|nClrY|Color y labels|
+|nClrL|Color legends|
+|nClrV|Color values|
+|nClrST|Color subtitle|
+|nClrXT|Color xTitle|
+|nClrYT|Color yTitle|
+|nPieX|Pie graph pos|
+|nPieSt|Start pie (angle)|
+|nPoint|Point type|
+|nBarSep|Bar separator|
+|nXRanges|n Ranges|
+|nValues|Pie values (Serie/Period)|
+|lViewVal|View values|
+|nClr|Pen color|
+|hPen|Pen handle|
+|hOldPen|Old pen handle|
+|nPenWidth|Graph line pen width|
+|lBorders|Bar borders|
+|lcTitle|Center title|
+|nClrGrid|Grid color|
+|nClrBack|Background color|
+|nClrBLeg|Back legend color|
+|cBitmap|Background bitmap|
+|cSubTit|Subtitle|
+|cTitX|xTitle|
+|cTitY|yTitle|
+|lPopUp|PopUp menu|
+|lSelView|Select view option|
+|lSelBack|Select back option|
+|nLanguage|Language (1-English, 2 Spanish, 3-...)|
+|aSTitle|Shadow titles|
+|lBordLeg|Legend border|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Initiate|Initialize the control|
+|Default|Default initialization of the control|
+|Paint|Paints the control|
+|Display|Displays the control|
+|DrawBar|Draws a bar|
+|DrawBox|Draws a box|
+|DrawLine|Draws a line|
+|DrawPoint|Draws a point|
+|DrawPie|Draws a pie|
+|DrawPoly|Draws a polyline|
+|AddSerie|Adds a serie|
+|SelSerie|Selects a serie|
+|SetYVals|Sets yVals|
+|SelPeriod|Selects a period|
+|ClrShadow|Changes the shadow color|
+|CountPoint|???|
+|Destroy|Destroys the control|
+|End|Ends the control|
+|FillRect|Fills a rect|
+|CreatePen|Creates a pen|
+|DeletePen|Deletes a pen|
+|nMax|Returns the maximum data value|
+|SaveToBmp|Save graph to BMP file|
+|CopyToClipBoard|Copy graph to clipboard|
+|PopMenu|Popup menu options|
+|Print|Print graph|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TGRAPH.PRG

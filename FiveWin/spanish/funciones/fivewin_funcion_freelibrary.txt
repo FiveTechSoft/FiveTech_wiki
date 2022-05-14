@@ -1,0 +1,115 @@
+FreeLibrary()
+
+
+
+
+FreeLibrary()
+
+ Previous  Top  Next
+
+
+
+
+Free a DLL library in use or decrements its counter use
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FreeLibrary( <hInstance> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function decreases by one the reference count of the loaded library
+module. When the reference count reaches zero, the memory occupied by the
+module is freed. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <hInstance> The handle of the DLL. It is the value returned by
+LoadLibrary(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing. 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Dll.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ LoadLibrary() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

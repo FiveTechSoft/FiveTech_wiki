@@ -1,0 +1,165 @@
+====== ScreenToClient() ======
+
+
+Converts screens coordinates in Client coordinates
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ScreenToClient( <hWnd>, <aPoint> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function converts the screen coordinates of a given point on the
+screen to client coordinates. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Is the handle of the window whose client area is used for the
+conversion. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aPoint> An array of two elements that holds the coordinates of the
+point. The two elements of this array are transformed acordingly with the
+new calculated values. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing. The result is placed inside the same array. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ local aPoint := { 100, 120 } 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ScreenToClient( oWnd:hWnd, aPoint ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ? aPoint[ 1 ] 
+
+
+ 
+
+
+ ? aPoint[ 2 ] 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Clt2Scr.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ ClientToScreen() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

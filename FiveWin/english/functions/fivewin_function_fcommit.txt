@@ -1,0 +1,79 @@
+Commits a file whose handle is provided. 
+====== Syntax: ======
+FCommit( <hFile> ) --> nil  
+====== Parameters: ======
+| <hFile> |The handle of the file to commit.  |
+====== Returns: ======
+| Nil|
+====== Sample: ======
+ <code clipper>
+ // Many thanks to Jim Gale for his superb feed-back
+
+#include "FiveWin.ch"
+#include "struct.ch"
+
+//------------------------------------------------------------------------//
+
+function Main()
+
+   local cLongName := Space( 256 )
+   local nNamePos  := 0
+   local hFile
+
+   lMkDir( "this is a long name directory" )
+
+   LCreat( "this is a long filename file" )
+
+   MsgInfo( GetFullPathName( "thisis~1", Len( cLongName ),;
+                             @cLongName, @nNamePos ) )
+   MsgInfo( cLongName )
+   MsgInfo( nNamePos )   // this returns an invalid value
+
+   MsgInfo( "LongName: " + GetLongFileName( "thisis~1" ) )
+
+   hFile = FOpen( "tutor01.prg" )
+   FCommit( hFile )
+   FClose( hFile )
+
+   MsgInfo( "ok" )
+
+return nil
+
+//------------------------------------------------------------------------//
+
+function GetLongFileName( cShortName )
+
+   local oWin32FindData
+
+   STRUCT oWin32FindData
+      MEMBER nFileAttributes  AS DWORD
+      MEMBER nCreationTime    AS STRING LEN 8
+      MEMBER nLastReadAccess  AS STRING LEN 8
+      MEMBER nLastWriteAccess AS STRING LEN 8
+      MEMBER nSizeHight       AS DWORD
+      MEMBER nSizeLow         AS DWORD
+      MEMBER nReserved0       AS DWORD
+      MEMBER nReserved1       AS DWORD
+      MEMBER cFileName        AS STRING LEN 260
+      MEMBER cAltName         AS STRING LEN  14
+   ENDSTRUCT
+
+   FindFirstFile( cShortName, oWin32FindData:cBuffer )
+
+return oWin32FindData:cFileName
+
+//------------------------------------------------------------------------//
+
+DLL32 Function GetFullPathName( lpszFile AS LPSTR, cchPath AS DWORD,;
+               lpszPath AS LPSTR, @nFilePos AS PTR ) AS DWORD ;
+               PASCAL FROM "GetFullPathNameA" LIB "kernel32.dll"
+
+DLL32 FUNCTION FindFirstFile( cFile AS LPSTR, cWin32DataInfo AS LPSTR ) ;
+               AS LONG PASCAL FROM "FindFirstFileA" LIB "kernel32.dll"
+
+//------------------------------------------------------------------------//
+  
+ </code>
+====== Source code: ======
+ SOURCE\FUNCTION\FILES.C   
+

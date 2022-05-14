@@ -1,0 +1,82 @@
+
+====== Format Get ======
+
+The format Get control is a enhanced TMulitGet control with extended features like alignment, colors, use of 
+different fonts on the same control and no memory limitations. 
+
+** Defining a FORMAT GET object from source code: **
+
+<code clipper>
+@ <nRow>, <nCol> FORMAT GET [ <oFGet> VAR ] <uVar> ;  
+ [ OF, WINDOW, DIALOG <oWnd> ] ;  
+ [ MULTILINE, MEMO, TEXT ] ;  
+ [ COLOR,COLORS> <nClrFore> [,<nClrBack>] ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FONT <oFont> ] ;  
+ [ HSCROLL ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ CENTER, CENTERED ] ;  
+ [ RIGHT ] ;  
+ [ READONLY, NO MODIFY ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ DESIGN ] ;  
+ [ NO BORDER, NOBORDER ] ;  
+ [ NO VSCROLL ]  
+</code>
+
+====== Redefining a FORMAT GET object from resources: ======
+<code clipper>
+REDEFINE FORMAT GET [ <oFGet> VAR ] <uVar> ;  
+ [ MULTILINE, MEMO, TEXT ] ;  
+ [ ID <nId> ] ;  
+ [ OF, WINDOW, DIALOG <oDlg> ] ;  
+ [ HELPID, HELP ID <nHelpId> ] ;  
+ [ COLOR,COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ FONT <oFont> ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ READONLY, NO MODIFY ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON CHANGE <uChange> ]         
+</code>
+
+^Parameters^Description^
+| <nRow>, <nCol> | The coordinates of the object. We simulate Text coordinates. |
+| <oFGet> | A reference to the Format Get Object. |
+| <nClrFore>, <nClrBack> | Selector foreground and background colors |
+| <oWnd> | The container dialog of the control. |
+| <cMsg> | The associated message of this control |
+| <nWidth>, <nHeigth> | The dimensions of the control. |
+| <oFont> | The default font of the object |
+| <oCursor> | Cursor Object attached to the control |
+| <uValid> | An expression to validate when the control is going to lose the focus. |
+| <uWhen> | It is an expression to evaluate indicating if the control is or not enable. |
+| <cMsg>  | The associated message of this control |
+| <nId> | The numeric resource identifier of the object. Is has to be assigned from the resource editor. |
+| <nHelpId> | The help topic identifier of the control |
+| <uChange> | An action to be performed when the control changes |
+
+**CLAUSES **
+
+^Clause^Description^
+| MULTILINE, MEMO, TEXT | To use a multiple lines Format Get control to allow memo editing. | 
+| UPDATE | This control may be updated from TDialog:Update() METHOD | 
+| CENTER, CENTERED | If the Format Get containts has to appear centered | 
+| RIGHT | If the Format Get containts has to appear right justified. | 
+| PIXEL | To use pixel coordinates instead of Text coordinates. | 
+| HSCROLL | Control has an horizontal scroll bar | 
+| DESIGN | Allows the user to move and resize with the mouse | 
+| READONLY, NO MODIFY | Edit is not allowed | 
+| NO BORDER, NOBORDER | Control has no borders | 
+| NO VSCROLL | Control has not a vertical scroll bar | 
+
+
+
+Samples: fw\samples\testfget.prg 

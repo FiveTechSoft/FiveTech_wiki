@@ -1,0 +1,24 @@
+
+====== MsgInfo() ====== 
+MsgInfo()
+
+MessageBox information style
+====== Sintaxis ======
+ MsgInfo( <cMsg> [,<cTitle>] ) --> nil 
+====== Parámetros ======
+  <cMsg> The message to display 
+  <cTitle> The title of the dialogbox. By default "Information" 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function simplifies the management of the standard WinApi function
+MessageBox() with the proper style to show the standard Info icon. 
+====== Ejemplo ======
+ SAMPLES\TestMsg.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\MsgBox.c 
+====== Ver también ======
+ MsgAlert() MsgStop() MsgAbout() MsgYesNo() MsgRetryCancel() MsgBeep()
+MsgMeter() MsgGet()

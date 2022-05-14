@@ -1,0 +1,83 @@
+====== Class TButton ====== 
+
+Command buttons Controls. 
+
+Inherits from TControl 
+
+====== DATA ====== 
+
+|bAction|             CodeBlock for the click event.|    
+|lDefault|            The button has default style.|    
+|lProcessing|         If .t. then bAction is been evaluated at this time|    
+
+====== METHODS ====== 
+
+|New|                 Constructor from source code.|    
+|ReDefine|            Constructor for resources.|    
+|cGetPRG|             Generates the source code of the button.|    
+|Click|               Mouse left button event handler.|    
+|Colors|              Overrides control Color() management.|    
+|cToChar|             Generates a data template to build a Dialog.|    
+|GotFocus|            Action to be performed when getting the focus.|    
+|Initiate|            Action to be performed on init.|    
+|KeyDown|             Action to be performed when a key is pressed down.|    
+|LostFocus|           Action to be performed when losing the focus.|    
+|MouseMove|           Action to be performed when moving the mouse over.|
+
+====== example ======
+FWPPC\samples\testbtn.prg
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+   local oBrush
+   local oPopup
+
+   DEFINE BRUSH oBrush COLOR nRGB( 12, 129, 87 )
+
+   DEFINE WINDOW oWnd FROM 1, 10 TO 20, 60 ;
+      TITLE "Testing Buttons from disk" ;
+      BRUSH oBrush
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\exit.bmp" ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "You can place..."
+
+   MENU oPopup POPUP
+      MENUITEM "Test" WHEN .f.
+      MENUITEM "Test" ACTION MsgInfo( "Any action" )
+      MENU
+         MENUITEM "Another" WHEN .f.
+         MENUITEM "More..."
+      ENDMENU
+   ENDMENU
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\Open.bmp" GROUP ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "Any BMP File here..." ;
+      MENU oPopup
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\Cut.bmp" ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "Reading it from disk !!!"
+
+   SET MESSAGE OF oWnd TO FWVERSION + " " + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+====== source code ======
+FWPPC\source\classes\button.prg
+
+====== see also ======
+

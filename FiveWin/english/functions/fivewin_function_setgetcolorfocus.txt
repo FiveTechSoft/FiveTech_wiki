@@ -1,0 +1,103 @@
+====== SetGetColorFocus() ======
+
+
+Activates Gets color change when focused and optionally sets the focus
+color to use.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetGetColorFocus( [<nClrFocus>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nClrFocus>   The optional color used when the Get is focused. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Returns ======
+
+
+
+
+   Nil.
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\tget.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+ 
+
+
+ 
+
+
+ SAMPLES\testget2.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

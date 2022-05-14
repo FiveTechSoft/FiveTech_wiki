@@ -1,0 +1,34 @@
+
+====== lRmDir() ======
+
+Elimina un directorio.
+
+====== Syntaxis ======
+
+lRmDir( <cDirectorio> ) --> lBorrarDirectorio
+ 
+====== Parámetros ======
+
+| <cDirectorio> | Ruta y nombre del nuevo directorio a crear.  |
+
+====== Devuelve ======
+
+| <lBorrarDirectorio> | Si el directorio fue borrado, retorna .T., de lo contrario retorna .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( lRmDir( "C:\Windows\Basura" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\FUNCTION\MKDIR.C  
+
+====== Ver también ======
+[[fivewin_funcion_lchdir|lChDir()]]
+[[fivewin_funcion_lmkdir|lMkDir()]]
+[[fivewin_funcion_lisdir|lIsDir()]]

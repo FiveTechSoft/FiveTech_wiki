@@ -1,0 +1,172 @@
+====== DialogBox creation from source code and redefinition for resources ======
+<code clipper>
+ DEFINE DIALOG <oDlg> ;  
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;  
+ [ TITLE <cTitle> ] ;  
+ [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight>] ;  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ LIBRARY | DLL <hResources> ] ;  
+ [ VBX ] ;  
+ [ STYLE <nStyle> ] ;  
+ [ COLOR | COLORS <nClrText> [,<nClrBack> ] ] ;  
+ [ BRUSH <oBrush> ] ;  
+ [ WINDOW | DIALOG | OF <oWnd> ] ;  
+ [ PIXEL ] ;  
+ [ ICON <oIco> ] ;  
+ [ FONT <oFont> ] ;  
+ [ HELP | HELPID <nHelpId> ]  
+</code> 
+
+
+====== Making the DialogBox work ======
+<code clipper>
+ ACTIVATE DIALOG <oDlg> ;  
+ [ CENTER | CENTERED [IN PARENT] ];  
+ [ NOWAIT | NOMODAL ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON [ LEFT ] CLICK <uClick> ] ;  
+ [ ON INIT <uInit> ] ;  
+ [ ON MOVE <uMoved> ] ;  
+ [ ON PAINT <uPaint> ] ;  
+ [ ON RIGHT CLICK <uRClicked> ] ;  
+ [ RESIZE16 ]  
+</code>
+|<oDlg>|The variable that is going to hold the DialogBox object. It is a 'reference' to the DialogBox object|    
+|<cResName>|The name of the DialogBox inside resource. The resource may be stored in a .RC file or in a .DLL file. Normally you use the 'Rename' option from a resource editor to give a name to the resource element|    
+|<cTitle>|The title of the DialogBox. You may also change the title of a resource DialogBox. This means that you may use the same DialogBox for different purposes by just changing its title|    
+|<nTop>,<nLeft>|The coordinates of the DialogBox when creating the DialogBox from source code|  
+|<nRight>,<nBottom>|The right and bottom coordinates of the DialogBox| 
+|<nWidth>,<nHeight>|The width and height dimensions of the DialogBox| 
+|<hResources>|An optional handle to a resource DLL. This is useful when using several DLLs at the same time that hold different resources. By default this handle is the application handle (when using .RC) or the handle of the DLL when using SET RESOURCES TO..| 
+|<nStyle>|An optional DialogBox style. There are several samples in the SAMPLES\ subdirectory showing you how to manipulate this value. If you are using a DialogBox from a resource then you have to select the style from inside the resource editor| 
+|<nClrText>,<nClrBack>|The fore and back colors of the DialogBox| 
+|<oBrush>|An optional brush to use to fill the surface of the DialogBox|  
+|<oWnd>|An optional container object of the DialogBox. By default we use the window that is currently active. If you want to show DialogBoxes control messages on the bottom line of the screen you have to specify its container| 
+|<oIco>|An optional ICON to show when the DialogBox has been minimized|  
+|<oFont>|An optional Font to use for all the DialogBoxes| 
+|<uWhen>|WHEN clause that permits the DialogBox to start executing| 
+|<uValid>|VALID clause to control the ending of the DialogBox| 
+|<nHelpId>|The Help topic identifier of the dialog| 
+|<uClick>|Optional action to perform when the left mouse button is clicked over the DialogBox surface| 
+<code clipper>
+Three parameters: nRow, nCol, nFlags are automatically supplied:    
+      nRow      The row position (in pixels) where the mouse was when it was clicked.    
+      nCol The col position (in pixels) where the mouse was when it was clicked.    
+      Nflags      A numeric flag which contains information about special keys being pressed at the same time: 
+(values are'ORed') Value Description    
+   MK_CONTROL      Set if CTRL key is down. 
+   MK_MBUTTON      Set if middle button is down.    
+   MK_RBUTTON      Set if right button is down. 
+   MK_SHIFT      Set if SHIFT key is down.    
+
+   #define MK_LBUTTON      0x0001    
+   #define MK_RBUTTON      0x0002    
+   #define MK_CONTROL      0x0008 
+   #define MK_MBUTTON      0x0010    
+</code>
+   You may inspect them using FiveWin lAnd() function:     
+<code clipper>
+      if lAnd( nFlags, MK_CONTROL )    
+      If lAnd( nFlags, MK_SHIFT, MK_CONTROL )    
+      ...    
+</code>
+|<uInit>|An optional action to perform when the DialogBox is created but not shown on the screen. In this situation the DialogBox behaves like a Window, and we may do all kind of operations as we do with a window, (like placing a ButtonBar on it!)|    
+|<uMoved>|An optional action to be performed when the DialogBox is moved|     
+|<uPaint>|An optional action to be performed when the DialogBox has just been painted|    
+|<uRClicked>|An optional action to be performed when the right mouse button has been clicked on the DialogBox surface. You can use the same three parameters as in <uClick>|    
+
+
+====== CLAUSES ======
+
+|VBX|You may specify this when using a VBX control in the DialogBox|    
+|PIXEL|When you want the DialogBox coordinates (creating the DialogBox from source code) to be in pixels|    
+|CENTER CENTERED [IN PARENT]|If you want the DialogBox to appear centered on the screen. IN PARENT clause would center it based on its parent dialog/window|    
+|NOWAIT NOMODAL|If the DialogBox has to behave NonModal. NonModal means that other DialogBoxes may be working at the same time!| 
+
+NonModal programming requires some special care:    
+
+====== Warning ======  
+
+-Take care of local variables: If you are using some locals then remember you will go out of the scope of the function where the DialogBox nonmodal has been created and this may cause problems (only if you don't 
+remember it). Clipper works perfectly in these circumstances as it keeps 'live references' of the local variables 
+inside the codeblocks. But only these will be 'alive' out of the function.    
+
+-The same DialogBox may be executed several times. Be aware of your DBF management. In these circumstances your computer is like a NetWork! because a DBF may be opened several times. It is a good idea to start learning NetWork programming -it is really easy!-    
+
+-Normally we recommend that you not develop NonModal applications for novice Windows-users. As soon as your clients get more and more used to Windows, NonModal programming is highly recommended. See MDI programming (in this documentation) for a very elegant and powerful NonModal programming style.    
+
+|RESIZE16|If the DialogBox has to be resized in 32 bit for mimicking the 16 bit metrics| 
+
+====== Sample Code ======
+<code clipper>
+// Our first DialogBox sample
+
+#include "FiveWin.ch"
+
+FUNCTION Main()
+
+   local oDlg, oIco, cTest := "Hello world!   "
+
+   DEFINE ICON oIco FILE "..\icons\fivewin.ico"
+
+   DEFINE DIALOG oDlg TITLE "I am a DialogBox" COLOR "W+/B" ;
+      ICON oIco
+
+   @ 1, 3 GET cTest
+
+   @ 3, 5 BUTTON "&Ok" SIZE 40, 12 ;
+      ACTION MsgInfo( "Any action here!" ) DEFAULT
+
+   @ 3, 16 BUTTON "&Cancel" SIZE 40, 12 ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      VALID MsgYesNo( "Do you want to end ?" )
+
+return nil
+</code>  
+
+====== Screen Snapshot ======
+{{:dialog.jpg|:dialog.jpg}}
+
+====== Sample Code 2 ======
+<code clipper>
+// More samples combining windows and dialogboxes
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "A Window"
+
+   ACTIVATE WINDOW oWnd ;
+      ON INIT ShowDlg()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function ShowDlg()
+
+   local oDlg
+
+   DEFINE DIALOG oDlg FROM 5, 5 TO 20, 40 TITLE "A Dialog Box"
+
+   ACTIVATE DIALOG oDlg NOWAIT ;
+      ON PAINT oDlg:Say( 1, 1, "Hello" ) ;
+      VALID ( MsgInfo( "Valid Clause" ), .t. )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code> 
+
+====== Screen Snapshot 2 ======
+{{:dialog_2.jpg|:dialog_2.jpg}} 
+
+====== See also ======
+[[fivewin_class_tdialog|Class TDialog]]

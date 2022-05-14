@@ -1,0 +1,22 @@
+====== Definición de un Control Pluma ====== 
+<code clipper>
+DEFINE PEN <oPen> ;  
+   [ STYLE <nStyle> ] ;  
+   [ WIDTH <nWidth> ] ;  
+   [ COLOR <nRGBColor> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ]  
+</code>  
+====== Activación de un Control Pluma ====== 
+<code clipper>
+ ACTIVATE PEN <oPen>  
+</code>   
+
+====== Parámetros ====== 
+|<oPen>       |Referencia al Objecto Pluma.|
+|<nStyle>     |Estilo de pluma opcional.|
+|<nWidth>     |Ancho opcional de la Pluma.|
+|<nRGBColor>  |Color de la pluma como número RGB o como cadena xBase.|
+|<oWnd>       |Referencia a la ventana propietaria (contenedor) de la Pluma.|
+
+====== Ver también ======
+[[fivewin_clase_tpen|Class TPen]]

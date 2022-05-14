@@ -1,0 +1,23 @@
+====== VirtualRdd() ====== 
+It returns a reference to an object defined TRDD 
+
+====== Syntax ====== 
+
+ VirtualRdd() --> oRdd  
+ 
+====== Parameters ====== 
+
+ None  
+ 
+====== Returns ====== 
+
+|<oRdd>| TRdd object|  
+
+====== Sample ======
+ 
+====== Source Code ====== 
+
+ SOURCE\CLASSES\TRDD.PRG  
+
+====== See Also ======
+ 

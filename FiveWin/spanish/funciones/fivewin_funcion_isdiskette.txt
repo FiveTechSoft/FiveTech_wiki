@@ -1,0 +1,33 @@
+
+====== IsDiskette() ======
+
+Indica si una unidad de disco es un Diskette.
+
+====== Syntaxis ======
+
+IsDiskette( [<cUnidad>] ) --> lEsDiskette 
+
+====== Parámetros ======
+
+| <cUnidad> | Unidad que se desea saber si es un Diskette.  |
+
+====== Devuelve ======
+
+| <lEsDiskette> | Si la Unidad es un Diskete, retorna .T., de lo contrario retorna .F. |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( iif( IsDiskette("A"), "Es Diskette", "No es Diskette" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\DRIVER.C 
+
+====== Ver también ======
+[[fivewin_funcion_iscdrom|IsCdRom()]]
+[[fivewin_funcion_adrivers|aDrivers()]]

@@ -1,0 +1,17 @@
+====== ExitWindowsExec() ======
+Exit Windows, runs a MsDos program, and restart windows
+
+====== Syntax ======
+ExitWindowsExec( <cExeName>, <cParams> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<cExeName| The MsDos EXE to execute. For batch files, it is the path of the command.com.|
+|<cParams>| The parameters to be passed to the MsDos app. For a batch file you have to include '/c': "/c batfile.bat" |
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value indicating whether the operation was completed successfully or not.|
+
+====== Source Code ======
+SOURCE\\WINAPI\\WinExec.c 

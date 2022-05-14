@@ -1,0 +1,26 @@
+====== IsWin2000() ======
+It checks whether the version of Windows is Windows 2000 or not. On 32 bits systems the value returned is more acccurate. 
+
+====== Syntax ======
+IsWin2000() --> lWin2007
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<lWin2007>| This function returns .T. if the running operating system is Windows 2000, else .F.|
+
+====== Example ======
+<code clipper>
+? IsWin2000()  --> Returns .T., if the OS is Windows 2000, else .F.
+</code>
+
+====== Source Code ======
+SOURCE\WINAPI\GetSysIn.prg 
+
+====== See also ======
+[[fivewin_function_IsWinVista|IsWinVista()]], 
+[[fivewin_function_IsWinXP|IsWinXP()]], 
+[[fivewin_function_IsWin7|IsWin7()]], 
+[[fivewin_function_cWinVersion|cWinVersion()]]

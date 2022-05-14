@@ -1,0 +1,47 @@
+====== WScroll() ====== 
+
+WScroll()
+
+Scrolls some text rows of a window
+
+====== Syntax ======
+
+ WScroll( <hWnd>, <nRows>, <hFont> ) --> nil 
+
+====== Parameters ======
+
+ <hWnd> Identifies the window whose area is to be scrolled. 
+
+ <nRows> Specifies the number of text rows to scroll. 
+
+ <hFont> The handle of the font to calculate the text height. 
+
+====== Returns ======
+
+ nil 
+
+====== Example ======
+
+ SOURCE\\CLASSES\\WBrowse.prg 
+
+===== Source Code ======
+
+ SOURCE\\WINAPI\\WndScrol.c 
+
+See also:
+
+
+ WBrwLine() WBrwRows() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,17 @@
+
+====== MGetLine() ====== 
+MGetLine()
+
+To get the <n> line of a Multiline Get
+
+====== Sintaxis ======
+ MGetLine( <hMultiGet>, <nLine> ) --> cLine 
+====== Parámetros ======
+  <hMultiGet>  Handle of the get 
+  <nLine>      Number of line to retrieve. 
+====== Devuelve ======
+ <cLine> String of characters corresponding to the line recovered. Maximum 255 characters.
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\GETTEXT.C 
+====== Ver también ======

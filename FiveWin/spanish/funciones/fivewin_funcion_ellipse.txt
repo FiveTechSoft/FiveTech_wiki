@@ -1,0 +1,131 @@
+Ellipse()
+
+
+
+Ellipse()
+
+ Previous  Top  Next
+
+
+
+
+Draws an ellipse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Ellipse( <hDC>, <nLeft>, <nTop>, <nRight>, <nBottom> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function draws an ellipse inside the specified rectangle
+coordinates. It uses the currently selected pen and brush in the device
+context of the paint area. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeft>, <nTop> ,<nRight>, <nBottom> Are the coordinates of the bounding
+rectangle of the ellipse. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value true if the operation was successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Ellipse.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Chord() DrawFocusRect() Pie() Polygon() PolyPoligon() Rectangle()
+RoundRect() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

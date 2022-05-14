@@ -1,0 +1,68 @@
+====== WndBitmap() ====== 
+
+WndBitmap()
+
+Make a bitmap with the window image
+
+
+====== Syntax ======
+
+
+ WndBitmap( <hWnd> ) --> hBitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+   <hWnd> Handle of the window
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hBitmap> Handle of the bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDPRINT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

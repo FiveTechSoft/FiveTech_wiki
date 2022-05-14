@@ -1,0 +1,21 @@
+====== DrawMenuBar() ======
+
+Se señala a la barra horizontal de menú
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ DrawMenuBar( <hMenu> ) --> nil
+
+====== Parametros: ( Parameters: ) ======
+
+ <hMenu> controlador de la ventana donde se va a pintar el menú.  
+
+====== Retorno: ( Returns: ) ======
+
+ nil
+
+====== Ejemplo: ( Sample: ) ======
+ 
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\MENUS.C 

@@ -1,0 +1,33 @@
+====== aTcBrwPosRec() ======
+
+ Para calcular las coordenadas de la celda de edicion en un TCBRowse.
+
+
+====== Sintaxis: ( Syntax: ) ======
+
+ aTCBrwPosRec( <hWnd>, <nRow>, <nCol>, <nWidth>, <hFont> ) --> aCoors  
+
+ Función usada en la clase TCBrowse para determinar las coordenadas donde la celda activa sera mostrada. Esta función es usada en el método :EditCol()
+ 
+====== Parámetros: ( Parameters: ) ======
+
+ <hWnd> Manejador del objeto TCBrowse.  
+ 
+ <nRow> Linea activa del TCBrowse.  
+
+ <nCol> Columna activa del TCBrowse.  
+
+ <nWidth> Ancho de la celda a mostrar.  
+
+ <hFont> Manejador del objeto Font del TCBrowse.  
+
+====== Retorno: ( Returns: ) ======
+
+ <aCoors> Arreglo de cuatro números que representan las coordenadas calculadas de la celda de edición en el TCBrowse. nTop, nLeft, nBottom, nRight
+
+====== Ejemplo: ( Sample: ) ======
+
+
+====== Código Fuente: ( Source code: ) ======
+
+ SOURCE\FUNCTION\TCBFUNCS.C

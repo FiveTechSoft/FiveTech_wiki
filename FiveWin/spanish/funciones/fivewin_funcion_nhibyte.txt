@@ -1,0 +1,21 @@
+
+====== nHiByte() ====== 
+
+nHiByte()
+
+Returns the High Byte of a word (two bytes)
+====== Sintaxis ======
+ nHiByte( <nWord> ) --> nHiByte 
+====== Parámetros ======
+ <nWord> A numeric (2 bytes) value 
+====== Devuelve ======
+ <nHiByte> A numeric (1 byte) value 
+
+Observations:
+
+ A word is made of: 
+ WORD = LOW_BYTE + HIGH_BYTE 
+====== Código fuente ======
+ SOURCE\FUNCTION\HiLoWord.c 
+====== Ver también ======
+ nLoByte() nHiWord() nLoWord()

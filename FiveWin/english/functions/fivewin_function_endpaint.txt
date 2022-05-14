@@ -1,0 +1,20 @@
+====== EndPaint() ======
+Ends painting a window. This function marks the end of painting for the given window. This function is required for each BeginPaint() but only after painting is
+complete. 
+
+====== Syntax ======
+EndPaint( <hWnd>, <cPS> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The handle of the window that is being currently painted. |
+|<cPS>| A string that hold relevant information about the painting process. (it holds a PAINTSTRUCT structure).|
+
+====== Returns ======
+Nothing. 
+
+====== Source Code ======
+SOURCE\\WINAPI\\Paint.c 
+
+====== See also ======
+[[fivewin_function_BeginPaint|BeginPaint()]]

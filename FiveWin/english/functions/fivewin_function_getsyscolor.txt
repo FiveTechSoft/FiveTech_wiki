@@ -1,0 +1,111 @@
+
+======  GetSysColor() ====== 
+
+
+
+To obtain the current color of an element of the screen
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetSysColor( <nType> ) --> nColorType 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nType> Type of color that we want to discover. It can be one of the
+following ones: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+COLOR_ACTIVEBORDER      10   Active window border.   
+COLOR_ACTIVECAPTION      2   Active window title.   
+COLOR_APPWORKSPACE      12   Background color of MDI   
+COLOR_BACKGROUND      1   Desktop.   
+COLOR_BTNFACE         15   Face shading on push buttons.   
+COLOR_BTNHIGHLIGHT      20   Selected button in a control.   
+COLOR_BTNSHADOW         16   Edge shading on push buttons.   
+COLOR_BTNTEXT         18   Text on push buttons.   
+COLOR_CAPTIO NTEXT      9   Text in title bar, size button, scroll-bar
+arrow button.   
+COLOR_GRAYTEXT         17   Grayed (dimmed) text.   
+COLOR_HIGHLIGHT         13   Background of selected item in a control.   
+COLOR_HIGHLIGHTTEXT      14   Text of selected item in a control.   
+COLOR_INACTIVEBORDER      11   Inactive window border.   
+COLOR_INACTIVECAPTION      3   Inactive window title.   
+COLOR_INACTIVECAPTIONTEXT   19   Color of text in an inactive title.   
+COLOR_MENU            4   Menu background.   
+COLOR_MENUTEXT         7   Text in menus.   
+COLOR_SCROLLBAR         0   Scroll-bar gray area.   
+COLOR_WINDOW         5   Window background.   
+COLOR_WINDOWFRAME      6   Window frame.   
+COLOR_WINDOWTEXT         8   Text in windows.   
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ A RGB color. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\SPLITTER.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,18 @@
+
+====== MsgRetryCancel() ====== 
+MsgRetryCancel()
+
+Messages box with buttons Retry and Cancel
+====== Sintaxis ======
+ MsgRetryCancel( <cMsg>, <cTitle> ) --> lRetry 
+====== Parámetros ======
+  <cMsg>    Message to show into the box 
+  <cTitle>  Title of the messages box 
+====== Devuelve ======
+ <lRetry> This function returns .t. if the function ends pressing the
+button Retry and .f. if you presses Cancel 
+====== Ejemplo ======
+ SAMPLES\TESTMSG.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\TEST.C 
+====== Ver también ======

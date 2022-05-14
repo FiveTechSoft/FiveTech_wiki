@@ -1,0 +1,19 @@
+====== FieldWbloc() ======
+Return a set-get code block for a field in a given work area. Function to obtain compatibility with xBase++  
+
+====== Syntax: ======
+FieldWBlock(<cFieldName>,   <nWorkArea> ) \\ bBlock  
+ 
+====== Parameters: ======
+^Parameter^Description^
+| <cFieldName> | Is the name of the field specified as a character string.  |
+| <nWorkArea>  | Is the work area number where the field resides. Specified as a numeric Value.  |
+ 
+====== Returns: ======
+| FieldWBlock( cFieldName, nWorkArea )   |
+
+====== Example ======
+<code clipper>FieldWBlock("CUST_NAME", Select("Customer"))</code>
+
+====== Source code: ======
+SOURCE\FUNCTION\DB10.PRG

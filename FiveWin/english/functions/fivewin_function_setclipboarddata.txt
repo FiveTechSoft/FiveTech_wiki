@@ -1,0 +1,155 @@
+====== SetClipboardData() ======
+
+
+Places some data at the clipboard
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetClipboardData( <nType>, <cText> ) --> nHandle 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nType> Specifies the format of the data. 
+
+
+ 
+
+
+ 
+
+
+
+CF_BITMAP         The data is a bitmap.   
+CF_DIB            The data is a memory object containing a BITMAPINFO
+structure followed by the bitmap data.   
+CF_DIF            The data is in Data Interchange Format (DIF).   
+CF_DSPBITMAP      The data is a bitmap representation of a private
+format. This data is displayed in bitmap format in lieu of the privately
+formatted data.   
+CF_DSPMETAFILEPICT   The data is a metafile representation of a private
+data format. This data is displayed in metafile-picture format in lieu of
+the privately formatted data.   
+CF_DSPTEXT         The data is a textual representation of a private data
+format. This data is displayed in text format in lieu of the privately
+formatted data.   
+CF_METAFILEPICT      The data is a metafile (see the description of the
+METAFILEPICT structure.   
+CF_OEMTEXT         The data is an array of text characters in the OEM
+character set. Each line ends with a carriage returnlinefeed (CR-LF)
+combination. A null character signals the end of the data.
+CF_OWNERDISPLAY      The data is in a private format that the clipboard
+owner must display.   
+CF_PALETTE         The data is a color palette.   
+CF_PENDATA         The data is for the pen extensions to theWindows
+operating system.   
+CF_RIFF         The data is in Resource Interchange File Format (RIFF).   
+CF_SYLK         The data is in Symbolic Link (SYLK) format.   
+CF_TEXT         The data is an array of text characters. Each line ends
+with a carriage return linefeed (CR-LF) combination. A null character
+signals the end of the data.
+CF_TIFF         The data is in Tag Image File Format (TIFF).   
+CF_WAVE         The data describes a sound wave. This is a subset of the
+CF_RIFF data format; it can be used only for RIFF WAVE files.   
+
+
+
+
+
+ <cText> The text to be placed at the clipboard. Right now, FiveWin only
+supports text manipulation. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nHandle> The handle of the data placed at the clipboard if successfull
+or 0 if there is a problem. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+ 
+
+
+ 
+
+
+ SAMPLES\\TestClip.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\\WINAPI\\ClpBrd.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+OpenClipboard() CloseClipboard() EmptyClipboard()
+
+
+
+
+
+====== See also ======
+

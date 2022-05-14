@@ -1,0 +1,86 @@
+
+====== Time() ======
+
+Gives the current time in format 00:00:00
+
+====== Syntax ======
+
+
+
+
+
+ Time() --> cTime 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <cTime> String of characters in format "00:00:00" hours, minutes,
+seconds. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\WINAPI\TIMERS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

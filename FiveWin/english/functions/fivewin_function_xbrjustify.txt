@@ -1,0 +1,24 @@
+====== xBrJustify() ======
+
+Sets the alignments of the column of a xBrowse object. 
+
+====== Syntax ======
+
+ xBrJustify( <oBrw>, <aJustify> ) --> oBrw  
+ 
+====== Parameters ======
+
+|<oBrw>| The xBrowse object.|  
+|<aJustify>| An array containing the alignment setting for each column.|  
+ 
+====== Returns ====== 
+
+|<oBrw>| The xBrowse object itself.|  
+ 
+====== Sample ======
+
+====== Source Code ======
+
+ SOURCE\CLASSES\xbrowse.prg   
+
+====== See Also ======

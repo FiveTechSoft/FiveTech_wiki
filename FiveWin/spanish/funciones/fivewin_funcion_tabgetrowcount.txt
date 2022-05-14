@@ -1,0 +1,55 @@
+TabGetRowCount()
+
+
+TabGetRowCount()
+ Previous  Top  Next
+
+Retrieves the current number of rows of tabs in a tab control.
+
+====== Sintaxis ======
+
+
+ TabGetRowCount( <hWnd> ) --> nRow 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRow> The number or rows. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+
+
+====== Ver también ======
+

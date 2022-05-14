@@ -1,0 +1,50 @@
+WndAdjTop()
+
+
+
+WndAdjTop()
+
+ Previous  Top  Next
+
+Align to the top of the window.
+
+====== Sintaxis ======
+
+
+ WndAdjTop( <hWnd> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

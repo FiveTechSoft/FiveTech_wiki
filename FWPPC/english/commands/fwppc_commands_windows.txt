@@ -1,0 +1,32 @@
+====== Create a new window ======
+<code clipper>
+DEFINE WINDOW <oWnd> ;
+   [ TITLE <cTitle> ] ;
+   [ MENU <oMenu> ] ;
+   [ STYLE <nStyle> ] 
+</code>
+^parameter^type^description^
+|<oWnd>| |The window object to create||
+|<cTitle>| optional|The window title||
+|<oMenu>| optional|The menu to use from the window ||
+|<nStyle>| optional|The window style to use||
+
+====== Run the window ======
+<code clipper>
+ACTIVATE WINDOW <oWnd> ;
+   [ ON [ LEFT ] CLICK <uLClick> ] ;
+   [ ON PAINT <uPaint> ] ;
+   [ ON INIT <uInit> ] ;
+   [ ON RIGHT CLICK <uRClick> ] ;
+   [ VALID <uValid> ] ;
+   [ <modal: MODAL > ] 
+</code>
+^parameter^type^description^
+|<oWnd>| |The window object to execute||
+|<uLClick>|optional|The action to execute when the mouse is clicked on the window||
+|<uPaint>|optional|The action to execute when the window is painted||
+|<uInit>|optional|The action to execute when the window is initially executed||
+|<uRClick>|optional|The action to execute when the mouse is right clicked on the window||
+|<uValid>|optional|A logical expression to check that will allow the end of the execution||
+|MODAL|optional|The window is executed in modal way (.T. by default)||
+

@@ -1,0 +1,78 @@
+LvInsertItem()
+
+
+LvInsertItem()
+ Previous  Top  Next
+
+Inserts a new item in a list view control.
+
+====== Sintaxis ======
+
+ 
+
+
+ LvInsertItem( <hWnd>, <nImageList>, <cText> ) --> nItem 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> Handle to the list view control. 
+
+
+ 
+
+
+ <nImageList> Index of the item's icon in the control's image list. 
+
+
+ 
+
+
+ <cText> The item text. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nItem> The index of the new item if successful, or -1 otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\LISTVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

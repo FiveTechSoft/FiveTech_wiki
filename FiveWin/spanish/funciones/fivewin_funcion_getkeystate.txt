@@ -1,0 +1,78 @@
+====== GetKeyState() ======
+
+
+
+
+
+Retrieves the state of the specified virtual key
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetKeyState( <nKey> ) --> lPressed 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function retrieves if a key is beeing pressed. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nKey> The code of the key that we want to check (normal or virtual) 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lPressed> If it is pressed or not 
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+
+
+
+ See SOURCE\\CLASSES\\TGet.prg 
+
+====== Ver también ======
+

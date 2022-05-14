@@ -1,0 +1,64 @@
+nSerialHD()
+
+
+
+nSerialHD()
+
+ Previous  Top  Next
+
+To obtain the serial number of the hard disk.
+
+====== Syntax ======
+
+
+ nSerialHD( [<cDrive>] ) --> nSerialHD 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cDrive> The root of the drive whose serial number is retrieved (default
+"C:\"). 
+
+
+ 
+
+====== Returns ======
+
+ 
+
+
+ <nSerialHD> Serial number of the hard disk 
+
+
+ 
+
+====== Example ======
+
+ 
+
+
+ SAMPLES\TESTHARD.PRG 
+
+
+ SAMPLES\TESTHD.PRG 
+
+
+ 
+
+
+ 
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\HARDDISK.C 
+
+
+ 
+
+
+
+====== See also ======
+

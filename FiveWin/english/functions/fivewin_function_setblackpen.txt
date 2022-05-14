@@ -1,0 +1,93 @@
+====== SetBlackPen() ======
+
+
+
+Selects the black pen for painting
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetBlackPen( <hDC> ) --> hPrevPen 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the handle of the device context where select a black
+pen. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hPrevPen> Identifies the handle of the previous selected pen. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\GetStokB.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetWhitePen() GetStockObject() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

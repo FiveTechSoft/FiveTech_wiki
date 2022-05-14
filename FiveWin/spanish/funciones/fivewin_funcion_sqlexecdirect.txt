@@ -1,0 +1,74 @@
+SQLExecDirect()
+
+
+SQLExecDirect()
+ Previous  Top  Next
+
+Executes a preparable statement.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLExecDirect( <hStmt>, <cStatement> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cStatement> SQL statement to be executed. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NEED_DATA, SQL_STILL_EXECUTING, SQL_ERROR, SQL_NO_DATA, or
+SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

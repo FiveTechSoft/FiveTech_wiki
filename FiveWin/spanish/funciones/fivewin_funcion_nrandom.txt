@@ -1,0 +1,19 @@
+
+====== nRandom() ====== 
+nRandom()
+
+Generates a random number
+====== Sintaxis ======
+ nRandom( [<nRange>] ) --> nRandom 
+====== Parámetros ======
+ <nRange> An optional numeric value to set the range from where we want
+to generate a random number. By default a 65535 numeric range is used. 
+====== Devuelve ======
+ <nRandom> A random number in the range 0 - <nRange>. 
+====== Ejemplo ======
+ MsgInfo( nRandom( 100 ) ) // returns any number 
+ // in the range 0 - 100 
+====== Código fuente ======
+ SOURCE\FUNCTION\Random.prg 
+====== Ver también ======
+ Numeric manipulation functions

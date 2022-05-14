@@ -1,0 +1,22 @@
+====== HelpSetPos() ======
+
+Changes the position and size of the WinHelp Window. 
+
+====== Syntax: ======
+ 
+ HelpSetPos( <nRow>, <nColumn>, <nWidth>, <nHeight>, <nMax> ) --> nil  
+====== Parameters: ======
+
+| <nRow>, <nColumn> | Two numeric values which specify the coordinates where WinHelp appears. Windows assigns logical dimensions of 1024 x 1024 dots to screen surface. | 
+| <nWidth>, <nHeight> | The size of the WinHelp window. |
+| <nMax> | How to show the window (see ShowWindow()). |
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+We can select the position where WinHelp will appears.
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C   

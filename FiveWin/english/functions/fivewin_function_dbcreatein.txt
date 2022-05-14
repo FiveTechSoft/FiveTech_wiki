@@ -1,0 +1,18 @@
+====== DbCreateIn() ======
+Create a index file.  Function to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbCreateIn( <cIndexName>, <cKeyExpression>, <bCodeBlock>, <lUnique> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<cIndexName>| Index name |
+|<cKeyExpression>| Key expression |
+|<bCodeBlock>| CodeBlock with the key expression of the index |
+|<lUnique>| Logic value to create unique index. |
+
+====== Returns ======
+DbCreateIndex( x, y, z, w ) 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

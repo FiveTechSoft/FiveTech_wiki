@@ -1,0 +1,27 @@
+Reads and sends events stored to the system
+====== Syntax ======
+ ReadEvent( <pEventMsg>, <pDelay> ) --> nil 
+
+ Call from the function StartPlayBack () 
+
+====== Parameters ======
+
+| <pEventMsg> | Pointer to structure of messages |
+| <pDelay> | Duration of the message |
+
+====== Returns ======
+ Nil 
+
+======Observations======
+
+|Used by FiveWin macro record & playback features |
+
+====== Example ======
+
+ SAMPLES\TESTPLAY.PRG 
+
+====== Source Code ======
+
+ SOURCE\CLASSES\TDICT.PRG SOURCE\WINAPI\PLAYBACK.C 
+
+====== See also ======

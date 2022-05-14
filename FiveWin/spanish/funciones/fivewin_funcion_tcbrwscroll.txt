@@ -1,0 +1,123 @@
+TCBrwScroll()
+
+
+
+TCBrwScroll()
+
+ Previous  Top  Next
+
+
+
+
+Make a vertical scroll in the TCBrowse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TCBrwScroll( <hWnd>, <nRows>, <hFont> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> TCBrowse handle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRows> Quantity of lines that has to displace 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Font handle used to paint the TCBrowse 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\TCBROWSE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\TCBFUNCS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

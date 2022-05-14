@@ -1,0 +1,57 @@
+====== Comando Video ======
+
+Creando un Control de Video desde código fuente:
+
+<code clipper>
+ @ <nRow>, <nCol> VIDEO <oVideo> ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FILE | FILENAME | DISK <cAviFile> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]  
+ [ NO BORDER ];  
+ </code>
+
+Creando un Control de Video desde recursos:
+
+<code clipper>
+ DEFINE VIDEO <oVideo> ;  
+ [ FILE | FILENAME | DISK <cAviFile> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]  
+</code> 
+
+<code clipper>  
+ REDEFINE VIDEO [ <oVideo> ];  
+ [ ID <nId> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ WHEN <uWhen> ];  
+ [ VALID <uValid> ];  
+ [ FILE | FILENAME | DISK <cFileName> ];  
+</code>
+
+Activando el Video:
+
+<code clipper>
+ ACTIVATE VIDEO <oVideo>  
+</code> 
+
+Inicindo el Video:
+
+<code clipper>
+ PLAY VIDEO <oVideo>  
+</code>
+
+====== Parámetros ======
+|<cFileName>| El nombre del archivo AVI a ser visualizado.|
+|<nRow>, <nCol>| Las coordenas del control (posición). Simulamos las coordenadas de un texto.    |
+|<oVideo>| Una referencia al Objeto Video.    |
+|<nWidth>, <nHeight> | Las dimensiones del control.    |
+|<cAviFile>| El nombre del archivo AVI a ser visualizado.    |
+|<oWnd>| Una referencia a la ventana contenedora del Control.    |
+|<WhenFunc>| Es una expresión que se evalua indicando si el control está o no habilitado.    |
+|<ValidFunc>| Una expresión para validar cuando el control pierde el foco.    |
+
+====== Cláusulas ======
+
+|NOBORDER|Para no pintar el borde del control.|
+
+====== Vea tambien ======
+[[fivewin_clase_tvideo|Clase TVideo]]

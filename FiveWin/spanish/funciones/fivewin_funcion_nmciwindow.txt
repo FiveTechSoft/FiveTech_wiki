@@ -1,0 +1,17 @@
+
+====== nMciWindow() ====== 
+nMciWindow()
+
+It notifies to the device that window will show the animation
+====== Sintaxis ======
+ nMciWindow( <nIdDevice>, <hWnd> ) --> nError 
+====== Parámetros ======
+  <nIdDevice>  Identifier of the device. 
+  <hWnd>       Handle of the window 
+====== Devuelve ======
+ Return 0 if the function is sucesfull. Otherwise a error code es returned. 
+====== Ejemplo ======
+ SOURCE\CLASSES\TMCI.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\MCI.C 
+====== Ver también ======

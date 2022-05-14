@@ -1,0 +1,105 @@
+====== pBmpColors() ====== 
+
+
+
+pBmpColors()
+
+
+
+
+
+Resolution of a Bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ pBmpColors( <hBmpPal> ) --> nColors 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hBmpPal> LONG obtained with the function PalBmpRead or PalBmpLoad
+formed by two Handles. One corresponding to the reading of the bitmap and
+another to that of the associate palette 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ hPalette := nHiWord( hBmpPal ) 
+
+
+ 
+
+
+ hBitMap := nLoWord( hBmpPal ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nColors> It returns the number of entries that has the palette. In the
+case of a bitmap of 16 colors, logically it returns 16, and so forth for
+256, 16 millions.. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

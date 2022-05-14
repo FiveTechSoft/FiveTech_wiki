@@ -1,0 +1,26 @@
+====== GetCPUSpeed() ======
+Retrieves the CPU speed
+
+====== Syntax ======
+GetCPUSpeed() --> nCPUSpeed 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<nCPUSpeed>| The speed of the CPU.|
+
+====== Example ======
+<code clipper>
+#Include "FiveWin.ch"
+function Main()
+
+   MsgInfo( GetCPU() )
+   MsgInfo( GetCPUspeed() )
+
+return nil
+</code>
+
+====== See also ======
+[[fivewin_function_GetCPU|GetCPU()]]

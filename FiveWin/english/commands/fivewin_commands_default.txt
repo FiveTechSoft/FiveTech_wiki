@@ -1,0 +1,18 @@
+====== Default parameters management ======
+
+<code clipper>
+ DEFAULT <uVar1> := <uVal1> [ <uVarN> := <uValN> ]  
+</code> 
+
+| <uVar1> | The first variable. |
+| <uVal1> | The default value for the first variable. |
+| <uVarN> | The last variable. |
+| <uValN> | The default value for the last variable. |
+
+====== Sample Code ======
+<code clipper>
+Function Test(nEmpCode)
+   DEFAULT nEmpCode:=1
+   ...
+RETURN NIL
+</code>  

@@ -1,0 +1,66 @@
+CreateMetaFile()
+
+
+CreateMetaFile()
+ Previous  Top  Next
+
+Creates a device context for a Windows metafile.
+
+====== Syntax ======
+
+ 
+
+
+ CreateMetaFile( <cFileName> ) --> hDC 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cFilename> The filename for the Windows metafile. Zero for a memory
+based enhanced metafile. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <hDC> The handle of the device context for the Windows metafile. Zero in
+case of failure. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\METAFILE.C 
+
+
+ 
+
+
+

@@ -1,0 +1,64 @@
+InterruptRegister()
+
+
+InterruptRegister()
+ Previous  Top  Next
+
+Installs a user defined GPFs controller
+
+====== Sintaxis ======
+
+
+ InterruptRegister( <bAction> ) --> lSuccess 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <bAction> Codeblock to execute at GPF. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lSuccess> A logical value indicating if the GPF controller was properly
+installed. 
+
+
+ 
+
+Comments:
+
+
+ Though FiveWin has been extensively tested against GPFs, we wanted to
+offer control over a possible GPF offering so an opportunity to take
+control to close all files and generating an error.log file with info to
+detect the cause. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ SAMPLES-->TestTool.prg 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\ToolHelp.c 
+
+
+ 
+
+
+
+====== Ver también ======
+

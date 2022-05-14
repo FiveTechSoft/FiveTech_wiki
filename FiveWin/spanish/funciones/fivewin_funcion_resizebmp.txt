@@ -1,0 +1,23 @@
+====== RESIZEBMP() ======
+Redimensiona un bitmap
+
+====== Syntaxis ======
+
+ResizeBmp( <hBitmap>, <nWidth>, <nHeight>, <lMaxResolution> ) --> hBitmap 
+
+
+====== Parametros ======
+
+| <hBitmap> | Handle del bitmap que desea cambiar. |  
+| <nWidth> | Ancho al que sera ajustada la imagen. | 
+| <nHeight> | Alto al que sera ajustada la imagen. | 
+| <lMaxResolution> | Aplicar maxima resolucion en el proceso de redimencionamiento. | 
+====== Devuelve ======
+
+| <hBitmap> | Handle del bitmap redemencionado.  |  
+
+Este handle debera ser eliminado con DeleteObject( hBitmap )
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\BMPDRAW.C

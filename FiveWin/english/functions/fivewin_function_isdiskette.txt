@@ -1,0 +1,106 @@
+====== IsDiskette() ======
+
+
+
+Checks if a drive is a floppy disk
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsDiskette( [<cDrive>] ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cDrive> The letter of the drive to check. i.e.: "c". Lowercase and
+Uppercase is permitted. By default, it uses "A". 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating if the specified drive is a floppy
+drive. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ MsgInfo( IsDiskette( "C" ) ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ See SAMPLES\\TestDrvs.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Drives.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

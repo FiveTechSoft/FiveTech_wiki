@@ -1,0 +1,52 @@
+====== Definición de un objeto SAY mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> SAY [ <oSay> PROMPT | VAR ] <cText> ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ PICTURE <cPicture> ] ;  
+   [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+   [ FONT <oFont> ] ;  
+   [ CENTERED | CENTER ] ;  
+   [ RIGHT ] ;  
+   [ BORDER ] ;  
+   [ PIXEL | PIXELS ]  ;
+   [ SIZE <nWidth>, <nHeight> ] ;  
+   [ DESIGN ] ;  
+   [ UPDATE ] ;  
+   [ SHADED | SHADOW ] ;  
+   [ BOX ] ;  
+   [ RAISED ]  
+</code>  
+====== Redefinición de un objeto SAY odesde recursos ====== 
+<code clipper>
+REDEFINE SAY <oSay> ;  
+   [ PROMPT | VAR <cText> ] ;  
+   [ ID <nId> ];  
+   [ OF | WINDOW | DIALOG <oDlg> ] ;  
+   [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+   [ PICTURE <cPict> ] ;  
+   [ UPDATE ] ;  
+   [ FONT <oFont> ]  
+</code>  
+====== Parámetros ======
+|<nRow>, <nCol>       |Coordenadas del Object Say. Se imitan coordenadas de texto.|
+|<oSay>               |Reeferencia al Objeto Say.|
+|<cText>              |Etiqueta del Objeto Say.|
+|<oWnd>               |Ventana contenedora del control Say.|
+|<cPicture>           |La cláusula PICTURE habitual de un SAY.|
+|<cColor>             |Cadena de COLOR para SAY. No esta aún disponible|
+|<oFont>              |Objeto Font a usar con el SAY. Debe haber sido creado previamente mediante DEFINE FONT... .|
+|<nClrFore>           |Color de primer plano como número RGB.|
+|<nClrBack>           |Color de fondo como número RGB.|
+|<nWidth>, <nHeigth>  |Las dimensiones del control.|
+|<cText>              |Titulo a asignar al objeto SAY. Si se especifica, cambia el texto del recurso.|
+|<nId>                |Identificador numérico de recurso del objeto Say. Debe asignarse desde el editor de recursos.|
+====== Cláusulas ======
+|CENTERED CENTER    |Centra el texto.|
+|RIGHT              |Justificación a la derecha.|
+|BORDER             |Crea un borde alrededor del control.|
+|DESIGN             |Permite al usuario mover el control y cambiar su tamaño con el ratón.|
+|PIXEL              |Para usar coordinadas en píxels y no en modo texto.|
+|UPDATE             |El control puede actualizarse con el método TDialog:Update().|
+|SHADED, SHADOW     |Añade un efecto de sombra al SAY.|
+|BOX                |Sitúa el objeto SAY en una caja.|
+|RAISED             |Sitúa el objeto SAY en una caja de relieve.|

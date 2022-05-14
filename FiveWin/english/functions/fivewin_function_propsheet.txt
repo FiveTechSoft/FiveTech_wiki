@@ -1,0 +1,67 @@
+====== PropSheet() ====== 
+
+
+PropSheet()
+
+
+Activates a property sheet.
+
+====== Syntax ======
+
+ 
+
+
+ PropSheet( <hWnd> ) --> nResult 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the owner window. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nResult> Returns a positive value if successful, or -1 otherwise for
+modal property sheets. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\PRPSHEET.PRG 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\PRPSHEET.C 
+
+
+ 
+
+
+
+====== See also ======
+

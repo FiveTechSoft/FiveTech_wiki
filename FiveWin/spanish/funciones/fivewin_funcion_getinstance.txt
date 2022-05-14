@@ -1,0 +1,17 @@
+
+====== GetInstance() ======
+GetInstance()
+
+Returns the application handle instance value
+====== Sintaxis ======
+ GetInstance() --> hInstance 
+
+ This function returns the instance of our application. 
+====== Parámetros ======
+ None. 
+====== Devuelve ======
+  <hInstance> An application identifier that Windows assigns when
+executing our application. 
+====== Código fuente ======
+ Not available. 
+====== Ver también ======

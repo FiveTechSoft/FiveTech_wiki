@@ -1,0 +1,108 @@
+====== nColorToN() ======
+
+
+
+Returns the numeric color equivalent of an xBase color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nColorToN( <cColor> ) --> nColor 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cColor> A color in an xBase string format 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nColor> The numeric ( byte ) representation of that xBase color 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This <nColor> it is not the RGB representation. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\ColorToN.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nRGB() nGetForeRGB() nGetBackRGB() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,25 @@
+====== ClassCreate() ======
+
+Creation of a class for xBase++
+
+Function to create a class. It is used for xBase++ since the original
+name has more than 10 letters and xBase doesn't allow it. 
+
+====== Syntax ======
+ClassCreate( x, y, z, w ) --> object 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Pointer to the database Alias () |
+|<y>| Array with the address of the object from where it executed the call to the function ClassCreate()|
+|<z>| Array with the names of the data of the object from where the callis executed to the function ClassCreate()| 
+|<w>| Array with the names of the methods of the object from where the call is executed to the function ClassCreate()| 
+
+====== Returns ======
+ClassCreate( x, y, z, w ) -> Object
+
+====== Example ======
+SOURCE\CLASSES\DATABASE.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

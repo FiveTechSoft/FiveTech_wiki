@@ -1,0 +1,36 @@
+
+====== MsgDate() ======
+
+Presenta una calculadora para seleccionar una fecha.
+
+====== Syntaxis ======
+
+MsgDate( <dDate>, <cPrompt>, <oGet>  ) --> dDate    
+ 
+====== Parámetros ======
+
+| <dDate>| fecha que aparecera seleccionada.  |
+| <cPrompt> | Mensaje que aparecera como el titulo en la caja de dialogo. |
+| <oGet> | objeto get asociado, cuyo valor sera actualizado con la fecha seleccionada. |
+
+====== Devuelve ======
+
+| <dDate> | Fecha seleccionada en el calendario, presionado ESC puede cerrar el calendario sin afectar el valor del objeto get. |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+
+   ?MsgDate()
+      
+RETURN    
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\MSGMETER.PRG  
+
+====== Ver también ======
+Ninguno.

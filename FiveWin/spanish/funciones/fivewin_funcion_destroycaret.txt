@@ -1,0 +1,44 @@
+DestroyCaret()
+
+
+DestroyCaret()
+ Previous  Top  Next
+
+Destroy the system caret.
+
+====== Sintaxis ======
+
+
+ DestroyCaret() --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ nil 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\CARET.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

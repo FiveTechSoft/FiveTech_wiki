@@ -1,0 +1,24 @@
+====== DestroyCursor() ======
+This function destroys a cursor that was previously created by the
+CreateCursor() or LoadCursor() function and frees any memory that the
+cursor occupied. 
+
+====== Syntax ======
+DestroyCursor( <hCursor> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hCursor>| Handle of the cursor to be destroyed. The cursor must not be in use.|
+
+====== Returns ======
+^Parameter^Description^
+|<lSuccess>| A logical value indicating if the operation was successful.|
+
+====== Source Code ======
+SOURCE\\WINAPI\\Cursors.c 
+
+
+====== See also ======
+[[fivewin_function_CreateCursor|CreateCursor()]], [[fivewin_function_LoadCursor|LoadCursor()]]
+
+ [[fivewin_function_destroyicon|DestroyIcon()]], [[fivewin_function_destroywindow|DestroyWindow()]], [[fivewin_function_destroymenu|DestroyMenu()]]

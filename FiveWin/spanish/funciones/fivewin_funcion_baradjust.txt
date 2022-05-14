@@ -1,0 +1,34 @@
+
+====== BarAjust() ======
+
+Ajusta la barra a las nuevas dimensiones de su contenedor
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BarAdjust( <hWnd>, <nMode>, <lMsgBar>, <nHeight> ) --> nil   
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> El manejador de la ventana de la barra de botones.  
+
+ <nMode> Es el modo actualmente seleccionado de la barra de botones.  
+
+ <lMsgBar> Indica si la ventana contenedora tiene barra de mensajes o no.  
+
+ <nHeight> La altura del barra de mensajes.  
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Observaciones: ( Observations: ) ====== 
+ 
+ Usada internamente por Fivewin. No es necesario usarla directamente
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ Ninguno
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\Bartools.c  

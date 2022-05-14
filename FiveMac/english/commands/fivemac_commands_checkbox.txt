@@ -1,0 +1,15 @@
+====== Creates a CHECKBOX from source code ======
+<code clipper>
+@ <nRow>, <nCol> CHECKBOX [ <oChk> VAR ] <lVar> ;
+   [ PROMPT <cPrompt> ] ;  
+   [ OF <oWnd> ] ;
+   [ ON CLICK | ON CHANGE <uAction,...> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ UPDATE ]
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\tcheckbox.prg
+====== See Also ======
+[[fivemac_class_tcheckbox|Class TCheckBox]]

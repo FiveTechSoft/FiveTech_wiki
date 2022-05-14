@@ -1,0 +1,39 @@
+
+====== MsgLogo() ======
+
+Muestra un logo flotante, tipicamente usdo al inicio de las aplicaciones.
+
+====== Syntaxis ======
+
+MsgLogo( <cArchivoLogo> [,<nSegundos>] ) --> NIL
+ 
+====== Parámetros ======
+
+| <cArchivoLogo> | El nombre de un archivo bitmap .BMP, o el nombre de un bitmap almacenado en el archivo de recursos. FiveWin verifica la existencia del archivo de bitmap y si no existe busca en el archivo de recursos. |
+| <nSegundos> | Un valor numerico opcional, indicando cantos segundos sera mostrado el logo, por defecto son 4 segundos.  |
+
+====== Devuelve ======
+
+| <> | Ninguno. |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+
+   MsgLogo("c:\miapp\logo\logo.bmp")
+      
+RETURN    
+</code>
+
+====== Codigo fuente ======
+SOURCE\FUNCTION\MSGLOGO.PRG
+====== Ver tambien ======
+[[fivewin_funcion_messagebeep|MessageBeep()]]
+[[fivewin_funcion_msgalert|MsgAlert()]]
+[[fivewin_funcion_msginfo|MsgInfo()]]
+[[fivewin_funcion_msgstop|MsgStop()]]
+[[fivewin_funcion_msgyesno|MsgYesNo()]]
+[[fivewin_funcion_msgnoyes|MsgNoYes()]]
+[[fivewin_funcion_msgdate|MsgDate()]]

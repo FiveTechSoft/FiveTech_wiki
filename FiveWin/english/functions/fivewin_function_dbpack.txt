@@ -1,0 +1,14 @@
+====== DbPack() ======
+To eliminate the deleted records permanently from DBf
+
+====== Syntax ======
+DbPack() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\FUNCTION\DBTOOLS.PRG 

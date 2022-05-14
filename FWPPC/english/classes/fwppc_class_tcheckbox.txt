@@ -1,0 +1,30 @@
+====== Class TCheckBox ======
+
+Logical CheckBox Control                                                       
+Inherits from TControl                                                         
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor for resources.|
+|Click|Mouse left button event handler.|
+|Default|Default initialization.|
+|cToChar|Generates a data template to build a Dialog.|
+|EraseBkGnd|Erases the background of the control|
+|LostFocus|Lostfocus event handler|
+|Initiate|Generic initialization.|
+|MouseMove|Action to be performed when moving the mouse over.|
+|Refresh|Repaints the control.|
+|cGenPRG|Generates the source code of the control.|
+|Reset|Resets the checbox|
+|Check|Sets the check on|
+|UnCheck|Sets the check off|
+|SetCheck|Sets the check on or off on the given logical|
+|parameter||
+|SetText|Changes the caption of the control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TCHECKBOX.PRG

@@ -1,0 +1,123 @@
+EndPage()
+
+
+
+EndPage()
+
+ Previous  Top  Next
+
+
+
+
+Ends printing a page
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EndPage( <hDC> ) --> nReturnCode 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function signals the device context that the application has
+finished writing to a page. Normally we use this function to start
+working on a new page. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nReturnCode> The result of the operation. 
+
+
+ 
+
+
+ 
+
+
+
+SP_ERROR      General error.   
+SP_APPABORT   Job was terminated because the application's
+print-canceling function returned zero.   
+SP_USERABORT   User terminated the job by using Windows Print Manager
+(PRINTMAN.EXE).   
+SP_OUTOFDISK   Not enough disk space is currently available for spooling,
+and no more space will become available.   
+SP_OUTOFMEMORY   Not enough memory is available for spooling.   
+
+
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\PrintDc.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ StartPage() 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

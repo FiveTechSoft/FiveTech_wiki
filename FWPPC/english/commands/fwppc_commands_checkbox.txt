@@ -1,0 +1,57 @@
+====== Creating a CheckBox from source code ======
+
+<code clipper>
+ @ <nRow>, <nCol> CHECKBOX [ <oCbx> VAR ] <lVar> ;  
+ [ PROMPT <cCaption> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ FONT <oFont> ] ;  
+ [ ON CLICK | ON CHANGE <uClick> ] ;  
+ [ VALID <ValidFunc> ] ;  
+ [ COLOR | COLORS <nClrFore>[,<nClrBack>] ];  
+ [ DESIGN ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ]  
+</code>
+  
+
+====== Using a CheckBox from a resource Dialog Box ======
+
+<code clipper>
+ REDEFINE CHECKBOX [ <oCbx> VAR ] <lVar> ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ ON CLICK | ON CHANGE <uClick> ];  
+ [ VALID <ValidFunc> ];  
+ [ COLOR | COLORS <nClrFore>[,<nClrBack>] ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [WHEN <uWhen> ]  
+</code>  
+
+| <nRow>, <nCol> | The coordinates of the CheckBox. They mimic text mode coordinates. |
+| <oCbx> | A reference to the CheckBox Object. |
+| <lVar> | The logical variable to be managed by the CheckBox. |
+| <cCaption> | The label of the CheckBox. |
+| <oWnd> | The container window of the CheckBox. |
+| <nWidth>, <nHeight> | The dimensions of the CheckBox in pixels. |
+| <nHelpId> | The help topic value of the CheckBox. |
+| <oFont> | A reference to the Font Object to be used with the CheckBox. |
+| <uClick> | An action to be performed when the CheckBox changes. |
+| <ValidFunc> | An expression or function to be validated when the CheckBox loses its focus. |
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string. |
+| <nClrBack> | Background color as a RGB number. |
+| <cMsg> | The associated message of this control. |
+| <WhenFunc>, <uWhen> | When expression code block. |
+| <nId> | The numeric resource identifier of the Control. |
+
+====== CLAUSES ======
+
+| DESIGN | Allows the user to move and resize with the mouse. |
+| PIXEL | To use pixel coordinates instead of Text coordinates. |
+| UPDATE | This control may be updated from TDialog:Update() method |
+

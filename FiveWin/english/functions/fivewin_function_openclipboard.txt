@@ -1,0 +1,109 @@
+====== OpenClipboard() ====== 
+Open the Windows clipboard to start using it.
+
+**Note:**
+FiveWin automatically manages all these functions from inside the TClipBoard class. 
+
+====== Syntax ======
+OpenClipboard( <hWnd> ) --> lSuccess 
+
+====== Parameters ======
+^Parameters^Description^
+|<hWnd>| The handle of the window to be associated with the open clipboard.| 
+
+====== Returns ======
+^Returns^Decription^
+|<lSuccess>| .T. is was possible to open it, .f. if another application was already using it.|
+
+====== Example ======
+\Fwh\Samples\TestClip.prg 
+<code clipper>
+// This sample shows how to use Windows ClipBoard from FiveWin.
+// To FiveWin, the ClipBoard is also an object!
+
+#include "FiveWin.ch"
+
+static oWnd, oClp
+
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 ;
+      TITLE "Using Windows ClipBoard" ;
+      MENU BuildMenu()
+
+   DEFINE CLIPBOARD oClp OF oWnd
+
+   SET MESSAGE OF oWnd TO FWVERSION CENTERED
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Using the ClipBoard"
+      MENU
+         MENUITEM "Place some text..." ;
+            ACTION PlaceSomeText()
+
+         MENUITEM "&Retrieve the text..." ;
+            ACTION GetSomeText()
+
+         SEPARATOR
+
+         MENUITEM "&Clear the ClipBoard"  ACTION oClp:Clear()
+         SEPARATOR
+         MENUITEM "Bye, bye..."               ACTION oWnd:End()
+      ENDMENU
+
+      MENUITEM "Call ClipBoard management EXE" ACTION WinExec( "ClipBrd" )
+   ENDMENU
+
+Return oMenu
+
+//----------------------------------------------------------------------------//
+
+Function PlaceSomeText()
+
+   local cText := Space( 30 )
+
+   if MsgGet( "Ok...", "Write something!", @cText )
+      oClp:SetText( cText )
+   endif
+   
+   MsgInfo( "Number of bytes in clipboard: " + Str( Len( oClp:GetText() ) ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function GetSomeText()
+
+   local cText := oClp:GetText()
+
+   if Empty( cText )
+      nMsgBox( OemToAnsi( "There is nothing there!" ), "I am sorry" )
+   else
+      nMsgBox( cText, "Tadddaa !!!" )
+   endif
+
+Return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Source Code ======
+SOURCE\\WINAPI\\ClpBrd.c 
+
+====== See also ======
+[[fivewin_function_SetClipboard|SetClipboard()]]
+[[fivewin_function_EmptyClipboard|EmptyClipboard()]]
+[[fivewin_function_GetClpData|GetClpData()]]
+[[fivewin_function_SetClpData|SetClpData()]]

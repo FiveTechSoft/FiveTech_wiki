@@ -1,0 +1,146 @@
+ReadBitmap()
+
+
+
+ReadBitmap()
+
+ Previous  Top  Next
+
+
+
+
+Reads a bitmap from disk
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ReadBitmap( [<hDC>], <cBmpFile> ) --> hBitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Is the handle of the device context to be used with that bitmap.
+You should supply 0 is no hDC is available. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cBmpFile> Is the name of the .BMP file in the disk. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hBitmap> Is a bitmap handle. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is very usefull to dynamically load bitmaps from disk. It
+lets the user of our application supply new BMPs with photos, drawings,
+etc... 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\FwBrow.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\BmpRead.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ LoadBitmap() PalBmpDraw() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,97 @@
+GetNMHeaButton()
+
+
+GetNMHeaButton()
+ Previous  Top  Next
+
+Retrieves the index of the mouse button used to generate a notify message.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetNMHeaButton( <nPtrNMHDR> ) --> nIndex 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nPtrNMHDR> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nIndex> The button index field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+====== See also ======
+

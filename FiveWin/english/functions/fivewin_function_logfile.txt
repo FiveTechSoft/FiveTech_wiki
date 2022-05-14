@@ -1,0 +1,130 @@
+====== LogFile() ====== 
+
+
+
+LogFile()
+
+
+
+
+
+To write information in a LOG file
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LogFile( <cFileName>, <aInfo> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cFileName> File name where it will write. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aInfo> Array of data to write in the file. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ If the suitable file doesn't exist it will be created. If it exists it
+opens up and the data are added at the end of the file. The data are
+written in one it lines separating them for a tabulator each one (chr(9).
+Every time that ends of being written it closes the file.The log file no
+fades in this funci�n. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TSOCKET.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FILENAME.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

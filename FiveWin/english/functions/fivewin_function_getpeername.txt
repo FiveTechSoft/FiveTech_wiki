@@ -1,0 +1,88 @@
+GetPeerName()
+
+
+
+GetPeerName()
+
+ Previous  Top  Next
+
+
+
+
+Get the address of the peer to which a socket is connected.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetPeerName( <nSocket> ) --> cPeerName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cPeerName> Name of the peer connected to the socket The errors that can
+be happened control with the function WSAGetLastError (). 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,136 @@
+WndHlineRaised()
+
+
+
+WndHlineRaised()
+
+ Previous  Top  Next
+
+
+
+
+Draw a horizontal line with raised look
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndHLineRaised( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> Superior coordinate 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeft> Left coordinate 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBottom> Inferior coordinate 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRight> Right coordinate 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\WNDLINES.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

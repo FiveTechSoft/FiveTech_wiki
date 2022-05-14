@@ -1,0 +1,66 @@
+IlDestroy()
+
+
+IlDestroy()
+ Previous  Top  Next
+
+Destroys an image list.
+
+====== Syntax ======
+
+ 
+
+
+ IlDestroy( <hImageList> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hImageList> The handle to the imagelist to be destroyed. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> Returns .t. if successful, or .f. otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== See also ======
+

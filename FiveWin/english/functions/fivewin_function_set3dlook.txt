@@ -1,0 +1,77 @@
+====== Set3DLook() ======
+
+
+
+Set 3d look efect
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Set3DLook( <lOnOff> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <lOnOff> Flag to set or reset this efect. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CTL3D.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

@@ -1,0 +1,82 @@
+====== DeviceCapabilities() ======
+Retrieves the capabilities of the printer device driver. 
+
+====== Syntax ====== 
+DeviceCapabilities( <cDevice>, <nCapability>, <@cBuffer> ) --> nRetCode  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cDevice> | Device-name |
+| <nCapability>| The capability to be checked, it can be any of the below given|
+| | |
+|**DC_BINNAMES**| Copies an array containing a list of the names of the paper bins. |
+|**DC_BINS** | Retrieves a list of available bins. |
+|**DC_COPIES** | Returns the number of copies the device can print. |
+|**DC_DRIVER** | Returns the version number of the printer driver.|
+|**DC_DUPLEX** | Returns the level of duplex support. |    
+|**DC_ENUMRESOLUTIONS** | Returns a list of available resolutions. |    
+|**DC_EXTRA** | Returns the number of bytes required for thedevice-specific portion of the DEVMODE structure for the printer driver. |    
+|** DC_FIELDS** | Returns the dmFields member of the printer driver'sDEVMODE structure. |
+|**DC_FILEDEPENDENCIES** | Returns a list of files that also need to be loaded when a driver is installed. |
+|**DC_MAXEXTENT** | Returns a POINT structure containing the maximum paper size that the dmPaperLength and dmPaperWidth members of the printer driver's DEVMODE structure can specify. |
+|**DC_MINEXTENT** | Returns a POINT structure containing the minimum paper size that the dmPaperLength and dmPaperWidth members of the printer driver's DEVMODE structure can specify. |
+|**DC_ORIENTATION** | Returns the relationship between portrait and landscape orientations for a device, in terms of the number of degrees that portrait orientation is rotated counterclockwise to produce landscape orientation. |
+|**DC_PAPERNAMES** | Retrieves a list of supported paper names--for example, Letter or Legal. |
+|**DC_PAPERS** | Retrieves a list of supported paper sizes. |
+|**DC_PAPERSIZE** | Copies the dimensions of all supported paper sizes, in tenths of a millimeter, to an array of POINT structures pointed to by the lpszOutput parameter. |
+|**DC_SIZE** | Returns the dmSize member of the printer driver's DEVMODE structure. |
+|**DC_TRUETYPE** | Retrieves the abilities of the driver to use TrueType fonts. |
+|**DC_VERSION** | Returns the specification version to which the printer driver conforms. |
+|**DC_FIELDS** | 1 | 
+|**DC_PAPERS** | 2 |
+|**DC_PAPERSIZE** | 3 |
+|**DC_MINEXTENT** | 4 |
+|**DC_MAXEXTENT** | 5 |
+|**DC_BINS** | 6 | 
+|**DC_DUPLEX**  | 7 |
+|**DC_SIZE** | 8 | 
+|**DC_EXTRA** | 9 |
+|**DC_VERSION** | 10 |
+|**DC_DRIVER** | 11 |
+|**DC_BINNAMES** | 12 | 
+|**DC_ENUMRESOLUTIONS** | 13 |
+|**DC_FILEDEPENDENCIES**  | 14|
+|**DC_TRUETYPE** | 15 |
+|**DC_PAPERNAMES** | 16 | 
+|**DC_ORIENTATION** | 17 | 
+|**DC_COPIES** | 18 |
+| | |
+| <@cBuffer> | Buffer to store the result |
+
+====== Returns ====== 
+^Returns^Description^
+| <nRetCode> |  The return value is -1 if the function failed. |
+====== Example ======
+SAMPLES\DEVCAPS.PRG  
+ 
+<code clipper>
+// Testing DeviceCapabilities()  
+#include "FiveWin.ch"  
+
+#define DC_DUPLEX 7  
+#define DC_PAPERNAMES 16  
+//---------------------------------------------//  
+Function Main()   
+
+ Local cInfo  
+
+ if DeviceCapabilities( "Epson Stylus Color",;  
+    DC_DUPLEX ) == 0  
+    MsgInfo( "No DC_DUPLEX supported by this driver" )  
+ endif  
+ 
+ If DeviceCapabilities( "Epson Stylus Color",;  
+	 DC_PAPERNAMES, @cInfo ) != 0  
+    MsgInfo( cInfo )  
+ Endif  
+Return nil  
+//---------------------------------------------//  
+</code>
+
+====== Source Code ====== 
+SOURCE\WINAPI\DEVICE.C   

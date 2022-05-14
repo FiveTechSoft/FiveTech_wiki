@@ -1,0 +1,144 @@
+====== TreeBegin() ====== 
+
+
+
+TreeBegin()
+
+
+
+
+FiveWin trees function support
+
+
+
+====== Syntax ======
+
+
+
+
+
+ TreeBegin( <cBmpOpen>, <cBmpClose> ) --> oTree 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cBmpOpen> The name of the resourced bitmap to use as the open tree
+bitmap. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cBmpClose> The name of the resourced bitmap to use as the close tree
+bitmap. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oTree> The just new created tree reference. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ These functions are automatically managed by FiveWin trees creation
+xBase commands. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ IDE\\SOURCE\\Menu.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Trees.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TTreeItem Class TLinkList 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

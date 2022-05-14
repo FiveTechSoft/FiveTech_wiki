@@ -1,0 +1,88 @@
+WSAStartUp()
+
+
+
+WSAStartUp()
+
+ Previous  Top  Next
+
+
+
+
+Specify the version of Windows Sockets API required
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WSAStartup() --> nError 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None. The 'C' function call it with the parameter 0x101 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nError> A zero is returned if the function is success. Otherwise a
+return code is returned by calling WSAGetLastError() 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

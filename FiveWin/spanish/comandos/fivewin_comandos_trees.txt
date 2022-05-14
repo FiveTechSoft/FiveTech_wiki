@@ -1,0 +1,52 @@
+====== Comando Tree ======
+
+Creando un Objeto TREE ... ENDTREE
+
+<code clipper>
+TREE [<oTree>] [ BITMAPS <cBmpOpen>, <cBmpClose> ];
+     TREEITEM [<oItem> PROMPT ] <cLabel> ;
+              [ RESOURCE <cResName1> [, <cResName2> ] ] ;
+              [ FILENAME <cBmpOpen> [, <cBmpClose> ] ] ;
+              [ OPENED | OPEN ] ;
+              [ ACTION <uAction> ];
+     [ TREE <oSubTree> ] 
+            [ TREEITEM ... ] [ ... ] 
+     [ ENDTREE ] 
+ENDTREE  
+</code>  
+
+====== Parámetros ======
+|<oTree>|Referencia al objeto tree|
+|<cBmpOpen>|Manejador del bitmap que indicará que la rama del árbol está abierta|
+|cBmpClose>|Manejador del bitmap que indicará que la rama del árbol está cerrada|
+|<oItem>|Referencia al objeto elemento del árbol|
+|<cLabel>|Título que deberá aparecer en la rama|
+|<cResName1>|Nombre del bitmap almacenado como recurso DLL que indicará que la rama del árbol está abierta|
+|cResName2>|Nombre del bitmap almacenado como recurso DLL que indicará que la rama del árbol está cerrada|
+|<uAction>|Acción a realizar cuando se pulsa sobre el TTreeItem|
+|<oSubTree>|Referencia al objeto sub tree creado|
+
+====== Cláusulas ======
+|OPENED/OPEN|Indica que la rama del árbol debe de presentarse abierta por default|
+
+====== Implementación del comando: ======
+<code clipper>
+#ifndef _TREE_CH
+#define _TREE_CH
+#xcommand TREE [<oTree>] ;
+[ BITMAPS <cBmpOpen>, <cBmpClose> ] ;
+=> ;
+[<oTree>:=] TreeBegin( <cBmpOpen>, <cBmpClose> )
+#xcommand TREEITEM [<oItem> PROMPT ] <cLabel> ;
+[ RESOURCE <cResName1> [, <cResName2> ] ] ;
+[ FILENAME <cBmpOpen> [, <cBmpClose> ] ] ;
+[ <lOpened: OPENED, OPEN> ] ;
+=> ;
+[<oItem> :=] _TreeItem( <cLabel>, <cResName1>, <cResName2>,;
+<cBmpOpen>, <cBmpClose>, <.lOpened.> )
+#xcommand ENDTREE => TreeEnd()
+#endif
+</code> 
+
+====== Vea tambien ======
+[[fivewin_clase_ttreeitem|Clase TreeItem]]

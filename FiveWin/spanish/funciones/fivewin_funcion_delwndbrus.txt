@@ -1,0 +1,16 @@
+
+====== DelWndBrus() ======
+DelWndBrus()
+
+To erase the last brush created with WndBrush
+====== Sintaxis ======
+ DelWndBrus() 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ Nil 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\WNDBRUSH.C 
+====== Ver también ======

@@ -1,0 +1,88 @@
+nNot()
+
+
+
+nNot()
+
+ Previous  Top  Next
+
+
+
+
+This function carries out a logical NOT to an operator
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nNot( <nOp1> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nOp1> Operador 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> Logical Not of the operator nOp1. The zeros of the operator at
+bits level they are put to one and the ones to zeros. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

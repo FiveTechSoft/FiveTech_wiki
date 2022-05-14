@@ -1,0 +1,41 @@
+====== Creación de una pestaña mediante código fuente ======
+<code clipper>
+@ <nRow>, <nCol> TABS [<oTabs>] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+   [ ACTION | EXECUTE | ON CHANGE <uAction> ] ;  
+   [ PIXEL ] ;  
+   [ DESIGN ] ;  
+   [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+   [ OPTION <nOption> ] ;  
+   [ SIZE <nWidth>, <nHeight> ] ;  
+   [ MESSAGE <cMsg> ]  
+</code>  
+====== Creación de una pestaña desde recursos ======
+<code clipper>
+REDEFINE TABS [<oTabs>] ;  
+   [ ID <nId> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+   [ ACTION | EXECUTE <uAction> ] ;  
+   [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+   [ OPTION <nOption> ]  
+</code> 
+====== Parámetros ======
+|<nRow>, <nCol>       |Coordenadas donde ubicar el control pestaña (sólo desde código fuente, no desde recursos).|
+|<oTabs>              |Referencia al objeto pestaña recién creado.|
+|<oWnd>               |Objeto contenedor del control pestaña.|
+|<cPrompt>            |Lista de cadenas, una para cada pestaña.|
+|<uAction>            |Acción a ejecutar al seleccionar cualquier pestaña.|
+|<nClrFore>           |Color en que se muestra el texto.|
+|<nClrBack>           |Color de relleno de la superficie.|
+|<nOption>            |Opción para seleccionar una pestaña inicial.|
+|<nWidth>, <nHeight>  |Dimensiones del control pestaña.|
+|<cMsg>               |Mensaje opcional a mostrar en la barra de mensajes del contenedor.|
+|<nId>                |Identificador numérico del control.|
+
+====== Cláusulas ======
+|PIXEL       |Se utilizan coordenadas en píxels y no de texto.|
+|DESIGN      |Permite al usuario mover y cambiar el tamaño del control de forma interactiva.|
+|ON CHANGE   |Acción a ejecutar cuando una opción de pestaña diferente es seleccionada.|
+

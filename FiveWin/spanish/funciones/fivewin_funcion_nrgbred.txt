@@ -1,0 +1,16 @@
+
+====== nRGBRed() ====== 
+nRGBRed()
+
+Red component of a RGB color
+====== Sintaxis ======
+ nRGBRed( <nRGBColor> ) --> nRed 
+====== Parámetros ======
+ <nRGBColor> RGB color 
+====== Devuelve ======
+ <nRed> Red component of a RGB color 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\COLORTON.C 
+====== Ver también ======

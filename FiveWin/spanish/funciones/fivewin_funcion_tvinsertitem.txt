@@ -1,0 +1,76 @@
+TvInsertItem()
+
+
+
+TvInsertItem()
+
+ Previous  Top  Next
+
+Insert a tree item in a TreeView control.
+
+====== Sintaxis ======
+
+
+ TvInsertItem( <hWnd>, <cItemText>, <hItem>, <nImage> ) --> hItem 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ <cItemText> Prompt of the treeitem 
+
+
+ 
+
+
+ <hItem> Handle of the treeitem parent 
+
+
+ 
+
+
+ <nImage> Number of the selected image 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <hItem> Handle of the inserted treeitem 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ SAMPLES\WIN95_2.PRG 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

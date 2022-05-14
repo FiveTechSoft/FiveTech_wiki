@@ -1,0 +1,15 @@
+====== Class TView ======
+
+View Objects (UNDER DEVELOPMENT)                                               
+====== DATA ======
+|cName|The name of the view|
+|aWorkAreas|The workareas involved in the view|
+====== METHODS ======
+|New|Constructor from source code. Takes the view name as|
+|parameter.||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TVIEW.PRG

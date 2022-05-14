@@ -1,0 +1,145 @@
+DDEInitialize()
+
+
+
+DDEInitialize()
+
+ Previous  Top  Next
+
+
+
+Registers an application with the DDE Management Library
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ DDEinitialize( <@hInst>, <pDDEProc>, <nType> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <@hInst> Address of instance identifier 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <pDDEProc> Address of callback function 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> Flags 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+ 
+
+
+ 
+
+
+ <nResult> One in the next cases: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ DMLERR_DLL_USAGE 
+
+
+ 
+
+
+ DMLERR_INVALIDPARAMETER 
+
+
+ 
+
+
+ DMLERR_NO_ERROR 
+
+
+ 
+
+
+ DMLERR_SYS_ERROR 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\DDEML.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

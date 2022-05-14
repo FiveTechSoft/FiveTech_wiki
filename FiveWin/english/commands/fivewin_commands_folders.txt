@@ -1,0 +1,83 @@
+
+====== Folder ======
+
+** Creating a folder from source code **
+<code clipper>
+ @ <nRow>, <nCol> FOLDER [<oFolder>] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+ [ DIALOG | DIALOGS | PAGE | PAGES <cDlgName1>      [,<cDlgNameN>] ] ;
+ [ HELPTOPICS <cnHelpids,...> ] ;
+ [ PIXEL ] ;  
+ [ DESIGN ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ OPTION <nOption> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ MESSAGE <cMsg> ]  ;
+ [ ADJUST];  
+ [ FONT <oFont> ]  
+</code>
+**Creating a folder from resources **
+<code clipper>
+ REDEFINE FOLDER [<oFolder>] ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+ [ DIALOG | DIALOGS | PAGE | PAGES <cDlgName1> [,<cDlgNameN>] ;
+ [ HELPTOPICS <cnHelpids,...> ] ;
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ OPTION <nOption> ] ;  
+ [ ON CHANGE <uChange> ]  
+ [ ADJUST ]  
+</code>
+|<nRow>,<nCol>|The coordinates where to locate the folder control (only from source code, not from resources)|    
+|<oFolder>|A reference to the folder object just created.    |
+|<oWnd>|The container object of the folder control.    |
+|<cPrompt,...>|A list with the text to show as each page prompts.    |
+|<cDlgName1,...>|A list with the resources names of the DialogBoxes to manage.|
+|<cnHelpids,...>|A list with the help-IDs for the pages. This can be a number or a string or mixed as defined in helpfile.   |
+|<nClrFore>|The color to display the prompts text.    |
+|<nClrBack>|The color to fill the folder surface.    |
+|<nOption>|An optional initial option to use different from 1.    |
+|<nWidth>,<nHeight>|The dimensions of the folder control.    |
+|<cMsg>|An optional message to display on its container MsgBar if defined.    |
+|<nId>|The numeric resource identifier of the control.    |
+|<oFont>|An optional font object to use for the folder.    |
+|<uChange>|An action to be performed when changing the folder selected page.    |
+
+====== CLAUSES ======
+
+|PIXEL|To use pixel coordinates instead of text coordinates.    |
+|DESIGN|Allows the user to interactively move and resize the control.    |
+|ADJUST|To use the entire folder width to calculate the pages tabs dimensions.    |
+|FONT|To specify an optional font to be used for the folder.    |
+
+====== Sample Code / Usage ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oDlg, oFld
+
+   DEFINE DIALOG oDlg TITLE "FiveWin Dynamic folders" ;
+      FROM 5, 5 TO 20, 50 COLOR "N/G"
+
+   @ 0.5, 1 FOLDER oFld PROMPT "&xBase", "&And OOP", "&Power" ;
+      OF oDlg SIZE 160, 90
+
+   @ 1, 1 BUTTON "&Hello" OF oFld:aDialogs[ 1 ] ;
+     ACTION MsgInfo( "Hello world!" )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>  
+
+====== Screen Snapshot ======
+{{:folder.jpg|:folder.jpg}}
+
+
+====== See Also ======
+[[fivewin_class_tfolder|Class TFolder]], [[fivewin_class_ttabcontrol | Class TTabControl ]], [[fivewin_class_ttabs | Class TTabs ]]

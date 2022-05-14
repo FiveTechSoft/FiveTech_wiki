@@ -1,0 +1,18 @@
+====== GetEnhMetaFile() ====== 
+Creates a handle that identifies the enhanced-format metafile stored in the specified file.
+
+====== Syntax ======
+GetEnhMetaFile( <cMetaFile> ) --> hEMF 
+ 
+====== Parameters ======
+^Parameter^Description^
+|<cMetaFile>| The filename of an enhanced metafile. |
+ 
+====== Returns ======
+^Returns^Description^
+|<hEMF>| The handle of the enhanced metafile. Zero in case of failure. |
+
+====== Source code ======
+SOURCE\WINAPI\EMETAFIL.C 
+
+====== See also ======

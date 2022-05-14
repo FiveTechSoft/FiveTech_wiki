@@ -1,0 +1,18 @@
+
+====== DbfNtx() ======
+DbfNtx()
+
+Just to avoid removing extern DBFNTX
+====== Sintaxis ======
+ DbfNtx() --> nil 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ Nil 
+
+Observations:
+
+ This function will be used for not having to declare Extern DBFNTX 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

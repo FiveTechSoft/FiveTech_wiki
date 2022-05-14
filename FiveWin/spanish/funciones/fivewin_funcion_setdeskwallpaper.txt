@@ -1,0 +1,139 @@
+SetDeskWallPaper()
+
+
+
+SetDeskWallPaper()
+
+ Previous  Top  Next
+
+
+
+
+Changes the desktop bitmap
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetDeskWallPaper( <cBmpFile> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cBmpFile> The name of the BMP file to be shown as the desktop bitmap. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> If the operation was successful. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This is an undocumented WinApi function. Don'texpect that is available
+in next Windows versions. Also, this function does not store the value
+for the next Windows startup. You have to modify WIN.INI file in order to
+asure that it will be the desktop BMP next time. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\FwBrow.prg 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ See SAMPLES\Install.prg for a better way of changing the whole desktop
+look. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Desktop.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

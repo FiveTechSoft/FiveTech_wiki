@@ -1,0 +1,119 @@
+====== PokeWord() ====== 
+
+
+
+PokeWord()
+
+
+
+
+
+
+Writes a word of an address of certain memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PokeWord( <nSegment>, <nOffset>, <nWord> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nSegment> Segment of memory to which we will access 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOffset> Displacement of memory inside the segment nSegment 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWord> Word written in the address of given memory. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\PokePOKE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+SOURCE\WINAPI\PokePOKE.C
+
+
+
+
+
+====== See also ======
+

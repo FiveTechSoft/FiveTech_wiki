@@ -1,0 +1,93 @@
+Para definir una función en una DLL externa a tiempo de ejecución 
+
+<code clipper>
+DLL [STATIC] FUNCTION <FunName>( ;  
+
+[ <Param1> AS <Type> ] ; [ <ParamN> AS <Type> ] ) ; AS <return> [PASCAL] LIB <DllName>
+</code>
+			
+
+FiveWin le permite declarar una función de una DLL erxterna a tiempo de ejecuciónpor su propio nombre! Vea el ejemplo DllCall.prg.
+
+
+|<FuncName>|El nombre de la función en la DLL. Recuerde Clipper únicamente usa 10 caracteres como máximo de longitud.|
+|<Param1>|Nombre de un parámetro.|
+|<Type>,<return> | Longitud en bytes|
+| | (BYTE, CHAR) 1 Byte |
+| |(WORD, BOOL, HANDLE, HWND, HDC) 2 Bytes |
+| |(LONG, STRING, LPSTR, PTR) 4 Bytes |
+| |(DOUBLE) 8 Bytes|
+|<DllName>|Nombre de la DLL.|
+
+
+
+Recomendamos desarrollar funciones de conexión basadas en lenguaje C cuando vaya a desarrollar una constante actividad con algunas DLLs. Ver "usando el API de Windows". 
+
+
+
+Ejemplos:
+
+
+
+Lamado a SndPlaySound() en tiempo de ejecución:
+
+
+<code clipper>
+#include "FiveWin.ch"
+
+
+
+function Main()
+
+
+
+SndPlaySound( "tada.wav", 0 )
+
+
+
+return
+
+
+DLL FUNCTION SndPlaySound( cFile AS LPSTR, nType AS WORD ) AS BOOL 							;PASCAL LIB "MMSYSTEM.DLL"
+
+</code>
+
+Diseñando la misma conexión a la DLL usando lenguaje C:
+<code c>
+#include <WinTen.h>
+#include <Windows.h>
+#include <MMSystem.h>
+#include <ClipApi.h>
+
+//--------------------------------------------------------------------//
+
+CLIPPER SNDPLAYSOU()   // ND()
+{
+   _retl( sndPlaySound( _parc( 1 ), _parni( 2 ) ) );
+}
+
+//---------------------------------------------------------------------//
+</code>
+En esta situación es necesario usar una LIB específica, así el enlazador sabrá como debe hacerse la conexión con la DLL a tiempo de ejecución. Ejemplo:
+<code c>
+TEST.DLL          		// Es una DLL comercial que vamos a ausar
+
+
+IMPDEF.EXE TEST.DEF TEST.DLL   // IMPDEF.EXE es una herramienta de proporcionan Microsoft y Borland
+
+</code>
+Ahora , edite TEST.DEF -que es un archivo ascii - y renombre todos los símbolos con 10 caracteres o menos con un guión bajo:
+<code c>
+LESS10   --->   _LESS10
+</code>
+Luego haga:
+
+IMPLIB.EXE TEST.LIB TEST.DEF
+
+Cuando enlace use esa  .LIB !
+
+Revise nuestra carpeta C \WinApi  el código fuente muestra una gran cantidad de ejemplos haciendo esto.
+
+
+ADVERTENCIA: SndPlaySound() ya está construida dentro de FiveWin.lib. Solo se ha usado en este ejemplo con propósitos de enseñanza.
+

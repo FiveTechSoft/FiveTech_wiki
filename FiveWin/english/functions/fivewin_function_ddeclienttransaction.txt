@@ -1,0 +1,23 @@
+====== DDEClientTransaction() ======
+Begins a DDE data transaction 
+
+====== Syntax: ======
+DDEclientt( <hData>, <nLen>, <hConv>, <hszItem>, <nClipFmt>, <nType>, <nTimeOut>, <@nResult> ) --> hDDEData  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|<hData>| Data to pass to server |
+|<nLen>| Length of data  |
+|<hConv>| Handle of conversation  |
+|<hszItem>| Handle of item-name string |
+|<nClipFmt>| Clipboard data format |
+|<nType>| Transaction type  |
+|<nTimeOut>| Timeout duration  |
+|<@nResult>| Transaction result  |
+
+====== Returns: ======
+ 
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\DDEML.C  

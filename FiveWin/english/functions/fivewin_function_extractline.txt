@@ -1,0 +1,102 @@
+ExtractLine()
+
+
+ExtractLine()
+ Previous  Top  Next
+
+Extract a line from a string starting at a given position.
+
+
+====== Syntax ======
+
+
+
+
+
+ ExtractLine( <cText>, @<nFrom> ) --> cLine 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cText> The string from which the line will be extracted. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFrom> The starting position inside cText from where the line will be
+extracted. It has to be passed by reference as it is updated by the
+function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cLine> The extracted line. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ See SAMPLES\srcview.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\xbrowse.prg 
+
+
+ 
+
+

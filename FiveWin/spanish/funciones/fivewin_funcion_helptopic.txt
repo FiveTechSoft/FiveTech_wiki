@@ -1,0 +1,7 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**<cTopic>**|
+|  | es una cadena de caracteres que nos permite especificar el tema predeterminado donde automáticamente se muestre la ayuda.|
+^Valor de retorno| nil|
+^Descripción:| Nos permite elegir el tema predeterminado. Podemos cambiarlo desde dentro de dentro del programa en diferentes lugares|
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | GetHelpFile, GetHelpTopic, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, Winhelp, SetHelpFile, HelpPopup| 

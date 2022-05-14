@@ -1,0 +1,29 @@
+
+====== Calldll32() ======
+
+Llama una funcion ubicada en una DLL de 32 Bits
+
+====== Sintaxis: ======
+ 
+ CallDll32( <cFuntionDef>, <uParam1>, ..., <uParamN> ) --> uResult 
+
+
+====== Parámetros: ======
+
+^Parámetro^Descripción^
+| <cFuntionDef> | Es una cadena especial que contiene toda la informacion necesaria para ejecutar cierta accion. Esta cadena es automaticamente producida por la funcion GetProcAddress().  |  
+| <uParam1> | Son los parámetros suministrados a la funcion. Estos dependen de la funcion contenida en la dll que haya que llamar.|  
+| <uParamN> || 
+
+====== Retorno: ======
+
+ Es el valor de retorno de la funcion contenida en la DLL
+
+====== Ejemplo: ======
+ 
+ Ninguno
+
+
+====== Codigo Fuente:  ======
+ 
+ SOURCE\WINAPI\CallDll.c

@@ -1,0 +1,140 @@
+====== SetBalloon() ======
+
+SetBalloon() establece la configuración global para tips y forma de globo.
+
+====== Sintaxis ======
+
+SetBalloon( <lOnOff> ) --> lPrevious 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<lOnOff>| Verdad para la forma de globo, o falso para ToolTip estándar.|
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<lPrevious>| El valor establecido anteriormente.|
+
+====== Código fuente ======
+
+SOURCE\CLASSES\window.prg 
+
+====== Ejemplo ======
+
+SAMPLES\test2007.prg
+
+<code>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   local oBar, oPopup, oBtn   
+
+   SetBalloon( .T. ) // Balloon shape required for tooltips
+
+   DEFINE WINDOW oWnd TITLE "FWH - Office 2007 look in your ButtonBars, MsgBar and Menus" ;
+      MENU BuildMenu() MDI
+
+   DEFINE BUTTONBAR oBar OF oWnd SIZE 60, 60 2007
+
+   DEFINE BUTTON OF oBar ACTION Print() ;
+      RESOURCE "attach" PROMPT "Attach" TOOLTIP "Attach"
+
+   DEFINE BUTTON OF oBar ACTION MsgInfo( "calendar" ) ;
+      RESOURCE "calendar" PROMPT "Calendar" WHEN .F. TOOLTIP "Calendar"
+
+   MENU oPopup POPUP
+      MENUITEM "One" ACTION MsgInfo( 1 )
+      MENUITEM "Two" ACTION MsgInfo( 2 )
+   ENDMENU
+
+   DEFINE BUTTON oBtn OF oBar ACTION oBtn:ShowPopup() ;
+      RESOURCE "people" PROMPT "Clients" GROUP ;
+      MENU oPopup TOOLTIP "Clients"
+
+   DEFINE BUTTON OF oBar ACTION Test() ;
+      RESOURCE "print" PROMPT "Print" TOOLTIP "Print"
+
+   SET MESSAGE OF oWnd TO "Testing the ButtonBar 2007 Office look" ;
+      CENTERED CLOCK KEYBOARD 2007
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Do you want to end?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu 2007
+      MENUITEM "&DataBases"
+      MENU
+         MENUITEM "&Clients..." FILENAME "..\bitmaps\16x16\favorite.bmp"
+         MENUITEM "&Report..."
+         MENU
+            MENUITEM "&One..." DISABLED
+            MENUITEM "&Two..." CHECKED
+            MENUITEM "&Three..." WHEN .F.
+         ENDMENU
+         SEPARATOR
+         MENUITEM "&End" ACTION oWnd:End()
+      ENDMENU
+      
+      MENUITEM "Edit" WHEN .F.
+      
+      oMenu:AddHelp()
+      
+      MENUITEM "Another item"
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function Print()
+
+   local oPrn
+   
+   PRINTER oPrn PREVIEW
+      PAGE
+         oPrn:Say( 2, 2, "Hello" )
+      ENDPAGE
+      PAGE
+         oPrn:Say( 2, 2, "Bye" )
+      ENDPAGE
+   ENDPRINT
+   
+return nil         
+
+//----------------------------------------------------------------------------//
+
+function Test()
+
+   local oDlg, cPass := Space( 4 )
+   
+   DEFINE DIALOG oDlg RESOURCE "test"
+   
+   REDEFINE GET cPass ID 100 OF oDlg
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+   MsgInfo( GetGuiResources() )
+   
+return nil   
+
+//----------------------------------------------------------------------------//
+
+
+procedure AppSys // XBase++ requirement
+
+return
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Ver también ======
+

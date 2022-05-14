@@ -1,0 +1,69 @@
+====== MidiNoteOff() ======
+
+
+Stops a certain note to sound for a channel MIDI.
+
+====== Syntax ======
+
+
+ MidiNoteOff( <hMidi>, <nChanel>, <nOct>, <nNote>, <nVel> ) --> uReturn 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hMidi> Handle of the audio device driver 
+
+
+ 
+
+
+ <nChanel> Channel number. 
+
+
+ 
+
+
+ <nOct> Octave number 
+
+
+ 
+
+
+ <nNote> Note number 
+
+
+ 
+
+
+ <nVel> Speed with which the note will reproduce 
+
+
+ 
+
+====== Returns ======
+
+
+ uReturn Returned value by the audio device driver. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+
+====== See also ======
+

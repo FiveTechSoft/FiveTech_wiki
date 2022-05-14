@@ -1,0 +1,35 @@
+====== Hex2Str() ======
+Converts a hexadecimal representation of a string to its corresponding ASCII format.
+
+====== Syntax ======
+Hex2Str( <cHex> ) --> cString 
+ 
+====== Parameters ======
+^Parameter^Description^
+|<cHex>| The hexadecimal string to convert.|
+ 
+====== Returns ======
+^Returns^Decription^
+|<cString>| The converted ASCII string. |
+
+====== Sample ======
+SAMPLES\TESTHEX2.PRG 
+<code clipper>
+#include "fivewin.ch"
+//-----------------------------------//
+Function main()  
+  
+  MsgInfo(DecToHex( 1234 ) )  // Returns "4D2"
+  
+  MsgInfo(HexToDec("4D2"))  // Returns 1234
+  
+  MsgInfo(Hex2Str("4D2"))  // Returns "M"
+
+Return NIL
+</code>
+ 
+====== Source code ======
+SOURCE\FUNCTION\STR2HEX.C 
+
+====== See also ======
+[[fivewin_function_hextodec|HexToDec()]], [[fivewin_function_Dectohex|DecToHex()]]

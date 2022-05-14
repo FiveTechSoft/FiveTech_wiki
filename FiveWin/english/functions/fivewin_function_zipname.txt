@@ -1,0 +1,27 @@
+====== ZipName() ======
+Name of the file that is being extacted
+
+====== Syntax ======
+ZipName( <nZipInfo> ) --> cZipName 
+
+====== Parameters: ======
+^Parameter^Description^
+|<nZipInfo>| Structure PZFILEINFO delivers automatically for the bZip codeblock. |
+
+====== Return ======
+^Returns^Description^
+|<cZipName>| Name of the file that is being extracted.|
+
+====== Sample ======
+SAMPLES\TESTZIP.PRG 
+
+====== Source Code======
+SOURCE\FUNCTION\CLIPZIP2.C 
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_ZipFile|ZipFile()]]
+[[fivewin_function_ZipMsg|ZipMsg()]]
+[[fivewin_function_GetFirstInZip|GetFirstInZip()]]
+[[fivewin_function_ZipSize|ZipSize()]]
+[[fivewin_function_ZipType|ZipType()]]

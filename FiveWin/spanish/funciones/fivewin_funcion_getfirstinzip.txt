@@ -1,0 +1,31 @@
+
+====== GetFirstInZip() ======
+GetFirstInZip()
+
+Retrieves info for the first file in the ZIP file
+====== Sintaxis ======
+ GetFirstInZip( <cZipFileName> ) --> aFileInfo 
+====== Parámetros ======
+ <cZipFileName> The name of the ZIP file to retrieve info from its first
+file. 
+====== Devuelve ======
+  <aFileInfo> An array of 9 items containing the following first file in
+         ZIP information: 
+     aFileInfo[ 1 ]   // The returning code
+       // #define ZIP_OK         0
+       // #define ZIP_FILEERROR      -1
+       // #define ZIP_INTERNALERROR      -2
+       // #define ZIP_NOMOREITEMS      1
+     aFileInfo[ 2 ]   // the filename   
+     aFileInfo[ 3 ]   // Date   
+     aFileInfo[ 4 ]   // Time   
+     aFileInfo[ 5 ]   // File size   
+     aFileInfo[ 6 ]   // Compressed size   
+     aFileInfo[ 7 ]   // offset insize the ZIP file   
+     aFileInfo[ 8 ]   // Pack Method   
+     aFileInfo[ 9 ]   // File attributes   
+====== Ejemplo ======
+ SAMPLES\TestZip.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\UnZip.c 
+====== Ver también ======

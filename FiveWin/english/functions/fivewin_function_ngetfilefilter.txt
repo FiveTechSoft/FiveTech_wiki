@@ -1,0 +1,139 @@
+nGetFileFilter()
+
+
+
+nGetFileFilter()
+
+ Previous  Top  Next
+
+
+
+
+Returns the active filter of the last call to function cGetFile()
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nGetFileFilter() --> nFilter 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <None> 
+
+
+ 
+
+
+ 
+
+====== Returns ======
+
+
+
+
+
+ <nFilter>    A numeric value indicating the filter number that was
+active on the last call to the function cGetFile() function. 
+
+
+ 
+
+
+  
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ This value only has meaning when several types of files has been
+specified when calling cGetFile() 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ IDE\\Ide.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\GetFile.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ cGetFile() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,26 @@
+====== WNetDisconnectDialog() ======
+
+Mostrar un cuadro de diálogo para conectarse a recursos de red
+
+====== Sintaxis ======
+ 
+ WNetConnectDialog( <hWndOwner>, <nType> ) --> nResult
+
+====== Parametros ======
+
+|<hWndOwner>| título de la ventana que posee el cuadro de diálogo |
+|<nType>| tipo de recursos para permitir las conexiones a | 
+
+====== Retorno ======
+
+|<nResult>| Si la función tiene éxito sin retorno de error si el usuario cancelar el cuadro de diálogo de un 0xFFFFFFFF lo contrario se devuelve un código de error se devuelve.|
+|ERROR_EXTENDED_ERROR| 1208 una red de error específico ocurrido. |
+|ERROR_INVALID_PASSWORD| 86 La contraseña especificada no es válida.| 
+|ERROR_NO_NETWORK|1222 de la red está presente.|
+|ERROR_NOT_ENOUGH_MEMORY| 8 No hay memoria suficiente para iniciar el cuadro de diálogo.|
+
+====== Ejemplo ======
+
+====== Codigo Fuente ======
+ 
+ SOURCE\WINAPI\NET.C

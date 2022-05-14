@@ -1,0 +1,67 @@
+====== WndMain() ====== 
+
+WndMain()
+
+Returns the object main TWindow of the application.
+
+
+====== Syntax ======
+ WndMain() --> oWnd 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oWnd> TWindow object of the main window of the application. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

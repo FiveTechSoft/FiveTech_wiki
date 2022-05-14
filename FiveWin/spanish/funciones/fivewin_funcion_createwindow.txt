@@ -1,0 +1,33 @@
+
+====== CreateWindow() ======
+CreateWindow()
+Creates an overlapped, pop-up or child window
+====== Sintaxis ======
+ CreateWindow( <cClassName>, <cTitle>, <nStyle>, <nLeft>, <nTop>,
+<nWidth>, <nHeight>, <hWndOwner>, <hMenu>, <cExtraData> ) --> hWnd 
+
+ This function creates a window. It is used from inside FiveWin TWindow
+Class. Use Classes as they much more powerful and easy to manage. 
+====== Parámetros ======
+ <cClassName> The name of the class of the window. This class it is not
+related to an 5W oops class, but to a windows api own identification. 
+
+ <cTitle> The title or the caption of the window. 
+ <nStyle> Specifies the style of the window being created. 
+ <nLeft> The coordinates and dimensions of the window. 
+ <nTop> 
+ <nWidth> 
+ <nHeight> 
+ <hWndOwner> The handle of the window owner (if any) of the new window. 
+ <hMenu> The handle of its PullDown menu. 
+ <cExtraData> Some extra data sometimes required. 
+====== Devuelve ======
+ <hWnd> The handle of the just created window. 
+====== Ejemplo ======
+
+ See SOURCE\CLASSES\Window.prg for a sample of how FiveWin uses this
+function. 
+====== Código fuente ======
+ SOURCE\WINAPI\CreateWn.c 
+====== Ver también ======
+ TWindow Class and Window creation xBase commands 

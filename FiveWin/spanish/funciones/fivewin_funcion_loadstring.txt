@@ -1,0 +1,15 @@
+
+====== LoadString() ====== 
+LoadString()
+
+Load the specified resource string
+====== Sintaxis ======
+ LoadString( <hInst>, <nResId> ) --> cString 
+====== Parámetros ======
+  <hInst>   The handle of the module that contains the string to be loaded. 
+  <nResId>  The numeric identifier of the string resource to be loaded. 
+====== Devuelve ======
+ <cString> The string just loaded or "". 
+====== Código fuente ======
+ SOURCE\WINAPI\String.c 
+====== Ver también ======

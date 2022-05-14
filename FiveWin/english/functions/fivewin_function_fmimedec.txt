@@ -1,0 +1,22 @@
+====== FMimeDec() ======
+De-encrypt a MIME file 
+
+====== Syntax ====== 
+fMimeDec(<cIn>,   <cOut> ) --> nil  
+
+====== Parameters ====== 
+^Parameter^Descripttion^
+| <cIn> | Name of the file to be de-encrypted |
+| <cOut> | Name of the file to which THE de-encrypted data to be written. |
+
+====== Return ====== 
+| Nil  |
+
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\FUNCTION\MIMECLIP.PRG   
+
+====== See Also ====== 
+[[fivewin_function_fmimeenc|fmimeenc()]]

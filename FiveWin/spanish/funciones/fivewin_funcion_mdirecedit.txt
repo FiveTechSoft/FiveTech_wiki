@@ -1,0 +1,29 @@
+
+====== MDIRecEdit() ====== 
+MDIRecEdit()
+
+Browse in MDIChild window.
+====== Sintaxis ======
+ MDIRecEdit( <cTitle>, <oIcon>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> oWnd 
+
+ It generates a window MDIChild and inside her a Browse editing the file
+DBF that is active in that moment. 
+====== Parámetros ======
+  <cTitle>   Title of the window MDIChild that the Browse contains 
+  <oIcon>    TIcon object for the MDIChild window 
+  <nTop>     Superior coordinate of the window expressed in characters 
+  <nLeft>    Left coordinate of the window expressed in characters 
+  <nBottom>  Down coordinate of the window expressed in characters 
+  <nRight>   Right coordinate of the window expressed in characters 
+====== Devuelve ======
+ <oWnd> It returns the name of the MDICHild object. 
+
+Observations:
+
+ It is important that the file DBF is open to arriving to this function
+and expressing the measures of the window in characters instead of
+pixels. 
+
+====== Código fuente ======
+ SOURCE\FUNCTION\MDIREC.PRG 
+====== Ver también ======

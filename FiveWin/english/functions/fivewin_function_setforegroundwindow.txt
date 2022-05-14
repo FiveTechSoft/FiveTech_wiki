@@ -1,0 +1,62 @@
+====== SetForegroundWindow() ======
+
+Puts the thread that created the specified window into the foreground and
+activates the window.
+
+====== Syntax ======
+
+ 
+
+
+ SetForegroundWindow( <hWnd> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle to the window. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> If the window was brought to the foreground, the return value
+is .t., otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\INSTANCE.C 
+
+
+ 
+
+
+

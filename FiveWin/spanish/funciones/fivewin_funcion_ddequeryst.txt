@@ -1,0 +1,21 @@
+====== DragAcceptFiles() ======
+
+Convierte un byte en un string de 1 byte de largo
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ B2Bin( <nValue> ) --> cValue
+
+====== Parametros: ( Parameters: ) ======
+
+ <nValue> El numero a convertir en un BYTE string.  
+
+====== Retorno: ( Returns: ) ======
+
+ <cValue> El equivalente de <nValue> como string
+
+====== Ejemplo: ( Sample: ) ======
+ 
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\b2bin.c 

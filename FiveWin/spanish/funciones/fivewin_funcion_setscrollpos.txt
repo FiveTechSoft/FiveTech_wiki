@@ -1,0 +1,97 @@
+SetScrollPos()
+
+
+SetScrollPos()
+ Previous  Top  Next
+
+Sets the scroll position of a scrollbar.
+
+====== Sintaxis ======
+
+ 
+
+
+ SetScrollPos( <hWnd>, <nFlags>, <nPos>, <lRedraw> ) --> nPrevPos 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> The handle of the scrollbar. 
+
+
+ 
+
+
+ 
+
+ <nFlags> Scroll bar flags 
+
+
+ 
+
+      
+   SB_CTL   2   Retrieves the position of a scroll bar control. In this
+case, the hwnd parameter must be the window handle of a scroll bar
+control.
+   SB_HORZ   0   Retrieves the position of a window's horizontal scroll
+bar.   
+   SB_VERT   1   Retrieves the position of a window's vertical scroll
+bar.   
+
+ 
+
+
+ <nPos> The new scroll position. 
+
+
+ 
+
+
+ <lRedraw> If .t., the scrollbar is redrawn. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nPrevPos> The previous scroll position. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\SCROLL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

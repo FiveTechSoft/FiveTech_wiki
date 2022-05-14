@@ -1,0 +1,109 @@
+SQLSetPos()
+
+
+SQLSetPos()
+ Previous  Top  Next
+
+Sets the cursor position in a rowset.
+
+====== Syntax ======
+
+ 
+
+
+ SQLSetPos( <hStmt>, <nRecNo>, <nOption>, <nLock> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nRecNo> Position of the row in the rowset on which to perform the
+operation specified with the nOption argument. If RowNumber is 0, the
+operation applies to every row in the rowset. 
+
+
+ 
+
+
+ <nOption> Operation to perform: 
+
+
+ SQL_POSITION 
+
+
+ SQL_REFRESH 
+
+
+ SQL_UPDATE 
+
+
+ SQL_DELETE 
+
+
+ 
+
+
+ <nLock> Specifies how to lock the row after performing the operation
+specified in the nOption argument: 
+
+
+ SQL_LOCK_NO_CHANGE 
+
+
+ SQL_LOCK_EXCLUSIVE 
+
+
+ SQL_LOCK_UNLOCK 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NEED_DATA, SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,57 @@
+====== Class TVbControl ======
+
+CLASS TVbControl FROM TControl                                                 
+====== DATA ======
+|aEventNames|A CLASSDATA with the names of all events|
+|lRegistered|ClassData to store the WinApi registered state of the|
+|Class||
+|hCtl|The handle of the VBX control (internal API value)|
+|aEvents|An array with all the defined events and its related|
+|actions.||
+====== METHODS ======
+|New|Creates a new VBX control from source code METHOD|
+|New(|nRow, nCol, nWidth, nHeight, oWnd, cVbxFile, cVbxClass,; aEvents )|
+|CONSTRUCTOR||
+|ReDefine|Redefine a VBX to be used from resources METHOD|
+|ReDefine(|nId, oWnd, nClrFore, nClrBack, aEvents ) CONSTRUCTOR|
+|Initiate|Generic initialization of a VBX METHOD Init( hDlg )|
+|GetPropName|Retrieves the name of a VBX property by its order|
+|METHOD|GetPropName( nProp ) INLINE VBXGetPrpName( ::hCtl, nProp - 1 )|
+|aGetProps|Returns an array with all the properties names METHOD|
+|aGetProps()||
+|Default|Default values for the initialization of the VBX|
+|METHOD|Default()|
+|SetProp|Changes a VBX property by its order METHOD SetProp(|
+|nProp,|uValue ) INLINE VBXSetProp( ::hCtl, nProp - 1, uValue )|
+|GetName|Retrieves the class name of the VBX control (API|
+|value)|METHOD GetName() INLINE GetClassName( ::hWnd )|
+|nGetProps|Retrieves the number of properties of the VBX METHOD|
+|nGetProps()|INLINE VBXGetNumProps( ::hCtl )|
+|nGetEvents|Retrieves the number of events of the VBX METHOD|
+|nGetEvents()|INLINE VBXGetNumEvents( ::hCtl )|
+|GetEvent|Retrieves the name of a VBX event by its name METHOD|
+|GetEvent(|nEvent ) INLINE VBXGetEveName( ::hCtl, nEvent - 1 )|
+|GetEnums|Retrieves an array with a VBX enum all possible|
+|values|METHOD GetEnums( cnProp ) INLINE VBXGetEnums( ::hCtl, cnProp )|
+|Get|Retrieves the value of a property by its name METHOD|
+|Get(|cPropName ) INLINE VBXGetPrpByName( ::hCtl, cPropName )|
+|Set|Changes a VBX property the value of a property by its|
+|name|METHOD Set( cPropName, uValue ) INLINE; VBXSetPrpByName( ::hCtl,|
+|cPropName,|uValue )|
+|GetProp|Retrieves the value of a property by its order METHOD|
+|GetProp(|nProp ) INLINE VBXGetProp( ::hCtl, nProp - 1 )|
+|GetPropType|Retrieves the type of a VBX property METHOD|
+|GetPropType(|nProp ) INLINE VBXGetPrpType( ::hCtl, nProp - 1 )|
+|HandleEvent|VBX specifically HandleEvent (inherits from TControl)|
+|METHOD|HandleEvent( nMsg, nWParam, nLParam )|
+|VbxEvent|Internal VBX events management function support|
+|METHOD|VbxEvent( hCtl, bEvent, cEvent ) EXTERN __VBXEvent()|
+|VbxInherit|Internal automatic inherit process for 5W VBX system|
+|METHOD|VbxInherit()|
+|cToChar|Generates a data template to build a Dialog|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TVBCONTROL.PRG

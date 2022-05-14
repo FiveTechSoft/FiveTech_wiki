@@ -1,0 +1,206 @@
+
+====== GetDeviceCaps() ======
+GetDeviceCaps()
+Retrieves device-specific information
+====== Sintaxis ======
+ GetDeviceCaps( <hDC>, <nCapability> ) --> nValue 
+ This function retrieves the device-specific information about a given
+device. 
+====== Parámetros ======
+  <hDC> The handle of the device context. 
+  <nCapability> Specifies the type of information to be returned. 
+====== Devuelve ======
+   <nValue> The requested value. 
+   DT_PLOTTER      Vector plotter   
+   DT_RASDISPLAY   Raster display   
+   DT_RASPRINTER   Raster printer   
+   DT_RASCAMERA   Raster camera   
+   DT_CHARSTREAM   Character stream   
+   DT_METAFILE      Metafile   
+   DT_DISPFILE      Display file   
+   HORZSIZE      Width of the physical display, in millimeters.   
+   VERTSIZE      Height of the physical display, in millimeters.   
+   HORZRES      Width of the display, in pixels.   
+   VERTRES      Height of the display, in raster lines.   
+   LOGPIXELSX      Number of pixels per logical inch along the display
+                width.   
+   LOGPIXELSY      Number of pixels per logical inch along the display
+               height.   
+   BITSPIXEL      Number of adjacent color bits for each pixel.   
+   PLANES      Number of color planes   
+   NUMBRUSHES      Number of device-specific brushes.   
+   NUMPENS      Number of device-specific pens.   
+   NUMMARKERS   Number of device-specific markers.   
+   NUMFONTS      Number of device-specific fonts.   
+   NUMCOLORS      Number of entries in the device's color table.   
+   ASPECTX      Relative width of a device pixel used for line drawing.   
+   ASPECTY      Relative height of a device pixel used for line drawing.   
+   ASPECTXY      Diagonal width of a device pixel used for line drawing.     
+   PDEVICESIZE      Size of the PDEVICE internal structure, in bytes.   
+   CLIPCAPS      Clipping capabilities the device supports. It can be one of
+                 the following values:
+    CP_NONE       Output is not clipped.   
+    CP_RECTANGLE  Output is clipped to rectangles.   
+    CP_REGION     Output is clipped to regions.   
+   SIZEPALETTE   Number of entries in the system palette. This index is
+                 valid only if the device driver sets the RC_PALETTE bit in the RASTERCAPS
+                 index; it is available only if the driver is written for Windows 3.0 or
+                 later.
+   NUMRESERVED   Number of reserved entries in the system palette. This
+                 index is valid only if the device driver sets the RC_PALETTE bit in the
+   RASTERCAPS    index; it is available only if the driver is written for
+                 Windows 3.0 or later.
+   COLORRES      Color resolution of the device, in bits per pixel. This
+                 index is valid only if the device driver sets the RC_PALETTE bit in the
+   RASTERCAPS    index; it is available only if the driver is written for
+                 Windows 3.0 or later.
+   RASTERCAPS    Raster capabilities the device supports. It can be a
+                  combination of the following values:
+    RC_BANDING      Supports banding.   
+    RC_BIGFONT      Supports fonts larger than 64K.   
+    RC_BITBLT      Transfers bitmaps.   
+    RC_BITMAP64      Supports bitmaps larger than 64K.   
+    RC_DEVBITS      Supports device bitmaps.   
+    RC_DI_BITMAP      Supports the SetDIBits and GetDIBits functions.   
+    RC_DIBTODEV      Supports the SetDIBitsToDevice function.   
+    RC_FLOODFILL   Performs flood fills.   
+    RC_GDI20_OUTPUT   Supports Windows version 2.0 features.   
+    RC_GDI20_STATE   Includes a state block in the device context.   
+    RC_NONE      Supports no raster operations.   
+    RC_OP_DX_OUTPUT   Supports dev opaque and DX array.   
+    RC_PALETTE      Specifies a palette-based device.   
+    RC_SAVEBITMAP   Saves bitmaps locally.   
+    RC_SCALING      Supports scaling.   
+    RC_STRETCHBLT   Supports the StretchBlt function.   
+    RC_STRETCHDIB   Supports the StretchDIBits function.
+   CURVECAPS      Curve capabilities the device supports. It can be a
+                  combination of the following values:
+    CC_NONE      Supports curves.   
+    CC_CIRCLES      Supports circles.   
+    CC_PIE      Supports pie wedges.   
+    CC_CHORD      Supports chords.   
+    CC_ELLIPSES      Supports ellipses.   
+    CC_WIDE      Supports wide borders.   
+    CC_STYLED      Supports styled borders.   
+    CC_WIDESTYLED   Supports wide, styled borders.   
+    CC_INTERIORS      Supports interiors.   
+    CC_ROUNDRECT   Supports rectangles with rounded corners.
+   LINECAPS      Line capabilities the device supports. It can be a
+                  combination of the following values:
+    LC_NONE      Supports no lines.   
+    LC_POLYLINE      Supports polylines.   
+    LC_MARKER      Supports markers.   
+    LC_POLYMARKER   Supports polymarkers.   
+    LC_WIDE      Supports wide lines.   
+    LC_STYLED      Supports styled lines.   
+    LC_WIDESTYLED   Supports wide, styled lines.   
+    LC_INTERIORS      Supports interiors.
+   POLYGONALCAPS   Polygonal capabilities the device supports. It can be a
+                   combination of the following values:
+    PC_NONE      Supports no polygons.   
+    PC_POLYGON      Supports alternate fill polygons.   
+    PC_RECTANGLE   Supports rectangles.   
+    PC_WINDPOLYGON   Supports winding number fill polygons.   
+    PC_SCANLINE      Supports scan lines.   
+    PC_WIDE      Supports wide borders.   
+    PC_STYLED      Supports styled borders.   
+    PC_WIDESTYLED   Supports wide, styled borders.   
+    PC_INTERIORS      Supports interiors.
+   TEXTCAPS      Text capabilities the device supports. It can be a
+                 combination of the following values:
+    TC_OP_CHARACTER   Supports character output precision, which indicates
+        the device can place device fonts at any pixel location. This is required
+        for any device with device fonts.   
+    TC_OP_STROKE   Supports stroke output precision, which indicates the
+        device can omit any stroke ofa device font.   
+    TC_CP_STROKE   Supports stroke clip precision, which indicates the device
+        can clip device fonts to a pixel boundary.   
+    TC_CR_90      Supports 90-degree character rotation, which indicates the
+        device can rotate characters only 90 degrees at a time.   
+    TC_CR_ANY      Supports character rotation at any degree, which indicates
+        the device can rotate device fonts through any angle.   
+    TC_SF_X_YINDEP   Supports scaling independent of x and y directions,
+        which indicates the device can scale device fonts separately in x and y
+        directions.   
+    TC_SA_DOUBLE   Supports doubled characters for scaling, which indicates
+        the device can double the size of device fonts.   
+    TC_SA_INTEGER   Supports integer multiples for scaling, which indicates
+        the device can scale the size of device fonts in any integer multiple.   
+    TC_SA_CONTIN   Supports any multiples for exact scaling, which indicates
+        the device can scale device fonts by any amount but still preserve the x
+        and y ratios.   
+    TC_EA_DOUBLE   Supports double-weight characters, which indicates the
+        device can make device fonts bold. If this bit is not set for printer
+        drivers, graphics device interface (GDI) attempts to create bold device
+        fonts by printing them twice.
+    TC_IA_ABLE      Supports italics, which indicates the device can make
+        device fonts italic. If this bit is not set, GDI assumes italics are not
+        available.   
+    TC_UA_ABLE      Supports underlining, which indicates the device can
+        underline device fonts. If this bit is not set, GDI creates underlines
+        for device fonts.   
+    TC_SO_ABLE      Supports strikeouts, which indicates the device can
+        strikeout device fonts. If this bit is not set, GDI creates strikeouts
+        for device fonts.   
+    TC_RA_ABLE      Supports raster fonts, which indicates that GDI should
+        enumerate any raster or TrueType fonts available for this device in
+        response to a call to the EnumFonts or EnumFontFamilies function. If this
+        bit is not set, GDI-supplied raster or TrueType fonts are not enumerated
+        when these functions are called.
+    TC_VA_ABLE      Supports vector fonts, which indicates that GDI should
+        enumerate any vector fonts available for this device in response to a
+        call to the EnumFonts or EnumFontFamilies function. This is significant
+        for vector devices only (thatis, for plotters). Display drivers (which
+        must be able to use raster fonts) and raster printer drivers always
+        enumerate vector fonts, because GDI rasterizes vector fonts before
+        sending them to the driver.
+    TC_RESERVED   Reserved; must be zero.   
+
+
+  /* TEXTCAPS */ 
+
+  #define TC_OP_CHARACTER   x0001   
+  #define TC_OP_STROKE   x0002   
+  #define TC_CP_STROKE   x0004   
+  #define TC_CR_90      x0008   
+  #define TC_CR_ANY      x0010   
+  #define TC_SF_X_YINDEP   x0020   
+  #define TC_SA_DOUBLE   x0040   
+  #define TC_SA_INTEGER   x0080   
+  #define TC_SA_CONTIN      x0100   
+  #define TC_EA_DOUBLE   x0200   
+  #define TC_IA_ABLE      x0400   
+  #define TC_UA_ABLE      x0800   
+  #define TC_SO_ABLE      x1000   
+  #define TC_RA_ABLE      x2000   
+  #define TC_VA_ABLE      x4000   
+  #define TC_RESERVED      x8000   
+
+ /* CLIPCAPS */ 
+
+  #define CP_NONE      x0000   
+  #define CP_RECTANGLE   x0001   
+  #define CP_REGION      x0002   
+
+ /* RASTERCAPS */ 
+
+  #define RC_NONE      x0000   
+  #define RC_BITBLT      x0001   
+  #define RC_BANDING      x0002   
+  #define RC_SCALING      x0004   
+  #define RC_BITMAP64      x0008   
+  #define RC_GDI20_OUTPUT   x0010   
+  #define RC_GDI20_STATE   x0020   
+  #define RC_SAVEBITMAP   x0040   
+  #define RC_DI_BITMAP      x0080   
+  #define RC_PALETTE      x0100   
+  #define RC_DIBTODEV      x0200   
+  #define RC_BIGFONT      x0400   
+  #define RC_STRETCHBLT   x0800   
+  #define RC_FLOODFILL      x1000   
+  #define RC_STRETCHDIB   x2000   
+  #define RC_OP_DX_OUTPUT   x4000   
+  #define RC_DEVBITS      x8000   
+====== Código fuente ======
+ SOURCE\WINAPI\Device.c 
+====== Ver también ======

@@ -1,0 +1,20 @@
+====== Class TApplication ====== 
+
+Application Objects (UNDER DEVELOPMENT) 
+
+====== DATA ====== 
+
+|aForms|              Array of TForm objects|    
+
+====== METHODS ====== 
+
+|New|                 Constructor from source code|    
+|AddForm|             Adds the specified TForm object to aForms|    
+|Run|                 Executes the first form (aForms[ 1 ])|    
+
+====== example ======
+
+====== source code ======
+
+====== see also ======
+

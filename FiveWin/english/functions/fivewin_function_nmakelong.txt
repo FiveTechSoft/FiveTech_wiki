@@ -1,0 +1,137 @@
+nMakeLong()
+
+
+
+nMakeLong()
+
+ Previous  Top  Next
+
+
+
+
+Generates a long (4bytes) from two words (2bytes)
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nMakeLong( <nLoWord>, <nHiWord> ) --> nLong 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nLoWord> A numeric (word) value. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nHiWord> A numeric (word) value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLong> The result numeric (long) value 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ A long is made of: 
+
+
+ 
+
+
+ LONG = HIGH_WORD - LOW_WORD 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\MakeLong.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nHiWord() nLoWord() nHiByte() nLoByte() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

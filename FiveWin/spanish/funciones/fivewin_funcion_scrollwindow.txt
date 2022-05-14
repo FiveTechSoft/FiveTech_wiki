@@ -1,0 +1,28 @@
+====== ScrollWindow() ======
+
+Desplaza una región de una ventana
+
+====== Sintaxis ======
+
+ScrollWindow( <hWnd>, <nCol>, <nRow>, <aRect>, <aClip> ) --> nil 
+
+La función ScrollWindow desplaza el contenido del área de cliente de la ventana especificada.
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>|identifica la ventana cuya área de cliente debe ser desplazada| 
+|<nCol>|Especifica la cantidad, en unidades del dispositivo, de desplazamiento horizontal. Este parámetro debe ser un valor negativo para desplazar el contenido de la ventana hacia la izquierda| 
+|<nCol>|Especifica la cantidad, en unidades del dispositivo, de desplazamiento vertical. Este parámetro debe ser un valor negativo para desplazar el contenido de la ventana hacia arriba| 
+|<aRect>|Especifica la porción del área cliente a ser desplazada: { nTop, nLeft, nBottom, nRight }. Si este parámetro es NULL, se desplaza el área de cliente entera| 
+|<aClip>|Contiene las coordenadas del rectángulo de recorte: { nTop, nLeft, nBottom, nRight }. Sólo aquellos bits del dispositivo dentro del rectángulo de recorte se verán afectados. Los bits desplazados desde fuera del rectángulo a su interior serán pintados; los bits desplazados desde el interior del rectángulo al exterior, no.| 
+
+====== Devuelve ======
+
+ nil 
+
+====== Código fuente ======
+ SOURCE\WINAPI\Clt2Scr.c 
+
+====== Ver también ======
+[[fivewin_funcion_clienttoscreen|funcion ClientToScreen()]]
+

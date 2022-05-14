@@ -1,0 +1,56 @@
+nStatics()
+
+
+nStatics()
+ Previous  Top  Next
+
+Returns the number of allocated static variables.
+
+====== Sintaxis ======
+   
+
+    nStatics() --> nVars 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nVars> The number of allocated static variables. 
+
+
+ 
+
+====== Ejemplo ======
+
+ 
+
+
+ local nVar := nStatics() 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\HARBOUR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

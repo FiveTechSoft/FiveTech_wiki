@@ -1,0 +1,174 @@
+====== MemoEdit() ======
+
+
+
+Edition of a string of text multiline
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MemoEdit( <cText>, <cTitle>, <nTop>, <nLeft>, <nBottom>, <nRight> ) -->
+lOk 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cText> Text to edit. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTitle> Title of the container dialog box 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> Superior coordinate of the dialogue box in characters 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeft> Left coordinate of the dialogue box in characters 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBottom> Inferior coordinate of the dialogue box in characters 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRight> Right coordinate of the dialogue box in characters 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lOk> Logical value that indicates if we go out with the button " Ok "
+of the edition. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The dialog box from which we will edit provides us three buttons: "Ok",
+"Cancel" and "Help". If we leave with " Ok " the function returns .t. and
+.f. if we go out with " Cancel " 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTMEMO.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MEMOEDIT.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+[[fivewin_function_richedit|RichEdit()]]
+[[fivewin_function_sourceedit|SourceEdit()]]

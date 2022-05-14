@@ -1,0 +1,117 @@
+uCharToVal()
+
+
+
+uCharToVal()
+
+ Previous  Top  Next
+
+
+
+
+Converts any value into a character string
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ uCharToVal( <cExpression>, <uType> ) --> uValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cExpression> A string expression to be converted to a specific type. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <uType> It is value, whose type determines the kind of conversion we
+want to do. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <uValue> The corresponding value obtained from <cExpression> and <uType>
+specifications. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\FUNCTION\WQOut.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ cValToChar() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

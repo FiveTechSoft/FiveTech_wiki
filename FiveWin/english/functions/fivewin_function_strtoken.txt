@@ -1,0 +1,119 @@
+====== StrToken() ======
+
+Returns a token from a string
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StrToken( <cText>, <nOcurrence> [,<cSepChar>] ) --> cToken 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cText> The text from where we want to extract a token. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOcurrence> The numeric ocurrence of the token inside <cText>. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cSepChar> The character that separates the tokens. By default it is a
+space (" "). 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cToken> The token we want to retrieve. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\DbfBuild.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\StrToken.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,8 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**<cHelpFile>**|
+|  |Nombre del archivo de ayuda predeterminado por nuestro programa. Estos archivos tiene extensión HLP o CHM y usan el formato propietario de Windows|
+^Valor de retorno| Nil|
+^Descripción:| Selecciona el archivo de ayuda predeterminado del programa cuando se solicite una ayuda. GetHelpFile() devolverá el nombre del archivo seleccionado aquí|
+^Ejemplo  | SetHelpFile(FiveWin.hlp")| 
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | GetHelpFile, GetHelpTopic, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, HelpTopic, WinHelp, HelpPopup| 

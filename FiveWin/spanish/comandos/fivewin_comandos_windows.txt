@@ -1,0 +1,67 @@
+====== Creando una nueva ventana ======
+<code clipper>
+ DEFINE WINDOW <oWnd> ;
+ [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> [ PIXEL ] ] ;
+ [ TITLE <cTitle> ] ;
+ [ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ];
+ [ OF <oParent> ] ;
+ [ BRUSH <oBrush> ] ;
+ [ CURSOR <oCursor> ] ;
+ [ ICON <oIcon> ] ;
+ [ MENU <oMenu> ] ;
+ [ STYLE <nStyle> ] ;
+ [ BORDER [ NONE | SINGLE ] ] ;
+ [ NOSYSMENU | NO SYSMENU ] ;
+ [ NOCAPTION | NO CAPTION | NO TITLE ] ;
+ [ NOICONIZE | NOMINIMIZE ] ;
+ [ NOZOOM | NO ZOOM | NOMAXIMIZE | NO MAXIMIZE ] ;
+ [ VSCROLL | VERTICAL SCROLL ] ;
+ [ HSCROLL | HORIZONTAL SCROLL ]
+</code>
+| <oWnd> |A reference to the Window Object|
+| <nTop>, <nLeft> |Window coordinates on screen. We simulate text coordinates|
+| <nBottom>, <nRight>|Window coordinates on screen. We simulate text coordinates|
+| <cTitle> | The title of the Window|
+| <oParent> | A reference to the Parent Window|
+| <oBrush> | An already created Brush Object to be used as background of the Window. Use DEFINE BRUSH ... to create it. This parameter is optional|
+| <oCursor> |A reference to the Cursor Object to display over this control|
+| <oIcon> | A reference to an Icon Object to be used by the Window. Use DEFINE ICON ... to create it. This parameter is optional|
+| <oMenu> |An already created Menu Object. Use MENU ... ENDMENU inside a function as in examples. This parameter is optional|
+| <nStyle> |A numeric value which indicates a special API style. [ Just for advanced FiveWin users.]
+| <nClrFore> |The colors to use for the windows. They may be numeric RGB colors
+| <nClrBack> | Or xBase string colors|
+
+====== Activando una ventana ======
+<code clipper>
+ ACTIVATE WINDOW <oWnd> ;
+ [ ICONIZED | NORMAL | MAXIMIZED ] ;
+ [ ON LEFT CLICK <uLClick> ] ;
+ [ ON LBUTTONUP <uLButtonUp> ];
+ [ ON RIGHT CLICK <uRClick> ] ;
+ [ ON MOVE <uMove> ] ;
+ [ ON RESIZE <uResize> ] ;
+ [ ON PAINT <uPaint> ] ;
+ [ ON KEYDOWN <uKeyDown> ] ;
+ [ ON INIT <uInit> ]
+ [ ON UP <uUp> ];
+ [ ON DOWN <uDown> ];
+ [ ON PAGEUP <uPgUp> ];
+ [ ON PAGEDOWN <uPgDn> ];
+ [ ON LEFT <uLeft> ];
+ [ ON RIGHT <uRight> ];
+ [ ON PAGELEFT <uPgLeft> ];
+ [ ON PAGERIGHT <uPgRight> ];
+ [ ON DROPFILES <uDropFiles> ];
+ [ VALID <uValid> ];
+</code>
+| <oWnd> | A reference to the Window Object|
+| <uLClick> | An action to be performed when the left button of the mouse is clicked over the Window|
+| <uRClick> | An action to be performed when the right button of the mouse is clicked over the Window|
+| <uMove> | An action to be performed every time the Window is moved|
+| <uResize> | An action to be performed every the Window is resized|
+| <uPaint> | An action, generally drawing action, to be performed every the Window is painted|
+| <uKeyDown> | An action to be performed every a key is pressed being the Window focused|
+| <uInit> | An action to be performed, generally some initialization, when the Window is being initialized|
+
+====== Ver también ======
+[[fivewin_clase_twindow|Clase TWindow]]

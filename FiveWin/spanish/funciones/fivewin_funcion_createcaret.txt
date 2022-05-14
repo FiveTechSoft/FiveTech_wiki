@@ -1,0 +1,109 @@
+CreateCaret()
+
+
+
+CreateCaret()
+
+ Previous  Top  Next
+
+
+
+Create new system caret
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ CreateCaret(<hWnd>, <hBitmap>, <nWidth>, <nHeight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of window 
+
+
+ 
+
+
+ <hBitmap> Handle of bitmap to the new caret. nil to solid caret and 1 to
+gray caret 
+
+
+ 
+
+
+ <nWidth> Width of bitmap 
+
+
+ 
+
+
+ <nHeight> Height of bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\CARET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,130 @@
+====== GlobalRealloc() ====== 
+
+
+
+
+
+
+It changes the size of a block of global memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GlobalRealloc( <hMem>, <nNewSize>, <nType> ) --> hMem 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hMem> Handle of the memory to resizer 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewSize> New size of memory 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> Way in that you resize the memory. It can be one of the
+following ones: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+Type            Dec   Hex   Description    
+GMEM_DISCARDABLE      256   x0100   GMEM_DISCARDABLE Reserves a block of
+discardable memory.
+GMEM_MODIFY      128   x0080   GMEM_MODIFY It modifies the flags of the
+object of memory.
+GMEM_MOVEABLE      2   x0002   GMEM_MOVEABLE Reserves a block of mobile
+memory.
+GMEM_NODISCARD      32   x0020   GMEM_NODISCARD While this function is
+using blocks of memory won't be discarded.
+GMEM_ZEROINIT      64   x0040   GMEM_ZEROINIT The block of memory will be
+initialized to zeros.
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hMem> Handle for the block of memory resize or zero if the function was
+not executed correctly. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

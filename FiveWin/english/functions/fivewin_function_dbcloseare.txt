@@ -1,0 +1,14 @@
+====== DbCloseArea() ======
+Closes a work area.  Function to obtain compatibility with xBase++ 
+
+====== Syntax ======
+DbCloseAre() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nothing
+ 
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

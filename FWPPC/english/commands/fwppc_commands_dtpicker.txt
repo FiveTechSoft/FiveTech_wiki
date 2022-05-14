@@ -1,0 +1,48 @@
+
+====== Creating a DTPICKER from source code ======
+<code clipper>
+ @ <nRow>, <nCol> DTPICKER [ <oDTPicker> VAR ] <uVar> ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ SIZE <nWidth>, <nHeight> ];
+ [ FONT <oFont> ] ;
+ [ CURSOR <oCursor> ] ;
+ [ PIXEL ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ UPDATE ] ;
+ [ WHEN <uWhen> ] ;
+ [ VALID <uValid> ] ;
+ [ ON CHANGE <uChange> ] ;
+ [ HELPID | HELP ID <nHelpId> ]
+</code>
+====== Using a DTPicker from a resource Dialog Box ======
+<code clipper>
+ REDEFINE DTPICKER [ <oDTPikcer> VAR ] <uVar> ;
+ [ ID <nId> ] ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ HELPID | HELP ID <nHelpId> ] ;
+ [ FONT <oFont> ] ;
+ [ CURSOR <oCursor> ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ UPDATE ] ;
+ [ WHEN <WhenFunc> ] ;
+ [ VALID <ValidFunc> ] ;
+ [ ON CHANGE <uChange> ] ;
+</code>
+Note: In order to use it from resources you MUST indentify the control as 'SysDateTimePick32'
+| <nRow>, <nCol> |    The coordinates of the control. We simulate Text coordinates|
+| <oDTPicker> |       A reference to the DTPicker Object|
+| <uVar> |            The variable which the DTPicker Object is manipulating|
+| <oWnd> |            The container window of the control|
+| <ValidFunc> |       Validating expression or function. The same as in MsDos|
+| <WhenFunc> |        When Clause. Not available yet!
+| <nWidth>, <nHeight> The dimensions in pixels of the control|
+| <oFont> |           A reference to the Font Object to be used with the control|
+| <oCursor> |         A reference to the Cursor Object to dispay over this control|
+| <cMsg> |            The associated message of this control|
+| <nId> |             The numeric resource identifier of the Control|
+| <nHelpId> |         Help topic identifier for control from resources|
+| <uChange> |         An action to be performed when the control changes|
+====== CLAUSES ======
+|UPDATE|              This control may be updated from TDialog:Update() METHOD|
+|PIXEL|               To use pixel coordinates instead of Text coordinates|
+|HELP ID, HELPID|     An optional Help Id to request topic help|

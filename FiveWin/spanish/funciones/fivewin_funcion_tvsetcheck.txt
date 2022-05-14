@@ -1,0 +1,72 @@
+TvSetCheck()
+
+
+TvSetCheck()
+ Previous  Top  Next
+
+Sets the item's state image to "checked" or "unchecked".
+
+====== Sintaxis ======
+
+
+ TvSetCheck( <hWnd>, <hItem>, <lOnOff> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <hItem>   The handle to the item. 
+
+
+ 
+
+
+ <lOnOff>   True to check, false to uncheck. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

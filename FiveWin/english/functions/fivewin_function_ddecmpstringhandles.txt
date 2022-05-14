@@ -1,0 +1,17 @@
+====== DDECmpStringHandles() ======
+Compares the values of two string handles 
+
+====== Syntax: ======
+DDECmpStringHandles( <hSZ1>, <hSZ2> ) --> nResult  
+ 
+====== Parameters: ======
+^Parameter^Description^ 
+|<hSZ1>| Handle of first string |
+|<hSZ2>| Handle of second string  |
+
+====== Returns: ======
+
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\DDEML.C  

@@ -1,0 +1,108 @@
+ 
+====== GetFreeSpace() ====== 
+
+
+
+
+Scans the global heap for memory size available
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetFreeSpace() --> nSize 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function scans the global heap and returns the number of bytes of
+memory currently available. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nSize> The total amount of memory. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This size of memory not always is continuous. GlobalCompact()returns the
+maximum continuous size. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Mem.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

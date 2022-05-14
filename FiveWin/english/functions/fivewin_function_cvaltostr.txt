@@ -1,0 +1,28 @@
+====== cValToStr() ======
+Converts any value into a string. This function converts value of any data type into its equivalent character expression.  This function is coded in C language and it is extremely fast.  
+
+====== Syntax: ======
+cValToStr( <uValue>,<cPic>,<cInternational> ) --> cValue  
+
+====== Parameters: ======
+^Parameter^Description^
+|<uValue>| It may be any value except an array or an Object.  |
+|<cPic>| Picture format|
+|<cInternational>| if "E" is passed as parameter, then the uValue is Transformed with the picture'@E'|
+
+====== Returns: ======
+^Returns^Description^
+|<cValue>| A string with the character expression of <uValue>  |
+
+====== Sample: ======
+<code clipper>
+ ? cValToStr( 123 ) --> "123" 
+
+ // This function works independent of the date format setting.
+ // you can use dd, mm, mmm, mmmm in any order
+ ? cValToStr( Date(), 'dd-mmm-yyyy' ) --> "08-Apr-2010" 
+ ? cValToStr( Date(), ''mmmm dd, yyyy' ) --> "October 23, 2010" 
+
+</code>
+====== Source Code: ======
+FWH\source\function\valblank.prg 

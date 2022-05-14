@@ -1,0 +1,19 @@
+====== EscapeComm() ======
+Directs the specified communications device to carry out an  extended function.
+
+====== Syntax ======            
+EscapeComm(<nComDev>,; <nFunctionCode> ) \\ lSuccess
+
+====== Parameters ======
+^Parameter^Description^
+| <nComDev>| Identifies communications device |
+| <nFunctionCode>| Code of extended function.\\ **SETXOFF** : Causes transmission to act as if an XOFF character has been received. 1\\ **SETXON** : Causes transmission to act as if an XON character has been received. 2\\ **SETRTS** : Sends the RTS (request-to-send) signal. 3\\ **CLRRTS** : Clears the RTS (request-to-send) signal.	4 \\ **SETDTR**	: Sends the DTR (data-terminal-ready) signal. 5\\ **CLRDTR** : Clears the DTR (data-terminal-ready) signal. 6\\  **RESETDEV** : Resets the printer device if the idComDev parameter specifies an LPT port. No function is performed if  idComDev specifies a COM port.7\\ **GETMAXLPT**: Returns the maximum LPT port identifier supported by  the system. This value ranges from 0x80 to 0xFF, such   that 0x80 corresponds to LPT1, 0x81 to LPT2, 0x82 to  LPT3, and so on. 8\\ **GETMAXCOM** : Returns the maximum COM port identifier supported by  the system. This value ranges from 0x00 to 0x7F, such  that 0x00 corresponds to COM1, 0x01 to COM2, 0x02 to  COM3, and so on. 9|
+                      
+====== Returns ======      
+^Returns^Description^
+|<lSuccess>| .T. if the function is successful.|
+
+====== Example ======
+
+====== Source Code ======   
+SOURCE\WINAPI\COMM.C

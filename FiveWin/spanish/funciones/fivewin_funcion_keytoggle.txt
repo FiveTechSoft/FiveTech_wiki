@@ -1,0 +1,21 @@
+
+====== KeyToggle() ======
+KeyToggle()
+
+Toggle a certain key
+====== Sintaxis ======
+ KeyToggle( <nKey> ) --> nil 
+====== Parámetros ======
+ <nKey> nKey to Toggle 
+====== Devuelve ======
+ nil 
+
+Observations
+
+ KeyToggle Toggles the LEDs and BIOS flags for the NUMLOCK, CAPSLOCK and
+SCROLL LOCK keys 
+====== Ejemplo ======
+ SOURCE\CLASSES\MSGBAR.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\KEYBRD.C 
+====== Ver también ======

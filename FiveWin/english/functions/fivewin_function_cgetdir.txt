@@ -1,0 +1,37 @@
+====== cGetDir() ======  
+
+Dialog box to select directory. 
+
+====== Syntax ======  
+
+cGetDir( <cTitle>, [<cInitDir>], <nClsId>, <cTitle2>, <nFlags> ) --> cDir  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cTitle> | Title of the dialog box|  
+| <cInitDir> | Initial directory|  
+| <nClsId> | ClsId of a special folder location|  
+| <cTitle2> | Prompt of the folder selection tree|  
+| <nFlags> | Flags for setting the selection dialog behavior|  
+
+====== Returns ======  
+^Returns^Description^
+|<cDir>| Name of the selected directory/folder|
+
+====== Sample ======  
+\Fwh\Samples\GETDIR.PRG
+<code clipper> // cGetDir() function demo  
+ function Main()  
+   local cDirName := cGetDir()  
+   MsgInfo( cDirName )  // As per the below given screen snapshot the result is F:\DirectX Nov.2008
+   MsgInfo( LFN2SFN( cDirName ) )  // Converted From Long file name to Short file name, the result is F:\DIRECT~1.200
+ return nil</code>  
+
+** Screen snapshot **
+
+{{:cgetdir.jpg|:cgetdir.jpg}}
+====== Source Code ======  
+SOURCE\WINAPI\GETDIR.C  
+
+====== See also ======
+[[fivewin_function_cGetDir32|cGetDir32()]]

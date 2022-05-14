@@ -1,0 +1,53 @@
+====== NDdeShareDel() ======
+
+
+Creates and adds a new DDE share to the DDE share database manager (DSDM).
+
+====== Syntax ======
+
+
+ NDdeShareDel( <cServer>, <cName> ) --> nRetCode 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cServer> Server name where the data will be modified 
+
+
+ 
+
+
+ <cName> Name of share to be deleted 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ If the operation is executed with success the function returns
+NDDE_NO_ERROR 0 . In another case a will be returned code of error that
+we will be able to decipher calling to the function NDdeGetErrorString. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\NDDEAPI.C 
+
+
+ 
+
+
+
+====== See also ======
+

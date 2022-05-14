@@ -1,0 +1,46 @@
+
+====== DbCloseArea() ======  
+
+Cierra una área de trabajo.
+
+====== Sintaxis ======  
+
+ DbCloseArea() --> nil  
+
+
+ Function para tener compatibilidad con xBase++  
+
+====== Parámetros ====== 
+
+ Ninguno
+
+====== Devuelve ====== 
+
+ DbCloseArea()  
+
+====== Ejemplo ======  
+
+<code clipper>cApellido := "López"
+DBUSEAREA(.T., "DBFCDX", "Ventas", "Ventas", .T.)
+DBSETINDEX( "NOMBVEND" )
+DBSETINDEX( "APELVEND" )
+DBUSEAREA(.T., "DBFCDX", "Distribu", "Distribu", .T.)
+DBSETINDEX( "NOMBDIST" )
+DBSETINDEX( "APELDIST" )
+DBSELECTAREA( "Ventas" )
+IF ( Ventas->(DBSEEK(cApellido)) )
+    IF Ventas->( DELETED() ) .AND. Ventas->( RLOCK() )
+       Ventas->( DBRECALL() )
+       ? "Registro borrado: ", Ventas->( DELETED() )
+    ENDIF
+ELSE
+     ? "No se encuentra"
+     Distribu->( DBCLOSEAREA() )
+ENDIF</code>
+
+====== Código Fuente ======  
+
+ SOURCE\FUNCTION\DB10.PRG  
+
+====== Ver también ======  
+ 

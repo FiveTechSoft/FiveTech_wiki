@@ -1,0 +1,32 @@
+====== DelDbfMdx() ======
+Resets the MDX flag of a DBFMDX Dbf file.  This function has been created to be able to reindex a MDX file from scratch (as a MDX index would never be reindexed if it gets corrupted!). 
+
+The steps to follow are:
+
+1. Close the DBF file.\\ 2. Erase the MDX file.\\ 3. Call DelDbfMdx( <cDbfFileName> )\\ 4. Open the DBF file in normal way.\\ 5. Index it. 
+
+====== Syntax ======
+DelDbfMdx( <cDbfFileName> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<cDbfFileName>| The name of the DBF file to reset its MDX flag.|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value indicating if the operation was successful. |
+
+====== Samples ======
+\Fwh\Samples\Server\FwServer.Prg
+<code clipper>
+DelDbfMdx( ( ::cSystemPath ) + "Users.dbf" )
+USE "Users" NEW ALIAS Users EXCLUSIVE VIA ID_DRIVER
+INDEX ON Users->Name TAG "Name"
+USE
+</code>
+
+====== Source Code ======
+SOURCE\\FUNCTION\\NtxTools.c 
+
+====== See also ======
+[[fivewin_function_cNtxPos|cNtxPos()]], [[fivewin_function_cNtxKey|cNtxKey()]]

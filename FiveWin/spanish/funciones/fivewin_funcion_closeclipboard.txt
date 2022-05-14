@@ -1,0 +1,128 @@
+
+====== CloseClipboard() ======
+
+
+
+CloseClipboard()
+
+ Previous  Top  Next
+
+
+
+Closes the clipboard
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ CloseClipboard() --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function closes the ClipBoard. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value that represents if the operation was
+completed successfully. 
+
+
+ 
+
+
+ 
+
+
+
+Observations
+
+
+
+
+
+ A window must close the clipboard after using it in order to let other
+windows use it. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\ClpBrd.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ OpenClipboard() SetClipboard() EmptyClipboard() GetClpData() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======

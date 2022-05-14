@@ -1,0 +1,122 @@
+nGetFilter32()
+
+
+nGetFilter32()
+ Previous  Top  Next
+
+
+
+
+Returns the active filter of the last call to function cGetFile32()
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nGetFilter32() --> nFilter 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <None> 
+
+
+ 
+
+
+ 
+
+====== Returns ======
+
+
+
+
+
+ <nFilter>    A numeric value indicating the filter number that was
+active on the last call to the function cGetFile() function. 
+
+
+ 
+
+
+  
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ This value only has meaning when several types of files has been
+specified when calling cGetFile32() 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\DLG32.PRG 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ cGetFile32() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

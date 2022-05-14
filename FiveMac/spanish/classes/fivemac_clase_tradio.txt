@@ -1,0 +1,49 @@
+Clase hereda de Tcontrol
+
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|oRadMenu |relacionados TRadMenu contenedor de objetos|
+
+
+
+====== MÉTODOS ====== 
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde codigo fuente|
+|Click|Evento del boton izquierdo del Mouse|
+|lChecked|Informa el estado logico del control|
+|SetCheck|Cambia el estado Encendido/Apagado|
+|SetText|Cambia el título del radio control |
+|GetText|Obtiene el titulo del radio control |
+
+====== Ejemplos ====== 
+FWH\SAMPLES\testrad.prg
+
+<code>
+#include "FiveMac.ch"
+
+function Main()
+
+   local oWnd, oRad, nRad := 2
+
+   DEFINE WINDOW oWnd TITLE "Testing RadioButtons" PANELED
+
+   @ 200, 30 RADIO oRad VAR nRad ITEMS { "One", "Two", "Three" } OF oWnd
+
+   @ 23,  20 BUTTON "Value" OF oWnd ACTION MsgInfo( nRad )
+
+   @ 23, 120 BUTTON "End" OF oWnd ACTION oWnd:End()
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Want to end ?" )
+
+return nil
+</code>
+{{:testrad.png|:testrad.png}}
+
+====== Fuente ====== 
+FMC\SOURCE\CLASSES\RADIO.PRG
+
+====== Ver también ======
+[[fivemac_comandos_radiobuttons|Comandos RADIO buttons]]

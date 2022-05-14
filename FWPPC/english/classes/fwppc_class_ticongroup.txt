@@ -1,0 +1,60 @@
+====== Class TIconGroup ======
+
+IconGroup control                                                              
+Inherits from TControl                                                         
+====== DATA ======
+|aIcons|Array of icons|
+|aPrompts|Array of prompts|
+|aActions|Array of actions|
+|aCoors|Array of coordinates|
+|aOrder|Array of orders|
+|nVScroll|The current vertical scroll position|
+|nHScroll|The current horizontal scroll position|
+|nFocused|The index of the focused icon|
+|lStatic|.T. if the icons are static|
+|lCaptured|.T. if an icons is captured|
+|lEdit|.T. if in edit mode|
+|lAutoEdit|.T. if in autoedit mode|
+|oGet|A GET object for editing the icon prompt|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Initiate|Initializes the control|
+|Display|Displays the control|
+|SetVScroll|Sets the vertical scrollbar|
+|SetHScroll|Sets the horizontal scrollbar|
+|SetScrollRange|Sets the scrollbar range|
+|Default|Default initialization of the control|
+|GetDlgCode|Returns the GetDlgCode associated|
+|CoorsUpdate|Updates the internal coordinates|
+|Paint|Paints the control|
+|End|Ends the control|
+|_VScroll|Moves the vertical scrollbar|
+|_HScroll|Moves the horizontal scrollbar|
+|ShowFocus|Gives focused looking style to the current icon|
+|ChangeFocus|Gives the focus to the icon with the given index|
+|GotFocus|Gotfocus event handler|
+|LostFocus|Lostfocus event handler|
+|Resize|Resize event handler|
+|nGetDown|Returns the index of the icon at a given coordinates|
+|lButtonDown|Left mouse click event handler|
+|lButtonUp|Left mouse release event handler|
+|MouseMove|Mouse move event handler|
+|lDblClick|Left mouse double click event handler|
+|EditPrompt|Edits the prompt of an icon|
+|aGetAway|???|
+|nGetTail|???|
+|DrawIcon|Draws an icon|
+|Add|Adds an icon|
+|Modify|Modifies an icon|
+|Del|Deletes an icon|
+|Arrange|Adjust the icons positions and sets the scrollbars|
+|KeyDown|Keydown event handler|
+|Invert|Invert an icon|
+|Adjust|Adjust the icons positions|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TICONGROUP.PRG

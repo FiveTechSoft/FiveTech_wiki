@@ -1,0 +1,6 @@
+====== CreateCursor() ======
+
+Creates a Cursor
+
+====== See also ======
+[[fivewin_function_destroycursor|DestroyCursor()]]

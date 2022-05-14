@@ -1,0 +1,11 @@
+====== ffMimedec() ======
+Decode a MIME file 
+====== Syntax: ======
+fMimeDec(<nIn>,   <nOut> ) --> nil 
+====== Parameters: ======
+| <nIn>  |Handle of the file to Decode.  |
+| <nOut> |Handle of the file encode.  |
+====== Returns: ======
+Nil
+====== Source code: ======
+SOURCE\FUNCTION\MIMECLIP.PRG

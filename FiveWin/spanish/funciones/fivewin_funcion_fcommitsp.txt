@@ -1,0 +1,26 @@
+====== FCommit()======
+Carga un Archivo para ser Procesado.
+
+====== Syntaxis ====== 
+FCommit( <hFile> ) --> nil    
+
+====== Parametros ====== 
+
+| <hFile> | Ruta y Nombre del Archivo  |
+
+====== Devuelve ====== 
+Nil
+
+====== Ejemplo ======
+<code clipper>
+hFile = "C:/tutor01.prg"
+FCommit( hFile )
+</code>
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\FILES.C  
+ 
+
+
+====== Ver también ====== 
+ 

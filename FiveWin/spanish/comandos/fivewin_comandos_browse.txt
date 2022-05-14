@@ -1,0 +1,155 @@
+====== Cajas de listado (Browse) =======
+
+====== Definiendo un browse a partir de código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> LISTBOX [ <oBrw> ] ;
+                 FIELDS <cFields,...> ;
+                 [ ALIAS <cAlias>] ;
+                 [ FIELDSIZES <aColSizes,...> ] ;
+                 [ HEAD | HEADER | HEADERS <aHeaders,...> ] ;
+                 [ ID <nId> ] ;
+                 [ SIZE <nWidth>, <nHeigth> ] ;
+                 [ SELECT <cField> FOR <uValue1> [ TO <uValue2>] ] ;
+                 [ ON CHANGE | ON click <uChange> ] ;
+                 [ ON RIGHT click <uRClick> ] ;
+                 [ ON [LEFT] CLICK <uLClick> ] ;
+                 [ ON [LEFT] DBLCLICK <uDblClick> ] ;
+                 [ FONT <oFont>] ;
+                 [ CURSOR <oCursor>] ;
+                 [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+                 [ MESSAGE <cMsg>] ;
+                 [ UPDATE ] ;
+                 [ PIXEL ] ;
+                 [ WHEN <uWhen> ] ;
+                 [ DESIGN ] ;
+                 [ VALID <ValidFunc> ] ;
+                 [ ACTION <uAction,...> ] ;
+                 [ OF | DIALOG <oDlg> ]
+</code>
+
+====== Definiendo un browse a partir de recursos ====== 
+<code clipper>
+REDEFINE LISTBOX [ <oBrw> ] ;
+         FIELDS [ <cFields,...>] ;
+         [ ALIAS <cAlias> ] ;
+         [ ID <nId> ] ;
+         [ FIELDSIZES | SIZES | COLSIZES <aColSizes,...> ] ;
+         [ HEAD | HEADER | HEADERS <aHeaders,...> ] ;
+         [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ;
+         [ ON CHANGE <uChange> ] ;
+         [ ON RIGHT CLICK <uRClick> ] ;
+         [ ON [LEFT] CLICK <uLClick> ] ;
+         [ ON [LEFT] DBLCLICK <uDblClick> ] ;
+         [ FONT <oFont> ] ;
+         [ CURSOR <oCursor> ] ;
+         [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+         [ MESSAGE <cMsg> ] ;
+         [ UPDATE ] ;
+         [ WHEN <uWhen> ] ;
+         [ VALID <ValidFunc> ] ;
+         [ ACTION <uAction,...> ] ;
+         [ OF | WINDOW | DIALOG <oDlg> ]
+</code>
+
+====== Parámetros ====== 
+
+|<oBrw> |Referencia al objeto TWBrowse|
+|<nRow>/<nCol> |Posición en la ventana contenedora. Se simulan coordenadas de texto.|
+|<cFields> |Lista de expresiones para desplegar como columnas. Si una expresión es de tipo numérico, TWbrowse la manejará como si lo que va a desplegarse fuera el manejador (handler) de un bitmap. Para desplegar datos numéricos se debe utilizar la función TRANSFORM()|
+|<cAlias> |Alias de la base de datos donde están los campos que integran las columnas.|
+|<aColSizes> |Lista de los tamaños para cada columna expresados en pixeles.|
+|<aHeaders> |Lista de expresiones de texto para los títulos de las columnas.|
+|<cField> |Nombre del campo sobre el cual se va aplicar un filtro.|
+|<uValue1> |Condición para establecer el filtro.|
+|<uValue2> |Segunda condición de filtrado, cuando se desea establecer un rango de datos.|
+|<nId> |Identificador numérico del control TWbrowse.|
+|<nWidth>/<nHeigth> |Tamaño del control TWbrowse expresado en pixeles|
+|<uChange> |Acción que se debe realizar cada vez que se cambia de renglón.|
+|<uRClick> |Acción que se debe realizar al presionar el botón derecho del mouse.|
+|<uLClick> |Acción que se debe realizar cuando se haga click con el botón izquierdo del mouse.|
+|<uLDblClick> |Acción que se debe realizar al dar un doble click con el botón izquierdo del mouse.|
+|<oFont> |Referencia al objeto FONT que será usado con el LISTBOX.|
+|<oCursor> |Referencia al objeto CURSOR que será usado dentro del LISTBOX.|
+|<ValidFunc> |Expresión o función a ser validada cuando el LISTBOX pierde el foco de la edición.|
+|<uWhen> |Expresión o función que indica cuando este control estará activo o no..|
+|<nClrFore> |Color para las letras del LISTBOX expresado como un número para la función RGB() o como una expresión xBase (p.e. “W/B”, “R/BG” .... etc.)|
+|<nClrBack> |Color de fondo expresado como número para función RGB()|
+|<cMsg> |Mensaje a desplegarse cuando el control tenga el foco|
+|<uAction,...> |Acción que se debe ejecutar cuando se hace doble click sobre el título de la columna, puede contener más de una acción si estas acciones se separan por comas y todas se encierran entre paréntesis.|
+|<cField> |Contiene el campo llave del índice de la base de datos que está utilizando el LISTBOX.|
+|<oDlg> |Objeto que contiene el control TWbrowse, usualmente una ventana o una caja de diálogo.|
+
+====== Cláusulas ====== 
+
+|DESIGN |Permite al usuario mover y cambiar el tamaño del control con el mouse.|
+|PIXEL |Indica que se deben utilizar coordenadas en pixeles en vez coordenadas de texto.|
+|UPDATE |Indica que control podrá actualizarse a través del método TDialog:Update().|
+
+Implementación del comando:
+
+<code clipper>
+// Warning: SELECT <cField> ==> Must be the Field key of the current INDEX !!!
+#xcommand REDEFINE LISTBOX [ <oLbx> ] FIELDS [<Flds,...>] ;
+[ ALIAS <cAlias> ] ;
+[ ID <nId> ] ;
+[ <dlg:OF,DIALOG> <oDlg> ] ;
+[ <sizes:FIELDSIZES, SIZES, COLSIZES> <aColSizes,...> ] ;
+[ <head:HEAD,HEADER,HEADERS,TITLE> <aHeaders,...> ] ;
+[ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ;
+[ ON CHANGE <uChange> ] ;
+[ ON [ LEFT ] CLICK <uLClick> ] ;
+[ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;
+[ ON RIGHT CLICK <uRClick> ] ;
+[ FONT <oFont> ] ;
+[ CURSOR <oCursor> ] ;
+[ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ WHEN <uWhen> ] ;
+[ VALID <uValid> ] ;
+[ ACTION <uAction,...> ] ;
+=> ;
+[ <oLbx> := ] TWBrowse():ReDefine( <nId>, ;
+[\{|| \{ <Flds> \} \}], <oDlg>,;
+[ \{<aHeaders>\}], [\{<aColSizes>\}],;
+<(cField)>, <uValue1>, <uValue2>,;
+[<{uChange}>],;
+[\{|nRow,nCol,nFlags|<uLDblClick>\}],;
+[\{|nRow,nCol,nFlags|<uRClick>\}],;
+<oFont>, <oCursor>, <nClrFore>, <nClrBack>, <cMsg>, <.update.>,;
+<cAlias>, <{uWhen}>, <{uValid}>,;
+[\{|nRow,nCol,nFlags|<uLClick>\}], [\{<{uAction}>\}] )
+#xcommand @ <nRow>, <nCol> LISTBOX [ <oBrw> ] FIELDS [<Flds,...>] ;
+[ ALIAS <cAlias> ] ;
+[ <sizes:FIELDSIZES, SIZES, COLSIZES> <aColSizes,...> ] ;
+[ <head:HEAD,HEADER,HEADERS,TITLE> <aHeaders,...> ] ;
+[ SIZE <nWidth>, <nHeigth> ] ;
+[ <dlg:OF,DIALOG> <oDlg> ] ;
+[ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ;
+[ ON CHANGE <uChange> ] ;
+[ ON [ LEFT ] CLICK <uLClick> ] ;
+[ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;
+[ ON RIGHT CLICK <uRClick> ] ;
+[ FONT <oFont> ] ;
+[ CURSOR <oCursor> ] ;
+[ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ <pixel: PIXEL> ] ;
+[ WHEN <uWhen> ] ;
+[ <design: DESIGN> ] ;
+[ VALID <uValid> ] ;
+[ ACTION <uAction,...> ] ;
+=> ;
+[ <oBrw> := ] TWBrowse():New( <nRow>, <nCol>, <nWidth>, <nHeigth>,;
+[\{|| \{<Flds> \} \}], ;
+[\{<aHeaders>\}], [\{<aColSizes>\}], ;
+<oDlg>, <(cField)>, <uValue1>, <uValue2>,;
+[<{uChange}>],;
+[\{|nRow,nCol,nFlags|<uLDblClick>\}],;
+[\{|nRow,nCol,nFlags|<uRClick>\}],;
+<oFont>, <oCursor>, <nClrFore>, <nClrBack>, <cMsg>,;
+<.update.>, <cAlias>, <.pixel.>, <{uWhen}>,;
+<.design.>, <{uValid}>, <{uLClick}>,;
+[\{<{uAction}>\}] )
+</code>

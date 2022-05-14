@@ -1,0 +1,168 @@
+====== ShellAbout() ======
+
+
+Displays the typical Windows about DialogBox
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ShellAbout( <cMsg> [,<cTitle>] [,<hIcon>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cMsg> The description text for the about dialogbox. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTitle> The title of the about dialogbox. By default it shows "About. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hIcon> The handle of the icon to show. By default it uses the first
+icon included inside the EXE as resource. It shows the typical Windows
+icon if no icon is found. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is also included now inside FiveWin as MsgAbout. We plan
+to remove this in next versions and just keep MsgAbout for compatibility
+with FiveOS2 and fiveDos. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ It is very usefull as it also shows the amount of memory and resources
+available. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Install.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\About.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ MsgAbout() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,132 @@
+====== LogEvent() ====== 
+
+
+
+LogEvent()
+
+
+
+
+
+
+It adds messages from the system to a log file
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LogEvent( <nMessage>, <nParamL>, <nParamH>, <nTime> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nMessage> Captured value of the cue of messages of Windows. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nParamL> 16 bits of additional information. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nParamH> 32 bits of additional information. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTime> Hour in which you captures the message. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTPLAY.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\TDICT.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

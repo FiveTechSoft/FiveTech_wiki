@@ -1,0 +1,88 @@
+EndDoc()
+
+
+
+EndDoc()
+
+ Previous  Top  Next
+
+
+
+
+Ends a print job
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EndDoc( <hDC> ) --> nSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context for the print job. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nSuccess> Return value is greater than or equal to zero if the function
+is successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

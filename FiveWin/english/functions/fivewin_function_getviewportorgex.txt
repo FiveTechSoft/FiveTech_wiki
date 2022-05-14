@@ -1,0 +1,72 @@
+
+======  GetViewportOrgEx() ====== 
+
+
+Retrieves the x-coordinates and y-coordinates of the viewport origin for
+the specified device context.
+
+====== Syntax ======
+
+ 
+
+
+ GetViewportOrgEx( <hDC>, <aPoint> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ <aPoint> An array that receives the coordinates of the origin, in device
+units. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> .t. if the function is successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WNDCENTE.C 
+
+
+ 
+
+
+
+====== See also ======
+

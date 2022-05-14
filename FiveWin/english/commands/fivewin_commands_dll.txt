@@ -1,0 +1,75 @@
+
+====== Defining a external DLL function to be called at runtime ======
+
+<code clipper>
+ DLL [STATIC] FUNCTION <FuncName> ( [ <Param1> AS <Type1> ] ;
+ [ <ParamN> AS <TypeN> ] ) ;  
+ AS <return> [PASCAL] [ FROM <SymName> ] LIB <DllName>  
+</code>
+
+====== To access a 32 bits DLL function ======
+ 
+<code clipper>
+ DLL32 [STATIC] FUNCTION <FuncName> ( ;[ <Param1> AS <Type1> ] ;
+ [ <ParamN> AS <TypeN> ] ) ;
+ AS <return> [PASCAL] [ FROM <SymName> ] LIB <DllName>
+</code>
+
+FiveWin lets you declare an external DLL function to be called at RunTime by its own name! See DllCall.prg example. 
+
+| <FuncName> | The name of the DLL function. Remember Clipper only uses 10 characters maximum length. |
+| <Param1> | Name of a parameter. |
+| <Type>,<return> | BYTE, CHAR, WORD, BOOL, HANDLE, HWND, HDC, LONG, STRING, LPSTR, PTR, DOUBLE |
+| <SymName> | The name of the DLL function to execute. By default the same DLL FUNCTION <name> is used. |
+| <DllName> | Name of the DLL. |
+
+====== CLAUSES ======
+
+| FROM | To specify a different DLL function name to access. Please review SOURCE\WINAPI\*.prg code samples. |
+
+We recommend to develop a C language based connection functions when you are going to develop an intensively work with some DLLs. See "using Windows API". Examples: 
+
+**Calling SndPlaySound() at RunTime:** 
+
+<code clipper>
+#include "FiveWin.ch" 
+function Main() 
+    SndPlaySound( "tada.wav", 0 ) 
+return
+
+<DLL FUNCTION SndPlaySound( cFile AS LPSTR, nType AS WORD ); 
+ AS BOOL PASCAL LIB "MMSYSTEM.DLL"
+</code>  
+
+**Designing the same DLL connection using C language: **
+
+<code clipper>
+#include <WinTen.h>
+#include <Windows.h>
+#include <MMSystem.h>
+#include <ClipApi.h>
+
+CLIPPER SNDPLAYSOU()
+
+{ 
+   _retl( sndPlaySound( _parc( 1 ), _parni( 2 ) ) );
+}
+</code>
+In this situation it is necessary to use a specific LIB so the linker will know how the DLL connection must be done at RunTime. Example:
+
+TEST.DLL      // Is a commercial DLL we are going to use 
+
+IMPDEF.EXE TEST.DEF TEST.DLL      // IMPDEF.EXE is a tool Microsoft and Borland provides
+
+Now, edit TEST.DEF -which it is an ascii file- and rename the symbols with 10 characters or less with an underscore: 
+
+LESS10 ---> _LESS10
+
+Then do:
+
+IMPLIB.EXE TEST.LIB TEST.DEF
+
+When linking use that .LIB 
+
+Review our \WinApi directory C -only registered users- source code to see a lot of examples of doing this. 
+Warning: SndPlaySound() is already built inside FiveWin.lib. It has been used just in this example for learning purposes.

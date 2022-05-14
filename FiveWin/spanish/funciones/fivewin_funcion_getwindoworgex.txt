@@ -1,0 +1,74 @@
+GetWindowOrgEx()
+
+
+GetWindowOrgEx()
+ Previous  Top  Next
+
+Retrieves the x-coordinates and y-coordinates of the window origin for
+the specified device context.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetWindowOrgEx( <hDC>, <aPoint> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ <aPoint> An array that receives the coordinates, in logical units, of
+the window origin. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess> .t. if the function is successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+====== Ejemplo ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WNDCENTE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,15 @@
+
+====== CreatePopUpMenu() ======
+CreatePopUpMenu()
+Creates an empty pop-up menu
+====== Sintaxis ======
+ CreatePopUpMenu() --> hMenu 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <hMenu> Handle of the new popup menu 
+====== Ejemplo ======
+ SOURCE\CLASSES\MENU.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

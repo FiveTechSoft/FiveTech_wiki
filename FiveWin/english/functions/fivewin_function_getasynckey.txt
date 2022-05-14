@@ -1,0 +1,19 @@
+====== GetAsyncKey() ======
+Determines whether a key is up or down.  
+
+====== Syntax: ======
+GetAsyncKey( <nKey> ) --> lDown 
+
+====== Parameters: ======
+^Parameter^Description^
+|<nKey>| The code of any of the the 256 vkeys. See VKey.ch.  |
+ 
+====== Returns: ======
+^Returns^Description^
+|<lDown>| True if the key is pressed.  |
+
+====== Source Code ======
+SOURCE\WINAPI\KeyBrd.c  
+ 
+====== See also: ======
+[[fivewin_function_GetKeyState|GetKeyState()]]

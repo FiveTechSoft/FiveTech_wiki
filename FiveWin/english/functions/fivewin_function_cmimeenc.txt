@@ -1,0 +1,38 @@
+====== cMimeEnc() ====== 
+Mime Based Encoding. 
+
+====== Syntax ======
+cMimeEnc( <cIn> ) --> cOut
+
+====== Parameters ======
+^Parameter^Description^
+|<cIn>| Character string to Encode |
+
+====== Returns ======
+^Returns^Description^
+|<cOut>| Encoded character string.|
+
+====== Example ======
+SOURCE\FUNCTION\MIMECLIP.PRG 
+<code clipper>
+#include "fivewin.ch" 
+
+//-----------------------------------//
+Function main() 
+ Local cString
+
+ // Do a Mime64 Encoding
+ MsgInfo(  cString:=CMIMEENC( '="test"' ) ) // Result PSJ0ZXN0Ig==
+ 
+ // Do Mime64 Decoding
+ MsgInfo( CMIMEDEC( cString ) ) // Result ="test"
+
+Return nil 
+
+</code>
+
+====== Source Code ======
+SOURCE\FUNCTION\MIME64.C 
+
+====== See also ======
+[[fivewin_function_cMimeDec|cMimeDec()]]

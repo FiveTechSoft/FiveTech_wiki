@@ -1,0 +1,31 @@
+====== SetBrushOrg() ======
+
+SetBrushOrg() Especifica el origen de la brocha.
+
+====== Sintaxis ======
+
+SetBrushOrg( <hDC>, <hBrush>, <nXOrg>, <nYOrg> ) --> nil 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hDC>| Dispositivo de contexto |
+|<hBrush>| Manejador dfe la brocha |
+|<nXOrg>| Coordenada izquierda del nuevo origen |
+|<nYOrg>| Coordenada superior del nuevo origen |
+
+====== Devuelve ======
+
+Nil 
+
+====== Ejemplo ======
+
+
+====== Observaciones ======
+
+ El origen es 0,0. Este valor debe ser ''>= 0 y <= 7''. 
+
+====== Código fuente ======
+
+SOURCE\WINAPI\WNDBRUSH.C 
+
+====== Ver también ======

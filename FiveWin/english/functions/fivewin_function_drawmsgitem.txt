@@ -1,0 +1,23 @@
+====== DrawMsgItem() ======
+It draws an item on the Message Bar
+
+====== Syntax ======
+DrawMsgItem( <hDC>, <cMsg>, <aCoor>, <nClrText>, <nClrPane>, <hFont> )--> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context where we the item is to be painted |
+|<cMsg>| Message that we are going to paint.|
+|<aCoor>| Array containing the four coordinates of the place where we are going to paint the item {nTop, nLeft, nBottom, nRight}.|
+|<nClrText>| Color of text that we will use.| 
+|<nClrPane>| Color of background that we will use. |
+|<hFont>| Handle of the font used.|
+
+====== Returns ======
+NIL 
+
+====== Example ======
+SOURCE\CLASSES\TMSGITEM.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\DRAWITEM.C 

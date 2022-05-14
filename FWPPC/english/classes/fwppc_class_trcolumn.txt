@@ -1,0 +1,58 @@
+====== Class TRColumn ======
+
+Manages TReport columns                                                        
+====== DATA ======
+|oReport|Its TReport object container.|
+|aData|An array with all data codeblocks.|
+|aTitle|An array with all titles codeblocks.|
+|aPicture|An array with all pictures.|
+|bDataFont|A codeblock that returns the font to use for the|
+====== DATA ======
+|bTitleFont|A codeblock that returns the font to use for the|
+|title.||
+|bTotalFont|A codeblock that returns the font to use for the|
+|total.||
+|bTotalExpr|A codeblock to return when a total must be|
+|calculated.||
+|bColor|Not used|
+|cTotalPict|A string holding the PICTURE to use for the data.|
+|nWidth|The width of the column in pixels.|
+|nDataHeight|The height of the column data.|
+|nTitleHeight|The height of the column title.|
+|nTotal|The accumulated total already calculated for the|
+|column.||
+|nCol|The column position if defined.|
+|nSize|The width in characters in pixels if defined by the|
+|user.||
+|nPad|The relative position inside the column: LEFT,|
+|CENTER,|RIGHT|
+|nPen|The Report pen elements to use|
+|nOrder|Column order in the report|
+|nCalCol|Anchor column position|
+|nCurLine|Current line processed|
+|lTotal|If the column has total|
+|lGrid|If the column has to be bordered with lines|
+|lShadow|If the column has to be filled with a shadow|
+|background||
+|lTotalExpr|If bTotalExpr should be evaluated|
+|lUnderline|To underline the column|
+|lDobleUnd|To double underline the column|
+|lTextUnd|To underline the data|
+|lSeparator|To draw a column separator|
+|Cargo|A generic cargo slot|
+====== METHODS ======
+|New|Method constructor: creates a new column.|
+|Stabilize|Stabilizes the column. It is called by the report|
+|stabilize.||
+|SayTitle|Prints its title.|
+|SayData|Prints its data.|
+|SayTotal|Prints its total.|
+|Separator|Prints the separator line/s|
+|Underline|Underlines the column|
+|TitleHeight|Retrieves the height of a specific line|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRCOLUMN.PRG

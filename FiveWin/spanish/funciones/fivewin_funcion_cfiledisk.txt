@@ -1,0 +1,30 @@
+====== cFileDisc() ====== 
+
+Recupera la letra de unidad de un archivo con la ruta completa
+
+====== Syntax ======  
+
+cFileDisc( <cFileName> ) --> cDrive  
+
+====== Parámetros ======
+^Parámetro^Descripción^
+| <cFileName> | El nombre del archivo del que se recupera la letra de unidad (considere que cFileName debería contener la ruta completa|  
+
+====== Retorna ======  
+^Retorna^Descripción^
+|<cDrive>| Una cadena de dos carácteres con el formato: A:, B:, C:, etc...|
+
+====== Ejemplo ======
+<code clipper>
+#include "Fivewin.ch"
+//---------------------------------//
+Function Main()  
+MsgInfo(cFileDisc( "g:\Test\Abc.Txt" ) )  // Result G:
+
+MsgInfo(cFileDisc( "F:\Wh\Samples\Whatsnew.Txt" ) )  // Result F:
+   
+Return nil 
+</code>
+
+====== Código fuente ======  
+SOURCE\FUNCTION\FileName.prg  

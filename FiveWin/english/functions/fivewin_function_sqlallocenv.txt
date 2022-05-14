@@ -1,0 +1,64 @@
+====== SQLAllocEnv() ======
+
+
+Allocates an environment handle.
+
+====== Syntax ======
+
+ 
+
+
+ SQLAllocEnv( <@hEnv> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hEnv> The allocated handle. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_INVALID_HANDLE, or SQL_ERROR. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

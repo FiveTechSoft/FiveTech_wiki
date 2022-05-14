@@ -1,0 +1,97 @@
+====== SymTblAt() ======
+
+
+Get a symbol of the internal symbol table
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SymTblAt( <nSymIndex> ) --> hSymbol 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSymIndex> Symbol number to get 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <hSymbol> Retrieved symbol 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TSYMBOL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\SYMTABL.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

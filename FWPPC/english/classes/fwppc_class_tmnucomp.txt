@@ -1,0 +1,14 @@
+====== Class TMnuComp ======
+
+Inherits TComponent                                                            
+====== DATA ======
+|oMenu|Menu object|
+====== METHODS ======
+|New|Constructor from source code.|
+|aItems|Returns an array with the menu items.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMNUCOMP.PRG

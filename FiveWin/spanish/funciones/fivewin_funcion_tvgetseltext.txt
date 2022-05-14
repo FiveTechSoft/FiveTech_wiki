@@ -1,0 +1,58 @@
+TvGetSelText()
+
+
+TvGetSelText()
+ Previous  Top  Next
+
+Retrieves the text of the currently selected item in a tree view control.
+
+====== Sintaxis ======
+
+
+ TvGetSelText( <hWnd> ) --> cText 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cText> The retrieved text. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

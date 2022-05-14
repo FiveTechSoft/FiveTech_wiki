@@ -1,0 +1,105 @@
+SQLDescribeCol()
+
+
+SQLDescribeCol()
+ Previous  Top  Next
+
+Returns the result descriptor - column name, type, column size, decimal
+digits, and nullability - for one column in the result set.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLDescribeCol( <hStmt>, <nField>, <@cColName>, <@nType>, <@nLen>,
+<@nDec>, <@lNull> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nField> The column number of result data. 
+
+
+ 
+
+
+ <cColName> The column name. 
+
+
+ 
+
+
+ <nType> The data type. 
+
+
+ 
+
+
+ <nLen> The column size. 
+
+
+ 
+
+
+ <nDec> The number of decimal digits of the column. 
+
+
+ 
+
+
+ <lNull> .t. if the column allows NULL values. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

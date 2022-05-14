@@ -1,0 +1,19 @@
+====== nWRow() ====== 
+Devuelve el número de fila de "texto" que corresponde a un determinado valor en "pixeles" dado un font determinado
+
+====== Sintaxis ======
+ nWRow( <hWnd>, <hDC>, <nGraphRow> [,<hFont>] ) --> nTextRow 
+====== Parámetros ======
+  <hWnd>       The handle of the window 
+  <hDC>        The handle of its device context 
+  <nGraphRow>  A numeric value in pixels 
+  <hFont>      An optional handle of a font 
+====== Devuelve ======
+ <nTextRow> A numeric value specifying the text row corresponding to that graphical row 
+====== Ejemplo ======
+ SOURCE\CLASSES\WBrowse METHOD LDblClick() 
+====== Código fuente ======
+ SOURCE\WINAPI\WndRows.c 
+
+====== Ver también ======
+[[fivewin_funcion_nwrows|nWRows()]]

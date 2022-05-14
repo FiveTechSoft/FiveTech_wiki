@@ -1,0 +1,80 @@
+====== PageBegin() ====== 
+
+
+
+PageBegin()
+
+
+
+
+
+
+It calls to the method StartPage () of the class TPrinter
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PageBegin() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

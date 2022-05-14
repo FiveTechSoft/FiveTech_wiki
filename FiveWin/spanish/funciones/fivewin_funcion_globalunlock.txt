@@ -1,0 +1,15 @@
+
+====== GlobalUnlock() ======
+GlobalUnlock()
+
+It unblocks the block of memory locked with GlobalLock ()
+====== Sintaxis ======
+ GlobalUnlock( <hMem> ) --> lSuccess 
+====== Parámetros ======
+ <hMem> Handle of the block of memory locked with the function GlobalLock(). 
+====== Devuelve ======
+ <lSuccess> Returns.t. if the function was able to unblock the one block of memory. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MEM.C 
+====== Ver también ======

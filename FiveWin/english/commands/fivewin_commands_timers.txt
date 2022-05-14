@@ -1,0 +1,60 @@
+====== Timer ======
+
+**Defining a new Timer       **
+<code clipper>
+ DEFINE TIMER <oTimer> ;  
+ [ INTERVAL <nInterval> ] ;  
+ [ ACTION <uAction> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]  
+  
+ ACTIVATE TIMER <oTimer>  
+ 
+ RELEASE TIMER <oTimer>  </code>
+ 
+| <oTimer> | A reference to the Timer Object. | 
+| <nInterval> | Defines the timer interval in thousandths of seconds. | 
+| <uAction> | The action to be performed when the interval period is reached. | 
+| <oWnd> | A reference to the container Window Object. | 
+
+====== Sample Code ======
+<code clipper>
+// This sample shows how to call a function in an interval time.
+
+#include "FiveWin.ch"
+
+static oWnd
+static lActive := .f.
+//----------------------------------------------------------------------------//
+function Main()
+
+   local oTmr
+
+   DEFINE WINDOW oWnd TITLE "FileControl"
+
+   DEFINE TIMER oTmr INTERVAL 10000 ACTION CheckFile() OF oWnd
+
+   ACTIVATE TIMER oTmr
+
+   ACTIVATE WINDOW oWnd ICONIZED
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function CheckFile()
+
+   if ! lActive
+      lActive = .t.
+      MsgInfo( "I check anything from here" )
+      lActive = .f.
+   endif
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+====== Screen Snapshot ======
+{{:timer.jpg|:timer.jpg}}
+
+====== See also ======
+[[fivewin_class_ttimer | Class TTimer ]]

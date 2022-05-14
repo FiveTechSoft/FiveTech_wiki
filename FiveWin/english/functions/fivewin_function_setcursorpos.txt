@@ -1,0 +1,54 @@
+====== SetCursorPos() ======
+
+
+Set the position of the cursor.
+
+====== Syntax ======
+
+
+ SetCursorPos( <nX>, <nY> ) --> nil 
+
+
+ 
+
+====== Parameters ======
+
+
+ <nX> The horizontal coordinate of the cursor. 
+
+
+ <nY> The vertical coordinate of the cursor. 
+
+
+ 
+
+====== Returns ======
+
+ 
+
+
+ Nil 
+
+
+ 
+
+====== Example ======
+
+
+ SAMPLES\JAVA\TESTJAVA.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\CURSORS.C 
+
+
+ 
+
+
+
+====== See also ======
+

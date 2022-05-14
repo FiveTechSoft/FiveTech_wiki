@@ -1,0 +1,280 @@
+TcDrawCell()
+
+
+
+TcDrawCell()
+
+ Previous  Top  Next
+
+
+
+
+Draw the cell in a TCBrowse
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TcDrawCell( <hWnd>, <hDC>, <nRow>, <nColumn>, <nWidth>, <uData>,
+<nAlign>, <nClrFore>, <nClrBack>, <hFont>, <nBitmap>, <dwRaster>,
+<nLinesStyle> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the TcBrowse 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Row of the cell in text mode 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nColumn> Column of the cell in text mode 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWidth> Width of column 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <uData> Data to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nAlign> Type of alignament of the data 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrFore> Text color to use 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrBack> Background color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Handle of the font to use 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBitmap> 1 if the data is a bitmap. Otherwise 0 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <dwRaster> Not used 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLinesStyle> Line Style 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ LINES_NONE   0 
+
+
+ 
+
+
+ LINES_BLACK   1 
+
+
+ 
+
+
+ LINES_GRAY   2 
+
+
+ 
+
+
+ LINES_3D   3 
+
+
+ 
+
+
+ LINES_DOTED   4 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\TCBFUNCS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

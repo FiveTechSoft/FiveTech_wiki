@@ -1,0 +1,16 @@
+
+====== Lfn2Sfn() ====== 
+Lfn2Sfn()
+
+Long FileName To short FileName
+====== Sintaxis ======
+ Lfn2Sfn( <cLongFileName> ) --> cshortFileName 
+====== Parámetros ======
+ <cLongFileName> Long file name 
+====== Devuelve ======
+ <cshortFileName> Long name transformed to short name 
+====== Ejemplo ======
+ SAMPLES\LONGNAME2.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\FILES.C 
+====== Ver también ======

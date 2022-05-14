@@ -1,0 +1,16 @@
+
+====== GetMetaFile() ======
+GetMetaFile()
+
+Create a Metafile
+====== Sintaxis ======
+ GetMetaFile( <cFileName> ) --> hMetafile 
+====== Parámetros ======
+ <cFileName> Name from the metafile to create 
+====== Devuelve ======
+ <hMetaFile> Handler of new metafile. 
+====== Ejemplo ======
+ SOURCE\CLASSES\PRINTER.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\METAFILE.C 
+====== Ver también ======

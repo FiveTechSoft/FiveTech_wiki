@@ -1,0 +1,87 @@
+nSerialA()
+
+
+
+nSerialA()
+
+ Previous  Top  Next
+
+
+
+
+This function obtains the serial number of a disk in A:
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nSerialA() --> nSerial 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nSrial> Serial number of the diskette. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\HARDDISK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

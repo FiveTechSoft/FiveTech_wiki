@@ -1,0 +1,44 @@
+Utilización de una base de datos ODBC:
+
+ 
+<code clipper>
+DEFINE ODBC <oDbc> ;
+
+[ NAME <cName> ] ;
+
+[ USER <cUser> ] ;
+
+[ PASSWORD <cPassword> ] ;
+
+[ CONNECT <cConnect> ] ;
+
+[ FROM USER ]
+
+</code> 
+
+Ejecución de una sentencia SQL:
+
+ 
+<code clipper>
+ODBC <oDbc> [ SQL | EXECUTE ] <cCommand>
+</code>
+ 
+^Parámetro^  Descripción  ^
+^<oDbc>| Variable que mantiene la referencia al objeto ODBC.|
+^<cName>| Nombre de la base de datos a utilizar.|
+^<cUser>|Nombre del usuario que va a usar la base de datos.|
+^<cPassword>|Contraseña opcional requerida por la base de datos.|
+^<cConnect>|Algunos controladores ODBC requieren una cadena de conexión, que normalmente incluye <cName>, <cPassword> y otra información adicional requerida.|
+^<cCommand>|Cadena de caracteres que incluye la sentencia ODBC a ejecutar.|
+
+ 
+
+Cláusulas:
+
+**FROM USER**       Indica que desea seleccionar interactivamente la base de datos a utilizar.
+
+ 
+
+ 
+
+ 

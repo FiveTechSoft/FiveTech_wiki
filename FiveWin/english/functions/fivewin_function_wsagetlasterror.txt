@@ -1,0 +1,22 @@
+====== WSAGetLastError() ====== 
+Get the error code for the last operation 
+
+====== Syntax ====== 
+
+ WSAGetLastError() --> nError  
+ 
+====== Parameters ====== 
+
+ None  
+ 
+====== Returns ====== 
+
+|<nError>| Error code|  
+ 
+====== Sample ====== 
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\WINSOCK.C
+
+====== See Also ======

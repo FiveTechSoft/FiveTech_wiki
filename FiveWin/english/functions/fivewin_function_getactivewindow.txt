@@ -1,0 +1,15 @@
+====== GetActiveWindow() ====== 
+Retrieves the window handle of the active window.
+
+====== Syntax ======
+GetActiveWindow() --> hWnd 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<hWnd>| The handle of the window, or null if there is no any windows active at that moment.|
+
+====== Source Code ======
+SOURCE\WINAPI\ActWnd.c 

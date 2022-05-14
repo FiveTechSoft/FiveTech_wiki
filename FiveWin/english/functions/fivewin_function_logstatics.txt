@@ -1,0 +1,114 @@
+====== LogStatics() ====== 
+
+
+
+LogStatics()
+
+
+
+
+
+
+It generates log file with all the static variables of an application
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LogStatics() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ It generates a called file " STATICS.LST ". This function is very useful
+to determine the reason for the one that a program it is consuming a
+great quantity of memory. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\GENFOLD.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\STATICS.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

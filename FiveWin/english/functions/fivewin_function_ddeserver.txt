@@ -1,0 +1,56 @@
+====== DDEServer() ======
+Handle of events of the class TDDEMLServer
+
+====== Syntax ======
+DDEServer( <nType>, <nFmt>, <hConv>, <hSz1>, <hSz2>, <hData>, <hData1>, <hData2> ) --> xRetValue 
+
+====== Parameters ======
+^Parameter^Description^
+|<nType>| Type of requested service |
+|<nFmt>| Not used |
+|<hConv>| Handler of the conversation DDEML |
+|<hSz1>| Some processes require to hold a hSZ1 handle stored here |
+|<hSz2>| Some processes require to hold a hSZ2 handle stored here |
+|<hData>| Handler to obtain data by means of the function DDEGetData(hData ) |
+|<hData1>| Not used. |
+|<hData2>| If this value is received to 1 and the requested nType it is XTYP_DISCONNECT, the server will be disconnected. |
+
+====== Returns ======
+It returns different values depending on the service negotiated. (see source code for more information) 
+
+====== Example ======
+ \SAMPLES\DDEMLSERV.PRG 
+<code clipper>
+// Using FiveWin as a DDE Server !!!
+// Run first this DdeServe.exe and then execute DdeClien.exe
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "I am a DDE server!"
+
+   oWnd:bDdeInit = { | hWndClient, cAppName, cTopicName | ;
+                     MsgBeep(),;
+                     oWnd:Say( 1, 2, hWndClient ),;
+                     oWnd:Say( 2, 2, cAppName ),;
+                     oWnd:Say( 3, 2, cTopicName ) }
+
+   oWnd:bDdeExecute = { | hWndClient, cCommand | oWnd:Say( 5, 2, cCommand ) }
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+====== Source Code ======
+\SOURCE\CLASSES\TDDEMLSV.PRG 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

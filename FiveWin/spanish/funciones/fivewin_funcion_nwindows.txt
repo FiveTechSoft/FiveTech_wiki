@@ -1,0 +1,24 @@
+
+====== nWindows() ====== 
+nWindows()
+
+Number of windows created by our application.
+====== Sintaxis ======
+ nWindows() --> nWnds 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nWnds> Number of windows created by our application. 
+
+Observations:
+
+ The windows when being created, including the dialogs, they go
+increasing a called static array aWindows that it is initialized in the
+class TWindow. This function us it provides the longitude of this array
+in the moment in that the call takes place to this function. Although the
+controls are inherited of the class TWindow these they are not part of
+the array aWindows and therefore they don't count in this compute. 
+
+====== Código fuente ======
+ SOURCE\CLASSES\WINDOW.PRG 
+====== Ver también ======

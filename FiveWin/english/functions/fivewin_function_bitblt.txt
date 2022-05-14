@@ -1,0 +1,73 @@
+====== BitBlt() ======
+
+It copies a bitmap from a context device to another context device 
+
+====== Syntax: ======
+
+BitBlt( <hdcDest>, <nCol>, <nRow>, <nWidth>, <nHeight>, <hdcOrg>, <nColOrg>, <nRowOrg>, <dwRop> ) --> lResult  
+ 
+====== Parameters: ======
+^Parameter^Description^ 
+|<hdcDest>| Context device where the image will be transferred.|  
+|<nCol>| Destination column.|  
+|<nRow>| Destination line.|  
+|<nWidth>| Wide of destination.|  
+|<nHeight>| High of destination.|  
+|<hdcOrg>| Device of context origin of the image.|  
+|<nColOrg>| Column origin.|  
+|<nRowOrg>| Line origin.|  
+|<dwRop>| Specifies the raster operation to be performed.|  
+
+|BLACKNESS|Turns all output black.|
+|DSTINVERT|Inverts the destination bitmap.|
+|MERGECOPY|Combines the pattern and the source bitmap by using the Boolean AND operator.|
+|MERGEPAINT|Combines the inverted source bitmap with the destination bitmap by using the Boolean OR operator.|
+|NOTSRCCOPY|Copies the inverted source bitmap to the destination.|
+|NOTSRCERASE|Inverts the result of combining the destination and source bitmaps by using the Boolean OR operator.|
+|PATCOPY|Copies the pattern to the destination bitmap.|
+|PATINVERT|Combines the destination bitmap with the pattern by using the Boolean XOR operator.|
+|PATPAINT|Combines the inverted source bitmap with the pattern by using the Boolean OR operator. Combines the result of this operation with the destination bitmap by using the Boolean OR operator.|
+|SRCAND|Combines pixels of the destination and source bitmaps by using the Boolean AND operator|
+|SRCCOPY|Copies the source bitmap to the destination bitmap.|
+|SRCERASE|Inverts the destination bitmap and combines the result with the source bitmap by using the  Boolean AND operator.|
+|SRCINVERT|Combines pixels of the destination and source bitmaps by using the Boolean XOR operator.|
+|SRCPAINT|Combines pixels of the destinaton and source bitmaps by using the Boolean OR operator. |
+|WHITENESS|Turns all output white.|
+
+|#define SRCCOPY |0x00CC0020L |
+|#define SRCPAINT|0x00EE0086L |
+|#define SRCAND|0x008800C6L |
+|#define SRCINVERT|0x00660046L |
+|#define SRCERASE|0x00440328L |
+|#define NOTSRCCOPY|0x00330008L |
+|#define NOTSRCERASE|0x001100A6L |
+|#define MERGECOPY|0x00C000CAL |
+|#define MERGEPAINT |0x00BB0226L |
+|#define PATCOPY |0x00F00021L |
+|#define PATPAINT |0x00FB0A09L |
+|#define PATINVERT |0x005A0049L |
+|#define DSTINVERT |0x00550009L |
+|#define BLACKNESS |0x00000042L |
+|#define WHITENESS |0x00FF0062L |
+
+====== Returns: ======
+^Returns^Description^
+|<lResult>|Returns .T. if the function was executed without problems.|
+
+====== Example: ======
+<code clipper>
+static function DrawBitmap( hDC, hBmp, nTop, nLeft, nWidth, nHeight ) 
+   local hDC1     := CreateCompatibleDC( hDC )
+   local hBmpOld1 := SelectObject( hDC1, hBmp ) 
+   BitBlt( hDC, 0, 0, nWidth, nHeight, hDC1, nLeft, nTop, SRCCOPY )
+   SelectObject( hDC1, hBmpOld1 ) 
+   DeleteDC( hDC1 ) 
+return nil
+</code>
+====== Sample: ======
+
+samples\enrico97.prg
+
+====== Source Code: ======
+
+ SOURCE\WINAPI\DC.C  

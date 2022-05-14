@@ -1,0 +1,27 @@
+====== RemoveFont() ======           
+
+Elimina una fuente de la lista de fuentes disponibles
+
+====== Sintaxis ======           
+
+RemoveFont( <cFontName> )  --> <lSuccess>
+
+====== Parámetros ======
+
+| <cFontName> | Identifica el nombre del archivo de recursos de la fuente o el manejador de un módulo cargado que suministra ese tipo de letra. |
+
+====== Retorno ======
+
+| <lSuccess> | Si la operación fue If the operation was exitosa. |
+
+====== Observaciones ======
+
+| Cualquier aplicación que suma o elimina tipos de letra desde la tabla de fuentes de Windows debería enviar un mensaje WM_FONTCHANGE a todas las ventanas de primer nivel en el sistema usando la función SendMessage con el parámetro hwnd ajustado a -1 (HWND_BROADCAST). |
+| En algunos casos, la función RemoveFont no puede remover el recurso del tipo de letra inmediatamente. Si hay referencias activas del recurso, este permanece cargado hasta que la última fuente lógica cargada haya sido removida (eliminado) utilizando la función DeleteObject. |
+
+====== Código fuente ======        
+SOURCE\\WINAPI\\FontCrea.c
+
+====== Ver también ======           
+
+[[fivewin_function_AddFontResource|AddFontResource()]]

@@ -1,0 +1,68 @@
+MakeIntResource()
+
+
+MakeIntResource()
+ Previous  Top  Next
+
+Converts an integer value to a resource type compatible with the
+resource-management functions. This function is used in place of a string
+containing the name of the resource.
+
+====== Sintaxis ======
+
+ 
+
+
+ MakeIntResource( <nValue> ) --> nResult 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <nValue> Specifies the integer value to be converted. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nResult> The resource type value. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\MAKEINTR.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

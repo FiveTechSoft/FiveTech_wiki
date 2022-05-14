@@ -1,0 +1,14 @@
+
+====== GetWndApp() ======
+GetWndApp()
+
+Returns the FiveWin main application window object
+====== Sintaxis ======
+ GetWndApp() --> hWnd 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <hWnd> The handle of the window of the main application window. 
+====== Código fuente ======
+ Not provided. 
+====== Ver también ======

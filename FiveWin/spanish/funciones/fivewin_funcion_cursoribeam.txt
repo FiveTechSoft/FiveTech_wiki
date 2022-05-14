@@ -1,0 +1,28 @@
+
+====== CursorIbeam() ======
+
+CursorIbeam()
+Selects the Windows default IBeam cursor
+====== Sintaxis ======
+ CursorIbeam() --> nil 
+
+ This function changes the mouse cursor into a hand in an 'ibeam' shape.
+(the one that we see when the mouse goes over a GET). 
+
+====== Parámetros ======
+ None. 
+====== Devuelve ======
+ Nothing. 
+Observations:
+ These functions let us change the mouse cursor temporarily while we are
+doing other tasks. As soon as the API takes control it will restore the
+mouse cursor to the one associated with the window which is below the
+cursor. 
+
+====== Ejemplo ======
+ SAMPLES\TestCurs.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+====== Ver también ======
+ CursorWait() CursorCatch() CursorArrow() CursorWE() CursorHand()
+CursorSize() 

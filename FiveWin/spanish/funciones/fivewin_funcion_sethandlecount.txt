@@ -1,0 +1,117 @@
+SetHandleCount()
+
+
+
+SetHandleCount()
+
+ Previous  Top  Next
+
+
+
+
+Changes the maximum number of available files
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetHandleCount( <nHandles> ) --> nHandlesAvailables 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nHandles> Specifies the number of a file handles the application
+requires. This count can not be greater than 255. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nHandlesAvailables> Is the number of handles availables to the
+application. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ By default, the number of available handles is 20. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\AutoLay.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\SetHandl.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,154 @@
+====== PostMessage() ====== 
+
+
+
+PostMessage()
+
+
+
+
+
+
+Places a message at the end of the queue
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PostMessage( <hWnd>, <nMsg>, <nWParam>, <nLParam> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the window to which the message will be posted. If
+this parameter is HWND_BROADCAST (-1), the message will be posted to all
+top level windows, including disabled or invisible unowned windows. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMsg> Specifies the message to be posted. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWParam> Specifies 16 bits of aditional information. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLParam> Specifies 32 bits of aditional information. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating if the operation was successfull. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Window METHOD PostMsg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\PostMsg.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SendMessage() PeekMessage() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

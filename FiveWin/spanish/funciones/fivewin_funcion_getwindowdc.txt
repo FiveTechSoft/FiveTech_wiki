@@ -1,0 +1,69 @@
+GetWindowDC()
+
+
+GetWindowDC()
+ Previous  Top  Next
+
+Retrieves the device context (DC) for the entire window.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetWindowDC( <hWnd> ) --> hDC 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> Handle to the window with a device context that is to be
+retrieved. If this value is NULL, GetWindowDC() retrieves the device
+context for the entire screen. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hDC> The hDC of the specified window. If the function fails, the return
+value is zero. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

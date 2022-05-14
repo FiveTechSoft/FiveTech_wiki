@@ -1,0 +1,28 @@
+====== Class TIcon ======
+
+Icons class                                                                    
+Inherits from TControl                                                         
+====== DATA ======
+|cIcoFile|*.ICO filename if load it from disk.|
+|cResName|Resource name if load it from a resource ( DLL, RES,|
+|RC|)|
+|hIcon|Windows handle of the icon.|
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|Destroy|Destroy the object.|
+|Display|Displays the control. Use :Refresh() to force|
+|repaint.||
+|End|Ends control and make it disappear.|
+|HandleEvent|Generic event handler.|
+|Initiate|Generic Control initialization method|
+|Paint|Draws the control. This process occurs inside|
+|Display.||
+|SetFile|Name of the icon file.|
+|SetName|Set a new name for the icon.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TICON.PRG

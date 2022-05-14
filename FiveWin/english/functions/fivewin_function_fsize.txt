@@ -1,0 +1,30 @@
+====== Fsize() ======
+Retrieves the size of a file without opening the file. 
+
+====== Syntax ====== 
+FSize( <cFileName> )  --> <nFileSize> 
+
+====== Parameters ====== 
+^Parameter^Description^
+|<cFileName> | The name of the file whose size to be retrieved.  |
+
+====== Return ====== 
+^Returns^Description^
+| <nFileSize> | A number specifying the size of the file.  |
+
+====== Sample ======
+<code clipper>
+#include "fivewin.ch"
+
+FUNCTION MAIN
+
+ MsgInfo("D:\install_flash_player.exe") // Returns size in bytes
+
+RETURN NIL
+</code>
+
+====== Source Code ====== 
+SOURCE\FUNCTION\FileName.prg  
+ 
+
+====== See Also ====== 

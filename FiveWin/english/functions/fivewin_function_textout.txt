@@ -1,0 +1,28 @@
+====== TextOut() ====== 
+Draws text to a specified location 
+
+====== Syntax ====== 
+
+ TextOut( <hDC>, <nRow>, <nCol>, <cText> ) --> lSuccess  
+ 
+====== Parameters ====== 
+
+|<hDC>| Identifies the device context.|  
+|<nRow>, <nCol>| The coordinates where to print.|  
+|<cText>| The text to be drawn.|  
+ 
+====== Returns ====== 
+
+|<lSuccess>| A logical value indicating that the operation was completed successfully.|  
+ 
+====== Sample ====== 
+
+ CLASS TPrinter METHOD Say  
+ 
+====== Source Code ====== 
+
+ SOURCE\\WINAPI\\Text.c  
+ 
+====== See also ====== 
+
+[[fivewin_function_ExtTextOut|ExtTextOut()]],[[fivewin_function_WSay|WSay()]]  

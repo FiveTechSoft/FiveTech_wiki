@@ -1,0 +1,15 @@
+
+====== IsAnsi() ======
+IsAnsi()
+
+To see if all the characters of a string are Ansi
+====== Sintaxis ======
+ IsAnsi( <cString> ) --> lAnsi 
+====== Parámetros ======
+ <cString> String of characters to check 
+====== Devuelve ======
+ <lAnsi> Return .t. if all charactes of a string are ANSI, otherwise .f. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\OEMANSI.C 
+====== Ver también ======

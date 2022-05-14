@@ -1,0 +1,206 @@
+====== Barras de botones y botones con bitmaps (Button & ButtonBar) ======
+
+Creación de una barra de botones a partir de código fuente:
+
+<code clipper>
+DEFINE BUTTONBAR [ <oBar> ] ;
+       [ SIZE | BUTTONSIZE | SIZEBUTTON <nWidth>,<nHeight> ] ;
+       [ 3D | 3DLOOK ] ;
+       [ TOP | LEFT | RIGHT | DOWN | FLOAT ] ;
+       [ OF | WINDOW | DIALOG <oWnd> ] ;
+       [ CURSOR <oCursor> ]
+</code>
+
+Creación de una barra de botones a partir de código fuente y ubicándola en una posición
+específica :
+
+<code clipper>
+@ <nRow>, <nCol> BUTTONBAR [ <oBar> ] ;
+                 [ SIZE <nWidth>, <nHeight> ] ;
+                 [ BUTTONSIZE <nBtnWidth>, <nBtnHeight> ] ;
+                 [ 3D | 3DLOOK ] ;
+                 [ TOP | LEFT | RIGHT | BOTTOM | FLOAT ] ;
+                 [ OF | WINDOW | DIALOG <oWnd> ] ;
+                 [ CURSOR <oCursor> ] ;
+</code>
+
+Definición de un botón para la barra:
+
+<code clipper>
+DEFINE BUTTON [ <oBtn> ] ;
+       [ OF | BUTTONBAR <oBar> ] ;
+       [ NAME|RESNAME|RESOURCE <cResName1>[,<cResName2>[,<cResName3>]]] ;
+       [ FILE|FILENAME|DISK <cBmpFile1>[,<cBmpFile2>[,<cBmpFile3>]]] ;
+       [ ACTION|EXEC <uAction> ] ;
+       [ GROUP ] ;
+       [ MESSAGE <cMsg> ] ;
+       [ ADJUST ] ;
+       [ WHEN <WhenFunc> ] ;
+       [ TOOLTIP <cToolTip> ] ;
+       [ PRESSED ] ;
+       [ ON DROP <bDrop> ] ;
+       [ AT <nPos> ] ;
+       [ PROMPT <cPrompt> ] ;
+       [ FONT <oFont> ] ;
+       [ NOBORDER ] ;
+</code>
+
+Para redefinir un un botón contenido en un recurso para una caja de diálogo (solo un botón, no
+una barra de botones) .
+Esto le permite tener botones de apretar con bitmaps dentro de sus cajas de diálogo sin tener
+que usar el BWCC.DLL de Borland.
+
+<code clipper>
+REDEFINE BUTTON [<oBtn>] ;
+         [ ID <nId> ] ;
+         [ OF | BUTTONBAR <oBar> ] ;
+         [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>] ] ;
+         [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>] ] ;
+         [ ACTION | EXEC <uAction> ] ;
+         [ MESSAGE <cMsg> ] ;
+         [ ADJUST ] ;
+         [ WHEN <uWhen> ] ;
+         [ UPDATE ] ;
+         [ TOOLTIP <cToolTip> ] ;
+</code>
+
+Creando un botón con bitmap a partir de código fuente y colocándolo en cualquier ventana
+contenedora:
+
+<code clipper>
+@ <nRow>, <nCol> BUTTON [<oBtn>] ;
+                 [ NAME | RESNAME | RESOURCE <cResName1> [,<cResName2>] ] ;
+                 [ FILE | FILENAME | DISK <cBmpFile1> [,<cBmpFile2>] ] ;
+                 [ SIZE <nWidth>, <nHeight> ] ;
+                 [ ACTION <uAction> ] ;
+                 [ OF | WINDOW | DIALOG <oWnd> ] ;
+                 [ MESSAGE <cMsg> ] ;
+                 [ WHEN <WhenFunc> ] ;
+                 [ ADJUST ] ;
+                 [ UPDATE ] ;
+</code>
+
+Nota: También es posible tener una barra de botones en una caja de diálogo. Para hacer esto,
+basta con definir la barra de botones en la claúsula ON INIT cuando se active el diálogo. Esto
+se debe a que en el momento de ejecutar ON INIT, un diálogo se comporta como una
+ventana estándar.
+
+Parámetros:
+
+|<oBar> |Referencia al objeto barra de herramientas|
+|<nWidth>/<nHeight> |Ancho y alto de los botones de la barra, el valor predeterminado es de 28x28 pixeles.|
+|<oWnd> |Referencia a la ventana contenedora de la barra.|
+|<oCursor> |Referencia a un objeto cursor, el cual se utilizará dentro de barra de botones|
+|<oBtn> |Referencia a un objeto botón con bitmap.|
+|<cBmpFile1>/<cBmpFile2>/<cBmpFile3> |El nombre del bitmap a utilizar. Opcionalmente puede especificar un segundo bitmap, el cual aparecerá cuando el botón sea presionado y nos permite realizar un efecto de animación. Un tercer bitmap también puede ser indicado y este se utilizará junto con la expresión <WhenFunc>, para indicar si el botón está o no habilitado. Estos parámetros se usan para tener acceso a bitmaps almacenados en archivos .BMP.|
+|<cResName1>/<cResName2>/<cResName3> |El nombre del recurso bitmap a utilizar. Opcionalmente puede especificar un segundo bitmap para realizar un efecto de animación. Un tercer bitmap también puede ser indicado y este se utilizará junto con la expresión <WhenFunc>, para indicar si el botón está o no habilitado.Estos parámetros se usan para tener acceso a bitmaps almacenados en un archivo de recursos (un archivo .RC .DLL).|
+|<uAction> |La acción que se debe ejecutar cuando se presione el botón.|
+|<cMsg> |El mensaje a desplegar en la barra de mensajes de la ventana contenedora que contiene a la barra de botones.|
+|<WhenFunc> |Expresión que indica si el botón de la barra de botones está habilitado o no.|
+|<nId> |Identificador para el botón colocado en una ventana de diálogo.|
+|<cToolTip> |El texto a mostrar en un “globo de ayuda” (tooltip).|
+|<nRow>,<nCol> |Coordenadas donde colocar la barra de botones, se simulan coordenadas de texto.|
+|<nBtnWidth>,<nBtnHeight> |Tamaño del botón dentro de la barra|
+|<bDrop> |Acción a realizar cuando el botón reciba una operación de arrastrar y soltar|
+|<nPos> |Valor numérico que indica en que posición colocar el botón.|
+|<cPrompt> |Texto que contendrá el botón|
+|<oFont> |Referencia al objeto Font a utilizar para el texto de botón|
+|<nId> |Identificador numérico del botón dentro del recurso.|
+
+Claúsulas para la barra de botones:
+
+|3D/3DLOOK |Despliega la barra de botones con un efecto en tercera dimensión|
+|TOP/LEFT/RIGHT/DOWN |La posición de la barra de botones respecto a su ventana contenedora. Con el botón derecho del mouse se activa un menú para seleccionar dinámicamente una nueva posición.|
+|PRESSED |Indica si el botón debe aparecer como presionado al momento de dibujar la barra de botones|
+|NOBORDER |Presenta el botón de la barra al estilo de Windows97, sin borde, el borde aparece cuando el cursor pasa sobre el botón.|
+|FLOAT |Coloca la barra de botones en una ventana flotante.|
+
+Claúsulas para los botones en la barra:
+
+|ADJUST |Ajusta automáticamente el bitmap al tamaño del botón.|
+|GROUP |Inicia un nuevo “grupo” de botones en la barra. Puede definir tantos grupos como necesite.|
+|UPDATE |Claúsula exclusiva para los botones con bitmaps colocados en una caja de diálogo (sin barra de botones). Se utiliza para que el botón actualice su imagen atomáticamente cuando se ejecute un oDlg:Update().|
+
+Implementación del comando:
+
+<code clipper>
+#xcommand DEFINE BUTTONBAR [ <oBar> ] ;
+[ <size: SIZE, BUTTONSIZE,SIZEBUTTON > <nWidth>, <nHeight>];
+[ <_3d: 3D, 3DLOOK> ] ;
+[ <mode: TOP, LEFT, RIGHT, BOTTOM, FLOAT> ] ;
+[ <wnd: OF, WINDOW, DIALOG> <oWnd> ] ;
+[ CURSOR <oCursor> ] ;
+=> ;
+[ <oBar> := ] TBar():New( <oWnd>, <nWidth>, <nHeight>, <._3d.>,;
+[ Upper(<(mode)>) ], <oCursor> )
+#xcommand @ <nRow>, <nCol> BUTTONBAR [ <oBar> ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ BUTTONSIZE <nBtnWidth>, <nBtnHeight> ] ;
+[ <_3d: 3D, 3DLOOK> ] ;
+[ <mode: TOP, LEFT, RIGHT, BOTTOM, FLOAT> ] ;
+[ <wnd: OF, WINDOW, DIALOG> <oWnd> ] ;
+[ CURSOR <oCursor> ] ;
+=> ;
+[ <oBar> := ] TBar():NewAt( <nRow>, <nCol>, <nWidth>,<nHeight>,;
+<nBtnWidth>,<nBtnHeight>,<oWnd>, <._3d.>, [Upper(<(mode)>) ],;
+<oCursor> )
+#xcommand DEFINE BUTTON [ <oBtn> ] ;
+[ <bar: OF, BUTTONBAR > <oBar> ] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName1> ;
+[,<cResName2>[,<cResName3>] ] ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile1> ;
+[,<cBmpFile2>[,<cBmpFile3>] ] ] ;
+[ <action:ACTION,EXEC> <uAction,...> ] ;
+[ <group: GROUP > ] ;
+[ MESSAGE <cMsg> ] ;
+[ <adjust: ADJUST > ] ;
+[ WHEN <WhenFunc> ] ;
+[ TOOLTIP <cToolTip> ] ;
+[ <lPressed: PRESSED> ] ;
+[ ON DROP <bDrop> ] ;
+[ AT <nPos> ] ;
+[ PROMPT <cPrompt> ] ;
+[ FONT <oFont> ] ;
+[ <lNoBorder: NOBORDER> ] ;
+=> ;
+[ <oBtn> := ] TBtnBmp():NewBar( <cResName1>, <cResName2>,;
+<cBmpFile1>, <cBmpFile2>, <cMsg>, [{|This|<uAction>}],;
+<.group.>, <oBar>, <.adjust.>, <{WhenFunc}>,;
+<cToolTip>, <.lPressed.>, [\{||<bDrop>\}], [\"<uAction>\"], <nPos>,;
+<cPrompt>, <oFont>, [<cResName3>], [<cBmpFile3>], [!<.lNoBorder.>] )
+#xcommand REDEFINE BTNBMP [<oBtn>] ;
+[ ID <nId> ] ;
+[ <bar: OF, BUTTONBAR > <oBar> ] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName1> ;
+[,<cResName2>[,<cResName3>] ] ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile1> ;
+[,<cBmpFile2>[,<cBmpFile3>] ] ] ;
+[ <action:ACTION,EXEC> <uAction,...> ] ;
+[ MESSAGE <cMsg> ] ;
+[ <adjust: ADJUST > ] ;
+[ WHEN <uWhen> ] ;
+[ UPDATE <lUpdate> ] ;
+[ TOOLTIP <cToolTip> ] ;
+[ PROMPT <cPrompt> ] ;
+[ FONT <oFont> ] ;
+=> ;
+[ <oBtn> := ] TBtnBmp():ReDefine( <nId>, <cResName1>, <cResName2>,;
+<cBmpFile1>, <cBmpFile2>, <cMsg>, [{|Self|<uAction>}],;
+<oBar>, <.adjust.>, <{uWhen}>, <.lUpdate.>, <cToolTip>,;
+<cPrompt>, <oFont>, [<cResName3>], [<cBmpFile3>] )
+#xcommand @ <nRow>, <nCol> BUTTON [<oBtn>] ;
+[ <resource: NAME, RESNAME, RESOURCE> <cResName1> [,<cResName2>] ] ;
+[ <file: FILE, FILENAME, DISK> <cBmpFile1> [,<cBmpFile2>] ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ ACTION <uAction,...> ] ;
+[ <of:OF, WINDOW, DIALOG> <oWnd> ] ;
+[ MESSAGE <cMsg> ] ;
+[ WHEN <uWhen> ] ;
+[ <adjust: ADJUST> ] ;
+[ UPDATE <lUpdate> ] ;
+=> ;
+[ <oBtn> := ] TBtnBmp():New( <nRow>, <nCol>, <nWidth>, <nHeight>,;
+<cResName1>, <cResName2>, <cBmpFile1>, <cBmpFile2>,;
+[{|Self|<uAction>}], <oWnd>, <cMsg>, <{uWhen}>, <.adjust.>,;
+<.lUpdate.> )
+</code>

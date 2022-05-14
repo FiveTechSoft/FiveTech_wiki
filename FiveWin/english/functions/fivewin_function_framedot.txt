@@ -1,0 +1,29 @@
+====== FrameDot() ======
+
+Draws a dotted border around the specified rectangle. 
+
+====== Syntax ====== 
+
+FrameDot(<hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil  
+
+====== Parameters ====== 
+
+| <hDC> | Device context of the control  |
+| <nTop> | Top coordinate  |
+| <nLeft> | Left coordinate  |
+| <nBottom> | Down coordinate  |
+| <nRight> | Right coordinate   |
+
+====== Return ====== 
+
+| Nil  |
+
+
+====== Sample ======
+
+====== Source Code ====== 
+
+SOURCE\WINAPI\RECTS.C 
+
+====== See Also ====== 
+

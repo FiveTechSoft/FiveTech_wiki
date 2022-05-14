@@ -1,0 +1,31 @@
+
+====== CursorCatch() ======
+CursorCatch()
+Selects the FiveWin hand catching cursor
+====== Sintaxis ======
+ CursorCatch() --> nil 
+
+ This function changes the mouse cursor into a hand in a catching
+position. 
+
+====== Parámetros ======
+ None. 
+
+====== Devuelve ======
+ Nothing. 
+
+Observations:
+
+ These functions let us change the mouse cursor just temporarily while we
+are doing other tasks. As soon as the API takes the control it will
+restore the mouse cursor to the one associated to the window which is
+below the cursor. 
+
+====== Ejemplo ======
+ SAMPLES\\TestCurs.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+
+====== Ver también ======
+ CursorWait() CursorHand() CursorArrow() CursorWE() CursorIbeam()
+CursorSize() 

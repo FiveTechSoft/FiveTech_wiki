@@ -1,0 +1,79 @@
+====== nDbl2Flt() ======
+
+
+Convert a Double to Float
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nDbl2Flt( <nDouble> ) --> nFloat 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nDouble> Number of double precision 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nFloat> Floating point num 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\DBL2FLT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

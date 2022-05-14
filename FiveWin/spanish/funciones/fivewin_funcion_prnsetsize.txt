@@ -1,0 +1,14 @@
+
+====== PrnSetSize() ======
+To establish the size of the paper of the printer
+====== Sintaxis ======
+ PrnSetSize( <nWidth>, <nHeight> ) --> nil 
+====== Parámetros ======
+  <nWidth> Width of the paper of the printer in tenths of millimeter. 
+  <nHeight> Height of the paper of the printer in tenths of millimeter. 
+====== Devuelve ======
+   Nil
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

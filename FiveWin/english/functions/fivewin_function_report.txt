@@ -1,0 +1,143 @@
+====== Report() ======
+
+
+
+Generic FiveWin automatic-reporting function
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Report( [<oBrowse>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <oBrowse> An optional reference to a browse object to be used to
+retrieve its associated cAlias DATA contents. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function allows the quickly implementation of reports in our
+browses placed in dialogboxes. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function has been greatly enhanced in the new METHOD
+TWBrowse:Report(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\FwBrow.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Browse.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TWBrowse METHOD Report() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,25 @@
+
+====== GetProfInt() ======
+GetProfInt()
+
+Retrieves the value of a integer Win.ini file entry
+====== Sintaxis ======
+ GetProfInt( <cSection>, <cEntry>, <nDefault> ) --> nValue 
+====== Parámetros ======
+  <cSection> Specifies the section containing the entry. 
+  <cEntry> The entry whose value is to be retrieved. 
+  <nDefault> Specifies the default numeric value to return if the entry
+      cannot be found. 
+====== Devuelve ======
+ <nValue> The numeric value in the INI file that follows the specified
+entry. 
+
+Observations:
+
+ This function retrieves a value from the WIN.INI file. 
+====== Ejemplo ======
+ SAMPLES\TestIni.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\\Profile.c 
+====== Ver también ======
+ GetProfStr(), GetPvpProfile(), GetPvpProfString()

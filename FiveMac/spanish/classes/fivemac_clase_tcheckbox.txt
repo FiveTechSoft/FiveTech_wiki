@@ -1,0 +1,45 @@
+====== Clase TCheckBox ======
+
+Control para casillas de verificación
+
+Hereda de la [[fivemac_clase_tcontrol|Clase TControl]]                                                         
+
+
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|bChange|Codeblock a evaluar al cambiar el estado del control.|
+
+
+====== METODOS ======
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente.|
+|Click|Manejdor del evento botón izquierdo del mouse.|
+|SetText|Cambia la leyenda del control|
+|GetText|Obtiene la leyenda del control|
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveMac.ch"
+
+function Main()
+
+   local oWnd, lVar := .t.
+   
+   DEFINE WINDOW oWnd TITLE "Test"
+
+   @ 20, 20 CHECKBOX lVar PROMPT "checkbox" OF oWnd ;
+      ON CHANGE MsgInfo( cValToChar( lVar ) )
+   
+   ACTIVATE WINDOW oWnd ;
+      ON CLICK MsgInfo( Str( nRow ) + "," + Str( nCol ) )
+   
+return nil 
+
+</code>
+
+====== Ver también ======
+
+
+====== Código fuente ======
+FMC\SOURCE\CLASSES\CHECKBOX.PRG

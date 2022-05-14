@@ -1,0 +1,165 @@
+SetWindowText()
+
+
+
+SetWindowText()
+
+ Previous  Top  Next
+
+
+
+
+Changes the caption of a Window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetWindowText( <hWnd>, <cText> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the window or the control whose text is to be set. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cText> The text to be set as new window text. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function causes a WM_SETTEXT message to be sent to the given window
+or control. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ If the window specified by the hwnd parameter is a control, the text
+within the control is set. If the specified window is a list-box control
+created with WS_CAPTION style, however, SetWindowText will set the
+caption for the control, not for the list-box entries. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ Class TWindow METHOD SetText() 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\SetText.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetWindowText() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

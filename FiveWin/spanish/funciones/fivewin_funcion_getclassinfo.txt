@@ -1,0 +1,52 @@
+GetClassInfo()
+
+
+GetClassInfo()
+ Previous  Top  Next
+
+Retrieves information about a window class.
+
+====== Sintaxis ======
+
+
+ GetClassInfo( <hInstance>, <cClassName> ) --> aInfo 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hInstance> Handle to the instance of the application that created the
+class. To retrieve information about classes defined by the system (such
+as buttons or list boxes), set this parameter to NULL. 
+
+
+ 
+
+
+ <cClassName> The class name. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <aInfo> An array of the informations or nil. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

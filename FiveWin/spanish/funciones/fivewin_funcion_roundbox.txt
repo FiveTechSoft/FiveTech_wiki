@@ -1,0 +1,31 @@
+
+====== RoundBox() ======
+
+Dibuja un rectángulo con esquinas redondeadas y opcionalmente usando un color y grosor de lapiz
+
+====== Sintaxis ======
+
+RoundBox( <hDC>, <nLeft>, <nTop>, <nRight>, <nBottom>, <nEllipseWidth>,
+<nEllipseHeight> [,<nRGBColor>] [,<nWidth>] ) --> lSuccess 
+
+====== Parámetros ======
+
+|<hDC>|Device context of the control| 
+|<nLeft>|Left coordinate|
+|<nTop>|Top coordinate| 
+|<nRight>|Right coordinate| 
+|<nBottom>|Down coordinate|
+|<nEllipseWidth>|Specifies the width of the ellipse used to draw the rounded corners| 
+|<nEllipseHeight>|Specifies the height of the ellipse used to draw the rounded corners| 
+|<nRGBColor>|Optional RGB color for a pen to use|
+|<nWidth>|Optional width for a pen to use|
+
+====== Devuelve ======
+
+|<lSuccess>|If the function succeeds, the return value is .t., otherwise .F.| 
+
+====== Código fuente ======
+SOURCE\FUNCTION\WNDBOXES.C 
+
+====== Ver también ======
+[[fivewin_funcion_roundrect|RoundRect()]]

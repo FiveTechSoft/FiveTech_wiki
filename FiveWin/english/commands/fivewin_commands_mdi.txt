@@ -1,0 +1,408 @@
+====== MDI Window ======
+
+See below for a full explanation about Windows MDI use.
+
+** Creating a MDI frame window **
+
+It is done in a very similar way to a normal Window. The difference is just the clause MDI.
+<code clipper>
+ DEFINE WINDOW <oWnd> ;  
+    [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+    [ TITLE <cTitle> ] ;  
+    [ STYLE <nStyle> ] ;  
+    [ MENU <oMenu> ] ;  
+    [ BRUSH <oBrush> ] ;  
+    [ ICON <oIcon> ] ;  
+    [ MDI ] ;  
+    [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+    [ VSCROLL | VERTICAL SCROLL ] ;  
+    [ HSCROLL | HORIZONTAL SCROLL ] ;  
+    [ MENUINFO <nMenuInfo> ] ;  
+    [ [ BORDER ] <NONE | SINGLE> ] ;  
+    [ OF <oParent> ];  
+    [ PIXEL ]  
+</code>
+
+====== Activating the MDI frame window ====== 
+<code clipper>  
+ ACTIVATE WINDOW <oWnd> ;  
+    [ ICONIZED | NORMAL | MAXIMIZED> ] ;  
+    [ ON [ LEFT ] CLICK <uLClick> ] ;  
+    [ ON LBUTTONUP <uLButtonUp> ];  
+    [ ON RIGHT CLICK <uRClick> ] ;  
+    [ ON MOVE <uMove> ] ;  
+    [ ON RESIZE <uResize> ] ;  
+    [ ON PAINT <uPaint> ] ;  
+    [ ON KEYDOWN <uKeyDown> ] ;  
+    [ ON INIT <uInit> ] ;  
+    [ ON UP <uUp> ] ;  
+    [ ON DOWN <uDown> ] ;  
+    [ ON PAGEUP <uPgUp> ] ;  
+    [ ON PAGEDOWN <uPgDn> ] ;  
+    [ ON LEFT <uLeft> ] ;  
+    [ ON RIGHT <uRight> ] ;  
+    [ ON PAGELEFT <uPgLeft> ] ;  
+    [ ON PAGERIGHT <uPgRight> ] ;  
+    [ ON DROPFILES <uDropFiles> ];  
+    [ VALID <uValid> ]  
+</code>  
+
+**See Window creating commands, as all the items are the same except: **
+
+MDI    Specify that the main Window is going to be a MDI Window    
+
+<nMenuInfo>    Is the position of the PopUp at the PullDown menu where Windows automatically reports which child Window is activated.    
+
+Activation Commands are the same as with a normal Window. 
+
+**To create a ChildWindow of the main MDI Window, we do it again in a similar way as creating a Window: **
+<code clipper>
+ DEFINE WINDOW [<oWnd>] ;  
+    [ MDICHILD ] ;  
+    [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+    [ TITLE <cTitle> ] ;  
+    [ BRUSH <oBrush> ] ;  
+    [ CURSOR <oCursor> ] ;  
+    [ MENU <oMenu> ] ;  
+    [ MENUINFO <nMenuInfo> ];  
+    [ ICON <oIco> ] ;  
+    [ OF <oParent> ] ;  
+    [ VSCROLL | VERTICAL SCROLL ] ;  
+    [ HSCROLL | HORIZONTAL SCROLL ] ;  
+    [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+    [ STYLE <nStyle> ] ;  
+    [ HELPID | HELPID <nHelpId> ];  
+    [ BORDER <NONE | SINGLE ] ;  
+    [ NOSYSMENU | NO SYSMENU ] ;  
+    [ NOCAPTION | NO CAPTION | NO TITLE ] ;  
+    [ NOICONIZE | NOMINIMIZE ] ;  
+    [ NOZOOM | NO ZOOM | NOMAXIMIZE | NO MAXIMIZE ] ;  
+    [ PIXEL ]  
+</code> 
+  
+<code clipper>
+ ACTIVATE WINDOW <oWnd> ;  
+    [ ICONIZED | NORMAL | MAXIMIZED> ] ;  
+    [ ON [ LEFT ] CLICK <uLClick> ] ;  
+    [ ON LBUTTONUP <uLButtonUp> ];  
+    [ ON RIGHT CLICK <uRClick> ] ;  
+    [ ON MOVE <uMove> ] ;  
+    [ ON RESIZE <uResize> ] ;  
+    [ ON PAINT <uPaint> ] ;  
+    [ ON KEYDOWN <uKeyDown> ] ;  
+    [ ON INIT <uInit> ] ;  
+    [ ON UP <uUp> ] ;  
+    [ ON DOWN <uDown> ] ;  
+    [ ON PAGEUP <uPgUp> ] ;  
+    [ ON PAGEDOWN <uPgDn> ] ;  
+    [ ON LEFT <uLeft> ] ;  
+    [ ON RIGHT <uRight> ] ;  
+    [ ON PAGELEFT <uPgLeft> ] ;  
+    [ ON PAGERIGHT <uPgRight> ] ;  
+    [ ON DROPFILES <uDropFiles> ];  
+    [ VALID <uValid> ]  
+</code> 
+
+|<oWnd>|Window Object container of the window    
+|<uLClick>|An action to be performed when the left button of the mouse is clicked over the Window. 
+|<uRClick>|An action to be performed when the right button of the mouse is clicked over the Window. 
+|<uMove>|An action to be performed every time the Window is moved|    
+|<uResize>|An action to be performed every time the Window is resized|    
+|<uPaint>|An action, generally drawing action, to be performed every time the Window is painted| 
+|<uKeyDown>|An action to be performed every a key is pressed being the Window focused|    
+|<uInit>|An action to be performed, generally some initialization, when the Window is being initialized| 
+|<uUp>|An action to be performed when the vertical scrollbar is upwards pressed|    
+|<uDown>|An action to be performed when the vertical scrollbar is downards pressed|    
+|<uPgUp>|An action to be performed when the vertical scrollbar has been pagedown clicked|    
+|<uPgDn>|An action to be performed when the vertical scrollbar has been pageup clicked|    
+|<uLeft>|An action to be performed when the horizontal scrollbar has been leftwards clicked|    
+|<uRight>|An action to be performed when the horizontal scrollbar has been rightwards clicked| 
+|<uPgLeft>|An action to be performed when the horizontal scrollbar has been pageleft clicked|    
+|<uPgRight>|An action to be performed when the horizontal scrollbar has been pageright clicked| 
+|<uValid>|An action to validate to let the window be closed|    
+|<nTop>, <nLeft>|Window coordinates on screen. We simulate text coordinates|    
+|<nBottom>, <nRight>|| 
+|<nStyle>|Determines the characteristics of the window. These characteristics are define by the following constants| (defined in WINAPI.CH):    
+
+**Constant      Purpose    **
+
+|WS_BORDER | Window has a border. |
+|WS_CAPTION | Window has a title bar (implies the WS_BORDER style). This style cannot be used with the WS_DLGFRAME style.|    
+|WS_CHILD | A child window. Cannot be used with the WS_POPUP style.|
+|WS_CHILDWINDOW | Same as the WS_CHILD style.|
+|WS_CLIPCHILDREN | Excludes the area occupied by child windows when drawing within the parent window. Used when creating the parent window. |
+|WS_CLIPSIBLINGS | Clips child windows relative to each other; that is, when a particular child window receives a paint message, the WS_CLIPSIBLINGS style |
+| |clips all other overlapped child windows out of the region of the child window to be updated. (If WS_CLIPSIBLINGS is not specified and child |
+| | overlap, it is possible, when drawing within the client area of a child window, to draw within the client area of a neighboring child window.) |
+| | For use with the WS_CHILD style only. |
+|WS_DISABLED | Window will be initially disabled.|
+|WS_DLGFRAME | Defines a window with a double border but no title. |
+|WS_GROUP | Specifies the first control of a group of controls in which the user can move from one control to the next by using the arrow keys. | 
+| | All controls  defined with the WS_GROUP style after the first control belong to the same group. The next control with the WS_GROUP style ends the |
+| | style group and starts the next group (that is, one group ends where the next begins). Only dialog boxes use this style.    |
+|WS_HSCROLL | Window has a horizontal scroll bar. |
+|WS_MAXIMIZE | Window should be of maximum size. |
+|WS_MAXIMIZEBOX | Creates a window that has a Maximize button. |
+|WS_MINIMIZE | Define window that is initially minimized. For use with the WS_OVERLAPPED style only. |
+|WS_MINIMIZEBOX | Creates a window that has a Minimize button. |
+|WS_OVERLAPPED | Defines an overlapped window. An overlapped window has a title and a border. |
+|WS_OVERLAPPEDWINDOW |  Creates an overlapped window having the WS_OVERLAPPED, WS_CAPTION, WS_SYSMENU, WS_THICKFRAME, WS_MINIMIZEBOX, and WS_MAXIMIZEBOX styles. |   
+|WS_POPUP | Creates a pop-up window. Cannot be used with the WS_CHILD style. |
+|WS_POPUPWINDOW  | Creates a pop-up window that has the WS_BORDER, WS_POPUP, and WS_SYSMENU styles. The WS_CAPTION style must be combined with the |
+| |WS_POPUPWINDOW style to make the System menu visible. |
+|WS_SYSMENU | Creates a window that has a System-menu box in its title bar. Used only for windows with title bars. |
+|WS_TABSTOP | Specifies one of any number of controls through which the user can move by using the TAB key. The TAB key moves the user to the next |
+| |control specified by the WS_TABSTOP style. Only dialog boxes use this style. |
+|WS_THICKFRAME | Creates a window with a thick frame that can be used to size the window. |
+|WS_VISIBLE | Creates a window that is initially visible. This applies to overlapped, child, and pop-up windows. For overlapped windows, the y parameter is used as a ShowWindow function parameter. |
+|WS_VSCROLL |Creates a window that has a vertical scroll bar.|
+
+**Note: If this parameter is used it will override the values of the following parameters: **
+
+ ·    cBorder  
+
+ ·    lCaption  
+
+ ·    lSysmenu  
+
+ ·    lmin  
+
+ ·    lMax  
+
+ ·    lVScroll  
+
+ ·    lHScroll  
+   
+**In order to combine several styes use the function nOr(): **
+
+<code clipper>nOr( nStyle1, nStyle2, ... ) </code>
+
+|<uKeyDown>| An action to perform when pressing a key.|
+|<oParent>| The container of the window. |   
+|<oBrush>| Brush Object attached to the window |
+|<oCursor>| Cursor Object attached to the window |    
+|<oIcon> | Icon Object attached to the window |
+|<oMenu> | Menu Object attached to the window |   
+|<nClrFore> <nClrBack>| The colors to use for the windows. They may be numeric RGB color or xBase string colors. |
+|<uLButtonUp>| The action to perform when the mouse left button is released.|
+|<nMenuInfo>| The column position where to place the automatic MDI popup menu. |
+|<uDropFiles>| The action to perform when a group of files is dropped over the window from an external application.|
+|<nMenuInfo>| The popup position in the pulldown menu of the window, where the MDI environment will automatically place information.|
+|<cTitle>| The caption of the window. |
+
+**CLAUSES **
+
+|MDI| To be created as an MDI environment|
+|BORDER <NONE or SINGLE> |The style of the border.|
+|NOSYSMENU or NO SYSMENU |To avoid using the typicall system menu.|
+|NOCAPTION or NO CAPTION | NO TITLE  To avoid using a caption.|
+|NOICONIZE or NOMINIMIZE | To avoid the iconize button.|
+|NOZOOM or NO ZOOM or NOMAXIMIZE or NO MAXIMIZE | To avoid the maximize button.|
+|VSCROLL or VERTICAL SCROLL |To automatically show a vertical scrollbar.|
+|ONLBUTTON | To specify the action to perform when a group of files is dropped over the window from an external application.|
+|MENUINFO | To specify the popup position in the pulldown menu of the window, where the MDI environment will automatically place information.|
+|ONDROPFILES | To specify the action to perform when a group of files is dropped over the window from an external application.|
+|HSCROLL or HORIZONTAL SCROLL | To automatically show a horizontal scrollbar.|
+|PIXEL |To interpret the coordinates as pixel based instead character based|
+
+**You must specify the clause MDICHILD to have all the possibilities Windows MDI offers. **
+  
+ 
+  
+**MDI programming explanation **
+
+What is MDI ? 
+
+As soon as you start getting comfortable with Windows you will face one of the more powerful features of it: Multiple Document Interface Windowing. 
+
+Most of the Windows commercial applications we use (the Windows Program Manager is written using MDI) take advantage of the possibilities of MDI. 
+
+Basically MDI environment is a main Window which has several child Windows inside which can be resized, tiled, cascaded, maximized, created and destroyed very easily. In fact, a MDI environment is like a whole Window environment all by itself. 
+
+These features, which may seem very common to you, won't work if you try to get create them using standard Windows. Well, you could do it, but it would mean a lot of code to be written. 
+
+Windows, instead, offers the MDI system to create these systems. 
+
+**Why MDI ? **
+
+To make things easier! We automatically get a lot of nice and powerful features without the need to code them. Windows takes control of everything! 
+
+The elements of a MDI environment 
+
+There is just one big difference to understand about MDI programming: 
+
+Windows keeps an 'invisible' Window which extends the entire the client area of the 'frame' Window: 
+
+
+The real 'trick' of the MDI programming is the MDI Client Window which Windows has implemented. 
+
+Developing a MDI environment in C language is a very complicated task. In fact, it is one of the most difficult tasks for beginners. But you are lucky because doing it with CA-Clipper and FiveWin it is a very, very easy task! 
+
+** How to do MDI with FiveWin **
+
+To create the main MDI frame Window we use the standard FiveWin Windows creation commands. The only difference is that you must specify the MDI clause. See above. 
+
+Now, you start creating the child Windows with the same easy commands. You don't have to worry about the 'ghost' MDI Client Window. 
+FiveWin automatically manages and talks to the MDI Client Window. 
+
+To create a MDI Child Window you again use the standard Window creation commands, but you must specify the clause MDICHILD. 
+All that you already know about FiveWin is still the same! You only have to remember a few items: 
+
+A MDI Frame Window Object has 'DATA' named oWndClient, which is another Windows Object -the 'ghost' MDI Client!-. 
+In fact, the surface you see inside the MDI frame is the MDI Client!!! Don't forget that. So, if -for example- you plan to place a bitmap on the surface of the MDI frame Window, you really have to place it on the MDI Client. So do this: 
+
+<code clipper>@ 2, 2 BITMAP ... OF oWnd:oWndClient </code>
+
+if you forget that, and you just do OF oWnd, you will be placing the bitmap _behind_ the MDI Client, so you will not see the bitmap!!! Remember that! That is the only 'trick' about MDI programming. 
+
+** MDI Object Oriented Implementation **
+
+If you go deeper in FiveWin architecture, you will discover there are some very powerful Classes supporting all the Windows MDI implementation. 
+We have developed three main Classes which inherit from base Window Class: 
+
+ ·    Class TMdiFrame  
+
+ ·    Class TMdiClient  
+
+ ·    Class TMdiChild  
+ 
+ 
+All of them implement new methods to encapsulate all the power Windows offers to MDI programming. 
+
+** Remember this: **
+
+TMdiFrame is the main Window. It has data named oWndClient which is a TMdiClient Window. 
+
+oWndClient has a Clipper array with all the Child Windows you create. The name of that data is aWnd. It is a normal Clipper array. You may use as you wish. 
+
+** New MDI directions in FiveWin **
+
+In previous releases of FiveWin, we planned to develop some new Classes inheriting from TMdiChild to suit some of the 'normal' business applications situations you will face. But now, we have found an easier approach: 
+
+Most of the MDI Child Windows you will use will be very similar to each other -once again we stress about business applications development not just 'fancy' programming-. They will have a ButtonBar attached and a main control which automatically resizes to extend the whole visible area of the Child Window. 
+
+So, we are giving you a really powerful way of developing MDI environments which is quick and clean: 
+
+The way we suggest that you manage MDI child Windows is as follows: 
+
+· First, you create the MDI frame. See above syntax. 
+
+· Next you start creating -when you need them- the child Windows: Using the above syntax: 
+
+<code clipper>
+ DEFINE WINDOW [<oWnd>] ;  
+ [ MDICHILD ] ;  
+ [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+ [ TITLE <cTitle> ] ;  
+ [ MENU <oMenu> ] ;  
+ [ ICON <oIco> ] ;  
+ [ OF <oParent> ]  
+</code>
+ 
+
+· Now you create a ButtonBar for this Child Window. Use the standard syntax: 
+
+<code clipper> DEFINE BUTTONBAR oBar OF <oWndChild>  </code>
+ 
+Attach the buttons in a normal way. Every button will have the actions you define: 
+<code clipper>
+ DEFINE BUTTON OF oBar ACTION ...  
+ DEFINE BUTTON OF oBar ACTION ...  
+ ...  </code>
+ 
+Using this approach easily enhances the functionality of the MDI Child Window without the need to develop a new Class -you are free to do it, but only when really necessary!- 
+
+·    The last step is to create a Control -whatever Class of control you need- and attach it to the Child Window:  
+<code clipper>
+ @ 0, 0 GET <oControl>... MEMO OF <oWndChild>  
+ @ 0, 0 LISTBOX <oControl> BROWSE ... OF <oWndChild>  
+</code>
+ etc...   -any Class of Control-  
+
+And now, we tell the MDI Child to use that control as its main Control: 
+ <oWndChild>:SetControl( <oControl> )  
+ 
+  
+To start using it, you ACTIVATE the Window in the normal way: 
+
+<code clipper> ACTIVATE WINDOW <oWndChild> ...  </code>
+ 
+And that is all! 
+
+Doing it this way you will be mastering MDI programming in a few minutes without the need to create new Classes or learning very difficult MDI programming rules. 
+
+Let CA-Clipper and FiveWin do the hard work for you. This is the power of OOPS and xBase! 
+
+See the new version of \IDE\IDE.prg for a real full example on MDI programming. 
+
+====== Sample Code ======
+<code clipper>
+// Working with MDI enviroments
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWndEdit, oBar, oIcon, oImage
+   local cName := "FiveWin power"
+
+   DEFINE ICON oIcon RESOURCE "test" 
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 TITLE "I am the MDI Frame" ;
+      MDI ;
+      MENU BuildMenu() ; // COLOR "GR+*/RB" 
+      ICON oIcon
+
+   SET MESSAGE OF oWnd TO "Main Window"
+
+   DEFINE WINDOW oWndEdit MDICHILD OF oWnd FROM 2, 2 TO 20, 50 ;
+      TITLE "I am a MDI Child" COLOR "W+/R"
+
+   @ 4, 2 GET cName OF oWndEdit SIZE 170, 25 COLOR "BG+/B"
+
+   DEFINE BUTTONBAR oBar _3D OF oWndEdit
+
+   DEFINE BUTTON OF oBar
+
+   SET MESSAGE OF oWndEdit TO "Child Window"
+
+   ACTIVATE WINDOW oWndEdit
+
+   ACTIVATE WINDOW oWnd MAXIMIZED ;
+      VALID MsgYesNo( "Want to End ?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Information"
+      MENU
+         MENUITEM "&About..." ACTION MsgAbout( "FiveWin", "FiveTech" )
+         SEPARATOR
+         MENUITEM "&End..." ACTION oWnd:End()
+      ENDMENU
+
+      MENUITEM "&Child Windows"
+      MENU
+         MENUITEM "&Tiled" ACTION oWnd:Tile()
+         MENUITEM "&Cascade" ACTION oWnd:Cascade()
+      ENDMENU
+   ENDMENU
+
+return oMenu
+</code>
+
+====== Screen Snapshot ======
+{{:mdi.jpg|:mdi.jpg}}
+
+====== See also ======
+[[fivewin_class_tmdichild | Class TMdiChild ]], [[fivewin_class_tmdiclient | Class TMdiClient ]], [[fivewin_class_tmdiframe | Class TMdiFrame ]], [[fivewin_class_twindow | Class TWindow ]], [[fivewin_class_tdialog | Class TDialog ]] 

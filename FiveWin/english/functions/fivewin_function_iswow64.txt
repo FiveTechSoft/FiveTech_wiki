@@ -1,0 +1,70 @@
+====== IsWow64() ======
+
+
+it check if we are executing the application under 32 bit emulation
+
+====== Syntax ======
+
+
+
+
+
+ IsWow64() --> lWow64 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+====== Returns ======
+
+|<lWow64>|This function returns .t. if we are executing the application under 32 bit emulation | 
+
+
+====== Example ======
+<code clipper>
+   MsgInfo( IsWow64() )
+</code>
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\wndis.c 
+
+
+ 
+
+
+ 
+
+====== See also ======
+[[fivewin_function_isvista|function IsVista()]],
+[[fivewin_function_liswin2000|function lIsWin2000()]],
+[[fivewin_function_liswinnt|function lIswinNT()]],
+[[fivewin_function_liswinxp|function lIsWinXP()]],
+[[fivewin_function_liswin95|function lIsWin95()]],
+[[fivewin_function_iswin64|function IsWin64()]]
+

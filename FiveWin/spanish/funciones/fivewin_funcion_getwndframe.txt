@@ -1,0 +1,14 @@
+
+====== GetWndFrame() ======
+GetWndFrame()
+
+Returns the FiveWin main frame application window
+====== Sintaxis ======
+ GetWndFrame() --> oWndFrame 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <oWndFrame> Returns the Clipper object of the main MDI frame window. 
+====== Código fuente ======
+ SOURCE\CLASSES\MdiFrame.prg 
+====== Ver también ======

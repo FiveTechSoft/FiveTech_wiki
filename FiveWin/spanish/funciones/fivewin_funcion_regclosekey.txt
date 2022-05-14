@@ -1,0 +1,40 @@
+
+====== RegCloseKey() ====== 
+RegCloseKey()
+
+Close a key of the register
+====== Sintaxis ======
+ RegCloseKey( <hKey> ) --> nResult 
+====== Parámetros ======
+ <hKey> Handle of the key to close 
+====== Devuelve ======
+ <nResult> Return a zero if the function is success, otherwise return a error code. 
+====== Ejemplo ======
+ SAMPLES\TESTREG.PRG 
+
+ Managing Register services from FiveWin 
+
+<code clipper>
+ #define HKEY_CLASSES_ROOT   2147483648 
+ #define HKEY_CURRENT_USER   2147483649 
+ #define HKEY_LOCAL_MACHINE   2147483650 
+ #define HKEY_USERS         2147483651 
+ #define HKEY_PERFORMANCE_DATA   2147483652 
+ #define HKEY_CURRENT_CONFIG   2147483653 
+ #define HKEY_DYN_DATA      2147483654 
+
+ function Main() 
+ local nHandle, cValue 
+ if RegOpenKey( HKEY_LOCAL_MACHINE,; 
+                "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths",; 
+                @nHandle ) == 0 
+    RegQueryValue( nHandle, "IEXPLORE.EXE", @cValue ) 
+    MsgInfo( cValue ) 
+    RegCloseKey( nHandle ) 
+ endif 
+ return nil 
+ //--------------------------------------------------------------// 
+</code>
+====== Código fuente ======
+ SOURCE\WINAPI\REGEDIT.C 
+====== Ver también ======

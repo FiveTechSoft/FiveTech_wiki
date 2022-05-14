@@ -1,0 +1,101 @@
+InPortByte()
+
+
+
+InPortByte()
+
+ Previous  Top  Next
+
+
+
+
+Reads a byte from a hardware port
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ InPortByte( <nPort> ) --> nByte 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nPort> The hardware port number (one word: two bytes) to read a byte
+from. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nByte> A numeric value corresponding to the read byte. 
+
+
+ 
+
+
+ 
+
+
+
+Comments:
+
+
+
+
+
+ Use these functions only to access hardware ports. Communication ports
+must be accessed using special API comm functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\InOut.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

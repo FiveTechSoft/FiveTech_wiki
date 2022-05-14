@@ -1,0 +1,28 @@
+
+====== cDlg2Chr() ====== 
+
+It makes a string to makes a dialog box 
+
+====== Syntax ======
+
+cDlg2Chr( <nControls>, <nTop>, <nLeft>, <nHeight>, <nWidth>, <cCaption>, <nStyle> ) --> cResult  
+
+====== Parameters ======
+^Parameter^Description^
+| <nControls> | Number of controls of the dialog box | 
+| <nTop> | Top coordinate of the dialog box | 
+| <nLeft> | Left coordinate of the dialog box | 
+| <nHeight> | Height of the dialog box | 
+| <nWidth> | Width of the dialog box | 
+| <cCaption> | Title | 
+| <nStyle> | Style | 
+
+====== Returns ======
+
+Dialog structure  
+
+====== Sample ====== 
+
+====== Source Code ======
+
+SOURCE\WINAPI\DLG2CHR.C  

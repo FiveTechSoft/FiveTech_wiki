@@ -1,0 +1,67 @@
+====== XBrowser ======
+Very quick way to create xbrowse of any data and picklists. This is the command syntax using the XBrowse( ... )
+function. This command automatically creates appropriate dialog and presents the fully functional browse.
+
+
+
+====== Syntax ======
+<code clipper>
+   [ oBrw := ; ]                      // return value is useful for non-modal dialogs
+   XBROWSER [ <cDbf>/<cAlias>/<nArea>/<oDbf>/<oRs>/<aArray>/<oTree>/<oQry>/<cImageFile>/<uAnyData> ] ; // defaults to active alias
+      [ TITLE <cTitle> ] ;
+      [ AUTOSORT ]                  ; // default false
+      [ SETUP <fnSetUp(oBrw)> ]     ; // optional function for user specified setup
+      [ COLUMNS <listof columns> ]  ; // optionally specify columns to be shown
+      [ SELECT <fnSelect(oBrw,oCol)> ] ; // optional function for pick lists
+      [ <excel: CALC> ]             ; // to invoke method ToCalc() instead of ToExcel()
+      [ <fastedit: FASTEDIT> ]      ; // the browse is set to fast-edit mode and all columns are made editable
+      [ VALID <fnValid( oBrw )> ]   ; // Executes when dialog is closed
+      [ [SHOW] <sl: RECID,SLNUM> ]  ; // Displays RecNo / KeyNo in RecordSelector
+      [ <nomodal: NOMODAL> ]        ; // Creates browse in Non-Modal dialog
+      [ <autofit: AUTOFIT> ]          // Colmn widths of 1st 100 rows are fit to the visible width of contents
+</code>
+
+
+====== Examples ======
+<code clipper>
+   1. Use Sales
+      XBROWSER   // shows xbrowse of Sales table in a dialog
+      or
+      XBROWSER 'Sales'
+
+   2. Use Customer
+      DATABASE oDbf
+
+      XBROWSER oDbf TITLE 'Customers' ;
+         SETUP oBrw:SetBackGround( '\fwh\bitmaps\backgrnd\beige2.bmp' ) ;
+         COLUMNS 'State', 'City', 'First'
+
+   3. To create a quick pick list
+
+      USE States
+
+      XBROWSER TITLE 'Select State' SELECT cState := Field->State
+
+      or
+
+      States->( XBrowse( , 'Select State', , , , { || cState := States->State } ) )
+
+      This creates a browse of States.dbf and presents in a dialog sized to fit the width of browse at the
+      center of the screen, with buttons 'Select' and 'Close'. Click on 'Select' button evaluates the bSelect
+      codeblock.
+
+   4.
+     xbrowser "\fwh\samples\customer" ;
+        columns "Last", "City", "Salary" ;
+        setup ;
+        (  oBrw:lFooter                  := .t. ,;
+           oBrw:lFastEdit                := .t. ,;
+           oBrw:Salary:lTotal            := .t. ,;
+           oBrw:Salary:nTotal            := 0   ,;
+           oBrw:Salary:nEditType         := EDIT_GET ,;
+           oBrw:MakeTotals() ;
+        )
+</code>
+
+====== See Also ======
+fwh\samples\xbrwser.prg

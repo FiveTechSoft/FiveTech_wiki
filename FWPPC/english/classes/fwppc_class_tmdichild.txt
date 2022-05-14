@@ -1,0 +1,51 @@
+====== Class TMdiChild ======
+
+MDI Child Window class                                                         
+Inherits from Class TWindow                                                    
+====== DATA ======
+|oWndClient|Client TWindow Object of the MDI structure|
+|oControl|TControl object that is showed in child window|
+|lKeepMenu|If the Window menu should be destroyed when the|
+|window|is destroyed|
+|nMenuInfo|Position where the MDI menu info should be shown|
+====== METHODS ======
+|New|Generic constructor method|
+|Maximize|Method to maximize the child window.|
+|MdiActivate|Activates the appropriate menu.|
+|Restore|Method to restore the child window.|
+|Activate|Make this window the active child window.|
+|End|Ends the MdiChild and close it if VALID is .t.|
+|Copy|Copy the selected text from the current control.|
+|Cut|Cut the selected text from the current control.|
+|Delete|Delete the selected text from the current control.|
+|Paste|Paste into the current control.|
+|Find|Finds the given text.|
+|FindNext|Finds the next occurrence of the text.|
+|Print|Prints the current control.|
+|GotFocus|Behavior when receiving the focus|
+|HandleEvent|Generic event handler.|
+|Next|Selects the next MdiChild|
+|Prev|Selects the prev MdiChild|
+|ReSize|Behavior when resizing the MdiChild|
+|KeyDown|Behavior when pressing a key|
+|KeyChar|Behavior when pressing a key|
+|Properties|Properties event handler.|
+|Replace|Replaces the selected text in the current control.|
+|SelectAll|Selects all text of the current control.|
+|SetControl|Selects which control of the MdiChild has to be|
+|resized|automatically|
+|Center|Centers the window on his MDIFrame Window|
+|SetMenu|Sets a new menu object for the window. MDI menu info|
+|will|be shown at nMenuInfo position|
+|SetFocus|Setfocus event handler.|
+|ReDo|Redo changes on the current control.|
+|UnDo|Undo changes on the current control.|
+|IsZoomed|Returns .T. if the child window is maximized.|
+|IsIconic|Returns .T. if the child window is iconized.|
+|SetSize|Resizes the window.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMDICHILD.PRG

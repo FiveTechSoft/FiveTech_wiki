@@ -1,0 +1,63 @@
+====== cMidiMapper() ====== 
+
+
+
+
+Returns the name of the midi mapper.
+
+====== Syntax ======
+
+ 
+
+
+ cMidiMapper() --> cMapperName 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ None. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <cMapperName> The name of the midi mapper. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+

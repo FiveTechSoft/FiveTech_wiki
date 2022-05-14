@@ -1,0 +1,18 @@
+====== GetCapture() ======  
+Obtiene el handle de la ventana que el mouse ha capturado
+====== Sintaxis ====== 
+GetCapture() –> hWnd 
+
+Esta función devuelve el handle de la ventana que el mouse ha capturado
+====== Parámetros ====== 
+Ninguno
+====== Devuelve ====== 
+^Nombre^Descripción^
+|<hWnd>| El handle de la ventana. En FiveWin: oWnd:hWnd.  Es 0 si ninguna ventana ha sido tomada por el mouse.| 
+====== Código fuente ====== 
+SOURCE\WINAPI\WMouse.c 
+====== Ejemplo ======  
+
+====== Ver también ====== 
+[[fivewin_funcion_SetCapture|SetCapture()]], [[fivewin_funcion_ReleaseCapture|ReleaseCapture()]] 
+

@@ -1,0 +1,31 @@
+
+====== GetDC() ======
+GetDC()
+
+Retrieves the handle of a device context
+
+====== Sintaxis ======
+ GetDC( <hWnd> ) --> hDC 
+
+ This function retrieves the handle of the device context of the client
+area in the given window. 
+====== Parámetros ======
+ <hWnd> The handle of the window. 
+====== Devuelve ======
+ <hDC> The handle of the device context. 
+
+Observations:
+
+ You may think about a device context as a virtual screen. Something
+similar when in MsDos we did DispBegin() and DispEnd() with Clipper. 
+
+ GetDC() it is like DispBegin(). Starts working with a virtual screen.
+ReleaseDC() it is like DispEnd(), and updates all painting to the visible
+screen. 
+
+ If you don't ReleaseDC() after you do a GetDC(), you are unbalancing
+windows, and the system finally crash! 
+====== Código fuente ======
+ SOURCE\WINAPI\DC.c 
+====== Ver también ======
+ ReleaseDC() CreateDC() DeleteDC()

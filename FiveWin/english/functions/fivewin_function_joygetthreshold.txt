@@ -1,0 +1,126 @@
+====== JoyGetThreshold() ======
+
+
+
+
+Queries the current movement threshold of a joystick device.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ JoyGetThreshold( <nIdJoy>, @<nThresHold> ) --> nError 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nIdJoy> Identifier of the JoyStick. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+   @<nThresHold> Receices the movement threshold value.
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Returns JOYERR_NOERROR if successful. Otherwise, returns one of the
+following error codes: 
+
+
+ 
+
+
+ 
+
+
+
+MMSYSERR_NODRIVER   The joystick driver is not present.   
+JOYERR_PARMS      The specified joystick device ID wId is invalid.   
+
+
+
+
+
+
+
+MMSYSERR_BASE      0   
+JOYERR_BASE      160   
+JOYERR_NOERROR      0   
+MMSYSERR_NODRIVER   (MMSYSERR_BASE + 6)   
+JOYERR_PARAMS      (JOYERR_BASE+5)   
+
+
+
+
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTJOY.PRG 
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\JOYSTICK.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

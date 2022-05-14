@@ -1,0 +1,66 @@
+OdbcDsnEntries()
+
+
+OdbcDsnEntries()
+ Previous  Top  Next
+
+Returns an array with all the available Odbc Dsn entries.
+
+Syntax
+
+
+ OdbcDsnEntries( [<cSection>] ) --> aEntries 
+
+
+ 
+
+
+ 
+Parameters
+
+
+ <cSection> The section in Odbc.ini to search for. 
+
+
+ 
+
+Returns
+
+
+ <aEntries> The array containing the retrieved Dsn entries. 
+
+
+ 
+
+
+ 
+Sample   
+
+
+ SAMPLES\TESTODBC.PRG 
+
+
+ SAMPLES\TESTSQL1.PRG 
+
+
+ 
+
+
+ 
+Source code
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ SOURCE\WINAPI\ODBC32.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

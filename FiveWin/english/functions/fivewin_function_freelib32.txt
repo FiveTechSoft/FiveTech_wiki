@@ -1,0 +1,180 @@
+====== FreeLib32() ======
+Free a DLL of 32 bits library in use or decrements. This function decreases by one the reference count of the loaded library module. When the reference count reaches zero, the memory occupied by the module is freed. This is 32 bits library.  
+
+====== Syntax ====== 
+FreeLib32(<hInstance> ) --> lSuccess  
+
+
+====== Parameters ====== 
+^Parameter^Description^
+|<hInstance> | The handle of the 32 bits DLL. It is the value returned by LoadLibrary().  |
+
+====== Return ====== 
+^Returns^Description^
+|<lSuccess> | A logical value indicating that the operation was performed successfully or not.  |
+
+
+====== Sample ======
+<code clipper>
+
+/*  ---- emf.prg ----- */ 
+
+#include "Fivewin.ch"
+#include "Struct.ch"
+
+static hGDI32
+
+FUNCTION MAIN()
+
+    LOCAL oWnd
+
+    LOCAL cEMF := "TEST.EMF"
+
+    DEFINE WINDOW oWnd
+
+    ACTIVATE WINDOW oWnd;
+             ON PAINT DRAWEMF( oWnd, cEMF );
+             MAXIMIZED
+
+    RETURN NIL
+
+
+#define HORZSIZE            4
+#define VERTSIZE            6
+#define HORZRES             8
+#define VERTRES            10
+
+
+STATIC FUNCTION CREATEEMF( oWnd, hDCRef, cEMF )
+
+    LOCAL nHorzSize := GETDEVICECAPS( hDCRef, HORZSIZE )
+    LOCAL nVertSize := GETDEVICECAPS( hDCRef, VERTSIZE )
+
+    LOCAL nHorzRes := GETDEVICECAPS( hDCRef, HORZRES )
+    LOCAL nVertRes := GETDEVICECAPS( hDCRef, VERTRES )
+
+    LOCAL nMMPixelX := nHorzSize * 100 / nHorzRes
+    LOCAL nMMPixelY := nVertSize * 100 / nVertRes
+
+    LOCAL aRect := GETCLIENTRECT( oWnd:hWnd )
+
+    LOCAL hDC, hEMF, hPen
+
+    LOCAL oRect
+
+    aRect[ 1 ] *= nMMPixelY
+    aRect[ 2 ] *= nMMPixelX
+    aRect[ 3 ] *= nMMPixelY
+    aRect[ 4 ] *= nMMPixelX
+
+    STRUCT oRect
+        MEMBER nLeft   AS LONG
+        MEMBER nTop    AS LONG
+        MEMBER nRight  AS LONG
+        MEMBER nBottom AS LONG
+    ENDSTRUCT
+
+    oRect:nLeft   = aRect[ 2 ]
+    oRect:nTop    = aRect[ 1 ]
+    oRect:nRight  = aRect[ 4 ]
+    oRect:nBottom = aRect[ 3 ]
+
+    hDC = CREATEENHMETAFILE( hDCRef, cEMF, oRect:cBuffer, "Test" + CHR( 0 ) + "Creating EMFs..." + CHR( 0 ) + CHR( 0 ) )
+
+    hPen = CREATEPEN( 0, 1, CLR_RED )
+
+    MOVETO32( hDC, 0, 0, 0 )
+
+    aRect = GETCLIENTRECT( oWnd:hWnd )
+
+    LINETO32( hDC, aRect[ 4 ], aRect[ 3 ] )
+
+    DELETEOBJECT( hPen )
+
+    hEMF = CLOSEENHMETAFILE( hDC )
+
+    DELETEENHMETAFILE( hEMF )
+
+    RETURN NIL
+
+
+STATIC FUNCTION DRAWEMF( oWnd, cEMF )
+
+    LOCAL hDC := GETDC32( GETHWND32( oWnd:hWnd ) )
+
+    LOCAL oRect, aRect
+
+    LOCAL hEMF
+
+    CREATEEMF( oWnd, hDC, cEMF )
+
+    hEMF = GETENHMETAFILE( cEMF )
+
+    STRUCT oRect
+        MEMBER nLeft   AS LONG
+        MEMBER nTop    AS LONG
+        MEMBER nRight  AS LONG
+        MEMBER nBottom AS LONG
+    ENDSTRUCT
+
+    aRect = GETCLIENTRECT( oWnd:hWnd )
+
+    oRect:nLeft   = aRect[ 2 ]
+    oRect:nTop    = aRect[ 1 ]
+    oRect:nRight  = aRect[ 4 ]
+    oRect:nBottom = aRect[ 3 ]
+
+    PLAYENHMETAFILE( hDC, hEMF, oRect:cBuffer )
+
+    DELETEENHMETAFILE( hEMF )
+
+    RELEASEDC32( hDC )
+
+    RETURN NIL
+
+init procedure LoadGdi32
+
+   hGDI32 = LoadLib32( "gdi32.dll" )
+
+return
+
+exit procedure FreeGdi32
+
+   FreeLib32( hGDI32 )
+
+return
+
+DLL32 FUNCTION CREATEENHMETAFILE( hDCRef AS LONG, cFilename AS LPSTR, cRect AS LPSTR, cDescription AS LPSTR ) AS LONG;
+      PASCAL FROM "CreateEnhMetaFileA" LIB hGDI32
+
+DLL32 FUNCTION CLOSEENHMETAFILE( hDC AS LONG ) AS LONG;
+      PASCAL FROM "CloseEnhMetaFile" LIB hGDI32
+
+DLL32 FUNCTION DELETEENHMETAFILE( hEMF AS LONG ) AS BOOL;
+      PASCAL FROM "DeleteEnhMetaFile" LIB hGDI32
+
+DLL32 FUNCTION GETENHMETAFILE( cMetaFile AS LPSTR ) AS LONG;
+      PASCAL FROM "GetEnhMetaFileA" LIB hGDI32
+
+DLL32 FUNCTION PLAYENHMETAFILE( hDC AS LONG, hEMF AS LONG, cRect AS LPSTR ) AS BOOL;
+      PASCAL FROM "PlayEnhMetaFile" LIB hGDI32
+
+
+DLL32 FUNCTION MOVETO32( hDC AS LONG, nX AS LONG, nY AS LONG, cPoint AS LPSTR ) AS BOOL;
+      PASCAL FROM "MoveToEx" LIB hGDI32
+
+DLL32 FUNCTION LINETO32( hDC AS LONG, nXEnd AS LONG, nYEnd AS LONG ) AS BOOL;
+      PASCAL FROM "LineTo" LIB hGDI32
+
+DLL32 FUNCTION GETDC32( hWnd AS LONG ) AS LONG;
+      PASCAL FROM "GetDC" LIB "user32.dll"
+
+DLL32 FUNCTION RELEASEDC32( hWnd AS LONG, hDC AS LONG ) AS LONG;
+      PASCAL FROM "ReleaseDC" LIB "user32.dll"
+</code>
+
+====== Source Code ====== 
+
+SOURCE\WINAPI\CALDLL32.C  
+
+====== See Also ====== 

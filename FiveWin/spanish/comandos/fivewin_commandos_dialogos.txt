@@ -1,0 +1,98 @@
+====== DialogBox creation from source code and redefinition for resources ======
+<code clipper>
+ DEFINE DIALOG <oDlg> ;  
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;  
+ [ TITLE <cTitle> ] ;  
+ [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight>] ;  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ LIBRARY | DLL <hResources> ] ;  
+ [ VBX ] ;  
+ [ STYLE <nStyle> ] ;  
+ [ COLOR | COLORS <nClrText> [,<nClrBack> ] ] ;  
+ [ BRUSH <oBrush> ] ;  
+ [ WINDOW | DIALOG | OF <oWnd> ] ;  
+ [ PIXEL ] ;  
+ [ ICON <oIco> ] ;  
+ [ FONT <oFont> ] ;  
+ [ HELP | HELPID <nHelpId> ]  
+</code> 
+====== Making the DialogBox work ======
+<code clipper>
+ ACTIVATE DIALOG <oDlg> ;  
+ [ CENTER | CENTERED ] ;  
+ [ NOWAIT | NOMODAL ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON [ LEFT ] CLICK <uClick> ] ;  
+ [ ON INIT <uInit> ] ;  
+ [ ON MOVE <uMoved> ] ;  
+ [ ON PAINT <uPaint> ] ;  
+ [ ON RIGHT CLICK <uRClicked> ] ;  
+ [ RESIZE16 ]  
+</code>
+| <oDlg> | La variable que se va a celebrar el objeto DialogBox. Se trata de una 'referencia' al objeto DialogBox | 
+| <cResName> | El nombre del recurso DialogBox interior. El recurso puede ser almacenada en un archivo. RC o en un archivo. DLL. Normalmente se utiliza la opción "Cambiar nombre" de un editor de recursos para dar un nombre al elemento de recursos | 
+| <cTitle> | El título de la DialogBox. También puede cambiar el título de un recurso DialogBox. Esto significa que usted puede usar el mismo DialogBox para diferentes propósitos tan solo cambiando su título | 
+| <nTop>, <nLeft> | Las coordenadas de la DialogBox al crear el DialogBox desde el código fuente | 
+| <nRight>, <nBottom> | El derecho y la parte inferior de las coordenadas de la DialogBox | 
+| <nWidth>, <nHeight> | La anchura y la altura de las dimensiones de la DialogBox | 
+| <hResources> | Una manija opcional a un archivo DLL de recursos. Esto es útil cuando se utilizan varios archivos DLL, al mismo tiempo que mantienen los diferentes recursos. Por defecto, este controlador es la aplicación de la gestión (cuando se utiliza. RC) o el mango de la DLL al usar SET DE RECURSOS PARA .. | 
+| <nStyle> | Un estilo DialogBox opcional. Hay varias muestras en el SAMPLES \ subdirectorio mostrando cómo manipular este valor. Si usted está usando un DialogBox de un recurso entonces usted tiene que seleccionar el estilo del interior del editor de recursos | 
+| <nClrText>, <nClrBack> | El primer plano y los colores de fondo de la DialogBox | 
+| <oBrush> | Un cepillo opcional a utilizar para rellenar la superficie de la DialogBox | 
+| <oWnd> | Un objeto contenedor opcional de la DialogBox. Por defecto se utiliza la ventana que está activa actualmente. Si desea mostrar mensajes de control de diálogos en la línea inferior de la pantalla tiene que especificar su recipiente | 
+| <oIco> | un icono opcional para mostrar cuando el DialogBox se ha minimizado | 
+| <oFont> | Una fuente opcional de utilizar para todos los de diálogos | 
+| <uWhen> | CUANDO cláusula que permite la DialogBox para comenzar a ejecutar | 
+| <uValid> | cláusula válida para controlar el final de la DialogBox | 
+| <nHelpId> | El identificador de tema de Ayuda del cuadro de diálogo | 
+| <uClick> | Facultativo para realizar la acción cuando el botón izquierdo del ratón sobre la superficie DialogBox | 
+<code clipper> 
+Tres parámetros: nRow, nCol, nFlags son alimentados: 
+       nRow La posición de la fila (en píxeles) cuando el ratón fue cuando se hizo clic. 
+       La posición nCol col (en píxeles) cuando el ratón fue cuando se hizo clic. 
+       NFlags Una bandera numéricos que contiene información acerca de las teclas especiales que se presiona al mismo tiempo: 
+(valores are'ORed ') Valor Descripción 
+    Set MK_CONTROL tecla CTRL si es hacia abajo. 
+    MK_MBUTTON Establecer si el botón central está pulsado. 
+    MK_RBUTTON Establecer si el botón derecho es hacia abajo. 
+    Establecer si MK_SHIFT tecla SHIFT está abajo. 
+
+    # define MK_LBUTTON 0x0001 
+    # define MK_RBUTTON 0x0002 
+    # define MK_CONTROL 0x0008 
+    # define MK_MBUTTON 0x0010 
+</code> 
+    Usted puede inspeccionar en el uso del campo con la función de FiveWin: 
+<code clipper> 
+       lAnd(nFlags, MK_CONTROL) 
+       lAnd(nFlags, MK_SHIFT, MK_CONTROL) 
+       ... 
+</code> 
+| <uInit> | Una acción opcional para llevar a cabo cuando el DialogBox se crea pero no se muestra en la pantalla. En esta situación, el DialogBox se comporta como una ventana, y podemos hacer todo tipo de operaciones como lo hacemos con una ventana, (como la colocación de una barra de botones en él!) | 
+| <uMoved> | Una acción opcional para llevar a cabo cuando se mueve el DialogBox | 
+| <uPaint> | Una acción opcional que se realiza cuando el DialogBox acaba de ser pintado | 
+| <uRClicked> | Una acción opcional que se realiza cuando el botón derecho del ratón se hace clic sobre la superficie DialogBox. Usted puede utilizar los mismos tres parámetros como en <uClick> | 
+
+====== CLÁUSULAS ======
+| VBX | Usted puede especificar esto al usar un control VBX en el DialogBox | 
+| PIXEL | Si desea que el DialogBox coordenadas (la creación de la DialogBox desde el código fuente) para estar en píxeles | 
+| CENTRO DE CENTRADO | Si desea que el DialogBox a aparecer centrado en la pantalla | 
+| NOWAIT NOMODAL | Si el DialogBox ha de comportarse modal. Modal que significa que de diálogos otros pueden estar trabajando al mismo tiempo! | 
+
+Programación modal requiere algunos cuidados especiales: 
+
+====== Advertencia ======  
+
+-Tenga cuidado de las variables locales: Si usted está utilizando algunos lugareños entonces recuerde que va más allá del alcance de la función donde el modal DialogBox ha sido creado y esto puede causar problemas (sólo si no 
+recuerdo). Clipper funciona perfectamente en estas circunstancias, ya que mantiene «las referencias en vivo 'de las variables locales 
+dentro de la codeblocks. Sin embargo, sólo éstas serán "vivos" de la función. 
+
+-DialogBox Lo mismo puede ser ejecutado varias veces. Sea consciente de su gestión de DBF. En estas circunstancias, el equipo es como una red! porque un DBF puede abrir varias veces. Es una buena idea para comenzar a aprender la programación en red es muy fácil! -- 
+
+-Normalmente se recomienda que no modal a desarrollar aplicaciones para Windows, los usuarios novatos. Tan pronto como sus clientes a obtener más y más usado para Windows, programación modal es altamente recomendable. Ver programación de MDI (en esta documentación), por un muy elegante y poderoso estilo de programación modal. 
+
+| RESIZE16 | Si el DialogBox tiene que cambiar el tamaño de 32 bits para imitar la métrica de 16 bits | 
+
+====== Véase también ====== 
+[[fivewin_clase_tdialog | Clase TDialog]]

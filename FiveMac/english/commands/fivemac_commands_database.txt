@@ -1,0 +1,10 @@
+====== Creates a DATABASE from source code ======
+<code clipper>
+DATABASE <oDbf>
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\tdatabase.prg
+====== See Also ======
+[[fivemac_class_tdatabase|Class TDataBase]]

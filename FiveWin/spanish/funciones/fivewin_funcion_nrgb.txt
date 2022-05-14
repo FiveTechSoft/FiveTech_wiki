@@ -1,0 +1,23 @@
+
+====== nRGB() ====== 
+nRGB()
+
+Generates a RGB numeric value
+====== Sintaxis ======
+ nRGB( <nRed>, <nGreen>, <nBlue> ) --> nRGB 
+====== Parámetros ======
+  <nRed>    The numeric value of the red component. 
+  <nGreen>  The numeric value of the green component. 
+  <nBlue>   The numeric value of the blue component. 
+====== Devuelve ======
+ <nRGB> A numeric (RGB) value corresponding to the red, green and blue values specified. 
+
+Observations:
+
+ Though FiveWin supplies a preprocessor RGB() function, also this
+function is supplied to let use this function inside CodeBlocks, macros,
+etc... 
+====== Código fuente ======
+ SOURCE\WINAPI\Rgb.c 
+====== Ver también ======
+ Colors.ch: RGB() nGetBackRGB() nGetForeRgb()

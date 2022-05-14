@@ -1,0 +1,46 @@
+====== Creating an ActiveX object from source code ======
+<code clipper>
+@ <nRow>, <nCol> ACTIVEX [ <oActX> ] ; 
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROGID <cProgId> ] ;  
+ [ SIZE <nWidth>, <nHeight> ]  
+</code>  
+
+
+====== Creating an ActiveX object from resources ======
+<code clipper>
+REDEFINE ACTIVEX [ <oActX> ] ; 
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROGID <cProgId> ]  
+</code>  
+|<nRow>, <nCol>|The coordinates on screen. We simulate Text coordinates|    
+|<oActX>|A reference to the ActiveX Object|    
+|<oWnd>|The container window of the ActiveX control|    
+|<cProgId>|The program id (identifier) of the ActiveX|    
+|<nWidth>|The desired width of the ActiveX object|    
+|<nHeight>|The desired height of the ActiveX object|    
+|<nId>|The numeric resource identifier of the Control|    
+
+====== Sample Code =====
+\FWH\Samples\TestAxtM.Prg
+<code clipper>
+// Using several ActiveX simultaneously
+
+#include "FiveWin.ch"
+Function Main()
+
+   local oWnd, oActiveX1, oActiveX2
+   DEFINE WINDOW oWnd TITLE "FiveWin multiple ActiveX support"
+   @ 10, 10 ACTIVEX oActiveX1 PROGID "Shell.Explorer" OF oWnd SIZE 220, 220
+   oActiveX1:Do( "GoHome" )
+   @ 10, 240 ACTIVEX oActiveX2 PROGID "MediaPlayer.MediaPlayer.1" OF oWnd SIZE 220, 220
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>  
+===== Screen Snapshot =====
+{{:activex.jpg|:activex.jpg}}
+
+====== See Also ======
+[[fivewin_class_tactivex|Class TActiveX]]

@@ -1,0 +1,74 @@
+====== SQLGetConnectOption() ======
+
+
+Returns the current setting of a connection attribute.
+
+====== Syntax ======
+
+ 
+
+
+ SQLGetConnectOption( <hDbc>, <nOption>, <@cResult> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <nOption> The attribute to retrieve. 
+
+
+ 
+
+
+ <cResult> The current value of the attribute. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+

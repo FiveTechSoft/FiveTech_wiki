@@ -1,0 +1,22 @@
+
+====== nGetFilter32() ====== 
+nGetFilter32()
+
+Returns the active filter of the last call to function cGetFile32()
+====== Sintaxis ======
+ nGetFilter32() --> nFilter 
+====== Parámetros ======
+ <None> 
+====== Devuelve ======
+ <nFilter>    A numeric value indicating the filter number that was
+active on the last call to the function cGetFile() function. 
+
+Observations:
+
+ This value only has meaning when several types of files has been
+specified when calling cGetFile32() 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\DLG32.PRG 
+====== Ver también ======
+ cGetFile32()

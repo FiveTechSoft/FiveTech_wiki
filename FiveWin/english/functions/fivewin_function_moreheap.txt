@@ -1,0 +1,79 @@
+====== MoreHeap() ======
+
+
+To obtain more memory of the global heap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MoreHeap( <nSize> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSize> Quantity of specified memory. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

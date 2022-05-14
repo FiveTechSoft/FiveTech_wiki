@@ -1,0 +1,100 @@
+GetNMHDRHWndFrom()
+
+
+GetNMHDRHWndFrom()
+ Previous  Top  Next
+
+Retrieves the handle of the control sending a notify message.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetNMHDRHWndFrom( <nPtrNMHDR> ) --> nHWndFrom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nPtrNMHDR> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nHWndFrom> The control handle field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\window.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\notify.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

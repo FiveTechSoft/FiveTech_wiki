@@ -1,0 +1,121 @@
+====== Graph ======
+Using the Graph command you can create beautiful & professional graphs withing few minutes and with few simple lines.
+
+**Creating a Graph from source code **
+
+<code clipper>
+ @ <nRow>, <nCol> GRAPH [ <oGraph> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ TITLE <cTitle> ] ;  
+ [ PIXEL ] ;  
+ [ 3D ] ;  
+ [ XGRID ] ;  
+ [ YGRID ] ;  
+ [ XVALUES ] ;  
+ [ YVALUES ] ;  
+ [ POPUP ] ;  
+ [ LEGENDS ] ;  
+ [ TYPE <nType> ]  
+</code>  
+**Creating a Graph from resources **
+<code clipper>
+REDEFINE GRAPH [ <oGraph> ] ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ TITLE <cTitle> ] ;  
+ [ 3D ] ;  
+ [ XGRID ] ;  
+ [ YGRID ] ;  
+ [ XVALUES ] ;  
+ [ YVALUES ] ;  
+ [ POPUP ] ;  
+ [ LEGENDS ] ;  
+ [ TYPE <nType> ]  
+</code>  
+
+**Adding series to a Graph **
+<code clipper>
+ADD SERIE TO <oGraph> ;  
+ [ SERIE <aSerie> ] ;  
+ [ LEGEND <cLegend> ] ;  
+ [ COLOR <nClr> ]  
+</code>  
+
+**Setting labels of a Graph **
+<code clipper>
+ SET Y LABELS OF <oGraph> TO <ayLabels>  
+</code>  
+
+| <nRow>, <nCol> | The coordinates of the Graph. They mimic text mode coordinates. | 
+| <oGraph> | A reference to the Graph Object. | 
+| <oWnd>  |  The container window of the Graph. | 
+| <nWidth>,<nHeight> | The dimensions of the Graph in pixels. | 
+| <cTitle> | The title of the Graph. | 
+| <nType>  | The type of the Graph. |  
+| <nId>    | The resource identifier of the Graph. | 
+| <aSerie> | An array of values for the serie. | 
+| <cLegend>  | The legend for the serie. | 
+| <nClr>   | The color for the serie. | 
+| <ayLabel>  | An array of labels for the Y values of the Graph. | 
+
+**CLAUSES **
+
+| PIXEL  | To use pixel coordinates instead of Text coordinates. | 
+| 3D     | To give 3D look to the Graph. | 
+| XGRID  | To show the X part of the grid. | 
+| YGRID  | To show the Y part of the grid. | 
+| XVALUES  | To show the X values. | 
+| YVALUES  | To show the Y values. | 
+| POPUP   | To show the Graph as a popup window. | 
+| LEGENDS | To show the legends. | 
+
+====== Sample Code / Usage ======
+<code clipper>
+#Include "FiveWin.Ch"
+#include "TGraph.ch"
+//----------------------------------//
+FUNCTION Main()
+   LOCAL oWnd,oGraph
+   LOCAL aYvals:={"Location1","Location 2","Location 3"}
+   LOCAL aData:={250,100,300}
+
+   DEFINE WINDOW oWnd  FROM 0.5,1 to 38,125 TITLE "Stock Value Graph" 
+
+   @4.5,0 GRAPH oGraph SIZE 950,510 TYPE 1 YVALUES 3D XGRID YGRID XVALUES LEGENDS OF oWnd
+
+   oGraph:aSeries = { { "Stock Value", CLR_CYAN , , } }
+
+   oGraph:aYVals = aYvals
+   oGraph:aData = {aData}
+   oGraph:cTitle  :="Stock Value of all Branches"
+   oGraph:cTitY   :="Branches"
+   oGraph:cTitX   :="Value in Rupees"
+   oGraph:lViewVal:=.T.   // Shows Data Label values
+
+   oGraph:nType:= 4  //
+/*
+   oGraph:nType:= 1  // Bar
+   oGraph:nType:= 2  // Line
+   oGraph:nType:= 3  // Point
+   oGraph:nType:= 4  // Pie
+*/
+   ACTIVATE WINDOW oWnd ;
+      ON PAINT (oGraph:nWidth:=oWnd:nWidth()- 8, ;
+                oGraph:nHeight:=oWnd:nHeight-93, ;
+                oGraph:Refresh(.f.)) ;
+         VALID (oGraph:End(),.T.)   
+            
+
+RETURN NIL
+</code>  
+
+====== Screen Snapshot Pie Chart ======
+{{:graph_pie2.jpg|:graph_pie2.jpg}}
+
+====== Screen Snapshot Bar Graph ======
+{{:graph_bar.jpg|:graph_bar.jpg}}
+
+====== See also ======
+[[fivewin_class_tgraph | Class TGraph ]]
+

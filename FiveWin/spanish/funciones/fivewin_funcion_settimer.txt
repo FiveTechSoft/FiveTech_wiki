@@ -1,0 +1,160 @@
+SetTimer()
+
+
+
+SetTimer()
+
+ Previous  Top  Next
+
+
+
+
+Installs a system timer
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetTimer( <hWnd>, <nIdTimer>, <nInterval> ) --> nNewId 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Identifies the window to be associated with the timer. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIdTimer> Specifies a non-zero timer identifier. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nInterval> The time-out value in miliseconds. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nNewId> A specific identifier for this new timer. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ FiveWin supplies a TTimer class that automatically and easily manages
+timers. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestTime.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Timers.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ KillTimer() Class TTimer 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

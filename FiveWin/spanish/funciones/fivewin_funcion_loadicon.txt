@@ -1,0 +1,18 @@
+
+====== LoadIcon() ====== 
+LoadIcon()
+
+Load the specified resource icon
+====== Sintaxis ======
+ LoadIcon( <hInst>, <cnIcon> ) --> hIcon 
+====== Parámetros ======
+  <hInst>   Identifies the handle of the module that contains the icon to be loaded. 
+  <cnIcon>  The name or the numeric identifier of the icon to be loaded. 
+====== Devuelve ======
+ <hIcon> The handle of the loaded icon, or 0 if not successful. 
+====== Ejemplo ======
+ SAMPLES\Install.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Icons.c 
+====== Ver también ======
+ ExtractIcon()  nIcons()  DrawIcon()

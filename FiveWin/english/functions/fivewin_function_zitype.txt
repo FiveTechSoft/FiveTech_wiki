@@ -1,0 +1,144 @@
+
+====== ZipType() ======
+
+
+
+
+Type of messages about the zipping process
+
+====== Syntax ======
+
+
+
+
+
+<code clipper>
+ ZipType( <nZipInfo> ) --> nType 
+</code>
+
+ 
+
+
+ 
+
+
+
+
+
+ We receive informative messages about the zipping process every time a
+file has been zipped. 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Parameters: ======
+
+
+
+
+
+
+ <nZipInfo> Structure PZFILEINFO delivery automaticly for the bZip
+codeblock. 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Return ======
+
+
+
+
+
+
+ <nType> Type of message 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ ZIP_NAME   1   Name of the current file in progress 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ZIP_BLOCK   2   Size of the block 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ZIP_MSG   3   Text message 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Sample ======
+
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Source Code======
+
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 

@@ -1,0 +1,27 @@
+====== BarAjust() ======
+
+Adjust the bar to the new dimension of its container. 
+
+====== Syntax ======
+ 
+BarAdjust( <hWnd>, <nMode>, <lMsgBar>, <nHeight> ) --> nil   
+
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| The Window handle of the Button Bar.|  
+|<nMode>| The current button Bar nMode Selected.|  
+|<lMsgBar>| If the container window of the Button bar has a message Bar.|  
+|<nHeight>| The height of the message Bar.|  
+
+====== Returns:======
+Nil
+
+====== Observations: ====== 
+ 
+Used internally by Fivewin. You don't need to use it directly.  
+
+====== Sample: ======
+
+
+====== Source code: ======
+SOURCE\FUNCTION\Bartools.c  

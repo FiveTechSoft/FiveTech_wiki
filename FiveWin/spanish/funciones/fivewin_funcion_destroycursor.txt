@@ -1,0 +1,20 @@
+
+====== DestroyCursor() ======
+DestroyCursor()
+
+Destroys a cursor created with Create... or Load...
+====== Sintaxis ======
+ DestroyCursor( <hCursor> ) --> lSuccess 
+
+ This function destroys a cursor that was previously created by the
+CreateCursor() or LoadCursor() function and frees any memory that the
+cursor occupied. 
+====== Parámetros ======
+ <hCursor> Identifies the cursor to be destroyed. The cursor must not be
+in current use. 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+====== Ver también ======
+ CreateCursor() LoadCursor()

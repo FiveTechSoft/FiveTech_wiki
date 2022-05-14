@@ -1,0 +1,120 @@
+WndAdjRight()
+
+
+
+WndAdjRight()
+
+ Previous  Top  Next
+
+
+
+
+Align to the right of the window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndAdjRight( <hWnd>, <hTop>, <hBottom> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hTop> Handle of the oTop object 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBottom> Handle of the oBottom object 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTALIGN.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

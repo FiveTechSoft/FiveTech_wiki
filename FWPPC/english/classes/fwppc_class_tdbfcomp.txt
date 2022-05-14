@@ -1,0 +1,35 @@
+====== Class TDbfComp ======
+
+DBF component class                                                            
+Inherits from TComponent                                                       
+====== DATA ======
+|nArea|Workarea number|
+|cName|DBF name|
+|cIndexName|Index name|
+|cTagName|Tag name|
+|aRelations|Array of relations|
+|OnAppend|Codeblock with the action to perform when appending a|
+|new|record|
+|OnBoF|Codeblock with the action to perform when beginning|
+|of|file is encountered|
+|OnDelete|Codeblock with the action to perform when deleting a|
+|record||
+|OnEoF|Codeblock with the action to perform when end of file|
+|is|encountered|
+|OnOpen|Codeblock with the action to perform when opening a|
+|new|DBF|
+|OnSkip|Codeblock with the action to perform when moving from|
+|a|record to another one|
+====== METHODS ======
+|New|Constructor from source code|
+|lOpened|If the DBF is open|
+|lSelected|If nArea is the current workarea|
+|cAlias|Retrieves the DBF alias|
+|cFileName|Retrieves the DBF filename|
+|nWorkArea|Retrieves the DBF workarea|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TDBFCOMP.PRG

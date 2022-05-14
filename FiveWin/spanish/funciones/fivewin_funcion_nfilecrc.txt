@@ -1,0 +1,25 @@
+
+
+====== nFileCrc() ====== 
+
+Returns a CRC checksum for an entire file contents
+
+====== Sintaxis ======
+ nFileCrc( <cFileName> ) --> nCRCValue 
+
+====== Parámetros ======
+ <cFileName> The name of the file to calculate a checksum on its containts. 
+
+====== Devuelve ======
+ <nCRCValue> A numeric value with the checksum CRC. 
+
+
+====== Ejemplo ======
+ MsgInfo( nFileCrc( "c:\command.com" ) )
+
+====== Código fuente ======
+ Not provided. 
+
+
+====== Ver también ======
+[[fivewin_funcion_nstrcrc|nStrCrc()]]

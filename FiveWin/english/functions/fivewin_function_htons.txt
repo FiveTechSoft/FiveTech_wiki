@@ -1,0 +1,84 @@
+HToNs()
+
+
+
+HToNs()
+
+ Previous  Top  Next
+
+
+
+
+Convert a u_short from host to network byte order.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ HToNs( <nAddress> ) --> nAddress 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nAddress> A 16-bit number in host byte order. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nAddress> Returns the value in network byte order. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

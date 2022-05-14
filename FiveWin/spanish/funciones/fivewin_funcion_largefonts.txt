@@ -1,0 +1,15 @@
+
+====== LargeFonts()====== 
+LargeFonts()
+
+Returns .T. if large fonts are used
+====== Sintaxis ======
+ LargeFonts() --> lYesNo 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ True if large fonts are used
+====== Ejemplo ======
+====== Código fuente ======
+SOURCE\FUNCTION\GETSYSIN.PRG
+====== Ver también ======

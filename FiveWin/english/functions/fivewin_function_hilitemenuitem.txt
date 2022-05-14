@@ -1,0 +1,32 @@
+It lights or it turns off a menuitem
+
+====== Syntax ======
+ HiliteMenuItem( <hWnd>, <hMenu>, <idItem>, <nHiliteFlags> ) --> lSuccess 
+
+====== Parameters ======
+| <hWnd> | Handle of the window that contains the menu |
+| <hMenu> | Handle of the menu that contains the menuitem |
+| <idItem> | Identifier of the menuitem that it is necessary to manage |
+| <nHiliteFlags> | Combination of MF_HILITE or MF_ULITE and MF_BYCOMMAND or MF_BYPOSITION. This way we will know if we want to light or to turn off the menuitem and if idItem is to understand it as a identifier or as the position the menuitem in the menu beginning to count from zero. | 
+
+====== Returns ======
+| It returns true if the function was executed correctly. |
+| nType | Dec | Hex |
+| MF_BYPOSITION | 1024 | x0400 |
+| MF_BYCOMMAND | 0 | x0000 |
+| MF_HILITE | 128 | x0080 |   
+| MF_UNHILITE | 0 | x0000 |
+
+====== Example ======
+
+ SOURCE\CLASSES\MENU.PRG 
+
+<code clipper>
+ METHOD Hilite( nPopUp ) INLINE ; 
+ HiliteMenuItem( ::oWnd:hWnd, ::hMenu, nPopUp - 1,; nOr( MF_HILITE, MF_BYPOSITION ) ) 
+</code>
+
+====== Source Code ======
+ SOURCE\FUNCTION\MENUS.C 
+
+====== See also ======

@@ -1,0 +1,67 @@
+GetPrintDefault()
+
+
+GetPrintDefault()
+ Previous  Top  Next
+
+Returns the handle of device context of the default printer.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetPrintDefault() --> hDC 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ None. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hDC>      The handle of the just created device context of the default
+printer. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

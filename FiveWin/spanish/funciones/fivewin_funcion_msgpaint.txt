@@ -1,0 +1,31 @@
+
+====== MsgPaint() ====== 
+MsgPaint()
+
+FiveWin MessageBar painting function.
+====== Sintaxis ======
+ MsgPaint( <hWnd>, <cMsg>, <cMsgDef>, <lErase>, <lCentered>, <nSize>,
+<nClrFore>, <nClrBack>, <hFont>, <lInset> ) --> nil 
+====== Parámetros ======
+  <hWnd>      The handle of the window of the MsgBar control that is been painted 
+  <cMsg>      The message to display 
+  <cMsgDef>   The alternative default message to be displayed if cMsg is not supplied 
+  <lErase>    If the whole MessageBar has to be repainted 
+  <lCentered> If the message has to be painted centered 
+  <nSize>     The size of the MessageBar 
+  <nClrFore>  The foreground color use for the MessageBar 
+  <nClrBack>  The background color use for the MessageBar 
+  <hFont>     The handle of the font used for the message 
+  <lInset>    If the MessageBar has to be paint inset 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function is automatically used from the class TMsgBar. INTERNAL !!! 
+====== Ejemplo ======
+ Most of the FiveWin samples manages bottom message bars. 
+====== Código fuente ======
+ SOURCE\FUNCTION\MsgTools.c 
+====== Ver también ======
+ Class TMsgBar 

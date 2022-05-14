@@ -1,0 +1,116 @@
+
+======  GetWindowWord() ====== 
+ 
+
+Retrieves a word value at the specified offset
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetWindowWord( <hWnd>, <nIndex> ) --> nValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window whose Index associated word ( two bytes
+) value is to be retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <nIndex> Specifies the zero-based index order of the value to be
+retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+#define GWW_HINSTANCE   -6   Specifies the instance handle of the module
+that owns the window.   
+#define GWW_HWNDPARENT   -8   Specifies the handle of the parent window,
+if any. The SetParent function changes the parent window of a child
+window. An application should not call the SetWindowWord function to
+change the parent of a child window.
+#define GWW_ID      -12   Specifies the identifier of the child window.   
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nValue> The returned value specifies information about the given value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\GetWnd.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetWindowWord() GetWindowLong() SetWindowLong() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

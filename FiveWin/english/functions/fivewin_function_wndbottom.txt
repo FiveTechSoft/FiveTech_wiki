@@ -1,0 +1,92 @@
+====== WndBottom() ====== 
+
+WndBottom()
+
+Resize the window height and update the bottom coordinate
+
+
+====== Syntax ======
+
+
+ WndBottom( <hWnd> [,<nNewBottom> ] ) --> nNewBottom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewBottom> New height 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nNewBottom> New height 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

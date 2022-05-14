@@ -1,0 +1,70 @@
+
+====== CtrlDrawFocus() ======
+
+CtrlDrawFocus()
+
+
+It draws the contour of a control in way design.
+
+====== Sintaxis ======
+
+
+ CtrlDrawFocus( <hWnd>, <nOriginRow>, <nOriginCol>, <nMRow>, <nMCol>,
+<nMResize> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ <nOriginRow> The origin row 
+
+
+ 
+
+
+ <nOriginCol> The origin column 
+
+
+ 
+
+
+ <nMRow> The mouse row 
+
+
+ 
+
+
+ <nMCol> The mouse column 
+
+
+ 
+
+
+ <nMResize> The mouse resize direction 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\CTRLDRAW.C 
+====== Ver también ======

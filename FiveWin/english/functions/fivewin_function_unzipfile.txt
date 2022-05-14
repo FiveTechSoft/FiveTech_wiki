@@ -1,0 +1,43 @@
+
+====== UnZipFile() ======
+
+ UnZips a file from the ZIP file. 
+
+====== Syntax: ======
+
+ UnZipFile( <cZipFileName>, <cFileName>, <nFileOffset>, <hWnd>, <nAction> ) --> nRetCode  
+
+====== Parameters: ======
+
+|<cZipFileName>| The name of the ZIP file from where to extract <cFileName>.  |
+|<cFileName>| The name of the file to extract from the ZIP file. | 
+|<nFileOffset>| The offset inside the ZIP file where this file to extract is located. It is the seventh item of the array returned by GetFirstInZip() and GetNextInZip() functions.  |
+|<hWnd>| The handle of the window or Dialog where Info-Unz.dll will report the unzip progress. This window will |
+
+automatically evaluate its DATA bUnZip codeblock:  
+
+<oWnd>:bUnZip = { | nPercent | ... }  
+
+ From that codeblock you may update a Meter control, or any other used control.  
+
+<nAction> ???.  
+
+====== Returns: ======
+
+<nRetCode> The returned code from this operation:
+
+ #define ZIP_OK         0  
+
+ #define ZIP_FILEERROR      -1  
+
+ #define ZIP_INTERNALERROR   -2  
+
+ #define ZIP_NOMOREITEMS   1  
+
+====== Sample: ======
+
+ SAMPLES-->TestZip.prg  
+
+====== Source Code: ======
+
+ SOURCE\FUNCTION\UnZip.c  

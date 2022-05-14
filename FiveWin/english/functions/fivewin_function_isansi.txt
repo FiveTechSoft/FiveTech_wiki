@@ -1,0 +1,80 @@
+====== IsAnsi() ======
+
+
+
+To see if all the characters of a string are Ansi
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsAnsi( <cString> ) --> lAnsi 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cString> String of characters to check 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lAnsi> Return .t. if all charactes of a string are ANSI, otherwise .f. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\OEMANSI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

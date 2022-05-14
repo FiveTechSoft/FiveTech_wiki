@@ -1,0 +1,108 @@
+GetFontInfo()
+
+
+   
+GetFontInfo()
+
+ Previous  Top  Next
+
+
+
+
+Retrieves font height, width and bold
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetFontInfo( <hFont> ) --> aFontInfo 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This is a FiveWin function to obtain some specific font info used from
+some classes. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hFont> The handle of the font. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <aFontInfo> A Clipper array of four elements: 
+
+
+ 
+
+
+ { nHeight, nWidth, lBold, cFacename } 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\FontCrea.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+CreateFont() ChooseFont()
+
+
+
+====== Ver también ======
+

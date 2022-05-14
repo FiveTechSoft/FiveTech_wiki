@@ -1,0 +1,20 @@
+
+====== DbSetDrive() ======
+DbSetDrive()
+
+The controller returns for defect or one selects new
+====== Sintaxis ======
+ DbSetDrive( <x> ) --> cControladorActual 
+
+ Function to obtain compatibility with xBase++ 
+
+====== Parámetros ======
+ <x> Name of the controller that will be used 
+====== Devuelve ======
+ DbSetDriver( x ) 
+
+====== Ejemplo ======
+ SAMPLES\TESTDRV.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

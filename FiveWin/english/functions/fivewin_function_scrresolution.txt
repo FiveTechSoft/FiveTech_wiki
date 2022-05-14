@@ -1,0 +1,75 @@
+====== ScrResolution() ======
+
+
+Returns an array with the screen resolution.
+
+====== Syntax ======
+      
+
+ ScrResolution( [<@nWidth>], [<@nHeight>] ) --> aResolution 
+
+
+ 
+
+====== Parameters ======
+
+
+ <nWidth> A variable that receives the width of the screen. 
+
+
+ 
+
+
+ <nHeight> A variable that receives the height of the screen. 
+
+
+ 
+
+====== Returns ======
+
+
+ <aResolution> An array containing width and height of the screen. 
+
+
+ 
+
+====== Example ======
+
+ 
+
+
+ local nWidth := ScrResolution()[1] 
+
+
+ local nHeight := ScrResolution()[2] 
+
+
+ 
+
+
+ or 
+
+
+ 
+
+
+ local nWidth, nHeight 
+
+
+ ScrResolution( @nWidth, @nHeight ) 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\HARBOUR.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

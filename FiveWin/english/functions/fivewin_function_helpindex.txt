@@ -1,0 +1,21 @@
+====== HelpIndex() ======
+
+Shows the default help file index.  
+
+====== Syntax: ======
+ 
+ HelpIndex() --> nil
+====== Parameters: ======
+
+ none  
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+HelpIndex() shows the main index of the default selected Help file.
+
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP32.PRG   

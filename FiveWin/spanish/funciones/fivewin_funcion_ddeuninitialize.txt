@@ -1,0 +1,33 @@
+
+====== DDEInitialize() ======
+
+Registros de una aplicación con la biblioteca de administración de DDE 
+
+====== Sintaxis ======
+ 
+ DDEinitialize( <@hInst>, <pDDEProc>, <nType> ) --> nResult 
+
+
+====== Parámetros ======
+
+|<@hInst> | Dirección de la instancia de identificación |
+|<pDDEProc>| Dirección de la función de devolución de llamada| 
+|<nType> | Banderas|
+
+
+====== Retorno ======
+
+ <nResult> Uno de los siguientes casos:  
+ 
+| DMLERR_DLL_USAGE  |
+| DMLERR_INVALIDPARAMETER|  
+| DMLERR_NO_ERROR  |
+| DMLERR_SYS_ERROR |
+
+
+====== Ejemplo ======
+ 
+
+====== Código Fuente ======
+ 
+SOURCE\WINAPI\DDEML.C 

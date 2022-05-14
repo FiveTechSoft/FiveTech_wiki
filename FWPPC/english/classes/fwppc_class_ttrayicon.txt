@@ -1,0 +1,27 @@
+====== Class TTrayIcon ======
+
+Tray icon management                                                           
+====== DATA ======
+|oTray|Tray object structure|
+|oWnd|Owner window object|
+|oIcon|Tray icon object|
+|cCaption|Tray icon tooltip|
+|bLClicked|Action to perform when left mouse clicking|
+|bRClicked|Action to perform when right mouse clicking|
+|bMMoved|Action to perform when mouse moving|
+|bLDblClick|Action to perform when left mouse double clicking|
+|bLButtonUp|Action to perform when left mouse releasing|
+|bRButtonUp|Action to perform when right mouse releasing|
+====== METHODS ======
+|New|Constructor from source code|
+|End|Destroys the tray icon|
+|Refresh|Refreshes the tray icon|
+|SetIcon|Sets a new tray icon and tooltip|
+|SetText|Sets a new tray icon tooltip|
+|Command|Command event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTRAYICON.PRG

@@ -1,0 +1,13 @@
+====== Creates a bitmaped button from source code ======
+<code clipper>
+@ <nRow>, <nCol> BTNBMP [ <oBtn> ] ;
+   [ FILENAME <cFileName> ] ; 
+   [ OF <oWnd> ] ;
+   [ ACTION <uAction,...> ] ;
+   [ SIZE <nWidth>, <nHeight> ]
+</code>
+====== Source code ======
+FMC\include\FiveMac.ch
+====== See Also ======
+[[fivemac_class_tbtnbmp|Class TBtnBmp]]
+

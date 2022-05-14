@@ -1,0 +1,77 @@
+====== IsIconic() ======
+
+
+
+
+Checks if a window is iconized
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsIconic( <hWnd> ) --> lIconic 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window to check if it is iconized. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lIconic> A logical value indicating if the window is iconized. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndIs.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

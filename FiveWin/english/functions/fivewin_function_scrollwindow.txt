@@ -1,0 +1,58 @@
+====== ScrollWindow() ======
+
+
+
+Scroll a region of a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ScrollWindow( <hWnd>, <nCol>, <nRow>, <aRect>, <aClip> ) --> nil 
+
+
+ 
+
+
+ 
+
+====== Parameters ======
+^Name^Description^
+|<hWnd>|Identifies the window to be scrolled| 
+|<nCol>|Specifies the amount in device units of horizontal scrolling. This parameter must be a negative value to scroll to the left| 
+|<nRow>|Specifies the amount in device units of vertical scrolling. This parameter must be a negative value to scroll up| 
+|<aRect>|Specifies the portion of client area to be scrolled: { nTop, nLeft, nBottom, nRight }| 
+|<aClip>|Specifies the clipping rectangle to be scrolled: { nTop, nLeft, nBottom, nRight }| 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+ SOURCE\WINAPI\Clt2Scr.c 
+
+====== See also ======
+[[fivewin_function_clienttoscreen|function ClientToScreen()]]
+

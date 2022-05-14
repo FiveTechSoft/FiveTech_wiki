@@ -1,0 +1,27 @@
+
+====== DDEServer() ======
+DDEServer()
+
+Handle of events of the class TDDEMLServer
+====== Sintaxis ======
+ DDEServer( <nType>, <nFmt>, <hConv>, <hSz1>, <hSz2>, <hData>, <hData1>,
+<hData2> ) --> xRetValue 
+====== Parámetros ======
+  <nType> Type of requested service 
+  <nFmt> Not used 
+  <hConv> Handler of the conversation DDEML 
+  <hSz1> Some processes require to hold a hSZ1 handle stored here 
+  <hSz2> Some processes require to hold a hSZ2 handle stored here 
+  <hData> Handler to obtain data by means of the function DDEGetData(
+          hData ) 
+  <hData1> Not used. 
+  <hData2> If this value is received to 1 and the requested nType it is
+          XTYP_DISCONNECT, the server will be disconnected. 
+====== Devuelve ======
+ It returns different values depending on the service negotiated. (to see
+code source) 
+====== Ejemplo ======
+ \SAMPLES\DDEMLSERV.PRG 
+====== Código fuente ======
+ \SOURCE\CLASSES\TDDEMLSV.PRG 
+====== Ver también ======

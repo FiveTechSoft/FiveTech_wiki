@@ -1,0 +1,129 @@
+EndDialog()
+
+
+
+EndDialog()
+
+ Previous  Top  Next
+
+
+
+
+Finish a modal DialogBox
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EndDialog( <hWndDlg>, <nResult> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function hides a modal DialogBox and causes the DialogBox function
+to return. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWndDlg> The handle of the DialogBox to end. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nResult> nResult is a numeric value that will be returned by
+DialogBox() or DialogBoxIndirect() functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ Not provided. See SOURCE\\WINAPI\\DlogBox.c 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+See also:
+
+
+
+
+
+ DialogBox() DialogBoxIndirect() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

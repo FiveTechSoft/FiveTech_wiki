@@ -1,0 +1,52 @@
+
+======  GetLastError() ====== 
+
+
+
+
+Get the error code for the last operation.
+
+====== Syntax ======
+
+
+ GetLastError() --> nError 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <nError> Error code 
+
+
+ 
+
+====== Example ======
+
+
+ SAMPLES\SYLINT.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\CREATWND.C 
+
+
+ 
+
+
+
+====== See also ======
+

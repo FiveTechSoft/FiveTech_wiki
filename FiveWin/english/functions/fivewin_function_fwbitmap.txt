@@ -1,0 +1,22 @@
+====== FWBitmap() ======
+Creates the FiveWin own icon-alike bitmap. This an internal function of FiveWin that returns a handle of a FiveWin logo built from memory. It is used in the FiveWin error Dialog Box.  
+
+====== Syntax ====== 
+FWBitmap( <hDC> )  --> <hBitmap>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hDC> | The handle of the device context. |
+
+====== Return ====== 
+^Returns^Description^
+| <hBitmap> | The handle of the created bitmap.  |
+
+====== Observations ======
+
+This handle is automatically destroyed by FiveWin. 
+
+====== Source Code ====== 
+Not Provided 
+
+====== See Also ====== 

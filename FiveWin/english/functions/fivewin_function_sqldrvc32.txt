@@ -1,0 +1,110 @@
+====== SQLDrvC32() ======
+
+
+
+Establishes connections to a driver and a data source.
+
+====== Syntax ======
+
+ 
+
+
+ SQLDrvC32( <hDbc>, <hWnd>, <cConnectString>, <Reserved>, <@cBuffer>,
+<Reserved>, <@nLen>, <nDrvCompletion> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <hWnd> The handle to the parent window. 
+
+
+ 
+
+
+ <cConnectString> The connection string. 
+
+
+ 
+
+
+ <cBuffer> A buffer filled with the completed connection string. 
+
+
+ 
+
+
+ <nLen> the total number of characters (excluding the null-termination
+character) available to return in cBuffer. 
+
+
+ 
+
+
+ <nDrvCompletion> Flag that indicates whether the Driver Manager or
+driver must prompt for more connection information: 
+
+
+ SQL_DRIVER_PROMPT, 
+
+
+ SQL_DRIVER_COMPLETE, 
+
+
+ SQL_DRIVER_COMPLETE_REQUIRED, or 
+
+
+ SQL_DRIVER_NOPROMPT 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

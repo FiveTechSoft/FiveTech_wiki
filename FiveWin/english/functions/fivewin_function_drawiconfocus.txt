@@ -1,0 +1,28 @@
+====== DrawIconFocus() ======
+Draws an Icon with focus.  This function draws an icon at the specified device context. 
+
+**Note:**
+
+The handle of the icon must be loaded with LoadIcon() 
+
+We strongly recommend use of FiveWin TIcon Class as it is much more
+powerful and easy to use. 
+
+====== Syntax ======
+DrawIconFocus( <hDC>, <nRow>, <nCol>, <hIcon> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| The handle of the device context where to draw. |
+|<nRow>, <nCol>| The coordinates where to paint. |
+|<hIcon>| The handle of the icon. |
+
+====== Returns ======
+^Return^Description^
+|<lSuccess>| Returns logical value. .T. if the operation was successful. |
+
+====== Source Code ======
+SOURCE\WINAPI\Icons.c 
+
+====== See also ======
+[[fivewin_function_LoadIcon|LoadIcon()]], [[fivewin_function_ExtractIcon|ExtractIcon()]], [[fivewin_function_nIcons|nIcons()]] 

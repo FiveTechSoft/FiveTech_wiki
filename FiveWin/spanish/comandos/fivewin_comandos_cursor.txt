@@ -1,0 +1,33 @@
+====== Cursores (CURSOR) ======
+====== Creando un cursor desde recursos: ====== 
+<code clipper>
+DEFINE CURSOR <oCursor> ;
+       [ RESOURCE | RESNAME | NAME <cResName> ] ;
+       [ ARROW | ICON | SIZENS | SIZEWE | SIZENWSE,;
+       SIZENESW | IBEAM | CROSS | SIZE | UPARROW | WAIT ]
+</code>
+
+====== Parámetros: ====== 
+|<oCursor> |Referencia al objeto cursor.|
+|<cResName> |Cadena de caracteres con el nombre del recurso cursor, también puede ser un identificador numérico|
+
+Claúsulas:
+|ARROW|
+|ICON|
+|SIZENS|
+|SIZEWE|
+|SIZENWSE|
+|SIZENESW|
+|IBEAM|
+|CROSS| ||Identifican los distintos cursores predeterminados de Windows|
+
+
+====== Implementación del comando: ====== 
+<code clipper>
+#xcommand DEFINE CURSOR <oCursor> ;
+[ <resource: RESOURCE, RESNAME, NAME> <cResName> ] ;
+[ <predef: ARROW, ICON, SIZENS, SIZEWE, SIZENWSE,;
+SIZENESW, IBEAM, CROSS, SIZE, UPARROW, WAIT> ] ;
+=> ;
+<oCursor> := TCursor():New( <cResName>, [ Upper(<(predef)>) ] )
+</code>

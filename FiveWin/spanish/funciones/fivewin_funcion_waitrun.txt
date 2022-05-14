@@ -1,0 +1,67 @@
+====== WaitRun() ======
+
+Ejecuta otra aplicación de Windows y espera
+
+
+====== Sintaxis ======
+ 
+ WaitRun( <nCmdLine>, <nCmdShow> ) --> hInstance
+
+
+
+
+
+====== Parametros ======
+
+|<nCmdLine>| Una cadena que contiene la línea de comandos a ejecutar. Si no contiene una ruta, a continuación, Windows busca en este orden:| 
+|1| El directorio actual| 
+|2| El directorio de Windows (el directorio que contiene WIN.COM), el GetWinDir () función recupera la trayectoria de este directorio| 
+|3| El directorio de sistema de Windows (el directorio que contiene los archivos de sistema, tales como GDI.EXE), el GetSysDir () función recupera la trayectoria de este directorio| 
+|4| El directorio que contiene el archivo ejecutable para la tarea actual, la función GetModuleFileName recupera la ruta de este directorio| 
+|5| Los directorios listados en la variable de entorno PATH| 
+|6| Los directorios asignados en una red| 
+|<nCmdShow>| Especifica cómo la aplicación de Windows tiene que ser demostrado. Ver ShowWindow () para una descripción de todos los valores posibles|  
+
+
+
+====== Retorno ======
+
+|<hInstance>|El valor de retorno identifica la instancia del módulo de carga, si la función tiene éxito. De lo contrario, el valor de retorno es un valor de error de menos de 32| 
+    0 sistema estaba fuera de la memoria, archivo ejecutable era corrupto, o las deslocalizaciones no eran válidos. 
+    2 El archivo no fue encontrada. 
+    Ruta 3 no fue encontrada. 
+    5 Se ha intentado enlazar dinámicamente a una tarea, o que hubo un intercambio de red o error de protección. 
+    6 Biblioteca necesario separar segmentos de datos para cada tarea. 
+    8 Hubo memoria suficiente para iniciar la aplicación. 
+    10 versión de Windows es incorrecta. 
+    11 archivo ejecutable no era válida. O no era una aplicación de Windows o hubo un error en la imagen. EXE. 
+    12 Aplicación fue diseñado para un sistema operativo diferente. 
+    13 Aplicación fue diseñado para MS-DOS 4.0. 
+    14 Tipo de archivo ejecutable desconocido. 
+    15 Se ha intentado cargar una aplicación en modo real (desarrollado para una versión anterior de Windows). 
+    16 Se ha intentado cargar una segunda instancia de un archivo ejecutable que contiene varios segmentos de datos que no fueron marcados como sólo lectura. 
+    19 Se ha intentado cargar un archivo ejecutable comprimido. El archivo debe ser descomprimido antes de que pueda ser cargado. 
+    20 Biblioteca de vínculos dinámicos (DLL) no era válido. Uno de los archivos DLL necesarios para ejecutar esta aplicación era corrupto. 
+    21 Aplicación requiere extensiones de 32-bits.
+
+
+
+====== Observaciones ======
+
+Esta función funciona exactamente como WinExec() con la diferencia que se espera para la nueva tarea emitidos hasta el final.
+
+
+====== Ejemplo ======
+ 
+SAMPLES\FwBrow.prg
+
+
+
+====== Código Fuente ======
+ 
+SOURCE\WINAPI\winexec.c 
+
+
+====== Ver también ======
+
+[[fivewin_funcion_showwindow|ShowWindow()]] [[fivewin_funcion_winexec|WinExec()]] 

@@ -1,0 +1,15 @@
+====== DbSetDefa() ======
+Set the CA-Clipper default drive and directory. This function is kept to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbSetDefa( <x> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Drive and directory where looked for files by default. |
+
+====== Returns ======
+DbeSetDefault( x ) 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

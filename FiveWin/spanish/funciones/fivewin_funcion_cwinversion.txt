@@ -1,0 +1,32 @@
+====== cWinVersion() ======
+
+Devuelve la versión actual de Windows como una cadena.
+En 32 bits esta función es más precisa que en 16 bits.
+
+====== Sintaxis ======
+
+ cWinVersion() --> cValue 
+
+====== Devuelve ======
+^Returns^Description^
+|<cValue>| Una cadena con la versión actual de Windows. Uno de los siguientes valores son retornados.\\ \\ "7"  --> Windows 7\\ "XP" -> Windows XP\\ "Vista" -> Windows Vista\\ "95" -> Windows 95\\ "ME" -> Windows ME\\ "NT" -> Windows NT\\ "2000" -> Windows 2000\\ "Server 2003" -> Windows Server 2003|
+
+====== Ejemplo ======
+<code clipper>
+ ? cWinVersion() -->  "7"  Significa Windows 7
+ ? cWinVersion() --> "XP"  
+ ? cWinVersion() --> "Vista"
+ ? cWinVersion() -->  "95"  Significa Windows 95
+ ? cWinVersion() -->  "ME"  Significa Windows ME
+ ? cWinVersion() -->  "NT"  Significa Windows NT
+ ? cWinVersion() -->  "2000"  Significa Windows 2000
+ ? cWinVersion() -->  "Server 2003"  Significa Windows Server 2003
+</code>
+
+====== Código fuente ======
+SOURCE\FUNCTION\GetSysIn.prg.
+====== Ver también ======
+[[fivewin_function_IsWinVista|IsWinVista()]], 
+[[fivewin_function_IsWinXP|IsWinXP()]], 
+[[fivewin_function_IsWin2000|IsWin2000()]], 
+[[fivewin_function_IsWin7|IsWin7()]]

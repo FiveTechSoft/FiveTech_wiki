@@ -1,0 +1,20 @@
+====== FreeLibrary() ======
+Free a DLL library in use or decrements its counter. This function decreases by one the reference count of the loaded library module. When the reference count reaches zero, the memory occupied by the module is freed 
+
+====== Syntax ====== 
+FreeLibrary( <hInstance> )  --> nil  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hInstance> | The handle of the DLL. It is the value returned by LoadLibrary().  |
+
+====== Return ====== 
+Nothing
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\WINAPI\Dll.c  
+ 
+====== See Also ====== 
+[[fivewin_function_loadlibrary|LoadLibrary()]]

@@ -1,0 +1,16 @@
+
+====== ReadVar() ====== 
+ReadVar()
+
+TGET object that has the focus in our application.
+====== Sintaxis ======
+ ReadVar() --> oGet 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <oGet> It returns the object oGet that has the focus or nil if any
+object TGet has not the focus. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\VALBLANK.PRG 
+====== Ver también ======

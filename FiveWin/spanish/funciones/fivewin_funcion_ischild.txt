@@ -1,0 +1,16 @@
+
+====== IsChild() ======
+IsChild()
+
+It checks if a window is child of another given
+====== Sintaxis ======
+ IsChild( <hWndParent>, <hWndChild> ) --> lSuccess 
+====== Parámetros ======
+  <hWndParent>  Handle of the parent window 
+  <hWndCHild>   Handle of the child window 
+====== Devuelve ======
+ <lSuccess> Return true if the window is child of the parent window 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\WNDIS.C 
+====== Ver también ======

@@ -1,0 +1,24 @@
+====== Class TTabControl ======
+
+Win32 SysTabControl common control support                                     
+Inherits from TControl                                                         
+====== DATA ======
+|aPrompts|Array containig the prompts of the tab control|
+|bAction|Codeblock evaluated when clicking on a tab|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Add|Adds an item to the tab control|
+|DelItem|Deletes an item from the tab control|
+|GetItemCount|Returns the total number of items|
+|nOption|Returns and change the index of the currently|
+|selected|item|
+|MouseMove|Mouse move event handler|
+|Notify|Notify event handler|
+|SetBkColor|Sets the background color of the tab control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTABCONTROL.PRG

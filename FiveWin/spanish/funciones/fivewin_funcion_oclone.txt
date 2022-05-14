@@ -1,0 +1,15 @@
+
+====== OClone() ====== 
+OClone()
+
+Retrieves a duplicated Clipper object
+====== Sintaxis ======
+ OClone( <oObject> ) --> oClonedObject 
+====== Parámetros ======
+ <oObject> The object that we want to duplicate 
+====== Devuelve ======
+ <oClonedObject> The resulting duplicated object 
+====== Código fuente ======
+ Not supplied 
+====== Ver también ======
+OSend() aOData()

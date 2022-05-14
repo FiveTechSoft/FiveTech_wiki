@@ -1,0 +1,108 @@
+====== Creación de un menú desplegable mediante código fuente ====== 
+<code clipper>
+MENU [ <objMenu> ] [POPUP]  
+  MENUITEM [ <oMenuItem> PROMPT ] <cPrompt> ;  
+    [ MESSAGE <cMsg> ];  
+    [ CHECK | CHECKED | MARK ] ;  
+    [ ENABLED | DISABLED ] ;  
+    [ FILE | FILENAME | DISK <cBmpFile> ];  
+    [ RESOURCE | RESNAME | NAME <ResName> ];  
+    [ ACTION <uAction> ] ;  
+    [ BLOCK <bAction> ] ;  
+    [ OF | MENU | SYSMENU <oMenu> ];  
+    [ ACCELERATOR <nState>, <nVirtKey> ] ;  
+    [ HELP ] ;  
+    [ HELP ID | HELPID <nHelpId> ] ;  
+    [ WHEN <uWhen> ];  
+    [ BREAK ]  
+ 
+  SEPARATOR [<oMenuItem>]  
+
+  MENUITEM
+ 
+  MRU <oMru> ;  
+
+    [ INI | ININAME | FILENAME | NAME | DISK <cIniFile> ]  
+    [ SECTION <cSection> ] ;  
+    [ SIZE | ITEMS <nItems> ] ;  
+    [ MESSAGE <cMsg> ] ;  
+    [ ACTION <uAction> ]  
+ 
+ENDMENU  
+</code>  
+
+====== Creación de un menú desplegable desde recursos ====== 
+<code clipper>
+DEFINE MENU <oMenu> ;  
+  [ RESOURCE | NAME | RESNAME <cResName> ];  
+  [ POPUP ] ;  
+ 
+  REDEFINE MENUITEM [ <oMenuItem> ;PROMPT <cPrompt> ] ;  
+    [ ID <nId> OF | MENU <oMenu> ] ;  
+    [ ACTION <uAction> ] ;  
+    [ BLOCK <bAction> ] ;  
+    [ MESSAGE <cMsg> ] ;  
+    [ CHECK | CHECKED | MARK ] ;  
+    [ ENABLED | DISABLED ] ;  
+    [ FILE | FILENAME | DISK <cBmpFile> ];  
+    [ RESOURCE | RESNAME | NAME <cResName> ] ;  
+    [ ACCELERATOR <nState>, <nVirtKey> ] ;  
+    [ HEPL ID | HELPID <nHelpId> ];  
+    [ WHEN <uWhen> ]  
+ 
+ 
+DEFINE MENU <oMenu> OF <oWnd>  
+ 
+SET MENU OF <oWnd> TO <oMenu>  
+</code>  
+  
+====== Activación de un Menú Popup ====== 
+<code clipper>
+ACTIVATE POPUP | MENU <oMenu> ;  
+  [ AT <nRow>, <nCol> ] ;  
+  [ OF | WINDOW | DIALOG <oWnd> ]  
+</code>  
+
+====== Redefinición del menú de sistema de una ventana ====== 
+<code clipper>
+REDEFINE SYSMENU <oMenu> ;  
+  [ OF | WINDOW | DIALOG <oWnd> ]  
+</code>  
+
+**-MenuItems como antes...-** 
+
+ENDSYSMENU  
+
+====== Parámetros ======
+|<oMenu>         |Referencia al Objeto Menu.|
+|<oMenuItem>     | Referencia a uno de los elementos del menú. Cada elemento de un objeto menú es también un objeto. La cláusula SEPARATOR puede especificar, de forma opcional, una variable para almacenar su valor relacionado.|
+|<cMsg>          |Mensaje associado al control.|
+|<cBmpFile>      |Nombre del archivo BMP  a ser usado como etiqueta de un elemento del menú.|
+|<cResName>      |Nombre del recurso del menú.|
+|<uAction>       |Acción a ejecutar para un elemento específico.|
+|<bAction>       |La misma acción anterior espresada como codeblock.|
+|<nRow>, <nCol>  |Coordenadas donde situar el menú Popup.|
+|<oWnd>          |Ventana contenedora del menú.|
+|<nState>        |Estado de la tecla aceleradora (consulte VKEY.CH).|
+|<nVirtKey>      |Valor ASCII de la tecla aceleradora.|
+|<nHelpId>       |Identificador del tema de ayuda de un elemento específico.|
+|<uWhen>         |Expresión a evaluar para comprobar si un elemento del menú debe activarse o desactivarse.|
+|<nId>           |Identificador numérico del elemento del menú.|
+|<cPrompt>       |Etiqueta delelemento del menú.|
+|<bAction>       |Acción a ejecutar al seleccionar un elemento del menú.|
+|<oMru>          |Referencia al nuevo objeto MRU creado.|
+|<cIniFile>      |Nombre del archivo INI relacionado a usar con el objeto MRU.|
+|<cSection>      |Sección dentro del archivo INI donde se guardan los elementos MRU.|
+|<nItems>        |Número de elementos que el objeto MRU maneja.|
+|<uAction>       |Acción a ejecutar al seleccionar el elemento MRU.|
+
+====== Cláusulas ======
+
+|CHECK CHECKED MARK   |Si el elemento menuitem debe aparecer marcado inicialmente.|
+|ENABLED              |Si el elemento menuitem debe aparecer activado inicialmente. Por defecto, está activado.|
+|DISABLED             |Si el elemento menuitem debe aparecer desactivado inicialmente.|
+|HELP                 |Si el elemento debe aparecer en la parte superior derecha de la barra de menús.|
+|POPUP                |Crea un menú popup en lugar de un menú desplegable.|
+
+====== Ver también ======
+[[fivewin_clase_tmenu|Class TMenu]]

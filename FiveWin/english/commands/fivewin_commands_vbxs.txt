@@ -1,0 +1,100 @@
+====== VBX ======
+
+**Creating a VBX from source code (using a VBX on a window)        **
+<code clipper>
+ @ <nRow>, <nCol> VBX [<oVbx>] ;  
+ [ OF <oWnd> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FILE | FILENAME | DISK <cVbxFile> ] ;  
+ [ CLASS <cVbxClass> ] ;  
+ [ ON <cClause1> <uAction1> ;  
+ [ ON <cClauseN> <uActionN> ] ]  
+ [ WHEN <uWhen> ] ;  
+ [ VALID <uValid> ] ;  
+ [ PIXEL ] ;  
+ [ DESIGN ]  </code>
+
+**Warning: Some VBXs controls need some specific initialization data, and may not work properly using them on 
+windows. In those cases, use them only in Dialog Boxes using REDEFINE VBX ...  **
+ 
+
+**Creating a VBX from resources (using a VBX on a dialog box)        **
+<code clipper>
+ REDEFINE VBX [<oControl>] ;  
+ [ ID <nId> ] ;  
+ [ OF <oDlg> ] ;  
+ [ COLOR <nClrFore> [,<nClrBack>] ] ;  
+ [ ON <cClause1> <uAction1> ;  
+ [ ON <cClauseN> <uActionN> ] ]  </code>
+
+| <nRow>, <nCol> | The screen coordinates  | 
+| <oVbx> | A reference to the oVbx control object  | 
+| <nWidth>, <nHeight> | The dimensions of the oVbx control | 
+| <cVbxFile> | The filename of the .VBX file | 
+| <cVbxClass> | Optional VBX class name specified by the manufacturer | 
+| <cClause> | Any event name specified by the VBX manufacturer | 
+| <uAction> | Any action to execute on that event | 
+| <nId> | The oVbx control ID from inside DialogBoxes | 
+| <oDlg> | A reference to the DialogBox object container | 
+| <nClrFore>, <nClrBack> | Colors of the oVbx from DialogBoxes | 
+| <WhenFunc> | It is an expression to evaluate indicating if the control is or not enable.| 
+| <ValidFunc> | An expression to validate when the control is going to lose the focus. | 
+
+**CLAUSES **
+
+| DESIGN | Allows the user to move and resize with the mouse    | 
+| PIXEL  | To use pixel coordinates instead of Text coordinates.  |   
+
+====== Sample Code ======
+\Fwh\Samples\TestVbx6.Prg
+<code clipper>
+// FiveWin - VBX Visual Basic controls management tutorial
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "Using VBXs with FiveWin" ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Test VBX" ACTION TestVbx()
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function TestVBX()
+
+   local oDlg, oVbx
+
+   DEFINE DIALOG oDlg FROM 5, 5 TO 20, 40 TITLE "Testing VBX"
+
+   @ 3, 10 VBX oVbx SIZE 100, 100 ;
+      FILENAME "Switch.vbx" CLASS "BiSwitch" ;
+      ON ON  MsgInfo( "Turn ON the light!" ) ;
+      ON OFF MsgInfo( "Turn OFF the light!" )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+====== See also ======
+[[fivewin_class_tvbcontrol | Class TVbControl ]], [[fivewin_class_tvbxarray | Class TVbxArray ]]

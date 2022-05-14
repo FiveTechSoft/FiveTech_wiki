@@ -1,0 +1,66 @@
+====== StrPtr() ======
+
+Returns the address of a given character string.
+
+====== Syntax ======
+
+ 
+
+
+ StrPtr( <cString> ) --> nAddress 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <aString> The string whose address is returned. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nAddress> The address of the string. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ local nAddress := StrPtr( "BlaBlaBla" ) 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,50 @@
+====== Class TRddOdbc ======
+
+RDD ODBC class                                                                 
+====== DATA ======
+|oOdbc|TOdbc object|
+|aDbOdbc|Array of workareas|
+====== METHODS ======
+|New|Constructor from source code|
+|End|Close workareas and TOdbc object|
+|IsWorkArea|Returns .T. if the given workarea exists|
+|GetTable|Returns the workarea with the specified alias|
+|Append|Appends a blank record|
+|Alias|Retrieves the alias of a given workarea|
+|Bof|If begining of file is encountered|
+|CloseArea|Closes a workarea|
+|Create|Creates a new table|
+|Delete|Deletes the current record|
+|Deleted|If the current record is deleted|
+|Eof|If end of file is encountered|
+|Error|Error handler|
+|FieldInfo|Retrieves field informations|
+|Found|If the last search operation was successful|
+|GetValue|Retrieves a field value|
+|GoBottom|Moves the record pointer to the last record|
+|GoToId|Moves the record pointer to the given record id|
+|GoTop|Moves the record pointer to the first record|
+|Lock|Applies a lock to the current record or file|
+|Open|Open a database|
+|OrdCreate|Creates a new index|
+|OrdInfo|Retrieves index informations|
+|OrdListAdd|Add an index to the index list|
+|OrdListClear|Empties the index list|
+|OrdListFocus|Sets the active index|
+|Pack|Compacts the database|
+|PutValue|Assigns a value to a field|
+|Recall|Restores a deleted record|
+|RecCount|Returns the total number of records|
+|RecNo|Returns the current record number|
+|Seek|Seeks a record|
+|SetFilter|Activates a filter|
+|Skip|Moves the record pointer|
+|StructSize|Returns the size of the database structure|
+|SysName|Returns the database system name|
+|UnLock|Remove the lock from the current record or file|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRDDODBC.PRG

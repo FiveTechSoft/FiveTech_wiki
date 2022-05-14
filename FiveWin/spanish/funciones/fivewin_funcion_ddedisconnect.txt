@@ -1,0 +1,22 @@
+
+====== DDEDisconnect() ======
+
+Terminates a DDE conversation
+
+====== Sintaxis ======
+
+ DDEDisconnect( <hConv> ) --> lSuccess 
+
+====== Parámetros ======
+ <hConv> Handle of the conversation 
+
+====== Devuelve ======
+ <lSuccess> .t. if the operation is successful. 
+
+====== Ejemplo ======
+====== Código fuente ======
+
+ SOURCE\WINAPI\DDEML.C 
+
+
+====== Ver también ======

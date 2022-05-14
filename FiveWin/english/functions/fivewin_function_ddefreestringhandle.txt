@@ -1,0 +1,23 @@
+====== DDEFreeStringHandle() ======
+Frees a string handle in the calling application.
+
+====== Syntax ======
+DDEFreeStringHandle( <hInst>, <hText> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+| <hInst> | Instance identifier |
+| <hText> | Handle of string |
+
+====== Returns ======
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C
+
+====== See also ======
+[[fivewin_function_Ddecreatestringhandle|Ddecreatestringhandle()]],
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

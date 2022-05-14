@@ -1,0 +1,131 @@
+====== TreeEnd() ====== 
+
+
+
+TreeEnd()
+
+
+FiveWin trees function support
+
+
+
+====== Syntax ======
+
+
+
+
+
+ TreeEnd() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ These functions are automatically managed by FiveWin trees creation
+xBase commands. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ IDE\\SOURCE\\Menu.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Trees.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ TreeBegin() TreeEnd() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

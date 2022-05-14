@@ -1,0 +1,550 @@
+====== Class TWBrowse ======
+
+Class TWBrowse Inherits from TControl                                          
+====== DATA ======
+|lRegistered|A CLASSDATA value. See TWindow:lRegistered.|
+|cAlias|The workarea alias where the browse was created By|
+|default|cAlias contains the workarea name where the browse object is|
+|created.|When browsing an array, cAlias contains "ARRAY". When browsing a|
+|tree,|cAlias contains "TREE". If cAlias is nil, then the current selected|
+|row|is not repainted again. ( this is to avoid default Windows repainting|
+|when|a popup is covering the browse -for example, when ending a MDIChild|
+|window|which contains a browse object- ). The method :lCloseArea() closes|
+|the|current area and makes nil :cAlias, thus avoiding the browse to be|
+|repainted|again (when you open the sysmenu of a MdiChild window it causes|
+|a|repaint when being closed, that is why we need to make the :cAlias nil|
+|and|avoid that final repainted that would cause a Clipper error (alias|
+|does|not exist). See IDE\SOURCE\*.prg for some samples about using|
+|:lCloseArea()||
+|cField|SELECT clause expression in SELECT ... FOR ... TO ...|
+|FiveWin|implements a powerful system based on indexes to simulate|
+|subindexes|when working with standard NTX indexes. If you are using Comix|
+|or|SixDriver then you should use those drivers ...SetScope( ... )|
+|functions|as they are faster and more efficient. But if you need to keep|
+|working|with standard NTX files, then the FiveWin scope system will help|
+|you|avoiding a lot of work on your side. Imagine you have a Customer|
+====== DATA ======
+|customers|from 'D' up to 'L'. Clipper does not offer you a way to do it|
+|(except|using Comix or SixDriver), lets see how you may browse only those|
+|customers|with FiveWin: REDEFINE LISTBOX oBrw ; FIELDS Customer\\Last,|
+|Customer\\First|; HEADERS "Last", "First" ; ID ... OF oDlg ; SELECT|
+|Customer\\Last|+ Customer\\First FOR "D" TO "L" Remember that SELECT must|
+|be|based on the active index of the used DataBase. FiveWin does a SEEK of|
+|the|FOR clause expression, and checks on each SKIP that the current|
+|record|matches the SELECT expression specified. If you don't specify the|
+|TO|clause, then FiveWin will keep skipping while the FOR clause is|
+|matched.|i.e.: In the above sample if you only specify the FOR "D",|
+|FiveWin|will skip up to the "E" which follows the "D". Have a look at|
+|SAMPLES\FwBorl2.prg|for a working sample. You may dynamically change the|
+|current|selection set to your browse. See the explanation for :Select()|
+|METHOD|in this section also.|
+|uValue1|FOR clause expression in SELECT ... FOR ... TO ... An|
+|expression|used by the SELECT clause of the browse to perform a SEEK when|
+|doing|a go top in the browse. Important: This expression will be seeked|
+|on|the active index of the Database! The browse will seek for it based on|
+|the|index!|
+|uValue2|TO clause expression in SELECT ... FOR ... TO ... The|
+|expression|used by the SELECT clause of the browse to keep looking for|
+|while|it skips. If it is found, it will mean that it has reached the end|
+|of|the selection. By default, if not specified this clause, the SELECT|
+|clause|ends when the current index associated value has changed. i.e.: If|
+|FOR|clause is 'L', the browse will end when 'M' is reached.|
+|bLine|Retrieves an array of expressions for each column.|
+|FiveWin|actual browse differs from the MsDos version that it does not|
+|manage|column objects (we will soon have a powerful column based one!).|
+|The|bLine DATA is a codeblock that will return an Array. We use that|
+|array|to paint each row of the browse. We adopted this system to obtain|
+|the|highest execution speed, though lately we have been able to get the|
+|same|speed working on column based one (the one we are developing now).|
+|When|you specify the clause: REDEFINE LISTBOX ... ; FIELDS <Expression1,|
+|Expression2,|..., ExpressionN> ; ... We are building automatically|
+|through|the pre-processor the following codeblock: <oBrw>:bLine = { || {|
+|<Expression1>,|<Expression2>, ..., <ExpressionN> } } As you see, we|
+|generate|a CodeBlock that returns an array that holds that list of|
+|expressions.|If you don't supply those expressions, FiveWin will|
+|automatically|generate a :bLine based on the fields of the selected|
+|workarea.|See WBROWSE.prg function _aFields(). You may freely modify the|
+|:bLine|codeblock even during the execution of a browse! i.e.: If you want|
+|to|exchange two columns of the browse, you just need to change the :bLine|
+|to|return a different array: <oBrw>:bLine = { || { <Expression2>,|
+|<Expression1>,|..., <ExpressionN> } } We plan to offer backwards|
+|compatibility|with this current browse, though shortly we will implement|
+|a|column based one.|
+|bSkip|Like Clipper TBrowse:skipBlock. We provide a default|
+|one|The :bSkip DATA keeps a codeblock that is used in the same way as the|
+|standard|MsDos Clipper. When evaluated it will receive a numeric value|
+|indicating|how many rows the browse wants to skip, and it will return in|
+|fact|how many have to be skipped (this happens exactly the same in the|
+|MsDos|Clipper browse): <oBrw>:bSkip = { | <nRowsWanted> | ... <nRowsToDo>|
+|}|By default we supply a standard :bSkip block that calls a very fast C|
+|routine|to skip records as fast as possible! When you want to browse an|
+|array|you need to supply a special bSkip. See SAMPLES\TestArr....prg.|
+|Anyhow,|we supply a METHOD :SetArray() that automatically generate this|
+|complex|:bSkip. Manage the :bSkip DATA as you manage it in your MsDos|
+|applications!||
+|bGoTop|Like Clipper TBrowse:goTopBlock. We provide a default|
+|one|It keeps the codeblock to evaluate when doing a <oBrw>:GoTop(). By|
+|default|it does a ( <oBrw>:cAlias )->( DbGoTop() ), unless you are|
+|managing|a SELECT ... FOR ... TO ... browse clause, if so, it does a SEEK|
+|of|the FOR <expression> specified.|
+|bGoBottom|Like Clipper TBrowse:goBottomBlock. We provide a|
+|default|one_ It keeps the codeblock to evaluate when doing a|
+|<oBrw>:GoBottom().|By default it does a ( <oBrw>:cAlias )->( DbGoBottom()|
+|),|unless you are managing a SELECT ... FOR ... TO ... browse clause, if|
+|so,|it does a SEEK of the TO <expression> specified, or it does a SEEK|
+|for|the next key of the index after the FOR <expression> specified one.|
+|bLogicLen|CodeBlock that retrieves de length of the Data. We|
+|supply|one It keeps a codeblock that returns the total number of records|
+|managed|by the browse. By default it returns the ( <oBrw>:cAlias )->(|
+|RecCount()|), or if you are doing a SELECT ... FOR ... TO ... clause just|
+|the|number of records that matched that SELECTion. Important: The browse|
+|object|uses the numeric value returned by this codeblock to show the|
+|proper|range represented by the vertical scrollbar of the browse. If you|
+|are|managing DELETEd records, then you may cause a variation between the|
+|records|displayed (if SET DELETED is OFF), and the range represented by|
+|the|scrollbar. To avoid this you need to use Comix or SixDrivers, because|
+|they|supply functions to calculate the number of records that matched a|
+|specific|index. If you index by NO DELETED, then those drivers will|
+|report|how many records are NOT deleted, and this will be the value to be|
+|returned|by this codeblock: <oBrw>:bLogicLen = { |||
+|...NumberOfRecordsNotDeleted()|} In Comix the function is called|
+|CmxKeyCount().||
+|bChange|CodeBlock to perform when moving from row to row This|
+|codeblock|is evaluated every time you select a different row on the|
+|browse.|Any browse method that changes the current selected browse row,|
+|will|cause this codeblock to be evaluated. This codeblock gets assigned|
+|on|the clause ON CHANGE ... when declaring the browse in your source|
+|code.||
+|bAdd|The codeblock to execute for adding a new record A|
+|codeblock|to execute when using the :RecAdd() METHOD. The METHOD|
+|:RecAdd()|is called automatically from inside the FiveWin automatic|
+|Browse()|function. See SOURCE\FUNCTION\Browse.prg. By default :bAdd calls|
+|(|<oBrw>:cAlias )->( DbAppend() )|
+|nRowPos|The row which has the focus. The number of the row|
+|that|is currently focused in the browse. nRowPos is in the range 1 up to|
+|::nRowCount()|which is a METHOD that returns the number of visible rows|
+|of|the browse.|
+|nColPos|The left column visible on screen. A numeric value|
+|that|automatically keeps the leftmost visible column of the browse.|
+|FiveWin|columns are simulated and they are not real columns (by now).|
+|Next|release of FiveWin will contain a full featured column based browse,|
+|as|much compatible as possible with the actual one. nColPos indicates the|
+|number|of columns that have already been scrolled to the left.|
+|nLen|The number of elements. By default is Eval(|
+|::bLogicLen|) nLen keeps a numeric value with the total number of logical|
+|rows|(not only the visible ones) manipulated by the browse. By default it|
+|keeps|the value returned by evaluating the ::bLogicLen codeblock of the|
+|browse.||
+|nAt|The array element currently selected when browsing|
+|arrays|FiveWin browses implements in the METHOD :SetArray() a way to|
+|automatically|browse an array. In these occasions, the DATA :nAt holds|
+|the|current selected element of the array See in this section the|
+|explanation|for the :SetArray() METHOD.|
+|nColAt|Actual column selected|
+|nMaxFilter|Maximum number or records to count on indexed filters|
+|lHitTop|Like Clipper TBrowse:hitTop. A logical value|
+|automatically|managed by the browse, that holds if the browse reached BoF|
+|or|the TOP expression if the SELECT ... FOR ... TO ... clause in its|
+|latest|operation. As soon as the browse is moved again, this value will|
+|be|modified to be .f. if no BoF or TOP conditions are matched.|
+|lHitBottom|Like Clipper TBrowse:hitBottom. A logical value|
+|automatically|managed by the browse, that holds if the browse reached EoF|
+|or|the FOR expression if the SELECT ... FOR ... TO ... clause in its|
+|latest|operation. As soon as the browse is moved again, this value will|
+|be|modified to be .f. if no EoF or FOR conditions are matched.|
+|lCaptured|If the mouse is being captured (resizing columns) A|
+|logical|value that stays .t. while the user is resizing a column with the|
+|mouse.|As soon as the user releases the resizing, lCaptured DATA is .f.|
+|again.||
+|lMChange|If it is allowed to resize columns. A logical value|
+|indicating|if the user may automatically resize or not the columns with|
+|the|mouse. By default it is .t.. Turn it into .f. to avoid automatic|
+|resizing:|<oBrw>:lMChange = .f.|
+|lAutoEdit|If .t. then autoedit enabled|
+|lAutoSkip|If .t. then autoedit jumps to the next field or|
+|record||
+|lCellStyle|Cell style navigation mode|
+|aHeaders|Array of cText for the Header of each column. An|
+|array|with all the headers strings to be used to paint each column|
+|header.|If not specified in the clause HEADERS ..., FiveWin uses the name|
+|of|the fields of the :cAlias kept by the browse object. See|
+|SOURCE\CLASSES\WBrowse.prg|function _aFields() for the default|
+|initialization.||
+|aColSizes|Array of nSize for each column. An array of numeric|
+|values|used to calculate the width of each browse displayed column. By|
+|default,|FiveWin uses the width of the letter "B" plus the len of the|
+|expression|being displayed. There is a good trick when building browses|
+|to|automatically calculate the proper width of the browse columns: 1.|
+|Make|your browse without considering the COLSIZES ... values. 2. Specify|
+|the|following ON DBLCLICK clause: REDEFINE LISTBOX oBrw FIELDS ... ; ON|
+|DBLCLICK|AEval( oBrw:aColSizes, { | nSize | MsgInfo( nSize ) } ). 3.|
+|Execute|your browse and resize with the mouse the columns widths to the|
+|desired|well-looking values. 4. Double Click on the browse to see the|
+|currently|selected :aColSizes values. 5. Review again your source code|
+|and|place there the values you obtained! in the COLSIZES ... clause! This|
+|is|the easiest way!|
+|nClrBackHead|Header background color. A numeric value representing|
+|the|RGB color used to display the background color of the headers of the|
+|browse.|By default FiveWin uses the background color of the captions of|
+|the|windows. Manipulate it directly to change its value:|
+|<oBrw>:nClrBackHead|= nRGB( 123, 244, 37 ) // Just a sample!|
+|nClrForeHead|Header foreground color. A numeric value representing|
+|the|RGB color used to display the text color of the headers of the|
+|browse.|By default FiveWin uses the text color of the captions of the|
+|windows.|Manipulate it directly to change its value: <oBrw>:nClrForeHead|
+|=|nRGB( 123, 244, 37 ) // Just a sample!|
+|nClrBackFocus|Focused line background color A numeric value|
+|representing|the RGB color used to display the background color of the|
+|focused|row of the browse. By default FiveWin uses Dark Cyan. Manipulate|
+|it|directly to change its value: <oBrw>:nClrBackFocus = nRGB( 123, 244,|
+|37|) // Just a sample!|
+|nClrForeFocus|Focused line foreground color. A numeric value|
+|representing|the RGB color used to display the text color of the focused|
+|row|of the browse. By default FiveWin uses white. Manipulate it directly|
+|to|change its value: <oBrw>:nClrForeFocus = nRGB( 123, 244, 37 ) // Just|
+|a|sample!|
+|aJustify|An array of logical elements, one per column, for|
+|right|justify An array of logical values indicating which ones must be|
+|right|justified. By default FiveWin makes the numeric values right|
+|justified.|To right justify a value manipulate the :aJustify array|
+|directly:|<oBrw>:aJustify = { .f., .f., .f., .t., .f. }|
+|aActions|An array of codeblocks actions for clicking header An|
+|array|of codeblocks to execute the corresponding when mouse clicking on a|
+|column|header. It is ideal for Seeking a specific expression, for|
+|changing|the active Tag, etc...|
+|oGet|TGet control to use for editing in line|
+|nLineStyle|Browse line style #define LINES_NONE 0, #define|
+|LINES_BLACK|1, #define LINES_GRAY 2, #define LINES_3D 3, #define|
+|LINES_DOTED|4|
+|lIconView|To activate the iconview mode|
+|aIcons|Array of icons to show in iconview mode|
+|bIconDraw|The action to perform when drawing the icons|
+|bIconText|The action to perform when drawing the texts of the|
+|icons||
+|nIconPos|The currently selected icon position|
+|nVScrollPos|The current vertical scrollbar position|
+====== METHODS ======
+|New|Constructor from source code|
+|TWBrowse:New(|nRow, nCol, nWidth, nHeight, bLine, aHeaders, aColSizes,|
+|oWnd,|cField, uVal1, uVal2, bChange, bLDblClick, bRClick, oFont, oCursor,|
+|nClrFore,|nClrBack, cMsg, lUpdate, cAlias, lPixel, bWhen, lDesign,|
+|bValid,|bLClick ) <nRow>, <nCol> The coordinates where to place the|
+|browse.|They are simulated text coordinates unless you specify the PIXEL|
+|clause|to treat them as pixels. <nWidth>, <nHeight> The dimensions in|
+|pixels|of the browse. <bLine> A codeblock that returns an array with the|
+|expressions|to display the contents of the selected row. <aHeaders> An|
+|array|of string expressions with the headers ofeach column. <aColSizes>|
+|An|array of numeric values with the width of each column. <oWnd> The|
+|container|object of the browse. Normally it is the window or the dialog|
+|where|the browse is placed. <cField> The expression for the SELECT|
+|<cField>|FOR ... TO ... clause. It is a string expression. <uVal1> The|
+|expression|for the SELECT ... FOR <uVal1> TO ... clause.It may be of any|
+|type|and it is used to perform a SEEK of it when doing the <oBrw>:GoTop()|
+|<uVal2>|The expression for the SELECT ... FOR ... TO <uVal2> clause.It|
+|may|be of any type and it is used to look or the latest selected value.|
+|By|default FiveWin will look for the nearest value where the index key|
+|changes.|<bChange> A codeblock to evaluate every time a new row in the|
+|browse|is selected. <bLDblClick> A codeblock to evaluate when left double|
+|clicking|with the mouse on the browse. <bRClick> A codeblock to evaluate|
+|when|right clicking with the mouse on the browse. <oFont> The font object|
+|to|use to display the text of the rows. By default it takes the font of|
+|its|container object. <oCursor> An optional cursor object to change the|
+|appearance|of the mouse when the mouse is over the browse. By default the|
+|mouse|will look with the standard arrow. <nClrFore> A numeric value|
+|indicating|the RGB color to use for the text color of the browse.|
+|<nClrBack>|A numeric value indicating the RGB color to use for the|
+|background|color of the browse. <cMsg> An optional message to display on|
+|the|buttonbar -if the defined- of its container object. <lUpdate> A|
+|logical|value indicating that this control must be automatically|
+|:Refresh()|ed when doing a <oDlg>:Update() to its container object.|
+|<cAlias>|The alias where this browse must operate. By default the browse|
+|assumes|the current selected workarea. <lPixel> If the coordinates nRow|
+|and|nCol supplied should be considered as pixels. <bWhen> A codeblock to|
+|evaluate|to enable or disable the control. <lDesign> If the browse should|
+|be|moved around when clicking the mouse over it. By default is .f.. If|
+|you|change it into.t., even at run-time- you will be able to drag around|
+|the|control with the click of the mouse. <bValid> A codeblock to control|
+|if|this control should leave or not the focus. <bLClick> A codeblock to|
+|evaluate|when left clicking the mouse over it. This codeblock will be|
+|evaluated|besides changing the selected browse row.|
+|ReDefine|Constructor from resources|
+|TWBrowse:ReDefine(|nId, bLine, oDlg, aHeaders, aColSizes, cField,|
+|uVal1,uVal2,|bChange, bLDblClick, bRClick, oFont, oCursor, nClrFore,|
+|nClrBack,|cMsg, lUpdate, cAlias, bWhen ) <nId> The numeric ID of the|
+|control|inside the DialogBox. <bLine> A codeblock that returns an array|
+|with|the expressions to display the contents of the selected row. <oDlg>|
+|The|container dialog object of the browse. <aHeaders> An array of string|
+|expressions|with the headers of each column. <aColSizes> An array of|
+|numeric|values with the width of each column. <cField> The expression for|
+|the|SELECT <cField> FOR ... TO ... clause. It is a string expression.|
+|<uVal1>|The expression for the SELECT ... FOR <uVal1> TO ... clause. It|
+|may|be of any type and it is used to perform a SEEK of it when doing the|
+|<oBrw>:GoTop()|<uVal2> The expression for the SELECT ... FOR ... TO|
+|<uVal2>|clause. It may be of any type and it is used to look or the|
+|latest|selected value. By default FiveWin will look for the nearest value|
+|where|the index key changes. <bChange> A codeblock to evaluate every time|
+|a|new row in the browse is selected. <bLDblClick> A codeblock to evaluate|
+|when|left double clicking with the mouse on the browse. <bRClick> A|
+|codeblock|to evaluate when right clicking with the mouse on the browse.|
+|<oFont>|The font object to use to display the text of the rows. By|
+|default|it takes the font of its container object. <oCursor> An optional|
+|cursor|object to change the appearance of the mouse when the mouse is|
+|over|the browse. By default the mouse will look with the standard arrow.|
+|<nClrFore>|A numeric value indicating the RGB color to use for the text|
+|color|of the browse. <nClrBack> A numeric value indicating the RGB color|
+|to|use for the background color of the browse. <cMsg> An optional message|
+|to|display on the buttonbar -if the defined- of its container object.|
+|<lUpdate>|A logical value indicating that this control must be|
+|automatically|:Refresh() ed when doing a <oDlg>:Update() to its container|
+|object.|<cAlias> The alias where this browse must operate. By default the|
+|browse|assumes the current selected workarea. <bWhen> A codeblock to|
+|evaluate|to enable or disable the control. <bValid> A codeblock to|
+|control|if this control should leave or not the focus. <bLClick> A|
+|codeblock|to evaluate when left clicking the mouse over it. This|
+|codeblock|will be evaluated besides changing the selected browse row|
+|SetArray|Automatically sets an array to be browsed|
+|TWBrowse:SetArray(|<aArray> ) <aArray> An array to be browsed. If you|
+|want|to browse a multidimensional array you could use this METHOD to set|
+|the|GoTop, Skip and GoBottom codeblocks properly and later change the|
+|:bLine|of the browse to display some specific values. i.e.: local aArray|
+|:=|{ { 1, 2, 3 }, { 4, 5, 6 }, ... } oBrw:SetArray( aArray ) oBrw:bLine =|
+|{||| aArray[ oBrw:nAt ][ 2 ] } You will see: 2, 5. Important: This METHOD|
+|sets|the DATA :cAlias of the browse to "ARRAY" to internally know that it|
+|is|browsing an array.|
+|SetTree|Automatically sets a tree to be browsed|
+|TWBrowse:SetTree(|<oTree> ) <oTree> A reference to a FiveWin TLinkList|
+|object|( a tree ) built with the TREE ... ENDTREE clauses, or with the|
+|proper|classes calls. Important: This METHOD sets the DATA :cAlias of the|
+|browse|to "TREE" to internally know that it is browsing an array. See|
+|IDE\SOURCE\Menus.prg|for a working sample.|
+|Set3DStyle|To change the look of browses to the old Fivewin 3D|
+|style||
+|SetDefStyle|To change to the default new Fivewin look style if|
+|changed|via the Set3DStyle() method|
+|lCloseArea|Closes the associated area of the browse|
+|TWBrowse:lCloseArea()|\\--> nil This method closes the workarea specified|
+|in|the DATA :cAlias of the browse and empty the DATA :cAlias of the|
+|browse.|It returns .t. if the operation was successful. You should use|
+|this|METHOD when validating a MdiChild window that keeps a browse as its|
+|:oControl|main control reviewed, to avoid drawing problems when the|
+|sysmenu|of the MdiChild is being closed after selecting ending the|
+|MdiChild|window. (Windows issues a WM_PAINT after closing the sysmenu,|
+|but|if the alias has already been closed before you will get an error|
+|because|the browse will not find the :cAlias anymore. This method mainly|
+|avoids|these problems). See IDE\SOURCE\*.prg for working samples.|
+|LDblClick|Left double click events management|
+|TWBrowse::LDblClick(|<nRow>, <nCol>, <nKeyFlags> ) This METHOD is|
+|automatically|called by FiveWin when the user left double click the mouse|
+|over|the browse. The :bLDblClick codeblock will be evaluated, if defined,|
+|and|<nRow>, <nCol> and <nKeyFlags> will be automatically supplied to the|
+|codeblocks|are parameters: <nRow>, <nCol> The coordinates where the mouse|
+|was|double clicked. <nKeyFlags> Some flags indicating the status of the|
+|keyboard.See|TWindow METHOD LDblClick for an explanation of these values.|
+|Default|Default initialization|
+|TWBrowse::Default()|\\--> nil This METHOD is automatically called by|
+|FiveWin|when the browse objectis being created. It sets some browse|
+|specific|values.|
+|VertLine|Vertical resizing of the columns|
+|TWBrowse::VertLine(|nColPos, nColInit ) This METHOD is automatically|
+|invoked|when the user resizes a column with the mouse.|
+|BugUp|Corrects the painting when very few records are|
+|browsed||
+|TWBrowse::BugUp()|\\--> nil This METHOD has the same functionality (it is|
+|the|same but with a different name) as the :UpStable METHOD. See|
+|:UpStable()|explanation in this section.|
+|lEditCol|Edits a cell of the browse in modal mode|
+|TWBrowse::lEditCol(|nCol, uVar, cPicture, bValid, nClrFore, nClrBack )|
+|This|METHOD lets make a cell editing of any cell of the browse, at the|
+|currently|selected row. It automatically creates a DialogBox with no|
+|border|or caption, and that keeps one GET and one "OK" button. Only the|
+|GET|will be visible and will fit exactly at the surface of the cell.|
+|<nCol>|The column to be edited. <uVar> The initial variable value to be|
+|edited.|You should provide the same value that it is being displayed at|
+|the|browse. Important: It has to supplied by reference: @<uValue>|
+|<cPicture>|The PICTURE clause to be used at the GET. <bValid> The VALID|
+|clause|to be used at the GET, supplied as a CodeBlock. <nClrFore> A|
+|numeric|value indicating the RGB text color for the GET. <nClrBack> A|
+|numeric|value indicating the RGB background color for the GET.|
+|EditCol|Edits a cell of the browse in non modal mode|
+|TWBrowse::lEditCol(|nCol, uVar, cPicture, bSave, nClrFore, nClrBack )|
+|This|METHOD lets make a cell editing of any cell of the browse, at the|
+|currently|selected row. <nCol> column to be edited. <uVar> The initial|
+|variable|value to be edited. You should provide the same value that it is|
+|being|displayed at the browse. <cPicture> The PICTURE clause to be used|
+|at|the GET. <bSave> The post-process codeblock. This codeblock is the|
+|responsable|of saving the new value, since this method is no-modal. The|
+|codeblock|receives two parameters the current get value and the last key|
+|processed|For example: oBrw:EditCol(1, xVar, "@K !!!!!!!!!!" , {|v,k||
+|xVar|:= v }) <nClrFore> A numeric value indicating the RGB text color for|
+|the|GET. <nClrBack> A numeric value indicating the RGB background color|
+|for|the GET.|
+|GetDlgCode|Returns the GetDlgCode associated|
+|TWBrowse:GetDlgCode(|<nLastKey> ) \\nil This METHOD is automatically|
+|called|by Windows to know the type of behavior that the browse will have|
+|respected|the DialogBox. See TWindow Class for a full explanation of this|
+|METHOD||
+|GoUp|Goes up one line. TWBrowse:GoUp() \\nil Makes the|
+|browse|go up one row.|
+|GoDown|Goes down one line. TWBrowse:GoDown() \\nil Makes the|
+|browse|go down one row.|
+|GoLeft|Goes left one column. TWBrowse:GoLeft() \\nil Makes|
+|the|browse scroll one column to the right.|
+|GoRight|Goes right one column. TWBrowse:GoRight() \\nil Makes|
+|the|browse scroll one column to the left.|
+|GoTop|Goes to the first element browsed. TWBrowse:GoTop()|
+|\\nil|Makes the browse go to the first row.|
+|GoBottom|Goes to the last element browsed. TWBrowse:GoBottom()|
+|\\nil|Makes the browse go to the last row.|
+|HandleEvent|Specific browses HandleEvent METHOD.|
+|TWBrowse:HandleEvent(|nMsg, nWParam, nLParam ) Specific HandleEvent()|
+|METHOD|of the browse. Called automatically from FiveWin. See Class|
+|TWindow|METHOD HandleEvent() for a full explanation.|
+|HScroll|Horizontal scrollbars events manager|
+|TWBrowse:HScroll(|nWParam, nLParam ) This METHOD is automatically called|
+|by|FiveWin when the horizontal scrollbar is managed by the user.|
+|Initiate|Initialization process|
+|TWBrowse:Init(|<hDlg> ) This METHOD is automatically called by FiveWin|
+|during|a DialogBox initialization to properly initialize the control. See|
+|Class|TControl METHOD Initiate() for a full explanation.|
+|PageUp|Goes up one page|
+|TWBrowse:PageUp(|<nLines> ) Makes the browse do a page up. <nLines> The|
+|number|of rows to skip when doing the page up. By default it is the value|
+|returned|by :nRowCount() METHOD.|
+|PageDown|Goes down one page|
+|TWBrowse:PageDown(|<nLines> ) Makes the browse do a page down. <nLines>|
+|The|number of rows to skip when doing the page up. By default it is the|
+|value|returned by :nRowCount() METHOD.|
+|KeyDown|Method to handle WM_KEYDOWN events.|
+|TWBrowse:KeyDown(|<nKey>, <nFlags> ) This METHOD is automatically called|
+|by|FiveWin when the user pressa key. See Class TWindow METHOD KeyDown()|
+|for|a full explanation.|
+|KeyChar|Method to handle WM_CHAR events.|
+|TWBrowse:KeyChar(|<nKey>, <nFlags> ) This METHOD is automatically called|
+|by|FiveWin when the user has pressed a button and this generate a key to|
+|be|processed. See Class TWindow METHOD KeyChar() for a full explanation.|
+|LButtonDown|Left mouse click events manager|
+|TWBrowse:LButtonDown(|<nRow>, <nCol>, <nKeyFlags> ) This METHOD is|
+|automatically|called by FiveWin when the user left click the mouse over|
+|the|browse. See Class TWindow METHOD LButtonDown() for a full explanation.|
+|LButtonUp|Left mouse releasing events manager|
+|TWBrowse:LButtonUp(|<nRow>, <nCol>, <nKeyFlags> ) This METHOD is|
+|automatically|called by FiveWin when the user left releases the mouse|
+|over|the browse. See Class TWindow METHOD LButtonUp() for a full|
+|explanation.||
+|MouseMove|Mouse Movements events manager|
+|TWBrowse:MouseMove(|<nRow>, <nCol>, <nKeyFlags> ) This METHOD is|
+|automatically|called by FiveWin when the user moves the mouse over the|
+|browse.|See Class TWindow METHOD MouseMove() for a full explanation.|
+|Paint|Painting method|
+|TWBrowse:Paint()|\\nil This METHOD is automatically called by FiveWin to|
+|display|the surfaceof the browse. Don't call it directly. Do a|
+|<oBrowse>:Refresh()|to force a repainted of the control.|
+|VScroll|Vertical scrollbar events manager|
+|TWBrowse:VScroll(|<nWParam>, <nLParam> ) This METHOD is automatically|
+|called|by FiveWin when the user manages the vertical scrollbar of the|
+|browse.||
+|Skip|Moves the cursor up or down.|
+|TWBrowse:Skip(|<nRows> ) Makes the browse to skip <nRows> rows. It will|
+|evaluate|the :bSkip codeblock.|
+|DrawLine|Redraws a specific row without input focus look|
+|TWBrowse:DrawLine(|<nRow> ) Paints the <nRow> row specified.|
+|DrawSelect|Redraws cursor row with input focus look|
+|TWBrowse:DrawSelect()|\\nil Paints the current selected row of the browse|
+|RecAdd|Adds a new record evaluating the bRecAdd codeblock|
+|TWBrowse:RecAdd()|\\nil Evaluates the :bAdd codeblock if defined. By|
+|default|it will add a record to the <oBrowse>:cAlias.|
+|SetFilter|Changes the currently values assigned for indexed|
+|filters||
+|TWBrowse::SetFilter(|<cField>, <uVal1>, <uVal2> ) Changes dynamically the|
+|SELECT|... FOR ... TO ... clause used by the browse. <cField> The|
+|expression|for the SELECT <cField> FOR ... TO ... clause.It is a string|
+|expression!!!|Because we build a 'macro' from it !!! i.e.: Use|
+|"MyArea->Name"|instead of MyArea->Name. <uVal1> The expression for the|
+|SELECT|... FOR <uVal1> TO ... clause.It may be of any type and it is used|
+|to|perform a SEEK of it when doing the <oBrw>:GoTop() <uVal2> The|
+|expression|for the SELECT ... FOR ... TO <uVal2> clause. It may be of any|
+|type|and is used to look for the latest selected value. By default|
+|FiveWin|will look for the nearest value where the index key changes.|
+|GotFocus|Got focus processes|
+|TWBrowse:GotFocus()|\\nil This METHOD is automatically called by FiveWin|
+|when|the browse receives the focus. See Class TWindow METHOD GotFocus()|
+|for|a full explanation.|
+|UpStable|Forces to stabilize properly when a very records are|
+|browsed||
+|TWBrowse:UpStable()|\\nil This METHOD properly stabilizes the browse when|
+|a|SEEK is done and the result may be located in the group of records|
+|displayed|in the same visible screen. Clipper browses have a bug when|
+|performing|a SEEK backwards if the new record is placed in the same|
+|screen|of the browse. FiveWin browse mimics the MsDos browse behaviors|
+|and|cause that and also has the same bug, but this METHOD solves that|
+|problem,|and will place the browse selected row properly. You should call|
+|this|METHOD after doing a SEEK that may be located backwards in the same|
+|visible|screen of the browse. solves|
+|nRowCount|Returns the number of visible rows on the browse|
+|TWBrowse:nRowCount()|\\nil Returns the number of rows visible at the|
+|screen.|The number of rows depends on the height of the browse control|
+|and|on the font height being used by the browse.|
+|GetColSizes|Returns an array with all the sizes of the columns|
+|TWBrowse:GetColSizes()|\\nil This METHOD returns an array of the numeric|
+|widths|for each column. It checks if the :aColSize is a CodeBlock or an|
+|array|and evaluates it or just return its value accordingly. You may|
+|dynamically|change the column width for each row. This technique is used|
+|to|browse the FiveWin trees.|
+|LostFocus|Losing focus processes|
+|TWBrowse::LostFocus()|\\nil This METHOD is automatically called by|
+|FiveWin|when the browse control loses the focus.|
+|nAtCol|Returns the column placed at a specific pixel position|
+|TWBrowse:nAtCol(|<nPixelCol> ) \\<nCol> This METHOD returns the column|
+|where|certain pixel position corresponds. When the mouse is being clicked|
+|on|a browse, the <nCol> parameter of the mouse event specifies the pixel|
+|coordinate|of the click. Using this METHOD you may know what browse|
+|column|corresponds to that position. <oBrw>:bLDblClick = { | nRow, nCol,|
+|nKeyFlags|| ; MsgInfo( "Clicked at column:" + Str( oBrw:nAtCol( nCol ) )|
+|)|} This will let you easily make a :lEditCol() call to edit that|
+|specific|cell. See SOURCE\FUNCTION\Browse.prg for a working sample of how|
+|to|automaticallyedit a cell when the user double clicks on a column|
+|(using|this METHOD).|
+|nAtIcon|Returns the icon index at the given row and column|
+|position||
+|Report|Automatically generates a Report from the browse|
+|TWBrowse::Report(|<cTitle>, <lRepaint> ) \\nil This METHOD will generate|
+|a|full featured report, even with preview!, based on the actual|
+|information|showed by the browse. This METHOD could save you hours and|
+|hours|of work, because you will automatically have all your reports from|
+|your|application tables done in few minutes! <cTitle> The title for the|
+|report.|By default it uses the caption of the DialogBox that contains the|
+|browse|control. <lPreView> A logical value indicating if a preview should|
+|be|done. It is .t. by default. This METHOD is extremely useful. Use it to|
+|reduce|dramatically your development time! See SOURCE\FUNCTION\Browse.prg|
+|for|a working sample. It is the FiveWin default Browse() function!|
+|IsColVisible|Retrieves if a specific column is visible|
+|SetCols|Replaces the browse columns|
+|TWBrowse:SetCols(aData,|aHeaders, aColSizes ) \\nil aData is an array of|
+|codeblocks|for the columns data aHeaders is an array of string for the|
+|column|headers aColSizes is an array with all the column sizes|
+|ShowSizes|Displays a MsgInfo box with the current sizes of all|
+|the|columns|
+|Display|Displays the control|
+|DrawIcons|Draws the icons in iconview mode|
+|Edit|Edits the given columns|
+|DrawIcon|Draws the icon with the given index|
+|MouseWheel|Mouse wheel event handler|
+|RecCount|Returns the total number of records in scope|
+|Resize|Resize event handler|
+|VSetPos|Sets the vertical scrollbar position|
+|VThumbPos|Sets the vertical scrollbar thumb position|
+|VGetPos|Returns the current vertical scrollbar position|
+|VSetRange|Sets the vertical scrollbar minimum and maximum|
+|positions||
+|VGetMax|Returns the maximum position of the vertical scrollbar|
+|VGoDown|Moves the vertical scrollbar down|
+|VGoUp|Moves the vertical scrollbar up|
+|VGetThumbPos|Returns the current vertical scrollbar thumb position|
+|VGoBottom|Moves the vertical scrollbar to the maximum position|
+|VGoTop|Moves the vertical scrollbar to the minimum position|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TWBROWSE.PRG

@@ -1,0 +1,25 @@
+====== AbortDoc() ======
+
+Detiene un trabajo de impresión
+
+====== Syntaxis ====== 
+
+ AbortDoc(<hDC> ) --> nSuccess 
+
+====== Parametros ====== 
+
+| <hDC>| Dispositivo del trabajo de impresión.|
+
+
+====== Devuelve ====== 
+
+| <nSuccess>| Valor retornado, mayor que 0, si la función es exitosa.|
+
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ====== 
+
+ SOURCE\WINAPI\PRINTDC.C 

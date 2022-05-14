@@ -1,0 +1,27 @@
+
+====== ModifyMenu() ====== 
+ModifyMenu()
+
+Change a menuitem
+====== Sintaxis ======
+ ModifyMenu( <hMenu>, <nIdItem>, <nFlags>, <nIdNewItem>, <cnNewItem> ) --> lSuccess 
+====== Parámetros ======
+  <hMenu>       Handle of the menu that is owner of the menuitem 
+  <nIdItem>     It indicates the menuitem to change. Depending of if in the one parameter
+                nFlags is MF_BYCOMMAND 0 or MF_BYPOSITION 1024 nIdItem will be the identifier
+                of the menuitem or the position of the menuitem inside the menu proprietor
+                counting from zero. 
+  <nFlags>      It indicates as interpreting the parameter nIdItem. 
+  <nIdNewItem>  New order identifier for the menuitem. If in nFlags appears MF_POPUP 16 in
+                this parameter it should to be indicated the handle of a submen. 
+  <cnNewItem>   If nFlags is MF_STRING 0 here there will be a text string If nFlags is
+                 MF_BITMAP 4 here there will be a bitmap handle. If nFlags is MF_OWNERDRAW 256
+                this element will be included in the structures DRAITEMSTRUCT and
+                MEASUREITEMSTRUCT that they spend from the window to the menu so that she
+                paints those menuitems. 
+====== Devuelve ======
+ <lSuccess> Return .t. if the function is success. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

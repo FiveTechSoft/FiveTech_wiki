@@ -1,0 +1,21 @@
+
+====== nIcons() ====== 
+nIcons()
+
+Returns the number of icons
+====== Sintaxis ======
+ nIcons( <cFileName> ) --> nIcons 
+====== Parámetros ======
+ <cFileName> The name of a file that may contains some icons (EXE, DLL,ICO, etc...) 
+====== Devuelve ======
+ <nIcons> The number of icons contained inside that file 
+
+Observations:
+
+ These icons may be extracted with ExtractIcon() 
+====== Ejemplo ======
+ IDE\SOURCE\Icons.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Icons.c 
+====== Ver también ======
+ ExtractIcon() LoadIcon() DrawIcon()

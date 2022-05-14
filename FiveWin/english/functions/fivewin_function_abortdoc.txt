@@ -1,0 +1,22 @@
+
+====== AbortDoc() ======
+
+Stop a print job 
+
+====== Syntax: ======
+
+AbortDoc(<hDC> ) --> nSuccess  
+
+====== Parameters: ======
+^Parameter ^ Description                    ^
+| <hDC> | Device context for the print job. |
+
+====== Returns: ======
+^Return ^ Description                    ^
+| <nSuccess> | Return value is greater than zero if the function is successful. |
+
+====== Sample: ======
+
+====== Source Code: ======
+
+SOURCE\WINAPI\PRINTDC.C  

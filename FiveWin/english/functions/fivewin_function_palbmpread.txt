@@ -1,0 +1,62 @@
+====== PalBmpRead() ====== 
+
+
+
+PalBmpRead()
+
+
+
+It loads a bitmap and its palette from file .BMP.
+
+====== Syntax ======
+
+
+ PalBmpRead( <hDC>, <cBmpFile> ) --> aBmpPal 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hDC> Handle of device context for the bitmap 
+
+
+ <cBmpFile> Name or identifier of the bitmap in the BMP file 
+
+
+ 
+
+====== Returns ======
+
+ 
+
+
+ <aBmpPal> An array containing hBitmap and hPalette handles of the
+bitmap. 
+
+
+ 
+
+====== Example ======
+
+
+ SOURCE\CLASSES\BITMAP.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+
+====== See also ======
+

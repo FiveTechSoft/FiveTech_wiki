@@ -1,0 +1,86 @@
+SetTimePick()
+
+
+SetTimePick()
+ Previous  Top  Next
+
+Sets the time of the TimePicker control.
+
+====== Syntax ======
+
+ 
+
+
+ SetTimePick( <hWnd>, <nYear>, <nMonth>, <nDay>, <nHour>, <nMinute>,
+<nSecond>, <nEmpty> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The window handle of the TimePicker control. 
+
+
+ 
+
+
+ <nYear>, <nMonth>, <nDay> The new date to set. 
+
+
+ 
+
+
+ <nHour>, <nMinute>, <nSecond> The new time to set. 
+
+
+ 
+
+
+ <nEmpty> Allows empty times (1 for empty date allowed, or 0 otherwise). 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\timepick.c 
+
+
+ 
+
+
+
+
+====== See also ======
+

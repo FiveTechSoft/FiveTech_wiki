@@ -1,0 +1,119 @@
+====== ORead() ====== 
+
+
+
+ORead()
+
+
+
+
+
+
+To build an object starting from a text string
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ORead( <cInfo> ) --> oObject 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cInfo> Information coded in a text string of an object. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oObject> Created object 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The text string begins with two characters that they indicate the
+longitude of the name of the class that will generate the object. This
+longitude calculates it with the function Bin2I (). By means of
+compilation for macros a reference is generated to the object and
+invoking to the New() method one is believed instance of the same one.
+Followed act is loaded those properties using the method Load(). 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function is used mostly in the process of saved of the windows and
+dialog boxes in the IDE of FiveWin. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

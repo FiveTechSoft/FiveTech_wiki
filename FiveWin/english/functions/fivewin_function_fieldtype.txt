@@ -1,0 +1,14 @@
+====== FieldType() ======
+This function returns the field/data type of a field in DBF
+====== Syntax: ======
+FieldType(< n > ) --> cType  
+====== Parameters: ======
+^Parameter^Description^
+| <n> |Position of the field in the .DBF of which we want to know the data type.|
+
+====== Returns: ======
+^Returns^Description^
+| <cType> | Data type of the field in uppercase " C " or " M "  |
+ 
+====== Source code: ======
+SOURCE\FUNCTION\DB10.PRG

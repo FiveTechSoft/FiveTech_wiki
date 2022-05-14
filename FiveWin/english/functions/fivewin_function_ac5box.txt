@@ -1,0 +1,17 @@
+
+====== aC5Box() ======
+To calculate the coordinates of the edition cell in a Browse 
+====== Syntax ======
+ aC5Box(<hDC>, <aRect>) --> nil
+
+====== Parameters ======
+^ Parameter ^ Description             ^
+|<hDC>| Handle of the object|  
+|<aRect>| Array coordinates nTop, nLeft, nBottom, nRight, how nTop:= aRect[1].....|  
+
+====== Returns ======
+^ Return ^ Description             ^
+| <nil> | nil | 
+
+====== Source code ======
+ SOURCE\FUNCTION\C5lib.prg

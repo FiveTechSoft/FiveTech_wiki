@@ -1,0 +1,127 @@
+====== Printer ======
+** Using the Printer **
+<code clipper>
+ PRINT | PRINTER [ <oPrint> ] ;  
+ [ TITLE | NAME | DOC <cDocument> ] ;  
+ [ FROM USER ] ;  
+ [ PREVIEW [ MODAL ] ];  
+ [ TO <xModel> ]  
+</code>
+ 
+
+====== Parameters ======
+| <oPrint> | A reference to the Printer Object. |
+| <cDocument> | The name of the document to be generated. It is the name that appears at the Spooler. |
+| <nRow>, <Ncol> | The starting coordinates of the print measured in printer resolution units. | 
+
+Different printers will generate different looking reports. In order to avoid this (you want the same looking printout with different printers!) you need first to calculate the resolution of the printer, and then, divide those dimensions by the number of rows and columns that you want:    
+
+See SAMPLES\TestPrn2.prg    
+
+| <cText> | The value to print. It may be of any type. FiveWin will automatically convert it into a string expression. |
+| <oFont> | A font object to use when printing the <cText> value. See the FONT xBase commands to properly build a font. It is an optional parameter.|
+
+Important: If you want a specific dimension for that font independently from the printer used, you must specify the OF ... clause when creating the font, and after the printer object has been created:  
+
+<code clipper>
+ local oPrn, oFont  
+
+ PRINT oPrn  
+
+    DEFINE FONT oFont NAME "Arial" SIZE 0, -8 OF oPrn  
+
+    PAGE  
+
+       ...  
+
+    ENDPAGE  
+
+ ENDPRINT  
+
+ oFont:End()  
+</code>
+ 
+Important: You have to :End() the font object once you have finished and completed your printout work.  
+
+| <nWidth> | A specific printer units width to use when printing the <cText> value. It is an optional parameter. |
+| <nClrText> | An optional color to use when printing the <cText> value. It is an optional parameter. |
+
+====== Clauses ======
+
+| PAGE | Starts a new page | 
+| ENDPAGE | Ends the current printed page | 
+| ENDPRINT | Ends printing | 
+| FROM USER | Lets the user interactively select the printer to use. If you don't specify this clause, FiveWin will use the default printer installed in your system. |
+| PREVIEW | Invokes the FiveWin preview system, which lets the user interactively preview the printout before sending it to the printer. | 
+| MODAL | Stop the flow of the program until the preview window is closed | 
+
+====== Sample Code ======
+\Fwh\Samples\TstPrn2.Prg
+<code clipper>
+// Sample showing how to manage the printer object
+
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   local oPrn, oFont
+   local nRowStep, nColStep
+   local nRow := 0, nCol := 0, n, m
+
+   // PrnSetSize( 2100, 1200 )     To adjust a different printer paper size!
+
+   PRINT oPrn NAME "Testing the printer object from FiveWin" PREVIEW
+
+      if Empty( oPrn:hDC )
+         return nil          // Printer was not installed or ready
+      endif
+
+      DEFINE FONT oFont NAME "Ms Sans Serif" SIZE 0, -12 OF oPrn
+
+      nRowStep = oPrn:nVertRes() / 20   // We want 20 rows
+      nColStep = oPrn:nHorzRes() / 15   // We want 15 cols
+
+      PAGE
+         oPrn:SayBitmap( 1, 1, "..\bitmaps\fivewin.bmp" )
+         for n = 1 to 20  // rows
+             nCol = 0
+             oPrn:Say( nRow, nCol, Str( n, 2 ), oFont )
+             nCol += nColStep
+             for m = 1 to 15
+                oPrn:Say( nRow, nCol, "+", oFont )
+                nCol += nColStep
+             next
+             nRow += nRowStep
+         next
+         oPrn:Line( 0, 0, nRow, nCol )
+      ENDPAGE
+
+      PAGE
+         nRow = 0
+         oPrn:SayBitmap( 1, 1, "..\bitmaps\fivewin.bmp" )
+         for n = 1 to 20  // rows
+             nCol = 0
+             oPrn:Say( nRow, nCol, Str( n + 20, 2 ), oFont )
+             nCol += nColStep
+             for m = 1 to 15
+                oPrn:Say( nRow, nCol, "+", oFont )
+                nCol += nColStep
+             next
+             nRow += nRowStep
+         next
+         oPrn:Line( 0, 0, nRow, nCol )
+      ENDPAGE
+
+   ENDPRINT
+
+   oFont:End()      // Destroy the font object
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:print.jpg|:print.jpg}}
+====== See also ======
+[[fivewin_class_tprinter|Class TPrinter]], [[fivewin_class_treport|Class TReport]]

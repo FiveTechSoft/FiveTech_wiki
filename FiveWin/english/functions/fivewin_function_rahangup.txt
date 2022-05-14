@@ -1,0 +1,99 @@
+RaHangUp()
+
+
+
+RaHangUp()
+
+ Previous  Top  Next
+
+
+
+
+Terminate a RAS conection
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RaHangUp( <hRas> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hRas> Handle of the RAS conection 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> Return true if the function is success 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TRAS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

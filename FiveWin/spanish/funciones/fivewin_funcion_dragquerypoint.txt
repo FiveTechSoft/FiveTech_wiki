@@ -1,0 +1,16 @@
+
+====== DragQueryPoint() ======
+DragQueryPoint()
+
+Retrieves the coordinates of the cursor when a file is dropped
+====== Sintaxis ======
+ DragQueryPoint( <hDrop>, <aPoint> ) --> lInClient 
+====== Parámetros ======
+ <hDrop> Handler of the drag and drop proccess 
+
+ <aPoint> Array to get the point where the files are dropped 
+====== Devuelve ======
+ <lInClient> .t. if the file is dropped in the client area of the window 
+====== Código fuente ======
+ SOURCE\WINAPI\DROPFILE.C 
+====== Ver también ======

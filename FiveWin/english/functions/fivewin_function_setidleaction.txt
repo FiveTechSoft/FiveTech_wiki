@@ -1,0 +1,132 @@
+SetIdleAction()
+
+
+
+SetIdleAction()
+
+ Previous  Top  Next
+
+
+
+
+Set/removes the FiveWin background process
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetIdleAction( [<bIdleAction>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <bIdleAction> Is the codeblock to execute during idle periods. If no
+codeblock is provided, SetIdleAction() resets the current bIdleAction, so
+it stops the previous defined idle codeblock. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ It is very important that you don't process large routines here or you
+will freeze the whole system. Processes may be really, really fast !!! 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Don't confuse idle periods with timers. Idle periods are those during
+there are no pending messages to process. As soon as the application
+starts processing messages, all idle actions get stopped. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ See TestIdle.prg _ 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ Not available. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

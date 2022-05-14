@@ -1,0 +1,26 @@
+====== nXOr() ====== 
+Or excluyente a partir de una serie de valores numéricos
+
+====== Sintaxis ======
+ nXOr( <nOp1>,... ) --> nValor 
+
+====== Parámetros ======
+|<nOp1>, ...| Lista de parámetros| 
+
+====== Devuelve ======
+|nValor|valor numérico resolviendo la operación Xor de acuerdo a la siguiente tabla|
+ 
+^Valor del Bit en Op1^Valor del Bit en Op2^lXOr( Op1,Op2 )^   
+|.F.|.F.|.F.|   
+|.T.|.F.|.T.|   
+|.F.|.T.|.T.|   
+|.T.|.T.|.F.|   
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\OR.C 
+
+====== Ver también ======
+
+[[fivewin_funcion_lxor|lXor()]] [[fivewin_funcion_nand|nAnd()]] [[fivewin_funcion_land|lAnd()]] [[fivewin_funcion_nor|nOr()]] 

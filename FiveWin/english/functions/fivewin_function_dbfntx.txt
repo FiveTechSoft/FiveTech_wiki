@@ -1,0 +1,14 @@
+====== DbfNtx() ======
+Just to avoid removing extern DBFNTX
+
+====== Syntax ======
+DbfNtx() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nil 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

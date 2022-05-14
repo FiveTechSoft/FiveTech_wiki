@@ -1,0 +1,122 @@
+GetDrawItem()
+
+
+
+GetDrawItem()
+
+ Previous  Top  Next
+
+
+
+
+To obtain identifier of a Item
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetDrawItem( <pDrawItemStruct> ) --> nMenuItemID 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Specifies the menu-item identifier for a menu or the index of the item
+in a list box or combo box. For an empty list box or combo box, this
+identifier is a negative value. This allows the application to draw only
+the focus rectangle at the coordinates specified even though there are no
+items in the control. This indicates to the user whether the list box or
+combo box has input focus. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <pDrawItemStruct> DRAWITENSTRUCT structure 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Menu-item identifier, index of the item in a list box or combo box. -1
+if the list is empty. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+Observation
+
+
+
+
+
+ The DRAWITEMSTRUCT structure provides information the owner needs to
+determine how to paint an owner-drawn control. The owner of the
+owner-drawn control receives a pointer to this structure as the lParam
+parameter of the WM_DRAWITEM message. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+   Not provided.
+
+
+====== Ver también ======
+

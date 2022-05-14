@@ -1,0 +1,17 @@
+====== GetBkColor() ====== 
+Retrieves the current background color.
+
+====== Syntax ======
+GetBkColor( <hDC> ) --> nBgClr 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context |
+
+====== Returns ======
+Return the RGB color if the function is successful 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\COLOR.C 

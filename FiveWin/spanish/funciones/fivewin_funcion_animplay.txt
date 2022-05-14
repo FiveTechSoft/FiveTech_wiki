@@ -1,0 +1,27 @@
+====== AnimPlay() ======
+
+Reproduce un clip AVI en un control. El control reproduce el clip en el fondo mientras sigue el hilo de ejecución.
+
+====== Sintaxis ======
+
+AnimPlay( <hWnd>, <nFrom>, <nTo>, <nRepeat> ) --> lSuccess
+
+====== Parámetros ======
+
+| <hWnd> | Handle del control de animación.  |  
+| <nFrom> | Indice del cuadro (Zero-based) donde comienza la reproducción. El valor debe ser menor a 65536. Un valor de cero (0) significa que comienza a reproducirse con el primer cuadro del clip.  |
+| <nTo> | Indice del cuadro (Zero-based) donde termina la reproducción. El valor debe ser menor a 65536. Un valor de -1 significa que termina con el último cuadro del clip.  |
+| <nRepeat> | Número de veces que se repite el clip. Un valor de -1 significa que el clip se repite indefinidamente.  | 
+
+====== Devuelve ======
+
+| <lSuccess> | Retorna .T. si el resultado fue exitoso  |
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\ANIMATE.C 
+

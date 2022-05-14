@@ -1,0 +1,16 @@
+====== IsColorPrinter() ====== 
+Checks if the actual printer is a color-printer
+
+====== Syntax ======
+
+ IsColorPrinter() --> .T. or .F. 
+
+====== Parameters ======
+
+ None 
+
+====== Returns ======
+ .T. if the actual printer is a color-printer 
+
+====== Source Code ======
+ SOURCE\WINAPI\PRINTDC.C 

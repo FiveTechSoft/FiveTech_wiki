@@ -1,0 +1,18 @@
+
+====== GetDesktopWindow() ======
+GetDesktopWindow()
+Retrieves the handle of the desktop window
+====== Sintaxis ======
+ GetDesktopWindow() --> hWndDesktop 
+ This funtion retrieves the handle of the desktop window. 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <hWndDesktop> The handle of the desktiop window. 
+Observations:
+ The desktop window it is also a window, created by windows and you may
+manipulate it and control it in some aspects. 
+====== Código fuente ======
+ SOURCE\WINAPI\Desktop.c 
+====== Ver también ======
+ SetDeskWallPaper() 

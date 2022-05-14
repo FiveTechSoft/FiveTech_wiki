@@ -1,0 +1,20 @@
+
+====== cMimeDec() ======
+cMimeDec()
+
+Mime Based Decoding.
+
+====== Sintaxis ======
+
+  cMimeDec( <cIn> ) --> cOut
+====== Parámetros ======
+ <cIn> Character string to decodifier 
+====== Devuelve ======
+
+ <cOut> Decodified character string. 
+====== Ejemplo ======
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+====== Código fuente ======
+ SOURCE\FUNCTION\MIME64.C 
+====== Ver también ======

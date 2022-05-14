@@ -1,0 +1,106 @@
+====== PrnGetOrientation() ====== 
+
+
+
+PrnGetOrientation()
+
+
+
+
+
+
+To obtain the orientation of the paper of the printer
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PrnGetOrientation() --> nOrientation 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nOrientation> Current orientation of the paper of the printer. It can
+be one of the following values: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ DMORIENT_PORTRAIT 1 
+
+
+ 
+
+
+ DMORIENT_LANDSCAPE 2 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,83 @@
+GetLogicalDrives()
+
+
+GetLogicalDrives()
+ Previous  Top  Next
+
+Retrieves a bitmask representig the currently available disk drives.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ GetLogicalDrives() --> nDrvMask 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+   None.
+
+ 
+
+
+ 
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nDrvMask> The available drives bitmask or zero if the function fails. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\device.c 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+   See SOURCE\SAMPLES\protect.prg
+
+
+====== Ver también ======
+

@@ -1,0 +1,115 @@
+====== Defining a new database ======
+
+<code clipper>
+ DEFINE DATABASE <oDb> ;
+ [ ALIAS <cAlias> ] ;
+ [ FILE <cFile> ] ;
+ [ DRIVER <cDriver> ] ;
+ [ SHARED ] ;
+ [ READONLY ]
+</code>
+
+<code clipper>
+ ENDATABASE
+</code>
+
+====== Adding a new field ======
+
+<code clipper>
+ FIELD <cField> ;
+ [ AS STRING | AS NUMBER | AS LOGIC | AS DATE | AS MEMO ] ;
+ [ LEN <nLen> ] ;
+ [ DEC <nDec> ]
+</code>
+
+====== Adding a new index ======
+ 
+<code clipper>
+ INDEX <cName> ON <key> ;
+ [ TO <cFile> ] ;
+ [ FOR | FILTER <for> ] ;
+ [ UNIQUE ]
+</code>
+
+====== Activating the database ======
+
+<code clipper> 
+ ACTIVATE DATABASE <oDb>
+</code>
+
+====== Deactivating the database ======
+
+<code clipper> 
+ DEACTIVATE DATABASE <oDb>
+</code>  
+
+====== Creating the database ======
+ 
+<code clipper >
+ CREATE DATABASE <oDb>
+</code>  
+
+| <oDb> | A reference to the database object. |
+| <cAlias> | The database alias. |
+| <cFile> | The database or index filename. |
+| <cDriver> | The driver used for the database. |
+| <cField> | The name of the field. |
+| <nLen> | The field length. |
+| <nDec> | The number of decimals of the field. |
+| <cName> | The name of the index. |
+| <key> | The index key expression. |
+| <for> | The index FOR expression. |
+
+====== CLAUSES ======
+
+| SHARED | To open the database in shared mode. |
+| READONLY | To open the database in readonly mode. |
+| AS STRING | To create a character field. |
+| AS NUMBER | To create a numeric field. |
+| AS LOGIC | To create a logical field. |
+| AS DATE | To create a date field. |
+| AS MEMO | To create a memo field. |
+| UNIQUE | To create a UNIQUE index. |
+
+
+====== Notes ======
+The benefits of Fivewin database object is that you do not need to create temporal variables for every field you need to manage. Simple crete the database object and then you only need that variable to hold all the field tables. If the database has a field name 'Code' for exmple, then your database object will also have a 'Code' data 
+To create a FiveWin TDataBase object 
+
+<code clipper>
+ SELECT cAlias 
+ DATABASE <Odbf> 
+</code>
+
+
+====== Sample Code ======
+<code clipper>
+#Include "FiveWin.ch"
+#include "xBrowse.ch"
+//--------------------------------
+Function Main()
+
+   LOCAL cAlias,oWnd,oBrw,oCust
+
+   USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+   GO TOP
+   oCust    := TDataBase():New( Select( cAlias ) )
+
+   DEFINE WINDOW ownd TITLE "TDataBase Object"
+
+   @ 0,0 XBROWSE oBrw ;
+         COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+         PICTURES ,,,,,,"999,999,999.99" ; // nil or ommit for default formatting
+         OF ownd ;                         // automatic justification
+         OBJECT oCust ;
+         FOOTERS FASTEDIT ;
+         AUTOSORT ;
+         LINES CELL
+
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+</code>  
+
+====== See also ======
+[[fivewin_class_tdatabase | Class TDatabase ]]

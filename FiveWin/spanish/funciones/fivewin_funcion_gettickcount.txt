@@ -1,0 +1,15 @@
+
+====== GetTickCount() ======
+GetTickCount()
+
+Number of thousandth of second past from beginning Windows
+====== Sintaxis ======
+ GetTickCount() --> nLongMillisecns 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nLongMillisecn> Number of thousandth of second past from beginning Windows. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\TIMERS.C 
+====== Ver también ======

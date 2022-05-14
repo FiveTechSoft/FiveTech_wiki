@@ -1,0 +1,27 @@
+====== B2Bin() ======
+Converts a byte into a string 1 byte len. 
+====== Syntax: ======
+B2Bin( <nValue> ) --> cValue
+====== Parameters ======
+^Parameter^Description^
+|< nValue >| This should be a number which is converted to a BYTE string|
+====== Returns ======
+^Returns^Description^
+|<cValue>| The equivalent <nValue> as a string.|
+
+====== Sample ======
+<code clipper>
+#include 'fivewin.ch'
+//---------------------------------------//
+Function Main()
+
+ Local cVar 
+ cVar := B2Bin( 64 ) // Result is @
+ MsgInfo(cVar)
+
+ cVar := B2Bin( 65 ) // Result is A
+ MsgInfo(cVar)
+Return NIL
+</code>
+====== Source code: ======
+SOURCE\WINAPI\b2bin.c 

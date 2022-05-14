@@ -1,0 +1,21 @@
+
+====== lCreat() ====== 
+lCreat()
+
+Create a file with long name
+====== Sintaxis ======
+ lCreat( <cFileName>, <nMode> ) --> hFile 
+====== Parámetros ======
+  <cFileName> File name 
+  <nMode>     File attributes 
+      Value         Meaning   
+      0 Normal      Can be read or written without restriction   
+      1 Read-only   Cannot be opened for writing.   
+      2 Hidden      Not found by directory search.   
+      3 System      Not found by directory search.   
+====== Devuelve ======
+ <hFile> Handle of the created file 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\LONGNAME.C 
+====== Ver también ======

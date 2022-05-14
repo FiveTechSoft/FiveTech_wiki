@@ -1,0 +1,85 @@
+SQLGetTextData()
+
+
+SQLGetTextData()
+ Previous  Top  Next
+
+Retrieves data for a single column in the result set.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLGetTextData( <hStmt>, <nField>, <@cBuffer>, <@nLen> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nField> Number of the column for which to return data. 
+
+
+ 
+
+
+ <cBuffer> The buffer in which to return the data. 
+
+
+ 
+
+
+ <nLen> Length of the returned data in bytes. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

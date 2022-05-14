@@ -1,0 +1,19 @@
+
+====== GetDatas() ======
+
+GetDatas()
+To obtain the names of the variables of instance of a object.
+====== Sintaxis ======
+ GetDatas( <oBject> ) --> aDatas 
+====== Parámetros ======
+ <oBject> Objeto a inspeccionar. 
+====== Devuelve ======
+ <aDatas> Array of names of variables of instance of the object examined. 
+
+Observations:
+
+ All the data are returned except the fact L3DLOOK for to be this a fact
+L3DLOOK. 
+====== Código fuente ======
+ SOURCE\FUNCTION\STATICS.PRG 
+====== Ver también ======

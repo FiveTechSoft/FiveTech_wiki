@@ -1,0 +1,127 @@
+====== LZCopyFile() ====== 
+
+
+
+LZCopyFile()
+
+
+
+
+
+Copy and expands a Windows compressed file
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LZCopyFile( <cFileSource>, <cFileTarget> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cFileSource> The name of the source file name to copy -and expand-. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cFileTarget> Specifies the target file where to place the result. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If the operation was completed successfully. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function simplifies several API function, using them automatically
+to perform the desired operation. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Install.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\LzExpand.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

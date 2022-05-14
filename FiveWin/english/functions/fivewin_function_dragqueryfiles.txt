@@ -1,0 +1,19 @@
+====== DragQueryFiles() ======
+Retrieves the file names of dropped files that have resulted from a successful drag-and-drop operation.
+
+====== Syntax ======
+DragQueryFiles( <hDrop> ) --> aFiles 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDrop>| Handle of the drag and drop process.| 
+
+====== Returns ======
+^Returns^Description^
+|<aFiles>| An array containing the names of the dropped files.|
+
+====== Source Code ======
+SOURCE\WINAPI\DROPFILE.C 
+
+====== See also ======
+[[fivewin_function_dragfinish|DragFinish()]], [[fivewin_function_dragacceptfiles|DragAcceptFiles()]]

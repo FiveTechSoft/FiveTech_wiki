@@ -1,0 +1,128 @@
+HeaderIns()
+
+
+HeaderIns()
+ Previous  Top  Next
+
+Insert a new item in a header control.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ HeaderIns( <hWnd>, <nIndex>, <cCaption>, <nWidth>, <nAlign> ) -->
+nNewIndex 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the header control. 
+
+
+ 
+
+
+ <nIndex> The index of the item after which the new item is to be
+inserted. 
+
+
+ 
+
+
+ <cCaption> The caption of the new item. 
+
+
+ 
+
+
+ <nWidth> The width of the new item. 
+
+
+ 
+
+
+ <nAlign> The alignment of the new item: 
+
+
+ 
+
+
+    #define HDF_LEFT   0 
+
+
+ #define HDF_RIGHT   1 
+
+
+ #define HDF_CENTER   2 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nNewIndex> The index of the new item if successful, or -1 otherwise. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

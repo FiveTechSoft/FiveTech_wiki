@@ -1,0 +1,47 @@
+WndParents()
+
+
+WndParents()
+ Previous  Top  Next
+
+Check if two windows have a common parent.
+
+====== Sintaxis ======
+
+
+ WndParents( <xWnd1>, <xWnd2> ) --> lResult 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <xWnd1> The object oWnd or the handle hWnd of the first window 
+
+
+ <xWnd2> The object oWnd or the handle hWnd of the second window 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lResult> .t. if the two windows have a common parent, otherwise .f. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

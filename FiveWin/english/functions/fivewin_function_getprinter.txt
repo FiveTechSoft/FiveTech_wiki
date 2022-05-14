@@ -1,0 +1,119 @@
+GetPrinter()
+
+
+
+GetPrinter()
+
+ Previous  Top  Next
+
+
+
+
+Retrieves the printer device context without DlgBox
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetPrinter() --> hDC 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hDC> The handle of the device context for the system printer. This
+system printer is the printer that is installed in Windows as the default
+priner. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is automatically called from the TPrinter class to create
+a printer object without prompting with the standard printing selection
+DialogBox. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TPrinter 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

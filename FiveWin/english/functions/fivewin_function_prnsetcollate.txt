@@ -1,0 +1,46 @@
+====== PrnSetCollate() ====== 
+
+
+PrnSetCollate()
+
+
+Activates collate mode on printers that support it.
+
+====== Syntax ======
+
+
+ PrnSetCollate( <lOnOff> ) --> lSuccess 
+
+
+ 
+
+====== Parameters ======
+
+
+ <lOnOff> .t. activates collate mode, .f. deactivates it. 
+
+
+ 
+
+====== Returns ======
+
+
+ <lSuccess> True 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== See also ======
+

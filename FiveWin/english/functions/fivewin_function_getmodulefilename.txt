@@ -1,0 +1,87 @@
+GetModuleFileName()
+
+
+
+GetModuleFileName()
+
+ Previous  Top  Next
+
+
+
+
+Path and executable file from where you position a module
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetModuleFileName( <hInstance> ) --> cAppName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hInstance> Handle of the module 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cAppName> Path and executable file from where you position a module 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINEXEC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

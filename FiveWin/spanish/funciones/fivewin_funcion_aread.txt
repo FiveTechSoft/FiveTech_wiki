@@ -1,0 +1,31 @@
+====== ARead() ======
+
+Reconstruir (recuperar) una matriz desde una cadena codificada.
+
+====== Sintaxis ======
+
+ARead( <cInfo> )--> aArray  
+
+En el proceso de grabar una ventana y sus controles usamos la función ASave() en caso de que uno de los datos a guardar sea una matriz.
+Lógicamente cuando se recobra la información habrá una función equivalente. Esta función equivalente es ARead().
+
+====== Parámetros ======
+
+|<cInfo> | Cadena codificada previamente por la función ASave().  |  
+
+====== Devuelve ======
+
+<aArray> Matriz reconstruida
+
+====== Observaciones ======
+
+En la propia función ARead() se llevan a cabo procesos recursivos en caso de que uno de los elementos de la matriz sea a su vez una matriz.
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\CLASSES\WINDOW.PRG  
+

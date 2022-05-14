@@ -1,0 +1,85 @@
+
+======  GetSystemMenu() ====== 
+ 
+
+
+Return the handle of a copy of the System menu
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetSystemMenu( <hWnd>, <lValue> ) --> hSysMenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the window that contains the menu If it is .f. the
+function returns the handle of the copy of the one system menu in use at
+the moment, if it is .t. in the event of that the menu of the system
+exists it is destroyed and the function it returns a null value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hMenu> Handle of the menu of the system or null if the parameter lValue
+you initializes .t. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,20 @@
+
+====== cValToChar() ======
+cValToChar()
+Converts any value into a string
+====== Sintaxis ======
+ cValToChar( <uValue> ) --> cValue 
+
+ This function converts a value of any type into its equivalent character
+expression. 
+
+ This function is coded in C language and it is extremely fast. 
+====== Parámetros ======
+ <uValue> It may be any value except an array or an Object. 
+====== Devuelve ======
+ <cValue> A string with the character expression of <uValue> 
+====== Ejemplo ======
+ ? cValToChar( 123 ) --> "123" 
+====== Código fuente ======
+Not provided.
+====== Ver también ======

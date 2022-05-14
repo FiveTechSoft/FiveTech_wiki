@@ -1,0 +1,23 @@
+
+====== DibRead() ======
+DibRead()
+
+Reads a DIB from disk
+====== Sintaxis ======
+ DibRead( <cBitmapFile> ) --> hDIB 
+
+ This function generates a DIB in memory reading it from a file .BMP in
+disk. 
+====== Parámetros ======
+ <cBitmapFile> The filename of the BMP file in disk. 
+====== Devuelve ======
+ <hDIB> The handle of the new DIB. (DIB = Device independent bitmap). 
+
+Observations:
+
+ We strongly recommend you to use TBitmap Class for managing bitmaps.
+FiveWin process all that you need automatically. 
+====== Código fuente ======
+ SOURCE\WINAPI\Dib.c 
+====== Ver también ======
+ DibRead() DibPalette() DibWidth() DibHeight() DibWrite()

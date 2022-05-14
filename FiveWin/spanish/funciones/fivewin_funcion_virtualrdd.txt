@@ -1,0 +1,73 @@
+VirtualRdd()
+
+
+
+
+
+Devuelve una referencia a un objeto definido TRDD
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ VirtualRdd() --> oRdd 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ Ninguno
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <oRdd> Objeto TRdd 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\TRDD.PRG 
+
+
+ 
+
+
+ 
+
+

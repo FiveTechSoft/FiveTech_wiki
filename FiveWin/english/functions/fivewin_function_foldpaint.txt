@@ -1,0 +1,33 @@
+====== FoldPaint() ======
+Paints the Folders of FiveWin. This function is used in Method Paint of the Class TFolder
+
+====== Syntax ====== 
+FoldPaint(<hWnd>, <hDC>, <aPrompts>, <hFont1>, <hFont2>, <nClrPane>, <nOption>, <aEnable>, <nSize>, <lWin95>, <nFdHeight>  ) --> nil  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hWnd> | Handle of the window  |
+| <hDC> | Device context where we are going to paint|
+| <aPrompts> | Strings of text of the different options  |
+| <hFont1> | Handle of the font  |
+| <hFont2> | Handle of the font for the selected option  |
+| <nClrPane> | Background color  |
+| <nOption> | Selected option  |
+| <aEnable> | Array of options  |
+| <nSize> | Width of the label  |
+| <lWin95> | Windows 95 look  |
+| <nFdHeight> | Height of the folder   |
+
+====== Return ====== 
+
+| Nil |
+
+====== Sample ======
+<code clipper>FoldPaint( hWnd, hDC, aPrompts, oFont:hFont,;
+oFont2:hFont, nClrPane, nOption, aEnable, nTabSize,;
+lWin95Look, nFdHeight ) </code>
+====== Source Code ====== 
+SOURCE\FUNCTION\FOLDTOOL.C  
+
+====== See Also ====== 
+

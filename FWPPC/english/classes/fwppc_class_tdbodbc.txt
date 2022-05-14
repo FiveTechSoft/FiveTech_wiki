@@ -1,0 +1,9 @@
+====== Class TDbOdbc ======
+
+Please consult FiveODBC documentation                                          
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TDBODBC.PRG

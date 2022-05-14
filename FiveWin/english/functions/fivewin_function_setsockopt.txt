@@ -1,0 +1,132 @@
+SetSockOpt()
+
+
+
+SetSockOpt()
+
+ Previous  Top  Next
+
+
+
+
+Set a socket option to enable
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetSockOpt( <nSocket>, <nLevel>, <nOptName> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLevel> Level at which the option is defined. Are: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ SOL_SOCKET   65535 
+
+
+ 
+
+
+ IPPROTO_TCP   6 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOptName> The socket option for which the value is to be set 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> Return true if the function is success. Otherwise return
+false and the error code may be retrieved by calling WSAGetLastError(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

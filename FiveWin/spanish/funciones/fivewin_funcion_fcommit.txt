@@ -1,0 +1,68 @@
+FCommit()
+
+
+FCommit()
+ Previous  Top  Next
+
+Commits a file whose handle is provided.
+
+====== Sintaxis ======
+
+ 
+
+
+ FCommit( <hFile> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hFile> The handle of the file to commit. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\TESTLFN2.PRG 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\FILES.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

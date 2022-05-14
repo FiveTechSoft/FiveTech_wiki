@@ -1,0 +1,19 @@
+
+====== LogEvent() ====== 
+LogEvent()
+
+It adds messages from the system to a log file
+====== Sintaxis ======
+ LogEvent( <nMessage>, <nParamL>, <nParamH>, <nTime> ) --> nil 
+====== Parámetros ======
+  <nMessage>  Captured value of the cue of messages of Windows. 
+  <nParamL>   16 bits of additional information. 
+  <nParamH>   32 bits of additional information. 
+  <nTime>     Hour in which you captures the message. 
+====== Devuelve ======
+ Nil 
+====== Ejemplo ======
+ SAMPLES\TESTPLAY.PRG 
+====== Código fuente ======
+ SOURCE\CLASSES\TDICT.PRG 
+====== Ver también ======

@@ -1,0 +1,24 @@
+====== Set3DLook() ======
+
+La función Set3DLook() establece el efecto de aspecto 3D
+
+====== Sintaxis ======
+
+Set3DLook( <lOnOff> ) --> nil 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<lOnOff>| Bandera que indica si se establecerá o restablecerá este efecto.|
+
+====== Devuelve ======
+
+None 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+SOURCE\WINAPI\CTL3D.C 
+
+====== Ver también ======
+

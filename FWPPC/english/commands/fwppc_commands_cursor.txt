@@ -1,0 +1,27 @@
+====== Creating a cursor from resources ======
+
+<code clipper>
+ DEFINE CURSOR <oCursor> ;  
+ [ RESOURCE | RESNAME | NAME <cResName> ] ;  
+ [ ARROW | ICON | SIZENS | SIZEWE | SIZENWSE,;  
+ SIZENESW | IBEAM | CROSS | SIZE | UPARROW | WAIT | HAND ]  
+</code>  
+ 
+| <oCursor> | A reference to the cursor object. |
+| <cResName> | A string with the name of the cursor resource name. It may also be a numeric identifier. |
+
+====== CLAUSES ======
+
+| ARROW | Arrow design |
+| ICON | Icon design |
+| SIZENS | North-South arrow design |
+| SIZEWE | West-east arrow design |
+| SIZENWSE | Nort-South & West-east arrow design |
+| SIZENESW | North-East & South-west arrow design |
+| IBEAM | Ibeam design |
+| CROSS | Cross design |
+| SIZE | Size adjustment design |
+| UPARROW | Up arrow design |
+| WAIT | Hour-glass design |
+| HAND | Hand design |
+

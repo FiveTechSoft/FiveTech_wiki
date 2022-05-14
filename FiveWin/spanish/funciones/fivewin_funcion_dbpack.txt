@@ -1,0 +1,22 @@
+
+====== DbPack() ======
+Elimina físicamente los registros borrados lógicamente
+====== Sintaxis ======
+ DbPack() --> nil
+====== Parámetros ======
+ Ninguno
+====== Devuelve ======
+ nil
+====== Ejemplo ======
+<code clipper>DBUSEAREA(.T., "DBFCDX", "Ventas", "Ventas", .T.)
+? LASTREC()      ---> Resultado: 35
+DBGOTO(8)
+DELETE
+DBPACK
+? LASTREC()      ---> Resultado: 34</code>
+====== Observaciones ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\DBTOOLS.PRG
+====== Ver también ======
+

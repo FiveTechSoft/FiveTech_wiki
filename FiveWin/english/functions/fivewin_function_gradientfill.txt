@@ -1,0 +1,42 @@
+
+====== GradientFill() ======
+It fills an area with different gradient colors and sections
+
+**Observation:** A supplied array specify the percentages to gradient fill and the colors to use
+
+
+====== Syntax ======
+GradientFill( hDC, nTop, nLeft, nBottom, nRight, aGradInfo, lVert ) --> nil
+
+
+
+
+====== Parameters ======
+|hDC|the handle of the device context where to gradient fill| 
+|nTop, nLeft, nBottom, nRight|The coordinates and dimensions to fill in the device context|
+|aGradInfo|A multidimension array that specifies the sections to gradient fill and the colors to use: {{nPercentage1,nRGBStart1, nRGBEnd1}, ... {nPercentageN,nRGBStart1, nRGBEnd1}}| 
+|lVert|Specifies if the gradient fill should be vertical instead of horizontal|
+
+
+====== Returns ======
+|nil|nothing|
+
+
+
+
+====== Example ======
+FWH\source\classes\btnbmp.prg
+<code clipper>
+GradientFill( ::hDC, 0, 0, ::nHeight, ::nWidth,;
+              { { 1/2, nRGB( 255, 253, 219 ), nRGB( 255, 231, 144 ) },;
+                { 1/2, nRGB( 255, 215,  76 ), nRGB( 255, 231, 153 ) } } ) 
+</code>
+
+====== Source code ======
+FWH\source\classes\bar.prg
+
+
+
+
+====== See Also ======
+[[fivewin_function_gradient|Gradient()]], [[fivewin_function_gradientbrush|GradientBrush()]]

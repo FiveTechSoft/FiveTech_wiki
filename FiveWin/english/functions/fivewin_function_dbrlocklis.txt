@@ -1,0 +1,15 @@
+====== DbRLockLis() ======
+Return an array of the current lock list.  Function used to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbRLockList() --> aRecordLocks 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<aRecordLocks>| Returns an array containing the record numbers of the records locked in the current work area|
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

@@ -1,0 +1,16 @@
+====== nSerialA() ====== 
+Devuelve el número de serie del disco situado en la unidad A
+
+====== Sintaxis ======
+ nSerialA() --> nSerial 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <nSrial> Serial number of the diskette. 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\HARDDISK.C 
+
+====== Ver también ======
+[[fivewin_funcion_nserialhd|nSerialHD()]]

@@ -1,0 +1,41 @@
+====== cFileSubDir() ======  
+
+Retrieves the subdir name from a filename 
+
+====== Syntax ======  
+
+cFileSubDir( <cFileName> ) --> cDirName  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cFileName> | The full filename including path and optional extension.|  
+
+====== Returns ======  
+^Returns^Description^
+|<cDirName>| Just the path name specified inside the full filename, excluding the filename name. Please note : The output string is in uppercase | 
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+MsgInfo(cFileSubDir( "C:\Fwh\Samples\WhatsNew.Txt" ) )  // Result C:\FWH\SAMPLES\
+ 
+MsgInfo(cFileSubDir( "\Fwh\Source\Class\xBrowse.Prg" ) ) // Result \FWH\SOURCE\CLASS\
+ 
+MsgInfo(cFileSubDir( "" ) )  // Result nothing
+ 
+MsgInfo(cFileSubDir( "Test.Bat" ) ) // Result nothing
+ 
+MsgInfo(cFileSubDir( "..\Functions\MyTest.Prg" ) )  // Result ..\FUNCTIONS\
+ 
+MsgInfo(cFileSubDir( "\MyApps\Test" ) )  // Result \MYAPPS\
+ 
+Return nil  
+</code>
+
+====== Source Code ======  
+SOURCE\FUNCTION\FileName.prg 
+
+====== See also ======
+[[fivewin_function_cfilepath|cFilePath()]]

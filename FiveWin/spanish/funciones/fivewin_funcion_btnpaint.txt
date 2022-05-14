@@ -1,0 +1,40 @@
+
+====== BarAjust() ======
+
+Pinta el contenido de un button con bitmap.
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BtnPaint( <hWnd>, <hDib1>, <hPalette1>, <hDib2>, <hPalette2>, <lPressed>, <lAdjust> ) --> nil   
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> Es el manejador de la ventana que es la que se pintara.
+ 
+ <hDib1>  El manejador del DIB para el estado normal.  
+
+ <hPalette1> Es el manejador de la PALETA para el estado normal.  
+
+ <hDib2> Es el manejador del DIB para el estado presionado.  
+
+ <hPalette2> Es el manejador de la PALETA para el estado presionado.  
+
+ <lPressed> Si es .t. indica si el boton se mostrara presionado.  
+
+ <lAdjust> Si es .t. el bitmap se ajustara a las dimensiones del boton.  
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Observaciones: ( Observations: ) ====== 
+ 
+ Esta es una funcion interna de Fivewin usada para pintar los botones de una buttonbar 
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ Ninguno
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\BMPDRAW.C  

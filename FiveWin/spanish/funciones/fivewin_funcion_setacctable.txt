@@ -1,0 +1,24 @@
+====== SetAccTable() ======
+
+La funcion SetAccTable() establece la tabla de aceleradores.
+
+====== Sintaxis ======
+
+SetAccTable( <aItems> ) --> hAccel 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<aItems>| El arreglo de los aceleradores que se definen.|
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<hAccel>| El identificador de la tabla de aceleradores.|
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\ACCELERA.C 
+
+====== Ver también ======
+

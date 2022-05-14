@@ -1,0 +1,26 @@
+====== FileTimeToDate() ======
+Convierte un valor de tiempo de archivo en un valor de fecha.
+
+====== Syntaxis ====== 
+FileTimeToDate( <nFileTime> ) --> dDate   
+
+====== Parametros ====== 
+| <nFileTime> | Ruta y Nombre del Archivo.  |
+
+====== Devuelve ====== 
+| <dDate>| El valor convertido en Fecha  |
+
+====== Ejemplo ======
+SOURCE\CLASSES\tftp.prg
+<code clipper>
+MsgInfo( FileTimeToDate( oWin32FindData:nLastWriteAccess ) ) 
+</code>
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\datetime.c  
+ 
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_FileTimeToTimesp|FileTimeToTime()]]
+ 

@@ -1,0 +1,67 @@
+MAPIResolveName()
+
+
+MAPIResolveName()
+ Previous  Top  Next
+
+Transforms a message recipient's name as entered by a user to an
+unambiguous address list entry.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPIResolveName( [<cName>] ) --> cAddress 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cName> The name to be resolved. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cAddress> The address of the resolved name. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

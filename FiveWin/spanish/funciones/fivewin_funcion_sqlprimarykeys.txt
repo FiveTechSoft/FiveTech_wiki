@@ -1,0 +1,73 @@
+SQLPrimaryKeys()
+
+
+SQLPrimaryKeys()
+ Previous  Top  Next
+
+Returns the column names that make up the primary key for a table.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLPrimaryKeys( <hStmt>, <cTableName> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cTableName> Table name. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

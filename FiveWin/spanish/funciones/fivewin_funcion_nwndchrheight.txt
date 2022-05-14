@@ -1,0 +1,17 @@
+
+====== nWndChrHeight() ====== 
+nWndChrHeight()
+
+Line height in function of a certain Font
+====== Sintaxis ======
+ nWndChrHeight( <hWnd>, <hFont> ) --> nHeight 
+====== Parámetros ======
+  <hWnd>   Handle of the window 
+  <hFont>  Handle of the font with which we will make the calculation 
+====== Devuelve ======
+ <nHeight> Height of the line in function of a font 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\WNDSAY.C 
+====== Ver también ======

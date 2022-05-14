@@ -1,0 +1,123 @@
+SetGridSize()
+
+
+
+SetGridSize()
+
+ Previous  Top  Next
+
+
+
+
+It establishes separation of the Grid in design Window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetGridSize( <nWidth>, <nHeight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nWidth> Width among the points of the Grid 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nHeight> Height among the points of the Grid 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ In the IDE of FiveWin a Grid of points is used for to adjust the
+controls in their design phase. These points they are magnetic so that
+when dragging a control for the surface of the design window, the control
+will go being adjusted to the next point in the grid. With this function
+the separation is adjusted among points. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\CONTROL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

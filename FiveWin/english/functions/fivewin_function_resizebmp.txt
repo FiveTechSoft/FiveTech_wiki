@@ -1,0 +1,31 @@
+
+====== ResizeBmp() ======
+
+It resizes a given Windows bitmap (handle) to a certain width and height and with a resolution.
+
+
+====== Syntax ======
+ResizeBmp( hBitmap, nWidth, nHeight, lMaxRes ) --> hResizedBitmap
+
+
+====== Parameters ======
+|hBitmap|The handle of the bitmap to resize| 
+|nWidth, nHeight| The new dimensions of the resized bitmap to create| 
+|lMaxRes|Resizes it using the max quality as possible|
+
+
+====== Returns ======
+|hResizedBitmap|A new bitmap handle of the resized bitmap|
+
+
+====== Example ======
+FWH\source\classes\bitmap.prg
+
+
+====== Source code ======
+FWH\source\winapi\bmpdraw.c
+
+
+
+====== See Also ======
+[[fivewin_function_deleteobject|DeleteObject()]]

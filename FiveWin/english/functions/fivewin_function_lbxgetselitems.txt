@@ -1,0 +1,102 @@
+====== LbxGetSelItems() ====== 
+
+
+
+LbxGetSelItems()
+
+
+
+
+
+
+Elements selected in a multiple selection listbox
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LbxGetSelItems( <hWnd> ) --> anItems 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the listbox 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <anItems> Array that will contain the number of order of the elements
+selected in a listbox of multiple selection. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\LISTBOX.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\LBX.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,23 @@
+
+====            ON <EventName> <uAction> ... ====
+
+Define una acción 'call-back' para un evento.
+
+            ON <EventName> <uAction>
+
+ 
+
+|<EventName>| Esta cláusula depende del evento que desee controlar. Puede ser: PAINT, CLICK, RESIZE, ... (hay muchas).|
+|<uAction>| Acción que se debe evaluar cuando se produce el evento.|
+
+FiveWin genera un bloque de código para la <uAction>   especificada:
+
+ 
+<code clipper>
+ACTIVATE WINDOW oWnd ;
+
+ON CLICK MsgInfo( "Hola" )-->
+
+oWnd:bLClicked ={|| MsgInfo( "Hola" )}
+
+</code> 

@@ -1,0 +1,149 @@
+====== SendMessage() ======
+
+
+
+Sends a Windows message to a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SendMessage( <hWnd>, <nMsg>, <nWParam>, <nLParam> ) --> nLResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Identifies the handle of the window to which the message will be
+sent. If this parameter is HWND_BROADCAST (-1) then it is sent to all
+windows. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMsg> Specifies the message to be sent 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWParam> A numeric value specifying 16 bits of additional message
+dependant information. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLParam> A numeric value specifying 32 bits of additional message
+dependant information. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLResult> The result of the message processing and depends on the
+message sent. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\EndApp.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\SendMsg.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ PostMessage() PeekMessage() CLASS TWindow:SendMsg() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

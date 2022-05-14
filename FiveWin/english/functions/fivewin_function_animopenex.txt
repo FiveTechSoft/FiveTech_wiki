@@ -1,0 +1,42 @@
+**AnimOpenEx()** 
+
+
+Opens an AVI clip from a resource in a specified module and displays its first frame in an animation control. 
+
+**Syntax:** 
+  
+ 
+ AnimOpenEx( <hWnd>, <hInstance>, <cAviFileRes> ) --> lSuccess  
+ 
+  
+ 
+  
+**Parameters:** 
+
+ <hWnd> Handle to the animation control.  
+ 
+  
+ 
+ <hInstance> Instance handle to the module that the resource should be loaded from. If this value is NULL, the resource is loaded from the module that created the animation control.  
+ 
+  
+ 
+ <cAviFileRes> The AVI file name of the AVI resource name to open.  
+ 
+  
+ 
+  
+**Returns:** 
+
+ <lSuccess> Returns .t. if successful.  
+
+
+ 
+  
+**Source code:** 
+  
+ 
+ SOURCE\WINAPI\ANIMATE.C  
+ 
+  
+

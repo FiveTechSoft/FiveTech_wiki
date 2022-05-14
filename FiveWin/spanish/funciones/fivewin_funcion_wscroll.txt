@@ -1,0 +1,34 @@
+====== WScroll() ======
+
+Enrolla algunas líneas de texto de una ventana
+
+
+====== Sintaxis ======
+
+ WScroll( <hWnd>, <nRows>, <hFont> ) --> nil 
+
+====== Parametros ======
+
+| <hWnd> | Identifica la ventana del área es la de ser desplazado. |
+| <nRows> | Especifica el número de líneas de texto para desplazarse.|
+| <hFont> | El tipo de la fuente para calcular la altura del texto. |
+
+====== Retorno ======
+
+ nil 
+
+
+====== Ejemplo ======
+
+
+ SOURCE\CLASSES\WBrowse.prg 
+
+
+====== Codigo Fuente ======
+
+ SOURCE\WINAPI\WndScrol.c 
+
+
+====== Ver también ======
+
+[[fivewin_funcion_WBrwLine|WBrwLine()]] [[fivewin_funcion_WBrwRows|WBrwRows()]]

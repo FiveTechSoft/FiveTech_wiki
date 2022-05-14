@@ -1,0 +1,30 @@
+====== Class T ======
+====== DATAs ======
+^ Name ^ Explanation ^
+| One | keeps the value of |
+| Two | keeps the value of |
+| Three | keeps the value of |
+====== METHODs ======
+^ Name ^ Explanation ^
+| One | keeps the value of |
+| Two | keeps the value of |
+| Three | keeps the value of |
+====== Parameters ======
+====== Example ======
+<code clipper>
+#include "FiveMac.ch"
+
+function Main()
+
+
+return nil
+</code>
+====== Screenshot ======
+
+====== Source code ======
+FMC\include\FiveMac.ch
+====== See Also ======
+[[fivemac_commands_x|Commands x]]
+
+
+

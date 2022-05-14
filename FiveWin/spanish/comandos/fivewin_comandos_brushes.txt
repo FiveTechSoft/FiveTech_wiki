@@ -1,0 +1,56 @@
+====== Fondos para las ventanas (Brushes) ======
+
+Definiendo un brush desde código fuente:
+
+<code clipper>
+DEFINE BRUSH <oBrush> ;
+             [ STYLE <Style> ] ;
+             [ COLOR <nRGBColor> ] ;
+             [ FILE | FILENAME | DISK <cBmpFile> ];
+             [ RESOURCE | NAME | RESNAME <cBmpRes> ]
+</code>
+
+Eliminando un brush previamente definido:
+
+<code clipper>
+RELEASE BRUSH <oBrush>
+</code>
+
+Asignando un brush a una ventana:
+
+<code clipper>
+SET BRUSH ;
+    [ OF <oWnd> ] ;
+    [ TO <oBrush> ]
+</code>
+
+Parámetros:
+
+|<oBrush> |Referencia al objeto brush|
+|<Style> |Uno de los estilos listados mas adelante|
+|<nRGBColor> |Un color en formato RGB, use para esto RGB().|
+|<cBmpFile> |Nombre de un archivo BMP que se va a usar para construir el brush.|
+|<cBmpRes> |Nombre del recurso BMP que se a utilizar para construir el brush (debe estar almacenado en un DLL)|
+|<oWnd> |Referencia a la ventana contenedora del brush.|
+
+Diferentes estilos :
+|Estilos nuevos: |BORLAND, TILED, BRICKS|
+|Estilos estándares: |DIAGONAL, HORIZONTAL, VERTICAL, FDIAGONAL, BDIAGONAL, CROSS, DIAGCROSS|
+
+Implementación del comando:
+
+<code clipper>
+#xcommand DEFINE BRUSH [ <oBrush> ] ;
+[ STYLE <cStyle> ] ;
+[ COLOR <nRGBColor> ] ;
+[ <file:FILE,FILENAME,DISK> <cBmpFile> ] ;
+[ <resource:RESOURCE,NAME,RESNAME> <cBmpRes> ] ;
+=> ;
+[ <oBrush> := ] TBrush():New( [ Upper(<(cStyle)>) ], <nRGBColor>,;
+<cBmpFile>, <cBmpRes> )
+#xcommand SET BRUSH ;
+[ OF <oWnd> ] ;
+[ TO <oBrush> ] ;
+=> ;
+<oWnd>:SetBrush( <oBrush> )
+</code>

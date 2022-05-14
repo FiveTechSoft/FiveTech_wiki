@@ -1,0 +1,17 @@
+====== FTime()======
+Recupera la Hora de un Archivo sin Abrirlo
+
+====== Syntaxis ====== 
+FTime( <cFileName> ) --> cFileTime  
+
+====== Parametros ====== 
+| <cFileName> | Ruta y Nombre del Archivo.  |
+
+====== Devuelve ====== 
+| <dFileTime>| La Hora del Archivo.  |
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\FileName.prg  
+
+====== Ver tambien ====== 
+[[fivewin_funcion_FDatesp|FDate()]]

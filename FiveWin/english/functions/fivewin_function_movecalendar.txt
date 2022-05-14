@@ -1,0 +1,25 @@
+
+====== MoveCalendar() ======
+
+To update the date in function MsgDate()
+
+====== Syntax ======
+ MoveCalendar( <oDlg>, <nModo> ) --> nil 
+
+====== Parameters ======
+| <oDlg> | Reference to the dialog box that generates the function MsgDate()| 
+| <nModo> | Class of bring up to date that is requested: 1. Previous month 2. Next month 3. Previous year 4. Next year 5. To add days 6. To subtract days |
+
+====== Returns ======
+| Nil |
+
+====== Observations ======
+ This function you can invoke once from program that the dialog box is displayed and the calendar to our disposition. The dialog box presents also a combobox with the names of the months and one edition box and two buttons with the years. The buttons they allow us to increase and to diminish the years. 
+
+====== Example ======
+ SAMPLES\MSGDATE.PRG 
+
+====== Source Code ======
+ SOURCE\FUNCTION\MSGMETER.PRG 
+
+====== See also ======

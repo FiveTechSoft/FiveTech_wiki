@@ -1,0 +1,19 @@
+====== GetAllWin() ======
+
+Devuelve un array con todos los objetos ventana y controles creados por la aplicación
+====== Sintaxis ======
+
+ GetAllWin() --> aWindows 
+
+====== Parámetros ======
+
+ Ninguno 
+
+====== Devuelve ======
+
+|<aWindows>|Un array con todos los objetos ventana y controles creados por la aplicación|
+
+====== Código fuente ======
+SOURCE\CLASSES\WINDOW.PRG 
+
+====== Ver también ======

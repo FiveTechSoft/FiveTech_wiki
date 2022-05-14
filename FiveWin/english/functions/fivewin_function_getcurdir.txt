@@ -1,0 +1,25 @@
+====== GetCurDir() ======
+Returns the current directory name.
+
+====== Syntax ======
+GetCurDir() --> cCurDir 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<cCurDir>| Current directory name |
+
+====== Example ======
+Function Main()
+
+   MsgInfo(GetCurDir() ) // Returns the Cur Dir name & path without the drive letter ie "Fwh\Samples"
+
+Return nil
+
+====== Source Code ======
+SOURCE\FUNCTION\DRIVES.C 
+
+====== See also ======
+[[fivewin_function_cFileSubDir|cFileSubDir()]]

@@ -1,0 +1,159 @@
+uLoadStruct()
+
+
+
+uLoadStruct()
+
+ Previous  Top  Next
+
+
+
+
+Restore an array or an object from disk
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ uLoadStruct( <cObjFile> )  --> <oObject> 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cObjFile> The name of a file on disk which contains an array or an
+object previously saved with lSaveStruct(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <oObject> A reference of the array or the object just beeing created. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ n order to let Clipper properly rebuild a specific class object, an
+external reference to that class must be specified. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ // Place this at the beginning of your app 
+
+
+ 
+
+
+ // change TWindow for the name of the class 
+
+
+ 
+
+
+ // of that object 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ extern TWindow 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ lSaveStruct() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

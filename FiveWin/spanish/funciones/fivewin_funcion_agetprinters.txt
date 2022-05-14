@@ -1,0 +1,26 @@
+====== aGetPrinters() ======
+
+Retorna una matriz con todas las impresoras disponibles
+
+
+====== Sintaxis ======
+
+aGetPrinters() --> aPrinters
+
+
+====== Parámetros ======
+
+ninguno
+
+====== Devuelve ======
+
+| <aPrinters> | Matriz con el nombre de todas las impresoras disponibles.  | 
+
+
+====== Ejemplo ======
+
+<code clipper>local aPrinters := aGetPrinters()</code>
+
+====== Codigo fuente ======
+
+SOURCE\CLASSES\PRINTER.PRG

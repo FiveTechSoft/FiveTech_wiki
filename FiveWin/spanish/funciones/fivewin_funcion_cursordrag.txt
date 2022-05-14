@@ -1,0 +1,78 @@
+CursorDrag()
+
+
+CursorDrag()
+ Previous  Top  Next
+
+Selects the FiveWin drag cursor.
+
+====== Sintaxis ======
+
+
+ CursorDrag() --> nil 
+
+
+ 
+
+
+ This function changes the mouse cursor into the drag cursor. 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nothing. 
+
+
+ 
+
+Observations:
+
+
+ These functions let us change the mouse cursor just temporarily while we
+are doing other tasks. As soon as the API takes control it will restore
+the mouse cursor to the one associated with the window which is below the
+cursor. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\Cursors.c 
+
+
+ 
+
+See also:
+
+
+ CursorWait() CursorCatch() CursorArrow() CursorWE() CursorIbeam()
+CursorSize() 
+
+
+ 
+
+
+
+====== Ver también ======
+

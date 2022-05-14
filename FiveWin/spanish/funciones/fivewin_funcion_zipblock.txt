@@ -1,0 +1,76 @@
+ZipBlock()
+
+Devuelve el tamaño del bloque del archivo compactado
+
+
+
+====== Sintaxis ======
+
+
+ ZipBlock( <nZipInfo> ) --> nSize 
+
+
+
+====== Parámetros ======
+
+
+ <nZipInfo> Entrega la estructura PZFILEINFO automáticamente al bloque de código bZip. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nSize> Block size 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 
+
+
+
+
+

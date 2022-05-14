@@ -1,0 +1,37 @@
+====== CreateDlgIndirect() ======
+
+Crea un DialogBox modal de los recursos de memoria
+
+====== Sintaxis ======
+
+ CreateDlgIndirect( <hInstance>, <cMemTemplate>, <hWndOwner> ) --> hDlg
+
+
+Esta función crea un cuadro de diálogo modal de un cuadro de diálogo de plantilla en la memoria,Esta función se 
+
+utiliza cuando un cuadro de diálogo modal se crea a partir del código fuente. 
+
+Utilizar las clases FiveWin en lugar de gestionar estas funciones directamente. Las clases le dan mucha más   
+
+potencia y son mucho más fáciles de usar.
+
+====== Parametros ======
+
+|<hInstance>| Identifica una instancia del módulo que va a crear el cuadro de diálogo.| 
+|<cMemTemplate>| Una cadena que contiene la descripción de los binarios del cuadro de diálogo de plantilla. |
+|<hWndOwner>| El título de la ventana, que es el propietario de la DialogBox. De forma predeterminada es           GetActiveWindow ().|
+
+====== Retorno ======
+
+| <hDlg> | El título ( like hWnd ) del cuadro de diálogo|
+
+====== Codigo Fuente ======
+
+No se ha proporcionado. Ver FUENTE \\WINAPI\\DlogBox.c
+
+
+
+====== Ver también ====== 
+
+[[fivewin_funcion_DialogBoxIndirect|DialogBoxIndirect()]]
+ 

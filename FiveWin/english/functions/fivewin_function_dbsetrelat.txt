@@ -1,0 +1,17 @@
+====== DbSetRelat() ======
+Function used to relates two work areas/ Set relation.  This function is kept to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbSetRelat( <x>, <y>, <z> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Numeric value or of characters that it expresses the number of area or the alias of the area daughter.|
+|<y>| Code Block containing the key expression of the relation.|
+|<z>| Relation Key expression as string|
+
+====== Returns ======
+DbSetRelation( x, y, z ) 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

@@ -1,0 +1,39 @@
+====== RichEdit() ======
+
+A RichEdit based text editor for your apps
+
+This is a modern and very powerfull replacement of function MemoEdit()
+
+====== Syntax ======
+
+    RichEdit( @<cText>, [<cTitle>], [<nTop>, <nLeft>, <nBottom>, <nRight>] ) --> <lSaved>
+
+
+====== Parameters ======
+^ Parameter ^ Description                         ^
+| <cText> | A string variable name containing the text to edit. It has to be provided by reference using '@' before the variable name|
+| <cTitle> | An optional title to show for the editor|
+| <nTop>, <nLeft>, <nBottom>, <nRight> | Optional screen coordinates for the editor|
+
+
+====== Returns ======
+^ Returns ^ Description                         ^
+| <lChanged>| A logical value indicating if the text has been modified|
+
+
+
+====== Example ======
+<code>
+cText := "Hello world"
+RichEdit( @cText, "A great editor" )
+</code>
+{{:richedit2.jpg|:richedit2.jpg}}
+
+====== Source Code ======
+ SOURCE\FUNCTION\MEMOEDIT.PRG 
+
+
+
+====== See also ======
+[[fivewin_function_memoedit|MemoEdit()]]
+[[fivewin_function_sourceedit|SourceEdit()]]

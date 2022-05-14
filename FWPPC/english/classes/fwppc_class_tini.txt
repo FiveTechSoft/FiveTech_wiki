@@ -1,0 +1,19 @@
+====== Class TIni ======
+
+INI files management as objects                                                
+====== DATA ======
+|cIniFile|INI physical filename|
+|lAutoSet|.T. to activate autoset mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Get|Retrieves data from the INI file.|
+|Set|Writes data into the INI file.|
+|Sections|Returns an array with all the section names|
+|DelEntry|Deletes an INI section entry.|
+|DelSection|Deletes an entire INI section.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TINI.PRG

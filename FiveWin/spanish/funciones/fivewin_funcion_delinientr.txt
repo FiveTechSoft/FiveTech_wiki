@@ -1,0 +1,24 @@
+====== DelIniEntry() ======
+
+Se borra una entrada en un archivo INI
+
+====== Sintaxis ======
+ 
+ DelIniEntry( <Section>, <Entry>, <File> ) --> lSuccess 
+
+====== Parametros ======
+
+| <Section> | Sección  |
+| <Entry> | Entrada  |
+| <File> | Archivo Ini |  
+   
+
+====== Retorno ======
+
+| <cValue> | El equivalente de <nValue> como string |
+
+====== Ejemplo ======
+ 
+====== Codigo Fuente ======
+ 
+ SOURCE\WINAPI\PROFILE.C 

@@ -1,0 +1,211 @@
+====== SetClassWord() ======
+
+
+Changes a window word value
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetClassWord( <hWnd>, <nIndex>, <nNewValue> ) --> nOldValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIndex> Specifies the zero-based byte offset of the word value to
+change. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Valid values are in the range zero through the number of bytes of class
+memory, minus two (for example, if 10 or more bytes of extra class memory
+were specified, a value of 8 would be an index to the fifth integer), or
+one of the following values: 
+
+
+ 
+
+
+ 
+
+
+
+Value       Meaning   
+GCW_HBRBACKGROUND   Sets a new handle of a background brush.   
+GCW_HCURSOR      Sets a new handle of a cursor.   
+GCW_HICON         Sets a new handle of an icon.   
+GCW_STYLE         Sets a new style bit for the window class.   
+
+
+
+
+
+ #define GCW_HBRBACKGROUND   (-10) 
+
+
+ 
+
+
+ #define GCW_HCURSOR      (-12) 
+
+
+ 
+
+
+ #define GCW_HICON         (-14) 
+
+
+ 
+
+
+ #define GCW_HMODULE      (-16) 
+
+
+ 
+
+
+ #define GCW_CBWNDEXTRA      (-18) 
+
+
+ 
+
+
+ #define GCW_CBCLSEXTRA      (-20) 
+
+
+ 
+
+
+ #define GCL_WNDPROC      (-24) 
+
+
+ 
+
+
+ #define GCW_STYLE         (-26) 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <nNewValue> Specifies the replacement value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nOldValue> The return value is the previous value of the specified
+word, if the function is successful. Otherwise, it is zero. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The SetClassWord function sets a word value at the specified offset into
+the extra class memory for the window class to which the given window
+belongs. Extra class memory is reserved by specifying a nonzero value in
+the cbClsExtra member of the WNDCLASS structure used with the
+RegisterClass function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\RegClass.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetClassLong() SetWindowWord() SetWindowLong() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

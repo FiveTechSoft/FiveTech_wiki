@@ -1,0 +1,41 @@
+====== Create a dialog ======
+<code clipper>
+DEFINE DIALOG <oDlg> ;
+   [ <resource: NAME, RESNAME, RESOURCE> <cResName> ] ;
+   [ TITLE <cTitle> ] ;
+   [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ <lib: LIBRARY, DLL> <hResources> ] ;
+   [ <vbx: VBX> ] ;
+   [ STYLE <nStyle> ] ;
+   [ <color: COLOR, COLORS> <nClrText> [,<nClrBack> ] ] ;
+   [ BRUSH <oBrush> ] ;
+   [ <of: WINDOW, DIALOG, OF> <oWnd> ] ;
+   [ <pixel: PIXEL> ] ;
+   [ ICON <oIco> ] ;
+   [ FONT <oFont> ] ;
+   [ <help: HELP, HELPID> <nHelpId> ] ;
+   [ <transparent: TRANSPARENT> ]
+</code>
+^parameter^type^description^
+|<oDlg>| |The dialog object to be created|
+|<cResName>|optional|The resource name that defines the dialog in the RC file|
+|<cTitle>|optional|The title to set to the dialog|
+|<nTop>,<nLeft>,<nBottom>,<nRight>|optional|The coordinates of the dialog|
+|<nWidth>,<nHeight>|optional|The dimensions of the dialog|
+====== Run a dialog ======
+<code clipper>
+ACTIVATE DIALOG <oDlg> ;
+   [ <center: CENTER, CENTERED> ] ;
+   [ <NonModal: NOWAIT, NOMODAL> ] ;
+   [ WHEN <uWhen> ] ;
+   [ VALID <uValid> ] ;
+   [ ON [ LEFT ] CLICK <uClick> ] ;
+   [ ON INIT <uInit> ] ;
+   [ ON MOVE <uMoved> ] ;
+   [ ON PAINT <uPaint> ] ;
+   [ ON RIGHT CLICK <uRClicked> ] ;
+   [ <Resize16: RESIZE16> ]
+</code>
+^parameter^type^description^
+|<oDlg>| |The dialog object to be executed|

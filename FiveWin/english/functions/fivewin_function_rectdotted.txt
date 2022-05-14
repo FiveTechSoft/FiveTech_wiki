@@ -1,0 +1,154 @@
+RectDotted()
+
+
+
+RectDotted()
+
+ Previous  Top  Next
+
+
+
+
+It draws a dotted rectangle
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RectDotted( <hWnd>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the window where we will draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> Upper coordinate of the rectangle to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeft> Left coordinate of the rectangle to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBottom> Lower coordinate of the rectangle to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRight> Right coordinate of the rectangle to draw 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+Observations:
+
+
+
+
+
+ This function draws a rectangle formed by a line of a pixel of width and
+alternating a colored pixel and another without painting. It is used
+mostly for those to make selections with elastic rectangles. In Fivewin
+uses it to paint the lines of the browses 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CTRLDRAW.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

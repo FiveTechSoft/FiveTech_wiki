@@ -1,0 +1,25 @@
+====== aGetWorkAreas()======  
+
+Returns an array with all available work areas 
+
+====== Syntax ======  
+
+ aGetWorkAreas()  --> <aWorkAreas>  
+
+
+====== Parameters ======  
+
+None 
+
+====== Returns ======  
+^ Returns    ^ Description                                  ^
+|<aWorkAreas>|An array with the name of all workareas in use|  
+
+====== Sample ======  
+<code clipper>
+ local aAreas := aGetWorkAreas()  
+</code> 
+
+====== Source Code ======  
+
+SOURCE\FUNCTION\DbTools.prg

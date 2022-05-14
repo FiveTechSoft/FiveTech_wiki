@@ -1,0 +1,16 @@
+
+====== nRGBBlue() ====== 
+nRGBBlue()
+
+Blue component of a RGB color
+====== Sintaxis ======
+ nRGBBlue( <nRGBColor> ) --> nBlue 
+====== Parámetros ======
+ <nRGBColor> RGB color 
+====== Devuelve ======
+ <nBlue> Blue component of a RGB color 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\COLORTON.C 
+====== Ver también ======

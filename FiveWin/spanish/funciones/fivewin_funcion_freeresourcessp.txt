@@ -1,0 +1,18 @@
+====== FreeResources() ======
+Libera los Recursos
+
+====== Syntaxis ====== 
+FreeResources() --> nil  
+
+====== Parametros ====== 
+Ninguno
+
+====== Devuelve ====== 
+Nil
+
+====== Codigo fuente ====== 
+SOURCE\WINAPI\RESOURCE.C  
+ 
+====== Ver tambien ====== 
+
+ 

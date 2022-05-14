@@ -1,0 +1,35 @@
+
+====== GetMenuState() ======
+GetMenuState()
+
+It returns the flags of state of a menuitem
+====== Sintaxis ======
+ GetMenuState( <hMenu>, <nId>, <nFlags> ) --> nState 
+====== Parámetros ======
+  <hMenu> Handle of the menu 
+  <nId> Identifier position of the MenuItem 
+  <nFlags> Type of identification of the menuitem 
+      MF_BYCOMMAND       0   In which case nId will be the idenfier of the one 0
+                             menuitem
+      MF_BYPOSITION   1024   In which case nId will be inside the position of
+                             the menu that occupies the menuitem counting from 0.
+====== Devuelve ======
+ If the specified item doesn't exist the function returns -1. In case nId
+belongs to a popup menu nHiWord (nState) retrieves the number of items
+and nLoWord (nState) retrieves the menuitem state. 
+
+ Use The Or() function to check the different states. 
+
+  MF_BITMAP         It contains a bitmap   
+  MF_CHECKED         Marked Menuitem   
+  MF_DISABLED         Disabled Menuitem   
+  MF_ENABLED         Enabled Menuitem   
+  MF_GRAYED         Grayed Menuitem   
+  MF_MENUBARBREAK      Break in the menu bar   
+  MF_MENUBREAK      Break in a vertical menu   
+  MF_SEPARATOR      Separator   
+  MF_UNCHECKED      Normal state of the menuitem   
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

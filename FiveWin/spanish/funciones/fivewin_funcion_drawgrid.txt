@@ -1,0 +1,21 @@
+====== DrawGrid() ======
+
+Dibuja una rejilla de puntos en una ventana de diseño.
+
+====== Sintaxis ======
+ DrawGrid( <hWnd>, <hDC>, <@cPS>, <wGridX>, <wGridY> ) --> nil 
+
+====== Parámetros ======
+|hWnd| El manejador de la ventana en donde pintaremos| 
+|hDC| El dispositibo de contexto de la ventana| 
+|@cPS| No usado| 
+|nGridX| Separación horizontal de los puntos| 
+|nGridY| Separación vertical de los puntos| 
+
+====== Devuelve ======
+ Nil 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\DRAWGRID.C 
+====== Ver también ======

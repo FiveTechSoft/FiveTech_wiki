@@ -1,0 +1,67 @@
+FWDispEnd()
+
+
+FWDispEnd()
+ Previous  Top  Next
+
+Part of the double buffer painting technique. Updates and reactivates the
+original DC of the window to be painted.
+
+====== Sintaxis ======
+
+ 
+
+
+ FWDispEnd( <aInfo> ) --> hDC 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <aInfo> An array of information provided by FWDispBegin(). 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hDC> The original DC of the painting window. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

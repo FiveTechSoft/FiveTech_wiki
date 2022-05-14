@@ -1,0 +1,34 @@
+====== Defining a Brush from source code ======
+
+<code clipper>
+ DEFINE BRUSH <oBrush> ; 
+ [ STYLE <cStyle> ] ;  
+ [ COLOR <nRGBColor> ] ;  
+ [ FILE | FILENAME | DISK <cBmpFile> ];  
+ [ RESOURCE | NAME | RESNAME <cBmpRes> ]
+</code>  
+
+<code clipper>
+ RELEASE BRUSH <oBrush>
+</code> 
+
+====== Assigning a Brush to a Window ======
+
+<code clipper>
+ SET BRUSH ; 
+ [ OF <oWnd> ] ;  
+ [ TO <oBrush> ]  
+</code>
+
+| oBrush> | A reference to the Brush Object. |
+| <cStyle> | One of the styles listed below. |
+| <nRGBColor> | A color in RGB format. Use nRGB() function. |
+| <cBmpFile> | The name of a BMP file to use to build the Brush. |
+| <cBmpRes> | The name of a BMP in the resource. |
+| <oWnd> | A reference to the owner Window (Container) of the Brush. |
+
+====== DIFFERENT STYLES: ======
+
+| New styles:  BORLAND, TILED, BRICKS |
+| Standard styles:  DIAGONAL, HORIZONTAL, VERTICAL, FDIAGONAL, BDIAGONAL, CROSS, DIAGCROSS |
+

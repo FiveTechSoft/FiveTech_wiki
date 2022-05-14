@@ -1,0 +1,79 @@
+====== WinUser() ====== 
+
+
+
+WinUser()
+
+Retrive the Windows user name
+
+
+====== Syntax ======
+
+ WinUser() --> cWinUserName 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cWinUserName> Windows user name 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MSGBOX.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

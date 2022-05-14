@@ -1,0 +1,33 @@
+====== Portapapeles (Clipboard) ======
+
+Creando un objeto clipboard:
+
+<code clipper>
+DEFINE CLIPBOARD <oClp> ;
+                 [ FORMAT TEXT | OEMTEXT | BITMAP | DIF ] ;
+                 [ OF <oWnd> ]
+ACTIVATE CLIPBOARD <oClp>
+</code>
+
+Parámetros:
+
+|<oClp> |Referencia al objeto portapapeles.|
+|<oWnd> |Ventana que controla el portapapeles|
+|<cText> |Texto que se va a colocar en el portapapeles.|
+
+Claúsulas:
+
+|TEXT/OEMTEXT |Texto normal|
+|BITMAP |Aún no implementado|
+|DIF |Aún no implementado|
+
+Implementación del comando:
+
+<code clipper>
+#xcommand DEFINE CLIPBOARD <oClp> ;
+[ FORMAT <format:TEXT,OEMTEXT,BITMAP,DIF> ] ;
+[ OF <oWnd> ] ;
+=> ;
+<oClp> := TClipBoard():New( [Upper(<(format)>)], <oWnd> )
+#xcommand ACTIVATE CLIPBOARD <oClp> => <oClp>:Open()
+</code>

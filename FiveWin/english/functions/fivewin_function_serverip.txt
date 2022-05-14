@@ -1,0 +1,76 @@
+====== ServerIP() ======
+
+
+Address IP of Web Server
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ServerIP() --> cIpAddress 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <cIPAddress> Address IP of Web Server in string format 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\TWEBSERV.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

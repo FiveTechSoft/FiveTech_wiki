@@ -1,0 +1,19 @@
+
+====== CloseWindow() ======
+CloseWindow()
+Minimize window.
+====== Sintaxis ======
+ CloseWindow( <hWnd> ) --> nil 
+
+====== Parámetros ======
+
+ <hWnd> Handle of the window 
+
+
+====== Devuelve ======
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\WNDIS.C 
+====== Ver también ======

@@ -1,0 +1,112 @@
+====== PlayMetafile() ====== 
+
+
+
+PlayMetafile()
+
+
+
+
+
+
+Paints the content of the metafile in a HDC
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PlayMetafile( <hDC>, <hMetaFile> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context where we will show the metafile 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hMetaFile> Handle del metafile 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> Returns true if the function was executed correctly. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TMETAFIL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\WINAPI\METAFILE.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

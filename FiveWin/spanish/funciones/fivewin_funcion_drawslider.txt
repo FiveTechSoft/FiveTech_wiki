@@ -1,0 +1,105 @@
+DrawSlider()
+
+
+DrawSlider()
+ Previous  Top  Next
+
+It draws a slider.
+
+====== Sintaxis ======
+
+
+ DrawSlider( <hDC>, <nRow>, <nCol>, <nPos>, <nLong>, <aMarks>,
+<nOrientation>, <nDirection>, <nClrBtn>, <nClrMarks> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hDC> Device context where we will paint the item 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates where to paint 
+
+
+ 
+
+
+ <nPos> The position of the slider. 
+
+
+ 
+
+
+ <nLong> The lenght of the slider. 
+
+
+ 
+
+
+ <aMarks> Array of marks to be drawn. 
+
+
+ 
+
+
+ <nOrientation> The orientation of the slider (0 = horizontal, 1 =
+vertical). 
+
+
+ 
+
+
+ <nDirection> The direction of the slider (0 = none, 1 = top, 2 = left, 3
+= bottom, 4 = right). 
+
+
+ 
+
+
+ <nClrBtn> Color for buttons. 
+
+
+ 
+
+
+ <nClrMarks> Color for marks. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ nil 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\DRAWSLID.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

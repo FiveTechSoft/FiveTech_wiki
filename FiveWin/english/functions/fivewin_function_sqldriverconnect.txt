@@ -1,0 +1,70 @@
+====== SQLDriverConnect() ======
+
+
+Establishes connections to a driver and a data source.
+
+====== Syntax ======
+
+ 
+
+
+ SQLDriverConnect( <hDbc>, <cConnectString> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <cConnectString> The connection string. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

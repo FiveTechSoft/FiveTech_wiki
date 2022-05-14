@@ -1,0 +1,46 @@
+====== Creación de un medidor mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> METER [ <oMeter> VAR ] <nActual> ;  
+   [ TOTAL <nTotal> ] ;  
+   [ SIZE <nWidth>, <nHeight> ];  
+   [ OF <oWnd> ] ;  
+   [ UPDATE ] ;  
+   [ PIXEL ] ;  
+   [ FONT <oFont> ] ;  
+   [ PROMPT <cPrompt> ] ;  
+   [ NOPERCENTAGE ] ;  
+   [ COLOR | COLORS <nClrPane>, <nClrText> ] ;  
+   [ BARCOLOR <nClrBar>, <nClrBText> ] ;  
+   [ DESIGN ]  
+</code>  
+====== Creación de un medidor desde recursos ====== 
+<code clipper>
+REDEFINE METER [ <oMeter> VAR ] <nActual> ;  
+   [ TOTAL <nTotal> ] ;  
+   [ ID <nId> ] ;  
+   [ OF <oWnd> ];  
+   [ UPDATE ] ;  
+   [ FONT <oFont> ] ;  
+   [ PROMPT <cPrompt> ] ;  
+   [ NOPERCENTAGE ] ;  
+   [ COLOR | COLORS <nClrPane>, <nClrText> ] ;  
+   [ BARCOLOR <nClrBar>, <nClrBText> ]  
+</code>  
+====== Parámetros ====== 
+|<nRow>, <nCol>          |Coordenadas en pantalla. Se simulan coordenadas de texto.|
+|<oMeter>                |Referencia al objeto medidor.|
+|<nActual>               |Valor numérico representado por el medidor.|
+|<nTotal>                |Valor total representado por el medidor.|
+|<nWidth>, <nHeight>     |Dimensiones del medidor en píxels.|
+|<oWnd>                  |Referencia al objeto ventana contenedor del medidor.|
+|<nId>                   |Valor numérico que identifica al medidor de los recursos.|
+|<oFont>                 |Tipo de letra a utilizar para mostrar el porcentaje del medidor.|
+|<cPrompt>               |Muestra un texto opcional dentro del medidorr.|
+|<nClrPane> <nClrText>   |Colores de las partes no rellenadas del medidor.|
+|<nClrBar> <nClrBText>   |Colores de las partes rellenadas del medidor.|
+
+====== Cláusulas ====== 
+|UPDATE          |Si el control tiene que actualizarse cada vez que su contenedor se actualiza mediante <oDlg>:Update().|
+|PIXEL           |Si las coordenadas del medidor se basan en píxels.|
+|NOPERCENTAGE    |No muestra el símbolo '%'.|
+|DESIGN          |Permite al usuario mover el control y cambiar su tamaño con el ratón.|

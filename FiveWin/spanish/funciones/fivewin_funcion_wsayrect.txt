@@ -1,0 +1,184 @@
+WSayRect()
+
+
+
+WSayRect()
+
+ Previous  Top  Next
+
+
+
+
+Write text into a defined area
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WSayRect( <hWnd>, <hDC>, <nRow>, <nCol>, <cText>, <nClrFore>,
+<nClrBack>, <nWidth> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Row 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nCol> Column 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cText> Text to write 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrFore> Text color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrBack> Back color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWidth> The maximum width that should be written into the window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDSAY.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

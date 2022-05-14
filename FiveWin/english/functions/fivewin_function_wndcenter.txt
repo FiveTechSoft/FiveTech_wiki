@@ -1,0 +1,117 @@
+====== WndCenter() ====== 
+
+WndCenter()
+
+Centers a window on the screen
+
+
+====== Syntax ======
+
+
+ WndCenter( <hWnd> [,<hWndParent>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Identifies the handle of the window to center on screen. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWndParent> An optional handle of a window to use as a reference to
+center the <hWnd> window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Window.prg METHOD Center() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndCenter.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TWindow METHOD Center() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

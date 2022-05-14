@@ -1,0 +1,31 @@
+
+====== MsgGet() ====== 
+MsgGet()
+
+General one-line input message.
+====== Sintaxis ======
+ MsgGet( <cTitle>, <cText>, @<uVar> [,<cBmpFile>] [,<cResName>] ) --> lOk 
+====== Parámetros ======
+  <cTitle> The title of the DialogBox. 
+  <cText> The text of the SAY besides the GET. 
+  <uVar> Any variable value passed by reference. 
+  <cBmpFile> The name of a BMP file to display besides the GET. 
+  <cResName> The name of a BMP resource to display besides the GET. 
+====== Devuelve ======
+ <lOk> A logical value indicating if the user selected Ok (.t.) or Cancel
+(.f.). The modified value is stored in the same <uVar> provided by
+reference. 
+
+Observations:
+
+ This is a very useful function to quickly display a DialogBox with a GET
+to accept some user info input. Using MsgGet() you avoid designing a
+DialogBox, defining it and activating it just for this same purpose.
+MsgGet() speed up some basic user input. 
+====== Ejemplo ======
+ SAMPLES-->TestMsg.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\MsgGet.prg 
+====== Ver también ======
+ MsgAlert() MsgInfo() MsgStop() MsgYesNo() MsgBeep() MsgRetryCancel()
+MsgAbout() MsgBeep()

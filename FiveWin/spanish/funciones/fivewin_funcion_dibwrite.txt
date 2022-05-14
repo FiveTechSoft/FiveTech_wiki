@@ -1,0 +1,24 @@
+
+====== DibWrite() ======
+DibWrite()
+
+Saves a DIB to disk
+====== Sintaxis ======
+ DibWrite( <cBMPFileName>, <hDIB> ) --> lSuccess 
+
+ This function generates a BMP file in disk from a DIB in memory. 
+====== Parámetros ======
+ <cBMPFileName> The name of the BMP file to generate in disk. 
+
+ <hDIB> The handle of the DIB in memory. 
+
+Observations:
+
+ We strongly recommend you to use TBitmap Class for managing bitmaps.
+FiveWin process all that you need automatically. 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+====== Código fuente ======
+ SOURCE\WINAPI\Dib.c 
+====== Ver también ======
+ DibRead() DibPalette() DibWidth() DibHeight() DibWrite()

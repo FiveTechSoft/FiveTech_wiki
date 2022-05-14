@@ -1,0 +1,10 @@
+
+====== DO ... UNTIL support ======
+
+<code clipper>
+ REPEAT | DO
+ ...
+ UNTIL <uExpr>
+</code>
+
+| <uExpr> | The conditional expression that controls the exit from the loop. |

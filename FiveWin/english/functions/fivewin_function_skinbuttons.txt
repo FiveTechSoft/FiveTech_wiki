@@ -1,0 +1,41 @@
+
+====== SkinButtons() ======
+
+It changes the look of all your standard windows buttons in your application. By default it uses the Office 2007 look colors. You can use your own defined colors using a TSkinButton object.
+
+
+
+====== Syntax ======
+
+SkinButtons( [<oSkinButton>] ) --> oSkinButtonInUse
+
+
+
+====== Parameters ======
+
+|<oSkinButton>|A TSkinButton object that holds all the colors settings of the used skin|
+
+
+
+
+====== Returns ======
+|<oSkinButtonInUse>|The TSkinButton object in use|
+
+**Observation:** You can use this object to modify it and set is as a new skin, using SetSkinButtonsColors( oNewSkin )
+
+
+====== Example ======
+
+FWH\samples\TestSk1.prg
+
+
+====== Source code ======
+
+Internal, not provided
+
+
+
+
+====== See Also ======
+
+[[fivewin_class_tskinbutton|Class TSkinButton]]

@@ -1,0 +1,29 @@
+
+====== DbfCdx() ====== 
+
+Para evitar la eliminación de DBFCDX externo
+
+====== Sintaxis ======
+
+ DbfCdx() --> nil  
+
+====== Parámetros ======
+
+ Ninguno
+
+====== Devuelve ======
+
+ Nil  
+
+====== Ejemplo ======
+
+
+====== Observaciones ======
+
+Esta función se utiliza para no tener que declarar  Extern DBFCDX"
+
+====== Código fuente ======
+
+ SOURCE\FUNCTION\DB10.PRG  
+
+====== Ver también ======

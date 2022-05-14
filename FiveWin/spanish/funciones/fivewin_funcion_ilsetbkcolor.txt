@@ -1,0 +1,74 @@
+IlSetBkColor()
+
+
+IlSetBkColor()
+ Previous  Top  Next
+
+Sets the background color for an image list.
+
+====== Sintaxis ======
+
+ 
+
+
+ IlSetBkColor( <hImageList>, <nColor> ) --> nPrevColor 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hImageList> The handle to the imagelist. 
+
+
+ 
+
+
+ <nColor> Background color to set. This parameter can be the CLR_NONE
+value; in that case, images are drawn transparently using the mask. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nPrevColor> Returns the previous background color if successful, or
+CLR_NONE otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

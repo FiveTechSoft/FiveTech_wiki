@@ -1,0 +1,98 @@
+GetNMHeaItem()
+
+
+GetNMHeaItem()
+ Previous  Top  Next
+
+Retrieves the index of the item that is the focus of a notify message.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetNMHeaItem( <nPtrNMHDR> ) --> nIndex 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nPtrNMHDR> A pointer to the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nIndex> The focus item index field of the notify message structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\theaders.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

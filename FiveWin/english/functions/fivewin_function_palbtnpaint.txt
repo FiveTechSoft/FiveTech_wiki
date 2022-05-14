@@ -1,0 +1,143 @@
+====== PalBtnPaint() ====== 
+
+
+
+PalBtnPaint()
+
+
+
+It draws a button with images
+
+====== Syntax ======
+
+
+ PalBtnPaint( <hWnd>, <hBitmap1>, <hPalette1>, <hBitmap2>, <hPalette2>,
+<hBitmap3>, <hPalette3>, <lPressed>, <lAdjust>, <lBorder>, <lMenu>,
+<cMaskColor>, <cCaption>, <nLayout>, <hFont>, <nClrText>, <hDC> ) --> nil 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hWnd> Handle of the button 
+
+
+ 
+
+
+ <hBitmap1>, <hPalette1> Handles of the image to paint when the button is
+in rest. 
+
+
+ 
+
+
+ <hBitmap2>, <hPalette2> Handle of the image to paint when the button is
+pressed. 
+
+
+ 
+
+
+ <hBitmap3>, <hPalette3> Handle of the image to paint when the button is
+disabled. 
+
+
+ 
+
+
+ <lPressed> It indicates if the button must be painted pressed. 
+
+
+ 
+
+
+ <lAdjust> It adjusts the size from the button to their corresponding
+image. 
+
+
+ 
+
+
+ <lBorder> To paint or to not paint border. 
+
+
+ 
+
+
+ <lMenu> The button has associate a menu and it is necessary to paint it
+with an arrow down and a vertical line separating it of the rest of the
+button. 
+
+
+ 
+
+
+ <cMaskColor> The background color used for the bitmap. 
+
+
+ 
+
+
+ <cCaption> The caption of the button. 
+
+
+ 
+
+
+ <nLayout> The position of the caption (LAYOUT_TOP, LAYOUT_LEFT,
+LAYOUT_BOTTOM, LAYOUT_RIGHT). 
+
+
+ 
+
+
+ <hFont> The handle of the font used for the caption. 
+
+
+ 
+
+
+ <nClrText> The text color used for the caption. 
+
+
+ 
+
+
+ <hDC> The device context where to paint the button. 
+
+
+ 
+
+====== Returns ======
+
+
+ nil 
+
+
+ 
+
+====== Example ======
+
+
+ SOURCE\CLASSES\BTNBMP.PRG 
+
+
+ 
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+
+====== See also ======
+

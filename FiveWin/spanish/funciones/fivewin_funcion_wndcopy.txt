@@ -1,0 +1,123 @@
+WndCopy()
+
+
+
+WndCopy()
+
+ Previous  Top  Next
+
+
+
+
+Copy a window image to the clipboard
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndCopy( <hWnd>, [<lAll>], [<lColor>] ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the handle of the window whose image is going to be
+placed at the clipboard. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lAll> An optional logical value indicating if all the window area is to
+be copied or just the window client area. By default only the client area
+gets copied. 
+
+
+ 
+
+
+ <lColor> An optional logical value indicating if the window is to be
+copied using colors. By default the window is copied monochromatic (black
+and white). 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\wndmove.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TClipBoard WndPrint() 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

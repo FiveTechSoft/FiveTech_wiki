@@ -1,0 +1,20 @@
+====== EndDialog() ======
+Finish a modal DialogBox.  This function hides a modal DialogBox and causes the DialogBox function
+to end. 
+
+====== Syntax ======
+EndDialog( <hWndDlg>, <nResult> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWndDlg>| The handle of the DialogBox to terminate.|
+|<nResult>| nResult is a numeric value that will be returned by DialogBox() or DialogBoxIndirect() functions.|
+
+====== Returns ======
+Nothing. 
+
+====== Source Code ======
+Not provided. See SOURCE\\WINAPI\\DlogBox.c 
+
+====== See also: ======
+[[fivewin_function_DialogBox|DialogBox()]], [[fivewin_function_DialogBoxIndirect|DialogBoxIndirect()]]

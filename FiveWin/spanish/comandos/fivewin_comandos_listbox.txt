@@ -1,0 +1,72 @@
+====== Creación de un cuadro de lista (Listbox) mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> LISTBOX [ <oLbx> VAR ] <cnVar> ;  
+   [ ITEMS | PROMPTS <aList> ] ;  
+   [ SIZE <nWidth>, <nHeight> ] ;  
+   [ ON CHANGE <uChange> ] ;  
+   [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ VALID <uValid> ] ;  
+   [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+   [ PIXEL ] ;  
+   [ DESIGN ] ;  
+   [ FONT <oFont> ] ;  
+   [ MESSAGE <cMsg> ] ;  
+   [ UPDATE ] ;  
+   [ WHEN <uWhen> ]  ;
+   [ BITMAPS <acBitmaps> ] ;  
+   [ ON DRAWITEM <uBmpSelect> ] ;  
+   [ MULTI | MULTIPLE | MULTISEL ] ;  
+   [ SORT ]  
+</code>
+====== Creación de un cuadro de lista (Listbox) desde recursos ====== 
+<code clipper>
+REDEFINE LISTBOX [ <oLbx> VAR ] <cnVar> ;  
+   [ ITEMS | PROMPTS <aItems> ] ;  
+   [ FILES | FILESPEC <cFileSpec> ] ;  
+   [ ID <nId> ] ;  
+   [ ON CHANGE <uChange> ] ;  
+   [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ HELPID | HELP ID <nHelpId> ] ;  
+   [ VALID <uValid> ] ;  
+   [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+   [ MESSAGE <cMsg> ] ;  
+   [ UPDATE ] ;  
+   [ WHEN <uWhen> ]  ;
+   [ BITMAPS <acBitmaps> ] ;  
+   [ ON DRAWITEM <uBmpSelect> ]  
+</code>
+
+====== Parámetros ======
+
+|<nRow>, <nCol>      |Coordenadas del cuadro de lista (ListBox). Imitan las coordenadas de texto.|
+|<oLbx>              |Referencia al objeto cuadro de lista.|
+|<cnVar>             |Variable de Clipper, de cadena o numérica, donde FiveWin guardará automáticamente el elemento seleccionado en el cuadro de lista.|
+|<aList>             |Array de cadenas de Clipper, usado para definir los elementos del cuadro de lista.|
+|<nWidth>, <nHeight> |Las dimensiones del cuadro de lista en píxels.|
+|<uChange>           |Codeblock que se evalúa cada vez que se selecciona un elemento del cuadro de lista.|
+|<uLDblClick>        |Codeblock que se evaúa cuando el usuario hace doble clic con el ratón sobre el cuadro de lista.|
+|<oWnd>              |Referencia al objeto contenedor del cuadro de lista, habitualmente una ventana o cuadro de diálogo.|
+|<uValid>            |Codeblock que mantiene la cláusula VALID del cuadro de lista.|
+|<nClrFore>          |Color del texto del cuadro de lista.|
+|<nClrBack>          |Color del fondo de los elementos del cuadro de lista.|
+|<oFont>             |Objeto font opcional usado al dibujar los elementos del cuiadro de lista.|
+|<cMsg>              |Mensaje a mostrar en la barra de mensajes del contenedor del cuadro de lista, si se ha definido (una ventana o cuadro de diálogo habitualmente).|
+|<uWhen>             |Codeblock que mantiene la cláusula WHEN del cuadro de lista.|
+|<cFileSpec>         |'Máscara' usada para mostrar automáticamente los archivos del disco, como: "*.*"|
+|<nId>               |Identificador numérico del control al trabajar con recursos.|
+|<nHelpId>           |Identificador de la ayuda para el cuadro de lista.|
+|<acBitmaps>         |Arreglo opcional de nombres de bitmaps cuando el cuadro de lista esta haciendo el pintado.|
+|<uBmpSelect>        |Codeblock a evaluarse cada vez que un bitmap va a ser dibujado en un cuadro de lista. Este codeblock permite seleccionar el indice de diferentes bitmap a pintar.|
+
+
+====== Cláusulas ======
+|PIXEL        |Especifica que <nRow> y <nCol> deben tratarse como píxels, y no simular las filas y columnas de texto del MsDos.|
+|DESIGN       |Permite al usuario mover el control con el ratón.|
+|UPDATE       |Especifica quie este cntrol debe redibijarse (:Refresh()) al ejecutar un <oDlg>:Update() desde su cuadro de diálogo contenedor|
+|MULTI   MULTIPLE   MULTISEL   |Permite una selección múltiple.|
+|BITMAPS      |Especifica un arreglo de nombres de bitmaps a ser usado cuando se produce el pintado del cuadro de lista.|
+|ON DRAWITEM  |Especifica un cierto bitmap indice a pintarse en el cuadro de lista.|
+|SORT         |Ordena los elementos del cuadro de lista.|
+

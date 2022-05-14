@@ -1,0 +1,42 @@
+**ATang()** 
+
+
+Calculates the angle whose tangent is a specified number. 
+
+**Syntax:** 
+
+ ATang( <nTang> ) --> nAngle  
+ 
+  
+
+**Parameters:** 
+
+ <nTang> The tangent.  
+ 
+  
+ 
+  
+**Returns:** 
+
+ <nAngle> The angle whose tangent is the specified value expressed in radiants.  
+ 
+  
+
+
+
+
+
+**Sample:** 
+  
+ 
+  
+ local nAng := ATang( 0.5 )  
+ 
+  
+
+**Source Code:** 
+
+ SOURCE\CLASSES\SELECTOR.PRG  
+ 
+  
+

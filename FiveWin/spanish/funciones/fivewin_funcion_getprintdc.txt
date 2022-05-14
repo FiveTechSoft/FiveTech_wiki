@@ -1,0 +1,80 @@
+GetPrintDC()
+
+
+GetPrintDC()
+ Previous  Top  Next
+
+Displays a Print dialog box. The Print dialog box enables the user to
+specify the properties of a particular print job. Returns the handle of
+device context for the printer.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetPrintDC( <hWndOwner>, <lSel>, <lPage> ) --> hDC 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWndOwner> The owner window. 
+
+
+ 
+
+
+ <lSel> Enables or disables the selection radio button. 
+
+
+ 
+
+
+ <lPage> If lSel is .T., selects the Pages radio button. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hDC> The handle of the device context for the printer. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

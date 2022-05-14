@@ -1,0 +1,44 @@
+======  GTFToTxt() ====== 
+ 
+
+
+It converts a text from GTF format to the plain text format.
+
+====== Syntax ======
+
+
+ GTFToTxt( <cGTF> ) --> cTxt 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cGTF> The text in GTF format to convert 
+
+
+ 
+
+====== Returns ======
+
+
+ <cTxt> The text converted in plain text format 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\CLASSES\FGET.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

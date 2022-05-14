@@ -1,0 +1,41 @@
+====== ScreenToClient() ======
+
+Convierte coordenadas de pantalla en coordenadas de área cliente.
+
+====== Sintaxis ======
+
+ScreenToClient( <hWnd>, <aPoint> ) --> nil 
+
+La función ScreenToClient convierte las coordenadas de pantalla del punto especificado de la pantalla a coordenadas de client.\\
+La función ScreenToClient asume que el punto especificado está en coordenadas de pantalla.
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>|Es el manejador que identifica la ventana cuya área de cliente se usa para la conversión.| 
+|<aPoint>|Una arreglo de dos elementos que contiene las coordenadas del punto. Los dos elementos de este arreglo son transformados de acuerdo a los nuevos valores calculados.| 
+
+====== Devuelve ======
+
+nil. El resultado es colocado en el mismo arreglo.
+
+Las nuevas coordenadas son relativas a la esquina superior izquierda del área de cliente de la ventana especificada.
+
+====== Ejemplo ======
+
+<code> local aPoint := { 100, 120 } 
+
+ ScreenToClient( oWnd:hWnd, aPoint ) 
+
+ ? aPoint[ 1 ]
+ ? aPoint[ 2 ]
+ </code>
+
+====== Código fuente ======
+
+ SOURCE\\WINAPI\\Clt2Scr.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_clienttoscreen|función ClientToScreen()]]
+
+

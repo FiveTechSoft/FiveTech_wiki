@@ -1,0 +1,22 @@
+
+======GetCommError() ======
+GetCommError()
+
+Retrieves the most recent comm error value
+====== Sintaxis ======
+ GetCommError( <nIdComDev>, @<cComStat> ) --> nRetCode 
+
+ This function retrieves the most recent error value and current status
+for the specified device. 
+====== Parámetros ======
+ <nIdComDev> The communications device identifier created with the
+OpenComm() function. 
+ <cComStat> A string that will receive the information for the comm
+status. 
+====== Devuelve ======
+ <nRetCode> Indicates the last error value. 
+====== Ejemplo ======
+ SAMPLES\TestComm.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Comm.c 
+====== Ver también ======

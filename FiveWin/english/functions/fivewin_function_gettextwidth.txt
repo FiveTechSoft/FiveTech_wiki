@@ -1,0 +1,62 @@
+ 
+======  GetTextWidth() ====== 
+
+
+Calculates the width of a string.
+
+====== Syntax ======
+
+
+ GetTextWidth( <hDC>, <cString>, [<hFont>] ) --> nPixelWidth 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ <cString> The string whose width is to be calculated. 
+
+
+ 
+
+
+ <hFont> The handle of the font. 
+
+
+ 
+
+====== Returns ======
+
+
+ <nPixelWidth> The width of the string. 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\GetTextW.c 
+
+
+ 
+
+See also:
+
+
+ GetTextHeight() 
+
+
+ 
+
+
+
+====== See also ======
+

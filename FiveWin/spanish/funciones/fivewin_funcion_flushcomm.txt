@@ -1,0 +1,152 @@
+FlushComm()
+
+
+
+
+FlushComm()
+
+ Previous  Top  Next
+
+
+
+
+Flushes all characters from transmision or receiving
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FlushComm( <nIdComDev>, <nQueue> ) --> nReturn 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function flushes all characters from the transmision or receiving
+queue of the specified communications device. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <nIdComDev> Identifies the communication device to be flushed. The
+OpenComm function returns this value. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nQueue> Specifies the queue to be flushed. If this parameter is zero,
+the transmision queue is flushed. If the parameter is 1, the receiving
+queue is flushed. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nReturn> The return value is zero if the function is sucessfull. It is
+less than zero if nIdComDev is not a valid device or if nQueue is not a
+valid device. The return value is positive if there is an error for the
+specified device. For a list of the possible error values, see the
+GetCommError function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\\TestComm.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Comm.c 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+See also:
+
+
+
+
+
+ GetCommError() OpenComm() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver tambi�n ======
+

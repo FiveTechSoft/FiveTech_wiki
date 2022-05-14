@@ -1,0 +1,106 @@
+====== KillTimer() ====== 
+
+Removes the specified timer
+
+====== Syntax ======
+
+ KillTimer( <hWnd>, <nIdTimer> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window associated with the timer to be removed.
+This must be the same value passed as the hWnd parameter of the SetTimer
+function that created the timer. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIdTimer> Identifies the timer to be removed. It is the value returned
+by SetTimer() function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating the result of the KillTimer()
+operation. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestTime.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Timers.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+[[fivewin_class_ttimer|Class TTimer]] 

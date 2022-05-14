@@ -1,0 +1,35 @@
+====== ASave() ======
+To convert/code an array to a string. ASave() converts an array to Binary form and then returns the same in a string
+====== Syntax ======
+ASave( <aArray> ) --> cInfo  
+
+====== Parameters ======
+^Parameter ^ Description         ^
+|<aArray>| Array to convert/code.|
+
+====== Returns ======
+^Returns^ Description                      ^
+|<cInfo>|String containing the coded array.|
+ 
+====== Sample Code ======  
+<code clipper>
+#include 'fivewin.ch'
+
+//------------------------------------------------//
+Function Main()
+Local aData1,aData2,cBinData
+
+aData1:={"Tom","Dickenson","Harry"}
+cBinData:=ASave(aData1)  // Converts Array Data and to Binary and stores in cStr
+
+aData2:=ARead(cBinData)  // Reads data from Binary and then converts back to Array
+MsgList(aData2)
+
+Return nil
+</code>
+
+====== See also ======
+[[fivewin_function_aread|ARead()]]
+
+====== Source Code ======
+SOURCE\CLASSES\WINDOW.PRG

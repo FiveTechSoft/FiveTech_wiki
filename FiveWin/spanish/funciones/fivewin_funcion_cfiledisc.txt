@@ -1,0 +1,20 @@
+
+====== cFileDisc() ======
+
+Retorna la unidad desde un nombre de archivo con la ruta
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ cFileDisc( <cFileName> ) --> cDrive
+
+====== Parametros: ( Parameters: ) ======
+
+ <cFileName> Es el nombre del archivo desde donde se extraera la unidad, si es que la unidad se a especificado en el nombre del archivo. 
+
+====== Retorno: ( Returns: ) ======
+
+ <cDrive> Es una cadena de dos caracteres con el formato A:,B:,C:, etc...
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\FileName.prg

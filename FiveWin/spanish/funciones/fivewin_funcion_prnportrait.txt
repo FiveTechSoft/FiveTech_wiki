@@ -1,0 +1,13 @@
+
+====== PrnPortrait() ======
+It establishes orientation PORTRAIT for the paper of the printer
+====== Sintaxis ======
+ PrnPortrait() --> lSuccess 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <lSuccess> true 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

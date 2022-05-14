@@ -1,0 +1,27 @@
+
+====== CloseZipFile() ======
+
+CloseZipFile()
+
+ Previous  Top  Next
+
+Closes the ZIP file
+
+Syntax
+
+ CloseZipFile() --> nil 
+
+====== Parameters ======
+ None 
+
+====== Returns ======
+ Nothing. 
+
+ Closes the ZIP file previously in use calling GetFirstInZip() and
+GetNextInZip() functions. 
+
+====== Ejemplo ======
+ SAMPLES\TestZip.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\UnZip.c 
+====== Ver también ======

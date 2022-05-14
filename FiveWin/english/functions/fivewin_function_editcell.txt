@@ -1,0 +1,17 @@
+====== EditCell() ======
+Function used by the class TCBrowse to edit data in a cell. 
+
+====== Syntax ======
+EditCell( <oLbx>, <nRowPix>, <nColPix> ) --> nil 
+
+======= Parameters ======
+^Parameter^Description^
+|<oLbx>| Reference to the object Browse.|
+|<nRowPix>| Row expressed in pixels from where you will begin to edit the cell.|
+|<nColPix>| Column expressed in pixels from where you will begin to edit the cell.| 
+
+====== Returns ======
+Nil 
+
+====== Source Code ======
+SOURCE\FUNCTION\EDITCELL.PRG 

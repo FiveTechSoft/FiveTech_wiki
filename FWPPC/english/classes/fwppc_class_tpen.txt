@@ -1,0 +1,19 @@
+====== Class TPen ======
+
+Pen management as objects                                                      
+====== DATA ======
+|hPen|The handle of the pen|
+|nStyle|The Pen style|
+|nColor|Specifies the color of the Pen as an RGB value|
+|nWidth|Specifies the width, in logical units, of the Pen|
+|oDevice|Specifies the device for which to create the Pen|
+====== METHODS ======
+|New|Constructor Method|
+|Release|Destroy Method|
+|End|Destroy Method. Use this method to destroy a Pen.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPEN.PRG

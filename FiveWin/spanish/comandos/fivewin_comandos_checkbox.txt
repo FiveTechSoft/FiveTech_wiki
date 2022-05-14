@@ -1,0 +1,97 @@
+====== Cajas de Validación/Chequeo (Checkboxes) ======
+
+Creando un checkbox de código fuente:
+
+<code clipper>
+@ <nRow>, <nCol> CHECKBOX [<oCbx> VAR ] <lVar> ;
+                 [ PROMPT <cCaption> ] ;
+                 [ OF | WINDOW | DIALOG <oWnd> ] ;
+                 [ SIZE <nWidth>, <nHeight> ] ;
+                 [ HELPID | HELP ID <nHelpId> ] ;
+                 [ FONT <oFont> ] ;
+                 [ ON click <uClick> ] ;
+                 [ VALID <ValidFunc> ] ;
+                 [ COLOR | COLORS <nClrFore>[,<nClrBack>] ];
+                 [ DESIGN ] ;
+                 [ PIXEL ] ;
+                 [ MESSAGE <cMsg> ] ;
+                 [ UPDATE ] ;
+                 [ WHEN <WhenFunc> ] ;
+</code>
+
+Usando un checkbox desde un recurso:
+
+<code clipper>
+REDEFINE CHECKBOX [ <oCbx> VAR ] <lVar> ;
+                  [ ID <nId> ] ;
+                  [ OF | WINDOW | DIALOG <oWnd> ] ;
+                  [ HELPID | HELP ID <nHelpId> ] ;
+                  [ ON CLICK | ON CHANGE <uClick> ];
+                  [ VALID <ValidFunc> ];
+                  [ COLOR | COLORS <nClrFore>[,<nClrBack>] ] ;
+                  [ MESSAGE <cMsg> ] ;
+                  [ UPDATE ] ;
+                  [ WHEN <WhenFunc> ] ;
+</code>
+
+Parámetros:
+
+|<nRow>/<nCol> |Coordenadas del checkbox. Se simulan coordenadas de texto|
+|<oCbx> |Referencia al objeto checkbox.|
+|<lVar> |Variable lógica para va a controlar el checkbox|
+|<cCaption> |Texto que debe aparecer a un lado del checkbox|
+|<oWnd> |Ventana contenedora del checkbox|
+|<nWidth>/<nHeight> |Dimensiones del checkbox en pixeles.|
+|<nHelpId> |Valor numérico del tópico de ayuda del checkbox.|
+|<oFont> |Referencia al objeto tipo de letra (font) a utilizarse con el checkbox.|
+|<uClick> |Acción a realizarse cuando cambia de estado el checkbox.|
+|<ValidFunc> |Expresión o función a ser validada cuando el checkbox pierde el foco.|
+|<nClrFore> |Color del texto checkbox, expresado como un número para la función RGB() o como una cadena de caracteres xBase (p.e. “W/B”, ”R/BG”, etc.)|
+|<nClrBack> |Color de fondo del checkbox, expresado como un número para la función RGB().|
+|<cMsg> |Mensaje asociado al control|
+|<WhenFunc> |Bloque de código para prevalidación|
+|<nId> |Identificador numérico del recurso del control.|
+
+Cláusulas:
+
+|DESIGN |Permite al usuario mover y cambiar de tamaño con el ratón.|
+|PIXEL |Indica que se deben utilizar coordenadas en pixeles en vez de coordenadas de texto.|
+|UPDATE |Indica si este control puede actualizarse cuando se ejecuta el método TDialog:Update()|
+
+Implementación del comando:
+
+<code clipper>
+#xcommand REDEFINE CHECKBOX [ <oCbx> VAR ] <lVar> ;
+[ ID <nId> ] ;
+[ <of:OF, WINDOW, DIALOG> <oWnd> ] ;
+[ <help:HELPID, HELP ID> <nHelpId> ] ;
+[ <click:ON CLICK, ON CHANGE> <uClick> ];
+[ VALID <uValid> ] ;
+[ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ WHEN <uWhen> ] ;
+=> ;
+[ <oCbx> := ] TCheckBox():ReDefine( <nId>, bSETGET(<lVar>),;
+<oWnd>, <nHelpId>, [<{uClick}>], <{uValid}>, <nClrFore>,;
+<nClrBack>, <cMsg>, <.update.>, <{uWhen}> )
+#xcommand @ <nRow>, <nCol> CHECKBOX [ <oCbx> VAR ] <lVar> ;
+[ PROMPT <cCaption> ] ;
+[ <of:OF, WINDOW, DIALOG> <oWnd> ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ <help:HELPID, HELP ID> <nHelpId> ] ;
+[ FONT <oFont> ] ;
+[ <change: ON CLICK, ON CHANGE> <uClick> ] ;
+[ VALID <ValidFunc> ] ;
+[ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;
+[ <design: DESIGN> ] ;
+[ <pixel: PIXEL> ] ;
+[ MESSAGE <cMsg> ] ;
+[ <update: UPDATE> ] ;
+[ WHEN <WhenFunc> ] ;
+=> ;
+[ <oCbx> := ] TCheckBox():New( <nRow>, <nCol>, <cCaption>,;
+[bSETGET(<lVar>)], <oWnd>, <nWidth>, <nHeight>, <nHelpId>,;
+[<{uClick}>], <oFont>, <{ValidFunc}>, <nClrFore>, <nClrBack>,;
+<.design.>, <.pixel.>, <cMsg>, <.update.>, <{WhenFunc}> )
+</code>

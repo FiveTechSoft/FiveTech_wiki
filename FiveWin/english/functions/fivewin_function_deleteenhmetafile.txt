@@ -1,0 +1,19 @@
+====== DeleteEnhMetaFile() ====== 
+Deletes an Enhanced-format metafile handle.
+
+====== Syntax ======
+DeleteEnhMetaFile( <hEMF> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hEMF>| The handle of an enhanced metafile.|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| .T. if the function is successful, otherwise .F.| 
+
+====== Source code ======
+SOURCE\WINAPI\EMETAFIL.C 
+
+====== See also ======
+[[fivewin_function_deletemetafile|DeleteMetafile()]]

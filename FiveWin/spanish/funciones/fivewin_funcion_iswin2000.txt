@@ -1,0 +1,38 @@
+
+====== IsWin2000() ======
+
+Verifica si la aplicación se esta ejecutando en Windows 2000.
+
+====== Sintaxis ======
+
+IsWin2000() --> lEsWin2000
+ 
+====== Parámetros ======
+
+| <> | Ninguno.  |
+
+====== Devuelve ======
+
+| <lEsWin2000> | Si la aplicación se esta ejecutando en Windows 2000, devuelve .T., de lo contrario devuelve .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( iif( IsWin2000(), "Ejecutandose en Windows 2000", "No se esta ejecutando en windows 2000" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\WNDIS.C   
+
+====== Ver también ======
+
+[[fivewin_funcion_liswin95|lIsWin95()]]
+[[fivewin_funcion_liswin64|lIsWin64()]]
+[[fivewin_funcion_liswinnt|lIswinNT()]]
+[[fivewin_funcion_liswinxp|lIsWinXP()]]
+[[fivewin_funcion_liswinvista|lIsWinVista()]]
+

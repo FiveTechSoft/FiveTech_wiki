@@ -1,0 +1,23 @@
+
+====== DDEConnect() ======
+
+DDEConnect()
+
+Establishes a conversation with a server application
+
+====== Sintaxis ======
+ DDEconnect( <hInst>, <hService>, <hTopic>, <pCC> ) --> hConv 
+====== Parámetros ======
+ <hInst> The service on which to establish the connection. 
+
+ <hService> 
+
+ <hTopic> The topic on which to establish the connection. 
+ <pCC> Address of structure with context data 
+====== Devuelve ======
+ <hConv> Handle of the established conversation. Otherwise NULL 
+
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\DDEML.C 
+====== Ver también ======

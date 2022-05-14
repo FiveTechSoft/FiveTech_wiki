@@ -1,0 +1,19 @@
+====== DitBackGrd() ======
+Draw a degraded color screen.
+
+====== Syntax ======
+DitBackGrd( <hWnd>, <hDC>, <nRed>, <nGreen>, <nBlue> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| Handle of the window to draw.|
+|<hDC>| Device context of the window.|
+|<nRed>| Red component colour.| 
+|<nGreen>| Green component colour.|
+|<nBlue>| Blue component colour.|
+
+====== Returns ======
+Nil 
+
+====== Source Code ======
+SOURCE\WINAPI\BACKGRND.C 

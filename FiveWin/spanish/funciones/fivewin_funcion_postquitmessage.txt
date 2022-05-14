@@ -1,0 +1,18 @@
+
+====== PostQuitMessage() ======
+Generic finishing application function
+====== Sintaxis ======
+ PostQuitMessage( <nExitCode> ) --> nil 
+====== Parámetros ======
+|<nExitCode>|The return code|
+====== Devuelve ======
+|nil|nada| 
+
+Observaciones:
+
+ This function is automatically managed by FiveWin classes. We recommend
+you using :End(). 
+====== Código fuente ======
+ SOURCE\WINAPI\PostQuit.c 
+====== Ver también ======
+ TWindow:End()

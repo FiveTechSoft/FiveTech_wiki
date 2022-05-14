@@ -1,0 +1,129 @@
+MAPIFindNext()
+
+
+MAPIFindNext()
+ Previous  Top  Next
+
+Retrieves the next (or first) message identifier of a specified type of
+incoming message.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPIFindNext( [<cMsgType>], [<nFlags>], [<cSeedMsgID>] ) --> cMsgId 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cMsgType> The message type. 
+
+
+ 
+
+
+ 
+
+ <nFlags> The following flags can be set: 
+
+
+ 
+
+
+ MAPI_GUARANTEE_FIFO 
+
+
+ 
+
+
+ The message identifiers returned should be in the order of time
+received. MAPIFindNext calls can take longer if this flag is set. Some
+implementations cannot honor this request and return the
+MAPI_E_NO_SUPPORT value. 
+
+
+ 
+
+
+ MAPI_LONG_MSGID 
+
+
+ 
+
+
+ The returned message identifier can be as long as 512 characters. If
+this flag is set, the lpszMessageID parameter must be large enough to
+accomodate 512 characters. 
+
+
+ 
+
+
+ MAPI_UNREAD_ONLY 
+
+
+ 
+
+
+ Only unread messages of the specified type should be enumerated. If this
+flag is not set, MAPIFindNext can return any message of the specified
+type. 
+
+
+ 
+
+
+ 
+
+
+ <cSeedMsgId> The message identifier seed for the request. 
+
+
+ 
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cMsgId> The message id. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

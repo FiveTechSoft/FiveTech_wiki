@@ -1,0 +1,103 @@
+====== Puertos de comunicaciones Serial (COMM). ======
+
+Definiendo un puerto de comunicaciones COMM:
+
+<code clipper>
+DEFINE COMM <oComm> ;
+            [ STOP <nStop> ] ;
+            [ BAUD <nBaud> ] ;
+            [ PARITY <cParity> ] ;
+            [ INSIZE <nInQueue> ] ;
+            [ OUTSIZE <nOutQueue> ] ;
+            [ DEVICE <nDevice> ] ;
+            [ DATA <nData> ] ;
+</code>
+
+Escribiendo datos al puerto:
+<code clipper>
+WRITE COMM <oComm> STRING <cString>
+</code>
+
+Cerrando el puerto de comunicación
+<code clipper>
+CLOSE COMM <oComm>
+</code>
+
+Configurando el puerto de comunicación
+<code clipper>
+SETUP COMM <oComm>
+</code>
+
+Bloqueando el puerto de comunicaciones
+<code clipper>
+BREAK COMM <oComm>
+</code>
+
+Desbloqueando el puerto de comunicaciones
+<code clipper>
+UNBREAK COMM <oComm>
+</code>
+
+Vaciando el buffer del puerto de comunicaciones
+<code clipper>
+FLUSH COMM <oComm> NUMBER <nNumber>
+</code>
+
+Enviando un código de escape al puerto serial
+<code clipper>
+ESCAPE COMM <oComm> NUMBER <nCode>
+</code>
+
+Parámetros:
+
+|<oComm> |Referencia al objeto puerto de comunicaciones|
+|<nStop> |Cantidad de bits de stop, por omisión 1|
+|<nBaud> |Velocidad en baudios (bits por segundo) del puerto, el valor predeterminado es 9600|
+|<cParity> |Paridad de la comunicacion, puede tomar los siguientes valores:||“e” paridad par ||“o” paridad non ||“n” ninguna|
+|<nInQueue> |Tamaño en bits de la fila de entrada, por omisión 1024|
+|<nOutQueue> |Tamaño en bits de la fila de salida, por omisión 128|
+|<nDevice> |Número del puerto serial que se está utilizando|
+|<nData> |Cantidad de bits del buffer de datos, por default 8|
+|<cString> |Cadena de caracteres que se va a escribir en el puerto|
+|<nNumber> |Indica qué fila del puerto de comunicaciones deseamos cerrar|
+|<nCode> |Código de escape a enviar al puerto de comunicaciones|
+
+Implementación del comando:
+
+<code clipper>
+#ifndef _COMM_CH
+#define _COMM_CH
+#xcommand DEFINE COMM <oComm> ;
+[ STOP <nStop> ] ;
+[ BAUD <nBaud> ] ;
+[ PARITY <cParity> ] ;
+[ INSIZE <nInQueue> ] ;
+[ OUTSIZE <nOutQueue> ] ;
+[ DEVICE <nDevice> ] ;
+[ DATA <nData> ] ;
+=> ;
+[ <oComm> := ] TComm():New( <nDevice>, <nInQueue>, <nOutQueue>,, <nBaud>, ;
+<cParity>, <nStop>, <nData> )
+#xcommand DEFINE LPT <oComm> ;
+[ STOP <nStop> ] ;
+[ BAUD <nBaud> ] ;
+[ PARITY <cParity> ] ;
+[ INSIZE <nInQueue> ] ;
+[ OUTSIZE <nOutQueue> ] ;
+[ DEVICE <nDevice> ] ;
+[ DATA <nData> ] ;
+=> ;
+[ <oComm> := ] TComm():New( <nDevice>, <nInQueue>, <nOutQueue>, "LPT", <nBaud>, ;
+<cParity>, <nStop>, <nData> )
+#xcommand WRITE COMM <oComm> STRING <cString> => ;
+<oComm>:Write( <cString> )
+#xcommand CLOSE COMM <oComm> => <oComm>:Close()
+#xcommand SETUP COMM <oComm> => <oComm>:SetUp()
+#xcommand BREAK COMM <oComm> => <oComm>:Break()
+#xcommand UNBREAK COMM <oComm> => <oComm>:UnBreak()
+#xcommand FLUSH COMM <oComm> NUMBER <nNumber> => ;
+<oComm>:Flush( <nNumber> )
+#xcommand ESCAPE COMM <oComm> NUMBER <nCode> =>;
+<oComm>:Escape( <nCode> )
+#endif
+</code>

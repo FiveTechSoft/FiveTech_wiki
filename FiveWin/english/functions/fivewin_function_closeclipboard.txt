@@ -1,0 +1,21 @@
+====== CloseClipboard() ======
+This function closes the clipboard
+
+====== Syntax ======
+CloseClipboard() --> lSuccess 
+
+====== Parameters ======
+None. 
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value that represents if the operation was completed successfully or not. |
+
+====== Observations ======
+A window must close the clipboard after using it in order to let other windows use it. 
+
+====== Source Code ======
+SOURCE\WINAPI\ClpBrd.c 
+
+====== See also ======
+[[fivewin_function_OpenClipboard|OpenClipboard()]], [[fivewin_function_SetClipboarddata()|SetClipboardData()]], [[fivewin_function_EmptyClipboard|EmptyClipboard()]], [[fivewin_function_GetClpData|GetClpData()]]

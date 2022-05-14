@@ -1,0 +1,50 @@
+GetMItemCount()
+
+
+GetMItemCount()
+ Previous  Top  Next
+
+Determines the number of items in the specified menu.
+
+====== Sintaxis ======
+
+
+ GetMItemCount( <hMenu> ) --> nItems 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hMenu> Handle to the menu. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nItems> The number of items in the menu. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

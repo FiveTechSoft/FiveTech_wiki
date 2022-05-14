@@ -1,0 +1,104 @@
+====== LocalShrink() ====== 
+
+
+
+LocalShrink()
+
+
+
+
+
+
+
+ Shrinks the local heap in the given segment. 
+
+
+ 
+
+
+ 
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LocalShrink( <hHeap>, <nNewSize> ) --> nSize 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hHeap> Identifies the segment that contains the local heap 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewSize> New size of local heap 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nSize> It returns the new size of the local heap if the function was
+executed correctly. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MEM.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

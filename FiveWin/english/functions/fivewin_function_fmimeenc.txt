@@ -1,0 +1,21 @@
+====== FMimeEnc() ======
+Encrypt a MIME file 
+
+====== Syntax ====== 
+fMimeEnc(<cIn>, <cOut> ) --> nil 
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cIn> | Name from the file to encrypt.  |
+| <cOut> | Name of the encrypted file   |
+
+====== Return ====== 
+Nil 
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\FUNCTION\MIMECLIP.PRG   
+
+====== See Also ====== 
+[[fivewin_function_fmimedec|fmimedec()]]

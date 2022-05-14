@@ -1,0 +1,70 @@
+Str2Hex()
+
+
+Str2Hex()
+ Previous  Top  Next
+
+Converts the characters of a string in their hexadecimal representation.
+
+====== Sintaxis ======
+
+ 
+
+
+ Str2Hex( <cString> ) --> cHex 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cString> The string to convert. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cHex> The hexadecimal representation of the string. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ SAMPLES\TESTHEX2.PRG 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\STR2HEX.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

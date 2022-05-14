@@ -1,0 +1,96 @@
+Field()
+
+
+
+
+Field()
+
+ Previous  Top  Next
+
+
+
+
+It returns the name of a field of the file current DBF
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Field( <n> ) --> cFieldName 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Function of compatibility with xBase++ 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <n> Field number to recover. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ FieldName( n ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cFieldName> Name of the field " n ". 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ====== SOURCE\FUNCTIONS\DBTOOLS.PRG
+
+
+
+
+
+====== Ver tambi�n ======
+

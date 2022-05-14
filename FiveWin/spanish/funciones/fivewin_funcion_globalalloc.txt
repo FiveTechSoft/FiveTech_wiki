@@ -1,0 +1,60 @@
+
+====== GlobalAlloc() ======
+GlobalAlloc()
+
+Allocates a number of bytes from the global heap.
+====== Sintaxis ======
+ GlobalAlloc( <nType>, <nSize> ) --> hMem 
+====== Parámetros ======
+   <nType>
+     GHND               Combines the GMEM_MOVEABLE and GMEM_ZEROINIT flags.   
+     GMEM_DDESHARE      Allocates sharable memory. This flag is used for
+                        dynamic data exchange (DDE) only. This flag is equivalent to GMEM_SHARE. 
+     GMEM_DISCARDABLE   Allocates discardable memory. This flag can only be
+                        used with the GMEM_MOVEABLE flag.   
+     GMEM_FIXED         Allocates fixed memory. The GMEM_FIXED and GMEM_MOVEABLE flags cannot be combined.   
+     GMEM_LOWER         Same as GMEM_NOT_BANKED. This flag is ignored in Windows 3.1.   
+     GMEM_MOVEABLE      Allocates movable memory. The GMEM_FIXED and GMEM_MOVEABLE flags cannot be combined.   
+     GMEM_NOCOMPACT     Does not compact or discard memory to satisfy the allocation request.   
+     GMEM_NODISCARD     Does not discard memory to satisfy the allocation request.   
+     GMEM_NOT_BANKED    Allocates non-banked memory (memory is not within
+                        the memory provided by expanded memory). This flag cannot be used with the GMEM_NOTIFY
+                        flag. This flagis ignored in Windows 3.1.
+     GMEM_NOTIFY        Calls the notification routine if the memory object is discarded.   
+     GMEM_SHARE         Allocates memory that can be shared with other applications. This flag is equivalent
+                        to GMEM_DDESHARE.   
+     GMEM_ZEROINIT      Initializes memory contents to zero.   
+     GPTR               Combines the GMEM_FIXED and GMEM_ZEROINIT flags.   
+       nType            Dec      Hex   
+       GHND            GMEM_MOVEABLE | GMEM_ZEROINIT)   
+       GMEM_DDESHARE      8192      x2000   
+       GMEM_DISCARDABLE      256      x0100   
+       GMEM_FIXED         0      x0000   
+       GMEM_LOWER      GMEM_NOT_BANKED   
+       GMEM_MODIFY      128      x0080   
+       GMEM_MOVEABLE      2      x0002   
+       GMEM_NOCOMPACT      16      x0010   
+       GMEM_NODISCARD      32      x0020   
+       GMEM_NOTIFY      16384      x4000   
+       GMEM_NOT_BANKED      4096      x1000   
+       GMEM_SHARE         8192      x2000   
+       GMEM_ZEROINIT      64      x0040   
+       GPTR            (GMEM_FIXED | GMEM_ZEROINIT)   
+  <nSize> Size of the memory allocated. 
+====== Devuelve ======
+ Handle of the newly allocated global memory 
+
+ If this function is successful, it allocates at least the amount
+requested. If the amount allocated is greater than the amount requested,
+the application can use the entire amount. To determine the size of a
+global memory object, anapplication can use the GlobalSize function.To
+free a global memory object, an application should use the GlobalFree
+function. To change the size or attributes of an allocated memory object,
+an application can use the GlobalReAlloc function. The largest memory
+object that an application can allocate on an 80286 processor is 1
+megabyte less 80 bytes. The largest block on an 80386 processor is 16
+megabytes less 64K. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MEM.C 
+====== Ver también ======

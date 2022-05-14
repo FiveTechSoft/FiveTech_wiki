@@ -1,0 +1,77 @@
+SetWin95Look()
+
+
+
+SetWin95Look()
+
+ Previous  Top  Next
+
+
+
+
+Set/Reset Windows 95 look
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetWin95Look( <lOn/lOff> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <lOn/lOff> Value true of false to set/reset the windows 95 look 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+   Nil.
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WIN95LOK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

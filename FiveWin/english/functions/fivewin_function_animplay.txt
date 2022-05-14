@@ -1,0 +1,88 @@
+AnimPlay()
+
+
+AnimPlay()
+ Previous  Top  Next
+
+Plays an AVI clip in an animation control. The control plays the clip in
+the background while the thread continues executing.
+
+====== Syntax ======
+
+ 
+
+
+ AnimPlay( <hWnd>, <nFrom>, <nTo>, <nRepeat> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> Handle to the animation control. 
+
+
+ 
+
+
+ <nFrom> Zero-based index of the frame where playing begins. The value
+must be less than 65,536. A value of zero means begin with the first
+frame in the AVI clip. 
+
+
+ 
+
+
+ <nTo> Zero-based index of the frame where playing ends. The value must
+be less than 65,536. A value of -1 means end with the last frame in the
+AVI clip. 
+
+
+ 
+
+
+ <nRepeat> Number of times to replay the AVI clip. A value of -1 means
+replay the clip indefinitely. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> Returns .t. if successful. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ANIMATE.C 
+
+
+ 
+
+
+

@@ -1,0 +1,16 @@
+
+====== nGetForeRGB() ====== 
+nGetForeRGB()
+
+Returns the numeric value of an xBase fore color
+====== Sintaxis ======
+ nGetForeRGB( <cColor> ) --> nForeRGB 
+====== Parámetros ======
+ <cColor> An xBase string color representation. 
+====== Devuelve ======
+ <nForeRGB> A numeric RGB value corresponding to the foreground component
+of the <cColor> color expression. 
+====== Código fuente ======
+ SOURCE\FUNCTION\ColorToN.c 
+====== Ver también ======
+ nGetBackRGB() nRGB() nColorToN()

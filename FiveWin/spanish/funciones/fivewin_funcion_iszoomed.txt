@@ -1,0 +1,14 @@
+
+====== IsZoomed() ======
+IsZoomed()
+
+Checks if a window is maximized
+====== Sintaxis ======
+ IsZoomed( <hWnd> ) --> lMaximized 
+====== Parámetros ======
+ <hWnd> The handle of the window to check if it is maximized. 
+====== Devuelve ======
+ <lMaximized> A logical value indicating if the window is maximized. 
+====== Código fuente ======
+ SOURCE\WINAPI\WndIs.c 
+====== Ver también ======

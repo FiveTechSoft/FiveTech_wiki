@@ -1,0 +1,27 @@
+====== ZipSize() ======
+Size of the current extraction
+
+====== Syntax ======
+ZipSize( <nZipInfo> ) --> nSize 
+
+====== Parameters: ======
+^Parameter^Description^
+|<nZipInfo>| Structure PZFILEINFO delivery automaticaly for the bZip codeblock.|
+
+====== Return ======
+^Returns^Description^
+|<nSize>| Size of the a zip/compressed file|.
+
+====== Sample ======
+SAMPLES\TESTZIP.PRG 
+
+====== Source Code======
+SOURCE\FUNCTION\CLIPZIP2.C 
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_ZipFile|ZipFile()]]
+[[fivewin_function_ZipMsg|ZipMsg()]]
+[[fivewin_function_ZipName|ZipName()]]
+[[fivewin_function_GetFirstInZip|GetFirstInZip()]]
+[[fivewin_function_ZipType|ZipType()]]

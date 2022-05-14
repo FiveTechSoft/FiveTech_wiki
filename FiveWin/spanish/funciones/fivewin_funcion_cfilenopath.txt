@@ -1,0 +1,40 @@
+
+====== cFileNoPath() ======
+cFileNoPath() Recupera el nombre de archivo sin la ruta
+
+====== Sintaxis ======
+ cFileNoPath( <cFullFileName> ) --> cFileName 
+
+====== Parámetros ======
+^Parámetro^Descripción^
+| <cFullFileName> | El nombre completo del archivo incluyendo la ruta y opcionalmente la extensión.|  
+
+====== Devuelve ======
+^Retorna^Descripción^
+|<cFileName>| Solo el nombre de archivo y su extensión, despues de excluis el nmobre de la unidad y la ruta. Note que la salida es en letras mayúsculas| 
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+MsgInfo(cFileNoExt( "C:\Fwh\Samples\WhatsNew.Txt" ) )  // Result WHATSNEW.TXT
+ 
+MsgInfo(cFileNoExt( "\Fwh\Source\Class\xBrowse.Prg" ) ) // Result XBROWSE.PRG
+ 
+MsgInfo(cFileNoExt( "" ) )  // Result nothing
+ 
+MsgInfo(cFileNoExt( "Test.Bat" ) ) // Result TEST.BAT
+ 
+MsgInfo(cFileNoExt( "..\Functions\MyTest.Prg" ) )  // Result MYTEST.PRG
+ 
+MsgInfo(cFileNoExt( "\MyApps\Test" ) )  // Result TEST
+ 
+Return nil  
+</code>
+
+====== Código fuente ======
+SOURCE\FUNCTION\FileName.prg  
+
+====== Ver también ======
+[[fivewin_function_cfilenoext|cFileNoExt()]], [[fivewin_function_cfilename|cFileName()]]

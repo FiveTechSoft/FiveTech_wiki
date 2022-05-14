@@ -1,0 +1,87 @@
+WNetGetErrorText()
+
+
+
+WNetGetErrorText()
+
+ Previous  Top  Next
+
+
+
+
+Text of a error code
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WNetGetErrorText( <nError> ) --> cErrorText 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nError> Error code 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cErrorText> Text error 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\NET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

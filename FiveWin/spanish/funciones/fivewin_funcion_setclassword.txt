@@ -1,0 +1,52 @@
+====== SetClassWord() ======
+
+SetClassWord() Cambia el valor 'WORD' de una ventana 
+
+====== Sintaxis ======
+
+SetClassWord( <hWnd>, <nIndex>, <nNewValue> ) --> nOldValue 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>| El Identificador de la ventana. |
+|<nIndex>| Especifica el byte 'zero-based' de desplazamiento del valor 'WORD'. |
+|<nNewValue>| Especifica el nuevo valor a colocar. |
+
+Los valores válidos para <nIndex> están en el rango de cero hasta el número de bytes de la clase memoria, menos dos 
+(por ejemplo, si ha especificado 10 o más bytes de memoria de clase extra, un valor de 8 sería un índice para el quinto entero de 16 bits),
+o uno de los siguientes valores:
+
+<code>
+#define GCW_HBRBACKGROUND   (-10) 
+#define GCW_HCURSOR         (-12) 
+#define GCW_HICON           (-14) 
+#define GCW_HMODULE         (-16) 
+#define GCW_CBWNDEXTRA      (-18) 
+#define GCW_CBCLSEXTRA      (-20) 
+#define GCL_WNDPROC         (-24) 
+#define GCW_STYLE           (-26) 
+</code>
+
+^Valor^Significado^
+|GCW_HBRBACKGROUND| Establece un nuevo manejador del pincel de fondo.|
+|GCW_HCURSOR| Establece un nuevo manejador del cursor. |
+|GCW_HICON| Establece un nuevo manejador del icono. |
+|GCW_STYLE| Establece un nuevo estilo para la clase de la ventana |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nOldValue>| El valor que retorna es el valor anterior del 'WORD' especificado si la función a tenido éxito. De lo contrario, es cero. |
+
+====== Observaciones ======
+
+La función SetClassWord() establece un valor 'WORD' en el desplazamiento especificado en la memoria de clase extra para la clase de ventana a la que pertenece la ventana dada. 
+La Memoria de clase extra esta reservada al especificar un valor distinto de cero en el miembro de la estructura cbClsExtra WNDCLASS utilizada con la función RegisterClass.
+
+====== Código fuente ======
+
+SOURCE\WINAPI\RegClass.c 
+
+====== Ver también ======
+[[fivewin_funcion_SetClassLong|SetClassLong()]], [[fivewin_funcion_SetWindowWord|SetWindowWord()]], [[fivewin_funcion_SetWindowLong|SetWindowLong()]] 
+
+

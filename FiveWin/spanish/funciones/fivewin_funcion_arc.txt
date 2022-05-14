@@ -1,0 +1,22 @@
+====== Arc() ======
+ Dibuja una Arco Elíptico 
+====== Sintaxis ====== 
+Arc( <hDC>, <nLeftRect>, <nTopRect>, <nRightRect>, <nBottomRect>, <nXStartArc>, <nYStartArc>, <nXEndArc>, <nYEndArc> ) --> lSuccess 
+====== Parámetros ====== 
+| <hDC> | Identifica el contexto del dispositivo donde el arco es dibujado | 
+| <nLeftRect> | Las dimensiones del rectángulo donde el el arco es dibujado | 
+| <nTopRect> | |
+| <nRightRect> | | 
+| <nBottomRect> | | 
+| <nXStartArc> | Las coordenadas del punto inicial del arco. | 
+| <nYStartArc> | | 
+| <nXEndArc> | Las coordenadas del punto final del arco. | 
+| <nYEndArc> | |
+
+ ====== Devuelve ====== 
+
+|<lSuccess> |Un valor lógico indicando que la operación se procesó exitosamente.|
+
+====== Código fuente ====== 
+
+SOURCE\WINAPI\Drawing.c 

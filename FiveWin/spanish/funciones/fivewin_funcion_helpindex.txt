@@ -1,0 +1,6 @@
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**ninguno**|
+^Valor de retorno| nil|
+^Descripción:| Muestra el índice principal del archivo de ayuda predeterminado elegido |
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | GetHelpFile, GetHelpTopic, HelpIndex, HelpSearch, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

@@ -1,0 +1,46 @@
+====== IsWinXP() ======
+
+Check if WIN XP is running.
+
+====== Syntax ======
+
+
+ IsWinXP() --> lWinXP 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+| <lWinXP> | Returns .t. if Win XP is runing | 
+
+
+ 
+
+====== Example ======
+
+
+ If IsWinXP() ... 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\GETSYSIN.C 
+
+
+ 
+
+====== See also ======
+[[fivewin_function_iswin64|function IsWin64()]]
+

@@ -1,0 +1,54 @@
+GetCursorStop()
+
+
+GetCursorStop()
+ Previous  Top  Next
+
+Returns the handle of the FiveWin stop cursor.
+
+====== Sintaxis ======
+
+
+ GetCursorStop() --> hCursor 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ None. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <hCursor> The handle of the FiveWin stop cursor. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\Cursors.c 
+
+
+ 
+
+
+
+====== Ver también ======
+

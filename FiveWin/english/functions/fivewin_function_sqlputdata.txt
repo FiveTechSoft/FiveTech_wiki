@@ -1,0 +1,81 @@
+SQLPutData()
+
+
+SQLPutData()
+ Previous  Top  Next
+
+Allows an application to send data for a parameter or column to the
+driver at statement execution time.
+
+====== Syntax ======
+
+ 
+
+
+ SQLPutData( <hStmt>, <pData>, <nLen> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <pData> Pointer to a buffer containing the actual data for the parameter
+or column. 
+
+
+ 
+
+
+ <nLen> Length of data pointed by pData. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

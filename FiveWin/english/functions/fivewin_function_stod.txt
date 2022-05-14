@@ -1,0 +1,66 @@
+SToD()
+
+
+SToD()
+ Previous  Top  Next
+
+Converts a date string in the format "YYYYMMDD" to a date value.
+
+====== Syntax ======
+
+ 
+
+
+ SToD( <cDate> ) --> dDate 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cDate> The date string to be converted. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <dDate> The result of the conversion. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+
+====== See also ======
+

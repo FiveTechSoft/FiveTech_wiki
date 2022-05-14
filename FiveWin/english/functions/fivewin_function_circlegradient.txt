@@ -1,0 +1,43 @@
+====== CircleGradient() ======
+
+Draw a circular gradient or return a HBITMAP/HBRUSH with a circular gradient inside a rectangle
+
+====== Syntax ======
+
+ CircleGradient( <hDC>, <aRect>, <nStartColor>, <nEndColor>, [<nOffsetX>], [<nOffSetY>], [<nOutPut>] ) --> 0/hBitmap/hBrush
+
+====== Parameters: ======
+^Parameter^Description^
+| <hDC> | Device context, can be 0 ( zero ), depend nOutPut value, see bellow |
+| <aRect> | A Clipper array of 4 elements:{ nTop, nLeft, nBottom, nRight } |
+| <nStartColor> | Initial gradient color |
+| <nEndColor> | End gradient color |
+| [<nOffSetX>] | ( optional ) move center point X axis, > 0 move right, < 0 move left, default value 0 |
+| [<nOffSetY>] | ( optional ) move center point Y axis, > 0 move down, < 0 move up, default value 0  |
+| [<nOutPut>] | ( optional ) Output type, value between 1-3, 1 = hDC (default), 2 = hBitmap, 3 = hBrush |
+ 
+
+====== Returns ======
+^Returns^Description^
+| 0 | nOutput = 1 |
+| hBitmap | nOutput = 2 |
+| hBrush | nOutput = 3 |
+ 
+====== Sample ======
+ <code clipper>
+ CircleGradient( hDC, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ) )
+ hBitmap = CircleGradient( 0, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ), -190, -190, 2 )
+ hBrush = CircleGradient( 0, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ), , , 3 )
+ </code>
+
+** Screen Snapshot **
+
+{{:circlegradient_1.jpg|:circlegradient_1.jpg}}
+
+{{:circlegradient_2.jpg|:circlegradient_2.jpg}}
+
+{{:circlegradient_3.jpg|:circlegradient_3.jpg}}
+
+{{:circlegradient_4.jpg|:circlegradient_4.jpg}}
+
+====== Source code: ======

@@ -1,0 +1,26 @@
+====== SetCaretPos() ======
+
+la funcion SetCaretPos() establece la posición del signo de inserción.
+
+====== Sintaxis ======
+
+SetCaretPos( <nCol>, <nRow> ) --> nil 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<nCol>| Coordenada izquierda de la nueva posición del cursor.|
+|<nRow>| Coordenada superior de la nueva posición del cursor. |
+
+Las coordenadas son las coordenadas de cliente
+
+====== Devuelve ======
+Nil 
+
+====== Ejemplo ======
+
+
+====== Código fuente ======
+
+SOURCE\WINAPI\CARET.C 
+
+====== Ver también ======

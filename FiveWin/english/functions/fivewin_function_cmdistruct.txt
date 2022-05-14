@@ -1,0 +1,25 @@
+====== cMDIStruct() ======
+cMDIStruct() Creates structure containing information about the MDIChild
+
+====== Syntax ======
+cMdiStruct( <cClass>, <cTitle>, <nTop>, <nLeft>, <nBottom>, <nRight>,<nStyle> ) --> MdiStruct 
+
+====== Parameters ======
+^Paramter^Description^
+|<cClass>| Class Name |
+|<cTitle>| Title of child window |
+|<nTop>| Upper coordinate |
+|<nLeft>| Left coordinate |
+|<nBottom>| Bottom coordinate |
+|<nRight>| Right coordinate |
+|<nStyle>| Window style |
+
+====== Returns ======
+^Returns^Description^
+|<mdistruct>| Mdi structure to create the mdi child window. |
+
+====== Example ======
+SOURCE\CLASSES\MDICHILD.PRG 
+
+====== Source Code ======
+SOURCE\WINAPI\MDI.C  

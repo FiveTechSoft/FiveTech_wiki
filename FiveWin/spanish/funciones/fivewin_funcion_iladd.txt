@@ -1,0 +1,79 @@
+IlAdd()
+
+
+IlAdd()
+ Previous  Top  Next
+
+Adds an image or images to an image list.
+
+====== Sintaxis ======
+
+ 
+
+
+ IlAdd( <hImageList>, <hImage>, <hMask> ) --> nImage 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hImageList> The handle to the imagelist. 
+
+
+ 
+
+
+ <hImage> Handle to the bitmap that contains the image or images. 
+
+
+ 
+
+
+ <hImage> Handle to the bitmap that contains the mask. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nIndex> Returns the index of the first new image if successful, or -1
+otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

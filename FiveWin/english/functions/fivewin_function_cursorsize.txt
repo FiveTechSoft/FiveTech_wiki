@@ -1,0 +1,82 @@
+====== CursorSize() ======
+Selects the Windows default Size cursor.  This function changes the mouse cursor into a hand in a 'resize' shape. (the one that we see when the mouse resizes a window).  
+
+====== Syntax: ======
+CursorSize() --> nil  
+
+====== Parameters: ======
+None.  
+
+====== Returns: ======
+Nothing.  
+
+====== Observations: ======
+These functions let us change the mouse cursor temporarily while we are doing other tasks. As soon as the API takes control it will restore the mouse cursor to the one associated with the window which is below the cursor.  
+
+====== Sample: ======
+SAMPLES\TestCurs.prg  
+<code clipper>
+#include "fivewin.ch"
+STATIC nCounter:=1
+//-----------------------//
+FUNCTION Main()
+
+ LOCAL oDlg
+
+ DEFINE DIALOG oDlg FROM 01,01 TO 10,40 TITLE "Test"
+
+ oDlg:bLClicked:={ || TestCursor(oDlg)}
+
+ ACTIVATE DIALOG oDlg
+
+RETURN NIL
+
+//-----------------------//
+Function TestCursor(oDlg)
+ if nCounter == 1
+ 	CursorWait()
+ 	oDlg:cTitle:="Wait"
+ elseif nCounter == 2
+ 	CursorCatch()
+ 	oDlg:cTitle:="Catch"
+ elseif nCounter == 3
+ 	CursorWe()
+ 	oDlg:cTitle:="We"
+ elseif nCounter == 4
+ 	CursorIbeam()
+ 	oDlg:cTitle:="IBeam"
+ elseif nCounter == 5
+ 	CursorSize()    
+ 	oDlg:cTitle:="Size"
+ elseif nCounter == 6
+ 	CursorHand()    
+ 	oDlg:cTitle:="Hand" 	
+ elseif nCounter == 7
+ 	CursorStop()    
+ 	oDlg:cTitle:="Stop" 	 	
+ elseif nCounter == 8
+ 	CursorNS()    
+ 	oDlg:cTitle:="NS" 	 	
+ elseif nCounter == 9
+ 	CursorArrow()    
+ 	oDlg:cTitle:="Arrow" 	 	 	
+ Endif
+
+ nCounter++
+ if nCounter > 9
+ 	nCounter:=1
+ Endif
+
+Return NIL
+</code>
+ 
+====== Source Code: ======
+SOURCE\WINAPI\Cursors.c  
+
+====== See also: ======
+[[fivewin_function_CursorWait|CursorWait()]]
+[[fivewin_function_CursorCatch|CursorCatch()]]
+[[fivewin_function_CursorArrow|CursorArrow()]]
+[[fivewin_function_CursorWE|CursorWE()]]
+[[fivewin_function_CursorHand|CursorHand()]]
+[[fivewin_function_CursorIbeam|CursorIbeam()]]

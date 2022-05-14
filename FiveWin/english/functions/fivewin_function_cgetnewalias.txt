@@ -1,0 +1,26 @@
+====== cGetNewAlias() ======  
+
+To get an unused/unique Alias to open a .DBF 
+This function will check whether the Alias is already used or not and if used then it will generate an unused alias.\\ \\ For eg. If the Alias Cust is already used, then the function cGetNewAlias("Cust") would return "Cust001". Further we can use this name to be used as Alias while opening the DBF. This function will be useful when you need to program in a MDI environment where you need to open the same DBF simultaneously in multiple windows.
+
+====== Syntax ======  
+cGetNewAlias( <cAlias> ) --> cNewAlias  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cAlias> | Name of the DBF which we are going to build ALIAS that not in use.|  
+
+====== Returns ======  
+^Parameter^Description^
+|<cNewAlias>| New Alias that we will use to assign to a new .DBF |
+
+
+
+====== Sample ======  
+<code clipper>
+local cAlias   := cGetNewAlias( 'CUST' ) // Returns string like "Cust001" (If "Cust" is already used)
+
+USE CUSTOMER NEW SHARED Alias ( cAlias )</code>
+
+====== Source Code ======  
+SOURCE\FUNCTION\DBTOOLS.PRG

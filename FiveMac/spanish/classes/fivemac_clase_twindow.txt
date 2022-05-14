@@ -1,0 +1,21 @@
+====== Clase TWindow ======
+
+
+
+====== DATA ====== 
+
+^hWnd|Control de la ventana|
+^bLClicked|Code Block to execute when left clicking with the mouse |
+^bKeyDown|Code Block to execute when pressing a key |
+^bValid|Code Block for VALID clause |
+^bMMoved|Code Block to execute when moving the mouse |
+^bOnTimer| Code Block to execute Ontimer| 
+^aControls| An array holding all the controls of the window| 
+^oBar| Bar Object attached to the window| 
+^oWnd| Window Object container of the window| 
+^lValidResult| VALID clause result| 
+
+
+====== MÉTODOS ====== 
+
+[[fivemac_metodos_twindow|Métodos TWindow]]

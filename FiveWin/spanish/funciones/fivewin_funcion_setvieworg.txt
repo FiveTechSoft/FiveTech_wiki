@@ -1,0 +1,111 @@
+SetViewOrg()
+
+
+
+SetViewOrg()
+
+ Previous  Top  Next
+
+
+
+
+Sets the viewport origin of the device context
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetViewOrg( <hDC>, <nLeft>, <nTop> ) --> aPrevOrigin 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeft> Horizontal origin 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> Vertical origin 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <aPrevOrigin> Array with the previous origin of the viewport 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\DC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

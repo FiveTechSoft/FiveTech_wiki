@@ -1,0 +1,152 @@
+SetTime()
+
+
+
+SetTime()
+
+ Previous  Top  Next
+
+
+
+
+Changes the time of the system
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetTime( <nHour>, <nMinutes>, [<nSeconds>], [<nMillSecs>] ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nHour> The time hour. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMinutes> The time minutes. Zero By default. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nSeconds> The time seconds. Zero by default. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMillSecs> The time milliseconds. Zero by default. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value meaning that the supplied time is valid and
+could be settled as the new time. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestDate.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DateTime.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetDate() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

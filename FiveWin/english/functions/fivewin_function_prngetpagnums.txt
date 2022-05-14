@@ -1,0 +1,50 @@
+====== PrnGetPagNums() ====== 
+
+
+PrnGetPagNums()
+
+
+Retrieves the status of the Pages radiobutton of the print dialog.
+
+====== Syntax ======
+
+
+ PrnGetPagNums() -?> lPageNums 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <lPageNums> True if the Pages radiobutton of the print dialog is
+selected, or false otherwise. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\printdc.c 
+
+
+ 
+
+
+
+
+====== See also ======
+

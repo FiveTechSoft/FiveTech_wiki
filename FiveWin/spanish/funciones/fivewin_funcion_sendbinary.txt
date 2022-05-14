@@ -1,0 +1,31 @@
+====== SendBinary() ======
+
+Envía datos binarios sobre un socket conectado
+
+====== Sintaxis ======
+
+SendBinary( <nSocket>, <pMemory> ) --> nResult 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<nSocket>|Numero de Socket |
+|<pMemory>|Apuntador a la memoria donde están los datos a ser enviados |
+
+====== Devuelve ======
+
+<nResult> Numero de bytes enviados. 
+
+Observaciones:
+
+Si el numero de bytes a ser enviados es mayor a 32350 el tamaño es cortado a este valor 
+
+====== Ejemplo ======
+
+SOURCE\CLASSES\TSOCKET.PRG 
+
+====== Código fuente ======
+
+SOURCE\WINAPI\WINSOCK.C 
+
+====== Ver también ======
+

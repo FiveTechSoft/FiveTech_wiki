@@ -1,0 +1,44 @@
+====== Description ======
+
+Activates the recording of all the used Windows GDI objects handles and description. It generates an internal list that CheckRes() will save into a checkres.txt file.
+
+
+====== Syntax ======
+
+SetResDebug( lOnOff )
+
+====== Parameters ======
+None
+
+
+====== Returns ======
+|nil|nothing|
+
+
+
+
+
+====== Example ======
+
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   SetResDebug( .T. )
+
+   ... your app code ...
+
+   FErase( "chekres.txt" )
+   CheckRes()
+   WinExec( "notepad checkres.txt" )
+
+return nil
+</code>
+
+====== Source code ======
+FWH\source\function\checkres.prg
+
+
+====== See also ======
+[[fivewin_function_checkres|CheckRes()]] [[how_to_check_unreleased_gdi_objects_handles]]

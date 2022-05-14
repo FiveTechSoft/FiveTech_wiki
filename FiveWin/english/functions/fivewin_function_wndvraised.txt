@@ -1,0 +1,90 @@
+====== WndVRaised() ====== 
+
+
+
+WndVRaised()
+
+
+Draw a box with raised look arround of a window
+
+
+
+====== Syntax ======
+
+
+
+ WndVRaised( <hWnd>, <hDC> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of a window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\WNDLINES.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

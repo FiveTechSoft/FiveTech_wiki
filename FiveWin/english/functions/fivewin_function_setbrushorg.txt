@@ -1,0 +1,132 @@
+====== SetBrushOrg() ======
+
+
+
+Specifies the origen of the brush
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetBrushOrg( <hDC>, <hBrush>, <nXOrg>, <nYOrg> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBrush> Handle of the brush 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nXOrg> Left coordinate of the new origin 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nYOrg> Top coordinate of the new origin 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+Observation:
+
+
+
+
+
+ The origin are 0, 0. This value must be >= 0 and <= 7. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDBRUSH.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

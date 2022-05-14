@@ -1,0 +1,18 @@
+====== Class TRect ======
+
+Basic rectangle class                                                          
+====== DATA ======
+|nTop|Coordinates of the rect|
+|nLeft|Idem|
+|nBottom|Idem|
+|nRight|Idem|
+====== METHODS ======
+|New|Constructor for the rect|
+|nWidth|The width of the rect|
+|nHeight|The height of the rect|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRECT.PRG

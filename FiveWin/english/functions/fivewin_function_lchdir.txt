@@ -1,0 +1,28 @@
+
+====== lChDir() ======
+
+Changes from one directory to another 
+
+====== Syntax: ======
+
+ lChDir( <cNewDir> ) --> lSuccess  
+ 
+====== Parameters: ======
+
+|<cNewDir>| The path of the new dir to change to.  |
+ 
+====== Returns: ======
+
+|<lSuccess>| If that directory exists and lChDir() could change into it.  |
+
+====== Sample: ======
+
+ lChDir( "c:\" )  
+
+====== Source Code: ======
+
+ SOURCE\FUNCTION\ChDir.c  
+
+====== See also: ======
+ [[fivewin_function_lMkDir|lMkDir()]]
+ [[fivewin_function_lRmDir|lRmDir()]]

@@ -1,0 +1,92 @@
+====== nBmpHeight() ======
+
+
+
+It returns the height in pixels of a Bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nBmpHeight( <hBitmap> ) --> nHeight 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hBitmap> Handle of the bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nHeight> Hight of the bitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\BITMAP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,22 @@
+====== VolumeName() ====== 
+Returns the name of a volume. 
+
+====== Syntax ====== 
+
+ VirtualRdd( [<cDriveRoot>] ) --> cName  
+ 
+====== Parameters ====== 
+
+|<cDrive>| The drive root (defaults to "C:\" ).|  
+ 
+====== Returns ====== 
+
+|<cName>| The name of the volume.|  
+
+====== Sample ======
+ 
+====== Source Code ====== 
+
+ SOURCE\FUNCTION\harddisk.c 
+
+====== See Also ======

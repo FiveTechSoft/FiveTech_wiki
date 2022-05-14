@@ -1,0 +1,29 @@
+====== Scan() ======
+
+La función Scan() escribe en el archivo el nombre de una variable y su valor
+
+====== Sintaxis ======
+
+Scan( u, hFile [,cData ] ) --> nil 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<u>| Variable |
+|<hFile>| Manejador del archivo donde se escribirá. Lógicamente, el archivo se abrirá con anterioridad. |
+|<cData>| Valor de la variable |
+
+====== Devuelve ======
+
+nil 
+
+====== Observaciones ======
+
+En el caso de que la variable sea un objeto o un arreglo este se llama recursivamente hasta que se escribe en el mismo archivo todos los datos o elementos de la variable.
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\STATICS.PRG 
+
+====== Ver también ======
+
+

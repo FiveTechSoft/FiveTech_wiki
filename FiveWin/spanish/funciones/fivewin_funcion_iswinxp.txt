@@ -1,0 +1,48 @@
+IsWinXP()
+
+Check if WIN XP is running.
+
+====== Sintaxis ======
+
+
+ IsWinXP() --> lWinXP 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lWinXP> Return .t. if Win XP is runnig 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ If IsWinXP() ... 
+
+
+ 
+
+====== C�digo fuente ======
+
+
+ SOURCE\FUNCTION\GETSYSIN.C 
+
+
+ 
+
+
+
+====== Ver tambi�n ======
+

@@ -1,0 +1,24 @@
+
+====== C2Hex() ======
+
+Converts a byte into a hex string (2 chars)
+
+0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98
+====== Parameters: ======
+^Parameter^Description^
+| <cChar> | A one character string. |
+
+
+====== Returns: ======
+^Returns^Description^
+| <cHex> | The equivalent <cChar> as a hex. |
+
+====== Sample: ======
+
+<code clipper>MsgInfo( C2Hex( "X" ) ) // Returns a "58" hex </code>
+====== Source code: ======
+
+SOURCE\FUNCTION\b2bin.c 
+====== See also: ======
+
+[[fivewin_function_l2hex|L2Hex()]], [[fivewin_function_i2hex|I2Hex()]]

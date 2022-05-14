@@ -1,0 +1,128 @@
+
+====== GetGridSize() ====== 
+
+
+
+
+
+
+To obtain size of the Grid in design window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetGridSize() --> aSize 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Function to recover the vertical and horizontal size of the grid of
+adjustment of the controls in the window of design in the VISUAL IDE of
+FiveWin. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aSize> Array with horizontal and vertical size of the grid in the way
+DESIGN. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The first value corresponds to the width and the second value to the
+high of the grid. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ VISUAL\SOURCE\DESIGN.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\CONTROL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,146 @@
+RegCreateKey()
+
+
+
+RegCreateKey()
+
+ Previous  Top  Next
+
+
+
+
+Create/open a specific key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RegCreateKey( <nKey>, <cSubKey>, <@nHandle> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nKey> Handle of an open key 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cSubKey> String of character of the a subkey to open 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@nHandle> Handle of the open key 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Returns ======
+
+
+
+
+
+ <nResult> If the function is success a zero is returned. In other case a
+numeric error code. 
+
+
+ 
+
+
+ 
+
+
+
+Observation:
+
+
+
+
+
+ If the key exists it will open up. If it doesn't exist it will be
+created. nHandle will be used later on in the functions of handling of
+the registration. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTREG.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\REGEDIT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

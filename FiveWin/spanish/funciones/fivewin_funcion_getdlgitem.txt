@@ -1,0 +1,21 @@
+
+====== GetDlgItem() ======
+GetDlgItem()
+
+Retrieves the handle of a control
+====== Sintaxis ======
+ GetDlgItem( <hDlg>, <nCtlId> ) --> hControl 
+
+ This function retrieves the handle of a control from its DialogBox
+handle and its identifier. 
+====== Parámetros ======
+  <hDlg> The handle of the Dialogbox container of the control 
+  <nCtlId> The control identifier 
+====== Devuelve ======
+ <hControl> The window handle of the control 
+
+Observations:
+ Controls are also windows 
+====== Código fuente ======
+====== Ver también ======
+ DialogBox() EndDialog() GetDlgCtrlId()

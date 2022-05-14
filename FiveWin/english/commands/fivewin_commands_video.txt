@@ -1,0 +1,94 @@
+====== Video ======
+
+** Defining a Video from Source Code **
+
+<code clipper>
+ @ <nRow>, <nCol> VIDEO <oVideo> ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FILE | FILENAME | DISK <cAviFile> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]  
+ [ NO BORDER ];  
+
+ DEFINE VIDEO <oVideo> ;  
+ [ FILE | FILENAME | DISK <cAviFile> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]  
+</code> 
+
+** Redefine Video from resource **
+
+<code clipper>  
+ REDEFINE VIDEO [ <oVideo> ];  
+ [ ID <nId> ];  
+ [ OF | WINDOW | DIALOG <oWnd> ];  
+ [ WHEN <uWhen> ];  
+ [ VALID <uValid> ];  
+ [ FILE | FILENAME | DISK <cFileName> ];  
+</code>
+**Activating the Video        **
+
+<code clipper>
+ ACTIVATE VIDEO <oVideo>  
+</code> 
+**Play Video **
+
+<code clipper>
+ PLAY VIDEO <oVideo>  
+</code>
+
+**Parameters**
+
+|<cFileName>         | El nombre del archivo AVI a ser visualizado.|
+|<nRow>, <nCol>      | Las coordenas del control (posición). Simulamos las coordenadas de un texto.    |
+|<oVideo>            | Una referencia al Objeto Video.    |
+|<nWidth>, <nHeight> | Las dimensiones del control.    |
+|<cAviFile>          | El nombre del archivo AVI a ser visualizado.    |
+|<oWnd>              | Una referencia a la ventana contenedora del Control.    |
+|<WhenFunc>          | Es una expresión que se evalua indicando si el control está o no habilitado.    |
+|<ValidFunc>         | Una expresión para validar cuando el control pierde el foco.    |
+
+**Clauses**
+
+|NOBORDER      |Para no pintar el borde del control.    |
+
+====== Sample Code ======
+\Fwh\Samples\TestVid.Prg
+<code clipper>
+// A sample showing Multimedia VIDEO extensions capabilities
+#include "FiveWin.ch"
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 5 TO 20, 60 TITLE "Video Support!!!"
+
+   SET MESSAGE OF oWnd TO FWVERSION + " - Media Control Interface" CENTERED
+
+   ACTIVATE WINDOW oWnd ;
+      ON INIT SayVideo()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function SayVideo()
+
+   local oVideo
+
+   @ 2,  8 VIDEO oVideo FILE "..\avis\fivewin.avi" SIZE 250, 200 OF oWnd
+
+   @ 2, 55 BUTTON "&Play" SIZE 50, 20 OF oWnd ;
+      ACTION oVideo:Play( 1 )
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+====== Screen Snapshot ======
+{{:video.jpg|:video.jpg}}
+
+====== See Also ======
+[[fivewin_class_tvideo | Class TVideo ]]
+
+----

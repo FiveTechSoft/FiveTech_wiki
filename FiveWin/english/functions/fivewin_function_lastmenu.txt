@@ -1,0 +1,92 @@
+====== LastMenu() ====== 
+
+
+
+LastMenu()
+
+
+
+
+
+
+It returns the last defined menu.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LastMenu() --> oMenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+   <oMenu> Objeto TMENU
+
+
+
+Observations:
+
+
+
+
+
+ The menus are added to a static array defined in the function PDMenu.
+LastMenu () it returns us the last one menu that was added. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\PDMENU.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

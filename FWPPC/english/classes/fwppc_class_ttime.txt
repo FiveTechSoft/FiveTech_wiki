@@ -1,0 +1,22 @@
+====== Class TTime ======
+
+Time objects management                                                        
+====== DATA ======
+|nTime|Time value as a numeric long|
+|METHOD||
+|New|Constructor from source code|
+|System|Constructor from computer system time|
+|AddHours|Adds a specified number of hours.|
+|AddMinutes|Adds a specified number of Minutes.|
+|AddSeconds|Adds a specified number of Seconds.|
+|cAdd|Adds another time and returns the result as a string|
+|cGetTime|Retrieves current time as a string.|
+|cSub|Returns the difference, as a string, from another|
+|time||
+|SysChange|Change system time|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTIME.PRG

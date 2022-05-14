@@ -1,0 +1,134 @@
+FindText()
+
+
+
+
+FindText()
+
+ Previous  Top  Next
+
+
+
+
+Show the commun dialog box to search text into a document
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FindText( <cText>, <hWnd>, <oWnd>, <@nFindMsgString> ) --> hWnd 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ The application should carry out the search. This alone function it puts
+the window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cText> Text to look for 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <oWnd> Not used 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@nFindMsgString> Variable gone by reference to pick up the FINDREPLACE
+that will be filled in the function structures. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Handle of the dialog box if the function is successful. Otherwise, it is
+NULL. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\FINDTEXT.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

@@ -1,0 +1,25 @@
+====== ExtractIcon() ======
+Retrieves an icon handle from EXE, DLL or ICO.  This function retrieves the handle of an icon from a specified executable file, dynamic-link library (DLL) or icon file. 
+
+====== Syntax ======
+ExtractIcon( <cExeName>, <nIndex> ) --> hIcon 
+
+====== Parameters ======
+^Parameter^Description^
+|<cExeName>| The name of the EXE, DLL or ICO file. |
+|<nIndex>| Specifies the index of the icon to be retrieved, from the total number of icons inside the module. If 0 is specified then the first icon is returned. If -1 is specified the total number of icons is returned. |
+
+====== Returns ======
+^Returns^Description^
+|<hIcon>| The handle of the icon. Returns Zero if the operation was not successful/failed. |
+
+====== Example ======
+See IDE\SOURCE\Icons.prg 
+
+====== Source Code ======
+SOURCE\WINAPI\Icons.c 
+
+====== See also ======
+[[fivewin_function_LoadIcon|LoadIcon()]]
+[[fivewin_function_DrawIcon|DrawIcon()]]
+[[fivewin_function_nIcons|nIcons()]]

@@ -1,0 +1,69 @@
+
+====== WaitMessage() ====== 
+
+
+WaitMessage()
+
+
+yields control to other threads when a thread has no other messages in
+its message queue. The WaitMessage function suspends the thread and does
+not return until a new message is placed in the thread's message queue.
+
+====== Syntax ======
+
+ 
+
+
+ WaitMessage() --> nil 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ None. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\PEEKMSG.C 
+
+
+ 
+
+
+
+====== See also ======
+

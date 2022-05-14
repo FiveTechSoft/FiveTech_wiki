@@ -1,0 +1,42 @@
+====== RTFToGTF() ======
+
+It convert a text from RTF format to GTF format.
+
+====== Syntax ======
+
+
+ RTFToGTF( <cRTF> ) --> cGTF 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cRTF> The text in RTF format to convert 
+
+
+ 
+
+====== Returns ======
+
+
+ <cGTF> The text converted in GTF format 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\GTF.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

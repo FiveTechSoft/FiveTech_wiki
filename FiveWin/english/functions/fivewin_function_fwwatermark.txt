@@ -1,0 +1,25 @@
+====== FwWaterMark() ======
+Creates an alpha channeled bitmap from an existing bitmap without alpha channel.  
+
+====== Syntax ====== 
+FWWaterMark( <hBitmap> )  --> <hBitmapAlphaChanneled>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hBitmap> | A handle of a bitmap without alpha channel|
+
+====== Return ====== 
+^Returns^Description^
+| <hBitmapAlphaChanneled> | The handle of the created bitmap with alpha channel|
+
+====== Sample ======
+FWH\samples\TestWMar.prg
+
+{{:abpaint.png|:abpaint.png}}
+
+====== Source Code ====== 
+
+FWH\source\WinApi\bmpdraw.c
+
+====== See Also ====== 
+[[fivewin_function_abpaint|function ABPaint()]]

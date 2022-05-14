@@ -1,0 +1,44 @@
+====== RLSet() ======
+
+
+FiveWin Clipmore equivalent functions.
+
+====== Syntax ======
+
+
+ RLSet( <hGlobalMem>, <nRecNo> ) --> nil 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hGlobalMem>      Pointer to global memory. 
+
+
+ <nRecNo>      Record number to set. 
+
+
+ 
+
+====== Returns ======
+
+
+ Nil 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\CLIPMOR.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,26 @@
+====== AnimOpenEx() ======
+
+Abre un clip AVI desde un recurso en un módulo especificado y muestra su primer cuadro en un control de animación. 
+
+====== Sintaxis ======
+
+AnimOpenEx( <hWnd>, <hInstance>, <cAviFileRes> ) --> lSuccess
+
+====== Parámetros ======
+
+| <hWnd> | Handle del control de animación.  |  
+| <hInstance> | Handle de Instancia al módulo desde donde se debe cargar el recurso. Si este valor es NULL, el recurso es cargado desde el módulo que creó el control de animación.  |
+| <cAviFileRes> | Nombre del archivo AVI dentro del recurso AVI a abrir.  | 
+
+====== Devuelve ======
+
+| <lSuccess> | Retorna .T. si el resultado fue exitoso  |
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\ANIMATE.C 
+

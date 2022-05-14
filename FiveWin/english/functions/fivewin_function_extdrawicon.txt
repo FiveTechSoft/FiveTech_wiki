@@ -1,0 +1,125 @@
+ExtDrawIcon()
+
+
+ExtDrawIcon()
+ Previous  Top  Next
+
+Draws an icon with a text prompt.
+
+====== Syntax ======
+
+ 
+
+
+ ExtDrawIcon( <hDC>, <nRow>, <nCol>, <hIcon>, <cPrompt>, <hFont>,
+<nClrText>, <nClrPane>, <lFocused>, <lActive>, <lEdit> ) --> aCoors 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> The handle of the device context where to draw. 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates where to paint. 
+
+
+ 
+
+
+ <hIcon> The handle of the icon. 
+
+
+ 
+
+
+ <cPrompt> The text prompt to draw. 
+
+
+ 
+
+
+ <hFont> The handle of the font to be used for the prompt. 
+
+
+ 
+
+
+ <nClrText> The text color of the prompt. 
+
+
+ 
+
+
+ <nClrPane> The background color for the prompt. 
+
+
+ 
+
+
+ <lFocused> If the focused color has to be used for the prompt. 
+
+
+ 
+
+
+ <lActive> If a focus rect has to be drawn around the prompt. 
+
+
+ 
+
+
+ <lEdit> If set to .t. the prompt is not drawn. 
+
+
+ 
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <aCoors> The used coordinates. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\DRAWICON.C 
+
+
+ 
+
+
+

@@ -1,0 +1,20 @@
+
+====== cFreadLine() ======
+cFreadLine()
+It reads you line of a text file
+
+====== Sintaxis ======
+ cFreadLine( <nHandle> ) --> cLine 
+
+====== Parámetros ======
+ <nHandle> Handle of the file of open text 
+
+====== Devuelve ======
+ <cLine> Read line with possibility that they are bigger than 1 k. 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\FTEXT.C 
+
+====== Ver también ======

@@ -1,0 +1,36 @@
+
+====== Alert() ======
+
+Windows equivalent Clipper Alert function
+
+====== Syntax: ======
+ 
+ Alert( [cMsg], [aLegends], [cTitle], [nDefault], [xIcon] ) --> nButton
+
+
+====== Parameters: ======
+^Parameter^ Description                      ^
+| <cMsg> | Message to show in the dialog box | 
+| <aLegends> | String array with the buttons legend |
+| <cTitle> | Dialog title |
+| <nDefault> | Default button |
+| <xIcon> | Icon File name or Icon resource name or Icon identifier |
+
+====== Returns: ======
+^Returns    ^                ^
+| <nButton> | Pushed button. |
+
+====== Notes: ======
+
+The new Alert functions implements automatically scroll bars if the size of the message is large and also lets you perform cut & paste operations to the dialog message.  
+ 
+     Icon identifiers:  
+      #define IDI_APPLICATION     32512 
+      #define IDI_HAND            32513 
+      #define IDI_QUESTION        32514 
+      #define IDI_EXCLAMATION     32515 
+      #define IDI_ASTERISK        32516
+
+====== Source code: ======
+
+ SOURCE\FUNCTION\Alert.prg

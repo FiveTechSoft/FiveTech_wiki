@@ -1,0 +1,31 @@
+====== DecToHex() ======
+Converts a number to its hexadecimal form.
+
+====== Syntax ======
+DecToHex( <nValue> ) --> cHex 
+
+====== Parameters ======
+^Parameter^Description^
+|< nValue >| The number to convert |
+
+====== Returns ======
+^Parameter^Description^
+|<cHex>|The equivalent hexadecimal string. |
+
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch"
+//-----------------------------------//
+Function main()  
+  
+  MsgInfo(DecToHex( 1234 ) )  // Returns 4D2
+
+Return NIL
+</code>
+ 
+====== Source Code ======
+SOURCE\FUNCTION\RANDOM.PRG 
+
+====== See also ======
+[[fivewin_function_hextodec|HexToDec()]], [[fivewin_function_hex2str|Hex2Str()]]

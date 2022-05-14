@@ -1,0 +1,35 @@
+====== cFileExt() ====== 
+
+Recupera la extensión de un nombre de archivo 
+
+====== Syntax ====== 
+cFileExt( <cFileName> ) --> cExtName  
+
+====== Parámetros ====== 
+^Parámetro^Descripción^
+| <cFileName> | El nombre del archivo del cual será obtenida la extensión (si la extensión esta incluida dentro de cFileName.)|  
+
+====== Retorna ====== 
+^Retorna^Descripción^
+|<cExtName>| Una cadena de tres carácteres con el nombre de la extensión. La salida es en letras mayúsculas|
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+
+MsgInfo(cFileExt( "g:\Test\Abc.Exe" ) ) // Result EXE
+
+MsgInfo(cFileExt( "Whatsnew.Txt" ) ) // Result TXT
+
+MsgInfo(cTest:=cFileExt( "\Fwh\Samples\Whatsnew" ) )  // Result 
+
+MsgInfo(Len(cTest))  // Result 0
+   
+Return nil  
+</code>
+
+====== Código fuente ====== 
+
+SOURCE\FUNCTION\FileName.prg

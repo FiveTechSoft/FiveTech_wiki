@@ -1,0 +1,22 @@
+====== Class THeader ======
+
+Windows header control                                                         
+Inherits from TControl                                                         
+====== DATA ======
+|aPrompts|Array of text assigned to the header items.|
+|aSizes|Array of sizes for the header items.|
+|bAction|A codeblock that is evaluated when an item is|
+|clicked.|It receives the index of the clicked item.|
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|GetItem|Returns and array with the width and the caption of|
+|the|specified item.|
+|InsertItem|Insert a new item.|
+|SetItem|Sets the attributes of the specified item.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\THEADER.PRG

@@ -1,0 +1,76 @@
+ConnectTo()
+
+
+ConnectTo()
+ Previous  Top  Next
+
+Establishes a connection to a specified socket.
+
+====== Syntax ======
+
+ 
+
+
+ ConnectTo( <nSocket>, <nPort>, <cIPAddr ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <nSocket> The socket number. 
+
+
+ 
+
+
+ <nPort> The port number. 
+
+
+ 
+
+
+ <cIPAddr> The IP address. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> Zero if successful, otherwise SOCKET_ERROR. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+

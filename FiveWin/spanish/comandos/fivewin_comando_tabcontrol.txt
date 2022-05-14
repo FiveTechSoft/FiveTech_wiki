@@ -1,0 +1,49 @@
+====== Comando TabControl ======
+
+Para crear un TabControl desde código:
+
+<code clipper>
+@ <nRow>, <nCol> TABS [<oTabs>] ;
+             [ OF | WINDOW | DIALOG <oWnd> ] ;
+             [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;
+             [ ACTION | EXECUTE | ON CHANGE <uAction> ] ;
+             [ PIXEL ] ;
+             [ DESIGN ] ;
+             [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+             [ OPTION <nOption> ] ;
+             [ SIZE <nWidth>, <nHeight> ] ;
+             [ MESSAGE <cMsg> ]
+</code>
+
+Para crear un TabControl desde recursos                    
+<code clipper>
+REDEFINE TABS [<oTabs>] ;
+             [ ID <nId> ] ;
+             [ OF | WINDOW | DIALOG <oWnd> ] ;
+             [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;
+             [ ACTION | EXECUTE <uAction> ] ;
+             [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+             [ OPTION <nOption> ]
+</code>
+
+====== Parámetros ======
+|<nRow>, <nCol>|Las ccordenadas donde se colocara el TabControl (solo de codigo fuente, no de recursos).|
+|<oTabs>|Una referencia al objeto TabControl creado.|
+|<oWnd>|El objeto contenedor del TabControl.|
+|<cPrompt>|Una lista de cadenas de texto, uno por cada item tab.|
+|<uAction>| La accion a ejecutar cuando se seleccione algun item tab.|
+|<nClrFore>|El color para mostrar los textos.|
+|<nClrBack>|El color para rellenar la superficie del TabControl|
+|<nOption>|Una opcion usada opcionalmente para indicar un item diferente de 1|
+|<nWidth>, <nHeight>|Las dimensiones del TabControl|
+|<cMsg>|Un mensaje opcional a mostrar en la Barra de Mensaje del contenedor definido|
+|<nId>|El identificador numerico de recurso del control.|
+
+====== Cláusulas ======
+|PIXEL|Par usar coordeadas Pixel en vez de coordenadas de texto|
+|DESIGN|Permite al usuario mover y cambiar de tamaño el control|
+|ON CHANGE|Para especificar la accion a ejecutar cuando una opcion de tab diferente sea selccionada.|
+
+====== Vea tambien ======
+[[fivewin_clase_ttabcontrol|Clase TabControl]]
+

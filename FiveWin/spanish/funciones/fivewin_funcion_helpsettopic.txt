@@ -1,0 +1,97 @@
+HelpSetTopic()
+
+
+
+HelpSetTopic()
+
+ Previous  Top  Next
+
+
+
+
+Selects a help default topic
+
+
+
+Syntax
+
+
+
+
+
+ HelpSetTopic( <cTopic> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+Parameters
+
+
+
+
+
+ cTopic is a string that let us specify the default topic where
+automatically show help. 
+
+
+ 
+
+
+ 
+
+
+
+Returns
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+   Nothing
+
+
+
+Description
+
+
+
+
+
+ It lets us select a help default topic. We may change this topic from
+inside different parts of our program. 
+
+
+ 
+
+
+ 
+
+
+
+Example
+
+
+
+HelpSetTopic( "Use_of_help" )
+
+
+
+Source: HELP.C
+
+
+
+
+
+====== Ver también ======
+

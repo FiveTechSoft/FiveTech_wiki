@@ -1,0 +1,116 @@
+SetCommState()
+
+
+
+SetCommState()
+
+ Previous  Top  Next
+
+
+
+
+Selects the state of the communication port
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetCommState( <cDCB> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cDCB> A string containing a DCB structure values. The DCB structure is
+automatically build by BuildCommDcb() function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> If the operation is performed successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestComm.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Comm.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ OpenComm() CloseComm() ReadComm() WriteComm() BuildCommDcb() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

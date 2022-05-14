@@ -1,0 +1,80 @@
+====== WndInset() ====== 
+
+WndInset()
+
+Draw a inset box
+
+====== Syntax ======
+
+ WndInset( <hWnd>, <hDC> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+   Nil.
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\WNDBOXES.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

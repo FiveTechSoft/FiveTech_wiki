@@ -1,0 +1,16 @@
+====== Creates a LISTBOX from source code ======
+<code clipper>
+@ <nRow>, <nCol> LISTBOX <oBrw> ;
+   [ FIELDS <fields,...> ] ;
+   [ HEADERS <headers,...> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ OF <oWnd> ] ;
+   [ ON CHANGE <uChange> ] ;
+   [ ALIAS <cAlias> ]
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\tlistbox.prg
+====== See Also ======
+[[fivemac_class_tlistbox|Class TListBox]]

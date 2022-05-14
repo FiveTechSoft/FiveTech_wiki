@@ -1,0 +1,14 @@
+====== DbClearInd() ======
+It closes all the indexes the current work area. Function to obtain compatibility with xBase++ 
+
+====== Syntax ======
+DbClearInd() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nothing
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

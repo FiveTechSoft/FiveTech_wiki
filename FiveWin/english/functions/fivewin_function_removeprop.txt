@@ -1,0 +1,124 @@
+====== RemoveProp() ======
+
+
+
+Removes a previously stored window prop.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RemoveProp( <hWnd>, <cStringAtom> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Identifies the window whose property list is to be changed. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cStringAtom> A string or an atom that specifies a string. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If the operation was sucessfull. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Window.prg METHOD Unlink 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\\WINAPI\\Prop.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetProp() GetProp() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

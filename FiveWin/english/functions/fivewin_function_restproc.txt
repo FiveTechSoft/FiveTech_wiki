@@ -1,0 +1,152 @@
+====== RestProc() ======
+
+
+Restores a window procedure -internally used-
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RestProc( <hWnd>, <nOldProc> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the window whose old procedure is to be restored. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOldProc> A pointer of the windows old procedure. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is automatically used by FiveWin to un-subclass a
+subclassed window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Let FiveWin manage all these automatically. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\Window.prg METHOD UnLink() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\ChangePr.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ ChangeProc() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

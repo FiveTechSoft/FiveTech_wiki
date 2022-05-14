@@ -1,0 +1,73 @@
+
+====== SHELLEXECUTE ======
+Invoke an external application from within Fivewin
+----
+
+====== Syntax: ======
+
+** ShellExecute( <hWnd>, <cOption>, <cFile>, <cParams>, <cDir>, <nCmdShow> ) --> nHandle **
+
+
+====== Parameters: ======
+
+ **<hWnd>**    The handle of the program's parent window. In Fivewin, you will usually set this to 0.
+
+ **<cOption>** The action which is to be performed. Determining what actions are available for a given file or document can be ascertained by looking in Windows' Folder Options.
+
+ **<cFile>**   The file (or other 'object') on which the action is to be performed (see below).
+
+ **<cParams>** If the file is an executable program, these are the parameters (if any) which are passed to it in the command line.
+
+ **<cDir>**    If the file is an executable program, this is the program's default or start-up directory.
+
+ **<nCmdShow>** Specifies whether the application window is to be shown when the application is opened. This parameter can be one of the following values:
+^ Value ^ Meaning ^
+| 0 | Hides the window and passes activation to another window. |
+| 1 | Activates and displays a window. If the window is minimized or maximized, Windows restores it to its original size and position (same as 9). |
+| 2 | Activates a window and displays it as an icon. |
+| 3 | Activates a window and displays it as a maximized window. |
+| 4 | Displays a window in its most recent size and position. The window that is currently active remains active. |
+| 5 | Activates a window and displays it in its current size and position. |
+| 6 | Minimizes the specified window and activates the top-level window in the system's list. |
+| 7 | Displays a window as an icon. The window that is currently active remains active. |
+| 8 | Displays a window in its current state. The window that is currently active remains active. |
+| 9 | Activates and displays a window. If the window is minimized or maximized, Windows restores it to its original size and position (same as 1). |
+
+
+======Returns:====== 
+The return value is the instance handle of the application that was opened or printed, if the function is successful. (This handle could also be the handle of a DDE server application.) A return value less than or equal to 32 specifies an error.
+
+======Errors:====== 
+The ShellExecute() function returns the value 31 if there is no association for the specified file type or if there is no association for the specified action within the file type. The other possible error values are as follows: 
+^ Value ^ Meaning ^
+| 0 | System was out of memory, executable file was corrupt, or relocations were invalid. |
+| 2 | File was not found. |
+| 3 | Path was not found. |
+| 5 | Attempt was made to dynamically link to a task, or there was a sharing or network-protection error. |
+| 6 | Library required separate data segments for each task. |
+| 8 | There was insufficient memory to start the application. |
+| 10| Windows version was incorrect. |
+| 11| Executable file was invalid. Either it was not a Windows application, or there was an error in the .exe image. |
+| 12| Application was designed for a different operating system. |
+| 13| Application was designed for MS-DOS 4.0. |
+| 14| Type of executable file was unknown. |
+| 15| Attempt was made to load a real-mode application (developed for an earlier version of Windows). |
+| 16| Attempt was made to load a second instance of an executable file containing multiple data segments that were not marked read-only. |
+| 19| Attempt was made to load a compressed executable file. The file must be decompressed before it can be loaded. |
+| 20| Dynamic-link library (DLL) file was invalid. One of the DLLs required to run this application was corrupt. |
+| 21| Application requires Microsoft Windows 32-bit extensions. |
+
+======Description:======
+ShellExecute() calls the ShellExecute() API. The most important parameters are the action and the filename. The file specified by the <cFile> parameter can be a document file or an executable file. If it is a document file, this function opens or prints it, depending on the value of the <cOption> parameter. If it is an executable file, this function opens it, even if the string "print" is pointed to by <cOption>.
+
+======Sample: ======
+
+
+
+
+======Source Code: ======
+
+ SOURCE\WINAPI\SHELL.C
+
+======Recommended Links: ======
+[[http://www.ml-consult.co.uk/foxst-26.htm|Introducing ShellExecute()]]

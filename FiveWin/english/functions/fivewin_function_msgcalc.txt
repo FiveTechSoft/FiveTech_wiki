@@ -1,0 +1,26 @@
+
+**MsgCalc()** 
+
+Shows a calculator.
+  
+**Syntax:** 
+
+ MsgCalc( <nValue> ) --> nResult    
+  
+**Parameters:** 
+
+| <nValue> | The initial value  |
+
+  
+**Returns:** 
+
+<nResult> The current result value
+  
+
+**Source code:** 
+
+ SOURCE\FUNCTION\msgcalc.prg   
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

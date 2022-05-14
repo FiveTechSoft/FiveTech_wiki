@@ -1,0 +1,89 @@
+====== nXOr() ======
+
+
+An exclusive Or executes with a list of parameters
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nXOr( <nOp1>,... ) --> lRet 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nOp1> List of parameters 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lRet> Exclusive Or among the operators 
+
+
+ 
+
+
+ 
+
+
+
+
+
+Bit value Op1   Bit value Op2   Results of nXOr(Op1,Op2)   
+   0      0      0
+   0      1      1
+   1      0      1
+   1      1      0
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

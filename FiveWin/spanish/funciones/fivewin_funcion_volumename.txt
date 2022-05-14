@@ -1,0 +1,27 @@
+====== VolumeName() ======
+
+Devuelve el Nombre del Volumen
+
+
+
+
+====== Sintaxis ====== 
+
+VolumeName( [<cDriveRoot>] ) --> cName   
+
+
+====== Parametros ====== 
+
+| <cDrive>| El Volumen (Drive) Preterminado (Defecto to "C:\" ).  |
+
+====== Devuelve ====== 
+
+| <cName>| El Nombre del Volumen (Drive)  |
+
+
+====== Codigo fuente ====== 
+
+SOURCE\FUNCTION\harddisk.c   
+
+====== Ver también ====== 
+

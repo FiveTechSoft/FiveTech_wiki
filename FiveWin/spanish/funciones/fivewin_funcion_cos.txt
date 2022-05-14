@@ -1,0 +1,66 @@
+Cos()
+
+
+Cos()
+ Previous  Top  Next
+
+Calculates the cosine function of an angle.
+
+====== Sintaxis ======
+
+
+ Cos( <nAngle> ) --> nCos 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <nAngle> The angle expressed in radiants. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nCos> The cosine of the specified angle. 
+
+
+ 
+
+Observations:
+
+
+
+====== Ejemplo ======
+
+
+ #define PI 3.14159265359 
+
+
+ 
+
+
+ 
+
+ local nCos := Cos( PI / 4 ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\SELECTOR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

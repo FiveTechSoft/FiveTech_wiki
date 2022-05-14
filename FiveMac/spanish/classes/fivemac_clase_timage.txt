@@ -1,0 +1,49 @@
+====== Clase TImage ======
+
+Objeto imagen  para cualquiera de los siguientes formatos : JPG, GIF, TIFF,PNG.
+
+Hereda de  TControl
+
+
+
+====== DATA ======
+
+
+====== METODOS ======
+|New|Constructor desde código fuente|
+|SetFile|Asigna el fichero de imagen|
+|SetFrame|Asigna el marco a usar    |
+
+
+
+
+
+====== Ejemplo ======
+FMC/SAMPLES/testimg.prg
+
+<code>
+
+ #include "FiveMac.ch" 
+
+function Main()
+local oWnd, oImg
+
+ DEFINE WINDOW oWnd FROM 344, 289 TO 389, 223
+
+ @ 100, 139 IMAGE oImg OF oWnd SIZE 107, 91 FILENAME "./../images/fivetech.gif"
+
+ @ 69, 114 SAY "(c) FiveTech Software 2007" OF oWnd SIZE 170, 14
+
+ @ 22, 150 BUTTON "Ok" OF oWnd ACTION oWnd:End()
+
+ACTIVATE WINDOW oWnd
+
+return nil
+
+</code>
+
+====== Ver también ======
+
+
+====== Código fuente ======
+FMC\SOURCE\CLASSES\IMAGE.PRG

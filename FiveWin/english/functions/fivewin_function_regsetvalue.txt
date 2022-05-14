@@ -1,0 +1,110 @@
+RegSetValue()
+
+
+
+RegSetValue()
+
+ Previous  Top  Next
+
+
+
+
+Set a string text associates to a key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RegSetValue( <nKey>, <cSubKey>, <cValue> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nKey> Handle of an open key. Can be 2147483648 that is the
+HKEY_CLASSES_ROOT. Can not be a nil parameter. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cSubKey> String of a subkey 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cValue> Text string to set 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nReturn> If the function is success a zero is returned. In other case a
+numeric error code. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\REGEDIT.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

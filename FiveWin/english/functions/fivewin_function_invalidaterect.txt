@@ -1,0 +1,139 @@
+InvalidateRect()
+
+
+
+InvalidateRect()
+
+ Previous  Top  Next
+
+
+
+
+Forces a rectangle to be repainted
+
+
+
+====== Syntax ======
+
+
+
+
+
+ InvalidateRect( <hWnd> [,<lRepaint>] )  --> nil 
+
+
+ InvalidateRect( <hWnd> [,<aRect>] [,<lRepaint>] )  --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function supports two different formats as above. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window whose update region get invalid and
+should be painted. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aRect> Specifies the dimensions of the rectangle that needs to be
+updated: { nTop, nLeft, nBottom, nRight }. If not supplied means the
+whole window area. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lRepaint> Specifies if the window must be painted. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function forces a window region or its whole area to be repainted.
+Basically it generates a WM_PAINT message. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\InvalRec.c 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

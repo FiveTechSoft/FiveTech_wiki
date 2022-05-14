@@ -1,0 +1,21 @@
+
+====== IsOverWnd() ======
+IsOverWnd()
+
+It checks if a given point is inside a window
+====== Sintaxis ======
+ IsOverWnd( <hWnd>, <nRow>, <nCol> ) --> lIsOver 
+====== Parámetros ======
+  <hWnd>  Handle of a window given 
+  <nRow>  Coordinate vertical of the point 
+  <nCol>  Coordinate horizontal of the point 
+====== Devuelve ======
+ <lIsOver> This function returns true if the given point is inside the
+coordinates of the window whose handle is hWnd 
+====== Ejemplo ======
+ SOURCE\CLASSES\BTNBMP.PRG 
+
+ local lClick := IsOverWnd( ::hWnd, nRow, nCol ) 
+====== Código fuente ======
+ SOURCE\WINAPI\WNDISOVE.C 
+====== Ver también ======

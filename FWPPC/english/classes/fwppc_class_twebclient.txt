@@ -1,0 +1,19 @@
+====== Class TWebClient ======
+
+Internet WEB client                                                            
+====== DATA ======
+|oSocket|Socket object|
+|bOnConnect|Codeblock evaluated when the connection is made|
+|bOnRead|Codeblock evaluated when reading data|
+====== METHODS ======
+|New|Constructor from source code.|
+|Connect|Connects to a given IP address|
+|OnConnect|Connect event handler|
+|OnRead|Read event handler|
+|GetPage|Sends a GET command with the given page name|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TWEBCLIENT.PRG

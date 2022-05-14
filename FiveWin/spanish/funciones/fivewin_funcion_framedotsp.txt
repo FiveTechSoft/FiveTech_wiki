@@ -1,0 +1,24 @@
+====== FrameDot() ======
+Dibuja un borde punteado alrededor del rectángulo especificado.
+
+====== Syntaxis ====== 
+FrameDot( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil   
+
+
+
+====== Parametros ====== 
+| <hDC>| Dispositivo marco del control|
+| <nTop>| Coordenada Superior.|
+| <nLeft>| Coordenada Izquieda.|
+| <nBottom>| Coordenada Inferior.|
+| <nRight>| Coordenada Derecha.|
+
+====== Devuelve ====== 
+Nil
+
+====== Codigo fuente ====== 
+SOURCE\WINAPI\RECTS.C  
+ 
+====== Ver tambien ====== 
+
+ 

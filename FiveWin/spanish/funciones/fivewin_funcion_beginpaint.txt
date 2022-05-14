@@ -1,0 +1,36 @@
+
+====== BeginPaint() ======
+
+Prepara la ventana para comenzar el pintado
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BeginPaint( <hWnd>, @<cPS> ) --> nil   
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> El manejador de la ventana que sera repintada.  
+
+ <cPS> Es una variable que recibira la estructura del api de windows PAINTSTRUCT como un string. Esta variable debe ser pasada por referencia.
+
+====== Retorno: ( Returns: ) ======
+
+ <hDC> Es el manejador de contexto para la ventana.
+
+====== Observaciones: ( Observations: ) ====== 
+ 
+ La funcion BeginPaint establece automaticamente la zona del manejador de contexto excluyendo cualquier area fuera de la region a actualizar. La region a actualizar es establecida por las funciones InvalidateRect o InvalidateRgn y por el sistema despues de redimensionar, mover, crear, hacer scroll u otra operacion que afecte el area cliente. Si la region a actualizar esta marcada para ser borrada, BeginPaint envia el mensaje WM_ERASEBKGND a la ventana.
+
+ Una aplicacion no debe llamar a BeginPaint excepto en respuesta a el mensaje WM_PAINT. Cada llamada a la funcion BeginPaint  debe tener su correspondiente llamada a la funcion EndPaint.
+
+ Si el cursor se encuentra en el area a ser pintada, BeginPaint oculta automaticamente el cursor para evitar que sea borrado.
+
+ Si la ventana de la clase tiene un brush de fondo, BeginPaint usara ese brush para borrar el fondo antes de actualizar la region, y esto antes de retornar.  
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ SOURCE\CLASSES\Window.prg  
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\Paint.c  

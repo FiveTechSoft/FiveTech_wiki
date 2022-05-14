@@ -1,0 +1,48 @@
+
+====== Browse() ======
+
+Automatic full featured FiveWin browse. 
+
+====== Syntax: ======
+
+ Browse( <cTitle>, <cListName>, <bNew>, <bModify>, <bDelete>, <bSearch>, <bList>, <aColSizes> ) --> nil  
+ 
+
+====== Parameters: ======
+^Parameter^Description^ 
+|<cTitle>|The principal title for the Fivewin browse.|  
+|<cListName>| This is the name of the data to see in browse.|  
+|<bNnew>| This CodeBlock is used to add a New Record.|  
+|<bModify>| This CodeBlock is used to Modify the record.|  
+|<bDelete>| This CodeBlock is used to delete the record.|  
+|<bSearch>| This CodeBlock is used to search for data.|  
+|<bList>| This CodeBlock is used to list to the printer.|  
+|<aColSizes>| The sizes of the columns.|  
+
+Observations 
+
+This is a self contained Clipper-Fivewin traditional dBase-III-Plus like Browse, very useful for prototyping applications.  
+
+====== Sample: ======
+<code clipper> 
+ #include "FiveWin.ch" 
+
+ Function Main()  
+
+ local cTitle := "This is a FiveWin Browse Sample."  
+ local cListName := "NAME, ADDRESS, TELEPHONE"  
+ local bNew := { || MsgInfo( "Add a New Record" ) }  
+ local bModify := { || MsgInfo( "Modify an existing record" ) }  
+ local bDelete := { || MsgInfo( "Delete a record" ) }  
+ local bSearch := { || MsgYesNo( "Do you want to search some thing? " ) } 
+ local bList := { || MsgYesNo( "Do you want a report list?" ) }  
+ local aColSizes := { 30, 30, 20 }  
+
+ USE NAME  
+
+ Browse( cTitle, cListName, bNnew, bModify, bDelete, bSearch, bList, aColSizes )  
+
+ return nil  
+</code>
+====== Source Code: ======
+SOURCE\FUNCTION\BROWSE.PRG  

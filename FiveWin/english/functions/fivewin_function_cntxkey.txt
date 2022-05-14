@@ -1,0 +1,37 @@
+====== cNtxKey() ====== 
+Returns the index expression of a NTX index file. 
+This function opens a NTX file and retrieves the Ascii description of the index key used. 
+
+====== Syntax ======
+cNtxKey( <cNtxFileName> ) --> cIndexKey 
+
+====== Parameters ======
+^Parameter^Description^
+|<cNtxFileName>| The name of the NTX file. |
+
+====== Returns ======
+^Returns^Description^
+|<cIndexKey>| A string with the key description. For eg. the fields on which the index is generated|
+
+====== Sample ======
+<code clipper>
+#include "fivewin.ch" 
+
+REQUEST DBFNTX
+//-----------------------------------//
+Function main() 
+
+ Select A
+ USE Customer
+ INDEX on Customer->FIRST to Test
+ Set Index to Test
+
+ MsgInfo( cNtxKey("Test.ntx") )  // Result First
+
+ Close Database
+
+Return nil 
+</code>
+
+====== Source Code ======
+SOURCE\\FUNCTION\\NtxTools.c 

@@ -1,0 +1,23 @@
+
+====== ParamCount() ====== 
+ParamCount()
+
+Returns the number of parameters of a process
+====== Sintaxis ======
+ ParamCount( nProcDeep ) --> nParams 
+====== Parámetros ======
+ <nProcDeep> Is the number of a certain stack process ( a process that
+called the one which is executing ). 
+====== Devuelve ======
+ <nParms> Is the number of parameters that process received. 
+
+ Test( nOne, cTwo, dThree ) 
+
+ Suppouse Test is the 5 level called on the stack: 
+
+ ? ParamCount( 5 ) \ 3 (parameters suplied) 
+====== Ejemplo ======
+ See SOURCE\FUNCTION\ErrSysW.prg. 
+====== Código fuente ======
+ Not available. 
+====== Ver también ======

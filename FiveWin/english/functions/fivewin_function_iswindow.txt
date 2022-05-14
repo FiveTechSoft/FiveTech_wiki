@@ -1,0 +1,42 @@
+====== IsWindow() ======
+
+
+Checks if an handle identifies an existing window.
+
+====== Syntax ======
+
+
+ IsWindow( <hWnd> ) --> lWindow 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hWnd> The handle of the window to test. 
+
+
+ 
+
+====== Returns ======
+
+
+ <lWindow> A logical value indicating if the handle identifies an
+existing window. 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+
+====== See also ======
+

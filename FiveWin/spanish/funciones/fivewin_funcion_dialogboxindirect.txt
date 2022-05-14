@@ -1,0 +1,39 @@
+
+====== DialogBoxIndirect() ======
+
+Crea un cuadro de diálogo modal de los recursos de memoria
+
+====== Sintaxis ======
+ 
+ DialogBoxIndirect( <hInstance>, <cMemTemplate>, <hWndOwner> ) --> nResult
+
+Esta función crea y ejecuta un DialogBox modal de un cuadro de diálogo de plantillas de recursos. 
+
+====== Parámetros ======
+
+| <hInstance>| Identifica una instancia del archivo ejecutable cuyo módulo contiene el cuadro de diálogo de plantilla. FiveWin proporciona una GetResources () que devuelve la instancia de la EXE o el mango de la DLL de recursos en uso.| 
+| <cMemTemplate>| Una cadena que contiene la descripción de los binarios del cuadro de diálogo de plantilla. |
+| <hWndOwner>| El título de la ventana, que es el propietario de la DialogBox. De forma predeterminada es GetActiveWindow ().|
+
+====== Retorno ======
+
+| <nResult> | El parámetro suministrado a la función EndDialog () usada para terminar la ejecución del cuadro de diálogo.|
+
+====== Observaciones ======
+
+Utilizar las clases FiveWin y los comandos de xBase. Son mucho más potente y fácil de manejar.
+
+
+====== Ejemplo ======
+ 
+
+====== Código Fuente ======
+ 
+No se ha proporcionado. Ver FUENTE \\WINAPI\\Dlogbox.c
+
+
+====== Ver también ======
+
+[[fivewin_funcion_EndDialog|EndDialog()]]
+[[fivewin_funcion_CreateDlgIndirect|CreateDlgIndirect()]]
+

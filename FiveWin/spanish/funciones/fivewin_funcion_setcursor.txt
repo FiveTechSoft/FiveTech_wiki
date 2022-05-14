@@ -1,0 +1,115 @@
+SetCursor()
+
+
+
+SetCursor()
+
+ Previous  Top  Next
+
+
+
+
+Changes the Windows active cursor
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetCursor( <hCursor> ) --> hOldCursor 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hCursor> The handle of the new mouse cursor. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hOldCursor> The handle of the previous in use cursor. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestCurs.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Cursors.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Cursor...() functions LoadCursor() DestroyCursor() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

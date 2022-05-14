@@ -1,0 +1,18 @@
+====== Creates a dialog from source code ======
+<code clipper>
+DEFINE DIALOG <oDlg> ;
+   TITLE <cTitle> ;
+   [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ]
+</code>
+====== Activates the dialog ======
+<code clipper>
+ACTIVATE DIALOG <oDlg> ;
+   [ ON [ LEFT ] CLICK <uLClicked> ] ;
+   [ VALID <uValid> ] ;
+   [ NONMODAL | NOWAIT ] ;
+   [ CENTER | CENTERED ]
+</code>
+====== Source code ======
+include\FiveMac.ch
+====== See Also ======
+[[fivemac_class_tdialog|Class TDialog]]

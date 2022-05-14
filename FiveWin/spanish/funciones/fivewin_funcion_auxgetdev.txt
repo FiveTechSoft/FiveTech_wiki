@@ -1,0 +1,23 @@
+====== AuxGetDev() ======
+
+ Numero de dispositivos auxiliares
+
+====== Sintaxis: ( Syntax: ) ======
+
+ AuxGetDev() --> nDevices
+
+====== Parámetros: ( Parameters: ) ======
+
+ Ninguno
+
+====== Retorno: ( Returns: ) ======
+
+ <nDevices> Numero de dispositivos auxiliares.
+
+====== Ejemplo: ( Sample: ) ======
+
+ SAMPLES\MMEDIA\MMEDIA.PRG
+
+====== Codigo Fuente: ( Source code: ) ======
+
+ SOURCE\WINAPI\MCI.C

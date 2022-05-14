@@ -1,0 +1,22 @@
+Removes all items from a tab control. 
+
+====== Syntax ====== 
+
+ TabDelAllItems( <hWnd> ) --> nil  
+ 
+====== Parameters ====== 
+
+|<hWnd>| Handle to the tab control.|  
+ 
+====== Returns ====== 
+
+ Nil.  
+ 
+====== Sample ====== 
+
+
+
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\TABCTRL.C

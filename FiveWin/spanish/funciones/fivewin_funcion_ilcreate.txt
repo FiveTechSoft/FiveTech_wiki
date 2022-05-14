@@ -1,0 +1,73 @@
+IlCreate()
+
+
+IlCreate()
+ Previous  Top  Next
+
+Creates a new image list.
+
+====== Sintaxis ======
+
+ 
+
+
+ IlCreate( <nWidth>, <nHeight> ) --> hImageList 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <nWidth> Width, in pixels, of each image. 
+
+
+ 
+
+
+ <nHeight> Height, in pixels, of each image. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hImageList> Returns the handle to the image list if successful, or zero
+otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

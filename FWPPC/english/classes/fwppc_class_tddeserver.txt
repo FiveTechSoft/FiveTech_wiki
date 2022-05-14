@@ -1,0 +1,29 @@
+====== Class TDDEServer ======
+
+Dynamic Data Exchange as Objects. Server side                                  
+====== DATA ======
+|oWnd|Main window object.|
+|cService|The name of the service.|
+|cTopic|The name of the topic.|
+|bInit|The action to perform when activating the DDE|
+|connection||
+|bExecute|The action to perform on DDE_EXECUTE message|
+|bRequest|The action to perform on DDE_REQUEST message|
+|bPoke|The action to perform on DDE_POKE message|
+|bTerminate|The action to perform on DDE_TERMINATE message|
+|lActive|If the DDE connection is still active|
+|hClientHandle|The handle of the DDE client|
+====== METHODS ======
+|New|Constructor from source code|
+|End|Ends the DDE connection|
+|DDE_INIT|WM_DDE_INITIATE event handler|
+|DDE_EXE|WM_DDE_EXECUTE event handler|
+|DDE_REQ|WM_DDE_REQUEST event handler|
+|DDE_POKE|WM_DDE_POKE event handler|
+|DDE_TERM|WM_DDE_TERMINATE event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TDDESERVER.PRG

@@ -1,0 +1,135 @@
+MAPIReadMail()
+
+
+MAPIReadMail()
+ Previous  Top  Next
+
+Retrieves a message for reading.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPIReadMail( [<cMsgId>], [<nFlags>] ) --> aRet 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cMsgId> The message id. 
+
+
+ 
+
+
+ 
+
+ <nFlags> The following flags can be set: 
+
+
+ 
+
+
+ MAPI_BODY_AS_FILE 
+
+
+ 
+
+
+ MAPIReadMail should write the message text to a temporary file and add
+it as the first attachment in the attachment list. 
+
+
+ 
+
+
+ MAPI_ENVELOPE_ONLY 
+
+
+ 
+
+
+ MAPIReadMail should read the message header only. File attachments are
+not copied to temporary files, and neither temporary file names nor
+message text is written. Setting this flag enhances performance. 
+
+
+ 
+
+
+ MAPI_PEEK 
+
+
+ 
+
+
+ MAPIReadMail does not mark the message as read. Marking a message as
+read affects its appearance in the user interface and generates a read
+receipt. If the messaging system does not support this flag, MAPIReadMail
+always marks the message as read. If MAPIReadMail encounters an error, it
+leaves the message unread. 
+
+
+ 
+
+
+ MAPI_SUPPRESS_ATTACH 
+
+
+ 
+
+
+ MAPIReadMail should not copy file attachments but should write message
+text into the MapiMessage structure. MAPIReadMail ignores this flag if
+the calling application has set the MAPI_ENVELOPE_ONLY flag. Setting the
+MAPI_SUPPRESS_ATTACH flag enhances performance. 
+
+
+ 
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <aRet> An array containing Subject, NoteText, Type, Date, Flags,
+Recipient, Originator. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

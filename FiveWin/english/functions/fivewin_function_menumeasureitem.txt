@@ -1,0 +1,114 @@
+====== MenuMeasureItem() ====== 
+
+
+
+Establishes measures of the Menuitem
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MenuMeasureItem( <pMeasureItemStruct>, <nLen>, <lSeparator> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <pMeasureItemStruct> LPMEASUREITEMSTRUCT structure. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLen> Width of the item 
+
+
+ 
+
+
+ <lSeparator> True if the menu item is a separator. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

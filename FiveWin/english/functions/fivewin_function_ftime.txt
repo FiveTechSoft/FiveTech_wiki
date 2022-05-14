@@ -1,0 +1,24 @@
+====== FTime() ======
+
+Retrieves the time of a filename without opening it 
+
+====== Syntax ====== 
+
+FTime( <cFileName> )  --> <cFileTime>  
+
+====== Parameters ====== 
+| <cFileName> | The name of the file whose time to retrieve |
+
+====== Return ====== 
+
+| <cFileTime> | A string with the time of the file.  |
+
+====== Sample ======
+
+
+====== Source Code ====== 
+
+SOURCE\FUNCTION\FileName.prg   
+
+====== See Also ====== 
+

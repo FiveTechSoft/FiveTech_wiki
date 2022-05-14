@@ -1,0 +1,137 @@
+====== SelectObject() ======
+
+Selecciona un objeto GDI para usarlo en un dispositivo de contexto
+
+====== Sintaxis ======
+
+ SelectObject( <hDC>, <hGDIObject> ) --> hPrevGDIObject 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hDC>|Identifica el dispositivo de contexto|
+|<hGDIObject>|Identifica el manejador del objeto GDI a ser seleccionado |
+
+====== Devuelve ======
+
+ <hPrevGDIObject> Retorna el manejador del anterior objeto GDI seleccionado. 
+
+Observaciones:
+
+Muchos objetos GDI, antes de ser usados, tienen que ser seleccionados usando esta función
+
+====== Ejemplo ======
+
+ SAMPLES\Lines.prg 
+
+<code>// Drawing lines and some management colors
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+static aPoints, nCount, nColor := 0, oWnd
+
+function Main()
+
+   aPoints := Array( 1000 )
+   nCount  := 0
+   
+   DEFINE WINDOW oWnd FROM 1, 1 TO 30, 50 ;
+      TITLE OemToAnsi( "FiveWin - Click the mouse over the window" ) ;
+      MENU BuildMenu()
+
+   oWnd:bLClicked := { | y, x, flags | Click( y, x ) }
+   oWnd:bPainted  := { || MiPaint() }
+   
+   ACTIVATE WINDOW oWnd
+
+return 0
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Tasks"
+      MENU
+         MENUITEM "&Clear"    ACTION Clear()
+         MENUITEM "&Undo"     ACTION Undo()
+         SEPARATOR
+         MENUITEM "&Color"    ACTION NewColor()
+      ENDMENU
+
+      MENUITEM "&End"         ACTION oWnd:End()
+
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE Clear()
+   nCount := 0
+   oWnd:Refresh()
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE Undo()
+   if nCount > 0
+      nCount--
+      oWnd:Refresh()
+   endif
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE NewColor()
+   LOCAL OldColor := nColor
+   if ( nColor := ChooseColor() ) == -1
+      nColor := OldColor
+   endif
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE Click( x, y )
+
+   aPoints[ ++nCount ] := { y, x }
+
+   DrawLine( x, y )
+   RETURN
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE DrawLine( x, y )
+   LOCAL n, hPen, hOldPen
+
+   oWnd:GetDc()
+   hPen := CreatePen( 0, 1, nColor )
+   hOldPen := SelectObject( oWnd:hDc, hPen )
+
+   for n := 1 to nCount - 1
+      MoveTo( oWnd:hDC, aPoints[ n, 1 ], aPoints[ n, 2 ] )
+      LineTo( oWnd:hDC, y, x )
+   next
+
+   SelectObject( oWnd:hDc, hOldPen )
+   DeleteObject( hPen )
+   oWnd:ReleaseDc()
+   RETURN
+
+//----------------------------------------------------------------------------//
+
+STATIC PROCEDURE MiPaint()
+   LOCAL n
+   for n := 1 to nCount
+      DrawLine( aPoints[n, 2], aPoints[n, 1] )
+   next
+   RETURN
+</code>
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\SelObjec.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_deleteobject|DeleteObject()]]

@@ -1,0 +1,24 @@
+
+====== GetDropInfo() ======
+GetDropInfo()
+
+To obtain information in process drag/drop
+====== Sintaxis ======
+ GetDropInfo() --> uDropInfo 
+
+ Additional information of the process drag & drop established previously
+with the function SetDropInfo (). It is task of the one programmer to
+establish the data stops later on to be able to recover them with the
+function GetDropInfo () 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+  <uDropInfo> Established data previously for the function SetDropInfo (
+              <uDropInfo>) 
+
+Observations:
+
+ After calling to this function the data they erase. 
+====== Código fuente ======
+ SOURCE\CLASSES\WINDOW.PRG 
+====== Ver también ======

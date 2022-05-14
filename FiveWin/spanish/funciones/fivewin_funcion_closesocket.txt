@@ -1,0 +1,22 @@
+
+====== CloseSocket() ======
+
+CloseSocket()
+
+
+It closes a socket
+
+====== Sintaxis ======
+ CloseSocket( <nSocket> ) --> nResult 
+====== Parámetros ======
+ <nSocket> Socket 
+
+====== Devuelve ======
+
+ <nResult> 0 if the operation is carried out correctly. 
+====== Ejemplo ======
+
+====== Código fuente ======
+
+ SOURCE\WINAPI\WINSOCK.C 
+====== Ver también ======

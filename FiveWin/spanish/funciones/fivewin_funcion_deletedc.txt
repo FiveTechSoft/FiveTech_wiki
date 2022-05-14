@@ -1,0 +1,23 @@
+
+====== DeleteDC() ======
+DeleteDC()
+
+Deletes the given device context
+
+====== Sintaxis ======
+ DeleteDC( <hDC> ) --> lSuccess 
+
+ This function destroys the given device context. 
+====== Parámetros ======
+ <hDC> The handle of the device context 
+====== Devuelve ======
+ <lSuccess> A logical value indicating if the operation was successful. 
+
+Observations:
+
+ This function must only be used to destroy device contexts created with
+CreateDC() and never with GetDC(). 
+====== Código fuente ======
+ SOURCE\WINAPI\dc.c 
+====== Ver también ======
+ CreateDC() GetDC() ReleaseDC() 

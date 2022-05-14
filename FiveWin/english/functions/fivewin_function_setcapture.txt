@@ -1,0 +1,126 @@
+====== SetCapture() ======
+
+
+Captures all the mouse activity for a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetCapture( <hWnd> ) --> hWndPrev 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Identifies the handle of the window to receive all mouse
+messages. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hWndPrev> The handle of the previous window that was receiving all
+mouse messages, if defined. It not, it returns 0. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ When the window no longer requires all mouse input, the application it
+should call ReleaseCapture(). 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\NewHelp.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WMouse.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetCapture() ReleaseCapture() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

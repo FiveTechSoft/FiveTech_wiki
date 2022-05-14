@@ -1,0 +1,23 @@
+====== ExtractLine() ======
+Extrae la línea de una cadena que comienza en una posición determinada
+
+====== Syntaxis ====== 
+ExtractLine( <cText>, @<nFrom> ) --> cLine  
+
+====== Parametros ====== 
+| <cText>| La cadena de la que la línea será extraído.  |
+| <nFrom>| La posición de partida dentro de cText desde donde la línea se extrae. Tiene que pasar por referencia, ya que se actualiza por la función.|
+
+====== Devuelve ====== 
+| <cLine>| La Linea Extraida.  |
+
+====== Ejemplo ======
+<code clipper>
+cLine  := ExtractLine( cCode, @nFrom )
+</code>
+
+====== Codigo fuente ====== 
+SOURCE\CLASSES\xbrowse.prg  
+ 
+====== Ver tambien ====== 
+

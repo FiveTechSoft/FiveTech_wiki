@@ -1,0 +1,19 @@
+====== Class TStruct ======
+
+C language low level structs object oriented management                        
+====== DATA ======
+|aMembers|Array with struct members description|
+|cBuffer|Buffer to hold the struct containts|
+|METHOD||
+|New|CONSTRUCTOR|
+|AddMember|Adds a new struct member|
+|SetMember|Changes a struct member value|
+|GetMember|Retrieves a struct member value|
+|SizeOf|Retrieves the struct total length|
+|OnError|ERROR HANDLER|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TSTRUCT.PRG

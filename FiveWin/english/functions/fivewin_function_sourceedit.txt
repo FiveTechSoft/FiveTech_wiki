@@ -1,0 +1,119 @@
+====== SourceEdit() ======
+
+A source code editor for your apps using Scintilla
+
+Remember to copy Scintilla.dll and SciLexer.dll from FWH\samples folder to the folder where your EXE is.
+
+
+
+
+
+
+====== Syntax ======
+
+    SourceEdit( @<cSource>, <cTitle>, <nClrBack>, <nTop>, <nLeft>, <nBottom>, <nRight>,;
+              <nClrText>, <cFile>, <nLin>, <lRead>, <oDlg>, <lMnu>, <pDoc>, <nLex>, <bSetup>,;
+              <nSizeFont>, <lBold>, <bInit>, <lLoad>, <lModal>, <bExec>, <oMenu>, <cFace> ) --> If( <oDlg> != nil, <lChanged>, <cSource> )
+
+
+
+
+
+====== Parameters ======
+^ Parameter ^ Description                         ^
+| <cSource> | A string variable name containing the source code text to edit. It has to be provided by reference using '@' before the variable name|
+| <cTitle> | The title to show for the editor|
+| <nClrBack> | The color to use for the background of the editor|
+| <nTop>, <nLeft>, <nBottom>, <nRight> | The screen coordinates for the editor|
+| <nClrText> | The color to use for the text of the editor|
+| <cFile> | An optional filename for the file to open and save to from the editor|
+| <nLin> | An optional line number to position the cursor on start|
+| <lRead> | An optional read only mode. False by default|
+| <oDlg> | An optional dialogbox object to contain the editor|
+| <lRead> | An optional not show menu mode. True by default|
+| <pDoc> | An optional doc pointer for the editor|
+| <nLex> | An optional alternative lexical for the editor|
+| <bSetup> | An optional setup codeblock for the editor|
+| <nSizeFont> | An optional font size to use for the editor|
+| <lBold> | An optional bold style to use for the editor|
+| <bInit> | An optional bInit codeblock for the entire Editor object|
+| <lLoad> | Active load DLL Scilexer for use ( .T. )|
+| <lModal> | Show dialog modal mode|
+| <bExec> | User defined function for build prgs edited|
+| <oMenu> | Optional object menu for dialog of editor|
+| <cFace> | Optional select cFaceName for editor ( not use consoles fonts for unicode chars )|
+
+====== Returns ======
+^ Returns ^ Description                         ^
+| <lChanged> or <cModifiedSource> | If the parameter oDlg is provided to SourceEdit() then a logical value is returned if the source code has been modified. If not it is provided, then the modified source code is returned |
+
+
+
+
+
+
+====== Example ======
+<code>
+SourceEdit( oWnd:cGenPrg(), "Source code", RGB( 170, 170, 170 ) )
+</code>
+{{:sourceedit.jpg|:sourceedit.jpg}}
+====== Example ( Fwh 18.04 ) ======
+<code>
+Function Main( ... )
+
+   local cFile   := "C:\Fwh\samples\xmltree.prg"
+   local nLex    := 519    // Look Scilexer.ch
+   local lDll    := .T.    // Need Load DLL. For test this sample, put this .T.
+   local bExec   := { | o | FECompile( o ) }   // Function for build prg
+   local lModal  := .T.
+   SourceEdit( , "FE Little", ;
+               Rgb( 255, 255, 234 ), 10, 10, 710, 910, , cFile, ;
+               , .F., , .T., , nLex, , -12, .F., , lDll, lModal, bExec, nil )
+
+Return nil
+
+//----------------------------------------------------------------------------//
+// Function to Build prg in editor
+//----------------------------------------------------------------------------//
+
+Function FECompile( oEditor )
+
+   //   Better not run .exe file build, from this .BAT ( buildh.bat ), only build file
+   local cExec   := "C:\Fwh\samples\buildh.bat"
+   
+   if oEditor:lModified
+      SaveFileSource( oEditor, oEditor:cFileName )
+   endif
+   SetCurDir( cFilePath( cExec ) )
+   if File( cFilePath( oEditor:cFileName ) + cFileNoExt( oEditor:cFileName ) + ".Exe" )
+      FErase( cFilePath( oEditor:cFileName ) + cFileNoExt( oEditor:cFileName ) + ".Exe" )
+   endif
+   FErase( "FEdit.log" )
+
+   MsgRun( "Build in Process......" + CRLF + ;
+           "Press [ ESC ] to Cancel", oEditor:cFileName , ;
+            { | oDlg | WaitRun( cExec + " " + cFilePath( oEditor:cFileName ) + ;
+                         cFileNoExt( oEditor:cFileName ) + " > FEdit.log", 0 ) } )
+
+   if !File( cFilePath( oEditor:cFileName ) + cFileNoExt( oEditor:cFileName ) + ".Exe" )
+      MemoEdit( MemoRead( "FEdit.log" ), oEditor:cFileName, 3, 3, 30, 120 )
+   //else
+   //   Better not run .exe file build, from previous .BAT ( buildh.bat ), only build file
+   //   WaitRun( cFilePath( oEditor:cFileName ) + cFileNoExt( oEditor:cFileName ) + ".Exe" )
+   endif
+   SetCurDir( cFilePath( HB_ARGV( 0 ) ) )
+   oEditor:SetFocus()
+
+Return nil
+
+//----------------------------------------------------------------------------//
+</code>
+{{:wiki:felittle.png|:wiki:felittle.png}}
+
+====== Source Code ======
+ SOURCE\FUNCTION\MEMOEDIT.PRG 
+
+
+====== See also ======
+[[fivewin_function_memoedit|MemoEdit()]]
+[[fivewin_function_richedit|RichEdit()]]

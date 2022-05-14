@@ -1,0 +1,20 @@
+====== HelpSearch() ======
+
+Search DialogBox in the active Help file. 
+
+====== Syntax: ======
+ 
+ HelpSearch( [ <cString> ] ) --> nil
+====== Parameters: ======
+
+| <cString> | Is an optional parameter to specify the string we want to search. | 
+====== Returns: ======
+
+ nothing  
+
+====== Description: ======
+
+HelpSearch() calls the WinHelp search Dialog. If we have specified a string to search then, automatically, the result of the search is shown, if not, we have to dynamically type the expression.
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP32.PRG   

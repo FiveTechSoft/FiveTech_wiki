@@ -1,0 +1,84 @@
+====== ShowIP() ======
+
+
+Returns the local IP.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ShowIP() --> cIP 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <cIP> The local IP. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\tsocket.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,82 @@
+====== SetWindowWord() ======
+
+
+Changes an attribute of the specified window.
+
+====== Syntax ======
+
+ 
+
+
+ SetWindowWord( <hWnd>, <nType>, <nValue> ) --> nOldValue 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the window. 
+
+
+ 
+
+
+ <nType> The type of information to be changed: 
+
+
+ 
+
+
+ 
+   GWL_HINSTANCE   Retrieves a handle to the application instance.   
+   GWL_ID      Retrieves the identifier of the window.   
+
+ 
+
+
+ <nValue> The new value. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nOldValue> The previous value. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+
+====== See also ======
+

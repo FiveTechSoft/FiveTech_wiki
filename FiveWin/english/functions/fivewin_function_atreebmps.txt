@@ -1,0 +1,13 @@
+====== aTreeBmps() ======
+Returns an array with the default tree bitmaps 
+====== Syntax ======
+aTreeBmps()--> <aBmpHandles>  
+====== Parameters ======
+None  
+====== Returns ======
+^Returns ^ Description                                                                 ^
+|<aBmpHandles>| An array with the handles of the bitmaps used to display the FiveWin trees.|
+
+** Observations ** 
+
+Used internally by FiveWin trees.

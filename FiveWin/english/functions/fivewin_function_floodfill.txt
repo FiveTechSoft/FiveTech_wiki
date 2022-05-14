@@ -1,0 +1,24 @@
+====== FloodFill() ======
+Fills an area of the screen with the specified color. 
+
+====== Syntax ====== 
+FloodFill( <hDC>, <nXStart>, <nYStart>, <nRGBColor>, <nPaintColor> ) --> <lSuccess>  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hDC> | Identifies the device context where to fill.  |
+| <nXStart> | Identifies the coordinate where to start filling.  |
+| <nYStart>  |Identifies the coordinate where to start filling.  |
+| <nRGBColor> | The RGB color to use for boundary of the area to be filled.  |
+| <nPaintColor> | The RGB color to use for filling.  |
+
+====== Return ====== 
+^Returns^Description^
+| <lSuccess> | A logical value indicating if the operation was performed successfully.|
+
+====== Sample ======
+
+====== Source Code ====== 
+SOURCE\WINAPI\Drawing.c 
+
+====== See Also ====== 

@@ -1,0 +1,48 @@
+
+====== DbCommitAll() ======  
+
+Guarda en disco las actualizaciones pendientes de todas las áreas de trabajo
+
+====== Sintaxis ====== 
+
+ DbCommitAll() --> nil  
+
+
+ Función para tener compatibildad con xBase++  
+
+====== Parámetros ====== 
+
+ Ninguno
+
+====== Devuelve ====== 
+
+ DbCommitAll()  
+
+====== Ejemplo ====== 
+
+<code clipper>cApellido := "López"
+DBUSEAREA(.T., "DBFCDX", "Ventas", "Ventas", .T.)
+DBSETINDEX( "NOMBVEND" )
+DBSETINDEX( "APELVEND" )
+DBUSEAREA(.T., "DBFNTX", "Distribu", "Distribu", .T.)
+DBSETINDEX( "NOMBDIST" )
+DBSETINDEX( "APELDIST" )
+DBSELECTAREA( "Ventas" )
+IF ( Ventas->(DBSEEK(cApellido)) )
+   IF Ventas->(DELETED() ) .AND. Ventas( RLOCK())
+      Ventas->( DBRECALL() )
+      ? "Se ha recuperado el registro borrado."
+   ENDIF
+ELSE
+   ? "No se encuentra"
+ENDIF
+DBCOMMITALL()
+DBCLOSEALL()
+</code>
+
+====== Código Fuente ====== 
+
+ SOURCE\FUNCTION\DB10.PRG 
+
+====== Ver también ====== 
+

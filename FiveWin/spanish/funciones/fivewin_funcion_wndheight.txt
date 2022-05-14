@@ -1,0 +1,99 @@
+WndHeight()
+
+
+
+WndHeight()
+
+ Previous  Top  Next
+
+
+
+
+Update the window height
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndHeight( <hWnd> [,<nNewHeight> ] ) --> nHeight 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Window handle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nNewHeight> New height 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nHeight> If <nNewHeight> is nil return the current height 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

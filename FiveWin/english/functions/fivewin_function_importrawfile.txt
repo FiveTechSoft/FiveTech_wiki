@@ -1,0 +1,72 @@
+ImportRawFile()
+
+
+ImportRawFile()
+ Previous  Top  Next
+
+Sends a file to the printer.
+
+====== Syntax ======
+
+ 
+
+
+ ImportRawFile( <hDC>, <cFile> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> The handle of the printer device context. 
+
+
+ 
+
+
+ <cFile> The file to send to the printer. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+
+====== See also ======
+

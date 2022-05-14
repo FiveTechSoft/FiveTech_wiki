@@ -1,0 +1,15 @@
+
+====== GetCurDir() ======
+GetCurDir()
+
+Obtain the current directory
+====== Sintaxis ======
+ GetCurDir() --> cCurDir 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <cCurDir> Current directory 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\DRIVES.C 
+====== Ver también ======

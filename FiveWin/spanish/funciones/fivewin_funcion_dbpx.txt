@@ -1,0 +1,19 @@
+
+====== DbPx() ======
+DbPx()
+
+Just to avoid removing extern DBPX
+====== Sintaxis ======
+ DbPx() --> nil 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function should be put if one doesn't want to include the it
+sentences extern DBPX 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

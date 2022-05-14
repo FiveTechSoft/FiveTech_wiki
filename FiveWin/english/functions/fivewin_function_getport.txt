@@ -1,0 +1,87 @@
+GetPort()
+
+
+
+GetPort()
+
+ Previous  Top  Next
+
+
+
+
+To obtain the port to the one that this bind a socket
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetPort( <nSocket> ) --> nPort 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nPort> Port number to the one that this bind the socket 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

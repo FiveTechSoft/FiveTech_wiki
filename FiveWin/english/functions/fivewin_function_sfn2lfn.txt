@@ -1,0 +1,41 @@
+====== Sfn2Lfn() ======
+
+
+Short FileName To Long FileName.
+
+====== Syntax ======
+
+
+ Sfn2Lfn( <cShortFileName> ) --> cLongFileName 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cShortFileName> Short file name 
+
+
+ 
+
+====== Returns ======
+
+
+ <cLongFileName> Short name transformed to long name 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\LONGNAM2.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

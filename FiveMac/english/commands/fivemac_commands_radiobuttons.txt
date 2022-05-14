@@ -1,0 +1,14 @@
+====== Creates a RADIO group from source code ======
+<code clipper>
+@ <nRow>, <nCol> RADIO [ <oRadMenu> VAR ] <nVar> ;
+   [ OF | WINDOW | DIALOG <oWnd> ] ;
+   [ PROMPT | PROMPTS | ITEMS <acItems> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ UPDATE ]
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\tradmenu.prg
+====== See Also ======
+[[fivemac_class_tradmenu|Class TRadMenu]]

@@ -1,0 +1,87 @@
+lMidiExist()
+
+
+
+lMidiExist()
+
+ Previous  Top  Next
+
+
+
+
+Check if there are MIDI output devices
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ lMidiExist() --> lExist 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ none 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lExist> It returns true if there is MIDI output devices 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

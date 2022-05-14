@@ -1,0 +1,33 @@
+====== CloseWindow() ====== 
+This function will Minimize an open window. You need to pass the windows handle as parameter
+
+====== Syntax ======
+CloseWindow( <hWnd> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| Handle of the window |
+
+====== Returns ======
+Nothing
+
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch" 
+
+//-----------------------------------//
+Function main() 
+ Local oWnd,oBtn
+
+ DEFINE WINDOW oWnd TITLE "Test CloseWindow()"
+
+ @1,10 BUTTON oBtn PROMPT "Minimize" SIZE 80,20 ACTION CLoseWindow(oWnd:hWnd)
+
+ ACTIVATE WINDOW oWnd 
+
+Return nil 
+</code>
+
+====== Source Code ======
+SOURCE\WINAPI\WNDIS.C 

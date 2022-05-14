@@ -1,0 +1,16 @@
+
+====== nBmpWidth() ====== 
+nBmpWidth()
+
+It returns the width in pixels of a Bitmap
+====== Sintaxis ======
+ nBmpWidth( <hBitmap> ) --> nWidth 
+====== Parámetros ======
+ <hBitmap> Handle of the bitmap 
+====== Devuelve ======
+ <nWidth> Width in pixels of the bitmap 
+====== Ejemplo ======
+ SOURCE\CLASSES\BITMAP.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\FWBMP.C 
+====== Ver también ======

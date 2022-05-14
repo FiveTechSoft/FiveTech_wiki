@@ -1,0 +1,25 @@
+====== Class TUrlLink ======
+
+Url link label                                                                 
+Inherits from TSay                                                             
+====== DATA ======
+|cUrl|The URL to open on click|
+|nClrInit|The unvisited link color|
+|nClrOver|The link color when the mouse cursor is over it|
+|nClrVisit|The visited link color|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Default|Default initialization of the control|
+|HandleEvent|Generic event handler|
+|Initiate|Initialization event handler|
+|LButtonDown|Left mouse click event handler|
+|MouseLeave|Mouse leaving the control event handler|
+|MouseMove|Mouse move on the control event handler|
+|Refresh|Refreshes the control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TURLLINK.PRG

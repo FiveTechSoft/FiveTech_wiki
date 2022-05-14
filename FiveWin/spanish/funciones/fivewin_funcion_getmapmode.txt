@@ -1,0 +1,42 @@
+
+====== GetMapMode() ======
+GetMapMode()
+
+Retrieves the current mapping mode
+====== Sintaxis ======
+ GetMapMode( <hDC> ) --> nMapMode 
+
+ The function retrieves the current mapping mode for a given device
+context. 
+====== Parámetros ======
+ <hDC> The handle of the device context. 
+====== Devuelve ======
+  <nMapMode> A numeric value of the followings: 
+    MM_ANISOTROPIC   Logical units are converted to arbitrary units with
+        arbitrarily scaled axes. Setting the mapping mode to MM_ANISOTROPIC does
+        not change the current window or viewport settings. To change the units,
+        orientation, and scaling, an application should use the SetWindowExt and
+        SetViewportExt functions.
+    MM_HIENGLISH   Each logical unit is converted to 0.001 inch. Positive x
+        is to the right; positive y is up.   
+    MM_HIMETRIC      Each logical unit is converted to 0.01 millimeter.
+        Positive x is to the right; positive y is up.   
+    MM_ISOTROPIC   Logical units are converted to arbitrary units with
+        equally scaled axes; that is, one unit along the x-axis is equal to one
+        unit along the y-axis. The SetWindowExt and SetViewportExt functions must
+        be used to specify the desired units and the orientation of the axes. GDI
+        makes adjustments as necessary to ensure that the x and y units remain
+        the same size.
+    MM_LOENGLISH   Each logical unit is converted to 0.01 inch. Positive x is
+        to the right; positive y is up.   
+    MM_LOMETRIC   Each logical unit is converted to 0.1 millimeter. Positive
+        x is to the right; positive y is up.   
+   MM_TEXT      Each logical unit is converted to one device pixel. Positive
+        x is to the right; positive y is down.   
+   MM_TWIPS      Each logical unit is converted to 1/20 of a point. (Because
+        a point is 1/72 inch, a twip is 1/1440 inch). Positive x is to the right;
+        positive y is up.   
+====== Código fuente ======
+ SOURCE\\WINAPI\\SetMapMo.c 
+====== Ver también ======
+ SetMapMode() SetWindowExt() SetWindowOrg()

@@ -1,0 +1,21 @@
+====== D2Bin() ======
+Converts a floating point number into a string
+
+====== Syntax: ======
+D2bin( <nFloat> ) --> cValue
+
+====== Parameters: ======
+^Parameter^Description^
+| <nFloat> | Floating point number |
+
+====== Returns: ======
+^Returns^Description^
+| <cValue> | Value returned in string format. |
+
+====== Sample: ======
+<code clipper>
+MsgInfo( D2Bin( 1234567.89 ) )   // returns  "1234567.89"
+</code>
+
+====== Source code: ======
+SOURCE\FUNCTION\b2bin.c

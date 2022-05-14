@@ -1,0 +1,160 @@
+====== SetCapture() ======
+
+SetCapture() Captura toda la actividad del mouse para una ventana.
+
+====== Sintaxis ======
+
+SetCapture( <hWnd> ) --> hWndPrev 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>| Identifica el identificador de la ventana para la que se recibirá todos los mensajes del mouse. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<hWndPrev>| El identificador de la ventana anterior que estaba recibiendo todos los mensajes del mouse, si estaba definida. Si no, este retorna 0. |
+
+
+====== Observaciones ======
+
+Cuando la ventana ya no requiere mas todas las entradas del ratón, la aplicación debería llamar a ReleaseCapture().
+
+====== Ejemplo ======
+
+SAMPLES\NewHelp.prg 
+
+<code>
+// Sample showing how to work with new help techniques from FiveWin.
+
+#include "FiveWin.ch"
+#include "NewHelp.ch"
+#include "Inkey.ch"
+
+#define SRCPAINT   15597702   // 0xEE0086
+#define SRCAND      8913094
+
+#define GWW_ID          -12
+
+static oBmp1, oBmp2, oFont
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBtn, oCursor
+   local cName := "Hello        " // Space( 30 )
+   local cAddress := "World!      " // Space( 30 )
+
+   SET _3DLOOK ON
+
+   SetKey( VK_F1, { | nKey | MsgInfo( 'Help on: "' + ;
+                             GetWindowText( GetActiveWindow() ) + '"' + ;
+                             CRLF + "Control ID: " + ;
+                             Str( GetWindowWord( GetFocus(), GWW_ID ) ) ) } )
+
+   DEFINE CURSOR oCursor RESOURCE "Help"
+
+   DEFINE BITMAP oBmp1 RESOURCE "Genie1"
+   DEFINE BITMAP oBmp2 RESOURCE "Genie2"
+
+   DEFINE FONT oFont NAME "Arial" SIZE 0, -9
+
+   DEFINE DIALOG oDlg RESOURCE "Test"
+
+   REDEFINE GET cName    ID ID_NAME    OF oDlg HELPID ID_NAME
+   REDEFINE GET cAddress ID ID_ADDRESS OF oDlg
+
+   REDEFINE BUTTON oBtn ID ID_HELP OF oDlg ;
+      ACTION ( oBtn:Capture(),;
+               oBtn:oCursor   := oCursor,;
+               oBtn:bLClicked := { | nRow, nCol | ShowHelp( oBtn, nRow, nCol ),;
+                                                  ReleaseCapture(),;
+                                                  oBtn:oCursor   := nil,;
+                                                  oBtn:bLClicked := nil, 0 } )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   RELEASE OBJECTS oCursor, oBmp1, oBmp2, oFont
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function ShowHelp( oBtn, nRow, nCol )
+
+   local aPoint   := { nRow, nCol }
+   local hCtl, nID
+   local cMsg
+
+   #ifndef __CLIPPER__
+      nRow = 65535 - nRow
+      nCol = 65535 - nCol
+   #endif
+      
+   aPoint = ClientToScreen( oBtn:hWnd, aPoint )
+
+   #ifndef __CLIPPER__
+      aPoint[ 1 ] = aPoint[ 1 ] - 65535
+      aPoint[ 2 ] = aPoint[ 2 ] - 65535
+   #endif
+
+   hCtl = WindowFromPoint( aPoint[ 2 ], aPoint[ 1 ] )
+   
+   #ifdef __CLIPPER__
+      nID  = GetWindowWord( hCtl, -12 )
+   #else
+      nID  = GetWindowLong( hCtl, -12 )
+   #endif   
+
+   REDEFINE cMsg AS CHARACTER RESOURCE nID
+
+   MsgFancy( If( Empty( cMsg ), "Sorry, I am a very limited Genius...", cMsg ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function MsgFancy( cMsg )
+
+   local oDlg, oBrush
+
+   DEFINE BRUSH oBrush COLOR CLR_BLUE // STYLE NULL             // Transparent painting !
+
+   DEFINE DIALOG oDlg ;
+      FROM 2, 2 TO 20, 60 ;
+      STYLE WS_POPUP ;
+      BRUSH oBrush ;
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON PAINT ( PalBmpDraw( oDlg:hDC, 0, 0, oBmp2:hBitmap, 0, 0, 0, SRCPAINT ),;
+                 PalBmpDraw( oDlg:hDC, 0, 0, oBmp1:hBitmap, 0, 0, 0, SRCAND ),;
+                 oDlg:Say( 3.7, 10, cMsg,,, oFont ) ) ;
+      ON LEFT CLICK oDlg:End() ;
+      ON INIT SetTransparent( oDlg )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+#define LWA_COLORKEY  1 
+#define GWL_EXSTYLE   -20 
+#define WS_EX_LAYERED 524288 
+
+
+STATIC FUNCTION SETTRANSPARENT( oDlg ) 
+
+   SETWINDOWLONG( oDlg:hWnd, GWL_EXSTYLE, NOR( GETWINDOWLONG( oDlg:hWnd, GWL_EXSTYLE ), WS_EX_LAYERED ) ) 
+
+   SETLAYEREDWINDOWATTRIBUTES( oDlg:hWnd, CLR_BLUE,, LWA_COLORKEY ) 
+
+RETURN NIL
+    
+//----------------------------------------------------------------------------//   
+</code>
+====== Código fuente ======
+
+SOURCE\WINAPI\WMouse.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_GetCapture|GetCapture()]], [[fivewin_funcion_ReleaseCapture|ReleaseCapture()]] 

@@ -1,0 +1,37 @@
+
+====== DbClearInd() ======  
+
+Cierra todos los índices del área de trabajo actual
+
+====== Sintaxis ======  
+
+ DbClearInd() --> nil  
+ 
+
+ Función para tener compatibilidad con xBase++  
+
+====== Parámetros ======  
+
+ Ninguno
+
+====== Devuelve ====== 
+
+ DbClearIndex()  
+
+====== Ejemplo ====== 
+
+<code clipper>cApellido := "López"
+DBUSEAREA(.T., "DBFCDX", "Ventas", "Ventas", .T.)
+DBSETINDEX( "NOMBRE" )
+DBSETINDEX( "APELLIDO" )
+IF INDEXORD() > 0
+   DBCLEARINDEX()
+ELSE
+   COPY TO FILE TEMP SDF
+ENDIF</code>
+
+====== Código Fuente ====== 
+
+ SOURCE\FUNCTION\DB10.PRG
+
+====== Ver también ====== 

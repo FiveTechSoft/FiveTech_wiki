@@ -1,0 +1,44 @@
+LastItemPos()
+
+
+LastItemPos()
+ Previous  Top  Next
+
+It returns the last defined menuitem position.
+
+====== Sintaxis ======
+
+
+ LastItemPos() --> nPos 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nPos> The last defined menuitem position. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\PDMENU.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

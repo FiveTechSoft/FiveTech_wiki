@@ -1,0 +1,26 @@
+
+====== uCharToVal() ======
+
+Converts any value into a character string 
+
+====== Syntax: ======
+
+ uCharToVal( <cExpression>, <uType> ) --> uValue  
+ 
+====== Parameters: ======
+
+|<cExpression>| A string expression to be converted to a specific type. | 
+|<uType>| It is value, whose type determines the kind of conversion we want to do.  |
+
+====== Returns: ======
+
+|<uValue>| The corresponding value obtained from <cExpression> and <uType> specifications. |
+
+====== Source Code: ======
+ 
+ SOURCE\FUNCTION\WQOut.prg  
+
+====== See also: ====== 
+
+ [[fivewin_function_cValToChar()|cValToChar()]]  
+ 

@@ -1,0 +1,103 @@
+Inet_Addr()
+
+
+
+Inet_Addr()
+
+ Previous  Top  Next
+
+
+
+
+This function converts a IP Address to an address in_addr
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Inet_Addr( <cIPAddress> ) --> nAddress 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cIPAddress> Address IP in string format "nnn.nnn.nnn.nnn" 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nAddress Address IP converted 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ If no error occurs, inet_addr()returns an unsigned long containing a
+suitable binary representation of the Internet address given. If the
+passed-in string does not contain a legitimate Internet address, for
+example if a portion ofan "a.b.c.d" address exceeds 255,
+inet_addr()returns the value INADDR_NONE. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

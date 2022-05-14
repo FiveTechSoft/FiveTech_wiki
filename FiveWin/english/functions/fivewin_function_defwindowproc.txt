@@ -1,0 +1,23 @@
+====== DefWindowProc() ======
+Calls the default window procedure.
+
+====== Syntax ======
+DefWindowProc( <hWnd>, <nMsg>, <nParam, <nlParam> ) --> nResult 
+
+====== Parameters ======
+^Parameter^Description^
+| <hWnd> | Handle of the window that receives the message |
+| <nMsg> | Message |
+| <nParam> | First parameter like INTEGER |
+| <nlParam> | Second parameter like LONG |
+
+====== Returns ======
+^Return^Description^
+| <nResult> | Result after processing the message. |
+
+====== Example ======
+<code clipper>
+DefWindowProc( hWnd, nMsg, nWParam, nLParam )
+</code>
+====== Source Code ======
+SOURCE\WINAPI\WINDOWS.C 

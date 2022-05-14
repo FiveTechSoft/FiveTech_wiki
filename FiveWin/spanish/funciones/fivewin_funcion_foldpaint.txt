@@ -1,0 +1,112 @@
+FoldPaint()
+
+
+
+
+FoldPaint()
+
+ Previous  Top  Next
+
+Paints the Folders of FiveWin.
+
+====== Sintaxis ======
+
+
+ FoldPaint( <hWnd>, <hDC>, <aPrompts>, <hFont1>, <hFont2>, <nClrPane>,
+<nOption>, <aEnable>, <nSize>, <lWin95>, <nFdHeight>  ) --> nil 
+
+
+ 
+
+====== Par�metros ======
+
+ 
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ <hDC> Device context donde vamos a pintar 
+
+
+ 
+
+
+ <aPrompts> Strings of text of the different options 
+
+
+ 
+
+
+ <hFont1> Handler of the font 
+
+
+ 
+
+
+ <hFont2> Handler of the font for the elected option 
+
+
+ 
+
+
+ <nClrPane> Background color 
+
+
+ 
+
+
+ <nOption> Selected option 
+
+
+ 
+
+
+ <aEnable> Array of options 
+
+
+ 
+
+
+ <nSize> With of the label 
+
+
+ 
+
+
+ <lWin95> Windows 95 look 
+
+
+ 
+
+
+ <nFdHeight> Height of the folder 
+
+
+ 
+
+====== Devuelve ======
+
+
+ nil 
+
+
+ 
+
+====== Ejemplo ======
+
+====== C�digo fuente ======
+
+
+ SOURCE\FUNCTION\FOLDTOOL.C 
+
+
+ 
+
+
+
+====== Ver tambi�n ======
+

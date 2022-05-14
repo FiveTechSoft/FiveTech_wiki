@@ -1,0 +1,20 @@
+
+====== nLoByte() ====== 
+nLoByte()
+
+Returns the Low byte of a word (two bytes)
+====== Sintaxis ======
+ nLoByte( <nWord> ) --> nLoByte 
+====== Parámetros ======
+ <nWord> A numeric (2 bytes) value 
+====== Devuelve ======
+ <nLoByte> A numeric (1 byte) value 
+
+Observations:
+
+ A word is made of: 
+ WORD = LOW_BYTE + HIGH_BYTE 
+====== Código fuente ======
+ SOURCE\FUNCTION\HiLoWord.c 
+====== Ver también ======
+ nLoByte() nHiByte() nLoWord()

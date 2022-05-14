@@ -1,0 +1,194 @@
+====== SAY ======
+** Defining a SAY object from source code **
+<code clipper>             
+ @ <nRow>, <nCol> SAY [ <oSay> PROMPT | VAR ] <cText> ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PICTURE <cPicture> ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ FONT <oFont> ] ;  
+ [ CENTERED | CENTER ] ;  
+ [ RIGHT ] ;  
+ [ BORDER ] ;  
+ [ PIXEL | PIXELS ]  ;
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ DESIGN ] ;  
+ [ UPDATE ] ;  
+ [ SHADED | SHADOW ] ;  
+ [ BOX ] ;  
+ [ RAISED ]  
+</code>
+** Redefining a SAY object from resources **
+<code clipper>
+ REDEFINE SAY <oSay> ;  
+ [ PROMPT | VAR <cText> ] ;  
+ [ ID <nId> ];  
+ [ OF | WINDOW | DIALOG <oDlg> ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ PICTURE <cPict> ] ;  
+ [ UPDATE ] ;  
+ [ FONT <oFont> ]  </code>
+**Parameters**
+| <nRow>, <nCol> | The coordinates of the Say Object. We simulate Text coordinates. |
+| <oSay> | A reference to the Say Object. |    
+| <cText> | The label of the Say Object. |    
+| <oWnd> | The container dialog of the Say control. | 
+| <cPicture> | The typical PICTURE clause for a SAY. |   
+| <cColor> | The COLOR string for the SAY. Not available yet! | 
+| <oFont> | The Object font to be used with the SAY. The Font must be created previously using DEFINE FONT... . | 
+| <nClrFore> | Foreground color as a RGB number, or as a xBase string | 
+| <nClrBack> | Background color as a RGB number | 
+| <nWidth>, <nHeigth> | The dimensions of the control. | 
+| <oSay> | A reference to the Say Object. | 
+| <cText> | The caption to assign to the Say Object. Specifying it change the text on the resource. | 
+| <nId> | The numeric resource identifier of the Say Object. Is has to be assigned from the resource editor. | 
+| <oWnd> | The container dialog of the Say Object. | 
+
+**CLAUSES **
+
+| CENTERED CENTER | Center text. | 
+| RIGHT | Right justification. | 
+| BORDER | Create a border arround the control. | 
+| DESIGN | Allows the user to move and resize with the mouse | 
+| PIXEL | To use pixel coordinates instead of Text coordinates. | 
+| UPDATE | This control may be updated from TDialog:Update() METHOD | 
+| SHADED, SHADOW | To paint the say with a shaded effect. | 
+| BOX | Place the say objet in a box. | 
+| RAISED | To paint the say with a raised effect. | 
+
+====== Sample Code ======
+\Fwh\Samples\TestSay.Prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+local oWnd
+local oMenu
+
+menu oMenu
+   menuitem "Gradient" action Dlg_Grad()
+   menuitem "Color" action Dlg_Color()
+   menuitem "Bitmap" action Dlg_Bit()
+endmenu
+
+DEFINE WINDOW oWnd TITLE "Test Say" from 0,0 to 400,800 pixel menu oMenu
+
+activate window oWnd
+
+return nil
+
+procedure Dlg_Grad
+
+local oDlg
+local oSay
+local oSay2
+
+   define dialog odlg title "Test Say With Gradient Brush" size 400,400 PIXEL
+   
+   @ 2,2 to 100,100 of odlg pixel
+   
+   @ 25,15 say oSay prompt "This a Test" of oDlg SIZE 40, 15 COLOR CLR_WHITE PIXEL  transparent adjust
+ 
+   @ 10,120 button "Test" pixel action  oSay:SetText( "Change Text")  
+
+   
+   ACTIVATE DIALOG oDlg CENTERED  ;
+      ON INIT GradientBrush( oDlg, { { 0.4, nRGB( 75, 144, 223 ), nRGB( 41, 85, 145 ) },;
+                                     { 0.6, nRGB( 24,  61, 118 ), nRGB( 50, 95, 158 ) } } ) 
+   
+return 
+
+procedure Dlg_Color
+
+local oDlg
+local oBrush
+local oSay
+
+   define brush oBrush color CLR_CYAN
+   
+   define dialog odlg title "Test Say With Color Brush" brush oBrush size 400,400 PIXEL
+   
+   @ 2,2 say oSay prompt "This a Test" of oDlg SIZE 100, 130 COLOR CLR_WHITE PIXEL  transparent
+
+   @ 10,120 button "Test" action oSay:SetText( "Change Text")  pixel
+
+   
+   ACTIVATE DIALOG oDlg CENTERED 
+   
+   
+return 
+
+procedure Dlg_Bit
+
+local oDlg
+local oBrush
+local oSay
+
+   define brush oBrush file "..\bitmaps\cara.bmp"
+   
+   define dialog odlg title "Test Say With bitmap Brush" brush oBrush size 400,400 PIXEL
+   
+   @ 2,2 say oSay prompt "This a Test" of oDlg SIZE 100, 130 COLOR CLR_WHITE PIXEL  transparent
+
+   @ 10,120 button "Test" pixel action oSay:SetText( "Change Text")  
+
+   
+   ACTIVATE DIALOG oDlg CENTERED on init osay:refresh()
+   
+return 
+
+function GradientBrush( oDlg, aColors )
+
+   local hDC, hBmp, hBmpOld, oBrush
+   
+   if Empty( oDlg:oBrush:hBitmap )
+      hDC = CreateCompatibleDC( oDlg:GetDC() )
+      hBmp = CreateCompatibleBitMap( oDlg:hDC, oDlg:nWidth, oDlg:nHeight )
+      hBmpOld = SelectObject( hDC, hBmp )
+      GradientFill( hDC, 0, 0, oDlg:nHeight, oDlg:nWidth, aColors )
+      DeleteObject( oDlg:oBrush:hBrush )
+      oDlg:oBrush:hBitmap = hBmp
+      oDlg:oBrush:hBrush = CreatePatternBrush( hBmp ) 
+      SelectObject( hDC, hBmpOld )
+      oDlg:ReleaseDC()
+   endif   
+
+return nil
+</code>
+
+** Another sample to demonstrate Say class's click event support **
+<code clipper>
+// A sample showing to to let a SAY accept Clicks events
+
+#include "FiveWin.ch"
+
+#define COLOR_BTNFACE       15
+
+function Main()
+
+   local oDlg, oSay, oCursor
+
+   DEFINE CURSOR oCursor HAND
+
+   DEFINE DIALOG oDlg
+
+   @ 2, 2 SAY oSay PROMPT "Test"
+
+   oSay:lWantClick = .t.
+   oSay:bLClicked  = { || oSay:SetColor( CLR_WHITE, GetSysColor( COLOR_BTNFACE ) ),;
+                          oSay:Refresh(), MsgInfo( "Hello" ) }
+   oSay:oCursor    = oCursor
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:say1.jpg|:say1.jpg}}
+
+{{:say2.jpg|:say2.jpg}}
+{{:say3.jpg|:say3.jpg}}
+
+====== See also ======
+[[fivewin_class_tsay|Class TSay]]

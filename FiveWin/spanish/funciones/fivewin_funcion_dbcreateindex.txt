@@ -1,0 +1,35 @@
+
+====== DbCreateIndex() ======  
+
+Create a index file 
+Crea un fichero índice
+
+====== Sintaxis ======  
+
+ DbCreateIndex( <x>, <y>, <z>, <w> ) --> nil  
+
+
+ Función para tener compatibilidad con xBase++  
+
+====== Parámetros ======  
+
+| <x> | Nombre del Indice |
+| <y> | Expresión Clave |
+| <z> | Código de bloque con la expresión clave del índice|
+| <w> | Valor lógico para crear un índice único|
+
+====== Devuelve ======  
+
+ DbCreateIndex( x, y, z, w )  
+
+====== Ejemplo ======  
+
+<code clipper>USE Empleados NEW
+DBCreateIndex( "INombre", "Nombre", { || Nombre })</code>
+
+====== Código Fuente ======  
+
+ SOURCE\FUNCTION\DB10.PRG  
+
+====== Ver también ======
+

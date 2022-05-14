@@ -1,0 +1,81 @@
+CreateEnhMetaFile()
+
+
+CreateEnhMetaFile()
+ Previous  Top  Next
+
+Creates a device context for an enhanced-format metafile.
+
+====== Sintaxis ======
+
+ 
+
+
+ CreateEnhMetaFile( <hDC>, <cFileName>, <cDescription ) --> hDC 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDC> The reference device context for the enhanced metafile. 
+
+
+ 
+
+
+ <cFilename> The filename for the enhanced metafile. Zero for a memory
+based enhanced metafile. 
+
+
+ 
+
+
+ <cDescription> A string that specifies the application name that created
+the picture or the title of the picture. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hDC> The handle of the device context for the enhanced metafile. Zero
+in case of failure. 
+
+
+ 
+
+
+ 
+====== Ejemplo ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\METAFI32.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

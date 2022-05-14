@@ -1,0 +1,39 @@
+
+====== Help ======
+
+**Sets the default HELP file of the application **
+
+ SET HELPFILE TO <cHLPFile>
+ -> Where translated to [[fivewin_function_sethelpfile|SetHelpFile()]]
+
+**Sets the default HELP TOPIC of the application **
+
+ SET HELP TOPIC TO <cTopic>  
+ -> Where translated to [[fivewin_function_helpsettopic|HelpSetTopic()]]
+  
+FiveWin lets you assign a HLP file as the default HELP file of your application so it will be automatically managed 
+from the Fivewin extended help functions. This functionality complement the standard WinApi help functions. 
+
+====== Sample Code /Usage ======
+<code clipper>
+#include "FiveWin.ch"
+#include "InKey.ch"
+
+static oWnd
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   SetKey( K_F1, { | nKey | MsgInfo( "Help" ) } )
+
+   SET HELPFILE TO "Calc.hlp"      // Here you set your default HELP file
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 60 ;
+      TITLE "Testing Windows help system" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO FWVERSION + FWCOPYRIGHT  NOINSET
+
+   ACTIVATE WINDOW oWnd MAXIMIZED
+
+return nil</code>  

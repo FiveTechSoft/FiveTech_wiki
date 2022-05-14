@@ -1,0 +1,134 @@
+====== GetFirstInZip() ====== 
+Retrieves info about the first file in the ZIP file
+
+====== Syntax ======
+GetFirstInZip( <cZipFileName> ) --> aFileInfo 
+
+====== Parameters ======
+^Parameter^Description^
+|<cZipFileName>| The name of the ZIP file from which the first file's info to be retrieved. |
+
+====== Returns ======
+^Returns^Description^
+|<aFileInfo>| If successful then an array containing (9 elements) the following information about the first file in the ZIP.\\ aFileInfo[ 1 ]   *The returning code.*\\ aFileInfo[ 2 ]  *the filename.*\\ aFileInfo[ 3 ]  *Date.*\\ aFileInfo[ 4 ] *Time.*\\ aFileInfo[ 5 ] *File size*\\ aFileInfo[ 6 ] *Compressed size*\\ FileInfo[ 7 ] *offset insize the ZIP file*\\ aFileInfo[ 8 ] *Pack Method*\\ aFileInfo[ 9 ] *File attributes*\\ **If the function failed then one of the following values are returned**\\ #define ZIP_OK  0\\ #define ZIP_FILEERROR  -1\\ #define ZIP_INTERNALERROR  -2\\ #define ZIP_NOMOREITEMS  1|
+
+
+====== Example ======
+\Fwh\SAMPLES\TestUZip.prg 
+
+<code clipper>
+#include "FiveWin.ch"
+#define FILE_OFFSET   7
+
+static cZipName
+static aFiles
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oDlg, oBrw
+   local oName, oNumber, oMtr, nPercent := 0
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "main"
+
+   oDlg:bUnZip = { | nPercent | oMtr:Set( nPercent ), SysRefresh() }
+
+   REDEFINE SAY oName   ID 101 OF oDlg
+   REDEFINE SAY oNumber ID 102 OF oDlg
+
+   REDEFINE LISTBOX oBrw FIELDS "" ;
+      HEADERS "Name", "Date", "Time", "Size", "Compress", "Offset", "Pack", "Attr" ;
+      SIZES   200, 59, 37, 60, 60, 55, 35, 25 ;
+      ID 110 OF oDlg
+
+   oBrw:aJustify = { .f., .f., .f., .t., .t., .t., .f., .f. }
+
+   REDEFINE BUTTON ID 120 OF oDlg ;
+      ACTION ShowArray( oBrw,;
+             GetZipFiles( cGetFile( "*.zip",;
+                          "Select a ZIP file" ), oName, oNumber ) ),;
+             oMtr:cText := "", oMtr:Set( 0 ), oMtr:Refresh()
+
+   REDEFINE METER oMtr VAR nPercent ID 150 OF oDlg ;
+      TOTAL 100
+
+   REDEFINE BUTTON ID 130 OF oDlg ;
+      ACTION oMtr:cText := aFiles[ oBrw:nAt ][ 2 ],;
+             UnzipFile( cZipName, aFiles[ oBrw:nAt ][ 2 ],;
+                        aFiles[ oBrw:nAt ][ FILE_OFFSET ], oDlg:hWnd ),;
+             Tone( 500, 1 ), Tone( 600, 1 ), Tone( 700, 1 )
+
+   REDEFINE BUTTON ID 140 OF oDlg ;
+      ACTION AEval( aFiles, { | aFile | oMtr:cText := aFile[ 2 ],;
+                              UnZipFile( cZipName, aFile[ 2 ],;
+                              aFile[ FILE_OFFSET ], oDlg:hWnd ) } )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+Return nil
+
+//----------------------------------------------------------------------------//
+Function GetZipFiles( cZipFile, oName, oNumber )
+
+   local aFile
+
+   if ! IsZip( cZipFile )
+      MsgStop( "This seems not to be a ZIP file!" )
+      return nil
+   endif
+
+   oName:SetText( "Zip file: " + cZipFile )
+   cZipName = cZipFile
+
+   CursorWait()
+
+   aFile  = GetFirstInZip( cZipFile )
+   aFiles = {}
+
+   // Let Clipper stabilizes its arrays/string memory...
+   Memory( -1 )
+
+   while aFile[ 1 ] == 0
+      AAdd( aFiles, aFile )
+      aFile = GetNextInZip()
+   end
+   CloseZipFile()
+
+   CursorArrow()
+
+   oNumber:SetText( "Number of files: " + Str( Len( aFiles ) ) )
+
+Return aFiles
+
+//----------------------------------------------------------------------------//
+Function ShowArray( oBrw, aFiles )
+
+   oBrw:SetArray( aFiles )
+   oBrw:bLine = { || { aFiles[ oBrw:nAt ][ 2 ],;
+                       cValToChar( aFiles[ oBrw:nAt ][ 3 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 4 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 5 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 6 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 7 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 8 ] ),;
+                       cValToChar( aFiles[ oBrw:nAt ][ 9 ] ) } }
+   oBrw:SetFocus()
+   oBrw:Refresh()
+   oBrw:GoTop()
+
+Return nil
+//----------------------------------------------------------------------------//
+</code>
+
+====== Source Code ======
+SOURCE\\FUNCTION\\UnZip.c 
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_ZipFile|ZipFile()]]
+[[fivewin_function_ZipMsg|ZipMsg()]]
+[[fivewin_function_ZipName|ZipName()]]
+[[fivewin_function_ZipSize|ZipSize()]]
+[[fivewin_function_ZipType|ZipType()]]

@@ -1,0 +1,28 @@
+====== FWDispBegin() ======
+Técnica de pintura de búfer doble. Crea una memoria DC como un reemplazo temporal para el actual DC de la ventana.
+
+
+====== Syntaxis ====== 
+FWDispBegin( <hWnd>, <hDC> ) --> aInfo  
+ 
+
+
+
+====== Parametros ====== 
+| <hWnd>|El manejador del Pintado de la Ventana.  |
+| <hDC>|El actual DC de la Ventana.  |
+
+
+====== Devuelve ====== 
+| <aInfo>|   Un Array proporcionado por FWDispBegin ().  |
+
+====== Codigo fuente ====== 
+SOURCE\WINAPI\DC.C  
+
+
+
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_FWDispEndsp|FWDispEnd()]]
+ 

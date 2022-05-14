@@ -1,0 +1,16 @@
+====== DbSetFilte() ======
+To set a filter condition. This function is kept to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbSetFilte( <x>, <y> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>|Code block that expresses the filter condition.|
+|<y>| Filter condition in text form. |
+
+====== Returns ======
+DbSetFilter( x, y ) 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

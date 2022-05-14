@@ -1,0 +1,30 @@
+
+====== xPadC() ======
+
+Center fills a string up to a certain pixel, like Clipper's PadC() but based on pixels.
+
+====== Syntax: ======
+
+ xPadC( <cText>, <nPixels> [,<cChar>] ) --> cNewText    
+
+====== Parameters: ======
+
+| <cText> | The text whose character length is to be adjusted.|
+| <nPixels> | The total length in pixels.|
+| <cChar> | An optional character to use to fill by both sides the <cText> string.| 
+
+====== Returns: ====== 
+
+| <cNewText> | A new string whose extremes side has been added with extra <cChar> characters to reach the <nPixels> size.|
+
+====== Sample: ====== 
+
+ SOURCE\CLASSES\WBrowse.prg  
+
+====== Source code: ====== 
+
+ SOURCE\FUNCTION\xPad.prg  
+
+====== See also: ====== 
+
+ [[fivewin_function_xPadL()|xPadL()]], [[fivewin_function_xPadR()|xPadR()]]

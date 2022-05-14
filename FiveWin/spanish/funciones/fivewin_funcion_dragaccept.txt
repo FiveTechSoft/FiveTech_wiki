@@ -1,0 +1,19 @@
+====== DragAccept() ======
+En esta ventana se acepta archivos soltados durante una operación de arrastrar y soltar. Cuando una aplicación llama a DragAccepFiles con lOnOff ajustado a .T., el usuario recibirá una matriz "aFiles" con los nombres de los archivos cada vez que el usuario suelte un archivo en esa ventana.
+
+====== Sintaxis ======          
+DragAccept(<hWnd>,  <lOnOff> )
+
+====== Parámetros ======
+^Parámetro^Descripción^
+|<hWnd> | Manejador de la ventana que acepta archivos |
+|<lOnOff> | .T. o .F. ie Aceptar o no los archivos |
+
+====== Retorno ======       
+NIL
+
+====== Ejemmplo ======         
+CLASSES\WINDOW.PRG
+
+====== Códigi fuente ======    
+SOURCE\WINAPI\DROPFILE.C

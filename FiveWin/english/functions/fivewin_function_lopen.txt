@@ -1,0 +1,147 @@
+====== lOpen() ====== 
+
+
+
+lOpen()
+
+
+
+
+
+
+To open a file with long name
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lOpen( <cFileName>, <nMode> ) --> hFile 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cFileName> Name of the file to open 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMode> Way in which the file opens 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+Value      Dec   Access mode   
+READ      0   Opens the file for reading only   
+WRITE      1   Opens the file for writing only   
+READ_WRITE   2   Opens the file for reading and writing   
+
+
+
+
+
+
+
+ Value Share mode (optional): 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+OF_SHARE_COMPAT      0   Way compatibility. It allows to open the one
+file several times. If we open the file in another way and then we try to
+open it this way, the operation will fail.
+OF_SHARE_DENY_NONE   64   It allows to other programs that they read or
+write in the one. If the file was opened up by another program in way of
+compatibility, the operation fails.   
+OF_SHARE_DENY_READ   48   It doesn't allow that other programs read the
+file. If the file was opened in way compatibility or in way reading for
+other programs, the operation fails.   
+OF_SHARE_DENY_WRITE   32   It doesn't allow that other programs write in
+the one. If another program opened the file in way compatibility or in
+writing way, the operation fails.   
+OF_SHARE_EXCLUSIVE   10   It doesn't allow that the other programs read
+or write in the one. If another program has opened the file before in
+this way, the operation fails.   
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hFile> Handle of the opened file. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\LONGNAME.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

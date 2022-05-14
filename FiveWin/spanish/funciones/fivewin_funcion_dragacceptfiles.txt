@@ -1,0 +1,27 @@
+
+====== B2Bin() ======
+
+Acepta caer archivos en esta ventana.
+
+====== Sintaxis ======
+ 
+ DragAcceptFiles( <hWnd>, <lOnOff> ) --> nil 
+
+Cuando una aplicación llama DragAcceptFiles con lOnOff establecido. T., el usuario se recive una matriz "aFiles" con los nombres de los archivos cada vez que el usuario suelta un archivo en la ventana.
+
+====== Parámetros ======
+
+|<hWnd>| manipulador de la ventana que aceptar archivos |
+|<lOnOff>| aceptar o no aceptar archivos   |
+
+====== Retorno ======
+
+ nil
+
+====== Ejemplo ======
+
+ CLASSES\WINDOW.PRG 
+
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DROPFILE.C  

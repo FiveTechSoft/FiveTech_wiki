@@ -1,0 +1,31 @@
+====== cStrWord() ======
+To extract a word of a string of characters 
+
+====== Syntax: ======
+cStrWord( <cString>, <@nOffset>, <cSeparator> ) --> cWord  
+
+====== Parameters: ======
+^Parameter^Description^
+|<cString>| String of charaters | 
+|<@nOffset>| Displacement of the word gone by reference  |
+|<cSeparator>| Separador of words. For defect " "  |
+
+====== Returns: ======
+Extracted String Word
+====== Sample: ======
+<code clipper>
+#include "fivewin.ch" 
+
+//-----------------------------------//
+Function main() 
+
+ MsgInfo(cStrWord("Hello, how are you ?",0," ")) // Returns Hello,
+ MsgInfo(cStrWord("Hello, how are you ?",1," ")) // Returns ello,
+ MsgInfo(cStrWord("Hello, how are you ?",2," ")) // Returns llo,
+	
+ MsgInfo(cStrWord("Hello, how are you ?",7," ")) // Returns How
+Return nil 
+</code>
+
+====== Source Code: ======
+SOURCE\FUNCTION\FTEXT.C   

@@ -1,0 +1,114 @@
+====== lMkDir() ====== 
+
+
+
+lMkDir()
+
+
+
+
+
+Creates a new directory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lMkDir( <cNewDir> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cNewDir> The path of the new dir to create. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If the directory was created successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ lMkDir( "c:\\Customer" ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\MkDir.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ lChDir() lRmDir() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

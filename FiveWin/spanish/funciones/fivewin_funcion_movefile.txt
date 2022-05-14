@@ -1,0 +1,62 @@
+MoveFile()
+
+
+MoveFile()
+ Previous  Top  Next
+
+Move a file.
+
+====== Sintaxis ======
+
+
+ MoveFile( <cFileSource>, <cFileTarget> ) --> lSuccess 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cFileSource> The name of the source file name to move. 
+
+
+ 
+
+
+ <cFileTarget> Specifies the target file where to place the result. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lSuccess> If the operation was completed successfully. 
+
+
+ 
+
+Observations:
+
+
+
+====== Ejemplo ======
+
+
+ local lOk := MoveFile( "c:\test\source.txt", "c:\test2\dest.txt" ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\FILENAME.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

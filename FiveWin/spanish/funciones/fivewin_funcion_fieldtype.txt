@@ -1,0 +1,82 @@
+FieldType()
+
+
+
+
+FieldType()
+
+ Previous  Top  Next
+
+
+
+
+Type of a certain field
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FieldType( <n> ) --> cType 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <n> Position of the field of the file .DBF of which we want to know the
+data type. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cType> Data type of the field in uppercase " C " or " M " 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DB10.PRG 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

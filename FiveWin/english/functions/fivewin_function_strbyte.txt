@@ -1,0 +1,116 @@
+StrByte()
+
+
+
+StrByte()
+
+ Previous  Top  Next
+
+
+
+
+Assign/obtain the value of a byte
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StrByte( <cStr>, <nBytePos>, [ <nValue> ] ) --> nValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cStr> String of characters 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBytePos> Character to assign/obtain 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nValue> Value of the byte to assign 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nValue> Retrieved value 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

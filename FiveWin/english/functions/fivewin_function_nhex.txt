@@ -1,0 +1,99 @@
+nHex()
+
+
+
+nHex()
+
+ Previous  Top  Next
+
+
+
+
+To convert a hexadecimal to decimal
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nHex( <cHex> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cHex> String that represents a number in code hexadecimal 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nResult> Decimal number. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TWEBSERV.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\RANDOM.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

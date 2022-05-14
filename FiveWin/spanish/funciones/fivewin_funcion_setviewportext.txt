@@ -1,0 +1,224 @@
+SetViewPortExt()
+
+
+
+SetViewPortExt()
+
+ Previous  Top  Next
+
+
+
+
+Selects the viewport of a given device context
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetViewPortExt( <hDC>, <nWidth>, <nHeight> ) --> aPrevDimensions 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Identifies the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nWidth>, <nHeight> Specifies the y-extent and x-extent, in device units
+of the viewport. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <aPrevDimensions> An array that holds the previous dimensions: { nWidth,
+nHeight } 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ When the following mapping modes are set, calls to the SetWindowExt and
+SetViewportExt functions are ignored: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ MM_HIENGLISH 
+
+
+ 
+
+
+ MM_HIMETRIC 
+
+
+ 
+
+
+ MM_LOENGLISH 
+
+
+ 
+
+
+ MM_LOMETRIC 
+
+
+ 
+
+
+ MM_TEXT 
+
+
+ 
+
+
+ MM_TWIPS 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ When the mapping mode is MM_ISOTROPIC, an application must call the
+SetWindowExt function before calling SetViewportExt. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The x- and y-extents of the viewport define how much the graphics device
+interface (GDI) must stretch or compress units in the logical coordinate
+system to fit units in the device coordinate system. For example, if the
+x-extent of the window is 2 and the x-extent of the viewport is 4, GDI
+converts two logical units (measured from the x-axis) into four device
+units. Similarly, if the y-extent of the window is 2 and the y-extent of
+the viewport is -1, GDI converts two logical units (measured from the
+y-axis) into one device unit. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The extents also define the relative orientation of the x- and y-axes in
+both coordinate systems. If the signs of matching window and viewport
+extents are the same, the axes have the same orientation. If the signs
+are different, the orientation is reversed. For example, if the y-extent
+of the window is 2 and the y-extent of the viewport is -1, GDI converts
+the positive y-axis in the logical coordinate system to the negative
+y-axis in the device coordinate system. If the x-extents are 2 and 4, GDI
+converts the positive x-axis in the logical coordinate system to the
+positive x-axis in the device coordinate system. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Dc.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetMapMode() SetWindowExt() 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

@@ -1,0 +1,21 @@
+Changes an icon of the taskbar. 
+
+====== Syntax ====== 
+
+ TaskChangeIcon( <oNotifyIconData>, <oIcon> ) --> oNotifyIconData  
+ 
+====== Parameters ====== 
+
+|<oNotifyIconData>| The handle of the taskbar icon to delete.|  
+|<oIcon>| The new icon.|  
+ 
+====== Returns ====== 
+
+|<oNotifyIconData>| The handle of the new taskbar icon.|  
+ 
+
+====== Sample ====== 
+
+====== Source code ======  
+ 
+ SOURCE\WINAPI\SHELLAPI.PRG 

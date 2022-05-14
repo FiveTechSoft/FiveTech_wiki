@@ -1,0 +1,112 @@
+====== WndBoxIn() ====== 
+
+WndBoxIn()
+
+Draws a inset 3D box
+
+
+====== Syntax ======
+
+ WndBoxIn( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop>, <nLeft>, <nBottom>, <nRight> The coordinates of the box to draw. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\ToolTip.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\WndBoxes.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WndBoxIn() WndBoxRaised() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

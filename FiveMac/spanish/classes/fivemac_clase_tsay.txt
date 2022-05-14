@@ -1,0 +1,22 @@
+Objecto Say
+
+Hereda de TControl
+
+====== DATA ======
+
+
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New         |Constructor de código fuente|
+|SetText     |Cambia el título del Say|
+|GetText     |Nos devuelve el texto del título|
+|SetColor    |Asigna el color del texto y el color del fondo con números de color compatibles con FWH|
+
+
+
+====== EJEMPLOS ======
+
+
+====== CODIGO FUENTE ======
+FMC\SOURCE\CLASSES\SAY.PRG

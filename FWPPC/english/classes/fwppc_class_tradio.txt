@@ -1,0 +1,31 @@
+====== Class TRadio ======
+
+Inherits from TControl                                                         
+====== DATA ======
+|lChecked|If the radio control is currently selected|
+|oRadMenu|Its related container TRadMenu Object|
+|nPos|Relative position within respect to the other Menu|
+|Radios|buttons|
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|Click|Mouse left button event handler.|
+|cToChar|Generates a data template to build a Dialog|
+|EraseBkGnd|Erases the control background|
+|LostFocus|Lostfocus event handler|
+|Default|Default control initialization.|
+|Initiate|Generic control initialization.|
+|KeyDown|Action to be performed when pressing a key.|
+|lIsChecked|Retrieves its current logical value|
+|MouseMove|Behavior when moving the mouse over it.|
+|Refresh|Repaints the control|
+|SetCheck|Changes its select/deselected state.|
+|Check|Selects the radio control|
+|UnCheck|Deselects the radio control|
+|SetText|Changes the caption of the radio control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRADIO.PRG

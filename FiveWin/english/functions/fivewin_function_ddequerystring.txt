@@ -1,0 +1,25 @@
+====== DDEQueryString() ======
+Copies text associated with a string handle into a buffer
+
+====== Syntax ======
+DDEQueryString( <hInst>, <hSZ> ) --> cString 
+
+====== Parameters ======
+^Parameter^Description^
+| <hInst> | Instance identifier |
+| <hSZ> | Handle of string |
+
+====== Returns ======
+^Returns^Description^
+| <cString> | String required. |
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

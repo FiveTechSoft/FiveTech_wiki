@@ -1,0 +1,32 @@
+
+**MsgList() ** 
+
+Shows an array on a modal dialog box.
+  
+**Syntax:** 
+
+  MsgList( <aData>, [<cTitle>], [<nTop>], [<nLeft>], [<nBottom>], [<nRight>], [<cBtnText>]) --> nil      
+  
+**Parameters:** 
+
+| <aData> | Array to show|
+| <cTitle> | Title of the container dialog box|
+| <nTop> | Superior coordinate of the dialogue box in characters|
+| <nLeft> | Left coordinate of the dialogue box in characters|
+| <nBottom> | Inferior coordinate of the dialogue box in characters|
+| <nRight> | Right coordinate of the dialogue box in characters|
+| <cBntText> | Text for the close button|
+
+  
+**Returns:** 
+
+ nil
+  
+  
+**Source code:** 
+
+ SOURCE\FUNCTION\MSGLIST.PRG 
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

@@ -1,0 +1,90 @@
+====== Creating a bitmap from source code ======
+
+<code clipper>
+ @ <nRow>, <nCol> BITMAP [ <oBmp> ] ;
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;
+ [ FILE | FILENAME | DISK <cBmpFile> ] ; 
+ [ NOBORDER | NO BORDER ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ ON CLICK | ON LEFT CLICK <uLClick> ] ;  
+ [ ON RIGHT CLICK <uRClick> ] ;  
+ [ SCROLL ] ;  
+ [ ADJUST ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ] ;  
+ [ VALID <uValid> ] ;  
+ [ DESIGN ]  
+</code> 
+
+====== Creating a bitmap from resources ======
+
+<code clipper>
+ DEFINE BITMAP [ <oBmp> ] ; 
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;  
+ [ FILE | FILENAME | DISK <cBmpFile> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ]    
+</code>
+
+<code clipper>
+ REDEFINE BITMAP [ <oBmp> ] ; 
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;  
+ [ FILE | FILENAME | DISK <cBmpFile> ] ;  
+ [ ON ClICK | ON LEFT CLICK <uLClick> ] ;  
+ [ ON RIGHT CLICK <uRClick> ] ;  
+ [ SCROLL ] ;  
+ [ ADJUST ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ] ;  
+ [ VALID <uValid> ] ;  
+ [ TRANSPAREN ]  
+</code> 
+
+^Parameters      ^ Description                                              ^
+| <nRow>, <nCol> | The coordinates on screen. We simulate Text coordinates. |
+| <oBmp> | A reference to the Bitmap Object. |
+| <cResName> | The name of the bitmap resource bitmap when loading a bitmap from a .RC, .RES or a .DLL file. |
+| <cBmpFile> | The name of the BMP file when loading a bitmap directly from a BMP file. |
+| <nWidth> | The desired width of the bitmap. |
+| <nHeight> | The desired height of the bitmap. |
+| <oWnd> | The container window of the Bitmap control. |
+| <uLClick> | The action(s) to be performed when left clicking over the Bitmap. |
+| <uRClick> | The action(s) to be performed when right clicking over the Bitmap. |
+| <oCursor> | A reference to the Cursor Object to display over this control. |
+| <cMsg> | The associated message of this control. |
+| <nId> | The numeric resource identifier of the Control. |
+| <WhenFunc> | An expression indicating when this control will be active or not. |
+| <uValid> | An expression to evaluate when this control looses its focus. |
+
+
+====== CLAUSES ======
+^Clause                ^ Description                                   ^
+| NO BORDER ; NOBORDER | It does not place a border around the control |
+| UPDATE | This control may be updated from TDialog:Update() method |
+| PIXEL | To use pixel coordinates instead of Text coordinates |
+| SCROLL | Enable the use of scrollbars to scroll the bitmap into its visible area. This let the user review bitmaps larger than the control. |
+| ADJUST | Automatically adjusts the bitmap(s) to the size of the control. |
+| TRANSPAREN | The bitmap pixel located at 0, 0 is used as the color for a mask to turn its background transparent. |
+| DESIGN | Allows the user to move and resize with the mouse. |
+
+====== See Sample ======
+\Fwh\Samples\BmpAlpha.Prg
+
+====== Usage ======
+<code clipper>
+@ 2.3, 96 BITMAP oBmp RESOURCE "Logo" NOBORDER of oWnd
+</code>  
+
+====== Screen Snapshot ======
+{{:bitmap.jpg|:bitmap.jpg}}
+
+
+====== See also ======
+ [[fivewin_commands_Image | Timage ]], [[fivewin_class_Tbitmap| Class TBitmap]]

@@ -1,0 +1,93 @@
+
+====== CallDll() ======
+
+Llama una funcion ubicada en una DLL
+
+====== Sintaxis: ======
+ 
+ CallDll( <cFuntionDef>, <uParam1>, ..., <uParamN> ) --> uResult 
+
+
+====== Parámetros: ======
+^Parameter^Description^
+| <cFunctionDef> | Es una cadena especial que contiene toda la informacion necesaria para ejecutar cierta accion. Esta cadena es automaticamente producida por la funcion GetProcAddress().|
+| <uParam1> | Son los parametros suministrados a la funcion. Estos dependen de la funcion contenida en la dll que haya que llamar.  |
+| <uParamN |  |
+
+====== Retorno: ======
+
+ Es el valor de retorno de la funcion contenida en la DLL
+
+
+====== Observaciones: ====== 
+ 
+ Ver INCLUDE\DLL.CH para la forma en que el xBase llama las funciones contenidas en DLL
+
+
+
+====== Ejemplo ======
+Ver SAMPLES\DllCall.prg
+\Fwh\Samples\Dlls\FiveDll\ExeCode.Prg
+<code clipper>
+// Building and using DLLs with Clipper code
+
+#include "FiveWin.ch"
+
+static oWnd
+static hDLL
+
+//-------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "Using DLLs with FiveDLL and FiveWin" ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+   FreeLibrary( hDLL )
+
+return nil
+
+//-------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Call DLL" ACTION UseDLL( "Func1", "DllCode.dll" )
+      MENUITEM "&Exit" ACTION oWnd:End()
+   ENDMENU
+
+return oMenu
+
+//-------------------------------------------------------------------------//
+
+function UseDLL( cFuncName, cDllName )
+
+   local cFarProc
+
+   if hDLL == nil
+      hDLL = LoadLibrary( cDllName )
+   endif
+
+   if hDll > 32
+      cFarProc := GetProcAddress( hDLL, "DLLSYMINIT", .T., _INT )
+      CallDLL( cFarProc )
+
+      Eval( &( "{||" + cFuncName + "() }" ) )
+   endif
+
+return nil
+
+//-------------------------------------------------------------------------//
+</code>
+
+====== Codigo Fuente: ======
+ 
+ SOURCE\WINAPI\CallDll.c
+
+====== Vea también ======
+
+[[fivewin_function_loadlibrary|LoadLibrary()]], [[fivewin_function_freelibrary|FreeLibrary()]], [[fivewin_function_getProcAddress|GetProcAddress()]]

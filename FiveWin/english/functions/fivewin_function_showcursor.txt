@@ -1,0 +1,84 @@
+====== ShowCursor() ======
+
+
+
+Shows or hides the cursor
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ShowCursor( <lOn/lOff> ) --> lNewState 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <lOn/lOff> Logic variable to show or to hide the cursor 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <lNewState> New state of the cursor 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CURSORS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,66 @@
+TvGetParent()
+
+
+TvGetParent()
+ Previous  Top  Next
+
+Retrieves the parent item of the specified tree-view item.
+
+====== Sintaxis ======
+
+
+ TvGetParent( <hWnd>, <hItem> ) --> hParentItem 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <hItem>   The handle to the item. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hParentItem>   The handle to the parent item. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

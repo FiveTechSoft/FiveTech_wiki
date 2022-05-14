@@ -1,0 +1,34 @@
+====== CallWindowProc()======  
+
+The CallWindowProc function Passes messages information to the specified window procedure. 
+
+====== Syntax ======  
+
+CallWindowProc( <nWndProc>, <hWnd>, <nMsg>, <nWParam>, <nLParam> ) --> uReturn  
+ 
+====== Parameters ======  
+^Parameter^Description^
+| <nWndProc> | Specifies the procedure-instance address of the previous window procedure.|  
+| <hWnd> | Identifies the window that will receive the message.|  
+| <nMsg> | Specifies the message.|  
+| <nWParam> | Specifies 16 bits of additional message-dependent information.|  
+| <nLParam> | Specifies 32 bits of additional message-dependent information.|  
+ 
+====== Returns ======  
+
+The return value specifies the result of the message processing and depends on the message sent.  
+ 
+====== Observations ======  
+
+The CallWindowProc function is used for window sub classing. Normally, all windows with the same class share the same window procedure. A subclass is a window or set of windows belonging to the same window class whose messages are intercepted and processed by another window procedure (or procedures) before being passed to the window procedure of that class.  
+
+ 
+The SetWindowLong function creates the subclass by changing the window procedure associated with a particular window, causing Windows to call the new window procedure instead of the previous one. Any messages not processed by the new window procedure must be passed to the previous window procedure by calling CallWindowProc. This allows you to create a chain of window procedures.  
+
+====== Source Code ======  
+
+SOURCE\\WINAPI\\CallWnd.c  
+
+====== See also======  
+
+[[fivewin_function_SetWindowLong|SetWindowLong()]]  

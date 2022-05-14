@@ -1,0 +1,44 @@
+RLQuery()
+
+
+RLQuery()
+ Previous  Top  Next
+
+FiveWin Clipmore equivalent functions.
+
+====== Sintaxis ======
+
+
+ RLQuery( <cQuery> ) --> hGlobalMem 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cQuery> The query to set. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <hGlobalMem> Pointer to global memory. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\CLIPMORE.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

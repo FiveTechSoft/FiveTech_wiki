@@ -1,0 +1,21 @@
+====== Creates a GET from source code ======
+<code clipper>
+@ <nRow>, <nCol> GET [ <oGet> VAR ] <uVar> ;
+   [ OF <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ VALID <uValid> ]
+</code>
+====== Creates a GET multiline from source code ======
+<code clipper>
+@ <nRow>, <nCol> GET [ <oGet> VAR ] <uVar> ;
+   [ OF <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ MULTILINE | MEMO | TEXT ] ;
+   [ UPDATE ]
+</code>
+
+====== Source code ======
+FMC\include\FiveMac.ch
+
+====== See Also ======
+[[fivemac_class_tget|Class TGet]], [[fivemac_class_tmget|Class TMultiGet]]

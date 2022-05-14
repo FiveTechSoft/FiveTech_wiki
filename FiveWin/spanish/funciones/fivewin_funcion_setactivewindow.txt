@@ -1,0 +1,24 @@
+====== SetActiveWindow() ======
+
+La función SetActiveWindow() cambia la ventana activa actual 
+
+====== Sintaxis ======
+
+SetActiveWindow( <hWnd> ) --> hPrevWnd 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hWnd>| Identificador de la ventana de nivel superior a ser activada. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<hPrevWnd>| El identificador de la ventana anterior. |
+
+====== Código fuente ======
+
+SOURCE\WINAPI\WndCente.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_GetActiveWindow|GetActiveWindow()]]
+

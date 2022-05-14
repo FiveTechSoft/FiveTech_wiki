@@ -1,0 +1,25 @@
+====== lXor() ====== 
+
+Or excluyente a partir de una serie de valores numéricos
+
+====== Sintaxis ======
+ lXor( <nOp1>, <nOp2> ) --> lResult 
+
+====== Parámetros ======
+|nOp1|Primer operador de la operación lógica| 
+|nOp2|Segundo operador de la operación lógica|
+
+====== Devuelve ======
+|lResult|valor verdadero ó falso resolviendo la operación Xor de acuerdo a la siguiente tabla|
+ 
+^Bit value in Op1^Bit value in Op2^lXOr( Op1,Op2 )^   
+|.F.|.F.|.F.|   
+|.T.|.F.|.T.|   
+|.F.|.T.|.T.|   
+|.T.|.T.|.F.|   
+
+====== Código fuente ======
+ SOURCE\FUNCTION\OR.C 
+
+====== Ver también ======
+[[fivewin_funcion_nxor|nXor()]] [[fivewin_funcion_land|lAnd()]] [[fivewin_funcion_nor|nOr()]] [[fivewin_funcion_nand|nAnd()]]

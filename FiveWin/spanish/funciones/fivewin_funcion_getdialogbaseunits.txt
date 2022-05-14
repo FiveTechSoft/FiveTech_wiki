@@ -1,0 +1,28 @@
+
+====== GetDialogBaseUnits() ======
+GetDialogBaseUnits()
+
+Returns the DialogBox base units used to create it.
+====== Sintaxis ======
+ GetDialogBaseUnits() --> aBaseUnits 
+
+ This function returns the DialogBox base units used by Windows when
+creating DialogBoxes. An application should use these values to calculate
+the average width of characters in the system font. 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+  <aBaseUnits> An array containing the width and the height in pixels used
+       by Windows in the conversion of units for the DialogBoxes coordinates: (
+       in Windows, DialogBoxes use logical units ) 
+  nWidth = ( x * GetDialogBaseUnits()[ 1 ] ) / 4 
+  nHeight = ( y * GetDialogBaseUnits()[ 2 ] ) / 8 
+
+ x and y are the width and height in units of the DialogBox. 
+
+ FiveWin controls all these processes automatically through the TDialog
+Class and DialogBoxes xBase commands. 
+
+====== Código fuente ======
+ SOURCE\WINAPI\Dlg2Chr.c 
+====== Ver también ======

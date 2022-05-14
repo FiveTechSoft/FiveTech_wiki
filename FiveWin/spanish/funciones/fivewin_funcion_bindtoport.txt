@@ -1,0 +1,26 @@
+
+====== BindToPort() ======
+
+Asocia un socket con un determinado puerto
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BindToPort( <nSocket>, <nPort> ) --> lSucess 
+
+====== Parametros: ( Parameters: ) ======
+
+ <nSocket> Numero del Socket.
+
+ <nPort> Numero del puerto.
+
+====== Retorno: ( Returns: ) ======
+
+ <lSuccess> Retorna .t. ( verdadero ) si se consiguio la asociacion
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ SOURCE\CLASSES\TSOCKET.PRG  
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\WINAPI\WINSOCK.C 

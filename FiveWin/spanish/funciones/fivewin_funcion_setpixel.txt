@@ -1,0 +1,124 @@
+SetPixel()
+
+
+
+SetPixel()
+
+ Previous  Top  Next
+
+
+
+
+Draws a pixel
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetPixel( <hDC>, <nCol>, <nRow>, <nRGBColor> ) --> nRGBColor 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> The handle of the device context where to paint. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nCol>, <nRow> The coordinates of the point where to set the pixel. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRGBColor> The color to use for that pixel. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nRGBColor> The color used if the operation was successful. This color
+may vary from the original supplied color. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\SetPixel.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetPixel() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,31 @@
+====== cTempFile() ======
+Retrieves a temporary new filename 
+
+====== Syntax: ======
+cTempFile( [<cPath>], [<cExtension>] ) --> cNewFileName  
+
+====== Parameters: ======
+^Parameter^Description^
+|<cPath>| The path where to check if the new filename already exists. | 
+|<cExtension>| The extension that is appended to the new filename. | 
+
+====== Returns: ======
+^Returns^Description^
+|<cNewFileName>| A non-existing filename.  |
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   ? cTempFile()  // Returns 28904687.
+   ? cTempFile()  // Returns 28934203.
+   ? cTempFile(,"Txt") // Returns 28954359.Txt
+
+return nil
+</code>
+
+====== Source Code: ======
+SOURCE\FUNCTION\FileName.prg 

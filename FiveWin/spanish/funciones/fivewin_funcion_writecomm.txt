@@ -1,0 +1,129 @@
+WriteComm()
+
+
+
+WriteComm()
+
+ Previous  Top  Next
+
+
+
+
+Writes to the communication port
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WriteComm( <nIdCommDev>, <cData> ) --> nBytes 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nIdComDev> Identifies the communication device to be flushed. The
+OpenComm function returns this value. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cData> The data to send to the comm port. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nBytes> The number of bytes written to the port. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestComm.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Comm.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ OpenComm() WriteComm() ReadComm() BuildCommDcb() SetCommStat()
+FlushComm() GetCommError() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

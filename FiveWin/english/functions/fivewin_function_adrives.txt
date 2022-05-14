@@ -1,0 +1,54 @@
+
+====== aDrives() ====== 
+It returns an array with all the valid drives ids. 
+
+======Syntax:====== 
+
+ aDrives( [<nType>] ) -->aDrives  
+
+======Parameters:====== 
+^ Parameter ^ Description                                                          ^
+| <nType> | **0** = All drives (default)\\ **1** = Floppy drives only\\ **2** = Hard drives only | 
+
+======Returns:====== 
+^ Return ^ Description                      ^
+| <aDrives> | The array with the drives letters | 
+
+======Sample:====== 
+ SAMPLES\TESTDRVS.PRG  
+
+**Checking all the system valid drives** 
+<code clipper>
+#include "FiveWin.ch" 
+//-----------------------------------------//
+Function Main() 
+
+Local oDlg, cDrive 
+
+DEFINE DIALOG oDlg FROM 5, 5 TO 20, 60 ; 
+   TITLE "Select a drive" 
+
+@ 1, 1 LISTBOX cDrive ITEMS aDrives() ; 
+SIZE 100, 100 ; 
+OF oDlg ; 
+ON DBLCLICK oDlg:End() 
+
+@ 1, 20 BUTTON "&Ok" OF oDlg ; 
+ACTION oDlg:End() 
+
+ACTIVATE DIALOG oDlg CENTERED 
+
+MsgInfo( IsCdRom( "C:" ) )  // Returns .F.
+
+MsgInfo( IsDiskette( "A:" ) ) 
+
+Return nil 
+</code>
+
+** Screen Snapshot **
+
+{{:adrives.jpg|:adrives.jpg}}
+
+======Source Code:======
+
+ SOURCE\FUNCTION\FILENAME.PRG

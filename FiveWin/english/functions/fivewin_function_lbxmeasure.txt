@@ -1,0 +1,147 @@
+====== LbxMeasure() ====== 
+
+
+
+LbxMeasure()
+
+
+
+
+
+
+To establish the high of the item to draw
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LbxMeasure( <nPInfo>, <nBmpHeight> ) --> .t. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nPInfo> Pointer to a structure of the MEASUREITEMSTRUCT type 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ typedef struct tagMEASUREITEMSTRUCT { UINT CtlType; UINT CtlID; UINT
+itemID; UINT itemWidth; UINT itemHeight; DWORD itemData; }
+MEASUREITEMSTRUCT; 
+
+
+ 
+
+
+ 
+
+
+
+CtlType      Type of control/men� whose elements leave to draw
+
+ODT_MENU      1   Owner drawn menu   
+ODT_LISTBOX      2   Owner drawn list box   
+ODT_COMBOBOX   3   Owner drawn combo box   
+ODT_BUTTON      4   Owner drawn button
+
+CtlID      Identifier for a combobox, listbox or button that it will
+draw. It is not used for the menus.   
+itemID      Specifies the menu-item identifier for a menur the list-box
+item identifier for a variable-height combo box or list box. This member
+is not used for a fixed-height combo box or list box or for a button.
+itemWidth   Width of the Item to draw.
+itemHeight   Height of the Item to draw
+itemData   String of characters to draw.
+
+
+
+
+
+
+
+ <nBmpHeight> Height of the item that will be drawn. The function set the
+member of the structure itemHeight to this value. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ .t. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\LISTBOX.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CTRLDRAW.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

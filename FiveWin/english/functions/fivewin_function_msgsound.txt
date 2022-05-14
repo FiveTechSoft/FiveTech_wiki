@@ -1,0 +1,40 @@
+
+**MsgSound()** 
+
+Play a Wav sound file.
+  
+**Syntax:** 
+
+ MsgSound( <cSndName>, <nMode> ) --> lSuccess        
+  
+**Parameters:** 
+
+| <cSndName> | Name of the wav file that we will reproduce. If this parameter is given as NIL, the possible sound that be sounding it will stop to sound.|
+| <cSndName> | It specifies like we want that this sound sounds.| 
+
+Values for nMode:
+
+| SND_SYNC | 0 | The function doesn't finish until the sound end up.|
+| SND_ASYNC | 1 | The function returns immediately later that the sound begins to sound. For to stop the sound will call you another time to this function without parameters.|
+| SND_NODEFAULT | 2 | If we don't find the sound, the function It doesn't execute the sound for defect.|
+| SND_MEMORY | 4 | The parameter cSndName is a points to an in-memory image of a waveform sound.|
+| SND_LOOP | 8 | The sound will continue sounding until let us call another time to the function without parameters. We will specify as nMode also the flag SND_ASYNC to be able to make loops sounds: nOr( SND_ASYNC, SND_LOOP ).|
+| SND_NOSTOP | 16 | It prevents that there is another sound being executed in that moment. If it is this way the function it returns false without playing the sound suitable.|
+ 
+    
+**Returns:** 
+
+ <lSuccess> If the sound is played, the return value is .T.; otherwise it is .F. 
+  
+**Observations:** 
+
+ If the sound can not be found, the function plays the default sound specified by the SystemDefault entry in the [sounds] section of the registry. If there is no SystemDefault entry or if the default sound can't be found, the function makes no sound and returns FALSE. 
+
+  
+**Source code:** 
+
+ SOURCE\WINAPI\SOUND.C   
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

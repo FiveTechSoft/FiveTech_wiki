@@ -1,0 +1,17 @@
+
+====== LoadAccelerators() ====== 
+LoadAccelerators()
+
+Loads the specified accelerator table.
+====== Sintaxis ======
+ Loadaccelerators( <hInst>, <cAccName> ) --> hAccelerators 
+====== Parámetros ======
+  <hInst>     Indetifica an instance of the program that you this executing that it contains the
+                accelerators table to to load 
+  <cAccName>  Name from the table of accelerators to load. 
+====== Devuelve ======
+ <hAccelerators> Handle of the loaded accelerator table 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\ACCELERA.C 
+====== Ver también ======

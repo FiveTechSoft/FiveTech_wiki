@@ -1,0 +1,26 @@
+====== IsWin7() ======
+Verifica si la versión de Windows es Windows 7 o no. En sistemas de 32 bits el valor devuelto es más exacto.
+
+====== Sintaxis ======
+IsWin7() --> lWin7
+
+====== Parámetros ======
+None 
+
+====== Devuelve ======
+^Returns^Description^
+|<lWin7>| Esta función devuleve .T. si el sistema operativo en ejecución es Windows 7, de otra forma .F.|
+
+====== Ejemplo ======
+<code clipper>
+? IsWin7()  --> Returns .T., if the OS is Windows 7, else .F.
+</code>
+
+====== Código fuente ======
+SOURCE\WINAPI\GetSysIn.prg 
+
+====== Ver también ======
+[[fivewin_funcion_IsWinVista|IsWinVista()]], 
+[[fivewin_funcion_IsWinXP|IsWinXP()]], 
+[[fivewin_funcion_IsWin2000|IsWin2000()]], 
+[[fivewin_funcion_cWinVersion|cWinVersion()]]

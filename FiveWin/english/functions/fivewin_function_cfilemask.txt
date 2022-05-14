@@ -1,0 +1,38 @@
+
+====== cFileMask() ====== 
+
+Retrieves the mask from a filename, if specified 
+
+====== Syntax ====== 
+
+cFileMask( <cFileName> ) --> cMask  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cFileName> | The filename whose mask to retrieve, if a mask has been specified inside its filename. A mask is a group of wildcards ( "*.*", "?...", etc...).|  
+
+====== Returns ====== 
+^Returns^Description^
+|<cMask>| The mask if specified.  |
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+
+MsgInfo(cFileMask( "*.Exe" ) )  // Result "*.EXE"
+
+MsgInfo(cFileMask( "??new.Txt" ) ) // Result "??NEW.TXT"
+
+MsgInfo(cFileMask( "*.*" ) )    // Result "*.*"
+
+MsgInfo(cFileMask( "Test.Bat" ) )  // Result Nothing
+
+MsgInfo(cFileMask( "Test.Ba?" ) ) // Result "TEST.BA?"
+
+Return nil  
+</code>
+
+====== Source Code ====== 
+SOURCE\FUNCTION\FileName.prg  

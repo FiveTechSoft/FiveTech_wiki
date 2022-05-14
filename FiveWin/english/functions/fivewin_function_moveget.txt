@@ -1,0 +1,99 @@
+====== MoveGet() ======
+
+
+
+Set the formatting rectangle of a multiline edit control
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MoveGet( <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the control 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+Observations:
+
+
+
+
+
+ It happens in occasions that when editing in a Get we write and it seems
+as that there were two different areas in a same Get. We type and the
+text gets lost beyond the limits of the edition box. This function is
+capable of adjusting the edition area and the edition box corresponding. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MOVETO.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

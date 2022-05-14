@@ -1,0 +1,103 @@
+====== CreateFont() ====== 
+Creates a logical font with specific characteristics.  This function creates a logical font that has the specified characteristics in the array aFontDescription. This function is used from the TFont Class. Use Classes as they are much easier to use and are more powerful. 
+
+====== Syntax ======
+CreateFont( <aFontDescription> ) --> hFont 
+
+====== Parameters ======
+^Parameter^Description^
+|<aFontDescription>| An array containing all the necessary information to create the font.\\ \\ #define LF_HEIGHT      1  \\ #define LF_WIDTH      2   \\ #define LF_ESCAPEMENT   3  \\ #define LF_ORIENTATION   4  \\ #define LF_WEIGHT      5   \\ #define LF_ITALIC      6   \\ #define LF_UNDERLINE      7  \\ #define LF_STRIKEOUT      8 \\ #define LF_CHARSET      9   \\ #define LF_OUTPRECISION   10\\ #define LF_CLIPPRECISION   11\\ #define LF_QUALITY      12\\ #define LF_PITCHANDFAMILY   13\\ #define LF_FACENAME      14 |
+
+====== Returns ======
+^Returns^Description^
+|<hFont>| If the operation was successful then the handle of the newly created font is returned else 0.| 
+
+====== Sample Code ======
+<code clipper>
+// More fonts samples
+
+#include "FiveWin.ch"
+
+static oWnd, aFonts
+*----------------------*
+Function Main()
+
+    local oBtn, oFont, oTxtFile, nLines, cLines, n, cFont, nSize
+
+    cFont := 'Courier'
+    nSize := -10
+    aFonts := {}
+
+    if file('FONT.INI')
+       oTxtFile := TTxtFile():New('FONT.INI')
+       nLines   := oTxtFile:RecCount()
+
+       for n := 1 to nlines
+        cLines := oTxtFile:ReadLine()
+        if n = 6 .or. n = 7 .or. n = 8
+           aadd( aFonts , if(cLines='.T.',.T.,.F.) )
+        elseif n = 14
+           aadd( aFonts , cLines )
+        else
+           aadd( aFonts , val(cLines) )
+        end
+           oTxtFile:Skip()
+       next
+       oTxtFile:Close()
+
+    end
+
+    // This is default for no Font.ini file
+    DEFINE FONT oFont NAME cFont SIZE 0,nSize
+
+    if !empty( aFonts )
+      oFont:hFont := CreateFont( aFonts )
+    end
+
+    DEFINE WINDOW oWnd TITLE "Testing ChooseFont"
+
+    oWnd:SetFont( oFont )
+
+    @ 2, 2 BUTTON oBtn PROMPT "&Choose" OF oWnd ;
+             ACTION (ChooseSysFont(@aFonts)) ;
+             SIZE 80, 25
+
+    ACTIVATE WINDOW oWnd
+
+Return nil
+
+*--------------------*
+Function uTrim( uVar )
+    local cVar
+    if valtype( uVar ) = 'N'
+       cVar := ltrim(str(uVar))
+    elseif valtype( uVar ) = 'L'
+       cVar := if(uVar,'.T.','.F.')
+    else
+       cVar := alltrim(uVar)
+    Endif
+Return cVar
+
+*-------------------------------*
+Function ChooseSysFont( aFonts )
+    local hText, n
+    aFonts := ChooseFont()
+    if !empty(aFonts[14])
+          hText := Fcreate('FONT.INI')
+          for n := 1 to len(aFonts)
+        Fwrite(hText,utrim(aFonts[n])+CRLF)
+          next
+          Fclose(hText)
+    Endif
+Return nil
+</code>
+
+
+
+====== Source Code ======
+SOURCE\WINAPI\Fonts.c 
+
+====== See also ======
+[[fivewin_function_chooosefont|ChooseFont()]]
+
+[[http://msdn.microsoft.com/en-us/library/dd183499(v=vs.85).aspx|MSDN]]

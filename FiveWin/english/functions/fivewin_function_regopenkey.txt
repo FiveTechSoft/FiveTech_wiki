@@ -1,0 +1,316 @@
+RegOpenKey()
+
+
+
+RegOpenKey()
+
+ Previous  Top  Next
+
+
+
+
+Open a specific key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RegOpenKey( <nkey>, <cSubKey>, <@nHandle> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nkey> Handle of an open key. Can be 2147483648 that is the
+HKEY_CLASSES_ROOT. Can not be a nil parameter. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cSubKey> String of a subkey to open 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@nHandle> Handle of open key. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nReturn> If the function is success a zero is returned. In other case a
+numeric error code. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTREG.PRG 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ // Managing Register services from FiveWin 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ #define HKEY_CLASSES_ROOT   2147483648 
+
+
+ 
+
+
+ #define HKEY_CURRENT_USER   2147483649 
+
+
+ 
+
+
+ #define HKEY_LOCAL_MACHINE   2147483650 
+
+
+ 
+
+
+ #define HKEY_USERS         2147483651 
+
+
+ 
+
+
+ #define HKEY_PERFORMANCE_DATA   2147483652 
+
+
+ 
+
+
+ #define HKEY_CURRENT_CONFIG   2147483653 
+
+
+ 
+
+
+ #define HKEY_DYN_DATA      2147483654 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ //-------------------------------------------------------------// 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ function Main() 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ local nHandle, cValue 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ if RegOpenKey( HKEY_LOCAL_MACHINE,; 
+
+
+ 
+
+
+ "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths",; 
+
+
+ 
+
+
+ @nHandle ) == 0 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ RegQueryValue( nHandle, "IEXPLORE.EXE", @cValue ) 
+
+
+ 
+
+
+ MsgInfo( cValue ) 
+
+
+ 
+
+
+ RegCloseKey( nHandle ) 
+
+
+ 
+
+
+ endif 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ return nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ //-------------------------------------------------------------// 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\REGEDIT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+====== See also ======
+

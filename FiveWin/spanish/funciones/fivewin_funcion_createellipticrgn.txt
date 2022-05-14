@@ -1,0 +1,25 @@
+====== CreateEllipticRgn() ======
+Crea una región elíptica.
+
+====== Sintaxis ======
+CreateEllipticRgn( nLeftRect, nTopRect, nRightRect, nBottomRect ) --> hRgn
+
+====== Parámetros ======
+^Parameter^Description^
+|<nLeftRect>|Especifica la coordenada x en unidad logicas, de la esquina superior izquierda del rectángulo delimitador de la elipse| 
+|<nTopRect>|Especifica la coordenada y en unidad logicas, de la esquina superior izquierda del rectángulo delimitador de la elipse| 
+|<nRightRect>|Especifica la coordenada x en unidad logicas, de la esquina inferior derecha del rectángulo delimitador de la elipse| 
+|<nBottomRect>|Especifica la coordenada y en unidad logicas, de la esquina inferior derecha del rectángulo delimitador de la elipse| 
+
+====== Retorno ======
+^Retorno^Descripción^
+|<hRgn>|El manejador de la región recien creada| 
+
+====== Observaciones ======
+Cuando ya no necesite el objeto HRGN, llamar a la función DeleteObject para borrarlo.
+
+====== Código fuente ======
+SOURCE\WINAPI\REGIONS.c 
+
+====== Ver también ======
+[[fivewin_function_CreateEllipticRgnIndirect|CreateEllipticRgnIndirect()]]

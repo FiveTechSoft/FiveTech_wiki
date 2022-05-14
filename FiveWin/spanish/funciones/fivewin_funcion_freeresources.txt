@@ -1,0 +1,46 @@
+FreeResources()
+
+
+FreeResources()
+ Previous  Top  Next
+
+Free the used resources.
+
+====== Sintaxis ======
+
+
+ FreeResources() --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

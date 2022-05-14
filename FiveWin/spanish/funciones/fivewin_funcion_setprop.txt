@@ -1,0 +1,146 @@
+SetProp()
+
+
+
+SetProp()
+
+ Previous  Top  Next
+
+
+
+
+Store a window property in the Windows prop list
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetProp( <hWnd>, <cProp>, <nData> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the window whose property list receives the new
+entry. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cProp> Identifies the prop name. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nData> Identifies the data to be copied to the property list 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> If the operation was successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\Window.prg METHOD Link() 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Prop.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetProp() RemoveProp() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

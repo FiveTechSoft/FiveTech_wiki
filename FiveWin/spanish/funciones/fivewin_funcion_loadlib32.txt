@@ -1,0 +1,15 @@
+
+====== LoadLib32() ====== 
+LoadLib32()
+
+Load a 32 bits library
+====== Sintaxis ======
+ LoadLib32( <cLibName> ) --> hLib 
+====== Parámetros ======
+ <cLibName> Name of the library to load 
+====== Devuelve ======
+ <hLib> Handle of the loaded library 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\CALDLL32.C 
+====== Ver también ======

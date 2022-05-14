@@ -1,0 +1,93 @@
+====== IsWinNT() ======
+
+
+
+
+Check if WIN NT is running
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsWinNT() --> lWinNT 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lWinNT> Return .t. if Win NT is runnig 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\FOLDER.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

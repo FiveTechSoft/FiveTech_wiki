@@ -1,0 +1,15 @@
+====== DbSelectAr() ======
+It changes the current work area. This function is kept to maintain compatibility with xBase++ 
+
+====== Syntax ======
+DbSelectArea( <x> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<x>| Numeric value or characters that represents work area number or the alias of a work area.|
+
+====== Returns ======
+DbSelectArea( x ) 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG

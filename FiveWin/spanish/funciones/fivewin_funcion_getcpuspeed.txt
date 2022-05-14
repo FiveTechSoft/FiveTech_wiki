@@ -1,0 +1,12 @@
+
+====== GetCPUSpeed() ======
+GetCPUSpeed()
+
+Retrieves the CPU speed
+====== Sintaxis ======
+ GetCPUSpeed() --> nCPUSpeed 
+====== Parémetros ======
+ None 
+====== Devuelve ======
+   <nCPUSpeed> The speed of the CPU.
+====== Ver también ======

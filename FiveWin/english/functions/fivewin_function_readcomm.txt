@@ -1,0 +1,132 @@
+ReadComm()
+
+
+
+ReadComm()
+
+ Previous  Top  Next
+
+
+
+
+Read the contents of the communication port
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ReadComm( <nIdComm>, @<cBuffer> ) --> nBytesRead 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nIdComm> A numeric identifier for that opened device. 0 if there was an
+error. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cBuffer> A string variable supplied by reference where ReadComm() will
+place the read bytes.The length of the initial supplied value specifies
+the wished number of bytes to be read.You may use, i.e., Space( ... ) to
+initialize this buffer. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nBytesRead> The number of bytes read. 0 if there was an error. Use
+GetCommError() to determine the cause of the error. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestComm.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Comm.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ OpenComm() WriteComm() CloseComm() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,27 @@
+
+====== DDENameService() ======
+
+Registra o anula el registro de los nombres de servicios que un intercambio dinámico de datos (DDE) que el servidor soporta.
+
+====== Sintaxis ======
+ 
+ DDENameService( <hInst>, <hText>, <nReserved>, <nFlags> ) --> hDDEData
+
+====== Parámetros ======
+
+|<hInst>| identificador de la instancia |
+|<hText>| Título de servicio cadena de nombre |
+|<nReserved>| reservados |
+|<nFlags>| Servicio-nombre banderas.|  
+ 
+ 
+====== Retorno ======
+
+|<hDDEData>| != 0 si la función es exitosa. En caso contrario 0.|
+
+====== Ejemplo ======
+ 
+
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DDEML.C  

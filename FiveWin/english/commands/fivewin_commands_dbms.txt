@@ -1,0 +1,58 @@
+====== Defining a new dbms ======
+
+<code clipper>
+ DEFINE DBMS <oDbms> ;
+ [ FILE <cFile> ]
+</code>
+
+<code clipper>
+ END DBMS  
+</code> 
+
+====== Adding a new field ======
+
+<code clipper>
+ DEFINE FIELD <cField> ;
+ [ AS STRING | AS NUMBER | AS LOGIC | AS DATE | AS MEMO ] ;
+ [ LEN <nLen> ] ;
+ [ DEC <nDec> ]
+</code>  
+
+====== Adding a new index ======
+
+<code clipper>
+ DEFINE INDEX <cName> ON <key> ;
+ [ TO <cFile> ] ;
+ [ FOR | FILTER <for> ] ;
+ [ UNIQUE ]
+</code>
+
+====== Redefining a dbms ======
+
+<code clipper>
+ REDEFINE DBMS <oDbms> FROM FILE <cFile>
+</code>
+
+
+| <oDbms> | A reference to the dbms object. |
+| <cFile> | The dbms filename. |
+| <cField> | The name of the field. |
+| <aIndex> | An array of index objects. |
+| <nLen> | The field length. |
+| <nDec> | The number of decimals of the field. |
+| <cName> | The name of the index. |
+| <key> | The index key expression. |
+| <for> | The index FOR expression. |
+
+
+====== CLAUSES ======
+
+| AS STRING | To create a character field. |
+| AS NUMBER | To create a numeric field. |
+| AS LOGIC | To create a logical field. |
+| AS DATE | To create a date field. |
+| AS MEMO | To create a memo field. |
+| UNIQUE | To create a UNIQUE index. |
+
+====== See Also ======
+[[fivewin_class_tdbm | Class TDbm ]]

@@ -1,0 +1,76 @@
+SQLParamData()
+
+
+SQLParamData()
+ Previous  Top  Next
+
+It is used in conjunction with SQLPutData to supply parameter data at
+statement execution time.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLParamData( <hStmt>, <pPtrData> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <pPtrData> Pointer to a buffer in which to return the address of the
+parameters data buffer. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NEED_DATA, SQL_NO_DATA, SQL_STILL_EXECUTING, SQL_ERROR, or
+SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

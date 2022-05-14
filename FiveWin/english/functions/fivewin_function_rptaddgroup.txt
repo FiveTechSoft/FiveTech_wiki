@@ -1,0 +1,146 @@
+====== RptAddGroup() ======
+
+
+Adds a group to our listing.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RptAddGroup( <bGroup>, <bHeader>, <bFooter>, <bFont>, <lEject> ) -->
+oGroup 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <bGroup> A codeblock with the group expression. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <bHeader> A codeblock that returns the header of the group. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <bFooter> A codeblock that returns the footer of the group. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <bFont> The TFont object to use for both bHeadFont and bFootFont. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lEject> If eject is to be performed on each group change. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oGroup> TGroup object. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is called internally by the motor of Reports of FiveWin. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\PDREPORT.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

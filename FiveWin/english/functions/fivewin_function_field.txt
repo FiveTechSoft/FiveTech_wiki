@@ -1,0 +1,14 @@
+====== Field() ======
+This function returns the name of a field of the current DBF. You need to pass the field number as parameter to this function
+====== Syntax: ======
+Field(<n> ) --> cFieldName  
+
+Function of compatibility with xBase++  
+====== Parameters: ======
+^Parameter^Description^
+| <n> |Field number |
+====== Returns: ======
+^Returns^Description^
+| <cFieldName> |Name of the field " n ".  |
+====== Source code: ======
+SOURCE\FUNCTION\DBTOOLS.PRG

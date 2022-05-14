@@ -1,0 +1,141 @@
+====== LoadBitmap() ====== 
+
+
+
+LoadBitmap()
+
+
+
+
+
+
+Load the specified resource bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LoadBitmap( <hInst>, <cnBitmap> ) --> hBitmap 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hInst> Identifies the module that contains the bitmap to be loaded. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cnBitmap> The name or the numeric identifier of the bitmap to load. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hBitmap> The handle of the bitmap loaded. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Don't use this function to load a bitmap from disk. Use ReadBitmap()
+instead. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Install.prg SAMPLES\\TestRes.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\LoadBmp.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ ReadBitmap() DeleteObject() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

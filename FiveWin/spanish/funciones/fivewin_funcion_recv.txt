@@ -1,0 +1,19 @@
+
+====== Recv() ====== 
+Recv()
+
+Receive data from a socket
+====== Sintaxis ======
+ Recv( <nSocket>, <@cBuffer> ) --> nResult 
+====== Parámetros ======
+  <nSocket>   Socket number 
+  <@cBuffer>  Buffer to recive the data 
+====== Devuelve ======
+ <nResult> If any error has not happened the number it is returned of
+received bytes. Otherwise a code is returned of more error or equal to
+10000. 
+====== Ejemplo ======
+ SOURCE\CLASSES\TSOCKET.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\WINSOCK.C 
+====== Ver también ======

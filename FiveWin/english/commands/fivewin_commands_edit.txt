@@ -1,0 +1,45 @@
+#command @ <nRow>, <nCol> EDIT [ <oEdit> VAR ] <uVar> ;
+            [ <dlg: OF, WINDOW, DIALOG> <oWnd> ] ;
+            [ <lMemo: MEMO,TEXT,MULTILINE> ] ;
+            [ SIZE <nWidth>, <nHeight> ] ;
+            [ <lPixel: PIXEL, PIXELS > ] ;
+            [ FONT <oFont> ]  ;
+            [ <pict: PICT, PICTURE> <cPict> ] ;
+            [ <pass: PASSWORD> ] ;
+            [ ON CHANGE <uChange> ] ;
+            [ ON UPDATE <uUpdate> ] ;
+            [ ON SCROLL <uScroll> ] ;
+            [ <lRO: READONLY> ] ;
+            [ <lRight: RIGHT> ] ;
+            [ <lCenter: CENTER> ] ;
+            [ <lNumber: NUMBER> ] ;
+            [ <lUpper: UPPER, UPPERCASE> ] ;
+            [ <lUpdate: UPDATE> ] ;
+            [ WHEN <uWhen> ] ;
+            [ VALID <uValid> ] ;
+            [ <limittext: LIMITTEXT> [ BY <nchars> CHARS ] ] ;
+       => ;
+          [ <oEdit> := ] TEdit():New( <nRow>, <nCol>, bSETGET(<uVar>),;
+            [<oWnd>], <nWidth>, <nHeight>, <.lPixel.>, <oFont>, <cPict>,;
+            [\{|nKey, nFlags, Self| <uChange>\}],;
+            [\{|Self| <uUpdate>\}],;
+            [\{|Self| <uScroll>\}], <.lMemo.>, <.lRO.>, <.pass.>, ;
+            <.lRight.>, <.lCenter.>, <.lNumber.>, <.lUpper.>, <.lUpdate.>, ;
+            <{uWhen}>, <{uValid}>, ;
+            [<.limittext.>], [<nchars>] )
+
+#xcommand REDEFINE EDIT [ <oEdit> VAR ] <uVar> ;
+            [ ID <nId> ] ;
+            [ <dlg: OF, WINDOW, DIALOG> <oWnd> ] ;
+            [ <pict: PICT, PICTURE> <cPict> ] ;
+            [ ON CHANGE <uChange> ] ;
+            [ ON UPDATE <uUpdate> ] ;
+            [ ON SCROLL <uScroll> ] ;
+            [ WHEN <uWhen> ] ;
+            [ VALID <uValid> ] ;
+       => ;
+          [ <oEdit> := ] TEdit():Redefine( <nId>, [<oWnd>],;
+                                           bSETGET(<uVar>), <cPict>,;
+            [\{|nKey, nFlags, Self| <uChange>\}],;
+            [\{|Self| <uUpdate>\}],;
+            [\{|Self| <uScroll>\}], <{uWhen}>, <{uValid}>,)

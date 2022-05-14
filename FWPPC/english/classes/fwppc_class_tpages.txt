@@ -1,0 +1,28 @@
+====== Class TPages ======
+
+Multiple DialogBox Pages management                                            
+====== DATA ======
+|nOption|Current selected page|
+|aDialogs|Array of NonModal DialogBox objects|
+|aHelps|Array with the IDs or names (also mixed) from the help-file; each for every page|
+====== METHODS ======
+|New|Method Constructor from source code|
+|Redefine|Method Constructor from resources|
+|AddPage|Adds a new page|
+|Initiate|Generic control initialization|
+|Default|Control default initialization. Called from Init|
+|DelPage|Deletes a page|
+|Destroy|Generic destructor method|
+|SetOption|Sets a different selected page|
+|GoPrev|Selects the previous page to the current one selected|
+|GoNext|Selects the next page to the current one selected|
+|GotFocus|Gotfocus event handler|
+|ReSize|Resize event handler|
+
+====== Example ======
+FWPPC\samples\TestPage.prg
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPAGES.PRG

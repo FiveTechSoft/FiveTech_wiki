@@ -1,0 +1,43 @@
+====== SetHelpPopup() ======
+
+Establece los parámetros para la ayuda emergente contextual sensitiva.
+
+====== Sintaxis: ======
+ 
+ SetHelpPopup([<cPopup> [,<nRow> [,<nCol> [,<nbgColor> [,<nfgColor> ]]]]]) --> nil
+
+====== Parámetros: ======
+
+| cPopup | Popup.txt incrustado en el archivo CHM ó en un archivo de ayuda externa. Ver descripción! DEFAULT: popups.txt| 
+| nRow | Desplazamiento en X de la ventana emergente, desde el control activo. DEFAULT: 20|
+| nCol | Desplazamiento en Y de la ventana emergente, desde el control activo. DEFAULT: 10|
+| nbgColor | Color del fondo de la ventana emergente. DEFAULT: -1|
+| nfgColor | Color del texto de la ventana emergente. DEFAULT: -1|
+
+====== Retorno: ======
+
+nada
+
+====== Descripción: ======
+
+Establece los parámetros de la ayuda emergente. Si se utiliza la ayuda contextual, esta función deberá llamarse al comenzar su programa.
+
+NOTA! 
+Si el archivo cPopup realmente existe en el siguiente formato, entonces los tópicos emergentes son llamados desde este archivo y no desde el archivo txt incrustado en el archivo CHM!
+
+
+  .Topic 1                    //---> "1" es el helpid del control
+  popuptext for topic 1       //---> es el popup-text a mostrar
+  .
+  .
+  .Topic 5
+  popuptext for topic 5
+  .
+  .
+====== Código fuente: ======
+ 
+ SOURCE\WINAPI\HELPCHM.PRG
+
+====== Ver también ======
+
+[[fivewin_function_gethelppopup|GetHelpPopup()]]

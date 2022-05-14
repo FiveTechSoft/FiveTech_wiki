@@ -1,0 +1,15 @@
+
+====== GetModuleFileName() ======
+GetModuleFileName()
+
+Path and executable file from where you position a module
+====== Sintaxis ======
+ GetModuleFileName( <hInstance> ) --> cAppName 
+====== Parámetros ======
+ <hInstance> Handle of the module 
+====== Devuelve ======
+ <cAppName> Path and executable file from where you position a module 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\WINEXEC.C 
+====== Ver también ======

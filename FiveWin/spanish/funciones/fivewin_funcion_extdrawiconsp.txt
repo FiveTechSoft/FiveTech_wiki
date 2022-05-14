@@ -1,0 +1,24 @@
+====== ExtDrawIcon() ======
+Dibuja un Icono con un Texto
+
+====== Syntaxis ====== 
+ExtDrawIcon( <hDC>, <nRow>, <nCol>, <hIcon>, <cPrompt>, <hFont>, <nClrText>, <nClrPane>, <lFocused>, <lActive>, <lEdit> ) --> aCoors  
+ 
+====== Parametros ====== 
+| <hDC>| el contexto de dispositivo donde va a dibujar.  |
+|<nRow>, <nCol>|Coordenadas en Donde se va a Dibujar| 
+| <hIcon>| El handle del Icono.|
+| <cPrompt>| El Texto del Dibujo.|
+| <hFont>| Fuente para el Texto.|
+| <nClrText>| El color del Texto.|
+| <nClrPane>| El color del Fondo del Texto.|
+| <lFocused>| El color del Texto Cuando Toma el Foco.|
+| <lEdit>| Si se establece. t. el mensaje no se dibuja.|
+
+====== Devuelve ====== 
+| <aCoors>| Las Coordenadas para Dibujar.  |
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\DRAWICON.C  
+
+====== Ver tambien ====== 

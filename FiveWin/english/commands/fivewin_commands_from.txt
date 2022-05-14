@@ -1,0 +1,33 @@
+
+====== Defining a new database ======
+
+<code clipper>
+ DEFINE DATABASE <oDb> OF <oDict> ;
+ [ ALIAS <cAlias> ] ;
+ [ FILE <cFile> ] ;
+ [ DRIVER <cDriver> ] ;
+ [ SHARED ] ;
+ [ READONLY ] ;
+ [ FIELDS <aField> ] ;
+ [ INDEX <aIndex> ]
+</code>
+
+====== Redefining a database ======
+
+<code clipper>
+ REDEFINE DATABASE <oDb> ;
+ [ FROM FILE <oDict> ]
+</code> 
+
+| <oDb> | A reference to the database object. |
+| <oDict> | A reference to the dictionary object. |
+| <cAlias> | The database alias. |
+| <cFile> | The database or index filename. |
+| <cDriver> | The driver used for the database. |
+| <aField> | An array of field objects. |
+| <aIndex> | An array of index objects. |
+
+====== CLAUSES ======
+
+| SHARED | To open the database in shared mode. |
+| READONLY | To open the database in readonly mode. |

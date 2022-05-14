@@ -1,0 +1,100 @@
+====== PlayEnhMetaFile() ====== 
+
+
+PlayEnhMetaFile()
+
+
+Displays the picture stored in the specified enhanced-format metafile.
+
+====== Syntax ======
+
+ 
+
+
+ PlayEnhMetaFile( <hDC>, <hEMF>, [<hWnd>], [<lPrinter>, [<nRightOffset>],
+[<nBottomOffset>]] ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> Handle to the device context for the output device on which the
+picture will appear. 
+
+
+ 
+
+
+ <hEMF> Handle to the enhanced metafile. 
+
+
+ 
+
+
+ 
+
+ <hWnd> Handle to the window on which the picture will appear. 
+
+
+ 
+
+
+ <lPrinter> True if the metafile has to be played on a printer. 
+
+
+ 
+
+
+ <nRightOffset> The right offset for the printer. 
+
+
+ 
+
+
+ <nBottomOffset> The bottom offset for the printer. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> .t. if the function is successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\metafi32.c 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,25 @@
+====== DDEGetData() ======
+Copies data from the given global memory object to the specified local buffer.
+
+====== Syntax ======
+DDEGetData( <hData>, <nOffset> ) --> cData 
+
+====== Parameters ======
+^Parameter^Description^
+|<hData>| Handle of global memory object. |
+|<nOffset>| Offset to beginning of data. |
+
+====== Returns ======
+^Returns^Description^
+|<cData>| Value of the buffer |
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\WINAPI\DDEML.C 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

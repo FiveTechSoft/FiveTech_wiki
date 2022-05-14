@@ -1,0 +1,53 @@
+
+====== GetProcAddress() ====== 
+GetProcAddress()
+
+Retrieves the address of the given module function
+====== Sintaxis ======
+ GetProcAddress( <hInst>, <cProcName>, <lPascalType>, <nReturnType>,
+[<nParam1Type>, ...<nParamNType>] ) --> cProcData 
+====== Parámetros ======
+  <hInst> Identifies the module that contains the function. Normally The
+      handle of a DLL, that previously we have loaded with LoadLibrary(). 
+  <cProcName> The name of the function, or its order number inside the
+      DLL. 
+  <lPascalType> True is the function to be used is PASCAL type. Normally
+      most of Windows API functions are PASCAL type. 
+  <nReturnType> A numeric value that indicates the type of value returned
+      by the function to be called. 
+
+ The nReturnType possible values are inside FiveWin DLL.ch: 
+     #define VOID      0 
+     #define BYTE      1 
+     #define CHAR      2 
+     #define WORD      3 
+     #define _INT      4   // conflicts with Clipper Int() 
+     #define BOOL      5 
+     #define HDC      6 
+     #define LONG      7 
+     #define STRING      8 
+     #define LPSTR      9 
+     #define PTR      10 
+     #define _DOUBLE   11   // conflicts with BORDER DOUBLE 
+  <nParam1Type> <nParamNType> Are the different types of Parameters that
+      will be supplied as Parameters when calling to the DLL function. They are
+      numeric values as the above <nReturnType> values. 
+====== Devuelve ======
+ <cProcData> A string which contains a binary representation of the DLL
+function to be called plus necessary information about the type,
+Parameters and return type. 
+
+ The information here contained is vital to properly build a C-language
+alike stack and its manipulation. 
+
+Observations:
+
+ This function is automatically used from the FiveWin DLL management
+xBase commands. We strongly recommend to use the xBase commands to use
+this function, as An easier way and avoid possible mistakes. 
+====== Ejemplo ======
+ SAMPLES\CallDll.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\GetProcA.c 
+====== Ver también ======
+ INCLUDE\DLL.CH

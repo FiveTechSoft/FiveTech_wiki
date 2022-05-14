@@ -1,0 +1,19 @@
+
+====== SET HELPTOPIC TO ======
+
+Selects a help default topic
+
+====== Syntax: ======
+ 
+ SET HELP TOPIC TO <cTopic>
+====== Parameters: ======
+
+| <cTopic> | A string that let us specify the default topic where automatically show help. |
+====== Description: ======
+
+SET HELP TOPIC TO lets us select a help default topic. We may change this topic from inside different parts of our program.  Where translated to [[fivewin_function_helpsettopic|HelpSetTopic( <cTopic> )]]
+====== Headerfile: ======
+ 
+ SOURCE\INCLUDE\DIALOG.CH   
+====== see also: ======
+[[fivewin_function_helpsettopic|HelpSetTopic()]]

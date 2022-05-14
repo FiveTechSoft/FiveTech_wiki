@@ -1,0 +1,19 @@
+====== Class TString ======
+
+Strings > 64 Kb management class                                               
+====== DATA ======
+|Handle|String handle|
+|METHOD||
+|New|Constructor from source code|
+|Len|String length|
+|Sum|String concatenation (operator +)|
+|Assign|String assignment (operator =)|
+|Compare|String comparison (operator ==)|
+|Byte|String indexing (operator [])|
+|End|Destroy the string|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TSTRING.PRG

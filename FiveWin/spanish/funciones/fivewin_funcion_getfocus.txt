@@ -1,0 +1,19 @@
+
+====== GetFocus() ======
+GetFocus()
+
+Retrieves the handle of the window that has focus
+====== Sintaxis ======
+ GetFocus() --> hWnd 
+
+====== Parámetros ======
+
+ None 
+
+====== Devuelve ======
+ <hWnd> The handle of the window that has the focus. 
+====== Ejemplo ======
+ local hWnd := GetFocus() 
+====== Código fuente ======
+ SOURCE\WINAPI\SetFocus.c 
+====== Ver también ======

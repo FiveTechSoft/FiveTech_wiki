@@ -1,0 +1,74 @@
+GetPEnhMetaFile()
+
+
+GetPEnhMetaFile()
+ Previous  Top  Next
+
+Creates a handle that identifies the placeable enhanced-format metafile
+stored in the specified file.
+
+====== Syntax ======
+
+ 
+
+
+ GetPEnhMetaFile( <cMetaFile>, <@aInfo> ) --> hEMF 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <cMetaFile> The filename of a placeable enhanced metafile. 
+
+
+ 
+
+
+ <aInfo> An array that will receive the coordinates of the enhanced
+metafile. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <hEMF> The handle of the enhanced metafile. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\EMETAFIL.C 
+
+
+ 
+
+
+
+====== See also ======
+

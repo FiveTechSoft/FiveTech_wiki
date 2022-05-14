@@ -1,0 +1,22 @@
+====== AnsiToWide() ======
+
+Convierte una cadena Ansi a su equivalente Unicode (wide)
+
+====== Sintaxis ======
+
+AnsiToWide( <cAnsiStr> ) --> cWideStr  
+
+====== Parámetros ======
+
+| <cAnsiStr> | La cadena a convertir en su equivalente Unicode.  |  
+
+====== Devuelve ======
+
+<cWideStr> La cadena en equivalente Unicode (wide).
+
+
+
+====== Ver también ======
+
+[[fivewin_funcion_WideToAnsi()| WideToAnsi()]]
+

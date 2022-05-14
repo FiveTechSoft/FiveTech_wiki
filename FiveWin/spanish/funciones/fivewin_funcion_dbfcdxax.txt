@@ -1,0 +1,17 @@
+
+====== DbfCdxAx() ======
+DbfCdxAx()
+ Just to avoid removing extern DBFCDXAX
+====== Sintaxis ======
+
+ DbfCdxAx() --> nil 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ nil 
+
+Observations:
+ This function will be used for not having to declare Extern DBFCDAX 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

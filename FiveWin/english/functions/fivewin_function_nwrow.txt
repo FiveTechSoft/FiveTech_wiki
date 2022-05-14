@@ -1,0 +1,145 @@
+====== nWRow() ======
+
+
+Returns a certain row number of a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nWRow( <hWnd>, <hDC>, <nGraphRow> [,<hFont>] ) --> nTextRow 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> The handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> The handle of its device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nGraphRow> A numeric value in pixels 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> An optional handle of a font 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nTextRow> A numeric value specifying the text row corresponding to that
+graphical row 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\WBrowse METHOD LDblClick() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndRows.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nWRows() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

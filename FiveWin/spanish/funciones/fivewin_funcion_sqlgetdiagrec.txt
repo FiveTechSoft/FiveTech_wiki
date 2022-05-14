@@ -1,0 +1,67 @@
+SQLGetDiagRec()
+
+
+SQLGetDiagRec()
+ Previous  Top  Next
+
+Returns the current values of multiple fields of a diagnostic record that
+contains error, warning, and status information.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLGetDiagRec( <hStmt> ) --> cErrorMsg 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <cErrorMsg> The error message text. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

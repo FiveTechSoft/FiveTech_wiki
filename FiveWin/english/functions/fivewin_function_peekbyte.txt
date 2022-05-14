@@ -1,0 +1,111 @@
+====== PeekByte() ====== 
+
+
+
+PeekByte()
+
+
+
+
+
+
+Reads a byte of a position of memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PeekByte( <nSegment>, <nOffset> ) --> nByte 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSegment> Segment of memory 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOffset> Displacement of memory inside the segment nSegment 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nByte> It returns the read byte of the address of memory given. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\PEEKPOKE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PEEKPOKE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

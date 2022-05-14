@@ -1,0 +1,35 @@
+
+====== lMkDir() ======
+
+Crea un nuevo directorio.
+
+====== Syntaxis ======
+
+lMkDir( <cNuevoDirectorio> ) --> lNuevoDirectorio
+ 
+====== Parámetros ======
+
+| <cNuevoDirectorio> | Ruta y nombre del directorio a crear.  |
+
+====== Devuelve ======
+
+| <lNuevoDirectorio> | Si el directorio fue creado, retorna .T., de lo contrario retorna .F.  |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   MsgInfo( lMkDir( "C:\Windows\Basura" )  )
+RETURN    
+</code>
+
+====== Código fuente ======
+
+ SOURCE\FUNCTION\CHDIR.C  
+
+====== Ver también ======
+
+[[fivewin_funcion_lrmdir|lRmDir()]]
+[[fivewin_funcion_lchdir|lChDir()]]
+[[fivewin_funcion_lisdir|lIsDir()]]

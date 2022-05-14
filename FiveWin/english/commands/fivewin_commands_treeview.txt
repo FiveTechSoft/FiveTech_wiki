@@ -1,0 +1,13 @@
+====== Create a TREEVIEW from source code ======
+<code clipper>
+@ <nRow>, <nCol> TREEVIEW [<oTV>] ;
+             [ SIZE <nWidth>, <nHeight> ] ;
+             [ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+             [ <design: DESIGN> ] ;
+             [ <pixel: PIXEL> ] ;
+             [ COLOR <nClrFore> [,<nClrBack>] ] ;
+             [ MESSAGE <cMsg> ] ;
+             [ <check: CHECK, CHECKBOX, CHECKBOXES> ]
+</code>
+====== See Also ======
+[[fivewin_class_ttreeview|Class TTreeView]]

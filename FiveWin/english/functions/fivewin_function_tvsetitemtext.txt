@@ -1,0 +1,73 @@
+TvSetItemText()
+
+
+TvSetItemText()
+ Previous  Top  Next
+
+Sets the text of an item of a treeview control.
+
+====== Syntax ======
+
+
+ TvSetItemText( <hWnd>, <hItem>, <cText> ) --> nil 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hWnd>   Handle of the treeview control. 
+
+
+ 
+
+
+ <hItem>   The handle to the item. 
+
+
+ 
+
+
+ <cText>   The text for the item. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

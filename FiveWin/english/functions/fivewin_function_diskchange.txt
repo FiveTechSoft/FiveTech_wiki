@@ -1,0 +1,22 @@
+====== DiskChange() ======
+Change the current drive.
+
+====== Syntax ======
+DiskChange( <cDrive> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<cDrive>| The new current drive. |
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| .T. if the drive is successfully changed, otherwise .F.| 
+
+
+====== Sample ======
+<code clipper>
+Local lSuccess := DiskChange( "E:" ) 
+</code>
+ 
+====== Source code ======
+SOURCE\FUNCTION\DISK.C 

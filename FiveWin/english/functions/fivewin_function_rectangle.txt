@@ -1,0 +1,147 @@
+Rectangle()
+
+
+
+Rectangle()
+
+ Previous  Top  Next
+
+
+
+
+Draws a graphic rectangle
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Rectangle( <hDC>, <nTop>, <nLeft>, <nBottom>, <nRight> [,<hPen>] ) -->
+lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the device context where to paint 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTop> the coordinates of the rectangle 
+
+
+ 
+
+
+ <nLeft> 
+
+
+ 
+
+
+ <nBottom> 
+
+
+ 
+
+
+ <nRight> 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If the operation was successfull. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The rectangle is drawn with the current pen selected and it is filled
+with the current brush 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Rectangl.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Pie() LineTo() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

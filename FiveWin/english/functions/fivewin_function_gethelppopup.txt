@@ -1,0 +1,30 @@
+
+====== GetHelpPopup() ======
+
+Retrieves an 5 entry-array with the settings from active popup-help-file selected.  
+
+====== Syntax: ======
+ 
+ GetHelpPopup() --> <aArray>
+====== Parameters: ======
+
+ none  
+====== Returns: ======
+
+| <aArray> | Settings from the popup-help-file |
+
+The contents from the returned array:
+
+| aArray[1] | The name from the popup-file |
+| aArray[2] | X-Offset of the popup-window from the active control |
+| aArray[3] | Y-Offset of the popup-window from the active control |
+| aArray[4] | Background-color from the popup-window |
+| aArray[5] | Text-color from the popup-window |
+====== Description: ======
+
+Returns an array with actual settings.
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELPCHM.PRG
+====== see also: ======
+[[fivewin_function_sethelppopup|SetHelpPopup()]]

@@ -1,0 +1,130 @@
+====== Creación de un GET mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> GET [ <oGet> VAR <uVar> ] ;
+  [ OF | WINDOW | DIALOG <oWnd> ] ;
+  [ PICTURE <cPict> ];
+  [ VALID <ValidFunc> ] ;
+  [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;
+  [ SIZE <nWidth>, <nHeight> ] ;
+  [ FONT <oFont> ] ;
+  [ DESIGN ] ;
+  [ CURSOR <oCursor> ] ;
+  [ PIXEL ] ;
+  [ MESSAGE <cMsg> ] ;
+  [ UPDATE ] ;
+  [ WHEN <WhenFunc> ] ;
+  [ CENTER | CENTERED ] ;
+  [ RIGHT ] ;
+  [ ON CHANGE <uChange> ] ;
+  [ READONLY | NO MODIFY ] ;
+  [ HELPID | HELP ID <nHelpId> ];
+  [ SPINNER [ ON UP <SpnUp> ] [ ON DOWN < SpnDn> ] [ MIN <Min> ] [ MAX <Max> ] ]
+</code>  
+
+====== Para edición de memos mediante código fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> GET [ <oGet> VAR ] <uVar> ;
+  [ OF | WINDOW | DIALOG <oWnd> ] ;
+  [ MULTILINE | MEMO | TEXT ];
+  [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;
+  [ SIZE <nWidth>, <nHeight> ];
+  [ FONT <oFont> ] ;
+  [ HSCROLL ] ;
+  [ CURSOR <oCursor> ] ;
+  [ PIXEL ] ;
+  [ MESSAGE <cMsg> ] ;
+  [ UPDATE ] ;
+  [ WHEN <uWhen> ] ;
+  [ CENTER | CENTERED> ];
+  [ RIGHT ] ;
+  [ READONLY | NO MODIFY ] ;
+  [ VALID <uValid> ] ;
+  [ ON CHANGE <uChange> ] ;
+  [ DESIGN ] ;
+  [ NO BORDER | NOBORDER ] ;
+  [ NO VSCROLL ]
+</code>  
+
+====== Uso de un GET desde un recurso ====== 
+<code clipper>
+REDEFINE GET [ <oGet> VAR ] <uVar> ;
+[ ID <nId> ] ;
+[ OF | WINDOW | DIALOG <oWnd> ] ;
+[ HELPID | HELP ID <nHelpId> ] ;
+[ VALID <ValidFunc> ] ;
+[ PICTURE <cPict> ] ;
+[ COLOR | COLORS <nClrFore>; [ ,<nClrBack>] ] ;
+[ FONT <oFont> ] ;
+[ CURSOR <oCursor> ] ;
+[ MESSAGE <cMsg> ] ;
+[ UPDATE ] ;
+[ WHEN <WhenFunc> ] ;
+[ ON CHANGE <uChange> ] ;
+[ READONLY | NO MODIFY ] ;
+[ SPINNER [ ON UP <SpnUp> ] [ ON DOWN < SpnDn> ] [ MIN <Min> ] [ MAX <Max> ] ]
+</code>  
+
+====== Para edición de memos desde un recurso ======
+<code clipper>
+REDEFINE GET [ <oGet> VAR ] <uVar> ;
+[ MULTILINE | MEMO | TEXT ] ;
+[ ID <nId> ] ;
+[ OF | WINDOW | DIALOG <oWnd> ] ;
+[ HELPID | HELP ID <nHelpId> ] ;
+[ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+[ FONT <oFont> ] ;
+[ CURSOR <oCursor> ] ;
+[ MESSAGE <cMsg> ] ;
+[ UPDATE ] ;
+[ WHEN <WhenFunc> ] ;
+[ READONLY | NO MODIFY> ] ;
+[ VALID <ValidFunc> ] ;
+[ ON CHANGE <uChange> ]
+</code>  
+
+====== Parámetros ======           
+
+|<nRow>, <nCol>      |Coordenadas del GET. Se imitan coordenadas de texto.|
+|<oGet>              |Referencia al objeto GET.|
+|<uVar>              |Variable que el objeto GET manipula.|
+|<oWnd>              |Ventana contenedora del GET.|
+|<cPict>             |Cláusula PICTURE típica de xBase.|
+|<ValidFunc>         |Expresión o función de validación, como en MsDos.|
+|<WhenFunc>          |Cláusula WHEN. Aún no disponible|
+|<cColor>            |Color del GET. Aún no disponible|
+|<nWidth>, <nHeight> |Dimensiones en pixels del GET.|
+|<oFont>             |Referencia al objeto Tipo de letra (Font) a usar con el GET.|
+|<oCursor>           |Referencia al objeto Cursor a mostrar sobre el control.|
+|<cMsg>              |Mensaje asociado al control.|
+|<nId>               |Identificador numérico del Control.|
+|<nHelpId>           |Identificador del tema de ayuda para el GET.|
+|<nClrFore>          |color de primer plano como número RGB o como cadema xBase.|
+|<nClrBack>          |Color de fondo como número RGB.|
+|<SpnUp>             |Acción a ejecutar cuando se presiona el spinner del GET, si esta definido, si se presiona flecha hacia arriba.|
+|<SpnDn>             |Acción a ejecutar cuando se presiona el spinner del GET, si esta definido, si se presiona flecha hacia abajo.|
+|<Min>               |El mínimo valor que puede tomar el spinner del GET, si es definido.|
+|<Max>               |El máximo valor que puede tomar el sppiner del GET, si es definido.|
+|<uChange>           |Acción a ejecutar cuando el Get cambia.|
+
+
+
+====== Cláusulas ====== 
+
+|MULTILINE, MEMO, TEXT |Para usar un control GET multilínea y permitir la edición de memos.|
+|UPDATE                |El control puede actualizarse con el método TDialog:Update().|
+|CENTER                |Si el contenido del GET debe centrarse.|
+|RIGHT                 |Si el contenido del GET debe justificarse a la derecha. **Importante**: Para justificar a la derecha un GET de un cuadro de diálogo, debe definirse en el recurso como multilínea y utilizar el tipo de letra por defecto.|
+|PIXEL                 |Para usar coordenadas en píxels y no en modo texto.|
+|PASSWORD              |La introducción es como una contraseña.|
+|DESIGN                |Permite mover el control y cambiar su tamaño|
+|HSCROLL               |Desplazamiento horizontal|
+|READ ONLY             |Desactiva la edición de este control.|
+|NO MODIFY             |Indica que el GET solo es de lectura.|
+|NO BORDER, NOBORDER   |No muestra un borde alrededor del control GET.|
+|HELP ID, HELPID       |Identificador de la ayuda para el GET.|
+|SPINNER               |Para mostrar un spinner ubicado a la derecha.|
+|NO VSCROLL            |Para evitar un desplazamiento vertical.|
+|ON UP                 |Acción a ejecutarse cuando se hace click sobre el spinner superior (flecha hcia arriba).|
+|ON DOWN               |Acción a ejecutarse cuando se hace click sobre el spinner inferior (flecha hcia abajo).|
+|MIN                   |El valor mínimo del spinner.|
+|MAX                   |El valor máximo del spinner.|

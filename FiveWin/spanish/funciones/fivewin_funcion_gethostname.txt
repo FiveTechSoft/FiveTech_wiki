@@ -1,0 +1,17 @@
+
+====== GetHostName() ======
+GetHostName()
+
+Return the standard host name for the local machine.
+====== Sintaxis ======
+ GetHostName() --> cHostName 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <cHostName> Return the standard host name for the local machine, if the
+function has been executed correctly. They are been able to to control
+the errors by means of the function WSAGetLastError (). 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\WINSOCK.C 
+====== Ver también ======

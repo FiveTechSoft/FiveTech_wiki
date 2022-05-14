@@ -1,0 +1,19 @@
+====== UToS() ======
+
+Convierte un Valor Largo en un Valor Corto
+
+====== Syntaxis ====== 
+
+UToS( <nValue> ) --> nResult 
+ 
+====== Parametros ====== 
+
+| <nValue>| Valor a Convertir  |
+ 
+====== Devuelve ====== 
+
+| <nResult>| El Valor Convertido  |
+
+====== Codigo fuente ====== 
+
+SOURCE\FUNCTION\OR.C 

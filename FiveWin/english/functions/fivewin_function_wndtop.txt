@@ -1,0 +1,25 @@
+====== WndTop() ====== 
+
+Update the top coordinate of a window 
+
+====== Syntax ====== 
+
+ WndTop( <hWnd> [,<nNewTop> ] ) --> nNewTop  
+ 
+====== Parameters ====== 
+
+|<hWnd>| Window handle|  
+|<nNewTop>| New top value|  
+ 
+====== Returns ======
+
+|<nNewTop>| New top value or current value if the second parameter is nil|  
+ 
+====== Sample ====== 
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\WNDMOVE.C  
+
+====== See Also ======
+ 

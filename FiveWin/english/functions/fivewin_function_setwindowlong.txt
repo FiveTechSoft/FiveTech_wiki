@@ -1,0 +1,93 @@
+SetWindowLong()
+
+
+SetWindowLong()
+ Previous  Top  Next
+
+Changes an attribute of the specified window.
+
+====== Syntax ======
+
+ 
+
+
+ SetWindowLong( <hWnd>, <nType>, <nValue> ) --> nOldValue 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the window. 
+
+
+ 
+
+
+ <nType> The type of information to be changed: 
+
+
+ 
+
+
+ 
+   GWL_EXSTYLE      Retrieves the extended window styles.    
+   GWL_STYLE      Retrieves the window styles.   
+   GWL_WNDPROC   Retrieves the address of the window procedure, or a
+handle representing the address of the window procedure.   
+   GWL_HINSTANCE   Retrieves a handle to the application instance.   
+   GWL_HWNDPARENT   Retrieves a handle to the parent window, if any.   
+   GWL_ID      Retrieves the identifier of the window.   
+   GWL_USERDATA   Retrieves the 32-bit value associated with the window.
+Each window has a corresponding 32-bit value intended for use by the
+application that created the window. This value is initially zero.
+
+ 
+
+
+ <nValue> The new value. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nOldValue> The previous value. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,23 @@
+
+====== BtnDisable() ======
+
+It draws a disabled button. 
+
+====== Syntax: ======
+
+BtnDisable( <hWnd>, <hDC> )  
+
+It presents the same image of the button with bitmap but in typical gray tones of disabled options.  
+
+====== Parameters: ======
+^Parameter^ Description^
+|<hWnd>| Handle of the button. | 
+|<hDC>| The device context in which the button has to be drawn. | 
+ 
+====== Returns: ======
+
+ Nil  
+
+====== Sample: ======
+ 
+SOURCE\CLASSES\BTNBMP.PRG  

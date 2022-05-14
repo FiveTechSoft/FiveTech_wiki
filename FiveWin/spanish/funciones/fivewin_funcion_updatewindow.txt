@@ -1,0 +1,131 @@
+UpdateWindow()
+
+
+
+UpdateWindow()
+
+ Previous  Top  Next
+
+
+
+
+Updates the client area of a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ UpdateWindow( <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Identifies the window to be updated. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function sends a WM_PAINT to the window forcing it to be repainted. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\Window.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WndUpdat.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ CLASS TWindo METHOD Refresh() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

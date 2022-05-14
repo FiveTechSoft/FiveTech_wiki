@@ -1,0 +1,25 @@
+====== FreeResources() ======
+
+Free the used resources. 
+
+====== Syntax ====== 
+
+FreeResources() --> nil 
+
+====== Parameters ====== 
+
+| None |
+
+====== Return ====== 
+
+| Nil |
+
+
+====== Sample ======
+
+
+====== Source Code ====== 
+
+SOURCE\WINAPI\RESOURCE.C 
+
+====== See Also ====== 

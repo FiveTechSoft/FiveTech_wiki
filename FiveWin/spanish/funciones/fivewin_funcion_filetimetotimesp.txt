@@ -1,0 +1,26 @@
+====== FileTimeToTime() ======
+Convierte un valor de tiempo de archivo en una cadena de valor del tiempo.
+
+====== Syntaxis ====== 
+FileTimeToDate( <nFileTime> ) --> cTime  
+
+====== Parametros ====== 
+| <nFileTime> | Ruta y Nombre del Archivo.  |
+
+====== Devuelve ====== 
+| <cTime>| La cadena convertida valor de tiempo.  |
+
+====== Ejemplo ======
+SOURCE\CLASSES\tftp.prg
+<code clipper>
+MsgInfo( FileTimeToTime( oWin32FindData:nLastWriteAccess ) ) 
+</code>
+
+====== Codigo fuente ====== 
+SOURCE\FUNCTION\datetime.c  
+ 
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_FileTimeToDatesp|FileTimeToDate()]]
+ 

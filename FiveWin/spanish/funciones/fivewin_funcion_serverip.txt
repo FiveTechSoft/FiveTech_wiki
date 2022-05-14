@@ -1,0 +1,24 @@
+====== ServerIP() ======
+
+la funcion ServerIP() obtiene la dirección IP del Servidor Web 
+
+====== Sintaxis ======
+
+ServerIP() --> cIpAddress 
+
+====== Parámetros ======
+
+Ninguno 
+
+====== Devuelve ======
+
+<cIPAddress> Dirección IP del Servidor Web en formato cadena
+
+====== Código fuente ======
+
+SOURCE\CLASSES\TWEBSERV.PRG 
+
+====== Ver también ======
+
+[[fivewin_clase_TWebServer|Clase TWebServer]], [[fivewin_clase_TWebClient|Clase TWebClient]]
+

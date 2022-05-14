@@ -1,0 +1,19 @@
+
+====== GetClientRect() ======
+GetClientRect()
+
+Retrieves the client coordinates of a window
+====== Sintaxis ======
+ GetClientRect( <hWnd> ) --> aRect 
+
+ This function retrieves the dimensions of the window client area. 
+====== Parámetros ======
+ <hWnd> The handle of the window. 
+
+====== Devuelve ======
+
+ <aRect> A Clipper array of 4 elements:{ nTop, nLeft, nBottom, nRight } 
+====== Código fuente ======
+ SOURCE\WINAPI\Rects.c 
+====== Ver también ======
+ GetWndRect() FillRect() InvertRect() GetCoors()

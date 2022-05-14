@@ -1,0 +1,18 @@
+====== DbPx() ======
+Just to avoid removing extern DBPX.
+This function should be used if one doesn't want to include the command EXTERN DBPX 
+
+====== Syntax ======
+DbPx() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+NIL 
+
+====== Observations ======
+This function should be used if one doesn't want to include the command EXTERN DBPX 
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

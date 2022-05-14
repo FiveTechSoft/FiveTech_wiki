@@ -1,0 +1,149 @@
+JoySetThreshold()
+
+
+
+JoySetThreshold()
+
+ Previous  Top  Next
+
+
+
+
+Sets the movement threshold of a joystick device.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ JoySetThreshold( <nIdJoy>, <nTreshold> ) --> nError 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nIdJoy> Identifier of the joystick 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTreshold> New movement threshold 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nError> JOYERR_NOERROR if successful. Otherwise, returns one of the
+following error codes: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+MMSYSERR_NODRIVER   The joystick driver is not present.   
+JOYERR_PARMS      The specified joystick device ID wId is invalid.   
+
+
+
+
+
+
+
+MMSYSERR_BASE      0   
+JOYERR_BASE      160   
+JOYERR_NOERROR      0   
+MMSYSERR_NODRIVER   (MMSYSERR_BASE + 6)   
+JOYERR_PARAMS      (JOYERR_BASE+5)   
+
+
+
+
+
+Observations
+
+
+
+
+
+ The movement threshold is the distance the joystick must be moved before
+a MM_JOYMOVE message is sent to a window that has captured the device. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTJOY.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\JOYSTICK.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

@@ -1,0 +1,20 @@
+====== lSaveObject() ====== 
+
+Graba un objeto/matriz a disco
+
+====== Sintaxis ======             
+
+lSaveObject( <oVar>, <cFile> [,<nOpenMode>] ) --> nil
+
+
+====== Parámetros ======
+
+| <oVar> | Es el Objeto o Matriz a grabar en disco |
+| <cFile> | Es el nombre del archivo donde será grabado el Objeto/Matriz. |
+| <nOpenMode> | Es el modo de archivo DOS en la que se abre el archivo. El valor por omisión es FO_WRITE y FO_COMPAT. Esta función permite grabar cualquier objeto o matriz en un archivo. Por favor, note que usted no puede grabar un código de bloques al disco; si un elemento de una matriz contiene un código de bloques, este será NIL despues de la grabación. Si usted necesita trabajar con un código de bloques en una clase, luego codificar el bloque como un método setget en lugar de almacenarla en una variable instVar.|
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+====== Ver también ======

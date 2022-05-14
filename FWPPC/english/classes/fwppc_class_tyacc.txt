@@ -1,0 +1,46 @@
+====== Class TYacc ======
+
+FiveWin YACC Machine                                                           
+====== DATA ======
+|oLex|TLex object|
+|lDebug|Debug mode|
+|nErrors||
+|nErrFlag||
+|nToken|Last token|
+|nTheState|Actual state|
+|nState|Index into aStates|
+|nProduction|Current production rule|
+|lAccept|Accept mode|
+|nValue|Index into aValues|
+|aStates||
+|aLen|Nº of rules of each state|
+|aValues||
+|aDefRed||
+|aSIndex|Array of shift indexes|
+|aRIndex|Array of reduce indexes|
+|aGIndex|Array of goto indexes|
+|aDGoto||
+|aTable||
+|aLHS|Left hand side|
+|aCheck||
+|aRules||
+|uLValue|Last left value|
+|uValue|Last right value|
+|bShift||
+|bReduce||
+====== METHODS ======
+|New|Constructor from source code|
+|Parse|Starts processing an input stream (file or string)|
+|Shift|Shifts to a new state|
+|Reduce|Reduces from a state and executes the production rule|
+|if|defined|
+|Error|Error manager.|
+|ProdValue|Returns the value of a production member.|
+|Accept|General acceptacion process when parsing is|
+|completed.||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TYACC.PRG

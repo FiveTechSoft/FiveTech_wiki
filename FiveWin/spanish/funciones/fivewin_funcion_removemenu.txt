@@ -1,0 +1,24 @@
+
+====== RemoveMenu() ====== 
+RemoveMenu()
+
+Remove a menuitem from a specific menu
+====== Sintaxis ======
+ RemoveMenu( <hMenu>, <nItem>, <nFlags> ) --> lSuccess 
+====== Parámetros ======
+  <hMenu>   Handle of the menu 
+  <nItem>   Identifier of the menuitem 
+  <nFlags>  Method to calculate the menuitem: 
+     MF_BYCOMMAND   0   nItem is the identifier 
+     MF_BYPOSITION   1024   nItem is the position zero based 
+====== Devuelve ======
+ <lSuccess> If the function is succes a .t. is returned 
+
+Observations:
+
+ This function does not destroy the handle of the menu 
+====== Ejemplo ======
+ SOURCE\CLASSES\MENUITEM.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

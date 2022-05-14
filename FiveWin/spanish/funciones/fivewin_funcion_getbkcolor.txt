@@ -1,0 +1,18 @@
+====== GetBkColor() ======
+Obtiene el color de fondo actual
+====== Sintaxis ======
+GetBkColor( <hDC> ) –> nBgClr
+====== Parámetros ======
+|<hDC>| Contexto del dispositivo|
+====== Devuelve ======
+Retorna el color RGB si la función es exitos
+====== Ejemplo ======
+<code clipper>Function Main()
+LOCAL oWnd
+DEFINE WINDOW oWnd FROM 0,0 TO 500,600 PIXEL COLOR nRGB(0,0,0),nRGB(150,255,150)
+ACTIVATE WINDOW oWnd ON PAINT (MsgInfo(GetBkColor(oWnd:hDC)))  --->16777215
+Return(NIL)</code>
+====== Código fuente ======
+SOURCE\WINAPI\COLOR.C
+====== Ver también ======
+

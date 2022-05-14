@@ -1,0 +1,120 @@
+
+====== GetScrollPos() ====== 
+
+
+
+
+
+To obtain the position of the bar of Scroll
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetScrollPos( <hWnd>, <nFlags> ) --> nPos 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handler of the scroll bar 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFlags> Scroll bar flags 
+
+
+ 
+
+
+ 
+
+
+
+
+            
+
+SB_CTL   2   Retrieves the position of a scroll bar control. In this
+case, the hwnd parameter must be the window handle of a scroll bar
+control.   
+SB_HORZ   0   Retrieves the position of a window's horizontal scroll bar.
+  
+SB_VERT   1   Retrieves the position of a window's vertical scroll bar.   
+
+
+
+
+
+====== Returns ======
+
+
+
+
+
+ It returns the current position of the thumb of a bar of scroll. This
+value depends on the minimum value and maximum represented by the scroll
+bar. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\SCRLLBAR.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\SCROLL.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

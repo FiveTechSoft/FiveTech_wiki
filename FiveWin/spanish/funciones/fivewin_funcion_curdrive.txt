@@ -1,0 +1,24 @@
+
+====== CurDrive()======
+CurDrive()
+
+Retrieves the default drive selected letter
+
+====== Syntax ======
+
+ CurDrive() --> cCurDrive 
+
+
+====== Parameters ======
+ None 
+
+====== Returns ======
+
+ <cCurDrive> The letter of the currently selected drive: "C", "D", "E",
+... 
+
+====== Example ======
+
+ MsgInfo( CurDrive() ) 
+
+====== Ver también ======

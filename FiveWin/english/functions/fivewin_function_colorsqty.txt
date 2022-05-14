@@ -1,0 +1,26 @@
+====== ColorsQty() ====== 
+Return the total number of colors of the display driver
+
+====== Syntax ======
+ColorsQty() --> nColors 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Total number of colors available for the display driver
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch" 
+
+//-----------------------------------//
+Function main() 
+
+MsgInfo(ColorsQty() )  //Result 4294967296
+
+Return nil 
+</code>
+
+====== Source Code ======
+SOURCE\FUNCTION\GETSYSIN.PRG

@@ -1,0 +1,34 @@
+====== BringWindowToTop() ======
+
+Bring the window to the top of a stack of overlapping windows 
+
+====== Syntax: ======
+
+BringWindowToTop( < hWnd > ) --> lResult  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|< hWnd >| Handle of the window .|  
+ 
+
+====== Returns: ======
+^Value^Description^
+|lResut| Returns .T. if the operation was successful|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+function Main()
+   // Execute Calc.exe previously to this app, and send it to 'back'
+   // Change "Calculadora" caption into "Calc"
+   BringWindowToTop( FindWindow( 0, "Calc" ) )
+   MsgBeep()
+return nil
+</code>
+====== Sample: ======
+
+SOURCE\CLASSES\WINDOW.PRG  
+
+====== Source Code: ======
+
+SOURCE\WINAPI\WNDMOVE.C  

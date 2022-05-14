@@ -1,0 +1,31 @@
+====== Class TComm ======
+
+Communication as an object                                                     
+Developed by a FiveWin user.                                                   
+====== DATA ======
+|nDevice|Comm device number|
+|nInQueue|In buffer len|
+|nOutQueue|Out buffer len|
+|nId|Handle from OpenComm()|
+|nStop|Stop bits|
+|nBaud|Baud rate|
+|nData|Data length|
+|nErr|Last error number|
+|cParity|Parity type|
+|cStyle|"COM" or "LPT"|
+====== METHODS ======
+|New|Constructor from source code|
+|Break|Blocks the communication port.|
+|Close|Closes the communication port.|
+|Error|Shows the errors messages.|
+|Escape|Sends the escape sequence.|
+|Flush|Leaves empty the communication buffer.|
+|SetUp|Setups the communication port.|
+|UnBreak|Unlock the communication port.|
+|Write|Send a string to the communication port.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TCOMM.PRG

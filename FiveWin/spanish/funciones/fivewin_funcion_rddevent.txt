@@ -1,0 +1,22 @@
+
+====== RddEvent() ====== 
+RddEvent()
+
+Handler of events of the class TRdd()
+====== Sintaxis ======
+ RddEvent( <cEvent>, <uParam1>, <uParam2>, <uParam3>, <uParam4>,
+<uParam5>, <uParam6>, <uParam7>, <uParam8>, <uParam9>, <uParam10>,
+<uParam11> ) --> uRet 
+====== Parámetros ======
+  <cEvent> Event to send to the object oRdd 
+  <uParam1...11> Parameters to send to the object oRdd 
+====== Devuelve ======
+ <uRet> Uncertain value. It will depend on the event that was sent. 
+
+Observations:
+
+ This function makes use of the function OSend () to send messages to an
+object with the parameters that we indicate until a maximum of 11. 
+====== Código fuente ======
+ SOURCE\CLASSES\TRDD.PRG 
+====== Ver también ======

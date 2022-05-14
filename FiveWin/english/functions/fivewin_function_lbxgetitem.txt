@@ -1,0 +1,131 @@
+====== LbxGetItem() ====== 
+
+
+
+LbxGetItem()
+
+
+
+
+
+
+Retrieves an item of a listbox
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LbxGetItem( <hWnd>, <nItem> ) --> cText 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the handle of the listbox control whose nItem text is
+to be retrieved. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nItem> Identifies the 1 based index of the item whose text is to be
+retrieved. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cText> The text associated with that ListBox item. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is used by FiveWin in the TListBox class. Use the TListBox
+class methods instead of manipulating directly these functions. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Lbx.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Class TListBox 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

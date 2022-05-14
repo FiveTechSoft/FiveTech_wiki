@@ -1,0 +1,27 @@
+====== DrawState() ======
+Displays an image and applies a visual effect to indicate a state, such
+as a disabled or default state.
+
+====== Syntax ======
+DrawState( <hDC>, <hBrush>, <pCallBack>, <pData>, <pMoreData>, <nX>,
+<nY>, <nCX>, <nCY>, <nFlags> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Handle to device context |
+|<hBrush>| Handle to brush |
+|<pCallBack>| Pointer to callback function |
+|<pData>| Image information |
+|<pMoreData>| More image information |
+|<nX>| Horizontal location of the image| 
+|<nY>| Vertical location of the image |
+|<nCX>| Width of the image |
+|<nCY>| Height of the image |
+|<nFlags>| Image type and state.\\ Image types:\\ #define **DST_COMPLEX** 0\\ #define **DST_TEXT** 1\\ #define **DST_PREFIXTEXT** 2\\ #define **DST_ICON**  3\\ #define **DST_BITMAP** 4\\ \\ State type:\\ #define **DSS_NORMAL** 0\\ #define **DSS_UNION** 16\\ #define **DSS_DISABLED** 32\\ #define **DSS_MONO** 128\\ #define **DSS_HIDEPREFIX** 512\\ #define **DSS_PREFIXONLY** 1024\\ #define **DSS_RIGHT** 32768|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>|  .T. if the function is successful, otherwise .F.|
+
+====== Source Code ======
+SOURCE\WINAPI\DRAWING.C 

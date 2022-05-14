@@ -1,0 +1,30 @@
+====== cResToStr() ======
+Converts a resource to a string of characters 
+
+====== Syntax: ======
+cResToStr( <cResName>, <cResType> ) --> cInfo  
+
+====== Parameters: ======
+^Parameter^Description^ 
+|<cResName>| Name of the resource  |
+|<cResType>| Resource type  |
+
+====== Returns: ======
+|<cInfo>| Resource converted as text string  |
+
+====== Sample: ======
+SOURCE\CLASSES\TFORM.PRG  
+
+<code clipper>
+// In RC file:
+*test PNG "file.png"
+
+// Then from your PRG:
+MsgInfo( Len( cResToStr( "test", "PNG" ) ) )
+</code>
+
+====== Observations: ======
+It is used to load resources that were stored previously like a string of text. Used in the IDE of FiveWin.  
+
+====== Source Code: ======
+SOURCE\WINAPI\RESOURCE.C  

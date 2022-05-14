@@ -1,0 +1,46 @@
+DDEGetLastError()
+
+
+DDEGetLastError()
+ Previous  Top  Next
+
+Retrieves the most recent DDE error code.
+
+====== Sintaxis ======
+
+
+ DDEGetLastError( <hInst> ) --> nError 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hInst> Instance identifier 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nError> The most recent error code. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\DDEML.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

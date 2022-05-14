@@ -1,0 +1,36 @@
+====== IsWinNT() ======
+
+It checks if the version of Windows is NT.
+
+====== Syntax ======
+
+
+ IsWinNT() --> lYesNo 
+
+
+====== Parameters ======
+
+ None 
+
+====== Returns ======
+
+|<lYesNo>|This function returns .t. if we are executing the application under Windows NT | 
+
+
+====== Example ======
+<code clipper>
+   MsgInfo( IsWinNT() )
+</code>
+
+
+====== Source Code ======
+
+ SOURCE\WINAPI\wndis.c 
+
+====== See also ======
+[[fivewin_function_iswin64|function IsWin64()]],
+[[fivewin_function_liswin2000|function lIsWin2000()]],
+[[fivewin_function_liswinnt|function lIswinNT()]],
+[[fivewin_function_liswinxp|function lIsWinXP()]],
+[[fivewin_function_liswin95|function lIsWin95()]]
+

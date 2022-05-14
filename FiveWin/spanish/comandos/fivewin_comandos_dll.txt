@@ -1,0 +1,75 @@
+====== Definiendo un función externa DLL a ser llamada en tiempo de ejecución ====== 
+<code clipper>
+DLL [STATIC] FUNCTION <FuncName> ( ;[ <Param1> AS <Type1> ] ;  
+  [ <ParamN> AS <TypeN> ] ) ;  
+  AS <return> [PASCAL] [ FROM <SymName> ] LIB <DllName>  
+</code>  
+
+====== Para acceder a una función DLL de 32 bits ====== 
+<code clipper>
+DLL32 [STATIC] FUNCTION <FuncName> ( ;[ <Param1> AS <Type1> ] ;  
+  [ <ParamN> AS <TypeN> ] ) ;  
+  AS <return> [PASCAL] [ FROM <SymName> ] LIB <DllName>  
+</code>   
+  
+FiveWin te permite declarar una función externa DLL a ser llamada en tiempo de ejecución por su propio nombre. Ver el ejemplo DllCall.prg
+
+|<FuncName>       |El nombre de la función DLL. Recuerde que Clipper solo usa una longitud máxima de 10 caracteres.|
+|<Param1>         |Nombre del parametro.|
+|<Type>,<return>  |BYTE, CHAR, WORD, BOOL, HANDLE, HWND, HDC, LONG, STRING, LPSTR, PTR, DOUBLE|
+|<SymName>        |El nombre de la función DLL a ejecutar. Por defecto la misma DLL FUNCTION <name> es usada.|
+|<DllName>        |Nombre del DLL.|
+
+====== Clausulas ====== 
+
+|FROM             |Para especificar un diferente nombre de función DLL a accesar. POr favor revise el código de los ejemplos en SOURCE\WINAPI\*.prg.|
+
+Nosotros recomendamos desarrollar funciones de conección basadas en lenguaje C cuando usted esta desarrollando un trabajo intenso con algunos DLL. Ver ejemplos "usando el API de Windows".
+
+Llamando a SndPlaySound() en tiempo de ejecución: 
+
+<code clipper>
+#include "FiveWin.ch" 
+
+function Main() 
+    SndPlaySound( "tada.wav", 0 ) 
+return 
+
+
+DLL FUNCTION SndPlaySound( cFile AS LPSTR, nType AS WORD ); 
+ AS BOOL PASCAL LIB "MMSYSTEM.DLL"  
+</code>   
+  
+**Diseñando la misma conección DLL usando lenguage C: **
+
+<code clipper>
+#include <WinTen.h> 
+#include <Windows.h> 
+#include <MMSystem.h> 
+#include <ClipApi.h> 
+
+CLIPPER SNDPLAYSOU()
+{ 
+   _retl( sndPlaySound( _parc( 1 ), _parni( 2 ) ) ); 
+} 
+</code>   
+
+En esta situación es necesario usar una LIB especifica para que el enlazador conozca como se realizará la conección DLL en tiempo de ejecución. Ejemplo:
+
+TEST.DLL      // Es una DLL comercial que vamos a usar
+
+IMPDEF.EXE TEST.DEF TEST.DLL      // IMPDEF.EXE es una herramiento proporcionada por Microsoft y Borland
+
+Ahora, editar TEST.DBF -el cual es una archivo ascii- y renombrar los simbolos con 10 caracteres o menos con un guion bajo al inicio (_):
+
+LESS10 ---> _LESS10 
+
+Luego hacer: 
+
+IMPLIB.EXE TEST.LIB TEST.DEF 
+
+Durante el enlazado usar .LIB ! 
+
+Revisar en nuestro directorio \WinApi -solo usuarios registrados- el codigo fuente en C para ver varios ejemplos haciendo esto.
+
+Cuidado: SndPlaySound() esta incluido dentro de FiveWin.lib. Se ha usado en este ejemplo solo para propósitos de aprendizaje.

@@ -1,0 +1,60 @@
+====== PrinterSetup() ====== 
+
+PrinterSetUp() Shows a print setup dialog box. PrinterSetup() calls Windows API PrintDlg.
+
+**According to Microsoft docs:**
+
+The PrintDlg function displays a Print dialog box or a Print Setup dialog box. The Print dialog box enables the user to specify the properties of a particular print job. 
+
+The Print Setup dialog box should not be used in new applications. It has been superseded by the Page Setup common dialog box created by the PageSetupDlg function.
+<code clipper>
+BOOL PrintDlg(
+
+LPPRINTDLG lppd // address of structure with initialization data
+);
+</code>
+
+**Parameters**
+
+lppd
+
+Pointer to a PRINTDLG structure that contains information used to initialize the dialog box. When PrintDlg returns, this structure contains information about the user's selections. 
+
+
+
+====== Syntax ======
+
+PrinterSetup( <hWndOwner> ) --> hDC or Zero 
+
+
+====== Parameters ======
+
+ <hWndOwner> Handle of the window to which belongs the dialog box. This
+parameter can be nil if the dialog box not it belongs to any window. 
+
+
+====== Returns ======
+
+If the user clicks the OK button, the return value is nonzero.
+
+PrinterSetup will return a non zero value if OK button is pressed, and will return 0 if Cancel button is pressed 
+
+
+====== Example ======
+<code clipper>
+#include "Fivewin.ch"
+
+Function Main()
+   Local nRtnValue
+   nRtnValue:=PrinterSetup()
+   MSgInfo(nReturn)
+Return NIL
+</code>
+
+
+====== Source Code ======
+
+SOURCE\WINAPI\PRINTDC.C 
+
+====== See also ======
+

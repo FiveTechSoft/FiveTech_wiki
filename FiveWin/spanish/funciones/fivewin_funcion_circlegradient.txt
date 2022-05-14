@@ -1,0 +1,33 @@
+
+====== CircleGradient() ======
+Dibuja un degradado circular o retorna un HBITMAP/HBRUSH con un degradado circular dentro de un rectangulo
+
+====== Syntaxis ======
+
+ CircleGradient( <hDC>, <aRect>, <nStartColor>, <nEndColor>, [<nOffsetX>], [<nOffSetY>], [<nOutPut>] ) --> 0/hBitmap/hBrush
+
+====== Parametros: ======
+| <hDC> | Device context, puede ser 0 ( zero ), depende del valor de nOutPut, ver abajo |
+| <aRect> | Array de  4 elementos:{ nTop, nLeft, nBottom, nRight } |
+| <nStartColor> | Color inicial del degradado |
+| <nEndColor> | Color final del degradado |
+| [<nOffSetX>] | ( opcional ) mueve el punto central en el eje X, > 0 mueve a la derecha, < 0 mueve a la izquierda, default 0 |
+| [<nOffSetY>] | ( opcional ) mueve el punto central en el eje Y, > 0 mueve abajo, < 0 mueve arriba, default 0  |
+| [<nOutPut>] | ( opcional ) tipo de salida, valores entre 1-3, 1 = hDC (default), 2 = hBitmap, 3 = hBrush |
+ 
+
+====== Devuelve======
+| 0 | nOutput = 1 |
+| hBitmap | nOutput = 2 |
+| hBrush | nOutput = 3 |
+ 
+
+====== Ejemplo ======
+ <code clipper>
+ CircleGradient( hDC, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ) )
+ hBitmap = CircleGradient( 0, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ), -190, -190, 2 )
+ hBrush = CircleGradient( 0, { 0, 0, 400, 400 } , nRGB( 212, 219, 237 ), nRGB( 132, 179, 249 ), , , 3 )
+ </code>
+
+====== Código fuente ======
+====== Ver también ======

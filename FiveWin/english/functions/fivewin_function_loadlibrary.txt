@@ -1,0 +1,336 @@
+====== LoadLibrary() ====== 
+
+
+
+LoadLibrary()
+
+
+
+
+
+
+Load a Dynamic link library to use it
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LoadLibrary( <cLibraryName> ) --> hInstance 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cLibraryName> The name of the DLL to load. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hInstance> The handle of the DLL just loaded. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Windows searches for the library in this order: 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 1 The current directory. 
+
+
+ 
+
+
+  
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 2 The Windows directory (the directory containing WIN.COM); the
+GetWinDir() function retrieves the path of this directory. 
+
+
+ 
+
+
+  
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 3 The Windows system directory (the directory containing such system
+files as GDI.EXE); the GetSysDir() function retrieves the path of this
+directory. 
+
+
+ 
+
+
+  
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 4 The directory containing the executable file for the current task; the
+GetModuleFileName function retrieves the path of this directory. 
+
+
+ 
+
+
+  
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 5 The directories listed in the PATH environment variable. 
+
+
+ 
+
+
+  
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 6 The list of directories mapped in a network. 
+
+
+ 
+
+
+  
+
+
+
+
+
+ The return value is the instance handle of the loaded library module if
+the function is successful. Otherwise, it is an error value less than
+HINSTANCE_ERROR. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Errors 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ If the function fails, it returns one of the following error values: 
+
+
+ 
+
+
+ 
+
+
+
+Value      Meaning   
+0      System was out of memory, executable file was corrupt, or
+relocations were invalid.   
+2      File was not found.   
+3      Path was not found.   
+5      Attempt was made to dynamically link to a task, or there was a
+sharing or network-protection error.   
+6      Library required separate data segments for each task.   
+8      There was insufficient memory to start the application.   
+10      Windows version was incorrect.   
+11      Executable file was invalid. Either it was not a Windows
+application or there was an error in the .EXE image.   
+12      Application was designed for a different operating system.   
+13      Application was designed for MS-DOS 4.0.   
+14      Type of executable file was unknown.   
+15      Attempt was made to load a real-mode application (developed for
+an earlier version of Windows).   
+16      Attempt was made to load a second instance of an executable file
+containing multiple data segments that were not marked read-only.   
+19      Attempt was made to load a compressed executable file. The file
+must be decompressed before it can be loaded.   
+20      Dynamic-link library (DLL) file was invalid. One of the DLLs
+required to run this application was corrupt.   
+21      Application requires 32-bit extensions.   
+
+
+
+
+
+Comments
+
+
+
+
+
+ If the module has been loaded, LoadLibrary increments (increases by one)
+the module's reference count. If the module has not been loaded, the
+function loads it from the specified file. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ LoadLibrary increments the reference count for a library module each
+time an application calls the function. When it has finished using the
+module, the application should use the FreeLibrary function to decrement
+(decrease by one) the reference count. An application can use the
+GetProcAddress function to access functions in a library that was loaded
+using LoadLibrary. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\AutoLay.prg DllCall.prg DllClear.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Dll.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ FreeLibrary() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

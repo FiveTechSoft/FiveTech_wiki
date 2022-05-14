@@ -1,0 +1,17 @@
+====== Creates a TOOLBAR from source code ======
+<code clipper>
+DEFINE TOOLBAR <oTbr> ;
+   [ OF <oWnd> ]
+
+DEFINE BUTTON [ <oBtn> ] OF <oTbr> ;
+   [ PROMPT <cPrompt> ] ;
+   [ TOOLTIP <cToolTip> ] ;
+   [ ACTION <uAction,...> ] ;
+   [ IMAGE <cImage> ]
+</code>
+====== Example ======
+
+====== Source code ======
+FMC\source\classes\ttoolbar.prg
+====== See Also ======
+[[fivemac_class_ttoolbar|Class TToolBar]]

@@ -1,0 +1,49 @@
+====== SocketSend() ======
+
+
+Sends data to a socket.
+
+====== Syntax ======
+
+
+ SocketSend( <nSocket>, <cText> ) --> nBytesSent 
+
+
+ 
+
+====== Parameters ======
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ <cText> Data to be send 
+
+
+ 
+
+====== Returns ======
+
+
+ <nBytesSent> Total number of bytes sent 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+
+====== See also ======
+

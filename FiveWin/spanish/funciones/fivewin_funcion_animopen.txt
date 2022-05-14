@@ -1,0 +1,25 @@
+====== AnimOpen() ======
+
+Abre un clip AVI y muestra su primer cuadro en un control de animación
+
+====== Syntaxis ======
+
+AnimOpen( <hWnd>, <cAviFileRes> ) --> lSuccess  
+
+====== Parámetros ======
+
+| <hWnd> | Handle del control de animación.  |
+| <cAviFileRes> | Nombre del archivo AVI dentro del recurso AVI a abrir.  | 
+
+====== Devuelve ======
+
+| <lSuccess> | Retorna .T. si el resultado fué exitoso  |
+
+====== Ejemplo ======
+
+<code clipper></code>
+
+====== Codigo fuente ======
+
+SOURCE\WINAPI\ANIMATE.C 
+

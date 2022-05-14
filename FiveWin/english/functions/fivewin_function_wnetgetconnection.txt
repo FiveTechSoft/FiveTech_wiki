@@ -1,0 +1,57 @@
+====== WNetGetConnection() ====== 
+
+WNetGetConnection()
+
+Retrieves the name of the network resource associated with a local device.
+
+====== Syntax ======
+
+ WNetGetConnection( <cDevice> ) --> cNetworkResource 
+
+ 
+====== Parameters ======
+
+
+ <cDevice> The name of the local device to get the network name for. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <cNetworkResource> The remote name used to make the connection. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\NET.C 
+
+
+ 
+
+
+
+====== See also ======
+

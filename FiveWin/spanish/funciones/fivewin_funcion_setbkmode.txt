@@ -1,0 +1,37 @@
+====== SetBkMode() ======
+La funcion SetBkMode() Establece el modo de fondo
+
+====== Sintaxis ======
+
+SetBkMode( <hDC>, <nMode> ) --> nPrevius 
+
+====== Parámetros ======
+
+^Nombre^Descripción^
+|<hDC>| Dispositivo de contexto en el que se configura el modo|
+|<nMode>| Modo del fondo a establecer.\\ ''OPAQUE             2''\\ ''TRANSPARENT      1'' |
+
+====== Devuelve ======
+
+^Nombre^Descripción^
+|<nPrevious>| Modo previo del fondo |
+
+====== Ejemplo ======
+<code>
+
+hDC := oWnd:GetDC() 
+
+nOldMode := SetBkMode( hDC, TRANSPARENT ) 
+
+TextOut( hDC, 10, 10, "Test" ) 
+
+SetBkMode( hDC, nOldMode ) 
+
+oWnd:ReleaseDC() 
+</code>
+
+====== Código fuente ======
+
+SOURCE\WINAPI\COLOR.C 
+
+====== Ver también ======

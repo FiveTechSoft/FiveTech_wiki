@@ -1,0 +1,79 @@
+====== IsWinVista() ======
+
+
+
+It checks if the version of Windows is Vista.
+
+====== Syntax ======
+
+
+
+
+
+ IsWinVista() --> lWinVista 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lWinVista> This function returns .t. if we are executing the
+application under Windows Vista. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\getsysin.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,91 @@
+DrawBitmap()
+
+
+====== Descripción ======
+
+función para el pintado de Bitmaps
+
+
+====== Sintaxis ======
+
+ DrawBitmap( <hDC>, <hBitmap>, <nRow>, <nCol>, <nWidth>, <nHeight>,
+<nRaster> ) --> nil 
+
+
+
+ This function draws a bitmap (16 colors or 256 colors without palette
+control) onto the specified device context. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Parámetros ======
+|<hDC>|The handle of the device context| 
+|<hBitmap>|The handle of the bitmap| 
+|<nRow>, <nCol>|The coordinates where to draw| 
+|<nWidth>, <nHeight>|The dimensions to adjust the bitmap| 
+|<nRaster>|A raster operation style, as follows:| 
+
+|BLACKNESS|Turns all output black|   
+|DSTINVERT|Inverts the destination bitmap|   
+|MERGECOPY|Combines the pattern and the source bitmap by using the Boolean AND operator|   
+|MERGEPAINT|Combines the inverted source bitmap with the destination bitmap by using the Boolean OR operator|   
+|NOTSRCCOPY|Copies the inverted source bitmap to the destination|   
+|NOTSRCERASE|Inverts the result of combining the destination and source bitmaps by using the Boolean OR operator|   
+|PATCOPY|Copies the pattern to the destination bitmap|   
+|PATINVERT|Combines the destination bitmap with the pattern by using the Boolean XOR operator|   
+|PATPAINT|Combines the inverted source bitmap with the pattern by using the Boolean OR operator. Combines the result of this operation with the destination bitmap by using the Boolean OR operator|   
+|SRCAND|Combines pixels of the destination and source bitmaps by using the Boolean AND operator|   
+|SRCCOPY|Copies the source bitmap to the destination bitmap|   
+|SRCERASE|Inverts the destination bitmap and combines the result with the source bitmap by using the Boolean AND operator|   
+|SRCINVERT|Combines pixels of the destination and source bitmaps by using the Boolean XOR operator|   
+|SRCPAINT|Combines pixels of the destination and source bitmaps by using the Boolean OR operator|   
+|WHITENESS|Turns all output white|  
+
+
+====== Devuelve ======
+
+|nil|Nada|
+
+ 
+
+
+ 
+
+
+
+====== Observaciones ======
+
+We strongly recommend use of the FiveWin TBitmap Class, as it is much easier to use and more powerful. 
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\\Install.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+====== Código fuente ======
+
+SOURCE\WINAPI\BmpDraw.c 
+
+====== Ver también ======
+[[fivewin_clase_timage|Clase TImage]]

@@ -1,0 +1,42 @@
+====== NetSerialNumber() ======
+
+This function obtains the serial number of thenet adapter:
+
+====== Syntax ======
+
+
+ NetSerialNumber() --> cSerial 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <cSerial> Serial number of the net adapter. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\NETAPI32.PRG 
+
+
+ 
+
+
+
+====== See also ======
+

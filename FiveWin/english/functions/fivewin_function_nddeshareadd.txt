@@ -1,0 +1,57 @@
+====== NDdeShareAdd() ======
+
+
+Creates and adds a new DDE share to the DDE share database manager (DSDM).
+
+====== Syntax ======
+
+
+ NDdeShareAdd( <cServer>, <nLevel>, <aNDdeShareInfo> ) --> nRetCode 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cServer> Server name where the data will be modified 
+
+
+ 
+
+
+ <nLevel> Info level must be 2 
+
+
+ 
+
+
+ <aNDdeShareInfo> Address of NDDESHAREINFO 
+
+
+ 
+
+====== Returns ======
+
+
+ If the operation is executed with success the function returns
+NDDE_NO_ERROR 0 . In another case a will be returned code of error that
+we will be able to decipher calling to the function NDdeGetErrorString. 
+
+
+ 
+
+====== Example ======
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\NDDEAPI.C 
+
+
+ 
+
+
+
+====== See also ======
+

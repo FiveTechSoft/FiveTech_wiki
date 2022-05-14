@@ -1,0 +1,19 @@
+====== DelWndBrus() ======
+To Delete/erase the last brush created with WndBrush
+
+====== Syntax ======
+DelWndBrus() 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nil 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\WNDBRUSH.C 
+
+====== See also ======
+[[fivewin_function_deleteobject|DeleteObject()]], [[fivewin_function_delresource|DelResource()]]

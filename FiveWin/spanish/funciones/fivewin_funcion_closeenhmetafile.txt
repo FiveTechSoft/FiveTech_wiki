@@ -1,0 +1,67 @@
+CloseEnhMetaFile()
+
+
+CloseEnhMetaFile()
+ Previous  Top  Next
+
+Closes an enhanced-metafile device context and returns a handle that
+identifies an enhanced-format metafile.
+
+====== Sintaxis ======
+
+ 
+
+
+ CloseEnhMetaFile( <hDC> ) --> hEMF 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDC> The handle of an enhanced-metafile device context. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hEMF> The handle of the enhanced metafile. Zero in case of failure. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\EMETAFIL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

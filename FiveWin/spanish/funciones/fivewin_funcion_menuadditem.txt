@@ -1,0 +1,41 @@
+
+====== MenuAddItem() ====== 
+MenuAddItem()
+
+Adds a menuitem to a menu. Internally used.
+====== Sintaxis ======
+
+  MenuAddItem( <cPrompt>, <cMsg>, <lChecked>, <lActive>, <bAction>,
+<cBmpFile>, <cResName>, <oMenu>, <bBlock>, <nVKState>, <nVirtKey>,
+<lHelp>, <nHelpId>, <bWhen>, <lBreak> ) --> oMenuItem 
+====== Parámetros ======
+  <cPrompt>   The caption of the menuitem 
+  <cMsg>      The messagebar message for that menuitem 
+  <lChecked>  If it is checked originally the menuitem 
+  <lActive>   If it is enabled originally the menuitem 
+  <bAction>   The action to be performed for that menuitem selection 
+  <cBmpFile>  The name of a BMP file to be used to draw the menuitem 
+  <cResName>  The name of a BMP resource to be used to draw the menuitem 
+  <oMenu>     The oMenu container of this menuitem 
+  <bBlock>    The action to be performed by this menuitem supplied as a codeblock 
+  <nVKState>  The accelerator info for this menuitem 
+  <nVirtKey>  Extra accelerator info for this menuitem 
+  <lHelp>     If it is a right-position typical help menuitem 
+  <nHelpId>   The help id associated to this menuitem 
+  <bWhen>     The WHEN condition for this menuitem supplied as a codeblock 
+  <lBreak>    If it is a separator 
+====== Devuelve ======
+ The menuitem object properly built and initialized 
+
+Observations:
+
+ FiveWin manages this function automatically from inside the xBase commands. 
+====== Ejemplo ======
+ SAMPLES-->TestMenu.prg 
+====== Código fuente ======
+ SOURCE\CLASSES-->PdMenu.prg 
+
+See also:
+
+ Class TMenuItem Class TMenu 
+====== Ver también ======

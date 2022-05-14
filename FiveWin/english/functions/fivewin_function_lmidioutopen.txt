@@ -1,0 +1,103 @@
+====== lMidiOutOpen() ====== 
+
+
+
+lMidiOutOpen()
+
+
+
+
+
+
+Opens a specified MIDI output device for playback.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lMidiOutOpen( <@nMidi> [,<nDevice>] ) --> lOk 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <@nMidi> Handle that the MIDI output device identifies. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nDevice> The MIDI output device that has to open up identifies 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lOk> Return true if the function is success 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,39 @@
+
+====== RaConst() ====== 
+RaConst()
+
+It indicates the current state of the connection
+====== Sintaxis ======
+ RaConSt( <hRas> ) --> nState 
+====== Parámetros ======
+ <hRas> Handle of the connection gotten with the function RasDial() 
+====== Devuelve ======
+ <nStatus> The following states exist: 
+    RASCS_OpenPort      Opening port of communications   
+    RASCS_PortOpened      Open port correctly   
+    RASCS_ConnectDevice      Connecting with the device   
+    RASCS_DeviceConnected   Connected device   
+    RASCS_AllDevicesConnected   All the connected devices   
+    RASCS_Authenticate      Verifying name and password   
+    RASCS_AuthNotify      Name and correct password   
+    RASCS_AuthRetry      Retrying confirmation of identity   
+    RASCS_AuthCallback      Authenticate by means of call return   
+    RASCS_AuthChangePassword   Obligation of changing the password   
+    RASCS_AuthProject      RASCS_AuthProject   
+    RASCS_AuthLinkSpeed      Verifying connection speed   
+    RASCS_AuthAck      Verifying connection authenticate   
+    RASCS_ReAuthenticate      Repeating authenticate   
+    RASCS_Authenticated      Authenticated   
+    RASCS_PrepareForCallback   Preparing for call return   
+    RASCS_WaitForModemReset   Waiting initialization of the modem   
+    RASCS_WaitForCallback   Waiting llamda return   
+    RASCS_PAUSED = &H1000   It PAUSES   
+    RASCS_RetryAuthentication   Retrying authenticate   
+    RASCS_CallbackSetByCaller   Return of call requested by who calls   
+    RASCS_PasswordExpired   The password has expired   
+    RASCS_DONE = &H2000   Connected correctly   
+    RASCS_Disconnected      It has been disconnected   
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\RASAPI.C 
+====== Ver también ======

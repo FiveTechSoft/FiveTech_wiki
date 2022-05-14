@@ -1,0 +1,51 @@
+TvIParam()
+
+
+TvIParam()
+ Previous  Top  Next
+
+Retrieves the value associated with an item of a TreeView control.
+
+====== Sintaxis ======
+
+
+ TvIParam( <hItem> ) --> nValue 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ <hItem> Handle of the treeitem. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nValue> Value associated with the item. 
+
+
+ 
+
+====== Código fuente ======
+
+ 
+
+
+ SOURCE\WINAPI\treeview.c 
+
+
+ 
+
+
+
+
+====== Ver también ======
+

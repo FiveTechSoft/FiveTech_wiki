@@ -1,0 +1,78 @@
+SetDatePick()
+
+
+SetDatePick()
+ Previous  Top  Next
+
+Sets the date of the DatePicker control.
+
+====== Sintaxis ======
+
+ 
+
+
+ SetDatePick( <hWnd>, <nYear>, <nMonth>, <nDay>, <nEmpty> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> The window handle of the DatePicker control. 
+
+
+ 
+
+
+ <nYear>, <nMonth>, <nDay> The new date to set. 
+
+
+ 
+
+
+ <nEmpty> Allows empty dates (1 for empty date allowed, or 0 otherwise). 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\DATEPICK.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

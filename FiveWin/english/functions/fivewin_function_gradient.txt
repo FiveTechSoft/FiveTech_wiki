@@ -1,0 +1,25 @@
+
+====== Gradient() ======
+It gradient fills an area using a RGB start color and another RGB end color
+
+====== Syntax ======
+Gradient( hDC, aArea, nRGBStart, nRGBEnd, lVertical ) --> nil
+====== Parameters ======
+|hDC|the handle of the device context where to gradient fill| 
+|aArea|The coordinates and dimensions to fill in the device context| 
+|nRGBStart|The RGB color to use for the beginning of the gradient fill| 
+|nRGBEnd|The RGB color to use for the end of the gradient fill| 
+|lVertical|Specifies if the gradient fill should be vertical instead of horizontal|
+====== Returns ======
+|nil|nothing|
+
+====== Example ======
+Gradient( hDC, { 10, 10, 100, 100 }, nRGB( 255, 0, 0 ), nRGB( 0, 255, 0 ), .F. )
+
+====== Source code ======
+FWH\source\classes\bar.prg
+
+
+
+====== See Also ======
+[[fivewin_function_gradientfill|GradientFill()]], [[fivewin_function_gradientbrush|GradientBrush()]]

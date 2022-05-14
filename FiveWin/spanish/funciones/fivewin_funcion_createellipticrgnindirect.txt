@@ -1,0 +1,23 @@
+====== CreateEllipticRgnIndirect() ======
+Crea una región elíptica desde una matriz
+
+====== Syntax ======
+CreateEllipticRgnIndirect( aRect ) --> hRgn
+
+====== Parámetros ======
+^Parámetro^Descripción^
+|<aRect>|Una matriz con los valores rect ( nTop, nLeft, nBottom, nRight }|
+
+====== Retorna ======
+^Retorna^Descripción^
+|<hRgn>|El manejador de la región recien creada|
+
+
+====== Observaciones ======
+Cuando ya no necesite el objeto HRGN, llamar a la función DeleteObject para borrarlo.
+
+====== Código fuente ======
+SOURCE\WINAPI\REGIONS.c 
+
+====== Ver también ======
+[[fivewin_function_CreateEllipticRgn|CreateEllipticRgn()]]

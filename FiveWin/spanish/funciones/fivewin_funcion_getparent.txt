@@ -1,0 +1,18 @@
+
+====== GetParent() ======
+GetParent()
+
+Retrieves the window handle of a window parent
+====== Sintaxis ======
+ GetParent( <hWnd> ) --> hWndParent 
+
+ This function returns the handle of the container window (if any) of a
+given window. 
+====== Parámetros ======
+ <hWnd> The handle of the window. 
+====== Devuelve ======
+ <hWndParent> The handle of the container window of <hWnd> 
+====== Código fuente ======
+ SOURCE\WINAPI\GetParen.c 
+====== Ver también ======
+ SetParent()

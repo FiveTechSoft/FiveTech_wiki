@@ -1,0 +1,29 @@
+====== Class TClipBoard ======
+
+Windows clipboard as an Object.                                                
+The clipboard provides a mechanism that makes it possible for                  
+applications to pass data handles to other applications. Clipboard             
+functions carry out data interchange between Windows applications.             
+DATAs                                                                          
+nFormat             Type of data placed in Clipboard                           
+oWnd                Container object                                           
+METHODs                                                                        
+New                 Constructor from source code                               
+Clear               Open, clear Clipboard contents and close it                
+Close               Close the Clipboard to end using it                        
+Empty               Clear Clipboard contents if it's open                      
+End                 Open, clear Clipboard contents and close it                
+GetBitmap           Get the content of Clipboard in bitmap format              
+GetData             Get the content of Clipboard                               
+GetText             Get the text placed in the Clipboard                       
+IsEmpty             Checks if the clipboard is empty                           
+Open                Open the Clipboard to start using it                       
+SetBitmap           Places the given bitmap in the Clipboard                   
+SetData             Set the content of Clipboard                               
+SetText             Places text in the Clipboard                               
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TCLIPBOARD.PRG

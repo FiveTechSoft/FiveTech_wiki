@@ -1,0 +1,72 @@
+====== Creación de un DbCombo desde codigo fuente ====== 
+<code clipper>
+@ <nRow>, <nCol> DBCOMBO [ <oCbx> VAR ] <cVar> ;
+  [ ITEMS <aItems> ] ;
+  [ SIZE <nWidth>, <nHeight> ] ;
+  [ OF | WINDOW | DIALOG <oWnd> ] ;
+  [ HELPID | HELP ID <nHelpId> ] ;
+  [ ON CHANGE <uChange> ] ;
+  [ VALID <ValidFunc> ] ;
+  [ COLOR | COLORS <nClrText>;[,<nClrBack>] ] ;
+  [ PIXEL ] ;
+  [ FONT <oFont> ] ;
+  [ UPDATE ] ;
+  [ MESSAGE <cMsg> ] ;
+  [ WHEN <WhenFunc> ] ;
+  [ DESIGN ] ;
+  [ BITMAPS <acBitmaps> ] ;
+  [ ON DRAWITEM <uBmpSelect> ] ;
+  [ ALIAS <cAlias> ] ;
+  [ ITEMFIELD <cFldItem> ] ;
+  [ LISTFIELD <cFldList> ] ;
+  [ LIST | PROMPTS <aList> ]
+</code>  
+====== Creación de un Objeto DBCombo desde recursos ======
+<code clipper>
+REDEFINE DBCOMBO [ <oCbx> VAR ] <cVar> ;
+  [ ITEMS | PROMPTS <aItems> ] ;
+  [ ID <nId> ] ;
+  [ OF | WINDOW | DIALOG <oWnd> ] ;
+  [ HELPID | HELP ID <nHelpId> ] ;
+  [ ON CHANGE <uChange> ] ;
+  [ VALID <ValidFunc> ] ;
+  [ COLOR | COLORS <nClrText>;[,<nClrBack>] ] ;
+  [ UPDATE ] ;
+  [ MESSAGE <cMsg> ] ;
+  [ WHEN <WhenFunc> ] ;
+  [ BITMAPS <acBitmaps> ] ;
+  [ ON DRAWITEM <uBmpSelect> ] ;
+  [ ALIAS <cAlias> ] ;
+  [ ITEMFIELD <cFldItem> ] ;
+  [ LISTFIELD <cFldList> ] ;
+  [ LIST | PROMPTS <aList> ]
+</code>  
+
+====== Parámetros ======
+|<nRow>, <nCol>     |Las coordenadas del Botón. Imitan las coordenadas en modo texto.|
+|<oCbx>             |Referencia al Objeto DbCombo.|
+|<cVar>             |Variable de tipo caracter que mantiene el elemento seleccionado actualmente en el DBCombo.|
+|<aItems>           |Matriz con los elementos mostrados en el DbCombo.|
+|<nWidth>,<nHeight> |Las dimensiones del DbCombo en pixels.|
+|<oWnd>             |La ventana contenedora del DbCombo.|
+|<nHelpId>          |Identificador númerico del tema de ayuda del control.|
+|<uChange>          |Acción a ejecutar cada vez que cambia el elemento seleccionado.|
+|<ValidFunc>        |Expresión a validar cuando el control va a perder el foco.|
+|<nClrText>         |Color de primer plano como un número RGB o cadena xBase.|
+|<nClrBack>         |Color de fondo definido como en nClrText.|
+|<oFont>            |Referencia al objeto Fuente (Font) a usar en el DbCombo.|
+|<cMsg>             |El mensaje asociado de este control.|
+|<WhenFunc>         |Codeblock para la expresion block.|
+|<acBitmaps>        |Una lista de los archivos bitmap o recursos a usar sobre el control DbCombo (ownerdraw).|
+|<uBmpSelect>       |Un código de bloque para seleccionar cual bitmap mostrar en un DBcombo ownerdraw. Por omisión, este usa el indice correspondiente en la lista de bitmaps.|
+|<cAlias>           |El alias DBF del cual obtener los elementos del DbCombo.|
+|<cFldItem>         |Campo a devolver en la variable bound.|
+|<cFldList>         |Campo a mostrarse en el DbCombo.|
+|<aList>            |Arreglo de elementos mostrados correspondiente a aItems.|
+|<nId>              |Identificador númerico del Control en los recursos.|
+
+====== Cláusulas ======
+
+|PIXEL              |Se utilizan coordenadas en pixels y no de texto.|
+|UPDATE             |Este control puede actualizarse con el método TDialog:Update().|
+|DESIGN             |Permite al usuario mover el control y cambiar su tamaño.|

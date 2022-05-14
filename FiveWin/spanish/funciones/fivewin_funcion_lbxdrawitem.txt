@@ -1,0 +1,21 @@
+
+====== LbxDrawItem() ====== 
+LbxDrawItem()
+
+It draws the listbox elements and combobox
+====== Sintaxis ======
+ LbxDrawItem( <lp>, <aBitmaps>, <aItems>, <nBmpWidth>, <bDrawItem> ) -->
+.t. 
+====== Parámetros ======
+  <lp>         LPDRAWITEMSTRUCT structures 
+  <aBitmaps>   Array of bitmaps handles 
+  <aItems>     Array of text strings to draw 
+  <nBmpWidth>  Wide of the bitmaps to draw 
+  <bDrawItem>  Codeblock to execute every time that an element is painted 
+====== Devuelve ======
+ .t. 
+====== Ejemplo ======
+ SOURCE\CLASSES\LISTBOX.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\CTRLDRAW.C 
+====== Ver también ======

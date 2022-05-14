@@ -1,0 +1,163 @@
+====== Controles ======
+
+
+===== Controles estandard de Windows =====
+^Nombre^Descripción^
+|[[fivewin_comandos_buttons|Botones]]|Botones con acción|
+|[[fivewin_comandos_checkbox|Checkboxes]]|Casillas de selección|
+|[[fivewin_comandos_radiobuttons|RadioButtons]]|Casillas de selección excluyente|
+|[[fivewin_comandos_listbox|Listboxes]]|Listas de selección|
+|[[fivewin_comandos_combobox|Comboboxes]]|Listas desplegables de selección|
+|[[fivewin_comandos_get|Gets]]|Casillas de edición de datos|
+|[[fivewin_comandos_group|Grupos]]|Grupos de controles|
+|[[fivewin_comandos_say|Says]]|Controles que muestran texto|
+|[[fivewin_comandos_scrollbar|ScrollBars]]|Barras deslizables|
+
+===== Controles Fivewin =====
+
+==== Controles Bitmap ====
+^  Nombre  ^  Descripción  ^
+|[[fivewin_comandos_bitmaps|Bitmap]]|Manejo de Bitmaps por código y por recursos|
+|[[fivewin_comandos_btnbmp|Btnbmp]]|Botones con bitmaps|
+|[[fivewin_comandos_image|Image]]|Manejo de imágenes en cualquier formato|
+
+==== Controles de Barras ====
+
+^  Nombre  ^  Descripción  ^
+|[[fivewin_comandos_bar|Bar]]|Comando para barra de comandos|
+|[[fivewin_comandos_msgbar|MsgBar]]|Comando para barra de mensajes|
+|[[fivewin_comandos_statusbar|StatusBar]]|Comando para barra de estado|
+
+==== Database Controls ====
+^Nombre^Descripción^
+|[[fivewin_comandos_wbrowse|TWBrowse]]|Muestra registros en una tabla deslizable|
+|[[fivewin_comandos_cbrowse|TCBrowse]]|Muestra registros en una tabla deslizable con objetos columna|
+|[[fivewin_comandos_xbrowse|XBrowse]]|El browse más completo y con más posibilidades|
+|[[fivewin_comandos_trees|Trees]]|Comando para visor de árboles|
+
+
+
+==== Resto ====
+^  Nombre   ^  Descripción  ^
+|[[fivewin_comandos_dbcombo|DbCombo ]]|Lista de selección basada en Dbf  |
+|[[fivewin_comandos_dtpicker|DTPicker ]]| Selección de fecha y hora |
+|[[fivewin_comandos_folders|Folders ]]| Manejo de carpetas (folders) |
+|[[fivewin_comandos_fget|FGet]]|Get con Formato|
+|[[fivewin_comandos_graphs|Graphs ]]| Gráficas|
+|[[fivewin_comandos_group|Icon]]| Grupo de Iconos|
+|[[fivewin_comandos_metafile|MetaFile ]]|Manejo de archivo EMF WMF|
+=== Meter ===
+[[fivewin_comandos_meter|==>]]
+=== Outlook ===
+[[fivewin_comandos_outlook|==>]]
+=== Pages ===
+[[fivewin_comandos_pages|==>]]
+=== RichEdit ===
+[[fivewin_comandos_richedit|==>]]
+=== Selector ===
+[[fivewin_comandos_selector|==>]]
+=== Slider ===
+[[fivewin_comandos_slider|==>]]
+=== Tabs ===
+[[fivewin_comandos_tabs|==>]]
+=== TrackBars ===
+[[fivewin_comandos_trackbars|==>]]
+=== URL Links ===
+[[fivewin_comandos_links|==>]]
+=== Video ===
+[[fivewin_comandos_video|==>]]
+=== VBXs ===
+[[fivewin_comandos_vbxs|==>]]
+
+
+
+====== Database ======
+
+=== DataBase ===
+[[fivewin_comandos_database|==>]]
+=== DataBase from Dictionary ===
+[[fivewin_comandos_from|==>]]
+=== Dbms ===
+[[fivewin_comandos_dbms|==>]]
+=== Dbms Dictionary ===
+[[fivewin_comandos_dbms|==>]]
+=== ODBC ===
+[[fivewin_comandos_odbc|==>]]
+
+====== DDE ======
+
+=== DDE ===
+[[fivewin_comandos_dde|==>]]
+
+====== File Management ======
+
+=== Ini ===
+[[fivewin_comandos_ini|==>]]
+
+====== Internet ======
+
+=== Ras ===
+[[fivewin_comandos_ras|==>]]
+
+====== Varios ======
+
+===== Estandard =====
+
+=== Default ===
+[[fivewin_comandos_default|==>]]
+=== Do Until ===
+[[fivewin_comandos_until|==>]]
+=== Idle Action ===
+[[fivewin_comandos_action|==>]]
+=== Struct ===
+[[fivewin_comandos_struct|==>]]
+
+===== Windows =====
+
+=== Brushes ===
+[[fivewin_comandos_brushes|==>]]
+=== Clipboard ===
+[[fivewin_comandos_clipboard|==>]]
+=== Cursor ===
+[[fivewin_comandos_cursor|==>]]
+=== DLL ===
+[[fivewin_comandos_dll|==>]]
+=== Fonts ===
+[[fivewin_comandos_fonts|==>]]
+=== HELP ===
+[[fivewin_comandos_help|==>]]
+=== Icons ===
+[[fivewin_comandos_icons|==>]]
+=== Mail ===
+[[fivewin_comandos_mail|==>]]
+=== Pen ===
+[[fivewin_comandos_pen|==>]]
+=== Serial Communications ===
+[[fivewin_comandos_serial|==>]]
+=== Set Multiple ===
+[[fivewin_comandos_multiple|==>]]
+=== Timers ===
+[[fivewin_comandos_timers|==>]]
+
+
+====== Menús ======
+
+^  Nombre  ^  Descripción  ^
+|[[fivewin_comandos_menus|Menú]]| Comandos para crear menús descolgantes|
+|[[fivewin_comandos_mru|MRU]]|Comando para MRU|
+
+====== Impresión ======
+
+^  Nombre  ^  Descripción  ^
+|[[fivewin_comandos_impresora| Impresora]]|Comandos para usar la impresora|
+|[[fivewin_comandos_reportes|Reportes]]|Comandos de Generador de Reportes|
+
+====== Ventanas y Diálogos ======
+^Nombre^Descripción^
+|[[fivewin_commandos_dialogs|Dialog]]|Definición de Cajas de diálogo por código y por recursos| 
+|[[fivewin_comandos_mdi|MDI]]|Definición de ventanas MDI |
+|[[fivewin_comandos_windows|Windows]]|Definición de Ventanas |
+
+====== Recursos ======
+^Nombre^Descripción^
+|[[fivewin_comandos_recursos|Recursos]]|Almacenamiento y uso de los recursos usados|

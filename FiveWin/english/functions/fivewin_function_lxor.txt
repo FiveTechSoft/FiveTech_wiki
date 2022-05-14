@@ -1,0 +1,111 @@
+====== lXor() ====== 
+
+
+
+lXor()
+
+
+
+
+
+
+Exclusive Or
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lXor( <nOp1>, <nOp2> ) --> lResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nOp1> First operator of the logical operation 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOp2> Second operator of the logical operation 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lResult> It returns true or false when solving the logical xOr
+according to the following chart 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Bit value in Op1   Bit value in Op2   lXOr( Op1,Op2 )   
+.F.            .F.         .F.   
+.T.            .F.         .T.   
+.F.            .T.         .T.   
+.T.            .T.         .F.   
+
+
+
+
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

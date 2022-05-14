@@ -1,0 +1,35 @@
+====== Class TRas ======
+
+Ras access                                                                     
+====== DATA ======
+|hRas|Ras handle|
+|cStatus|Status description|
+|nSize|Ras structure size|
+|nStatus|Current connection state|
+|nError|Error code|
+|oWnd|Main window|
+|cDevType|Device type|
+|cDevName|Device name|
+|cError|Error description|
+|cPhone|Phone number to dial|
+|cUser|User name|
+|cPass|Password|
+|lOperation|If the connection is successfully made|
+|lPanic|Immediately stops the currently call in progress|
+|oTimer|Not used|
+|bStatus|The action to perform when the status is requested|
+|nTimeout|Timeout (seconds)|
+|nCurTime|Current time|
+|aMsgStatus|Array of status text messages|
+====== METHODS ======
+|New|Constructor from source code|
+|Call|Makes a call|
+|Status|Retrieves the current status|
+|HangUp|Hangs up|
+|cCallStatus|Current call status text message|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRAS.PRG

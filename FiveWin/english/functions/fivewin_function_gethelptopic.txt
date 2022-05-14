@@ -1,0 +1,22 @@
+
+====== GetHelp_topic() ======
+
+Retrieves the default help Topic.  
+
+====== Syntax: ======
+ 
+ GetHelpTopic() --> cHelpTopic
+====== Parameters: ======
+
+ none  
+====== Returns: ======
+
+| <cHelpTopic> | The default help topic. | 
+====== Description: ======
+
+We may select a default topic to be called every time we request help.
+====== Example: ======
+MsgInfo(GetHelpTopic())  //Shows cHelpTopic
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C   

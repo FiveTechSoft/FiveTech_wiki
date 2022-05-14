@@ -1,0 +1,57 @@
+====== PalBmpLoad() ====== 
+
+
+
+PalBmpLoad()
+
+
+
+Loads from resources a bitmap and their palette.
+
+====== Syntax ======
+
+
+ PalBmpLoad( <cResName> ) --> aBmpPal 
+
+
+ 
+
+====== Parameters ======
+
+
+ <cResName> Name or identifier of the bitmap in the file of resources. 
+
+
+ 
+
+====== Returns ======
+
+
+ <aBmpPal> An array containing hBitmap and hPalette handles of the
+bitmap. 
+
+
+ 
+
+
+ 
+====== Example ======
+
+
+ SOURCE\CLASSES\BITMAP.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+
+====== See also ======
+

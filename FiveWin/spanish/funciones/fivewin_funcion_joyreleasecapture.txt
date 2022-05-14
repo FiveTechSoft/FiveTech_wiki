@@ -1,0 +1,23 @@
+
+====== JoyReleaseCapture() ======
+JoyReleaseCapture()
+
+Releases the capture set by joySetCapture()
+====== Sintaxis ======
+ JoyReleaseCapture( <nIdJoy> ) --> nError 
+====== Parámetros ======
+ <nIdJoy> Identifier of the JoyStick 
+====== Devuelve ======
+ Returns JOYERR_NOERROR if successful. Otherwise, returns one of the
+following error codes: 
+   MMSYSERR_NODRIVER   The joystick driver is not present.   
+   JOYERR_PARMS      The specified joystick device ID wId is invalid.   
+   MMSYSERR_BASE      0   
+   JOYERR_BASE      160   
+   JOYERR_NOERROR      0   
+   MMSYSERR_NODRIVER   (MMSYSERR_BASE + 6)   
+   JOYERR_PARAMS      (JOYERR_BASE+5)   
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\JOYSTICK.C 
+====== Ver también ======

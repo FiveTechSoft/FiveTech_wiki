@@ -1,0 +1,77 @@
+TimeZone()
+
+
+TimeZone()
+ Previous  Top  Next
+
+Returns the local timezone.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ TimeZone() --> nTimeZone 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+   None.
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nTimeZone> The local timezone. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\random.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

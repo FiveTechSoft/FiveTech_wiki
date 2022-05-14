@@ -1,0 +1,82 @@
+====== Struct ======
+**C like structures (#include Struc.ch) **
+<code clipper>
+ STRUCT <oStruct>  
+    MEMBER <cName> AS <type>  [ LEN <nLen> ] [ INIT <uValue> ];  
+ ENDSTRUCT  </code>
+
+| <oStruct> | The variable to hold this object. | 
+| <type> | The struct member type. | 
+| <nLen> | The struct member length. | 
+| <cName> | The struct member name. | 
+| <uValue> | The struct member initial value. | 
+
+**Fivewin Structures (#include Exstruc.ch) **
+<code clipper>
+ STRUC <oStruct>  
+  
+ MEMBER <xData, ...> ;  
+
+     [ AS LOGICAL, NUMERIC, NUMBER, CHARACTER, DATE, BLOCK, ARRAY, OBJECT ] ;  
+
+       [ DEFAULT, INIT <default> ] ;  
+
+       [ SIZE <nSize> ]  
+ 
+ MEMBER <oSt> AS STRUC  
+ 
+ END STRUC  </code>
+
+| <oStruct> | The variable to hold this object. | 
+| <xData>, ...| The struct member names separated by commas (only the first 9 characters are relevant) | 
+| <default> | Default value for the structure member/s | 
+| <nSize> | The struct member size | 
+| <oSt> | The struct member as another structure | 
+
+**CLAUSES **
+
+AS LOGICAL, NUMERIC, NUMBER, CHARACTER, DATE, BLOCK, ARRAY, OBJECT, STRUC         The structure member type    
+
+Note: The two type of structures can not be used in the same PRG file since they use the same syntax. 
+
+====== Sample Code ======
+<code clipper>
+// Testing FiveWin structs
+
+#include "FiveWin.ch"
+#include "struct.ch"
+
+function Main()
+
+   local oStruct
+
+   STRUCT oStruct
+      MEMBER nTest AS BYTE
+   ENDSTRUCT
+
+   oStruct:nTest = 123
+
+   MsgInfo( oStruct:nTest )
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:struct.jpg|:struct.jpg}}
+
+====== Sample Code 2 ======
+<code clipper>
+    STRUCT oRect
+        MEMBER nLeft   AS LONG
+        MEMBER nTop    AS LONG
+        MEMBER nRight  AS LONG
+        MEMBER nBottom AS LONG
+    ENDSTRUCT
+    oRect:nLeft   = 1
+    oRect:nTop    = 10
+    oRect:nRight  = 3
+    oRect:nBottom = 40
+</code>
+
+====== See also ======
+[[fivewin_class_tstruct | Class TStruct ]]

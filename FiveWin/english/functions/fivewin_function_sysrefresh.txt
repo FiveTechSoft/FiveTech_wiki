@@ -1,0 +1,161 @@
+====== SysRefresh() ======
+
+Lets Windows process all pending messages
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SysRefresh() --> lQuit 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lQuit> A logical value indicating if a WM_QUIT message was issued, so
+the app should be finished. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This FiveWin function is extremelly important and has no counterpart in
+standard Windows API. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ SysRefresh() processes all pending messages, letting Windows keep
+controlling all its pending activities. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ We must use SysRefresh() from inside those processes that may be time
+consuming. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The big benefit and advantadge of SysRefresh() is that it lets us keep
+doing 'standard' linear programming without having to send ourselves
+messages to keep processing a long task. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Use it in loops, seeks, and any time consuming processes to avoid
+Windows from losing processing control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestMMT.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ Not provided. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,18 @@
+
+====== cStrWord() ======
+cStrWord()
+
+To extract a word of a string of characters
+====== Sintaxis ======
+ cStrWord( <cString>, <@nOffset>, <cSeparator> ) --> cWord 
+====== Parámetros ======
+ <cString> String of charaters 
+ <@nOffset> Displacement of the word gone by reference 
+ <cSeparator> Separador of words. For defect " " 
+====== Devuelve ======
+
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\FUNCTION\FTEXT.C 
+====== Ver también ======

@@ -1,0 +1,17 @@
+
+====== nMciOpen() ====== 
+nMciOpen()
+
+Initializes a device
+====== Sintaxis ======
+ nMciOpen( <cDeviceType>, <cElement> ) --> nId 
+====== Parámetros ======
+  <cDeviceType>  Name of the device type 
+  <cElement>     Device-element name (usually a path). 
+====== Devuelve ======
+ <nId> Device identifier returned to the user. 
+====== Ejemplo ======
+ SOURCE\CLASSES\TMCI.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\MCI.C 
+====== Ver también ======

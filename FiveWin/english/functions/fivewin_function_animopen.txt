@@ -1,0 +1,38 @@
+**AnimOpen()** 
+
+
+Opens an AVI clip and displays its first frame in an animation control. 
+
+**Syntax:** 
+  
+ 
+ AnimOpen( <hWnd>, <cAviFileRes> ) --> <lSuccess>  
+ 
+  
+ 
+  
+**Parameters:** 
+
+ <hWnd>    Handle to the animation control.  
+ 
+  
+ 
+ <cAviFileRes>    The AVI file name of the AVI resource name to open.  
+ 
+  
+ 
+  
+**Returns:** 
+
+ <lSuccess>    Returns .t. if successful.  
+ 
+  
+ 
+  
+**Source code:** 
+  
+ 
+ SOURCE\WINAPI\ANIMATE.C  
+ 
+  
+

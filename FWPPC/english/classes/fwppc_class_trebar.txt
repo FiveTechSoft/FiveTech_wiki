@@ -1,0 +1,15 @@
+====== Class TReBar ======
+
+Win32 RebarWindow common control support                                       
+Inherits from TControl                                                         
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code|
+|InsertBand|Insert a new band|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TREBAR.PRG

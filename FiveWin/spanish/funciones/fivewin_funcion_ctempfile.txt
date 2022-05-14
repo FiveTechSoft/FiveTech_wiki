@@ -1,0 +1,15 @@
+
+====== cTempFile() ======
+cTempFile()
+
+Retrieves a temporary new filename
+====== Sintaxis ======
+ cTempFile( [<cPath>], [<cExtension>] ) --> cNewFileName 
+====== Parámetros ======
+ <cPath> The path where to check if the new filename already exists. 
+ <cExtension> The extension that is appended to the new filename. 
+====== Devuelve ======
+ <cNewFileName> It is a new non-existing filename. 
+====== Código fuente ======
+ SOURCE\FUNCTION\FileName.prg 
+====== Ver también ======

@@ -1,0 +1,65 @@
+====== GradientBrush() ======
+
+Creates a brush with gradient colors
+
+
+
+
+====== Syntax ======
+
+GradientBrush( hDC, nTop, nLeft, nBottom, nRight, aGradInfo ) --> hBrush
+
+
+====== Parameters ======
+|hDC|the handle of the device context where to gradient fill| 
+|nTop, nLeft, nBottom, nRight|The coordinates and dimensions to fill in the device context|
+|aGradInfo|A multidimension array that specifies the sections to gradient fill and the colors to use: {{nPercentage1,nRGBStart1, nRGBEnd1}, ... {nPercentageN,nRGBStart1, nRGBEnd1}}| 
+
+
+
+====== Returns ======
+
+|hBrush|The handle of the created brush|
+
+
+
+====== Example ======
+{{:grad1.png|:grad1.png}}
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg
+   
+   DEFINE DIALOG oDlg SIZE 400, 300
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON PAINT CreateBrush( hDC, oDlg )
+
+return nil
+
+function CreateBrush( hDC, oDlg )
+
+   static lCreated := .F.
+   
+   if ! lCreated
+      DeleteObject( oDlg:oBrush:hBrush )
+      oDlg:oBrush:hBrush = GradientBrush( hDC, 0, 0, oDlg:nWidth, oDlg:nHeight, { { 0.5, RGB( 0, 255, 255 ), RGB( 255, 0, 0 ) } } )
+      lCreated = .T.
+   endif   
+   
+return nil   
+</code>
+
+
+
+
+====== Source code ======
+internal. Not provided.
+
+
+
+====== See Also ======
+
+[[fivewin_function_gradient|Gradient()]], [[fivewin_function_gradientfill|GradientFill()]]

@@ -1,0 +1,131 @@
+nLoWord()
+
+
+
+nLoWord()
+
+ Previous  Top  Next
+
+
+
+
+Returns the Low word of a long (four bytes)
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nLoWord( <nLong> ) --> nLoWord 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nLong> A numeric (4 bytes) value 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLoWord> A numeric (2 byte) value 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ A long is made of: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ LONG = LOW_WORD + HIGH_WORD 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\HiLoWord.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nLoByte() nHiByte() nLoWord() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

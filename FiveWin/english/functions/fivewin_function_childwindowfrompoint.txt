@@ -1,0 +1,19 @@
+====== ChildWindowFromPoint() ======
+Find child window at a specified point 
+
+====== Syntax: ======
+ChildWindowFromPoint( <hWnd>, <aPoint> ) --> hChildWnd  
+
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| Handle of the parent window  |
+|<aPoint>| Array with two values.  |
+
+====== Returns: ======
+^Returns^Description^
+|<hChildWnd>| Handle of the child window if found, otherwise Nil.|
+
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\GETWND.C  

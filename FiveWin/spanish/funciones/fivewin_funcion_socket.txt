@@ -1,0 +1,126 @@
+Socket()
+
+
+
+Socket()
+
+ Previous  Top  Next
+
+
+
+
+Create a socket
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Socket( <nAf>, <nType>, <nProtocol> ) --> nSocket 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <nAf> An address format specification 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nType> Type specification for the new socket 
+
+
+ 
+
+
+ 
+
+
+
+SOCK_STREAM   1   Provides sequenced, reliable, two-way, connection-based
+byte streams with an out-of-band data transmission mechanism. Uses TCP
+for the Internet address family.
+SOCK_DGRAM      2   Datagrams, which are connectionless, unreliable
+buffers of a fixed (typically small) maximum length. Uses UDP for the
+Internet address family.   
+
+
+
+
+
+
+
+ <nProtocol> Protocol to be used with the socket 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+SOURCE\WINAPI\WINSOCK.C
+
+
+
+
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

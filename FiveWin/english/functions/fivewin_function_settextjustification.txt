@@ -1,0 +1,115 @@
+SetTextJustification()
+
+
+
+SetTextJustification()
+
+ Previous  Top  Next
+
+
+
+
+Adds space to the break characters in a string
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetTextJustification( <hDC>, <nExtraSpace>, <nBreakChars> ) --> lOk 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nExtraSpace> Space to add to string 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBreakChars> Number of break characters in the string 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lOk> Return true if the function is success 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\TEXT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

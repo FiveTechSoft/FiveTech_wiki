@@ -1,0 +1,47 @@
+
+====== RegQueryValue() ====== 
+RegQueryValue()
+
+Retorna la cadena de texo correspondiente a un registro
+====== Sintaxis ======
+ RegQueryValue( <nKey>, <cSubKey>, <@cValue> ) --> nResult 
+====== Parámetros ======
+  <nKey>    Handle de la llave a buscar. Puede ser 2147483648 que es
+            HKEY_CLASSES_ROOT. No puede tener parámetro Nil. 
+  <cSubKey> Cadena de una subllave a buscar 
+  <@cValue> Cadena de texto retornada por referencia 
+====== Devuelve ======
+ <nReturn> Si la función es exitosa, retorna cero (0). De lo contrario, retorna código numérico del error
+====== Ejemplo ======
+ 
+ SAMPLES\TESTREG.PRG 
+
+// Manejando registros desde FiveWin 
+
+ <code>
+
+ #define HKEY_CLASSES_ROOT   2147483648 
+ #define HKEY_CURRENT_USER   2147483649 
+ #define HKEY_LOCAL_MACHINE   2147483650 
+ #define HKEY_USERS         2147483651 
+ #define HKEY_PERFORMANCE_DATA   2147483652 
+ #define HKEY_CURRENT_CONFIG   2147483653 
+ #define HKEY_DYN_DATA      2147483654 
+
+
+ function Main() 
+ local nHandle, cValue 
+ if RegOpenKey( HKEY_LOCAL_MACHINE,; 
+                "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths",; 
+                @nHandle ) == 0 
+    RegQueryValue( nHandle, "IEXPLORE.EXE", @cValue ) 
+    MsgInfo( cValue ) 
+    RegCloseKey( nHandle ) 
+ endif 
+ return nil 
+ 
+ </code>
+
+====== Código fuente ======
+ SOURCE\WINAPI\REGEDIT.C 
+====== Ver también ======

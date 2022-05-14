@@ -1,0 +1,109 @@
+
+nArgC()
+
+ Previous  Top  Next
+
+
+
+
+Returns the number of the command line parameters
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nArgC() --> nInitParams 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nInitParams> The number of parameters + 1 supplied to the application,
+thus is like calling PCount() + 1 just starting the app, though nArgC()
+may be called from anywhere in the app. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestArgs.prg 
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Args.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== See also ======
+[[fivewin_function_cargv|cArgV()]] PCount() Param() 
+

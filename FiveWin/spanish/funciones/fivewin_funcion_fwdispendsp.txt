@@ -1,0 +1,19 @@
+====== FWDispEnd() ======
+Técnica de pintura de búfer doble. Reactiva el original de CC de la ventana.
+
+====== Syntaxis ====== 
+FWDispEnd( <aInfo> ) --> hDC 
+
+====== Parametros ====== 
+| <aInfo>|   Un Array proporcionado para FWDispBegin(). |
+
+====== Devuelve ====== 
+| <hDC>| El original de CC de la ventana de la pintura.  |
+
+====== Codigo fuente ====== 
+SOURCE\WINAPI\DC.C 
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_FWDispBeginsp|FWDispBegin()]]
+ 

@@ -1,0 +1,31 @@
+
+====== RptAddColumn() ====== 
+RptAddColumn()
+
+It adds a new column to our listing
+====== Sintaxis ======
+ RptAddColumn( <aTitle>, <nCol>, <aData>, <nSize>, <aPicture>, <uFont>,
+<lTotal>, <bTotalExpr>, <cColFmt>, <lShadow>, <lGrid>, <nPen> ) -->
+oColumn 
+====== Parámetros ======
+  <aTitle>      An array with all titles codeblocks. 
+  <nCol>        The column position if defined. 
+  <aData>       An array with all data codeblocks. 
+  <nSize>       The width in characters in pixels if defined by the user. 
+  <aPicture>    An array with all pictures. 
+  <uFont>       A codeblock that returns the font to use for the data. 
+  <lTotal>      If the column has total 
+  <bTotalExpr>  A codeblock to return when a total must be calculated. 
+  <cColFmt>     The relative position inside the column: LEFT, CENTER, RIGHT 
+  <lShadow>     If the column has to be filled with a shadow background 
+  <lGrid>       If the column has to be bordered with lines 
+  <nPen>        The Report pen elements to use 
+====== Devuelve ======
+ <oColumn> TRColumn object. 
+
+Observations:
+
+ Function called internally by the motor of reports of FiveWin. 
+====== Código fuente ======
+ SOURCE\CLASSES\PDREPORT.PRG 
+====== Ver también ======

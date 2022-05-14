@@ -1,0 +1,120 @@
+====== Cajas combinadas (ComboBox) ======
+
+Creando un combobox desde código fuente:
+
+<code clipper>
+@ <nRow>, <nCol> COMBOBOX [ <oCbx> VAR ] <cVar> ;
+                 [ ITEMS <aItems> ] ;
+                 [ SIZE <nWidth>, <nHeight> ] ;
+                 [ OF | WINDOW | DIALOG <oWnd> ] ;
+                 [ HELPID | HELP ID <nHelpId> ] ;
+                 [ ON CHANGE <uChange> ] ;
+                 [ VALID <ValidFunc> ] ;
+                 [ COLOR | COLORS <nClrText> [,<nClrBack>] ] ;
+                 [ PIXEL ] ;
+                 [ FONT <oFont> ] ;
+                 [ UPDATE ] ;
+                 [ MESSAGE <cMsg> ] ;
+                 [ WHEN <WhenFunc> ] ;
+                 [ DESIGN ] ;
+                 [ BITMAPS <cBitmaps> ] ;
+                 [ ON DRAWITEM <uBmpSelect> ] ;
+</code>
+
+Creando un combobox desde recursos.
+
+<code clipper>
+REDEFINE COMBOBOX [ <oCbx> VAR ] <cVar> ;
+                  [ ITEMS <aItems> ] ;
+                  [ ID <nId> ] ;
+                  [ OF | WINDOW | DIALOG <oWnd> ] ;
+                  [ HELPID | HELP ID <nHelpId> ] ;
+                  [ ON CHANGE <uChange> ] ;
+                  [ VALID <ValidFunc> ] ;
+                  [ COLOR | COLORS <nClrText>[,<nClrBack>] ] ;
+                  [ UPDATE ] ;
+                  [ MESSAGE <cMsg> ] ;
+                  [ WHEN <WhenFunc> ] ;
+                  [ BITMAPS <acBitmaps> ] ;
+                  [ ON DRAWITEM <uBmpSelect> ] ;
+                  [ STYLE <nStyle> ] ;
+                  [ PICTURE <cPicture> ];
+                  [ ON EDIT CHANGE <uEChange> ] ;
+</code>
+
+Parámetros:
+|<nRow>,<nCol> | Coordenadas del combobox, se simulan coordenadas de texto|
+|<oCbx> |Referencia al objeto combobox.|
+|<cVar> |Una variable tipo caracter que guarda el elemento seleccionado del combobox.|
+|<aItems> |Arreglo que contiene los elementos que se van a desplegar en el combobox|
+|<nWidth>,<nHeight> |Dimensiones del combobox en pixeles.|
+|<oWnd> |Ventana contenedora del combobox.|
+|<nHelpId> |Identificador numérico del tópico de ayuda del control.|
+|<uChange> |Acción que se va a ejecutar cada vez que se cambia el elemento seleccionado.|
+|<cMsg> |Mensaje asociado a este control.|
+|<ValidFunc> |Expresión a validar cuando el control va a perder el foco|
+|<nClrText> |Color del texto expresado como un número para la función RGB(), o como una cadena de caracteres xBase (p.e. “W/B”, ”R/BG”, etc.)|
+|<nClrBack> |Color del fondo del combobox, expresado como un número para la función RGB().|
+|<oFont> |Referencia al objeto tipo de letra (font) a utilizar con el combobox|
+|<WhenFunc> |Bloque de código a evaluar para pre-validación|
+|<nId> |Identificador numérico del recurso del control.|
+|<cBitmaps> |Lista de mapas de bits o recursos para usar en la caja del combobox.|
+|<uBmpSelect> |Bloque de código para seleccionar cual mapa de bits dibujar en la caja del combobox. Por omisión se utiliza el índice correspondiente en las lista de mapas de bits.|
+|<nStyle> |Especifica el estilo del combobox. Use: STYLE CBS_DROPDOWN.|
+|<cPicture> |Claúsula PICTURE típica xBase para ser utilizada por el valor contenido en oGet cuando se usa un combobox con el estilo CBS_DROPDOWN.|
+|<uEChange> |Expresión a ser evaluada cuando el valor de oGet ha cambiado si se ha especificado el estilo CBS_DROPDOWN.|
+
+Cláusulas:
+
+|PIXEL |Indica que se deben utilizar coordenadas en pixeles en vez de coordenadas de texto|
+|UPDATE |Indica si este control debe actualizarse cuando se ejecute el método TDialog:Update().|
+|DESIGN |Permite al usuario mover y cambiar tamaño con el mouse|
+
+Implementación del comando:
+
+<code clipper>
+#xcommand @ <nRow>, <nCol> COMBOBOX [ <oCbx> VAR ] <cVar> ;
+[ <items: ITEMS, PROMPTS> <aItems> ] ;
+[ SIZE <nWidth>, <nHeight> ] ;
+[ <dlg:OF,WINDOW,DIALOG> <oWnd> ] ;
+[ <help:HELPID, HELP ID> <nHelpId> ] ;
+[ ON CHANGE <uChange> ] ;
+[ VALID <uValid> ] ;
+[ <color: COLOR,COLORS> <nClrText> [,<nClrBack>] ] ;
+[ <pixel: PIXEL> ] ;
+[ FONT <oFont> ] ;
+[ <update: UPDATE> ] ;
+[ MESSAGE <cMsg> ] ;
+[ WHEN <uWhen> ] ;
+[ <design: DESIGN> ] ;
+[ BITMAPS <acBitmaps> ] ;
+[ ON DRAWITEM <uBmpSelect> ] ;
+=> ;
+[ <oCbx> := ] TComboBox():New( <nRow>, <nCol>, bSETGET(<cVar>),;
+<aItems>, <nWidth>, <nHeight>, <oWnd>, <nHelpId>,;
+[{|Self|<uChange>}], <{uValid}>, <nClrText>, <nClrBack>,;
+<.pixel.>, <oFont>, <cMsg>, <.update.>, <{uWhen}>,;
+<.design.>, <acBitmaps>, [{|nItem|<uBmpSelect>}] )
+#xcommand REDEFINE COMBOBOX [ <oCbx> VAR ] <cVar> ;
+[ <items: ITEMS, PROMPTS> <aItems> ] ;
+[ ID <nId> ] ;
+[ <dlg:OF,WINDOW,DIALOG> <oWnd> ] ;
+[ <help:HELPID, HELP ID> <nHelpId> ] ;
+[ ON CHANGE <uChange> ] ;
+[ VALID <uValid> ] ;
+[ <color: COLOR,COLORS> <nClrText> [,<nClrBack>] ] ;
+[ <update: UPDATE> ] ;
+[ MESSAGE <cMsg> ] ;
+[ WHEN <uWhen> ] ;
+[ BITMAPS <acBitmaps> ] ;
+[ ON DRAWITEM <uBmpSelect> ] ;
+[ STYLE <nStyle> ] ;
+[ PICTURE <cPicture> ];
+[ ON EDIT CHANGE <uEChange> ] ;
+=> ;
+[ <oCbx> := ] TComboBox():ReDefine( <nId>, bSETGET(<cVar>),;
+<aItems>, <oWnd>, <nHelpId>, <{uValid}>, [{|Self|<uChange>}],;
+<nClrText>, <nClrBack>, <cMsg>, <.update.>, <{uWhen}>,;
+<acBitmaps>, [{|nItem|<uBmpSelect>}], <nStyle>, <cPicture>,;
+[<{uEChange}>] )
+</code>

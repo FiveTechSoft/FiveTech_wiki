@@ -1,0 +1,99 @@
+ExitWnd()
+
+
+
+ExitWnd()
+
+ Previous  Top  Next
+
+
+
+
+Terminate Windows and restart the system
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ExitWnd( <nRetCode> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nRetCode> 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+EW_REBOOTSYSTEM      Causes Windows to terminate and the system to
+restart.   
+EW_RESTARTWINDOWS   Causes Windows to restart.   
+
+EW_REBOOTSYSTEM      67   
+EW_RESTARTWINDOWS   66   
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Retrieve non cero if one or more applications refuse to finish or none
+value if the function is successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WINEXEC.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

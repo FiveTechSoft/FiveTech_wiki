@@ -1,0 +1,14 @@
+
+====== KeyFast() ======
+KeyFast()
+Set the fastest Keyboard response speed
+====== Sintaxis ======
+ KeyFast() --> nil 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ Nil 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\KEYBOARD.C 
+====== Ver también ======

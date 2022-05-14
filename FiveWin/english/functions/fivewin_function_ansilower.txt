@@ -1,0 +1,21 @@
+
+====== AnsiLower() ====== 
+
+Converts the given character string to lowercase 
+
+====== Syntax ====== 
+AnsiLower(<cString>) \\cLowerString  
+ 
+
+The driver of the elected language ago the conversion, if it is elected in the Panel of Control. If it is not this way, Windows uses its own function.  
+
+====== Parameters ====== 
+^Parameter ^ Description ^
+|<cString>|String to convert. It can only be a character.|
+ 
+====== Returns ======
+
+ String in minuscule.  
+ 
+====== Source Code ====== 
+SOURCE\WINAPI\ANSIUP.C  

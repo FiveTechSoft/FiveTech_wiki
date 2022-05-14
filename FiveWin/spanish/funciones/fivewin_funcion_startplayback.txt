@@ -1,0 +1,84 @@
+StartPlayback()
+
+
+
+StartPlayback()
+
+ Previous  Top  Next
+
+
+
+
+Inserts mouse and keyboard messages into the system message queue
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ StartPlayback() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PLAYBACK.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

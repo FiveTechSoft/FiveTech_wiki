@@ -1,0 +1,53 @@
+GetErrMsg()
+
+
+GetErrMsg()
+ Previous  Top  Next
+
+Get the error message for the last operation.
+
+====== Sintaxis ======
+
+
+ GetErrMsg() --> cErrMsg 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <cErrMsg> Error message 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ SOURCE\CLASSES\window.prg 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\CREATWND.C 
+
+
+ 
+
+
+
+
+====== Ver también ======
+

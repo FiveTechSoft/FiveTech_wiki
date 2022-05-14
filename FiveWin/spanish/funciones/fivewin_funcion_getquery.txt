@@ -1,0 +1,27 @@
+
+======GetQuery() ======
+GetQuery()
+
+To obtain data sent by WebClient by method POST.
+
+====== Sintaxis ======
+ GetQuery( <cData> ) --> cQuery 
+
+ The Web server can receive data in two ways depending in the way that
+has the client of sending them or for method GET or for method POST. The
+method GET sends the data in it lines and the method POST it sends them
+in a file. This file is read in the function GetQuery () and you line
+them they are connected one after another to obtain a text string with
+all the data. 
+====== Parámetros ======
+ <cData> A string containing the data from which to extract the lines. 
+====== Devuelve ======
+ <cQuery> String of characters that contains the sent data for the Client
+by means of the method POST of sending data. 
+
+Observations:
+
+ Operation carried out in the method OnPost () of the class TWebServer () 
+====== Código fuente ======
+ SOURCE\CLASSES\TWEBSERV.PRG 
+====== Ver también ======

@@ -1,0 +1,188 @@
+====== OutLook ======
+
+**Creating Outlook controls: **
+<code clipper>
+ @ <nRow>, <nCol> OUTLOOK [<oOut>] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;  
+ [ STYLE <nStyle> ] ;  
+ [ FONT <oFont> ] ;  
+ [ <lPixel: PIXEL> ] ;  
+ [ <of: OF, WINDOW, DIALOG> <oWnd> ] ;  
+ [ <help: HELP, HELPID> <nHelpId> ] ;  
+ [ ON RIGHT CLICK <uRClicked> ]  </code>
+ 
+| <nRow, nCol> | Control coordinates. | 
+| <oOut> | Variable that holds the control objectl. | 
+| <nWidth, nHeight> | Control dimension |
+| <nClrFore, nClrBack> | Control foreground and background color |
+| <nStyle> | Optional style for the control. Consult TWindow documentation. |
+| <uChange> | An action to perform when a different page is selected on the same pages control. |
+| <oFont> | An optional font object to be used for the control. |
+| <lPixel> | If coordinates and sizes are specified in pixels  |
+| <oWnd> | Window conteiner |
+| <uRClicked> | Code to be evaluated when the mouse right button is clicked |
+
+**Creating Outlook groups: **
+<code clipper>
+ DEFINE GROUP OF OUTLOOK <oOut> ;  
+ [ PROMPT <cPrompt> ] ;  
+ [ WHEN <bWhen> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ FONT <oFont> ]  </code>
+
+| <oOut> | Variable that holds the control object. |
+| <cPrompt> | Button group caption |
+| <bWhen> | When clause |
+| <cMsg> | Optional message to be shown if a message bar is present on his window container |
+| <oFont> | An optional font object to be used for the control. |
+
+**Creating Outlook items: **
+<code clipper>
+ DEFINE BITMAP OF OUTLOOK <oOut> ;  
+ [ GROUP <nGroup> ] ;  
+ [ PROMPT <cPrompt> ] ;  
+ [ <action: ACTION, ON CLICK> <uAction> ] ;  
+ [ ON RIGHT CLICK <uRClicked> ] ;  
+ [ BITMAP <cBmp> ] ;  
+ [ RESOURCE <cResBmp> ] ;  
+ [ WHEN <bWhen> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ FONT <oFont> ] ;  
+ [ <lAdjust: ADJUST> ] ;  
+ [ <lBorder: BORDER> ] ;  
+ [ TOOLTIP <cToolTip> ]  </code>
+
+| <oOut> | Variable that holds the control object. | 
+| <nGroup> | Group where the item should be placed  | 
+| <cPrompt> | Button group caption | 
+| <uAction> | Action to perform when the item is clicked | 
+| <uRClicked> | Code to be evaluated when the mouse right button is clicked | 
+| <cBmp> | Bitmap file | 
+| <cResBmp> | Resource name | 
+| <bWhen> | When clause | 
+| <cMsg> | Optional message to be shown if a message bar is present on his window container | 
+| <oFont>  | An optional font object to be used for the control  | 
+| <lAdjust> | True if the bitmap should be adjusted to his default size (36,36) | 
+| <lBorder> | True it the item should have always border, by default false | 
+| <cToolTip> | Tooltip to show  | 
+
+====== Sample code ======
+<code clipper>
+#include "fivewin.ch"
+#include "outlook.ch"
+#include "splitter.Ch"
+
+static lBar := .t.
+
+FUNCTION Main()
+
+   local oWnd, oOut, oSpl, oFont, oFont2, oBar, oBtn, oMenu
+
+   DEFINE FONT oFont NAME GetSysFont() SIZE 0,-14
+
+   MENU oMenu
+      MENUITEM "&File"
+      MENUITEM "&Edit"
+      MENUITEM "&View"
+      MENUITEM "&Favourites"
+      MENUITEM "&Tools"
+      MENUITEM "&Actions"
+      MENUITEM "&?"
+   ENDMENU
+
+   DEFINE WINDOW oWnd FROM 2, 2 TO 35, 85 ;
+      MENU oMenu TITLE "Outlook control test"
+
+   DEFINE BUTTONBAR oBar _3d OF oWnd
+
+   DEFINE BUTTON oBtn RESOURCE "FORM" OF oBar NOBORDER ;
+      PRESSED ;
+      ACTION ( lBar := !lBar,;
+               oBtn:lPressed := lBar,;
+               oBtn:Refresh(),;
+               iif( !lBar, (oOut:Hide(), oSpl:Hide()),;
+                           (oOut:Show(), oSpl:Show())) )
+
+  @ -1, -1 OUTLOOK oOut ;
+    SIZE 100, oWnd:nHeight() ;
+    PIXEL ;
+    FONT oFont ;
+    OF oWnd
+
+  SET MESSAGE OF oWnd TO "Outlook control test" DATE TIME KEYBOARD
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&Principal"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Outgoing messages" ;
+      ACTION msginfo("Your code ...", oSay:cCaption )
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "EXIT" ;
+      PROMPT "Exit from the application" ;
+      ACTION oWnd:End()
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Third control"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Fourth control"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "This is the the fifth control"
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&More options"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "First button on second group bar"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Second button on second group bar"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "EXIT" ;
+      PROMPT "Third button"
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&Another extra group"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "First button"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Second button"
+
+   @ 0, 100 SPLITTER oSpl ;
+              VERTICAL ;
+              PREVIOUS CONTROLS oOut ;
+              LEFT MARGIN 70 ;
+              RIGHT MARGIN 200 ;
+              SIZE 4, nil  PIXEL ;
+              OF oWnd ;
+              _3DLOOK ;
+              UPDATE
+
+   ACTIVATE WINDOW oWnd ;
+    ON RESIZE oSpl:AdjRight()
+
+RETURN NIL
+
+procedure AppSys  //  Xbase++ requirement
+
+return
+</code>
+
+====== Screen Snapshot ======
+{{:outlook.jpg|:outlook.jpg}}
+
+
+====== See Also ======
+[[fivewin_class_toutlook | Class TOutLook ]], [[fivewin_class_tpanel | Class TPanel ]], [[fivewin_class_ttitle | Class TTitle ]]

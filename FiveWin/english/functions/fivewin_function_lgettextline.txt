@@ -1,0 +1,125 @@
+====== lGetTextLine() ====== 
+
+
+
+lGetTextLine()
+
+
+
+
+
+
+To obtain line of text superiors at 1k
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lGetTextLine( <hFile>, <@cLine>, <nMaxLineLength> ) --> lRead 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hFile> Handle of the file 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cLine> Buffer to store the text line. This line of text has the
+particularity that it can be of one superior longitude at 1k. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMaxLineLength> Maximum longitude of the text line. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lRead> It returns true if the line has been able to read 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TTXTFILE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FTEXT.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

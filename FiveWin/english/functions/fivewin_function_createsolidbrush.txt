@@ -1,0 +1,20 @@
+====== CreateSolidBrush() ======
+
+This function creates a brush that has the specified color in nRGBColor. The brush can be subsequently be selected as the current brush for any device.  
+This functions is automatically called from FiveWin TBrush class. Use the class as it is much more easy to use.  
+
+====== Syntax: ======
+CreateSolidBrush( <nRGBColor> ) --> hBrush  
+
+====== Parameters: ======
+^Parameter^Description^
+|<nRGBColor>| Specifies a RGB color. | 
+ 
+====== Returns: ======
+|<hBrush>| If successful, the function returns the handle of the brush else 0.|
+ 
+====== Source Code: ======
+SOURCE\WINAPI\CreateSo.c  
+
+====== See also: ======
+[[fivewin_class_tbrush|Class TBrush]], [[fivewin_commands_brushes|Command Brush]]

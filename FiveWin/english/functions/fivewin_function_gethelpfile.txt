@@ -1,0 +1,22 @@
+
+====== GetHelpFile() ======
+
+Retrieves the active helpfile selected.  
+
+====== Syntax: ======
+ 
+ GetHelpFile() --> cHelpFile
+====== Parameters: ======
+
+ none  
+====== Returns: ======
+
+| <cHelpFile> | The name of the help file previously selected. |  
+====== Description: ======
+
+Returns the active selected helpfile.
+====== Example: ======
+MsgInfo(GetHelpFile())  //Shows cHelpFile
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C   

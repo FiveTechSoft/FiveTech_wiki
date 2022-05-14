@@ -1,0 +1,20 @@
+
+====== InPortWord() ======
+InPortWord()
+
+Reads a word (2 bytes) from a hardware port
+====== Sintaxis ======
+ InportWord( <nPort> ) --> nWord 
+====== Parámetros ======
+ <nPort> The hardware port number (one word: two bytes) to read a word
+from. 
+====== Devuelve ======
+ <nWord> A numeric value corresponding to the read word. 
+
+Comments:
+
+ Use these functions only to access hardware ports. Communication ports
+must be accessed using special API comm functions. 
+====== Código fuente ======
+ SOURCE\WINAPI\InOut.c 
+====== Ver también ======

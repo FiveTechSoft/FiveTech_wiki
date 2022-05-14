@@ -1,0 +1,84 @@
+
+====== Creando un XBrowse desde código fuente ======
+<code clipper>
+ @ <nRow>, <nCol> [ COLUMN ] XBROWSE <oBrw> ;
+ [ FIELDS <aFlds> ] ;
+ [ ALIAS <cAlias> ] ;
+ [ FIELDSIZES | SIZES | COLSIZES <aColSizes> ] ;
+ [ HEAD | HEADER | HEADERS <aHeaders> ] ;
+ [ SIZE <nWidth>, <nHeight> ] ;
+ [ OF | DIALOG <oWnd> ] ;
+ [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ] ;
+ [ ON CHANGE | ON CLICK <uChange> ] ;
+ [ ON [ LEFT ] DBLCLICK <uLDblClick> ] ;
+ [ ON RIGHT CLICK <uRClick> ] ;
+ [ FONT <oFont> ] ;
+ [ CURSOR <oCursor> ] ;
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ UPDATE> ] ;
+ [ PIXEL ] ;
+ [ WHEN <uWhen> ] ;
+ [ DESIGN ] ;
+ [ VALID <uValid> ]
+</code>
+
+
+====== Añadir columnas a un XBrowse ======
+<code clipper>
+ ADD [ COLUMN ] TO XBROWSE <oBrw> ;
+ [ DATA | SHOWBLOCK <uData> ] ;
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;
+ [ ALIGN ] [ LEFT | CENTERED | CENTER | RIGHT ] ;
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ] ;
+ [ PICT | PICTURE <cPicture> ] ;
+ [ BITMAP ] ;
+ [ EDITABLE ] ;
+ [ ON EDIT <bOnPostEdit> ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ VALID <uValid> ] ;
+ [ ERROR [MSG] [MESSAGE] <cErr> ] ;
+ [ NOBAR | NOHILITE ] ;
+ [ ORDER | INDEX | TAG <cOrder> ]
+</code>
+| <nRow>, <nCol> | The coordinates of the XBrowse. They mimic text mode coordinates|
+| <oBrw> | A reference to the XBrowse object|
+| <aFlds> | A list of fields to be used for column data|
+| <cAlias> | The alias of the table from which the data is read|
+| <aColSizes> | A list of column sizes|
+| <aHeaders> | A list of column headers|
+| <nWidth>, <nHeight>| The sizes of the XBrowse in pixels|
+| <oWnd> | A reference to the container object of the XBrowse, normally a window or a DialogBox|
+| <cField> | The field to be used as key for a scoped filter. It must be the key of the current index|
+| <uValue1>, <uValue2>|The range of the scoped filter|
+| <uChange> | The action to be executed when changing the current row|
+| <uLDblClick> | The action to be executed when double clicking on a row|
+| <uRClick> | The action to be executed when right clicking on a row|
+| <oFont> | The font used for the XBrowse|
+| <oCursor> | The cursor used for the XBrowse|
+| <nClrFore> |The color of the text of the XBrowse|
+| <nClrBack> | The color of the background of the XBrowse|
+| <cMsg> | The message to show at the messageBar of the XBrowse container if defined (a window or a DialogBox normally)|
+| <uWhen> | The condition that has to be respected for the XBrowse to be initially active (ie. not disabled)|
+| <uValid> | The condition that has to be respected for change the focus from the XBrowse|
+| <uData> | The expression that is evaluated to retrieve the column data|
+| <cHead> | The header of the column|
+| <nWidth> | The width of the column|
+| <cPicture> | The picture of the column|
+| <bOnPostEdit> | The codeblock that is evaluated after the column editing is finished|
+| <cErr> | The error message to show when the entered data is not validated|
+| <cOrder> | The order to be used to sort the data|
+
+====== CLAUSULAS ======
+|UPDATE|This control may be updated from TDialog:Update() method|
+|PIXEL|To specify that <nRow> and <nCol> must be trated as pixels,and not simulated as MsDos text rows and cols|
+|DESIGN|To let the user move around the control with the mouse|
+|OEM, ANSI, CONVERT|To apply a conversion to the column header|
+|LEFT, CENTER, RIGHT|To align the column data|
+|BITMAP|To specify a bitmap column|
+|EDITABLE|To specify that the column will be editable|
+|NOBAR, NOHILITE|To not show the highlight bar on the current row|
+
+====== Ver también ======
+[[fivewin_clase_txbrowse|Clase TXBrowse]], [[fivewin_clase_twbrowse|Clase TWBrowse]], [[fivewin_clase_tcbrowse|Clase TCBrowse]], [[fivewin_clase_tsbrowse|Clase TSBrowse]]

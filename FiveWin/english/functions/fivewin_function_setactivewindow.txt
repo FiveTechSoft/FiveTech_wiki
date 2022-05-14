@@ -1,0 +1,96 @@
+====== SetActiveWindow() ======
+
+
+
+Changes the current active window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetActiveWindow( <hWnd> ) --> hPrevWnd 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Identifies the top level window to be activated 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <hPrevWnd> The handle of the previous active window. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndCente.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetActiveWindow() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

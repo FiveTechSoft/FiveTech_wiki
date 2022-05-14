@@ -1,0 +1,59 @@
+TabCtrl_SetCurSel()
+
+
+TabCtrl_SetCurSel()
+ Previous  Top  Next
+
+Selects a tab in a tab control.
+
+====== Sintaxis ======
+
+
+ TabCtrl_SetCurSel( <hWnd>, <nItem> ) --> nPrevItem 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+
+ <nItem> Index of the tab to select. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nPrevItem> Returns the index of the previously selected tab if
+successful, or -1 otherwise. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

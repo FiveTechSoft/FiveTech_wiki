@@ -1,0 +1,188 @@
+WBrwSelBox()
+
+
+
+WBrwSelBox()
+
+ Previous  Top  Next
+
+
+
+
+Draw the border in the active cell of a browse.
+
+
+
+
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WBrwSelBox( <hWnd>, <hDC>, <nRow>, <nFirstCol>, <nCurCol>, <lFocus>,
+<aSizes>, <hFont> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the browse 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow> Row of the cell to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFirstCol> First column from the left 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nCurCol> Column of the cell active 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lFocus> True if the browse has the focus 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aSizes> Array with the column sizes 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> Handle of the font to use 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\TCBROWSE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\WBRWLINE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

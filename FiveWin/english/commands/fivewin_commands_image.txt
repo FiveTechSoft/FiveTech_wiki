@@ -1,0 +1,147 @@
+====== Creating an image control from source code ======
+<code clipper> 
+@ <nRow>, <nCol> IMAGE [<oImg> ];  
+   [ NAME | RESNAME | RESOURCE <cResName> ];  
+   [ FILE | FILENAME | DISK <cBmpFile> ];  
+   [ NO BORDER | NOBORDER ];  
+   [ SIZE <nWidth>, <nHeight> ];  
+   [ OF | WINDOW | DIALOG <oWnd> ];  
+   [ ON CLICK | ON LEFT CLICK <uLclick> ];  
+   [ ON RIGHT CLICK <uRclick> ];  
+   [ SCROLL ];  
+   [ ADJUST ];  
+   [ CURSOR <oCursor> ];  
+   [ PIXEL];  
+   [ MESSAGE <cMsg> ];  
+   [ UPDATE ];  
+   [ WHEN <uWhen> ];  
+   [ VALID <uValid> ];  
+   [ DESIGN ]  
+</code>
+
+====== Creating an image control from resources ====== 
+<code clipper>  
+ REDEFINE IMAGE [ <oImg> ];  
+   [ ID <nId> ];  
+   [ OF | WINDOW | DIALOG <oWnd> ];  
+   [ NAME | RESNAME | RESOURCE <cResName> ];  
+   [ FILE | FILENAME | DISK <cBmpFile> ];  
+   [ ON CLICK | ON LEFT CLICK <uLclick> ];  
+   [ ON RIGHT CLICK <uRclick> ];  
+   [ SCROLL ];  
+   [ ADJUST ];  
+   [ CURSOR <oCursor> ];  
+   [ MESSAGE <cMsg> ];  
+   [ UPDATE ]  ;
+   [ WHEN <uWhen> ];  
+   [ VALID <uValid> ]
+</code>
+
+====== Parameters ======  
+|<uValid>|Code Block for VALID clause|    
+|<cMsg>|The text for the default message on the MsgBar|    
+|<uWhen>|Code Block for WHEN clause|    
+|<oCursor>|An optional cursor object to use|    
+|<uLClick>|An optional action to perform when the mouse is left clicked|    
+|<nWidth>, <nHeight>|The width and height dimensions of the control|    
+|<cResName>|The resource name for the image to display|    
+|<nId>|The resource identifier for this control|    
+|<uRClick>|An optional action to perform when the mouse is right clicked|    
+|<cBmpFile>|The name of the image file to display|    
+|<oWnd>|The window or dialog container object of this control|    
+|<oImg>|The variable to hold this object|    
+
+====== CLAUSES ======
+|SCROLL|To automatically show both scrollbars on the control|    
+|ADJUST|To adjust the image to the control dimensions|    
+|PIXEL|To specify pixel coordinates|    
+|UPDATE|To repaint this control when its container gets :Updated()|    
+|DESIGN|To drag around this control using the mouse|    
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Image.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   LOCAL oDlg, oImage, lSetAlpha := .t.
+
+//   setalpha( .f. )
+
+   DEFINE DIALOG oDlg FROM 0, 0 TO 22, 60 ;
+      TITLE FWDESCRIPTION + " JPG,JIF,GIF,BMP,DIB,RLE,TGA,PCX support!"
+
+   @ 0, 0 IMAGE oImage SIZE 150, 150 OF oDlg SCROLL // ADJUST
+
+   oImage:Progress( .f. )
+
+   @ 1, 28 BUTTON "Select Image" SIZE 50,10 OF oDlg ACTION GetImage( oImage )
+
+   @ 2, 28 BUTTON "Print" SIZE 50,10 OF oDlg ACTION PrintImage( oImage )
+
+   @ 3, 28 BUTTON "Copy" SIZE 50, 10 OF oDlg ;
+      ACTION oImage:CopyToClipboard()
+
+   @ 4, 28 BUTTON "Paste" SIZE 50, 10 OF oDlg ;
+      ACTION ( oImage:LoadFromClipboard(), oImage:Refresh() )
+
+   @ 5, 28 BUTTON "Save" SIZE 50, 10 OF oDlg ;
+      ACTION ( oImage:SaveImage( "SAVED.JPG", 2, 25 ), MsgInfo( "saved as saved.jpg" ) )
+
+   @ 6, 28 BUTTON "Exit" SIZE 50, 10 OF oDlg ACTION oDlg:End()
+   
+   @ 10, 26 CHECKBOX oImage:lStretch PROMPT "Stretch" SIZE 50, 10 OF oDlg ;
+      ON CHANGE ( oImage:ScrollAdjust(), oImage:Refresh() )
+
+   @ 11, 26 CHECKBOX lSetAlpha PROMPT "Set Alpha Channel" SIZE 80, 10 OF oDlg ;
+      ON CHANGE ( SetAlpha( lSetAlpha ), oImage:Refresh() )
+
+
+   ACTIVATE DIALOG oDlg CENTER
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function GetImage( oImage )
+
+   local gcFile := cGetFile( "Bitmap (*.bmp)| *.bmp|" +         ;
+                             "DIB   (*.dib)| *.dib|" +          ;
+                             "PCX   (*.pcx)| *.pcx|"  +         ;
+                             "JPEG  (*.jpg)| *.jpg|" +          ;
+                             "GIF   (*.gif)| *.gif|"  +         ;
+                             "TARGA (*.tga)| *.tga|" +          ;
+                             "RLE   (*.rle)| *.rle|" +          ;
+                             "All Files (*.*)| *.*"             ;
+                            ,"Please select a image file", 4 )
+
+   if ! Empty( gcFile ) .and. File( gcFile )
+      oImage:LoadBmp( gcFile )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function PrintImage( oImage )
+
+   local oPrn
+
+   PRINT oPrn NAME "Image Printing" PREVIEW
+      PAGE
+         oPrn:SayImage( 0, 0, oImage )
+      ENDPAGE
+   ENDPRINT
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:image.jpg|:image.jpg}}
+
+
+====== See Also ====== 
+[[fivewin_class_timage|Class TImage]] , [[fivewin_class_tbitmap | Class TBitMap ]]

@@ -1,0 +1,74 @@
+====== Create an ExplorerBar from source code ======
+<code clipper>
+@ <nRow>, <nCol> EXPLORERBAR <oExBar> ;
+   [ OF | WINDOW | DIALOG <oWnd> ] ;
+   [ SIZE <nWidth>, <nHeight> ]
+</code>
+
+====== Create an ExplorerBar from resources ======
+<code clipper>
+REDEFINE EXPLORERBAR <oExBar> ;
+   [ ID <nId> ] ;
+   [ OF | WINDOW | DIALOG <oWnd> ]
+</code>
+
+====== Parameters ======
+|<oExBar>|The created ExplorerBar object|
+|<oWnd>|The parent window container of the ExplorerBar|
+|<nRow>|The top coordinate of the ExplorerBar|
+|<nCol>|The left coordinate of the ExplorerBar|
+|<nWidth>|The width of the ExplorerBar|
+|<nHeight>|The height of the ExplorerBar|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oExBar, oPanel1, oPanel2, oPanel3, oPanel4
+   local bClick := { | o | MsgInfo( o:GetText() ) }
+      
+   DEFINE WINDOW oWnd TITLE "FWH Class TExplorerBar"
+   
+   oWnd:SetSize( 350, 600 )
+
+   @ 0, 0 EXPLORERBAR oExBar OF oWnd
+
+   oPanel1 = oExBar:AddPanel( "One", "..\bitmaps\32x32\people.bmp" )
+   oPanel1:lSpecial = .T.
+   oPanel1:AddLink( "First item", bClick, "..\bitmaps\16x16\additem.bmp" )
+   oPanel1:AddLink( "Second item", bClick, "..\bitmaps\16x16\copy.bmp" )
+      
+   oPanel2 = oExBar:AddPanel( "Two", "..\bitmaps\32x32\case.bmp" )
+   oPanel2:AddLink( "First item", bClick, "..\bitmaps\16x16\adddbf.bmp" )
+   oPanel2:AddLink( "Second item", bClick, "..\bitmaps\16x16\delete0.bmp" )
+   oPanel2:AddLink( "Third item", bClick, "..\bitmaps\16x16\envelope.bmp" )
+   oPanel2:AddLink( "Fourth item", bClick, "..\bitmaps\16x16\copy.bmp" )
+
+   oPanel3 = oExBar:AddPanel( "Three", "..\bitmaps\32x32\graphics.bmp" )
+   oPanel3:AddLink( "First item", bClick, "..\bitmaps\16x16\adddbf.bmp" )
+   oPanel3:AddLink( "Second item", bClick, "..\bitmaps\16x16\delete0.bmp" )
+   oPanel3:AddLink( "Third item", bClick, "..\bitmaps\16x16\envelope.bmp" )
+   
+   oPanel4 = oExBar:AddPanel( "Four" )
+   oPanel4:AddLink( "First item", bClick, "..\bitmaps\16x16\additem.bmp" )
+   oPanel4:AddLink( "Second item", bClick, "..\bitmaps\16x16\copy.bmp" )
+
+   oWnd:oClient = oExBar
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+{{:explbar1.jpg|:explbar1.jpg}}
+
+====== Source code ======
+FWH\include\FiveWin.ch
+====== Ver tambiéno ======
+[[fivewin_clase_texplorerbar|Clase TExplorerBar]]

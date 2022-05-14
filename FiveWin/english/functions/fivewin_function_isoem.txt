@@ -1,0 +1,81 @@
+====== IsOEM() ======
+
+
+
+It checks if the characters of a string are OEM
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsOEM( <cString> ) --> lOEM 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cString> String to check 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lOEM> This function return true if all the characters of the string
+given are characters OEM. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\OEMANSI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

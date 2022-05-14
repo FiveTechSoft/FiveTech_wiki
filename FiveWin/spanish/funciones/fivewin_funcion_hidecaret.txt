@@ -1,0 +1,16 @@
+
+======HideCaret()======
+HideCaret()
+
+Hidden the cursor of edition of the screen
+====== Sintaxis ======
+ HideCaret( <hWnd> ) --> nil 
+====== Parámetros ======
+ <hWnd> Handle of the window that contains the edition cursor. 
+====== Devuelve ======
+ None 
+====== Ejemplo ======
+ SOURCE\CLASSES\TTXTEDIT.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\CARET.C 
+====== Ver también ======

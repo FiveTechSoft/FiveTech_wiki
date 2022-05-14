@@ -1,0 +1,28 @@
+
+====== DelIniEntry() ======
+
+Borra una entrada en un archivo INI
+
+====== Sintaxis ======
+ 
+ DelIniEntry( <Section>, <Entry>, <File> ) --> lSuccess 
+
+====== Parámetros ======
+
+|<Section>| Sección | 
+|<Entry>| Entrada | 
+|<File>| Archivo Ini |
+
+====== Retorno ======
+
+|<cValue>| El equivalente de <nValue> como string|
+
+====== Ejemplo ======
+ 
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\PROFILE.C 
+
+====== Ver también ======
+
+[[fivewin_funcion_delinisection|DelIniSection()]]

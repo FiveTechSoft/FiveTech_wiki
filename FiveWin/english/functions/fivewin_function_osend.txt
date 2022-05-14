@@ -1,0 +1,172 @@
+====== OSend() ====== 
+
+
+
+OSend()
+
+
+
+
+
+
+Generic messages Object sending function
+
+
+
+====== Syntax ======
+
+
+
+
+
+ OSend( <oObject>, <cMsg> [,<uParam1>,...<uParamN>] ) --> uReturnedValue 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <oObject> The object which we want to send it a message 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cMsg> A string with the message name 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <uParam1> They are optional parameters if needed 
+
+
+ 
+
+
+ <uParamN> 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <uReturnedValue> The value returned cause that message, if there is a
+returned value defined. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ OSend( <oObj>, "XXX" ) is the same as: <oObj>:XXX 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ DATA and METHODs messages in Clipper are managed in the same way, except
+that to retrieve a value you have to place an underscore before the DATA
+message name: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ MsgInfo( OSend( oWnd, "_hWnd" ) ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ Not supplied. 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ ASend() aOData() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

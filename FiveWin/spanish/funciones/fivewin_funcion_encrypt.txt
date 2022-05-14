@@ -1,0 +1,32 @@
+====== Encrypt() ======
+
+Encripta un texto con una clave opcional
+
+====== Syntaxis ====== 
+
+Encrypt( <cTexto> [,<cClave> ] ) --> cTextoEncriptado  
+ 
+
+====== Parametros ====== 
+
+| <cTexto>| Es el texto a encriptar.  |
+| <cClave>| Es una clave opcional de texto a usar para generar el codigo encriptado.|
+
+====== Devuelve ====== 
+
+| <cTextoEncriptado>| El texto encriptado.  |
+
+
+====== Ejemplo ======
+<code clipper>
+MsgInfo( Encrypt( "Hola mundo", "miclave" ) ) 
+</code>
+
+====== Codigo fuente ====== 
+
+ No se proporciona para garantizar la seguridad de este sistema de encriptacion.  
+ 
+
+====== Ver tambien ====== 
+
+[[fivewin_funcion_decrypt|Decrypt()]]

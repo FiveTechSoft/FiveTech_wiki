@@ -1,0 +1,124 @@
+Ras_dialEntry()
+
+
+
+Ras_dialEntry()
+
+ Previous  Top  Next
+
+
+
+
+To establish communication with predetermined connection
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Ras_dialEntry( <cEntry>,; <hWnd>  ,;  <hRas> ) --> nStatus 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cEntry> Stored connection 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handler of the window from where it tries to settle down the
+communication. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hRas> Handler of last access for reference. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nStatus> Connection state. To see RAS.CH 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\RATEST.PRG, SAMPLES\TESTRAS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\TRAS.PRG SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

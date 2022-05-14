@@ -1,0 +1,18 @@
+
+====== cFilePath() ======
+cFilePath()
+Retrieves the path from a filename with path
+
+====== Sintaxis ======
+ cFilePath( <cFileName> ) --> cPath 
+
+====== Parámetros ======
+ <cFileName> The full filename including path and optional extension. 
+
+====== Devuelve ======
+ <cPath> Just the path name specified inside the full filename. 
+
+====== Código fuente ======
+ SOURCE\\FUNCTION\\FileName.prg 
+
+====== Ver también ======

@@ -1,0 +1,19 @@
+====== Bin2D() ======
+
+Converts a string into a 4 byte double precision numeric 
+
+====== Syntax: ======
+
+Bin2d( <cValue> ) --> nValue  
+
+====== Parameters: ======
+^Parameter^Description^
+|<cValue>| String to be converted into a double numeric .| 
+
+====== Returns: ======
+ 
+Double numeric  
+
+====== Source Code: ======
+
+SOURCE\FUNCTION\B2BIN.C  

@@ -1,0 +1,21 @@
+
+====== MsgList() ====== 
+MsgList()
+
+Shows an array on a modal dialog box
+====== Sintaxis ======
+ MsgList( <aData>, [<cTitle>], [<nTop>], [<nLeft>], [<nBottom>],
+[<nRight>], [<cBtnText>]) --> nil 
+====== Parámetros ======
+  <aData>     Array to show 
+  <cTitle>    Title of the container dialog box 
+  <nTop>      Superior coordinate of the dialogue box in characters 
+  <nLeft>     Left coordinate of the dialogue box in characters 
+  <nBottom>   Inferior coordinate of the dialogue box in characters 
+  <nRight>    Right coordinate of the dialogue box in characters 
+  <cBntText>  Text for the close button 
+====== Devuelve ======
+   Nil.
+====== Código fuente ======
+   SOURCE\FUNCTION\MSGLIST.PRG
+====== Ver también ======

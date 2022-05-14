@@ -1,0 +1,28 @@
+
+====== BarPaint() ======
+
+Dibuja la barra de botones
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BarPaint( <hWnd>, <hDC> ) --> nil  
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> El manejador de la barra de botones.  
+
+ <nDC> Es el manejador de contexto de la barra de botones
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Ejemplo: ( Sample: ) ======
+ 
+SOURCE\CLASSES\BAR.PRG  
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\WNDBOXES.C  
+
+

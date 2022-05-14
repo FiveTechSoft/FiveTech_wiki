@@ -1,0 +1,25 @@
+
+====== LoadBitmap() ====== 
+LoadBitmap()
+
+Load the specified resource bitmap
+====== Sintaxis ======
+ LoadBitmap( <hInst>, <cnBitmap> ) --> hBitmap 
+====== Parámetros ======
+  <hInst>    Identifies the module that contains the bitmap to be loaded. 
+ <cnBitmap>  The name or the numeric identifier of the bitmap to load. 
+====== Devuelve ======
+ <hBitmap> The handle of the bitmap loaded. 
+
+Observations:
+
+ Don't use this function to load a bitmap from disk. Use ReadBitmap()
+instead. 
+====== Ejemplo ======
+  SAMPLES\Install.prg
+  SAMPLES\TestRes.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\LoadBmp.c 
+
+====== Ver también ======
+[[fivewin_funcion_readbitmap|ReadBitmap()]] [[fivewin_funcion_deleteobject|DeleteObject()]]

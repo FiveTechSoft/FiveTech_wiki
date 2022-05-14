@@ -1,0 +1,66 @@
+Sin()
+
+
+Sin()
+ Previous  Top  Next
+
+Calculates the sine function of an angle.
+
+====== Sintaxis ======
+
+
+ Sin( <nAngle> ) --> nSin 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <nAngle> The angle expressed in radiants. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nSin> The sine of the specified angle. 
+
+
+ 
+
+Observations:
+
+
+
+====== Ejemplo ======
+
+
+ #define PI 3.14159265359 
+
+
+ 
+
+
+ 
+
+ local nSin := Sin( PI / 4 ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\SELECTOR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

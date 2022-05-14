@@ -1,0 +1,88 @@
+nMidiDevices()
+
+
+
+nMidiDevices()
+
+ Previous  Top  Next
+
+
+
+
+Number of MIDI output present devices in the system
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nMidiDevices() --> nDevs 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nDevs> It returns the number of MIDI output present devices in the one
+system if the function is executed correctly. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

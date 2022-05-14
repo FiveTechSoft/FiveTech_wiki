@@ -1,0 +1,38 @@
+
+====== C2Hex() ======
+
+Convierte un byte en una cadena hexadecimal ( 2 carácteres )
+
+====== Sintaxis: ======
+ 
+ C2Hex( <cChar> ) --> cHex  
+
+
+
+====== Parámetros: ======
+
+^Parameter^Description^
+| <cChar> | Una cadena de carácteres. |
+
+
+====== Retorno:  ======
+
+^Returns^Description^
+| <cHex> | El equivalente <cChar> como hexadecimal. |
+
+
+
+====== Ejemplo: ======
+ 
+<code clipper>
+ MsgInfo( C2Bin( "X" ) ) // Devuelve un "58" hex  
+</code>
+
+
+====== Codigo Fuente: ======
+ 
+ SOURCE\FUNCTION\B2Bin.c  
+
+====== See also: ======
+
+[[fivewin_function_l2hex|L2Hex()]], [[fivewin_function_i2hex|I2Hex()]]

@@ -1,0 +1,21 @@
+====== LoadMenu() ====== 
+
+Carga un menú desde recursos
+
+====== Sintaxis ======
+ LoadMenu( <hInst>, <cName> ) --> hMenu 
+
+====== Parámetros ======
+|hInst|Manejador de la instancia de la aplicación|
+|cName|Nombre del menú ó identificador numérico en los recursos|
+
+====== Devuelve ======
+|hMenu|Devuelve el manejador del menú si la función tiene éxito|
+
+====== Ejemplo ======
+ SOURCE\CLASSES\MENU.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+
+====== Ver también ======
+[[fivewin_funcion_createmenu|CreateMenu()]] [[fivewin_funcion_destroymenu|DestroyMenu()]]

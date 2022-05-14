@@ -1,0 +1,134 @@
+====== Tabs ======
+
+** Creating a tab from source code **
+
+<code clipper>
+ @ <nRow>, <nCol> TABS [<oTabs>] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+ [ ACTION | EXECUTE | ON CHANGE <uAction> ] ;  
+ [ PIXEL ] ;  
+ [ DESIGN ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ OPTION <nOption> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ MESSAGE <cMsg> ]  
+</code>
+** Creating a tab from resources **
+<code clipper>
+ REDEFINE TABS [<oTabs>] ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PROMPT | PROMPTS | ITEMS <cPrompt,...> ] ;  
+ [ ACTION | EXECUTE <uAction> ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ OPTION <nOption> ]  
+</code>
+**Parameters**
+| <nRow>, <nCol> | The coordinates where to locate the tab control (only from source code, not from resources). | 
+| <oTabs> | A reference to the tab object just created. | 
+| <oWnd> | The container object of the tab control. | 
+| <cPrompt> | A list of strings, one for each tab. | 
+| <uAction> | The action to execute when selecting any tab.| 
+| <nClrFore> | The color to display the prompts text. | 
+| <nClrBack> | The color to fill the folder surface. | 
+| <nOption> | An optional initial option to use different from 1. | 
+| <nWidth>, <nHeight> | The dimensions of the tab control. | 
+| <cMsg>  | An optional message to display on its container MsgBar if defined. | 
+| <nId> | The numeric resource identifier of the control. | 
+
+**CLAUSES **
+
+| PIXEL  | To use pixel coordinates instead of text coordinates. | 
+| DESIGN | Allows the user to interactively move and resize the control. | 
+| ON CHANGE | To specify an action to execute when a different tab option is selected. | 
+
+====== Sample Code ======
+
+** Creating Tabs from Source code **
+\Fwh\Samples\TestTabs.Prg
+
+<code clipper>
+// Testing new FiveWin Tabs !!!
+
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oTabs1, oTabs2, oTabs3, oTabs4
+
+   DEFINE WINDOW oWnd TITLE "Testing FiveWin Tabs" ;
+      COLOR CLR_WHITE, CLR_BLUE
+
+   @ 8, 0 TABS oTabs1 PROMPTS "&One", "&Two", "T&hree", "&Four" OF oWnd ;
+      BITMAPS "..\bitmaps\16x16\people.bmp", "..\bitmaps\16x16\open2.bmp",;
+              "..\bitmaps\16x16\print.bmp", "..\bitmaps\16x16\zoom2.bmp" ;
+      ACTION oWnd:Say( 5, 5, oTabs1:nOption )
+   
+   oWnd:oBottom = oTabs1
+   oTabs1:bRClicked = { || nil }
+
+   @ 8, 0 TABS oTabs2 PROMPTS "&One", "&Two", "T&hree", "&Four" OF oWnd ;
+      BITMAPS "..\bitmaps\16x16\people.bmp", "..\bitmaps\16x16\open2.bmp",;
+              "..\bitmaps\16x16\print.bmp", "..\bitmaps\16x16\zoom2.bmp" ;
+      ACTION oWnd:Say( 7, 5, oTabs2:nOption )
+      
+   oWnd:oTop = oTabs2
+
+   @ 8, 0 TABS oTabs3 PROMPTS "&One", "&Two", "T&hree", "&Four" OF oWnd ;
+      BITMAPS "..\bitmaps\16x16\people.bmp", "..\bitmaps\16x16\open2.bmp",;
+              "..\bitmaps\16x16\print.bmp", "..\bitmaps\16x16\zoom2.bmp" ;
+      ACTION oWnd:Say( 9, 5, oTabs3:nOption )
+
+   oWnd:oLeft = oTabs3
+
+   @ 8, 0 TABS oTabs4 PROMPTS "&One", "&Two", "T&hree", "&Four" OF oWnd ;
+      BITMAPS "..\bitmaps\16x16\people.bmp", "..\bitmaps\16x16\open2.bmp",;
+              "..\bitmaps\16x16\print.bmp", "..\bitmaps\16x16\zoom2.bmp" ;
+      ACTION oWnd:Say( 11, 5, oTabs4:nOption )
+
+   oWnd:oRight = oTabs4
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:tabs2.jpg|:tabs2.jpg}}
+
+
+** Creating Tabs from Resource **
+
+
+\Fwh\Samples\TestTab3
+
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg, oTabs
+
+   DEFINE DIALOG oDlg RESOURCE "Test"
+
+   REDEFINE TABS oTabs PROMPTS "One", "Two", "Three" ID 100 OF oDlg
+
+   oDlg:oTop = oTabs
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:tab.jpg|:tab.jpg}}
+
+====== See also ======
+[[fivewin_class_ttabs | Class TTabs ]]
+
+

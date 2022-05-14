@@ -1,0 +1,36 @@
+====== cFileExt() ====== 
+
+Retrieves the extension from a filename 
+
+====== Syntax ====== 
+cFileExt( <cFileName> ) --> cExtName  
+
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cFileName> | The filename from which the extension is to be retrieved, (if the extension is available along with the cFileName.)|  
+
+====== Returns ====== 
+^Returns^Description^
+|<cExtName>| A three characters string with the extension name. The output is in Uppper case letters|
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+
+MsgInfo(cFileExt( "g:\Test\Abc.Exe" ) ) // Result EXE
+
+MsgInfo(cFileExt( "Whatsnew.Txt" ) ) // Result TXT
+
+MsgInfo(cTest:=cFileExt( "\Fwh\Samples\Whatsnew" ) )  // Result 
+
+MsgInfo(Len(cTest))  // Result 0
+   
+Return nil  
+</code>
+
+====== Source Code ====== 
+
+SOURCE\FUNCTION\FileName.prg

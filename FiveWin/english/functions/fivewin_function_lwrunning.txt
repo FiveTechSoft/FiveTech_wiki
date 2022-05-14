@@ -1,0 +1,101 @@
+====== lWRunning() ====== 
+
+
+
+lWRunning()
+
+
+
+
+
+
+Checks if the main FiveWin events-looping is working
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lWRunning() --> lRunning 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lRunning> True if FiveWin main loop event-processing is already
+working. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is used by FiveWin to check that the app is already
+processing and dispatching events. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ Not supplied. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

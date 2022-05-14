@@ -1,0 +1,131 @@
+TerminateApp()
+
+
+
+TerminateApp()
+
+ Previous  Top  Next
+
+
+
+
+Ends the given applications
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TerminateApp( <hTask>, <nMode> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hTask> Identifies the task to be ended. If we want finish the current
+task this parameter will be nil. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMode> How to end the task. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ UAE_BOX   0   Display the Application Error message box and then ends
+the task 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ NO_UAE_BOX   1   Does not display the Application Error message box 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+ 
+
+
+ 
+
+
+ SOURCE\WINAPI\TOOLHELP.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

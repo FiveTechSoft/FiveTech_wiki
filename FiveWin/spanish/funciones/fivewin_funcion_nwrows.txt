@@ -1,0 +1,20 @@
+====== nWRows() ====== 
+
+Devuelve el número de filas que "caben" en la zona visible de una ventana dado un tamaño de font
+
+====== Sintaxis ======
+ nWRows( <hWnd>, <hDC> [,<hFont>] ) --> nTextRows 
+====== Parámetros ======
+  <hWnd>   The handle of the window 
+  <hDC>    The handle of its device context 
+  <hFont>  An optional handle of a font 
+====== Devuelve ======
+ <nTextRows> The total number of text rows contained in the visible area
+of that window or control. 
+====== Ejemplo ======
+ SOURCE\CLASSES\WBrowse METHOD nRowCount() 
+====== Código fuente ======
+ SOURCE\WINAPI\WndRows.c 
+
+====== Ver también ======
+[[fivewin_funcion_nwrow|nWRow()]]

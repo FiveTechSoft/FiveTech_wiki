@@ -1,0 +1,124 @@
+
+====== GlobalAddAtom() ====== 
+
+
+
+
+Adds a string to the Windows atom table system
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GlobalAddAtom( <cString> ) --> nAtom 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cString> A string to be added to the system atom table to return a
+unique value for it. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nAtom> A numeric value (nAtom) unique for that string. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function is case sensitive. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ MsgInfo( GlobalAddAtom( "Hello" ) ) 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Atom.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GlobalGetAtomName() GlobalDeleteAtom() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

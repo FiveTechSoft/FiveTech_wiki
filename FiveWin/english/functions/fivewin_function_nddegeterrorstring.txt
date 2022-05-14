@@ -1,0 +1,78 @@
+====== NDdeGetErrorString() ======
+
+
+To obtain error description DDE from a numeric code
+
+
+
+====== Syntax ======
+
+
+
+
+
+ NDdeGetErrorString( <nErrorCode> ) --> cErrorString 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nErrorCode> Error code to be converted. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cErrorString> Text String that explains the numeric error that you it
+gives. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\NDDEAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+

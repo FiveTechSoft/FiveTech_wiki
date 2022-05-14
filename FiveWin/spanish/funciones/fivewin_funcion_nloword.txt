@@ -1,0 +1,20 @@
+
+====== nLoWord() ====== 
+nLoWord()
+
+Returns the Low word of a long (four bytes)
+====== Sintaxis ======
+ nLoWord( <nLong> ) --> nLoWord 
+====== Parámetros ======
+ <nLong> A numeric (4 bytes) value 
+====== Devuelve ======
+ <nLoWord> A numeric (2 byte) value 
+
+Observations:
+
+ A long is made of: 
+ LONG = LOW_WORD + HIGH_WORD 
+====== Código fuente ======
+ SOURCE\FUNCTION\HiLoWord.c 
+====== Ver también ======
+ nLoByte() nHiByte() nLoWord()

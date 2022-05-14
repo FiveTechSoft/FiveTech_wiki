@@ -1,0 +1,28 @@
+====== RemoveFont() ======           
+
+Removes a font from the available fonts list
+
+====== Syntax ======           
+
+RemoveFont( <cFontName> )  --> <lSuccess>
+
+====== Parameters ======
+
+| <cFontName> | Identifies the name of the font resource file or  the handle of a module loaded that supplied that font. |
+
+====== Returns ======
+
+| <lSuccess> | If the operation was sucessfull. |
+
+====== Observations ======
+
+| Any application that adds or removes fonts from the  Windows font table should send a WM_FONTCHANGE message to all top-level windows in the system by using the SendMessage function with the hwnd parameter set to  -1 (HWND_BROADCAST). |
+
+| In some cases, the RemoveFont function may not remove the font resource immediately. If there are outstanding references to the resource, it remains loaded until the last logical font using it has been removed (deleted) by using the DeleteObject function. |
+
+====== Source Code ======        
+SOURCE\\WINAPI\\FontCrea.c
+
+====== See also ======           
+
+ [[fivewin_function_AddFontResource|AddFontResource()]]

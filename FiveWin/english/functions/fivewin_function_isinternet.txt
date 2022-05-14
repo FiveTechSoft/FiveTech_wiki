@@ -1,0 +1,75 @@
+====== IsInternet() ======
+
+Detects if there is internet access.
+
+
+====== Syntax ======
+
+
+
+
+
+ IsInternet() --> lIsInternet 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lIsInternet> A logical value indicating if the internet connection is
+active. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\netapi32.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,88 @@
+====== SymTblLen() ======
+
+
+Number of symbols at application symbol table
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SymTblLen() --> nLen 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLen> Number of symbols at application symbol table 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\TSYMTABL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\SYMTABL.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

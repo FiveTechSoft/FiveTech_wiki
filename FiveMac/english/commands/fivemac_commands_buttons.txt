@@ -1,0 +1,12 @@
+====== Creates a Button from source code ======
+<code clipper>
+@ <nRow>, <nCol> BUTTON [ <oBtn> PROMPT ] <cPrompt> ;
+    [ OF <oWnd> ] ;
+    [ ACTION <uAction,...> ] ;
+    [ SIZE <nWidth>, <nHeight> ]
+</code>
+====== Source code ======
+FMC\source\classes\tmenu.prg
+====== See Also ======
+[[fivemac_class_tbutton|Class TButton]]
+

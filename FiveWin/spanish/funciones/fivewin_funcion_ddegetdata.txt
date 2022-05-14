@@ -1,0 +1,20 @@
+
+====== DDEGetData() ======
+DDEGetData()
+
+Copies data from the given global memory object to the specified local
+buffer.
+====== Sintaxis ======
+ DDEGetData( <hData>, <nOffset> ) --> cData 
+====== Parámetros ======
+ <hData> Handle of global memory object 
+
+ <nOffset> Offset to beginning of data 
+
+====== Devuelve ======
+ <cData> Value of the buffer 
+
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\DDEML.C 
+====== Ver también ======

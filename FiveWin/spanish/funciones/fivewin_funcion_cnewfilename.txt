@@ -1,0 +1,16 @@
+
+====== cNewFileName() ======
+cNewFileName()
+Retrieves a new filename using a rootname
+====== Sintaxis ======
+ cNewFileName( <cRootName>, <cExt> ) --> cNewFileName 
+====== Parámetros ======
+ <cRootName> A root name to use to build a new filename that does not
+exists. 
+ <cExt> The extension to use to build the new filename. 
+====== Devuelve ======
+ <cNewFileName> It is a new non-existing filename, with the format:
+<cRootName>XXX.<cExt> 
+====== Código fuente ======
+ SOURCE\FUNCTION\FileName.prg 
+====== Ver también ======

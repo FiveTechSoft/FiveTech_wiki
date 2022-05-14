@@ -1,0 +1,151 @@
+====== Get ======
+**For editing Memos**
+<code clipper>
+@ <nRow>, <nCol> GET [ <oGet> VAR ] <uVar> ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ MULTILINE | MEMO | TEXT ];  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ SIZE <nWidth>, <nHeight> ];  
+ [ FONT <oFont> ] ;  
+ [ HSCROLL ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ CENTER | CENTERED> ];  
+ [ RIGHT ] ;  
+ [ READONLY | NO MODIFY ] ;  
+ [ VALID <uValid> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ DESIGN ] ;  
+ [ NO BORDER | NOBORDER ] ;  
+ [ NO VSCROLL ]  ;
+ [ SPINNER [ ON UP <SpnUp> ] [ ON DOWN < SpnDn> ] [ MIN <Min> ] [ MAX <Max> ] ]  </code> 
+
+  
+**Creating a GET from source code**
+<code clipper>
+ @ <nRow>, <nCol> GET [ <oGet> VAR <uVar> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ PICTURE <cPict> ];  
+ [ VALID <ValidFunc> ] ;  
+ [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ FONT <oFont> ] ;  
+ [ DESIGN ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ PIXEL ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ] ;  
+ [ CENTER | CENTERED ] ;  
+ [ RIGHT ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ READONLY | NO MODIFY ] ;  
+ [ PASSWORD];  
+ [ NO BORDER | NOBORDER ];  
+ [ HELPID | HELP ID <nHelpId> ]  ;
+ [ SPINNER [ ON UP <SpnUp> ] [ ON DOWN < SpnDn> ] [ MIN <Min> ] [ MAX <Max> ] ]  </code> 
+ 
+  
+**For editing Memos **
+<code clipper>
+REDEFINE GET [ <oGet> VAR ] <uVar> ;  
+ [ MULTILINE | MEMO | TEXT ] ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ COLOR | COLORS <nClrFore> [,<nClrBack>] ] ;  
+ [ FONT <oFont> ] ;  
+ [ CURSOR <oCursor> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ UPDATE ] ;  
+ [ WHEN <WhenFunc> ] ;  
+ [ READONLY | NO MODIFY> ] ;  
+ [ VALID <ValidFunc> ] ;  
+ [ ON CHANGE <uChange> ]  </code> 
+  
+    
+
+| <nRow>, <nCol> | The coordinates of the GET. We simulate Text coordinates.    | 
+| <oGet> |  A reference to the GET Object.    | 
+| <uVar> |  The variable which the GET Object is manipulating.    | 
+| <oWnd> |  The container window of the GET.    | 
+| <cPict>  | Typical xBase PICTURE clause.    | 
+| <ValidFunc> | Validating expression or function. The same as in MsDos.    | 
+| <WhenFunc> | When Clause. Not available yet!    | 
+| <cColor>  |  The color of the GET. Not available yet!    | 
+| <nWidth>, <nHeight> | The dimensions in pixels of the GET.    | 
+| <oFont> |  A reference to the Font Object to be used with the GET.    | 
+| <oCursor> |  A reference to the Cursor Object to dispay over this control.    | 
+| <cMsg>  |  The associated message of this control.    | 
+| <nId>  |  The numeric resource identifier of the Control.    | 
+| <nHelpId> |  Help topic identifier for GETs from resources.    | 
+| <nClrFore>  | Foreground color as a RGB number, or as a xBase string Background | 
+| <nClrBack> | Color as a RGB number    | 
+| <SpnUp> | An action to perform when the GET spinner, if defined, is up pressed. | 
+| <SpnDn> | An action to perform when the GET spinner, if defined, is down pressed. | 
+| <Min>  |  The minimum value of the GET spinner, if defined.    | 
+| <Max>  |  The maximum value of the GET spinner, if defined.    | 
+| <uChange> |  An action to be performed when the Get changes. 3 parameters will be passed to it when it's evaluated; nKey, nFlags and Self   | 
+
+
+**CLAUSES **
+
+| MULTILINE, MEMO, TEXT  |  To use a multiple lines GET control to allow memo editing.    | 
+| UPDATE    |       This control may be updated from TDialog:Update() METHOD    | 
+| CENTER   |        If the GET containts has to appear centered    | 
+| RIGHT   |        If the GET containts has to appear right justified. Important: In order to right justify a GET from a DialogBox, it has to be defined at the resource as MultiLine and right and has to use the default font!    | 
+| PIXEL    |       To use pixel coordinates instead of Text coordinates.    | 
+| PASSWORD  |      Enter as Password.    | 
+| DESIGN    |       Allows the user to move and resize with the mouse    | 
+| HSCROLL   |     Horizontal Scroll    | 
+| READ ONLY  |      Disables editing in this control.    | 
+| NO MODIFY  |        To set a read only GET.    | 
+| NO BORDER, NOBORDER |   To avoid the GET border. |    
+| HELP ID, HELPID |      An optional Help Id to request topic help.    | 
+| SPINNER  |         To show a right placed spinner.    | 
+| NO VSCROLL |          To avoid a vertical scrollbar.   |  
+| ON UP   |          To specify an action to perform when up clicking the spinner.    | 
+| ON DOWN |         To specify an action to perform when down clicking the spinner.    | 
+| MIN  |           The minimum value of the spinner.    | 
+| MAX |            The maximum value of the spinner.    | 
+
+====== Sample Code / Usage ======
+<code clipper>
+#include "FiveWin.ch"
+function Main()
+   LOCAL oDlg, oGet
+   LOCAL cCad := "Testing    " // pad("Testing Gets",40)
+   LOCAL nNum := 0
+   LOCAL dDat := Date()
+
+   Set century On
+   Set Date Ansi
+   Set Date format "mm/dd/yyyy"
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg TITLE "TGet from " + FWDESCRIPTION
+
+   @ 1,    2 SAY "Text..:" OF oDlg
+   @ 1,    6 GET oGet VAR cCad OF oDlg SIZE 60, 10 COLOR "W/G" PICTURE "@K"
+   @ 1.8,  2 SAY "Number:" OF oDlg
+   @ 2,    6 GET oGet VAR nNum OF oDlg SIZE 60, 10 PICTURE "9999999.99"
+   @ 2.6,  2 SAY "Date:" OF oDlg
+   @ 3,    6 GET oGet VAR dDat PICTURE "@E" OF oDlg SIZE 60, 10  // "@D"
+   @ 3,    7 BUTTON "&Ok" OF oDlg SIZE 30, 12 ACTION oDlg:End()
+   @ 3,   16 BUTTON "&Cancel" SIZE 30, 12 OF oDlg ACTION oDlg:End() CANCEL
+   
+   // TGet():SetColorFocus( nRGB( 200, 120, 120 ) )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil</code>  
+====== Screen Snapshot ======
+{{:get.jpg|:get.jpg}}
+
+
+====== See also ======
+[[fivewin_class_tget | Class TGet ]], [[fivewin_class_tfget | Class TFGet ]], [[fivewin_class_tedit | Class TEdit]]

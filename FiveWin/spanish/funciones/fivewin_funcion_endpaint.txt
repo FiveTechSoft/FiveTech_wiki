@@ -1,0 +1,129 @@
+EndPaint()
+
+
+
+EndPaint()
+
+ Previous  Top  Next
+
+
+
+
+Ends painting a window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EndPaint( <hWnd>, <cPS> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ This function marks the end of painting for the given window. This
+function is required for each BeginPaint() but only after painting is
+complete. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> The handle of the window that is being currently painted. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <cPS> A string that hold relevant information about the painting
+process. (it holds a PAINTSTRUCT structure). 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Paint.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ BeginPaint() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

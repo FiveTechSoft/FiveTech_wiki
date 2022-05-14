@@ -1,0 +1,19 @@
+====== CheckMenu() ======
+Agregar o quitar una marca de verificación a un elemento de un menú popup.
+
+
+====== Sintaxis ====== 
+CheckMenu(<hMenu> , <nItemId>, <nFlags>  ) ->  nLastState
+
+====== Parámetros ====== 
+^Parameter^Description^
+| <hMenu> | El manejador del menú. |
+| <nItemId> | Identificador del menuitem. |
+| <nFlags>  | Especifica el API, para obtener la posición del tem en el menú: MF_BYCOMMAND or MF_BYPOSITION.|
+
+====== Retorna ====== 
+^Retorna^Descripción^
+| <nLastState> | Estado previo |
+
+====== Código fuente ======     
+SOURCE\FUNCTION\MENUS.C

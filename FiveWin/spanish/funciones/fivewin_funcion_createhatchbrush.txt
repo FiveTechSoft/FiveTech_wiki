@@ -1,0 +1,40 @@
+====== CreateHatchBrush() ======
+
+Crea un pincel con el patrón de tramado especificado
+
+====== Sintaxis ======
+ 
+ CreateHatchBrush( <nStyle>, <nRGBColor> ) --> hBrush
+
+Esta función crea un pincel que tiene el patrón de tramado y el color. El cepillo se puede posteriormente ser seleccionado como el pincel actual para cualquier dispositivo.
+
+
+====== Parametros ======
+
+|<nStyle>|nStyle especifica a la escotilla estilo de la brocha. Este parámetro puede ser uno de los siguientes valores: |
+
+| Valor| Significado |
+| HS_BDIAGONAL| de 45 grados hacia arriba escotilla (de izquierda a derecha)| 
+| HS_CROSS| horizontales y verticales discontinuas| 
+| HS_DIAGCROSS| 45 grados discontinuas |
+| HS_FDIAGONAL| 45 grados hacia abajo escotilla (de izquierda a derecha) |
+| HS_HORIZONTAL| escotilla horizontal | 
+| HS_VERTICAL| escotilla vertical |
+
+|<nRGBColor>| Especifica el color de primer plano de la brocha (el color de las escotillas). |
+
+
+====== Retorno ======
+
+|<hBrush>| El valor de retorno es el mango de la  brocha, si la función tiene éxito. De lo contrario, es NULL.|
+
+====== Observaciones ======
+
+Cuando una aplicación ha terminado de usar la brocha creado por la función CreateHatchBrush, se debe seleccionar la brocha fuera del contexto del dispositivo y luego eliminarlo mediante la función DeleteObject.
+
+====== Codigo Fuente ======
+ 
+
+====== Ver también ======
+
+[[fivewin_funcion_CreatePatternBrush|CreatePatternBrush()]]

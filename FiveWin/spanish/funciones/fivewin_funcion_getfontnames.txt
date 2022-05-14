@@ -1,0 +1,48 @@
+GetFontNames()
+
+
+GetFontNames()
+ Previous  Top  Next
+
+Returns an array with the fonts available on a specified device.
+
+====== Sintaxis ======
+
+
+ GetFontNames( <hDC> ) --> aFontName 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hDC> Handle to the device context. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <aFontName> An array with the names of the available fonts. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\FONTS.C 
+
+
+ 
+
+See also:
+
+   CreateFont() ChooseFont()
+
+
+
+====== Ver también ======
+

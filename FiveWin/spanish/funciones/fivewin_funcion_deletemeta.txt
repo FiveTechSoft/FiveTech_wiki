@@ -1,0 +1,21 @@
+====== DeleteMetafile() ======
+
+Se invalida el título dado al metarchivo 
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ DeleteMetafile( <hMeta> ) --> lSuccess  
+
+====== Parametros: ( Parameters: ) ======
+
+ <hMeta> Título de metarchivo a eliminar.  
+
+====== Retorno: ( Returns: ) ======
+
+ <lSuccess>. t. si la operación tiene éxito
+
+====== Ejemplo: ( Sample: ) ======
+ 
+====== Codigo Fuente: ( Source code: ) ======
+ 
+SOURCE\WINAPI\METAFILE.C 

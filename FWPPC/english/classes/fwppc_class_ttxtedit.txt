@@ -1,0 +1,128 @@
+====== Class TTxtEdit ======
+
+Ascii files visual editing (UNDER DEVELOPMENT)                                 
+Inherits from TControl                                                         
+====== DATA ======
+|aLines|An array holding all the text lines|
+|aDelLines|An array to store the deleted lines|
+|aRDelLines|An array where to store the undo actions|
+|nDelLines|Max. number of deleted lines to store|
+|nVisLines|Number of lines that fit in screen|
+|nLineTop|First line visible on screen|
+|lInsert|Logical cursor insert mode|
+|lChanged|Text has changed|
+|cFileName|Name of the related physical filename|
+|cOperators|A string with all the operators (i.e.: "+-*/:.,;" )|
+|cSeparators|A string with all the separators (i.e.: " " + Chr( 9|
+|)|)|
+|nRow|Caret physical pixel row position inside the control|
+|surface||
+|nCol|Caret physical pixel col position inside the control|
+|surface||
+|nLineRow|Caret logical row position inside the control surface|
+|nLineCol|Caret logical col position inside the control surface|
+|cTokens1|A string with the first group of tokens delimited|
+|with|spaces|
+|cTokens2|A string with the second group of tokens delimited|
+|with|spaces|
+|cTokens3|A string with the third group of tokens delimited|
+|with|spaces|
+|cBegWith|A string with the group of begin-with tokens|
+|delimited|with spaces|
+|nClrTok1|The first group of tokens color|
+|nClrTok2|The second group of tokens color|
+|nClrTok3|The third group of tokens color|
+|nClrBegin|The begin-with group of tokens color|
+|nClrNumber|The numbers tokens color|
+|nClrString|The strings tokens color|
+|nClrOperator|The operators tokens color|
+|nClrBBlock|BackColor of a marked block|
+|nClrFBlock|ForeColor of a marked block|
+|nBlkStay|Used internally|
+|nBlkPos|Used internally|
+|nBlkStart|First logical line of the marked block|
+|nBlkEnd|Last logical line of the marked block|
+|nTabLen|Number of spaces to display for a TAB character|
+|nLeftMargin|Left margin|
+|lVScroll|Shows the vertical scrollbar|
+|lBackUp|Makes a backup BAK file when start saving the file to|
+|disk||
+|lUndo|Allows undo operations|
+|nOldLine|Last selected text line|
+|lRegistered|ClassData to store the WinApi registered state of the|
+|Class||
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|AddLine|Add a new line|
+|Change|Always executed when there is a change in the text|
+|Default|Default control initialization|
+|DelBlock|Deletes the current marked block|
+|DelCurLine|Deletes the current selected line|
+|Delete|Response to Del Key|
+|DelLine|Deletes any line|
+|DlgGoLine|Shows a dialog to select a line to which to go|
+|DrawLine|Draws any line|
+|DrawCurLine|Draws the current selected line|
+|Display|Shows all the text lines|
+|GetDlgCode|Returns the GetDlgCode associated|
+|GoUp|Try to go to the previous text line|
+|GoDown|Try to go to the next text line|
+|InsLine|Insert a text line|
+|Initiate|Initializes the control|
+|Load|Loads the text file from disk|
+|nGetTokenColor|Retrieves the defined color for a specified token|
+|nLine|Index line inside aLines array|
+|_nLine|Goes to the given line number|
+|nLines|Returns the total number of lines|
+|Paint|Automatically called from inside Display method|
+|SelFile|Interactively select a new file to edit|
+|GotFocus|Action performed when getting the focus|
+|LostFocus|Action performed when losing the focus|
+|KeyChar|Action performed when generating a keystroke|
+|KeyDown|Action performed when pressing a key|
+|LButtonDown|Action performed when left clicking the mouse|
+|GetText|Returns the current text|
+|GoPrevLine|Go to the previous text line|
+|GoNextLine|Go to the next text line|
+|GoPrevChar|Go to the previous character|
+|GoNextChar|Go to the next character|
+|GoBeginLine|Go to the beginning of the text line|
+|GoEndLine|Go to the end of the text line|
+|GoPrevWord|Go to the previous word|
+|GoNextWord|Go to the next word|
+|ToggleInsert|Toggles the current insert mode|
+|ReSize|Action performed when resizing the control|
+|Search|Searches a text|
+|SetFont|Sets the font to use for displaying the text lines|
+|SetText|Sets the text to edit from a string|
+|VScrAdjust|Vertical ScrollBar Range Adjust|
+|GoBottom|Go to the last text line|
+|GoTop|Go to the first text line|
+|Goto|Go to a certain text line|
+|GoLine|Go to a certain text line|
+|PageUp|Go to the previous page of text lines|
+|PageDown|Go to the next page of text lines|
+|DupLine|Duplicates the current selected line|
+|Copy|Copies the current marked block into the Clipboard|
+|Paste|Copies the clipboard contents into the current caret|
+|position||
+|Cut|Deletes the current marked block and copies into the|
+|Clipboard||
+|JoinLine|Joins the current line with the next text line|
+|SplitLine|Breaks the current line into two from the current|
+|caret|position|
+|SaveToFile|Save the text to a disk file|
+|AddUndo|Adds a new action to the array of 'UnDoable' actions|
+|Undo|Undoes the last performed operation|
+|Redo|Redoes the last performed operation|
+|MouseMove|Action to perform when moving the mouse over the|
+|control||
+|PaintBlkDown|Extends downwards the marked block and paints it|
+|PaintBlkUp|Extends upwards the marked block and paints it|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTXTEDIT.PRG

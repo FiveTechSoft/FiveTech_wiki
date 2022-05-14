@@ -1,0 +1,48 @@
+====== WndVLineRaised() ====== 
+
+
+WndVLineRaised()
+
+Draw a vertical line with raised look
+
+
+====== Syntax ======
+
+ WndVLineRaised( <hDC>, <nTop>, <nLeft>,<nBottom>, <nRight> ) --> nil 
+
+====== Parameters ======
+
+ <hDC> Device context 
+
+
+ <nTop> Superior coordinate 
+
+
+ <nLeft> Left coordinate 
+
+
+ <nBottom> Inferior coordinate 
+
+
+ <nRight> Right coordinate 
+
+
+====== Returns ======
+
+ Nothing 
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\WNDLINES.C 
+
+
+
+
+====== See also ======
+

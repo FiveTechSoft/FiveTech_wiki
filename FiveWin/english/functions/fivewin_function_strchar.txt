@@ -1,0 +1,96 @@
+StrChar()
+
+
+
+StrChar()
+
+ Previous  Top  Next
+
+
+
+
+Obtain a character of a string
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StrChar( <cString>, <nChar> ) --> cChar 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cString> String of characters 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nChar> Position of a character within a character string 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <cChar> Character returned 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\STRTOKEN.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

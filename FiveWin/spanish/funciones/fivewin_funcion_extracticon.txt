@@ -1,0 +1,140 @@
+ExtractIcon()
+
+
+
+ExtractIcon()
+
+ Previous  Top  Next
+
+
+
+
+Retrieves an icon handle from EXE, DLL or ICO
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ExtractIcon( <cExeName>, <nIndex> ) --> hIcon 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function retrieves the handle of an icon from a specified
+executable file, dynamic-link library (DLL) or icon file. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cExeName> The name of the EXE, DLL or ICO file. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIndex> Specifies the index of the icon to be retrieved, from the total
+number of icons inside the module. If 0 is specified the first icon is
+returned. If -1 is specified the total number of icons is returned. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hIcon> The handle of the icon. It is 0 if the operation was not
+successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ See IDE\\SOURCE\\Icons.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Icons.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ LoadIcon() DrawIcon() nIcons() 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

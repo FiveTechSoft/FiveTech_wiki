@@ -1,0 +1,37 @@
+====== GetProfStr ======
+
+Devuelve el valor de una cadena de caracteres en el archivo Win.ini
+
+
+====== Sintaxis ======          
+
+GetProfStr( <cSection>, <cEntry>, <cDefault> ) --> <cValue>
+
+
+====== Parámetros ======
+
+| <cSection> | Indica la sección que contiene la entrada. |
+| <cEntry> | La entrada cuyo valor será obtenido. |
+| <cDefault> | Especifica el valor de cadena predeterminado que se devuelve si la entrada no se puede encontrar. |
+
+====== Retorno ======
+
+| <cValue> | El valor de cadena en el archivo INI que sigue a la entrada especificada. |
+
+====== Observaciones ======
+
+Esta función devuelve un valor del archivo WIN.INI
+
+====== Ejemplo ======
+
+SAMPLES\\TestIni.prg
+
+====== Código fuente ======
+
+SOURCE\\WINAPI\\Profile.c
+
+====== Ver también ======            
+
+[[fivewin_function_GetProfInt|GetProfInt()]]
+[[fivewin_function_GetPvpProfile|GetPvpProfile()]]
+[[fivewin_function_GetPvpProfString|GetPvpProfString()]]

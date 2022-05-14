@@ -1,0 +1,18 @@
+
+====== MenuMeasureItem() ====== 
+MenuMeasureItem()
+
+Establishes measures of the Menuitem
+====== Sintaxis ======
+ MenuMeasureItem( <pMeasureItemStruct>, <nLen>, <lSeparator> ) --> nil 
+====== Parámetros ======
+  <pMeasureItemStruct> LPMEASUREITEMSTRUCT structure. 
+  <nLen> Width of the item 
+  <lSeparator> True if the menu item is a separator. 
+====== Devuelve ======
+ nil 
+====== Ejemplo ======
+ SOURCE\CLASSES\WINDOW.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

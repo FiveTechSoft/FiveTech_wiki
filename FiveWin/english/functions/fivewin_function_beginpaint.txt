@@ -1,0 +1,35 @@
+
+====== BeginPaint() ======
+
+Prepares a window to start painting 
+
+====== Syntax: ======
+
+BeginPaint( <hWnd>, @<cPS> ) --> hDC  
+
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| Identifies the window to be repainted. | 
+|<cPS>| A variable that will receive a WinApi PAINTSTRUCT as a string. This variable has to be supplied by reference.|
+
+====== Returns: ======
+^Returns^Description^ 
+|<hDC>| The device context for the given window.|
+
+====== Comments: ======
+
+The BeginPaint function automatically sets the clipping region of the device context to exclude any area outside the update region. The update region is set by the InvalidateRect() or InvalidateRgn() and by the system after sizing, moving, creating, scrolling, or any other operation that affects the client area. If the update region is marked for erasing, then BeginPaint sends a WM_ERASEBKGND message to the window.
+
+An application should not call BeginPaint() except in response to a WM_PAINT message. Each call to the BeginPaint() function must have a corresponding call to the EndPaint() function.  
+
+If the caret is in the area to be painted, BeginPaint() automatically hides the caret to prevent it from being erased.  
+
+If the window's class has a background brush, BeginPaint() will use that brush to erase the background of the update region before returning.  
+
+====== Sample: ======
+
+SOURCE\CLASSES\Window.prg  
+
+====== Source Code: ======
+
+SOURCE\WINAPI\Paint.c  

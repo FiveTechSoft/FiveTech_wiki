@@ -1,0 +1,29 @@
+
+====== AnsiToOem() ======  
+
+Translates a Windows string into the OEM MsDos 
+
+====== Syntax ======  
+
+ AnsiToOem( <cWindowText> ) --> <cOemText>  
+
+====== Parameters ======  
+^ Parameter   ^  Description                               ^
+|<cWindowText>|The Window string to convert into OEM format.|
+
+====== Returns ======  
+^ Returns ^  Description             ^
+|<cOemText>|The equivalent OEM string.|
+
+====== Observations ======  
+
+ Normally all the data that you capture from MsDos into a DBF is stored as OEM text. In this situation you may call OemToAnsi() to properly review it from inside Windows.  
+ 
+ Text that is captured from Windows is in Ansi format. To use it from MsDos later, store it as the result of AnsiToOem().  
+ 
+====== Example ======
+<code clipper>
+MsgInfo( AnsiToOem( "Hello world!" ) ) 
+</code> 
+====== Source Code ======  
+SOURCE\WINAPI\OemAnsi.c 

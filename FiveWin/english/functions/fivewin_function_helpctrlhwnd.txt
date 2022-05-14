@@ -1,0 +1,16 @@
+====== HelpCtrlhWnd() ======
+
+Returns the handle of the WinHelp window.
+
+====== Syntax: ======
+ 
+ HelpCtrlhWnd( <pHelpInfo> ) --> hCtrlWindow
+====== Parameters: ======
+
+| <pHelpInfo> | ??? | 
+====== Returns: ======
+
+ <hCtrlWindow> The handle of the WinHelp window. 
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELP.C  

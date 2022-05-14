@@ -1,0 +1,65 @@
+FileTimeToDate()
+
+
+FileTimeToDate()
+ Previous  Top  Next
+
+Converts a filetime value to a date value.
+
+====== Syntax ======
+
+ 
+
+
+ FileTimeToDate( <nFileTime> ) --> dDate 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <nFileTime> The filetime value to convert. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <dDate> The converted date value. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SOURCE\CLASSES\tftp.prg 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\datetime.c 
+
+
+ 
+
+
+
+

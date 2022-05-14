@@ -1,0 +1,28 @@
+====== ZipType() ======
+Type of messages about the zipping process.  We receive informative messages about the zipping process every time a
+file has been zipped. 
+
+====== Syntax ======
+ZipType( <nZipInfo> ) --> nType 
+
+====== Parameters ======
+|<nZipInfo>|Structure PZFILEINFO delivery automaticly for the bZip codeblock. |
+
+====== Returns ======
+^Returns^Description^
+|<nType>| Type of message.\\ ZIP_NAME   1   Name of the current file in progress.\\ ZIP_BLOCK   2   Size of the block.\\ ZIP_MSG   3   Text message |
+
+====== Example ======
+SAMPLES\TESTZIP.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+====== See also ======
+[[fivewin_function_ZipBlock|ZipBlock()]]
+[[fivewin_function_ZipFile|ZipFile()]]
+[[fivewin_function_ZipMsg|ZipMsg()]]
+[[fivewin_function_ZipName|ZipName()]]
+[[fivewin_function_ZipSize|ZipSize()]]
+[[fivewin_function_GetFirstInZip|GetFirstInZip()]]

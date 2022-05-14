@@ -1,0 +1,87 @@
+WndAdjBottom()
+
+
+
+WndAdjBottom()
+
+ Previous  Top  Next
+
+
+
+
+Align to the bottom of the window
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WndAdjbottom( <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the window to align 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\WNDMOVE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

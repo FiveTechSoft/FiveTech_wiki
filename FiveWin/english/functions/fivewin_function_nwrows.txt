@@ -1,0 +1,133 @@
+====== nWRows() ======
+
+
+
+Returns the number of rows of a window
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nWRows( <hWnd>, <hDC> [,<hFont>] ) --> nTextRows 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> The handle of its device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont> An optional handle of a font 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nTextRows> The total number of text rows contained in the visible area
+of that window or control. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\\CLASSES\\WBrowse METHOD nRowCount() 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WndRows.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nWRow() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

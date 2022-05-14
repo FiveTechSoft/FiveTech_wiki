@@ -1,0 +1,29 @@
+====== WriteProfString() ======
+
+Escribe una entrada en el archivo WIN.INI público
+
+====== Sintaxis ======
+ 
+WriteProfString( <cSection>, <cEntry>, <cString> ) --> lSuccess 
+
+====== Parametros ======
+
+| <cSection> |Especifica la sección que contiene la entrada. |
+| <cEntry> |La entrada, cuyo valor es por escrito. |
+| <cstring> |El valor de texto para poner en el INI.|  
+
+====== Retorno ======
+
+| <lSuccess>| un valor lógico que indica si la operación se realizó con éxito.|
+
+====== Ejemplo ======
+
+ SAMPLES\\TestIni.prg 
+
+====== Codigo Fuente ======
+ 
+SOURCE\\WINAPI\\Profile.c
+
+====== Ver también ======
+
+ 

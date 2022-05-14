@@ -1,0 +1,16 @@
+
+====== LoadCursor() ====== 
+LoadCursor()
+
+Load the specified resource cursor
+====== Sintaxis ======
+ LoadCursor( <hInst>, <cnCursor> ) --> hCursor 
+====== Parámetros ======
+  <hInst>    Identifies the module that contains the cursor to be loaded. 
+ <cnCursor>  The name or the numeric identifier of the cursor to be loaded. 
+====== Devuelve ======
+ <hCursor> The handle of the loaded cursor. 0 if not successful. 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+====== Ver también ======
+ SetCursor()  DestroyCursor()  CursorWait()  Cursor... 

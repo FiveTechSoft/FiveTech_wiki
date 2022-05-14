@@ -1,0 +1,33 @@
+
+====== nOr() ====== 
+nOr()
+
+Generates a numeric OR value from some numbers
+====== Sintaxis ======
+ nOr( <nValue1>, <nValue2> [,...<nValueN>] ) --> nResult 
+====== Parámetros ======
+ <nValue1> A numeric value to be bit-ORed with other numeric values. 
+ <nValue2> <nValueN> More numeric values to be bit-ORed. 
+====== Devuelve ======
+ <nResult> A numeric value as result of bit-ORed all the numeric values
+supplied as parameters. 
+
+Observations:
+
+ Just a gentle reminder: 
+  1 OR 1 = 1
+  1 OR 0 = 1
+  0 OR 1 = 1
+  0 OR 0 = 0
+ This is applicable to each bits in those numeric values 
+====== Ejemplo ======
+ MsgInfo( nOr( 15, 2 ) ) // it will return 15 
+
+ // 15 = '00001111' 
+ // 2 = '00000010' 
+ //================ 
+ // 15 = '00001111' 
+====== Código fuente ======
+ SOURCE\FUNCTION\Or.c 
+====== Ver también ======
+ nAnd() lAnd()

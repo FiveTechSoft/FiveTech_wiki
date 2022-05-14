@@ -1,0 +1,72 @@
+====== Arg() ======
+
+ Recobra desde la linea de comandos el parametro especificado.
+
+====== Sintaxis: ( Syntax: ) ======
+
+ Arg( <nCmdLineOrder> ) --> cExeCommandLineParam
+
+====== Parámetros: ( Parameters: ) ======
+
+ <nCmdLineOrder>  Numero del parametro a Recuperar.
+
+====== Retorno: ( Returns: ) ======
+
+ <cExeCmdLParam> Parametro Recuperado
+
+====== Ejemplo: ( Sample: ) ======
+
+ SAMPLES\FIVEDIT.PRG
+
+ SAMPLES\TESTARGS.PRG
+
+ <code clipper>
+
+ // Testing command line parameters
+
+ #include "FiveWin.ch"
+
+  //----------------------------------------------------------------------------//
+
+ function Main( cParam1, cParam2, cParam3 )
+
+ local n
+
+ ? cParam1
+ ? cParam2
+ ? cParam3
+
+ MsgInfo( "Total number of command line parameters: " +; Str( PCount() ) )
+
+ Another()
+
+ // To retrieve the name of your EXE use this:
+
+ MsgInfo( GetModuleFileName( GetInstance() ) )
+
+ return nil
+
+
+ //----------------------------------------------------------------------------//
+
+ function Another()
+
+ local n
+
+ MsgInfo("From everywhere you can use nArgC() - 1 " + ; "to retrieve the same value as PCount() " + ;"at the beginning of the app" )
+
+ for n = 1 to nArgC() - 1 // Windows always provides
+
+      MsgInfo( Arg ( n ) ) // one extra parameter
+
+ next
+
+ return nil
+
+ //----------------------------------------------------------------------------//
+
+</code>
+
+====== Codigo Fuente: ( Source code: ) ======
+
+ SOURCE\FUNCTION\ARG.C

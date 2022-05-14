@@ -1,0 +1,22 @@
+
+====== aBrwPosRect() ======
+To calculate the coordinates of the edition cell in a Browse 
+====== Syntax ======
+ ABrwPosRect(<hWnd>, <nRow>, <aSizes>, <nFirstItem>, <nCol>, <hFont> ) --> aCoors  
+
+====== Parameters ======
+^ Parameter ^ Description             ^
+|<hWnd>| Handle of the object TWBrowse|  
+|<nRow>| Active line of the TWBrowse|  
+|<nFirstItem>| First column for the left of the TWBrowse|  
+|<aSizes>| Array with the sizes of the columns in pixels|  
+|<hFont>| Handle of the object font of the TWBrowse|  
+|<nCol>| Active column|  
+
+====== Returns ======
+^ Return ^ Description             ^
+| <aCoors> | Array of four numbers that represent the coordinates calculated of the cell of edition of the TWBrowse. nTop, nLeft, nBottom, nRight. | 
+====== Note ======
+This function is used in the class TWBrowse to determine the coordinates where the active cell will be edited. This function is used in the method: :EditCol ().  
+====== Source code ======
+ SOURCE\FUNCTION\WBRWLINE.C

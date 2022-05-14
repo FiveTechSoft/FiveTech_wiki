@@ -1,0 +1,24 @@
+
+====== uValBlank() ======
+
+Returns the correspondent blank value of any variable 
+
+====== Syntax: ======
+
+ uValBlank( <uValue> ) --> uBlankValue  
+
+====== Parameters: ======
+
+|<uValue>| A variable whose value is to be blanked. | 
+ 
+====== Returns: ======
+
+|<uBlankValue>| The same value but blanked.  |
+
+====== Source Code: ======
+
+SOURCE\FUNCTION\ValBlank.prg  
+
+====== See also: ======
+
+[[fivewin_function_cvaltochar|cValToChar()]] [[fivewin_function_uchartoval|uCharToVal()]]  

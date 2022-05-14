@@ -1,0 +1,24 @@
+
+====== BarInvert() ======
+
+Efecto de la barra de botones presionada
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BarInvert( <hWnd> ) --> nil  
+
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> El manejador de la ventana de la barra de botones.  
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Ejemplo: ( Sample: ) ======
+ 
+SOURCE\CLASSES\BAR.PRG  
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+SOURCE\WINAPI\CTRLDRAW.C  

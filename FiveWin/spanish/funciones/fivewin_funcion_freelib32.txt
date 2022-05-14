@@ -1,0 +1,65 @@
+FreeLib32()
+
+
+
+
+FreeLib32()
+
+ Previous  Top  Next
+
+Free a DLL of 32 bits library in use or decrements its counter use.
+
+====== Sintaxis ======
+
+
+ FreeLib32( <hInstance> ) --> lSuccess 
+
+
+ 
+
+
+ This function decreases by one the reference count of the loaded library
+module. When the reference count reaches zero, the memory occupied by the
+module is freed. This library es a 32 bits library. 
+
+
+ 
+
+====== Par�metros ======
+
+
+ <hInstance> The handle of the 32 bits DLL. It is the value returned by
+LoadLibrary(). 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <lSuccess> A logical value indicating that the operation was performed
+successfully. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ SAMPLES\EMF.PRG 
+
+
+ 
+
+====== C�digo fuente ======
+
+
+ SOURCE\WINAPI\CALDLL32.C 
+
+
+ 
+
+
+
+====== Ver tambi�n ======
+

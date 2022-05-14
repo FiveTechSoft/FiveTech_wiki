@@ -1,0 +1,87 @@
+nRGBRed()
+
+
+
+nRGBRed()
+
+ Previous  Top  Next
+
+
+
+
+Red component of a RGB color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nRGBRed( <nRGBColor> ) --> nRed 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nRGBColor> RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nRed> Red component of a RGB color 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\COLORTON.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

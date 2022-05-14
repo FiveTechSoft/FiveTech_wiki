@@ -1,0 +1,127 @@
+EnableMenuItem()
+
+
+
+EnableMenuItem()
+
+ Previous  Top  Next
+
+
+
+
+Enables, disables, or grays a menu item.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ EnableMenuItem( <hMenu>, <nIdItem>, <nFlags> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hMenu> Handler del menu propietario del MenuItem 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nIdItem> Identificador del MenuItem 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFlags> Specifies the action to take 
+
+
+ 
+
+
+ 
+
+
+
+MF_BYCOMMAND   Specifies that the nIdItem parameter gives the menu-item
+identifier.   
+MF_BYPOSITION   Specifies that the nidItem parameter gives the position
+of the menu item (the first item is at position zero).   
+MF_DISABLED      Specifies that the menu item is disabled.   
+MF_ENABLED      Specifies that the menu item is enabled.   
+MF_GRAYED      Specifies that the menu item is grayed.    
+MF_BYCOMMAND   0   
+MF_ENABLED      0   
+MF_UNCHECKED   0   
+MF_GRAYED      1   
+MF_DISABLED      2   
+MF_CHECKED      8   
+MF_BYPOSITION   1024   
+
+
+
+====== Returns ======
+
+
+
+
+
+ Retrives .t. if the function is successful 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+

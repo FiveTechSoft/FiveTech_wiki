@@ -1,0 +1,27 @@
+====== I2Hex() ======
+
+Converts a word (2 bytes) into a hex string (4 chars) 
+
+====== Syntax: ======
+ 
+ I2Hex( <nWord> ) --> cHex
+
+
+====== Parameters: ======
+
+| <nWord> | A number in the range 0-65535. |
+
+
+====== Returns: ======
+
+| <cHex> | A four characters hex string. |
+
+====== Sample: ======
+
+ MsgInfo( I2Hex( 1234 ) ) // returns a "04D2" hex  
+====== Source code: ======
+
+ SOURCE\FUNCTION\or.c 
+====== See also: ======
+
+[[fivewin_function_c2hex|C2Hex()]], [[fivewin_function_l2hex|L2Hex()]]

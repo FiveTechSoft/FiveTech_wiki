@@ -1,0 +1,22 @@
+====== HelpPopup ======
+
+Muestra el contexto de ayuda en una ventana emergente.
+
+====== Sintaxis: ======
+ 
+ HelpPopup( cnHelpId [, nRow [, nCol [, hWnd ]]] ) --> nil
+====== Parámetros: ======
+
+ Cuando use archivos CHM:
+| <cnHelpId> | Un valor numérico de HelpID desde los popups.txt internos en el .CHM o un archivo externo. Cuando cnHelpId es un texto éste se muestra como ventana emergente. |
+| <nRow>,<nCol | Coordenadas  de la ventana emergente desde el control activo. [optional] |
+| <hWnd> | Manejador desde el control activo. [optional] |
+
+ Cuando use un archivo de ayuda HLP:
+| <cnHelpId> | Un HelpID numérico del archivo .HLP |
+====== Deveuelve ======
+nada
+====== Descripción =====
+HelpPopup() Muestra en una ventana emergente la ayuda contextual del tema seleccionado ya sea de un archivo HLP o de un archio CHM
+====== Código fuente =====
+SOURCE\WINAPI\HELP32.prg

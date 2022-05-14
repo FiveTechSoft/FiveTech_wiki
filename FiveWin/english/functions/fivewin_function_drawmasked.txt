@@ -1,0 +1,23 @@
+====== DrawMasked() ======
+To draw a bitmap with transparent bottom.  Function written in language " C " that draws a bitmap combining it with
+their corresponding mask able to eliminate the bottom of the mentioned bitmap. Used mainly in the menus. 
+
+====== Syntax ======
+DrawMasked( <hDC>, <hBitmap>, <nRow>, <nCol> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| Device context where it will draw the bitmap.|
+|<hBitmap>| Handle of the bitmap |
+|<nRow>| Row where it will draw |
+|<nCol>| Column where it will draw |
+
+====== Returns ======
+NIL 
+
+====== Example ======
+SOURCE\WINAPI\CTRLDRAW.C 
+SOURCE\WINAPI\MENUS.C 
+
+====== Source Code ======
+SOURCE\WINAPI\BMPDRAW.C 

@@ -1,0 +1,23 @@
+====== DDETerminate() ======
+DDE Terminate.  Called when a DDE conversation has finished. This is a FiveWin internal function for DDE support. Use FiveWin DDE classes and xBase commands as
+they are much easier to use and more powerful. 
+
+====== Syntax ======
+DDETerminate( <hWndServer> ) --> nil 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWndServer>| The handle of the window which is acting as a server in a DDE conversation.|
+
+====== Returns ======
+Nothing 
+
+====== Example ======
+SAMPLES\\TestDDE.prg DDEClien.prg DDEServe.prg 
+
+====== Source Code ======
+SOURCE\\CLASSES\\TDDE.prg 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]] 

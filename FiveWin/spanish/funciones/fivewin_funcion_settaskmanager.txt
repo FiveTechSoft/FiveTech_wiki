@@ -1,0 +1,44 @@
+SetTaskManager()
+
+
+SetTaskManager()
+ Previous  Top  Next
+
+Enables or disables Ctrl+Alt+Del.
+
+====== Sintaxis ======
+
+
+ SetTaskManager( <lOnOff> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <lOnOff> If .t. enables Ctrl+Alt+Del, if .f. disables Ctrl+Alt+Del. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ SetTaskManager( .f. ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\GETTASKS.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,38 @@
+Introduction
+
+
+Introduction
+ Top  Next
+
+Here is a list of all FiveWin currently defined functions.
+
+We provide this list with the intention that no part of FiveWin gets
+undocumented, but we want clearly to warn you that IT IS NOT NECESSARY AT
+ALL to know all these functions because most of them are automatically
+called and managed from higher level FiveWin classes and xBase commands.
+
+Try to keep yourself at the xBase commands level and Objects and Classes
+level and your productivity will benefit very much.
+
+Most of these functions are specific to Windows API and most of them have
+their equivalents into other graphical environments like Linux, Mac, etc.
+That is why in our opinion the real important thing is that you
+understand all the processes that get involved when you are working in a
+graphical environment. But never focus on the details. They will be
+changing always.
+
+Keeping this object oriented point of view, you get the freedom of moving
+to any graphical environment and you will still understand all the
+working processes. This is why FiveWin has its equivalent in Linux
+FiveLinux and in MsDos FiveDos, or even we plan to port it to other
+environments like Mac.
+
+Of course, some knowledge of this functions will give you sometimes a
+better understanding. If you want and have the time to get a 100%
+understanding then we strongly recommend reviewing Borland's C++ HLP file
+or Microsoft C++ help (or any other Windows compilers manufacturer). But
+remember, have your application built in time! That's the main thing.
+
+
+====== See also ======
+

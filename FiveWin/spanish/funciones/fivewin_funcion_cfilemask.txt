@@ -1,0 +1,35 @@
+
+====== cFileMask() ======
+
+ Obtiene la mascara desde un nombre de archivo con la ruta si es que la tiene
+
+====== Sintaxis: ( Syntax: ) ======
+
+ cFileMask( <cFileName> ) --> cMask
+
+
+====== Parámetros: ======
+
+^Parameter^Description^
+| <cFileName> | Es el nombre del archivo cuya mascara deseamos recuperar, si es que la mascara fue especificada dentro del nombre del archivo. Una mascara es un grupo de comodines ("*.*","?...",etc...).|  
+
+
+====== Retorno: ( Returns: ) ======
+^Returns^Description^
+|<cMask>| La mascara si fue especificada. |
+
+====== Ejemplo: ( Sample: ) ======
+
+<code clipper>
+
+  local cMascara
+
+    cMascara:= cFileMask("c:\dir1\*.xxx")
+
+    msgalert(cMascara,"La mascara es ")
+
+</code>
+
+====== Codigo Fuente: ( Source code: ) ======
+
+ SOURCE\FUNCTION\FileName.prg

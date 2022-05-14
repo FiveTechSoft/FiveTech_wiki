@@ -1,0 +1,19 @@
+====== DestroyMenu() ======
+Destroys a menu and frees any memory that the menu occupied.
+
+====== Syntax ======
+DestroyMenu( <hMenu> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hMenu>| Handle of menu to be destroyed.|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| .T. if the function is successful.| 
+
+====== Source Code ======
+SOURCE\FUNCTION\MENUS.C 
+
+====== See also ======
+[[fivewin_function_createmenu()|CreateMenu()]], [[fivewin_function_createpopupmenu()|CreatePopUpMenu()]]

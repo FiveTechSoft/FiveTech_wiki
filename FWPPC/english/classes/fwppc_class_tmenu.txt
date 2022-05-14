@@ -1,0 +1,56 @@
+====== Class TMenu ======
+
+Menu Class                                                                     
+====== DATA ======
+|hMenu|The Windows handle of the Menu|
+|aItems|An array of MenuItems|
+|oWnd|A reference to the container Window of the Menu|
+|lSysMenu|If it is a System menu|
+|lPopup|If it is a popup menu|
+|nHelpId|The help topic identifier of this Menu|
+|cVarName|A variable name to identifier this object (visual|
+|editor)||
+|oAccTable|Accelerators table object|
+|oMenuItemPopup|It overcomes the limitation of API TrackPopupMenu()|
+|under|16 bit|
+|oLastItem|A CLASSDATA containing the last menu item selected|
+====== METHODS ======
+|New|Creating a new Menu|
+|NewSys|Redefining a SysMenu|
+|Redefine|Creates a menu from resource|
+|Activate|PopMenu activating method|
+|Add|Adding a new menuitem to the Menu|
+|AddEdit|Adds standard editing menu options|
+|AddHelp|Adds standard help menu options|
+|AddMdi|Adds standard MDI menu options|
+|AddFile|Adds standard File menu options|
+|Command|Processes the user selection command|
+|DelItems|Invoked when destroying the menu. Destroys each|
+|menuitem||
+|Destroy|Destroys the menu|
+|Disable|Disables the entire menu|
+|End|Ends the menu|
+|GetMenuItem|Retrieves a reference to a MenuItem Object given its|
+|Id||
+|GetPopup|Retrieves a reference to a contained Popup given its|
+|position||
+|GetSubMenu|Retrieves a reference to a submenu|
+|HelpTopic|Invoked when pressing enter over this menu|
+|Hilite|Hilites a specific menuitem|
+|Initiate|Called everytime the menu is going to be shown|
+|Insert|Inserts a new menuitem at a specified position|
+|LastItem|A reference to last processed MenuItem Object|
+|Load|Changes some menu properties based on a binary info|
+|Refresh|Repaints the menu|
+|Release|Destroy the Menu Object|
+|Reset|Reset to the original System Menu of a Window|
+|Save|Generates a binary representation of the menu|
+|UnHilite|DeHelites a specific menuitem|
+|Disable|Disables de menu|
+|Enable|Enables de menu|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TMENU.PRG

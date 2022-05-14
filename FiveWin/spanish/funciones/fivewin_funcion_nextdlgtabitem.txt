@@ -1,0 +1,20 @@
+
+====== NextDlgTabItem() ======
+NextDlgTabItem()
+
+Retrieves the handle of the next WS_TABSTOP control
+====== Sintaxis ======
+ NextDlgTabItem( <hWndDlg>, <hControl>, <lNext> ) --> hNextControl 
+====== Parámetros ======
+  <hWndDlg>   The handle of the DialogBox where to get the next control handle. 
+  <hControl>  The handle of a known control used as a reference 
+  <lNext>     A logical value meaning if we want the next or the previous 
+====== Devuelve ======
+ <hNextControl> The handle of the searched control 
+====== Ejemplo ======
+  SOURCE\CLASSES\Window
+  METHOD GoNextCtrl() 
+====== Código fuente ======
+ SOURCE\WINAPI\GetDlgIt.c 
+====== Ver también ======
+ Class TWindow

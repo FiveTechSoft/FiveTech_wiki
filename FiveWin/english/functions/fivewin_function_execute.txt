@@ -1,0 +1,21 @@
+====== Execute() ======
+Execute some source code (written in text) and returns its value
+
+====== Syntax ======
+ Execute( <cSourceCode> [, <params...>] ) --> uReturnValue
+
+====== Parameters ======
+^Parameter^Description^
+|<cSourceCode>| Harbour source code, in a form of function Name(), ... code ..., return uResult |
+|<params>|The list of parameters to supply to such function|
+
+
+====== Returns ======
+^Returns^Description^
+|<uReturnValue>| Return the return of the function code from its source code|
+
+====== Example ======
+c:\fwh\samples\fivedbu.prg
+
+====== Source Code ======
+SOURCE\FUNCTION\HARBOUR.PRG 

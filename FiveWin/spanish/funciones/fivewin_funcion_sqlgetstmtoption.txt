@@ -1,0 +1,79 @@
+SQLGetStmtOption()
+
+
+SQLGetStmtOption()
+ Previous  Top  Next
+
+Returns the current setting of a statement attribute.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLGetStmtOption( <hStmt>, <nOption>, <@cResult> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nOption> The attribute to retrieve. 
+
+
+ 
+
+
+ <cResult> The current value of the attribute. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

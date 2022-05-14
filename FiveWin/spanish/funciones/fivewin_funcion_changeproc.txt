@@ -1,0 +1,38 @@
+
+====== ChangeProc() ======
+
+ Cambia el procedimiento de control de una Ventana
+
+====== Sintaxis ======
+
+ ChangeProc( <hWnd> ) --> nOldProc
+ 
+
+ Esta función reemplaza el procedimiento que controla el comportamiento de una función, por una especial de Fivewin.
+ 
+ RestProc() reemplaza de nuevo este nuevo procedimiento por el anterior.
+
+====== Parámetros ======
+
+|<hWnd>|Es el manejador de la ventana a la que se le cambiará el procedimiento|
+
+====== Devuelve ======
+
+|<nOldProc>|Un número ( puntero largo ) correspondiente al procedimiento anterior|
+
+====== Observaciones ======
+
+Esta función es utilizada internamente por Fivewin para subclasear automáticamente ventanas y controles y para hacerlos compatibles con la arquitectura OOPS de FiveWin
+
+====== Ejemplo ======
+
+FWH\source\classes\window.prg
+
+====== Código Fuente ======
+
+SOURCE\WINAPI\ChangePr.c
+ 
+
+====== Ver También ======
+
+[[fivewin_funcion_restproc|RestProc()]]

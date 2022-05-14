@@ -1,0 +1,38 @@
+====== Class TRFile ======
+
+Class TRFile for TReport                                                       
+====== DATA ======
+|hDC|The handle to the file|
+|aRows|An array with the rows to be written|
+|cDocument|Not used|
+|cPrnComp|String command for compressed print|
+|nHeight|The page height|
+|nWidth|The page width|
+|lPrint|To eject the last page|
+====== METHODS ======
+|New|Constructor from source code|
+|StartPage|Starts a new page|
+|EndPage|Ends the current page|
+|End|Closes the file|
+|Say|Writes a text|
+|SetHeight|Sets the page height|
+|GetTextWidth|Retrieves the width of the given text (in characters)|
+|GetTextHeight|Retrieves the height of the given text (always 1)|
+|SetSize|Sets the page sizes|
+|GetPhySize|Retrieves the page sizes|
+|CharWidth|Retrieves the char width (always 1)|
+|CharHeight|Retrieves the char height (always 1)|
+|nVertRes|Retrieves the page height|
+|nHorzRes|Retrieves the page width|
+|nVertSize|Retrieves the page height * 25.4|
+|nHorzSize|Retrieves the page width * 25.4|
+|nLogPixelX|Retrieves the horizontal pixel size (always 1)|
+|nLogPixelY|Retrieves the vertical pixel size (always 1)|
+|CharSay|Writes a text|
+|GetOrientation|Retrieves the current orientation (always 2)|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TRFILE.PRG

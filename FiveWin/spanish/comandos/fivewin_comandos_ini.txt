@@ -1,0 +1,26 @@
+====== Gestión de un archivo INI ====== 
+<code clipper>
+INI <oIni> [ FILE | FILENAME | DISK <cIniFile> ]  
+    GET <uVar> ;  
+        [ SECTION <cSection> ] ;  
+        [ ENTRY <cEntry> ] ;  
+        [ DEFAULT <uDefault> ] ;  
+        [ OF | INI <oIni> ]  
+ 
+    SET ;  
+        [ SECTION <cSection> ] ;  
+        [ ENTRY <cEntry> ] ;  
+        [ TO <uVal> ] ;  
+        [ OF | INI <oIni> ]  
+ 
+ENDINI  
+</code>
+
+====== Parámetros ======
+|<oIni>      |Referencia al objecto INI.|
+|<cIniFile>  |Nombre del archivo INI.|
+|<uVar>      |Variable con el valor cargado del archivo INI. Este valor se convierte automáticamente al tipo de variable. Por tanto, es importante inicializar correctamente la variable antes de cargar su valor.|
+|<cEntry>    |Entrada=Valor|
+|<cSection>  |[SECTION] -Formato típico del .INI-|
+|<uDefault>  |Valor por defecto usado cuando la entrada no se encuentra.|
+|<uVal>      |Nuevo valor a establecer.|

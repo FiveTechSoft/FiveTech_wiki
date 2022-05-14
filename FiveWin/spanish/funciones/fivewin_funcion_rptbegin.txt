@@ -1,0 +1,32 @@
+
+====== RptBegin() ====== 
+RptBegin()
+
+Create a new Report
+====== Sintaxis ======
+ RptBegin( <aTitle>, <aHead>, <aFoot>, <aFont>, <aPen>, <lSummary>,
+<cRptfile>, <cResName>, <lPrint>, <lScreen>, <cFile>, <oDevice>, <cName>,
+<cTFmt>, <cHFmt>, <cFFmt> ) --> oReport 
+====== Parámetros ======
+  <aTitle>    An array of codeblocks with all lines of the report title. 
+  <aHead>     An array of codeblocks with all lines of the report header. 
+  <aFoot>     An array of codeblocks with all lines of the report footer. 
+  <aFont>     An array of TFonts objects to be used in all the report. 
+  <aPen> 
+  <lSummary>  If the report body should be printed or not. This is only meaningful
+              if some report have been defined. 
+  <cRptfile>  -not available yet- Report data-driven file name. 
+  <cResName>  -not available yet- Report resource definition. 
+  <lPrint>    If printer is the target device. 
+  <lScreen>   If the screen is the target device. 
+  <cFile>     -not available yet- the name of the target output file. 
+  <oDevice>   The optional target device. By default: the printer. 
+  <cName>     The name of the document. 
+  <cTFmt>     The pad style for the title: "LEFT", "CENTER-ED", "RIGHT" By default: "CENTERED". 
+  <cHFmt>     The pad style for the header: "LEFT", "CENTER-ED", "RIGHT" By default: "LEFT". 
+  <cFFmt>     The pad style for the footer: "LEFT", "CENTER-ED", "RIGHT" By default: "LEFT". 
+====== Devuelve ======
+ <oReport> TReport object 
+====== Código fuente ======
+ SOURCE\CLASSES\PDREPORT.PRG 
+====== Ver también ======

@@ -1,0 +1,29 @@
+====== DotsAdjust() ======
+Adjust the resize dots in design mode.
+
+====== Syntax ======
+DotsAdjust( <hWndParent>, <hDot1>, <hDot2>, <hDot3>, <hDot4>, <hDot5>,
+<hDot6>, <hDot7>, <hDot8> ) --> nil 
+
+In the Fivewin IDE, the controls are used in design mode. To be able
+to change the size of the controls, some points are adjusted in the sides and
+vertexes of each control when they have the focus. These points are in
+fact windows that it is necessary to adjust to the control. 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWndParent>| Handle of the control in design mode.| 
+|<hDot1>|Handle of the point 1 |
+|<hDot2>|Handle of the point 2 |
+|<hDot3>|Handle of the point 3 |
+|<hDot4>|Handle of the point 4 |
+|<hDot5>|Handle of the point 5 |
+|<hDot6>|Handle of the point 6 |
+|<hDot7>|Handle of the point 7 |
+|<hDot8>|Handle of the point 8 |
+
+====== Returns ======
+NIL 
+
+====== Source Code ======
+SOURCE\FUNCTION\DOTS.C 

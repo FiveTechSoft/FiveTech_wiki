@@ -1,0 +1,91 @@
+DrawSelector()
+
+
+DrawSelector()
+ Previous  Top  Next
+
+It draws a selector.
+
+====== Sintaxis ======
+
+
+ DrawSelector( <hDC>, <nRow>, <nCol>, <nRadius>, <nRowPos>, <nColPos>,
+<aMarks>, <nClrBtn>, <nClrMarks> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hDC> Device context where we will paint the item 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates where to paint 
+
+
+ 
+
+
+ <nRadius> The radius of the item. 
+
+
+ 
+
+
+ <nRowPos>, <nColPos> The coordinates of the ellipse. 
+
+
+ 
+
+
+ <aMarks> Array of marks to be drawn. 
+
+
+ 
+
+
+ <nClrBtn> Color for buttons. 
+
+
+ 
+
+
+ <nClrMarks> Color for marks. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ nil 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\DRAWSELE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

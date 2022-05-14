@@ -1,0 +1,29 @@
+====== Comando TreeView ======
+
+Par crear un TreeView desde código:
+
+<code clipper>
+@ <nRow>, <nCol> TREEVIEW [<oTV>] ;                                           
+       [ SIZE <nWidth>, <nHeight> ] ;
+       [ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+       [ <design: DESIGN> ] ;
+       [ <pixel: PIXEL> ] ;
+       [ COLOR <nClrFore> [,<nClrBack>] ] ;
+       [ MESSAGE <cMsg> ] ;
+</code>
+
+====== Parámetros ======
+|<nRow>, <nCol>|Las coordenadas superior e izquierda del control|
+|<oTV> |Referencia a un objeto TreeView.|
+|<nWidth>,<nHeight>|El ancho y el alto del control |
+|<oWnd> |Referencia a la ventana contenedora del TreeView.|
+|<nClrFore> |Color para las letras del TreeView expresado como un número para la función RGB() o como una expresión xBase (p.e. “W/B”, “R/BG” .... etc.)|
+|<nClrBack> |Color de fondo expresado como número para función RGB()|
+|<cMsg>| El mensaje asociado con el control control |
+
+====== Cláusulas ======
+|PIXEL|Para especificar las ccordenadas en pixeles|
+|DESIGN|Para activate el control en modo diseño|
+
+====== Vea tambien ======
+[[fivewin_clase_ttreeview|Clase TreeView]]

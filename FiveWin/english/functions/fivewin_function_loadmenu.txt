@@ -1,0 +1,111 @@
+====== LoadMenu() ====== 
+
+
+
+LoadMenu()
+
+
+
+
+
+
+Loads a menu from resources
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LoadMenu( <hInst>, <cName> ) --> hMenu 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hInst> Handle of aplication instance 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cName> Menu-name string or menu resource identifier 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hMenu> Retrieve the identifier of the menu if the function is success. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\MENU.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

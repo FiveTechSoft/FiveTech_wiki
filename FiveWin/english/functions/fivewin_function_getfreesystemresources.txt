@@ -1,0 +1,13 @@
+====== GetFreeSystemResources() ======
+Returns the percentage of the system resources available. 
+====== Syntax: ======
+ GetFreeSystemResources( [<nType>] ) --> nPercentage  
+====== Parameters: ======
+ <nType> The type of resource. To obtain the default value, don't specify it.  
+====== Returns: ======
+ <nPercentage> The percentage of the system resource available.  
+====== Sample : ======
+Source code: 
+
+
+ SOURCE\WINAPI\RESOURCE.C  

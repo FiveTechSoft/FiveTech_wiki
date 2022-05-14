@@ -1,0 +1,20 @@
+
+====== NDdeShareSetInfo() ====== 
+NDdeShareSetInfo()
+
+Modify DDE share information
+====== Sintaxis ======
+ NDdeShareSetInfo( <cServer>, <cName>, <nLevel>, <aNDdeShareInfo> ) --> nRetCode 
+====== Parámetros ======
+  <cServer>         Server name where the data will be modified 
+  <cName>           Name of share cuya informaci�n va a ser modificada 
+  <nLevel>          Info level must be 2 
+  <aNDdeShareInfo>  Address of NDDESHAREINFO 
+====== Devuelve ======
+ If the operation is executed with success the function returns
+NDDE_NO_ERROR 0 . In another case a will be returned code of error that
+we will be able to decipher calling to the function NDdeGetErrorString. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\NDDEAPI.C 
+====== Ver también ======

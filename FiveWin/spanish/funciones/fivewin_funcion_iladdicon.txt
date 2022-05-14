@@ -1,0 +1,74 @@
+IlAddIcon()
+
+
+IlAddIcon()
+ Previous  Top  Next
+
+Adds an icon or cursor to an image list.
+
+====== Sintaxis ======
+
+ 
+
+
+ IlAddIcon( <hImageList>, <hIcon> ) --> nImage 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hImageList> The handle to the imagelist. 
+
+
+ 
+
+
+ <hIcon> Handle to the icon or cursor that contains the bitmap and mask
+for the new image. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nIndex> Returns the index of the first new image if successful, or -1
+otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,17 @@
+
+====== MakeWin() ====== 
+MakeWin()
+
+Generates a window from which the encriptation and the desencirptation is
+tested.
+====== Sintaxis ======
+ MakeWin() --> nil 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ Nil 
+====== Ejemplo ======
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+====== Código fuente ======
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+====== Ver también ======

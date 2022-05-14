@@ -1,0 +1,20 @@
+====== DeleteDC() ======
+Deletes the given device context.  This function must only be used to destroy device contexts created with
+CreateDC() and never with GetDC(). 
+
+====== Syntax ======
+DeleteDC( <hDC> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hDC>| The handle of the device context|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value indicating if the operation was successful.|
+
+====== Source Code ======
+SOURCE\WINAPI\dc.c 
+
+====== See also ======
+[[fivewin_function_CreateDC|CreateDC()]], [[fivewin_function_getdc|GetDC()]], [[fivewin_function_releasedc|ReleaseDC()]]

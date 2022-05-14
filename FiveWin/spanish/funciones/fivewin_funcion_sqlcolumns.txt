@@ -1,0 +1,79 @@
+SQLColumns()
+
+
+SQLColumns()
+ Previous  Top  Next
+
+Returns the list of column names in specified tables.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLColumns( <hStmt>, <cTableName>, <cColumnTable> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cTableName> The table name. 
+
+
+ 
+
+
+ <cTableColumns> The columns in the table. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

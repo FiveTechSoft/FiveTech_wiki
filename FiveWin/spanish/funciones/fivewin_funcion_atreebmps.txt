@@ -1,0 +1,21 @@
+====== aTreeBmps() ======
+
+ Retorna un arreglo con los bitmaps por defecto del árbol.
+
+====== Sintaxis: ( Syntax: ) ======
+
+ aTreeBmps() --> aBmpHandles
+
+====== Parámetros: ( Parameters: ) ======
+
+ Ninguno
+
+====== Retorno: ( Returns: ) ======
+
+ <aBmpHandles> Un arreglo con los manejadores de los bitmaps usados para mostrar los arboles de fivewin
+
+====== Observaciones: ( Observations: ) ======
+
+ Usado internamente por los arboles de Fivewin
+
+====== Codigo Fuente: ( Source code: ) ======

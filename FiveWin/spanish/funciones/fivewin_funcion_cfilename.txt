@@ -1,0 +1,44 @@
+
+====== cFileName() ======
+
+ Obtiene el nombre del archivo sin la ruta.
+
+====== Sintaxis: ======
+
+ cFileName( <cFullFileName> ) --> cFileName
+
+====== Parametros: ======
+
+^Parámetro^Descripción^
+| <cFullFileName> | Es el nombre completo del archivo incluyendo la ruta y opcionalmente la extension.|
+
+====== Retorno: ======
+
+^Returns^Description^
+|<cFileName>| No incluye las letras de unidad y rutas de acceso y solo da el nombre del fichero solo como salida. Note que la salida siempre será en letras mayúsculas|
+ 
+
+====== Ejemplo: ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+Local cTest
+MsgInfo(cFileName( "C:\Fwh\Samples\WhatsNew.Txt" ) )  // Result WHATSNEW.TXT
+
+MsgInfo(cFileName( "\Fwh\Source\Class\xBrowse.Prg" ) ) // Result XBROWSE.PRG
+
+MsgInfo(cFileName( "" ) )  // Result Nothing
+
+MsgInfo(cFileName( "Test.Bat" ) )  // Result TEST.BAT
+
+MsgInfo(cFileName( "..\Functions\MyTest.Prg" ) )  // Result MYTEST.PRG
+
+MsgInfo(cFileName( "\MyApps\Test" ) ) // Result TEST
+
+Return nil  
+</code>
+
+====== Codigo Fuente: ======
+
+ SOURCE\FUNCTION\FileName.prg

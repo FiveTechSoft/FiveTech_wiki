@@ -1,0 +1,77 @@
+====== WidthFLine() ====== 
+
+
+WidthFLine()
+
+
+Returns the width of a GTF line.
+
+====== Syntax ======
+
+
+ WidthFLine( <hDC>, <aText>, <aFonts>, [<nLen>], [<lTrim>] ) --> nWidth 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hDC> Identifies the device context where the text is drawn. 
+
+
+ <aText> The internal implementation of a line of GTF text
+(TFGet:oLine:aText). 
+
+
+ <aFonts> The fonts used in the line of GTF text (TFGet:oLine:aFonts). 
+
+
+ <nLen> The minimum length to consider. 
+
+
+ <lTrim> .t. if the string has to be trimmed at nLen position. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nWidth> The width of the GTF line. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\FGETLINE.C 
+
+
+ 
+
+
+
+====== See also ======
+

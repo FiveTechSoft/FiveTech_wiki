@@ -1,0 +1,24 @@
+
+====== D2Bin() ======  
+
+Convierte un número de punto flotante en una cadena
+
+====== Sintaxis ======  
+
+ D2bin( <nFloat> ) --> cValue  
+
+====== Parámetros ======  
+
+| <nFloat> | Número de punto flotante|  
+
+====== Devuelve ====== 
+
+ <cValue> Valor retornado en formato texto
+
+====== Ejemplo ====== 
+
+====== Código Fuente ====== 
+
+ SOURCE\FUNCTION\B2BIN.C
+
+====== Ver también ======

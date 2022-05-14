@@ -1,0 +1,184 @@
+TabsPaint()
+
+
+
+TabsPaint()
+
+ Previous  Top  Next
+
+
+
+
+Draw the tabs control
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TabsPaint( <hWnd>, <hDC>, <aPrompts>, <aSizes>, <hFont1>, <hFont2>,
+<nClrPane>, <nOption> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> Handle of the tabs control 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aPrompts> Array with strings of characters to draw 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aSizes> Array width sizes of the strings 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont1> Handle of the font to draw the strings 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hFont2> Handle of the font to draw the selected option 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nClrPane> Background color 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOption> Selected option 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\TTABS.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\TABSTOOL.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

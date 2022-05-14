@@ -1,0 +1,76 @@
+====== SelectPalette() ======
+
+Select a palette of colors
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SelectPalette( <hDC>, <hPalette>, <lBack> ) --> nPrevPal 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+<hDC> Device context
+
+
+
+<hPalette> Handle of the palette to be selected
+
+
+
+<lBack> This parameter to be true if we want force the palette to
+background
+
+
+
+====== Returns ======
+
+
+
+
+
+ This function return the previous palette. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PALETTE.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

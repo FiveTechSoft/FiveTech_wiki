@@ -1,0 +1,41 @@
+====== FDate() ======
+
+
+Recupera la fecha de un archivo sin necesidad de abrirlo.
+
+====== Syntaxis ======
+
+FDate(  [<cFileName> ] ) --> dFileDate
+ 
+====== Parametros ======
+
+| <cFileName>| Nombre del archivo del cual deseamos saber la fecha.  |
+
+====== Devuelve ======
+
+| <dFileDate> |  La fecha del archivo indicado. |
+
+
+====== Ejemplo ======
+<code clipper>
+
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   LOCAL cText := "This is a text"
+   
+   Memowrite( "C:\TEST.TXT", cText )
+   
+   MsgInfo( FDate( "C:\TEST.TXT" )  )
+   
+RETURN    
+
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\FILENAME.PRG
+
+====== Ver tambien ======
+
+Ninguno.

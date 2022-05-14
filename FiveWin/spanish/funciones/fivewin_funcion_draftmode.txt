@@ -1,0 +1,24 @@
+====== DraftMode() ======
+
+Especifica la resolución de la impresora 
+
+====== Syntaxis ======
+
+DraftMode( <lDraft> ) --> nil 
+
+
+====== Parámetros ======
+
+| <lDraft>  | Si este valor es .t. de la resolución de la impresora es DMRES_DRAF de otro caso es DMRES_HIGHT |
+
+====== Devuelve ======
+
+Ninguno
+
+====== Ejemplo ======
+
+ 
+
+====== Código fuente ======
+
+SOURCE\WINAPI\PRINTDC.C

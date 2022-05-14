@@ -1,0 +1,84 @@
+SetResources()
+
+
+
+SetResources()
+
+ Previous  Top  Next
+
+
+
+
+Load a certain library
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetResources( <cName> ) --> hLib 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cName> Name of the library to load 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Handle of the loaded library 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

@@ -1,0 +1,34 @@
+
+====== GetTextAlign() ======
+GetTextAlign()
+
+It returns the state of the flag of alignment of texts
+====== Sintaxis ======
+ GetTextAlign( <hDC> ) --> nFlags 
+====== Parámetros ======
+ <hDC> Device context 
+====== Devuelve ======
+ <nFlags> It returns the current state of the flag of text alignment It
+will be one or more than the following values: 
+
+ The alignments are regarding the limits of a rectangle 
+
+    TA_BASELINE   24   Alignment with regard to the axis x and the line
+                          bases of a font it specifies.   
+    TA_BOTTOM      8   Same but referred to the inferior part.   
+    TA_CENTER      6   Alignment to the center in the axis and.   
+    TA_LEFT        0   Alignment to the left in the axis and.   
+    TA_NOUPDATECP  0   Specifies that the current position is not updated.   
+    TA_RIGHT       2   Alignment to the right in the axis and.   
+    TA_TOP         0   Alignment of the axis x in the superior part.   
+    TA_UPDATECP    1   Specifies that the current position is updated.   
+
+Observation:
+
+ These alone alineaciones will take effect when we use to write the
+functions TextOut or ExtTextOut, not working since for the DrawText this
+function has a parameter that allows their own alignment. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\TEXT.C 
+====== Ver también ======

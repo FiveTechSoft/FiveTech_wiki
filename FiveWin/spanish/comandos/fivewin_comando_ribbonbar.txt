@@ -1,0 +1,461 @@
+====== Creando RibbonBar desde código ======
+<code clipper>
+DEFINE RIBBONBAR [ <oRBar> ] ;
+                 [ <of:OF, WINDOW> <oWnd> ] ;
+                 [ <prm: PROMPT, PROMPTS, ITEMS> <cPrompt,...> ] ;
+                 [ <act: ACTION, EXECUTE, ON CHANGE> <uAction> ] ;
+                 [ OPTION <nOption> ] ;
+                 [ HEIGHT <nHeight> ] ;
+                 [ TOPMARGIN <nTopMargin> ];
+                 [ COLOR <nClrPane> ] ;
+                 [ <ColorBox: COLORBOX> <nClrBoxOut>, <nClrBoxIn> ] ;
+                 [ <ColorSel: COLORSEL> <nClrBoxSelOut>, <nClrBoxSelIn> ] 
+</code>
+
+
+
+
+
+
+
+
+====== Parámetros ======
+|<oRBar>|El objeto RibbonBar a crear|
+|<oWnd>|El objeto window contenedor|
+|<cPrompt,...>|Una lista de palabras para mostrar una en cada pestaña superior del RibbonBar|
+|<uAction>|Acción a ejecutar cada vez que se cambie de pestaña. Recibe nOption y nOldOption (indice de la nueva pestaña seleccionada, e índice de la pestaña seleccionada anteriormente|
+|<nOption>|Pestaña seleccionada al comenzar a usar el RibbonBar|
+|<nHeight>|Altura del RibbonBar|
+|<nTopMargin>|Separación desde el inicio de las pestañas hasta el borde superior|
+|<nClrPane>|Color de fondo de la RibbonBar|
+|<nClrBoxOut>, <nClrBoxIn>|Colores externo e interno de cada grupo de la RibbonBar|
+|<nClrBoxSelOut>, <nClrBoxSelIn>|Colores externo e interno del grupo seleccionado de la RibbonBar|
+
+
+====== Añade un Grupo a la RibbonBar ======
+<code clipper>
+ADD GROUP [ <oGr> ] ;
+                    [ <of: RIBBONBAR, RIBBON > <oRBar> ];
+                    [ <to: TO OPTION> <nOption> ];
+                    [ PROMPT <cCaption> ];
+                    [ WIDTH <nWidth> ];
+                    [ ACTION <uAction> ] ;
+                    [ BITMAP <cBitmap> ]
+</code>
+|<oGr>|El grupo a crear|
+|<oRBar>|El objeto contenedor RibbonBar|
+|<nOption>|El índice de la pestaña a la que añadir el Grupo|
+|<cCaption>|El título del Grupo|
+|<nWidth>|El ancho del Grupo|
+|<uAction>|...|
+|<cBitmap>|...|
+
+
+====== Crea un Grupo en la RibbonBar ======
+<code clipper>
+@ <nRow>, <nCol> RBGROUP [ <oGr> ] ;
+                               [ <of: OF, WINDOW, DIALOG > <oWnd> ];
+                               [ PROMPT <cCaption> ];
+                               [ SIZE <nWidth>, <nHeight> ] ;
+                               [ ACTION <uAction> ] ;
+                               [ BITMAP <cBitmap> ] ;
+                               [ FONT <oFont> ];
+                               [ <lTrans: TRANSPARENT> ];
+                               [ GRADIANT <aGradSel> ];
+                               [ LINECOLORS <nClrBoxIn>, <nClrBoxOut> ];
+                               [ CAPTIONGRAD <aGradCaption> ];
+                               [ DISABLEGRAD <aGradDisable> ];
+                               [ DISABLECAPION <aDisableCap> ];
+                               [ TEXTCOLOR <nClrTxt> ]
+</code>
+
+
+====== Añade un separador de Grupo ======
+<code clipper>
+ADD SEPARATOR TO GROUP <oGr> ;
+   [ <to: TO, COLUMN, COL> <nCol> 
+</code>
+
+
+====== Añade un botón a un Grupo de la RibbonBar ======
+<code clipper>
+@ <nRow>, <nCol> ADD BUTTON [ <oBtn> ] ;
+                                      [ PROMPT <cCaption> ];
+                                      [ SIZE <nWidth>, <nHeight> ] ;
+                                      [ BITMAP <cBitmap> ] ;
+                                      [ ACTION <uAction> ] ;
+                                      [ <of: OF, GROUP> <oGr> ] ;
+                                      [ WHEN <WhenFunc> ] ;
+                                      [ <lBorder: BORDER> ] ;
+                                      [ <lRound: ROUND> ] ;
+                                      [ <layout: TOP, LEFT, BOTTOM, RIGHT, MOSTLEFT, MOSTRIGHT, CENTER> ] ;
+                                      [ <type: NORMAL, POPUP, SPLITPOPUP, SAYBUTTON> ] ;
+                                      [ <lGrouping: GROUPBUTTON> [<lFirstElm: FIRST>][ <lEndElm: END> ] ];
+                                      [ MENU <oPopup> ];
+                                      [ MESSAGE <cMsg> ]
+</code>
+
+
+====== Añade un botón de la RibbonBar a cualquier objeto contenedor ======
+<code clipper>
+@ <nRow>, <nCol> RBBTN [ <oBtn> ] ;
+                                 [ PROMPT <cCaption> ];
+                                 [ SIZE <nWidth>, <nHeight> ] ;
+                                 [ BITMAP <cBitmap> ] ;
+                                 [ ACTION <uAction> ] ;
+                                 [ <of: OF, DIALOG, WINDOW> <oWnd> ] ;
+                                 [ WHEN <WhenFunc> ] ;
+                                 [ <lBorder: BORDER> ] ;
+                                 [ <lRound: ROUND> ] ;
+                                 [ <lAdjust: ADJUST> ] ;
+                                 [ <layout: TOP, LEFT, BOTTOM, RIGHT, MOSTLEFT, MOSTRIGHT, CENTER> ] ;
+                                 [ <type: NORMAL, POPUP, SPLITPOPUP, SAYBUTTON> ] ;
+                                 [ <lGrouping: GROUPBUTTON> [<lFirstElm: FIRST>][ <lEndElm: END> ] ];
+                                 [ MENU <oPopup> ];
+                                 [ MESSAGE <cMsg> ] ;
+                                 [ TOOLTIP <cToolTip> ];
+                                 [ FONT <oFont> ];
+                                 [ <lTrans: TRANSPARENT> ];
+                                 [ GRADIANT <aGradiant> ];
+                                 [ LINECOLORS <nClrBoxIn>, <nClrBoxOut> ]
+</code>
+
+
+
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+#include "ribbon.ch"
+#include "xbrowse.ch"
+
+static nIndex := 1
+static nAvance := 1
+
+static  aBmp := {}
+static aResources := {}
+
+function main()
+
+   local oRBar
+   local oWnd, oMenu
+   local oGr, oGr1, oGr2, oGr3, oGr4
+   local oBtn,   oBtn1,  oBtn2,  oBtn3,  oBtn4, oBtn5
+   local oBtn6,  oBtn7,  oBtn8,  oBtn9,  oBtn10
+   local oBtn11, oBtn12, oBtn13, oBtn14, oBtn15
+   local oBtn16, oBtn17, oBtn18, oBtn19, oBtn20
+   local oBtn21, oBtn22, oBtn23, oBtn24, oBtn25 
+   local oBtn26, oBtn27, oBtn28, oBtn29, oBtn30
+   local oBtn31, oBtn32, oBtn33, oBtn34, oBtn35
+
+   menu oMenu Popup 2007
+   
+      menuitem "Style Set" FILE "..\bitmaps\styleset161.BMP"
+      menuitem "Colors"
+      menuitem "Font"
+      
+   endmenu
+
+   DEFINE WINDOW oWnd TITLE "RibbonBar Test " + FWVERSION from 1,1 to 600,600 pixel //brush oBrush1
+   
+   DEFINE RIBBONBAR oRBar WINDOW oWnd PROMPT "Configuración", "Ficheros", "Informes", "Ayudas" HEIGHT 160 TOPMARGIN 55
+
+   ADD GROUP oGr RIBBON oRBar TO OPTION 1 PROMPT "Clipboard" width 130 //BITMAP "c:\fwh\bitmap\fivetech.BMP"
+   
+   ADD GROUP oGr1 RIBBON oRBar TO OPTION 1 PROMPT "Font" WIDTH 205 
+   
+   ADD GROUP oGr2 RIBBON oRBar TO OPTION 1 PROMPT "Paragraph" WIDTH 215
+   
+   ADD GROUP oGr3 RIBBON oRBar TO OPTION 1 PROMPT "Styles" WIDTH 75 BITMAP "..\bitmaps\style16.BMP"
+   
+   ADD GROUP oGr4 RIBBON oRBar TO OPTION 1 PROMPT "Editing"
+   
+   @ 2,5 ADD BUTTON oBtn1 PROMPT "Paste" BITMAP "..\bitmaps\PASTE32.BMP" GROUP oGr ACTION ( RIBBON() ) ;
+   SPLITPOPUP ROUND SIZE 50,65 
+
+   @ 2, 55 ADD BUTTON oBtn2 GROUP oGr BITMAP "..\bitmaps\cut16.BMP" ;
+     SIZE 60, 20 PROMPT "Cut"  MOSTLEFT round ;
+     action ( msginfo( "Cut" ) )
+   
+   @ 24, 55 ADD BUTTON oBtn3 GROUP oGr BITMAP "..\bitmaps\copy16.BMP" ;
+     SIZE 65, 20 PROMPT "Copy"  MOSTLEFT round ;
+     action( msginfo( "Copy" ) )
+
+   @ 46, 55 ADD BUTTON oBtn4 GROUP oGr BITMAP "..\bitmaps\paste16.BMP" ;
+     SIZE 70, 20 PROMPT "Paste"  MOSTLEFT round ;
+     action( msginfo( "Paste" ) )
+     
+   @ 10, 05 ADD BUTTON oBtn5 GROUP oGr1 BITMAP "..\bitmaps\bold16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND ;
+   ACTION( oBtn5:lSelected := !oBtn5:lSelected )
+   
+   @ 10, 30 ADD BUTTON oBtn6 GROUP oGr1 BITMAP "..\bitmaps\italic16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( oBtn6:lSelected := !oBtn6:lSelected )
+   
+   @ 10, 55 ADD BUTTON oBtn7 GROUP oGr1 BITMAP "..\bitmaps\underline16.bmp" GROUPBUTTON SIZE 35, 20 ROUND Popup
+   
+   @ 10, 90 ADD BUTTON oBtn8 GROUP oGr1 BITMAP "..\bitmaps\strikethru16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( oBtn8:lSelected := !oBtn8:lSelected )
+   
+   
+   @ 10, 115 ADD BUTTON oBtn9 GROUP oGr1 BITMAP "..\bitmaps\subindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( oBtn9:lSelected := !oBtn9:lSelected, oBtn10:lSelected := .f., oBtn10:Refresh() )
+   
+   @ 10, 140 ADD BUTTON oBtn10 GROUP oGr1 BITMAP "..\bitmaps\superindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( oBtn10:lSelected := !oBtn10:lSelected, oBtn9:lSelected := .f., oBtn9:Refresh() )
+   
+   @ 10, 165 ADD BUTTON oBtn11 GROUP oGr1 BITMAP "..\bitmaps\casing16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+
+   @ 40, 05 ADD BUTTON oBtn11 GROUP oGr1 BITMAP "..\bitmaps\hilight16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 40 ADD BUTTON oBtn12 GROUP oGr1 BITMAP "..\bitmaps\fontcolor16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 100 ADD BUTTON oBtn13 GROUP oGr1 BITMAP "..\bitmaps\fontsizeincrease16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND
+
+   
+   @ 40, 125 ADD BUTTON oBtn14 GROUP oGr1 BITMAP "..\bitmaps\fontsizedecrease16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND
+   
+   
+   @ 40, 175 ADD BUTTON oBtn16 GROUP oGr1 BITMAP "..\bitmaps\style16.bmp" SIZE 25, 20 ROUND BORDER
+
+
+   @ 10, 05 ADD BUTTON oBtn17 GROUP oGr2 BITMAP "..\bitmaps\unorderedlist16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 10, 40 ADD BUTTON oBtn18 GROUP oGr2 BITMAP "..\bitmaps\orderedlist16.bmp" GROUPBUTTON SIZE 35, 20 ROUND POPUP
+   
+   @ 10, 75 ADD BUTTON oBtn19 GROUP oGr2 BITMAP "..\bitmaps\multilevellist16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+
+   @ 10, 110 ADD BUTTON oBtn20 GROUP oGr2 BITMAP "..\bitmaps\textalignleft16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND ;
+   ACTION( ChangeSelect( { oBtn20, oBtn21, oBtn22, oBtn23 } ) )
+   
+   @ 10, 135 ADD BUTTON oBtn21 GROUP oGr2 BITMAP "..\bitmaps\textaligncenter16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( ChangeSelect( { oBtn21, oBtn20, oBtn22, oBtn23 } ) )
+   
+   @ 10, 160 ADD BUTTON oBtn22 GROUP oGr2 BITMAP "..\bitmaps\textalignright16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( ChangeSelect( { oBtn22, oBtn21, oBtn20, oBtn23 } ) ) 
+   
+   @ 10, 185 ADD BUTTON oBtn23 GROUP oGr2 BITMAP "..\bitmaps\textalignjustify16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND;
+      ACTION( ChangeSelect( { oBtn23, oBtn21, oBtn22, oBtn20 } ) )
+
+
+   @ 40, 05 ADD BUTTON oBtn24 GROUP oGr2 BITMAP "..\bitmaps\fill16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 40 ADD BUTTON oBtn25 GROUP oGr2 BITMAP "..\bitmaps\borderbottom16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND
+   
+   @ 40, 80 ADD BUTTON oBtn26 GROUP oGr2 BITMAP "..\bitmaps\indentdecrease16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND 
+
+   @ 40, 105 ADD BUTTON oBtn27 GROUP oGr2 BITMAP "..\bitmaps\indentincrease16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND
+
+   @ 40, 135 ADD BUTTON oBtn28 GROUP oGr2 BITMAP "..\bitmaps\sort16.bmp" SIZE 25, 20 ROUND BORDER
+   
+   @ 40, 160 ADD BUTTON oBtn29 GROUP oGr2 BITMAP "..\bitmaps\paragraphspacing16.bmp" SIZE 25, 20 ROUND BORDER
+      
+   @ 40, 185 ADD BUTTON oBtn30 GROUP oGr2 BITMAP "..\bitmaps\invisiblechars16.bmp" SIZE 25, 20 ROUND BORDER
+
+   @ 3,5 ADD BUTTON oBtn31 PROMPT "Change"+CRLF+"Styles" BITMAP "..\bitmaps\stylechange32.BMP" GROUP oGr3 menu oMenu ;
+   SPLITPOPUP ROUND SIZE 65,75 TOP
+
+   @ 2,5 ADD BUTTON oBtn32 PROMPT "Find" BITMAP "..\bitmaps\find32.BMP" GROUP oGr4 ;
+   SPLITPOPUP ROUND SIZE 50,65
+
+   @ 2, 55 ADD BUTTON oBtn33 GROUP oGr4 BITMAP "..\bitmaps\replace16.BMP" ;
+     SIZE 80, 20 PROMPT "Replace"  MOSTLEFT round ;
+     action( msginfo( "Replace" ) )
+   
+   @ 24, 55 ADD BUTTON oBtn34 GROUP oGr4 BITMAP "..\bitmaps\goto16.BMP" ;
+     SIZE 65, 20 PROMPT "Go To"  MOSTLEFT round ;
+     action( msginfo( "Go To" ) )
+
+   @ 46, 55 ADD BUTTON oBtn35 GROUP oGr4 BITMAP "..\bitmaps\select16.BMP" ;
+     SIZE 70, 20 PROMPT "Select"  MOSTLEFT round POPUP
+
+   SET MESSAGE OF oWnd TO "Testing FWH own Class RibbonBar" ;
+      CENTERED CLOCK KEYBOARD 2007
+   
+   ACTIVATE WINDOW oWnd
+   
+   oRBar:End()
+   
+return nil
+
+
+Function Ribbon( )
+
+   local oDlg
+   local aBtn := Array( 20 )
+   local aGrp := Array( 5 )
+   local oBrush
+   local oMenu
+
+   menu oMenu Popup 2007
+   
+      menuitem "Style Set" FILE "..\bitmaps\styleset161.BMP"
+      menuitem "Colors"
+      menuitem "Font"
+      
+   endmenu
+
+
+   define Brush oBrush FILE "c:\FWH\bitmaps\backgrnd\boards.bmp"   
+
+   define dialog oDlg title "Test RibbonBar Own Control " + FWVERSION size 600,600 pixel brush oBrush
+
+
+   @ 010, 010 RBGROUP aGrp[ 1 ] PROMPT "Test" of oDlg SIZE 90, 40 
+   
+   @ 010, 060 RBGROUP aGrp[ 2 ] PROMPT "Transparent" of oDlg SIZE 90, 40 TRANSPARENT
+   
+   @ 010, 110 RBGROUP aGrp[ 3 ] PROMPT "Own Color" of oDlg SIZE 90, 40 ;
+              GRADIANT { { 0.1, RGB( 254, 154, 128 ), RGB( 254, 154, 128 ) }, ;
+              	         { 0.9, RGB( 252, 85, 40 ), RGB( 181, 61, 29 ) } };
+              LINECOLORS RGB( 249, 194, 179 ), RGB( 181, 61, 29 );
+              CAPTIONGRAD { { 1, RGB( 239, 56, 6 ), RGB( 239, 56, 6 ) } };
+              TEXTCOLOR CLR_WHITE
+              
+   @ 100, 05 RBBTN  aBtn[ 1 ] PROMPT "Say Button" SAYBUTTON OF oDlg SIZE 50, 15 CENTER ROUND BORDER;
+             ACTION( MsgInfo( "Say Button" ) )
+   
+   @ 100, 60 RBBTN  aBtn[ 2 ] PROMPT "Button"     OF oDlg SIZE 50, 15 CENTER ROUND BORDER;
+             GRADIANT { { 1/3, nRGB( 254, 154, 128 ), nRGB( 254, 154, 128 ) } , ;
+                         { 2/3, nRGB( 252, 85, 40 ), nRGB(181, 61, 29 ) } } ;
+             LINECOLORS RGB( 249, 194, 179 ), RGB( 181, 61, 29 )
+             
+   @ 120, 005 RBBTN aBtn[ 4 ] PROMPT "Most Left"  OF oDlg SIZE 70, 15 MOSTLEFT ROUND BORDER ;
+              BITMAP "..\bitmaps\textalignleft16.bmp"
+
+   @ 120, 080 RBBTN aBtn[ 5 ] PROMPT "Left"  OF oDlg SIZE 70, 15 LEFT ROUND BORDER ;
+              BITMAP "..\bitmaps\textalignleft16.bmp"
+
+   @ 140, 005 RBBTN aBtn[ 6 ] PROMPT "Center"  OF oDlg SIZE 70, 20 CENTER ROUND BORDER ;
+              BITMAP "..\bitmaps\textaligncenter16.bmp"
+
+   @ 165, 005 RBBTN aBtn[ 7 ] PROMPT "Most Right"  OF oDlg SIZE 70, 15 MOSTRIGHT ROUND BORDER ;
+              BITMAP "..\bitmaps\textalignright16.bmp"
+
+   @ 165, 080 RBBTN aBtn[ 8 ] PROMPT "Right"  OF oDlg SIZE 70, 15 RIGHT ROUND BORDER ;
+              BITMAP "..\bitmaps\textalignright16.bmp"
+
+
+   @ 100, 165 RBBTN  aBtn[ 9 ] PROMPT "Rect Corner" OF oDlg SIZE 50, 15 CENTER BORDER 
+
+   @ 100, 220 RBBTN aBtn[ 10 ] OF oDlg BITMAP "..\bitmaps\select16.BMP" ;
+              SIZE 35, 10 PROMPT "Popup"  MOSTLEFT ROUND POPUP BORDER
+   
+   @ 130, 165 RBBTN aBtn[ 11 ] PROMPT "SplitPopup"  OF oDlg SIZE 35, 50;
+              SPLITPOPUP ROUND BORDER MENU oMenu BITMAP "..\bitmaps\textaligncenter16.bmp"
+
+
+   @ 110, 220 RBBTN aBtn[ 12 ] OF oDlg BITMAP "..\bitmaps\select16.BMP" MENU oMenu;
+              SIZE 70, 10 PROMPT "Action"  MOSTLEFT ROUND POPUP BORDER ;
+              ACTION( MsgInfo( "Action" ) ) 
+   
+   @ 130, 220 RBBTN aBtn[ 13 ] PROMPT "Popup"  OF oDlg SIZE 35, 50;
+              SPLITPOPUP ROUND BORDER MENU oMenu BITMAP "..\bitmaps\textaligncenter16.bmp";
+              ACTION( MsgInfo( "Action" ) ) CENTER
+
+   @ 200, 005 RBBTN aBtn[ 14 ] PROMPT "Transparent" OF oDlg SIZE 50, 15 CENTER BORDER TRANSPARENT
+
+   @ 200, 080 RBBTN aBtn[ 15 ] OF oDlg BITMAP "c:\FWH\bitmaps\AlphaBmp\TEXT.BMP" ;
+              SIZE 40, 60 PROMPT "ALPHA"  TOP TRANSPARENT 
+
+   @ 200, 150 RBBTN aBtn[ 16 ] OF oDlg BITMAP "..\bitmaps\textalignleft16.bmp" GROUPBUTTON FIRST SIZE 12, 10 ROUND ;
+   ACTION( ChangeSelect( { aBtn[ 16 ], aBtn[ 17 ], aBtn[ 18 ], aBtn[ 19 ] } ) )
+   
+   @ 200, 162 RBBTN aBtn[ 17 ] OF oDlg BITMAP "..\bitmaps\textaligncenter16.bmp" GROUPBUTTON SIZE 12, 10 ROUND ;
+      ACTION( ChangeSelect( { aBtn[ 17 ], aBtn[ 16 ], aBtn[ 18 ], aBtn[ 19 ] } ) )
+   
+   @ 200, 174 RBBTN aBtn[ 18 ] OF oDlg BITMAP "..\bitmaps\textalignright16.bmp" GROUPBUTTON SIZE 12, 10 ROUND;
+      ACTION( ChangeSelect( { aBtn[ 18 ], aBtn[ 17 ], aBtn[ 16 ], aBtn[ 19 ] } ) ) 
+   
+   @ 200, 186 RBBTN aBtn[ 19 ] OF oDlg BITMAP "..\bitmaps\textalignjustify16.bmp" GROUPBUTTON END SIZE 12, 10 ROUND;
+      ACTION( ChangeSelect( { aBtn[ 19 ], aBtn[ 18 ], aBtn[ 17 ], aBtn[ 16 ] } ) )
+
+
+   activate dialog oDlg CENTERED
+   
+   aeval( aGrp, { | o | if( o != NIL,  o:end(), ) } )
+   oBrush:end()
+
+return nil
+
+Procedure ChangeSelect( aObj )
+
+   local n
+     
+   aObj[ 1 ]:lSelected := .t.
+   for n = 2 to len( aObj )
+      aObj[ n ]:lSelected := .f.
+      aObj[ n ]:Refresh()
+   next
+return
+
+Function ChangeBmp( oBmp )
+   	              
+   static lWork
+   
+   if lWork == nil
+      lWork := .f.
+   endif
+
+   if !lWork
+      lWork := .t.
+      nIndex+=nAvance 
+      
+      if nIndex > LEN( aBmp )
+         nAvance := -1
+         nIndex := LEN( aBmp ) + nAvance
+      elseif nIndex == 0
+         nAvance := 1
+         nIndex := 1 + nAvance
+      endif
+      oBmp:hBitmap = aBmp[ nIndex ] 
+      oBmp:Refresh()
+      lWork := .f.
+   
+   endif
+
+   
+return nil
+
+
+function PalBmpFree( h )
+return DeleteObject( h )
+
+   
+
+//----------------------------------------------------------------------------//
+
+function AddResource( nHResource, cType )
+
+   AAdd( aResources, { cType, nHResource, ProcName( 3 ), ProcLine( 3 ) } )
+   
+return nil   
+
+//----------------------------------------------------------------------------//
+
+function DelResource( nHResource )
+
+   local nAt
+
+   if ( nAt := AScan( aResources, { | aRes | aRes[ 2 ] == nHResource } ) ) != 0
+      ADel( aResources, nAt )
+      ASize( aResources, Len( aResources ) - 1 )
+   endif    
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+{{:ribbon.jpg|:ribbon.jpg}}
+
+====== Código fuente ======
+FWH\include\ribbon.ch
+
+====== Ver también ======
+[[fivewin_clase_tribbonbar|Clase TRibbonBar]]
+
+[[fivewin_clase_trbtn|Clase TRBTN]]
+
+[[fivewin_clase_trbgroup|Clase TRBGROUP]]
+

@@ -1,0 +1,18 @@
+====== ExitWnd() ======
+Terminate Windows and restart the system
+
+====== Syntax ======
+ExitWnd( <nRetCode> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<nRetCode>|**EW_REBOOTSYSTEM** Causes Windows to terminate and the system to restart.\\ **EW_RESTARTWINDOWS** Causes Windows to restart.\\ \\ **EW_REBOOTSYSTEM**      67\\ **EW_RESTARTWINDOWS**   66|
+
+====== Returns ======
+^Returns^Description^
+|<nRetValue>| Zero if the function is successful, else a NON Zero value|
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\WINEXEC.C 

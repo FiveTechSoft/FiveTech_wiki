@@ -1,0 +1,80 @@
+====== lRMDir() ====== 
+
+
+
+lRMDir()
+
+
+
+
+
+
+It erases a directory with long name of the disk
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lRMDir( <cDirName> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cDirName> Directory name to erase 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> It returns true if it is possible to erase the directory 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ ====== Source Code ====== URCE\FUNCTION\MKDIR.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

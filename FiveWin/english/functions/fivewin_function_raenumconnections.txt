@@ -1,0 +1,87 @@
+RaEnumConnections()
+
+
+
+RaEnumConnections()
+
+ Previous  Top  Next
+
+
+
+
+Get a list of current connections
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RaEnumConnections() --> aConections 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aConections> An array with all actives conections 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,10 @@
+====== Fdate() ======
+Retrieves the date of a filename without opening it. 
+====== Syntax: ======
+FDate( <cFileName> )  --> <dFileDate>  
+====== Parameters: ======
+| <cFileName> |The name of the file whose date to retrieve.  |
+====== Returns: ======
+| <dFileDate> |The date of the file.|
+====== Source code: ======
+ SOURCE\FUNCTION\FILENAME.PRG

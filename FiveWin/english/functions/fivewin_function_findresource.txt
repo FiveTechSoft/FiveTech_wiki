@@ -1,0 +1,47 @@
+====== FindResource() ======
+Locate a resource in a resource file. 
+
+**Note:**
+An application must not call the FindResource and LoadResource functions to load cursor, icon, and string resources. Instead, it must load these resources by calling the LoadCursor, LoadIcon, and LoadString functions, respectively.  
+
+====== Syntax ====== 
+FindResource(<hResources>, <cResourceName>, <nResType> ) --> hResInfo   
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hResources> | Handle of the file that contain the resource | 
+| <cResourceName> |Name of the resource to search  |
+|<nResType> | Resource type. Resource type can be any of the following as given below. |
+
+
+^Resource Type^ Description^
+| RT_ACCELERATOR |Accelerator table  |
+| RT_BITMAP |Bitmap resource  |
+| RT_CURSOR |Cursor resource  |
+| RT_DIALOG |Dialog box  |
+| RT_FONT |Font resource  |
+| RT_FONTDIR |Font directory resource  |
+| RT_ICON |Icon resource  |
+| RT_MENU |Menu resource  |
+| RT_RCDATA |User-defined resource (raw data)  |
+| RT_STRING |String resource  |
+| RT_CURSOR |1  |
+| RT_BITMAP |2 | 
+| RT_ICON |3  |
+| RT_MENU |4  |
+| RT_DIALOG| 5  |
+| RT_STRING| 6  |
+| RT_FONTDIR| 7  |
+| RT_FONT| 8 | 
+| RT_ACCELERATOR| 9  |
+| RT_RCDATA |10|  
+
+====== Return ====== 
+^Returns^Description^
+| <hResInfo> |The handle of the information block of the found resource. Zero if the resource was not found.  |
+
+====== Source Code ====== 
+SOURCE\WINAPI\RESOURCE.C  
+
+====== See Also ====== 
+[[fivewin_function_findicon|FindIcon()]]

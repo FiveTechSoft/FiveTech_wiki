@@ -1,0 +1,30 @@
+
+====== GetMeaItem() ======
+GetMeaItem()
+
+To obtain the identifier of a MenuItem
+====== Sintaxis ======
+ GetMeaItem( <pMeasureItemStruct> ) --> ItemId 
+====== Parámetros ======
+  <pMeasureItemStruct> MEASUREITEMSTRUCT structures of where we will
+       obtain the identifier of the MenuItem. The structure MEASUREITEMSTRUCT
+       this made up of the following members: 
+    typedef struct tagMEASUREITEMSTRUCT { /* mi */ UINT CtlType; UINT
+        CtlID;UINT itemID; UINT itemWidth; UINT itemHeight; DWORD itemData; }
+        MEASUREITEMSTRUCT; 
+    CtlType      Type of control:
+        1   Menu
+        2   Listbox
+        3   Combobox
+        4   Button
+    CtlID      Identifier for type 2, 3 or 4   
+    ItemID      Identifier for menus   
+    ItemWidth   Wide of the item   
+    ItemHeight   High of the item   
+    ItemData   I date to paint   
+====== Devuelve ======
+ itemID of the menuitem. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

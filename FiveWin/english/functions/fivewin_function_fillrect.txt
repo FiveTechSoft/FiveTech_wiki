@@ -1,0 +1,17 @@
+====== FillRect() ======
+Fills a given rectangle with a specified brush 
+
+====== Syntax: ======
+FillRect( <hDC>, <aRect>, <hBrush> )  --> nil  
+ 
+====== Parameters: ======
+^Parameter^Description^
+| <hDC>| The handle of the device context.  |
+| <aRect>| A 4 element array, representing a rectangle : nTop, nLeft, nBottom, nRight.|
+| <hBrush>| The handle of a brush.  |
+
+====== Returns: ======
+| Nothing|
+ 
+====== Source code: ======
+SOURCE\WINAPI\Rects.c

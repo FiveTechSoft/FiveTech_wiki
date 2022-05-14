@@ -1,0 +1,63 @@
+FileTimeToTime()
+
+
+FileTimeToTime()
+ Previous  Top  Next
+
+Converts a filetime value to a string time value.
+
+====== Syntax ======
+
+ 
+
+
+ FileTimeToDate( <nFileTime> ) --> cTime 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <nFileTime> The filetime value to convert. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <cTime> The converted string time value. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SOURCE\CLASSES\tftp.prg 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\datetime.c 
+
+
+ 
+
+

@@ -1,0 +1,18 @@
+====== Class TPanel ======
+
+TPanel class. Mainly used for automatic alignment techniques                   
+Inherits from TControl                                                         
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code|
+|EraseBkGnd|Erases the background of the control|
+|Paint|Paints the control|
+|Display|Displays the control|
+|Notify|Notify event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPANEL.PRG

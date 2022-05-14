@@ -1,0 +1,21 @@
+
+====== GetAsyncKey() ======
+Verifica si una determinada tecla fué pulsada
+====== Sintaxis ======
+GetAsyncKey( <nKey> ) –> lDown
+
+Esta función devuelve un valor lógico si una determinada tecla fué o nó pulsada
+====== Parámetros ======
+|<nKey>| Código de uno de los 256 vkeys. Ver VKey.ch|
+====== Devuelve ======
+|<lDown>| Verdadero si la tecla fué pulsada|
+====== Ejemplo ======
+<code clipper>if GetAsyncKey(VK_ESCAPE)
+   MsgInfo("Tecla ESCAPE pulsada")
+else
+   MsgInfo("La Tecla ESCAPE NO fué pulsada")
+endif</code>
+====== Código fuente ======
+SOURCE\WINAPI\KeyBrd.c
+====== Ver también ======
+[[GetKeyState()]]

@@ -1,0 +1,101 @@
+TabCtrlAdd()
+
+
+
+TabCtrlAdd()
+
+ Previous  Top  Next
+
+
+
+
+Add a page to tabstrip control
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TabCtrlAdd( <cPrompt> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cPrompt> Label of the tabstrip page 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\TTABCTRL.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

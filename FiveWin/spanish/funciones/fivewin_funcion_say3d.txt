@@ -1,0 +1,33 @@
+====== Say3D() ======
+
+La función Say3D() muestra un texto en aspecto 3D
+
+====== Sintaxis ======
+
+Say3D( <hWnd>, <hDC>, <cCaption>, <lRaised>, <lCentered> ) --> nil 
+
+====== Parámetros ======
+
+^Nombre^Descripción^
+|<hWnd>| El identificador de la ventana donde se dibujara |
+|<hDC>| El identificador del dispositivo de contexto donde se dibujara. |
+|<cCaption>| El texto a dibujar. |
+|<lRaised>| Si el texto se va a mostrar elevado o inserto. |
+|<lCentered>| Si el texto va a estar centrado. |
+
+====== Devuelve ======
+
+nil 
+
+====== Observaciones ======
+
+Usamos esta función antes de usar el aspecto estándar 3D CTL3D.DLL de Microsoft.
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\Say3D.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_Set3DLook | Set3DLook() ]]
+

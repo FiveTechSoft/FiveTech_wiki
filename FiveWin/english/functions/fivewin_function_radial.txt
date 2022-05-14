@@ -1,0 +1,124 @@
+RaDial()
+
+
+
+RaDial()
+
+ Previous  Top  Next
+
+
+
+
+To establish connection between RAS client and RAS server
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RaDial( <cEntry>, <cUser>, <cPass>, <hWnd> ) --> hRas 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cEntry> Telephone number 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cUser> User's name 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cPass> Password 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the window from where the connection settles down 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hRas> Handle of the connection RAS 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

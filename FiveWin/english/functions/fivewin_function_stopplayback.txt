@@ -1,0 +1,87 @@
+StopPlayBack()
+
+
+
+StopPlayBack()
+
+ Previous  Top  Next
+
+
+
+
+Stop to play back the messages
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StopPlayBack() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PLAYBACK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

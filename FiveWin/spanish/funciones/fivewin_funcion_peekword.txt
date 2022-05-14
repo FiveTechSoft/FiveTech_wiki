@@ -1,0 +1,17 @@
+
+====== PeekWord() ====== 
+PeekWord()
+
+Reads a word of an address of certain memory
+====== Sintaxis ======
+ PeekWord( <nSegment>, <nOffset> ) --> nWord 
+====== Parámetros ======
+  <nSegment>  Segment of memory 
+  <nOffset>   Displacement of memory inside the segment nSegment 
+====== Devuelve ======
+ <nWord> It returns the read word of the address of memory given. 
+====== Ejemplo ======
+ SAMPLES\PEEKPOKE.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\PEEKPOKE.C 
+====== Ver también ======

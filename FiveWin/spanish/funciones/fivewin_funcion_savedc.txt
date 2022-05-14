@@ -1,0 +1,30 @@
+====== SaveDC() ======
+
+Salva un dispositivo de contexto de una ventana
+
+====== Sintaxis ======
+
+SaveDC( <hDC> ) --> nSavedDev 
+
+====== Parámetros ======
+
+|<hDC>|Dispositivo de contexto a salvar|
+
+====== Devuelve ======
+
+|<nSavedDev>|Valor que identifica el dispositivo de contexto salvado| 
+
+Este valor puede ser usado para restaurar el dispositivo de contexto usando la función RestoreDC()
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+SOURCE\WINAPI\DC.C 
+
+====== Ver también ======
+
+[[fivewin_funcion_restoredc|RestoreDC()]]

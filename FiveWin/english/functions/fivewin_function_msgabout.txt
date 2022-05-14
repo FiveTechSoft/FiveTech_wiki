@@ -1,0 +1,53 @@
+
+**MsgAbout()** 
+
+MessageBox about style.
+  
+**Syntax:** 
+
+ MsgAbout( <cMsg> [,<cTitle>] ) --> nil    
+  
+**Parameters:** 
+
+| <cMsg> | The message to display on the about dialogbox.|
+| <cTitle> | The title of the dialogbox. By default is "About"|
+
+  
+**Returns:** 
+
+nil
+  
+
+**Observations:**
+
+ This function automatically calls the undocumented WinApi function ShellAbout(), which it is the one used by Windows in all standard applications when. you select about.  
+  
+ The standard dialogbox shows an icon, by default it is a windows logo. To provide your icon to MsgAbout() you should define an icon with the number 1 as identifier:  
+  
+ MyApp.rc  
+  
+''1 ICON "MyApp.ico"''  
+  
+ and then:  
+ 
+''rc -K MyApp.rc MyApp.exe''  
+ 
+  
+**Sample:** 
+
+ SAMPLES\TestMsg.prg    
+  
+**Source code:** 
+
+ SOURCE\WINAPI\MsgBox.c  
+  
+**See also:** 
+
+ [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]],
+ [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgDate|MsgDate()]], 
+ [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], 
+ [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]],
+ [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], 
+ [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], 
+ [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], 
+ [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

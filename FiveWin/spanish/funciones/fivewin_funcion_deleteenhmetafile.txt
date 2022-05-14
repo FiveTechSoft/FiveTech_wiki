@@ -1,0 +1,66 @@
+DeleteEnhMetaFile()
+
+
+DeleteEnhMetaFile()
+ Previous  Top  Next
+
+Deletes an enhanced-format metafile handle.
+
+====== Sintaxis ======
+
+ 
+
+
+ DeleteEnhMetaFile( <hEMF> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hEMF> The handle of an enhanced metafile. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lSuccess> .t. if the function is successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\EMETAFIL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

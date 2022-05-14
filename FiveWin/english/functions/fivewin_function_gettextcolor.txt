@@ -1,0 +1,81 @@
+
+======  GetTextColor() ====== 
+
+
+
+To obtain the current color of the text
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetTextColor( <hDC> ) --> nRGBColor 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nRGBColor> Current color of the text 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\COLOR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

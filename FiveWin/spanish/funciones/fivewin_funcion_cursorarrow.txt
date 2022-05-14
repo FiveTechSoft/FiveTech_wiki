@@ -1,0 +1,25 @@
+
+====== CursorArrow() ======
+
+CursorArrow()
+
+Select the Windows default arrow cursor
+====== Sintaxis ======
+ CursorArrow() --> nil 
+
+ This function changes the mouse cursor to the traditional arrow in
+window. 
+
+====== Parámetros ======
+ None. 
+====== Devuelve ======
+ Nothing. 
+
+====== Ejemplo ======
+ SAMPLES\TestCurs.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\Cursors.c 
+
+====== Ver también ======
+ CursorWait() CursorHand() CursorCatch() CursorWE() CursorIbeam()
+CursorSize() 

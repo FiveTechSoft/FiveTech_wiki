@@ -1,0 +1,70 @@
+====== cGetFile() ======
+File selection standard DialogBox
+
+====== Syntax: ======
+cGetFile( <cFileMask>, <cTitle>, [<nDefaultMask>], [<cInitialDirectory>], [<lSave>], [<lLongNames>], [<nFlags>], [<cInitialFile>] ) --> cFileName  
+
+This function invokes the Windows default select a file DialogBox 
+
+
+
+====== Parameters: ======
+^Parameter^Description^
+|<cFileMask>| A string that contains a default filename, or a list of possible file types to select\\ ? cGetFile( "Hello.prg", "Select a file" ) In this case "Hello.prg" is shown as the default filename.\\ If you want to specify some different types of files the following format must be used:\\ <nowiki>"DataBase | *.dbf |" + ;</nowiki>\\ <nowiki>"Index | *.cdx |" + ;</nowiki>\\ <nowiki>"Bitmap | *.bmp"</nowiki>|
+|<cTitle>| The title of the DialogBox. By default "Select a file" is shown.|
+|<nDefaultMask>| An optional numeric value in case that you want to start the DialogBox with a certain file type selected (if you are using the multiple file types format). Later if you would like to know type of file selected, you may use the function nGetFileFilter().|
+|<cInitialDirectory>| The initial directory where to start looking for files. By default it uses ".-->"|
+|<lSave>| If true then the Save Filename dialog will be displayed|
+|<lLongNames>|If true then the dialog will show the files with long file name format.|
+|<nFlags>|Special flag to use on the dialog (Please check WinAPI documentation)|
+|<cInitialFile>|The filename used to initialize the File Name edit control.|
+====== Returns: ======
+A string with the name of the filename selected. If user presses Cancel, an empty string would be returned. 
+
+
+====== Sample: ======
+===== Sample 1: =====
+See IDE-->SOURCE for a lot of different samples.
+
+Here's a sample on how to invoke a "Save As" dialogue box
+<code clipper>
+#include "FiveWin.ch"
+//----------------------------------//
+Function Main()
+
+   Local cNewName, ;
+         cMask     := "Databases (*.dbf)|*.dbf|All files (*.*)|*.*", ;
+         cTitle    := "Select the database", ;
+         cFolder   := "c:\fwh\samples", ;
+         cFilename := "customer.dbf", ;
+         lSave     := .T.
+
+   cNewName := cGetFile( cMask, cTitle,, cFolder, lSave,,, cFileName )
+   ?cNewName
+
+Return Nil
+</code>
+
+** Screen snapshot **
+
+{{:cgetfile.jpg|:cgetfile.jpg}}
+===== Sample 2: =====
+<code clipper>
+static function BckFromImage( oBrw )
+
+   local cImage
+
+   if ! Empty( cImage := cGetFile( "Image File (*.bmp,jpg,png)|*.bmp;*.png;*.jpg|", ;
+                                 "Select Image file ",, ;
+                                 'c:\fwh\bitmaps\' ) )
+      oBrw:SetBackGround( cImage )
+   endif
+return nil
+</code>
+
+====== Source code: ======
+SOURCE\WINAPI\GetFile.c  
+
+
+====== See Also: ======
+[[fivewin_function_nGetFileFilter|nGetFileFilter()]], [[fivewin_function_cgetdir|cGetDir()]], [[fivewin_function_cgetfile32|cGetFile32()]], [[fivewin_function_agetfiles|aGetFiles()]]

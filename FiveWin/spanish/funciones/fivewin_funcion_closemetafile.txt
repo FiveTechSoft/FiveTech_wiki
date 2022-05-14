@@ -1,0 +1,43 @@
+
+====== CloseMetafile() ======
+CloseMetafile()
+Closes a metafile DC and creates a handle of a metafile
+
+====== Sintaxis ======
+ CloseMetafile( <hDC> ) --> hMetafile 
+
+====== Parámetros ======
+ <hDC> Metafile device context to be closed. 
+
+====== Devuelve ======
+ <hMetafile> Handle of metafile 
+
+
+====== Ejemplo ======
+
+ #include "fivewin.ch" 
+
+ static oWnd 
+
+ function main() 
+ DEFINE WINDOW oWnd 
+ oWnd:bLClicked := {|| play() } 
+ ACTIVATE WINDOW oWnd 
+ return nil 
+
+ function play() 
+ Local hDCMeta 
+ Local hMeta 
+ Local hDC := oWnd:GetDC() 
+ hdcMeta = CreateMetaFile() 
+ MoveTo(hdcMeta, 10, 10) 
+ LineTo(hdcMeta, 100, 100) 
+ hmf = CloseMetaFile(hdcMeta) 
+ PlayMetaFile(hdc, hmf) 
+ DeleteMetaFile(hmf) 
+ oWnd:ReleaseDC() 
+ return nil 
+
+====== Código fuente ======
+ SOURCE\WINAPI\METAFILE.C 
+====== Ver también ======

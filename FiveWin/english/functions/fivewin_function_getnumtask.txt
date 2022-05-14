@@ -1,0 +1,25 @@
+Retrieves the number of currently running tasks
+
+
+====== Syntax ======         
+
+
+GetNumTask()    --> nTasksInUse
+
+====== Parameters ======     
+
+
+None
+
+====== Returns ======
+
+
+| <nTascksInUse>   Number of currently running tasks |
+
+====== Sample ======
+
+
+====== Source Code ======   
+
+
+SOURCE\WINAPI\WINEXEC.C

@@ -1,0 +1,79 @@
+====== IsAnsiUpper() ====== 
+
+
+
+
+
+It checks if a string ansi is in uppercase
+
+
+
+====== Syntax ======
+
+
+
+
+
+ IsAnsiUpper( <cAnsiStr> ) --> lAnsi 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cAnsiStr> String of characters to check 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lAnsi> Return .t. if the strin is ANSI and is in uppercase 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\ANSIUP.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

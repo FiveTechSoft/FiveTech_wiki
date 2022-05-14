@@ -1,0 +1,20 @@
+
+====== GetCaretPos() ======  
+Obtiene la posición actual del cursor
+====== Sintaxis ====== 
+GetCaretPos() –> aPoint 
+
+Esta función devuelve la posición actual del cursor.
+====== Parámetros ====== 
+Ninguno. 
+====== Devuelve ====== 
+|<aPoint>| Una matriz con los dos valores numéricos que representar una estructura ripo POINT :{ nRow, nCol }| 
+====== Código fuente ====== 
+SOURCE\WINAPI\GetCaret.c 
+====== Ejemplo ====== 
+
+====== Ver también ====== 
+[[fivewin_funcion_CreateCaret()]] ,
+[[fivewin_funcion_DestroyCaret()]] ,
+[[fivewin_funcion_ShowCaret()]]
+

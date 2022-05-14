@@ -1,0 +1,83 @@
+
+====== GetMetaBit() ====== 
+
+
+
+
+
+It returns a metafile that contains a bitmap
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetMetaBit( <hDC> ) --> hMetaFile 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Device context where is the metafile 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hMetaFile> Handle of the metafile where is the BitMap 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\METAFILE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,26 @@
+
+====== nMsgBox() ====== 
+nMsgBox()
+
+Generic MessageBox quick access
+====== Sintaxis ======
+ nMsgBox( <cMsg> [,<cTitle>] [,<nStyle>] ) --> nResult 
+====== Parámetros ======
+  <cMsg>    The message to display 
+  <cTitle>  The title to display. By default, "Alert" 
+  <nStyle>  The style of the MessageBox. See MessageBox() for the possible values 
+====== Devuelve ======
+ <nResult> The numeric result value. See MessageBox for all the possible values 
+
+Observations:
+
+ This function just simplifies the use of the standard MessageBox
+function, though FiveWin offers all the Msg...() functions that
+simplifies much more its management. 
+====== Ejemplo ======
+ SAMPLES\TestMsg.prg 
+====== Código fuente ======
+ SOURCE\WINAPI\MsgBox.c 
+====== Ver también ======
+ MsgInfo() MsgAlert() MsgStop() MsgBeep() MsgYesNo() MsgRetryCancel()
+MsgMeter() MsgGet()

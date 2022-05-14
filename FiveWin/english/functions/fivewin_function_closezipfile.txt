@@ -1,0 +1,50 @@
+====== CloseZipFile() ======
+Closes the ZIP file already opened using GetFirstInZip() and GetNextInZip() functions. 
+
+====== Syntax ======
+CloseZipFile() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nothing. 
+
+====== Example ======
+SAMPLES\TestUZip.prg 
+<code clipper>
+Function GetZipFiles( cZipFile, oName, oNumber )
+
+   local aFile
+
+   if ! IsZip( cZipFile )
+      MsgStop( "This seems not to be a ZIP file!" )
+      return nil
+   endif
+
+   oName:SetText( "Zip file: " + cZipFile )
+   cZipName = cZipFile
+
+   CursorWait()
+
+   aFile  = GetFirstInZip( cZipFile )
+   aFiles = {}
+
+   // Let Clipper stabilizes its arrays/string memory...
+   Memory( -1 )
+
+   while aFile[ 1 ] == 0
+      AAdd( aFiles, aFile )
+      aFile = GetNextInZip()
+   end
+   CloseZipFile()
+
+   CursorArrow()
+
+   oNumber:SetText( "Number of files: " + Str( Len( aFiles ) ) )
+
+Return aFiles
+</code>
+
+====== Source Code ======
+SOURCE\\FUNCTION\\UnZip.c 

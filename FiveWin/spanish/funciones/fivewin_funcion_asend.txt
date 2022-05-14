@@ -1,0 +1,36 @@
+====== ASend() ======
+
+ Envia un mensaje OOP a un arreglo de Objetos 
+
+
+====== Sintaxis: ( Syntax: ) ======
+
+ ASend( <aArray>, <cMsg>, <uParam1>, ..., <uParamN> ) --> nil
+
+====== Parámetros: ( Parameters: ) ======
+
+ <aArray> Es un arreglo de objetos
+
+ <cMsg> Es una cadena describiendo el mensaje OOP a enviar a los objetos. Es lo mismo que el siguiente codigo pero es una forma mucho mas eficiente y sin tener que conocer por anticipado el mensaje OOP que sera enviado al arreglo de objetos :
+ 
+<code clipper>
+  
+  local n 
+     
+     for n = 1 to Len( <aArray> ) 
+
+        <aArray>[ n ]:<cMsg>( <uParam1>, ..., <uParamN> ) 
+
+     next
+     
+</code>
+
+ <uParam1>, ... ,<uParamN> Es una lista opcional de parametros que se daran al metodo invocado.     
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Código Fuente: ( Source code: ) ======
+
+ Lenguaje C. No suminstrado

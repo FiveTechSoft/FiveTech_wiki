@@ -1,0 +1,134 @@
+SetFTime()
+
+
+
+SetFTime()
+
+ Previous  Top  Next
+
+
+
+
+Set a different time and date for a file
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetFDate( <hFile>, <cTime>, <cdDate> ) --> hWndPrev 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+ 
+
+
+ 
+
+
+ <hFile> Identifies the handle of an opened file. Use FOpen() to get this
+handle. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cTime> Specifies a different time to be set to the file. Use the
+format: "HH:MM:SS". 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cdDate> Specifies a different date to be set to the file. Use the
+format: "DD:MM:YYYY". You can use both a date or a string type. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> If the operation was performed successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\Files.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ GetFTime() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

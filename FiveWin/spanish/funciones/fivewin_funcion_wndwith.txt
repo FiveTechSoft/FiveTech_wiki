@@ -1,0 +1,22 @@
+====== WndWidth() ======
+
+Actualización del ancho de  ventana
+
+====== Sintaxis ======
+ 
+ WndWidth( <hWnd> [,<nNewWidth> ] ) --> nWidth
+
+====== Parametros ======
+
+|<hWnd>| título de la ventana| 
+|<nNewWidth>| nuevo ancho|  
+
+====== Retorno ======
+
+|<nWidth> if <nNewWidth>| es un retorno de cero el ancho actual|
+
+====== Ejemplo ======
+ 
+====== Codigo Fuente ======
+ 
+ SOURCE\WINAPI\WNDMOVE.C 

@@ -1,0 +1,37 @@
+====== SetHelpPopup() ======
+
+Sets the parameters for the context sensitive popup-help.  
+
+====== Syntax: ======
+ 
+ SetHelpPopup([<cPopup> [,<nRow> [,<nCol> [,<nbgColor> [,<nfgColor> ]]]]]) --> nil
+====== Parameters: ======
+
+| cPopup | Embedded popup.txt in the CHM-file or an external help file. See description! DEFAULT: popups.txt| 
+| nRow | X-Offset of the popup-window from the active control DEFAULT: 20|
+| nCol | Y-Offset of the popup-window from the active control DEFAULT: 10|
+| nbgColor | Background-color from the popup-window DEFAULT: -1|
+| nfgColor | Text-color from the popup-window DEFAULT: -1|
+====== Returns: ======
+
+nothing
+====== Description: ======
+
+Sets the parameters from the popup-help. If context-sensitive help is used, this function should be called at the begin from your program.
+
+NOTE! 
+If the file cPopup really exists in the following format, then the popup-topics are calling from this file and not from the embedded txt-file in the CHM-file!
+
+  .Topic 1                    //---> "1" is the helpid from the control
+  popuptext for topic 1       //---> is the popup-text to shown
+  .
+  .
+  .Topic 5
+  popuptext for topic 5
+  .
+  .
+====== Source code: ======
+ 
+ SOURCE\WINAPI\HELPCHM.PRG
+====== see also ======
+[[fivewin_function_gethelppopup|GetHelpPopup()]]

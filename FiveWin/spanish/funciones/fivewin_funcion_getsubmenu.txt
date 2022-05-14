@@ -1,0 +1,17 @@
+
+====== GetSubMenu() ======
+GetSubMenu()
+
+It returns the handle of a menu pop-up
+====== Sintaxis ======
+ GetSubMenu( <hMenu>, <nPos> ) --> hMenu 
+====== Parámetros ======
+  <hMenu> Handle of the menu that contains to the submenu 
+  <nPos>  Position of the submen� in the main menu. You begins to count
+          from the zero. 
+====== Devuelve ======
+  <hMenu> Handle of the submenu 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

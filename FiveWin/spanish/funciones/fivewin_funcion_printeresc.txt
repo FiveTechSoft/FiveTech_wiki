@@ -1,0 +1,16 @@
+
+====== PrinterEsc() ====== 
+PrinterEsc()
+
+To write directly in the printer without printer-device
+====== Sintaxis ======
+ PrinterEsc( <hDC>, <cText> ) --> lSuccess 
+====== Parámetros ======
+  <hDC>    Device context of the printer 
+  <cText>  Text to write in the printer 
+====== Devuelve ======
+ <lSuccess> It returns true if the function was executed correctly. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

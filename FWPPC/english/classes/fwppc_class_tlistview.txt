@@ -1,0 +1,19 @@
+====== Class TListView ======
+
+Win32 SysListView common control support                                       
+Inherits from TControl                                                         
+====== DATA ======
+|aPrompts|Array containig the prompts of the listview|
+|bAction|Codeblock evaluated when changing the selected item|
+|nOption|The total number of items|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|InsertItem|Inserts a new item in the listview|
+|SetImageList|Associates an imagelist object with the listview|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TLISTVIEW.PRG

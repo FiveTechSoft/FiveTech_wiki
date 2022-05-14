@@ -1,0 +1,57 @@
+====== aDrives() ======
+
+Retorna una matriz con las Id´s de todas las unidades válidas.
+
+====== Syntaxis ======
+
+aDrives( [<nType>] ) --> aDrives  
+ 
+ Retorna una matriz con todas las unidades válidas en nuestro sistema.  
+
+====== Parametros ======
+
+| <nType> | 0 = Todas las unidades (default), 1 = Sólo unidades de diskette, 2 = Sólo Discos Duros  |
+
+====== Devuelve ======
+
+| <aDrives> | Matriz con las Id´s de las unidades  |
+
+
+====== Ejemplo ======
+<code clipper>SAMPLES\TESTDRVS.PRG</code>  
+-------------------- 
+
+<code clipper>
+// Checking all the system valid drives 
+
+#include "FiveWin.ch" 
+
+//-------------------------------------------------------------- 
+
+function Main() 
+
+local oDlg, cDrive 
+
+DEFINE DIALOG oDlg FROM 5, 5 TO 20, 60 ; 
+TITLE "Seleccione una Unidad" 
+
+@ 1, 1 LISTBOX cDrive ITEMS aDrives() ; 
+SIZE 100, 100 ; 
+OF oDlg ; 
+ON DBLCLICK oDlg:End() 
+
+@ 1, 20 BUTTON "&Ok" OF oDlg ; 
+ACTION oDlg:End() 
+
+ACTIVATE DIALOG oDlg CENTERED 
+
+MsgInfo( IsCdRom( "C:" ) ) 
+
+MsgInfo( IsDiskette( "A:" ) ) 
+
+return nil 
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\FILENAME.PRG  

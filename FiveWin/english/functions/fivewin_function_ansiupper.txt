@@ -1,0 +1,20 @@
+====== AnsiUpper() ====== 
+
+Converts the given character string to uppercase 
+
+====== Syntax ====== 
+AnsiUpper(<cString>) -> cUpperString
+
+====== Parameters ====== 
+^Parameter ^ Description ^
+|<cString>|Character string to be converted to Uppercase. It can only be a character|
+
+The driver of the selected language does the conversion, if it is selected in the Control panel. If it is not this way, Windows uses its own function.  
+
+====== Returns ======
+String in uppercase.  
+ 
+====== Source Code ======
+
+
+

@@ -1,0 +1,107 @@
+====== Serial Comm ======
+**Communications commands **
+<code clipper>
+DEFINE COMM <oComm>  
+ [ STOP <nStop> ];  
+ [ BAUD <nBaud> ];  
+ [ PARITY <cParity> ];  
+ [ INSIZE <nInQueue> ];  
+ [ OUTSIZE <nOutQueue> ];  
+ [ DEVICE <nDevice> ];  
+ [ DATA <nData> ];  
+ 
+DEFINE LPT <oComm>  
+ [ STOP <nStop> ];  
+ [ BAUD <nBaud> ];  
+ [ PARITY <cParity> ];  
+ [ INSIZE <nInQueue> ];  
+ [ OUTSIZE <nOutQueue> ];  
+ [ DEVICE <nDevice> ];  
+ [ DATA <nData> ];  
+  
+WRITE COMM <oComm> STRING <cString>  
+ 
+CLOSE COMM <oComm>  
+ 
+SETUP COMM <oComm>  
+ 
+BREAK COMM <oComm>  
+ 
+UNBREAK COMM <oComm>  
+ 
+FLUSH COMM <oComm> NUMBER <nNumber>  
+ 
+ESCAPE COMM <oComm> NUMBER <nCode>  
+</code>
+** Parameters **  
+| <oComm>  | The variable to hold this object | 
+| <nNumber> | Number of queue to flush | 
+| <nData> | Number of bits | 
+| <nCode> | Escape code to send | 
+| <cString> | A text to send | 
+| <nDevice> | Device number | 
+| <nBaud> | Bauds speed | 
+| <nOutQueue> | Size of the out queue in bytes | 
+| <cParity> | Parity "y" yes or "n" no | 
+| <nStop> | Number of stop bytes | 
+
+====== Sample Code ======
+<code clipper>
+#include "fiveWin.ch"
+
+function Main()
+
+   affichefw( "hello", "This is a test" )
+
+return nil
+
+func affichefw(ligne,texte,fin)
+   local cDcb, nBytes
+   local nComm := OpenComm( "COM1", 1024, 128 )
+   local nError
+
+   DEFAULT ligne := messaff
+   DEFAULT texte := repl(" ",20)
+   DEFAULT fin := .f.
+
+  ligne := chr(27)+"uA"+ligne+chr(13)
+  texte := chr(27)+"uB"+texte+chr(13)
+
+   if ! BuildCommDcb( "COM1:9600,n,8,1", @cDcb )
+      nError = GetCommError( nComm )
+      MsgInfo( "BuildCommDcb Error: " + Str( nError ) )
+   endif
+
+   if ( nBytes := WriteComm( nComm, ligne ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if ( nBytes := WriteComm( nComm, texte ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if FlushComm( nComm, 0 ) != 0
+      nError = GetCommError( nComm )
+      MsgInfo( "FlushComm Error: " + Str( nError ) )
+   endif
+
+   if ! CloseComm( nComm )
+      nError = GetCommError( nComm )
+      MsgInfo( "CloseComm Error: " + Str( nError ) )
+   endif
+
+return nil
+</code>
+
+====== See also ======
+[[fivewin_class_tcomm | Class TComm ]]

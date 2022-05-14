@@ -1,0 +1,271 @@
+====== Pie() ====== 
+
+
+
+Pie()
+
+
+
+
+
+
+Draws a graphic pie
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Pie( <hDC>, <nLeftRect>, <nTopRect>, <nRightRect>, <nBottomRect>,
+<nxStartArc>, <nyStartArc>, <nxEndArc>, <nyEndArc> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+Parameters
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> Handle of device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nLeftRect> x-coordinate upper-left corner bounding rectangle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nTopRect> y-coordinate upper-left corner bounding rectangle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRightRect> x-coordinate lower-right corner bounding rectangle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBottomRect> y-coordinate lower-right corner bounding rectangle 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nxStartArc> x-coordinate arc starting point 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nyStartArc> y-coordinate arc starting point 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nxEndArc> x-coordinate arc ending point 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nyEndArc> y-coordinate arc ending point 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The Pie function draws a pie-shaped wedge by drawing an elliptical arc
+whose center and two endpoints are joined by lines. 
+
+
+ 
+
+
+ 
+
+
+
+Returns
+
+
+
+
+
+ <lSuccess> A logical value indicating if the operation was successfull. 
+
+
+ 
+
+
+ 
+
+
+
+Comments
+
+
+
+
+
+ The center of the arc drawn by the Pie function is the center of the
+bounding rectangle specified by the nLeftRect, nTopRect, nRightRect, and
+nBottomRect parameters. The starting and ending points of the arc are
+specified by the nxStartArc, nyStartArc, nxEndArc, and nyEndArc
+parameters. The function draws the arc by using the selected pen, moving
+in a counterclockwise direction. It then draws two additional lines from
+each endpoint to the arc's center. Finally, it fills the pie-shaped area
+by using the current brush. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ If nxStartArc equals nxEndArc and nyStartArc equals nyEndArc, the result
+is an ellipse with a single line from the center of the ellipse to the
+point (nxStartArc,nyStartArc) or (nxEndArc,nyEndArc). 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ The figure drawn by this function extends up to but does not include the
+right and bottom coordinates. This means that the height of the figure is
+nBottomRect - nTopRect and the width of the figure is nRightRect -
+nLeftRect. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Both the width and the height of a rectangle must be greater than 2
+units and less than 32,767 units. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestPie.prg 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

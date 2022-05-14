@@ -1,0 +1,72 @@
+====== SQLFreeStmt() ======
+
+Stops processing associated with a specific statement, closes any open
+cursors associated with the statement, discards pending results, or,
+optionally, frees all resources associated with the statement handle.
+
+====== Syntax ======
+
+ 
+
+
+ SQLFreeStmt( <hStmt>, <nOption> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nOption> One of the following options: SQL_ CLOSE, SQL_DROP,
+SQL_UNBIND, SQL_RESET_PARAMS. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

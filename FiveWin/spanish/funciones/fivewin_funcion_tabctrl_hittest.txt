@@ -1,0 +1,55 @@
+TabCtrl_HitTest()
+
+
+TabCtrl_HitTest()
+ Previous  Top  Next
+
+Determines which tab, if any, is at a specified screen position.
+
+====== Sintaxis ======
+
+
+ TabCtrl_HitTest( <hWnd> ) --> nItem 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nItem> Returns the index of the tab, or -1 if no tab is at the
+specified position. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

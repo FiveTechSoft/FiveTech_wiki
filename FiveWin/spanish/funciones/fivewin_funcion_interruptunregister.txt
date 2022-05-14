@@ -1,0 +1,15 @@
+
+====== InterruptUnregister() ======
+Definido por el usuario desinstala un controlador de GPF
+====== Syntax ======
+ InterruptUnregister() --> lSuccess
+====== Parámetros ======
+ None.  
+====== Retorno ======
+|<lSuccess>| un valor lógico que indica si el controlador de GPF es desinstalado correctamente.|
+====== Comentarios ======
+Aunque FiveWin ha sido probado extensamente con GPF, quisimos ofrecer el control de un error de protección general posible, para ofrecer una oportunidad para tomar el control para cerrar todos los archivos y generar un archivo de error.log con información para detectar la causa.
+====== Ejemplo ======
+SAMPLES\TestTool.prg
+====== Código Fuente ======
+SOURCE\WINAPI\ToolHelp.c  

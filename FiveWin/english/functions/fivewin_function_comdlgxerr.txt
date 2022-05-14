@@ -1,0 +1,75 @@
+ComDlgXErr()
+
+
+ComDlgXErr()
+ Previous  Top  Next
+
+Returns the most recent error occurred during the execution of a common
+dialog box function
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ComDlgXErr() --> nError 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nError> The most recent common dialog extended error. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\printdc.c 
+
+
+ 
+
+
+

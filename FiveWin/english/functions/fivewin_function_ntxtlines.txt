@@ -1,0 +1,80 @@
+====== nTxtLines() ======
+
+
+
+It calculates the number of lines of a file
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nTxtLines( <cFileName> ) --> nLines 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cFileName> File name 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nLines> Number of lines of a file. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\FTEXT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

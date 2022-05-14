@@ -1,0 +1,22 @@
+
+====== GetFrameProc() ======
+
+GetFrameProc()
+
+Provides default processing for any Windows messages
+====== Sintaxis ======
+ GetFrameProc() --> uVal 
+
+ The function provides default processing for any Windows messages that
+the window procedure of a multiple document interface (MDI) frame window
+does not process. All window messages that are not explicitly processed
+by the window procedure must be passed to this function, not the
+DefWindowProc function. 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <uVal> It will depend on the values returned in the process of messages 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MDI.C 
+====== Ver también ======

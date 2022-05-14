@@ -1,0 +1,32 @@
+
+====== CreatePatternBrush()  ======
+
+Crea un pincel con el patrón especificado de mapa de bits
+
+====== Sintaxis ======
+ 
+ CreatePatternBrush( <hBitmap> ) --> hBrush 
+
+Esta función crea un pincel cuyo patrón se especifica con un mapa de bits. La brocha se puede posteriormente ser seleccionado para cualquier dispositivo que las operaciones de trama de apoyo.
+
+
+====== Parámetros ======
+
+|<hBitmap>| Identifica el mapa de bits.|  
+
+
+====== Retorno ======
+
+|<hBrush>| El título de la brocha. Devuelve 0 si no es posible para crearlo.|
+
+====== Ejemplo ======
+ 
+
+====== Código Fuente ======
+ 
+ SOURCE\\WINAPI\\CreatePa.c 
+
+
+====== Ver también ======
+
+[[fivewin_funcion_CreateHatchBrush|CreateHatchBrush()]]

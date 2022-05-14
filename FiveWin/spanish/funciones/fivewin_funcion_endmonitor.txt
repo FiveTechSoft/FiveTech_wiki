@@ -1,0 +1,97 @@
+EndMonitor()
+
+
+
+EndMonitor()
+
+ Previous  Top  Next
+
+
+
+
+The monitorization of resources of the system concludes
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ EndMonitor() --> nil 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Function that liberates the resources of the not liberated system
+properly. It must use jointly with the function StartMonitor () 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\MONITOR.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

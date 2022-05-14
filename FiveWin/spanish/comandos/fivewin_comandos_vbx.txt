@@ -1,0 +1,92 @@
+Creación de un VBX con código fuente:
+
+ 
+<code clipper>
+@ <nRow>, <nCol> VBX [<oVbx>] ;
+
+   [ OF <oWnd> ] ;
+
+   [ SIZE <nWidth>, <nHeight> ] ;
+
+   [ FILE | FILENAME | DISK <cVbxFile> ] ;
+
+   [ <cVbxClass> ] ;
+
+   [ ON <cClause1> <uAction1> ;
+
+   [ ON <cClauseN> <uActionN> ] ]
+
+   [ WHEN <uWhen> ] ;
+
+   [ VALID <uValid> ] ;
+
+   [ PIXEL ] ;
+
+   [ DESIGN ]
+</code>
+ 
+
+**Aviso**: Algunos controles VBXs necesitan datos específicos para su inicialización, y puede que no funcionen correctamente al usarlos en ventanas. En este caso, úselos sólo en cajas de diálogo mediante REDEFINE VBX.
+
+ 
+
+Creación de un VBX con recursos:
+
+ 
+<code clipper>
+REDEFINE VBX [<oControl>] ;
+
+   [ ID <nId> ] ;
+
+   [ OF <oDlg> ] ;
+
+   [ COLOR <nClrFore> [,<nClrBack>] ] ;
+
+   [ ON <cClause1> <uAction1> ;
+
+   [ ON <cClauseN> <uActionN> ] ]
+</code>
+ 
+^  Parámetro  ^  Descripción  ^
+^<nRow>, <nCol>| Coordenadas de pantalla|
+^<oVbx> | Referencia al objeto de control oVbx|
+^<nWidth>,<nHeight>| Dimensiones del control oVbx|
+^<cVbxFile>        | Nombre del archivo .VBX|
+^<cVbxClass>       | Nombre opcional del VBX especificado por el fabricante|
+^<cClause>         | Cualquier nombre de evento especificado por el fabricante del VBX|
+^<uAction>         | Cualquier acción a ejecutar al ocurrir el evento|
+^<nId>             | ID del control oVbx para el cuadro de diálogo|
+^<oDlg>            | Referencia al contenedor del objeto del cuadro de diálogo|
+^<nClrFore>,<nClrBack>| Colores del oVbx para cuadros de diálogo|
+^<WhenFunc>        | Expresión a evaluar que indica si el control está activo o no.|
+^<ValidFunc>       | Expresión a validar cuando el control va a perder el foco.|
+
+ 
+
+Cláusulas:
+
+ 
+
+DESIGN    Permite al usuario mover y cambiar el tamaño.
+
+ 
+
+PIXEL     Usa coordenadas en píxels y no de texto.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

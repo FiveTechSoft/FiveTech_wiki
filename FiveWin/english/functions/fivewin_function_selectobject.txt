@@ -1,0 +1,140 @@
+====== SelectObject() ======
+
+
+Select a GDI object to be used in a device context
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SelectObject( <hDC>, <hGDIObject> ) --> hPrevGDIObject 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> Identifies the device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hGDIObject> Identifies the handle of the GDI object to be selected 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hPrevGDIObject> Returns the handle of the previous GDI object selected. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Many GDI objects, before to be used, have to be selected using this
+function. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Lines.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\SelObjec.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ DeleteObject() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

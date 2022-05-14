@@ -1,0 +1,66 @@
+nPtrWord()
+
+
+nPtrWord()
+ Previous  Top  Next
+
+Takes the value pointed by an address converted to a WORD pointer.
+
+====== Sintaxis ======
+
+ 
+
+
+ nPtrWord( <nAddress> ) --> nValue 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <nAddress> The address that points to the value. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nValue> The retrieved value. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,40 @@
+
+====== cGetDir32() ======  
+
+Dialog box to select directory. 
+
+====== Syntax ======  
+
+cGetDir32( <cTitle>, [<cInitDir>] ) --> cDir  
+ 
+This function invokes the 32 bits Windows default select directory DialogBox.  
+ 
+This function only works on Win 95/98 and NT machines. The file RunDlg32.exe must be present on every PC in the \windows or \windows\system directory.  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cTitle> | Title of the dialog box |  
+| <cInitDir> | Initial directory |  
+
+====== Returns ======  
+^Returns^Description^
+|<cDir>| Name of the selected directory/folder|
+
+
+====== Sample ======  
+\Fwh\Samples\GETDIR.PRG
+<code clipper> // cGetDir32() function demo  
+ function Main()  
+   local cDirName := cGetDir32()  
+   MsgInfo( cDirName )  // As per the below given screen snapshot the result is F:\DirectX Nov.2008
+   MsgInfo( LFN2SFN( cDirName ) )  // Converted From Long file name to Short file name, the result is F:\DIRECT~1.200
+ return nil</code>  
+
+** Screen snapshot **
+
+{{:cgetdir.jpg|:cgetdir.jpg}}
+====== Source Code ======  
+SOURCE\FUNCTION\DLGS32.PRG  
+
+====== See also ======
+[[fivewin_function_cgetdir|cGetDir()]]

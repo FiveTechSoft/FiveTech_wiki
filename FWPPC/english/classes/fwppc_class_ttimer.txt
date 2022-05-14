@@ -1,0 +1,22 @@
+====== Class TTimer ======
+
+Windows timers                                                                 
+====== DATA ======
+|bAction|The action to be performed on each interval|
+|lActive|If the timer is currently active|
+|nId|The API identifier of the timer|
+|nInterval|The interval of each action in 1/1000 secs|
+|hWndOwner|The handle of the window container of the timer|
+|Cargo|Generic cargo slot|
+====== METHODS ======
+|New|Constructor method TTimer:New( nInterval, bAction,|
+|oWnd|)|
+|Activate|Activates the timer TTimer:Activate() \\ nil|
+|DeActivate|Deactivates the timer TTimer:DeActivate() \\ nil|
+|End|Destroys the timer TTimer:End() \\ nil|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TTIMER.PRG

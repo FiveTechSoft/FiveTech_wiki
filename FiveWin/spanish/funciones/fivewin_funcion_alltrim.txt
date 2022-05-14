@@ -1,0 +1,64 @@
+===== AllTrim() =====
+
+
+Suprime espacios a la derecha e izquierda de una cadena de caracteres. 
+
+
+
+
+==== Sintaxis: ==== 
+
+
+
+
+ Alltrim(<cString> ) --> cNewString  
+
+
+==== Parámetros: ==== 
+
+
+^Párametro^Descripción^
+| <cString>| Cadena de caracteres dada.|
+
+==== Devuelve: ====
+
+
+
+
+ <cNewString> Nueva cadena de caracteres sin espacios al principio y final. 
+
+
+
+
+
+
+==== Observaciones: ====
+
+
+
+
+ Función creada por compatibilidad en xBase++  
+
+==== Ejemplo: ==== 
+<code clipper>
+Local cString := " My string " 
+
+Local cNewString 
+
+
+
+cNewString := Alltrim( cString ) 
+
+
+
+Now cNewString will contain "My string" 
+
+</code>
+
+==== Código fuente ====
+
+
+
+
+ SOURCE\FUNCTION\DB10.PRG  
+ 

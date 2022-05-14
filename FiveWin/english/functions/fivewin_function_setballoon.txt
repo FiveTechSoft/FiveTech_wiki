@@ -1,0 +1,89 @@
+====== SetBalloon() ======
+
+Global setting for tooltips balloon shape.
+
+
+====== Syntax ======
+
+
+
+
+
+ SetBalloon( <lOnOff> ) --> lPrevious 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <lOnOff>   True for balloon shape, or false for standard tooltips. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ <lPrevious>   The previous setting value. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\window.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ 
+
+
+ 
+
+   SAMPLES\test2007.prg
+
+
+====== See also ======
+

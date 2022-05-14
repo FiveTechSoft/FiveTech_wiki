@@ -1,0 +1,92 @@
+nGetBackRGB()
+
+
+
+nGetBackRGB()
+
+ Previous  Top  Next
+
+
+
+
+Returns the numeric value of an xBase back color
+
+
+
+====== Syntax ======
+
+
+
+
+
+ nGetBackRGB( <cColor> ) --> nBackRGB 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+<cColor> An xBase string color representation.
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nBackRGB> A numeric RGB value corresponding to the background component
+of the <cColor> color expression. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\ColorToN.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ nGetForeRGB() nRGB() nColorToN() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

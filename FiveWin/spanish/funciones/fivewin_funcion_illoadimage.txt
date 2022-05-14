@@ -1,0 +1,87 @@
+IlLoadImage()
+
+
+IlLoadImage()
+ Previous  Top  Next
+
+Creates an image list from the specified bitmap.
+
+====== Sintaxis ======
+
+ 
+
+
+ IlLoadImage( <cFileName>, <nWidth>, <nImages>, <nClrTransparent> ) -->
+hImageList 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cFileName> The image to load. 
+
+
+ 
+
+
+ <nWidth> The width of each image. 
+
+
+ 
+
+
+ <nImage> Number of images that the image list can contain. 
+
+
+ 
+
+
+ <nClrTransparent> The color of the image that is considered transparent. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <hImageList> The handle to the new imagelist if successful, or zero
+otherwise. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\IMAGELIS.C 
+
+
+ 
+
+
+
+
+====== Ver también ======
+

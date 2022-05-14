@@ -1,0 +1,50 @@
+LocalCount()
+
+
+LocalCount()
+ Previous  Top  Next
+
+Returns the number of allocated local variables.
+
+====== Sintaxis ======       
+
+ LocalCount( <nProcLevel> ) --> nVars 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <nProcLevel> The procedure level in the activation stack 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nVars> The number of allocated local variables. 
+
+
+ 
+
+====== Ejemplo ======
+
+ SAMPLES\INSPTEST.PRG 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\HARBOUR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

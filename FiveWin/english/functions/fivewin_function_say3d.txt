@@ -1,0 +1,160 @@
+====== Say3D() ======
+
+
+Displays a 3D look text
+
+
+
+====== Syntax ======
+
+
+
+
+
+ Say3D( <hWnd>, <hDC>, <cCaption>, <lRaised>, <lCentered> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> The handle of the window to paint. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> The handle of the device context where to paint. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cCaption> The text to draw. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lRaised> If the text is going to show raised or inset. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lCentered> If the text is going to be centered. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ We used this function previous to use standard 3D Ctl3d.dll Microsoft
+look. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\Say3D.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SET 3DLOOK 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,27 @@
+====== DrawFGetLine() ======
+Draws a GTF line.
+
+====== Syntax ======
+DrawFGetLine( <hWnd>, <hDC>, <nRow>, <nMargin>, <nAlign>, <aText>,
+<aFonts>, <aColors>, <nClrPane>, <aBlock>, <nCtrl> ) --> nCtrl 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>|The handle of the window where the text is drawn.|
+|<hDC>|The device context where the text is drawn.|
+|<nRow>|The row where the text is drawn.|
+|<nMargin>|The margin of the text.|
+|<nAlign>|The alignment of the text (ES_LEFT, ES_RIGHT or ES_CENTER).|
+|<aText>|The internal implementation of a line of GTF text (TFGet:oLine:aText).| 
+|<aFonts>|The fonts used in the line of GTF text (TFGet:oLine:aFonts).|
+|<aColors>|The colors used in the line of GTF text (TFGet:oLine:aColors)|
+|<nClrPane>|The background color for the text.|
+|<aBlock>| ???. |
+|<nCtrl> | ???. |
+ 
+====== Returns ======
+^Returns^Description^
+|<nCtrl>| ???. |
+
+====== Source code ======
+SOURCE\FUNCTION\FGETLINE.C 

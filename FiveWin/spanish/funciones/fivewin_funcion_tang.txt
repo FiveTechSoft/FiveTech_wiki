@@ -1,0 +1,66 @@
+Tang()
+
+
+Tang()
+ Previous  Top  Next
+
+Calculates the tangent function of an angle.
+
+====== Sintaxis ======
+
+
+ Tang( <nAngle> ) --> nTang 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <nAngle> The angle expressed in radiants. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nTang> The tangent of the specified angle. 
+
+
+ 
+
+Observations:
+
+
+
+====== Ejemplo ======
+
+
+ #define PI 3.14159265359 
+
+
+ 
+
+
+ 
+
+ local nTan := Tang( PI / 4 ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\SELECTOR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

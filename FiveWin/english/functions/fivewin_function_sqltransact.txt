@@ -1,0 +1,77 @@
+====== SQLTransact() ======
+
+
+Requests a commit or rollback operation for all active operations on all
+statements associated with a connection.
+
+====== Syntax ======
+
+ 
+
+
+ SQLTransact( <hEnv>, <hDbc>, <nFlags> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hEnv> The environment handle. 
+
+
+ 
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <nFlags> One of the following two values: SQL_COMMIT, SQL_ROLLBACK. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

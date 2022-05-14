@@ -1,0 +1,21 @@
+
+====== Accept() ======
+
+
+It accepts a connection in a socket 
+
+
+====== Syntax: ======
+
+Accept(<nSocket> ) -> nResult  
+ 
+====== Parameters: ======
+^Parameter  ^ Description ^
+| <nSocket> | Socket | 
+ 
+====== Returns: ======
+^Result  ^ Description ^
+| <nResult> | If no error occurs, then Accept returns a value of type SOCKET, which is a descriptor for the accepted socket. Otherwise, a value of INVALID_SOCKET is returned, and a specific error code, which can be retrieved by calling WSAGetLastError. |
+ 
+====== Source: ======
+SOURCE\CLASSES\TSOCKET.PRG; SOURCE\WINAPI\WINSOCK.C

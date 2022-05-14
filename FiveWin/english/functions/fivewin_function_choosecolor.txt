@@ -1,0 +1,36 @@
+====== ChooseColor() ======  
+Color selection standard DialogBox 
+
+====== Syntax ======  
+ChooseColor( <nRGBDefaultColor>, <nFlags> ) --> nRGBColor  
+
+ 
+This function calls the Windows standard color selection DialogBox.  
+
+====== Parameters ======  
+^Parameter^Description^
+| <nRGBDefaultColor> | The color that will appear automatically when the DialogBox starts. |  
+| <nFlags> | An optional numeric value for some flags:\\ #define CC_PREVENTFULLOPEN 4 -> Disables the possibility of defining user defined colors. FiveWin by default allows user defined colors. |
+
+====== Returns ======  
+^Returns^Description^
+|<nRGBColor>| The RGB value of the color selected. If no selection is done, nRGBDefaultColor is returned.|
+
+====== Sample ======   
+<code clipper> ? ChooseColor( CLR_CYAN ) </code> 
+
+** Sample 2 **
+<code clipper>
+#include "Fivewin.ch"
+//-----------------------------------//
+Function Main()
+  MsgInfo(ChooseColor())  // Result is 16744448 
+Return NIL
+</code>
+
+** Screen Snapshot **
+
+{{:choosecolor.jpg|:choosecolor.jpg}}
+
+====== Source Code ======  
+SOURCE\WINAPI\ClrChoos.c  

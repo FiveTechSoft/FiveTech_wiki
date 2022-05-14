@@ -1,0 +1,50 @@
+aGetPrinters()
+
+
+aGetPrinters()
+ Previous  Top  Next
+
+Returns an array with all available printers.
+
+====== Syntax ======
+
+
+ aGetPrinters() --> aPrinters 
+
+
+ 
+
+====== Parameters ======
+
+
+ None. 
+
+
+ 
+
+====== Returns ======
+
+
+ <aPrinters> An array with the name of all available printers. 
+
+
+ 
+
+====== Example ======
+
+
+ local aPrinters := aGetPrinters() 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+

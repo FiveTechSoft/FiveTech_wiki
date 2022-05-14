@@ -1,0 +1,26 @@
+====== DibFromBitmap() ======
+This function creates a DIB from a Bitmap and its associated palette. 
+
+**Note:**
+
+We strongly recommend you to use TBitmap Class for managing bitmaps.
+FiveWin will do the processes automatically all that you need. 
+
+====== Syntax ======
+DibFromBitmap( <hBitmap>, <hPalette> ) --> hDIB 
+
+====== Parameters ======
+^Parameter^Description^
+|<hBitmap>| The handle of the bitmap to convert into a DIB.|
+|<hPalette>| The handle of the palette associated to the bitmap.|
+
+====== Returns ======
+^Returns^Description^
+|<hDIB>| The handle of the new DIB. (DIB = Device independent bitmap).|
+
+====== Source Code ======
+Not provided. See SOURCE\\WINAPI\\Dib.c 
+
+====== See also ======
+[[fivewin_function_DibRead|DibRead()]], [[fivewin_function_DibPalette|DibPalette()]], [[fivewin_function_DibWidth|DibWidth()]],
+[[fivewin_function_DibHeight|DibHeight()]], [[fivewin_function_DibWrite|DibWrite()]]

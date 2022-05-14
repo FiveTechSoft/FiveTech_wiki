@@ -1,0 +1,124 @@
+MCISendCommand()
+
+
+
+MCISendCommand()
+
+ Previous  Top  Next
+
+
+
+
+Send a command message to a MCI device
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MCISendCommand( <nIdDev>, <cCommand>, <nFlags>, <cParam> ) --> nError 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nIdDev> Identifier of device to recive the command 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cCommand> Command message 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nFlags> Flags for the command 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cParam> Strings of parameters 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Return a 0 if the function is success without errors. In otherwise the
+error one will have to discover with the function mciGetErrorString. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MCI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

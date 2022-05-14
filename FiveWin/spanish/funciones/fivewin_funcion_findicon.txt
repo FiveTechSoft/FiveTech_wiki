@@ -1,0 +1,66 @@
+FindIcon()
+
+
+FindIcon()
+ Previous  Top  Next
+
+Checks if an icon exist in the resources.
+
+====== Sintaxis ======
+
+ 
+
+
+ FindIcon( <cIconName> ) --> lFound 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cIconName> The name of the icon to search. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <lFound> .t. if the icon was found in the resources. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

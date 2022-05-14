@@ -1,0 +1,22 @@
+====== TimerCount() ====== 
+Returns the ellapsed time since the app started 
+
+====== Syntax ====== 
+
+ TimerCount() --> aTimerInfo  
+ 
+====== Parameters ====== 
+
+ None  
+ 
+====== Returns ====== 
+
+ <aTimerInfo> An array that contains two numeric values: { nMsSinceStart, nMsThisVM }nMsSinceStart: It is the milliseconds since the app started. nMsThisVM: It is the milliseconds since the Windows virtual machine started (virtual machine refers to Windows internal info and it is not at all something related to FiveWin).  
+ 
+====== Samples ======
+
+ SAMPLES\\TestTool.prg  
+ 
+====== Source Code ====== 
+
+ SOURCE\\WINAPI\\ToolHelp.c  

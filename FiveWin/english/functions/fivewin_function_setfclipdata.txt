@@ -1,0 +1,76 @@
+====== SetFClipData() ======
+
+
+Copy a GTF text to the clipboard.
+
+====== Syntax ======
+
+ 
+
+
+ SetFClipData( <hWnd>, <cTxt>, <cGTF>, <cRTF> ) --> lSuccess 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of the current window. 
+
+
+ <cTxt> The plain text. 
+
+
+ <cGTF> The text in GTF format. 
+
+
+ <cRTF> The text in RTF format. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> .t. if the copy was successful, otherwise .f.. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\FGETCLIP.C 
+
+
+ 
+
+
+
+====== See also ======
+

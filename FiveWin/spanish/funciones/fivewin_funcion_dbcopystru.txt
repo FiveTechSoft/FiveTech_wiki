@@ -1,0 +1,36 @@
+
+====== DbCopyStruct() ======  
+
+Copia la estrucura .dbf en un nuevo fichero de base de datos (.dbf)
+
+====== Sintaxis ======  
+
+ DbCopyStruct( <x>, <y> ) --> nil  
+
+
+ Función para tener compatibildad con xBase++  
+
+====== Parámetros ======  
+ 
+| <x> | Grupo de campos a copiar|  
+| <y> | Nombre del archivo a generar|  
+
+====== Devuelve ======  
+
+ DbCopySruct()  
+
+====== Ejemplo ======  
+
+<code clipper>DBUSEAREA(.T., "DBFCDX", "Ventas", "Ventas", .T.)
+DbCopyStruct( , Temp )</code> 
+
+Copia la estructura de Ventas a Temp
+
+El valor por defecto es todos los campos
+
+====== Código Fuente ======  
+
+ SOURCE\FUNCTION\DB10.PRG  
+
+====== Ver también ======  
+ 

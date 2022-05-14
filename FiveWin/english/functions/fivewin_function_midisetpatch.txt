@@ -1,0 +1,77 @@
+====== MidiSetPatch() ======
+
+
+Activates a patch.
+
+====== Syntax ======
+
+ 
+
+
+ MidiSetPatch( <hMidi>, <nChannel>, <nVoice> ) --> nReturn 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hMidi>    Handle of the audio device driver 
+
+
+ 
+
+
+ <nChannel> Channel number. 
+
+
+ 
+
+
+ 
+
+ <nVoice>    Voice number. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nReturn> Returned value by the audio device driver. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MIDI.C 
+
+
+ 
+
+
+
+====== See also ======
+

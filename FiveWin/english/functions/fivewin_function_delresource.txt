@@ -1,0 +1,27 @@
+====== DelResource() ======
+Erases a resource from FiveWin internal resources control list.
+
+Observation: It is a C level function.
+
+====== Syntax ======
+DelResource( <hResource> ) --> void 
+
+====== Parameters ======
+^Parameter^Description^
+|<hResource>|Handle of the resource to be erased.|
+
+
+====== Returns ======
+^Returns^Description^
+|<void>|Nothing|
+
+
+====== Example ======
+FWH\source\winapi\delobjec.c
+
+
+====== Source Code ======
+Internal, not provided
+
+====== See also ======
+[[fivewin_function_deletedc|DeleteDc()]], [[fivewin_function_deleteobject|DeleteObject()]]

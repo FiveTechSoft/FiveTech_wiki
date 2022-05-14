@@ -1,0 +1,28 @@
+
+====== cGetDir() ======
+cGetDir()
+Dialog box to select directory.
+====== Sintaxis ======
+ cGetDir( <cTitle>, [<cInitDir>], <nClsId>, <cTitle2>, <nFlags> ) -->
+cDir 
+====== Parámetros ======
+ <cTitle> Title of the dialog box 
+ <cInitDir> Initial directory 
+ <nClsId> ClsId of a special folder location 
+ <cTitle2> Prompt of the folder selection tree 
+ <nFlags> Flags for setting the selection dialog behavior 
+====== Devuelve ======
+ <cDir> Selected directory 
+====== Ejemplo ======
+ SAMPLES\GETDIR.PRG 
+ // New cGetDir() function demo 
+
+ function Main() 
+ local cDirName := cGetDir() 
+ MsgInfo( cDirName ) 
+ MsgInfo( LFN2SFN( cDirName ) ) 
+ return nil 
+
+====== Código fuente ======
+ SOURCE\WINAPI\GETDIR.C 
+====== Ver también ======

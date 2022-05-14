@@ -1,0 +1,141 @@
+====== ReleaseDC() ======
+
+
+Finish using a device context
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ReleaseDC( <hWnd>, <hDC> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Identifies the handle of the window whose DC is to be released. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hDC> Identifies the device context to be released. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> A logical value indicating if the operation was completed
+sucessfully. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+ 
+
+
+ 
+
+
+ An application must call ReleaseDC() for each GetDC() function call. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ FiveWin manages all these functions automatically through the TWindow
+class. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Dc.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetDC() BeginPaint() EndPaint() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,68 @@
+UToS()
+
+
+UToS()
+ Previous  Top  Next
+
+Converts a long value to short.
+
+====== Sintaxis ======
+
+ 
+
+
+ UToS( <nValue> ) --> nResult 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <nValue> The value to be converted. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nResult> The result of the conversion. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\OR.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,14 @@
+
+====== DestroyMenu() ======
+DestroyMenu()
+
+Destroys a menu and frees any memory that the menu occupied.
+====== Sintaxis ======
+ DestroyMenu( <hMenu> ) --> lSuccess 
+====== Parámetros ======
+ <hMenu> Handle of menu to destroy 
+====== Devuelve ======
+ <lSuccess> Retrieves .t. if the function is successful 
+====== Código fuente ======
+ SOURCE\FUNCTION\MENUS.C 
+====== Ver también ======

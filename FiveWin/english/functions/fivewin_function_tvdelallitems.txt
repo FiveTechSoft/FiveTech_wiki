@@ -1,0 +1,58 @@
+TvDelAllItems()
+
+
+TvDelAllItems()
+ Previous  Top  Next
+
+Deletes all items from a tree view control.
+
+====== Syntax ======
+
+
+ TvDelAllItems( <hWnd> ) --> lSuccess 
+
+
+ 
+
+====== Parameters ======
+
+ 
+
+
+ <hWnd> Handle of the treeview control 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lSuccess> Returns .t. if successful, or .f. otherwise. 
+
+
+ 
+
+====== Example ======
+
+
+ 
+
+
+ 
+
+====== Source Code ======
+
+ 
+
+
+ SOURCE\WINAPI\TREEVIEW.C 
+
+
+ 
+
+
+
+====== See also ======
+

@@ -1,0 +1,106 @@
+====== MdiCtrlAdjust() ======
+
+
+
+To Adjust oControl to its MdiChild Area
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MdiCtrlAdjust( <hWnd>, <hCtrl>, <nBarHeight> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hWnd> Handle of the MdiChild window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hCtrl> Handle of the oControl object that will be adjusted the area
+client of the MdiChild window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nBarHeight> Height of the buttons bar if she exists. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\MDI.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

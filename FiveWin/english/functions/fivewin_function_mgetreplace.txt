@@ -1,0 +1,109 @@
+====== MGetReplace() ======
+
+
+It replaces the selection in a Get for the given text
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MGetReplace( <hMultiGet>, <cText> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hMultiGet> Handle of the multiline edition box 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ <cText> Text that will replace the current selection of the multiline
+edition box. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ If there is not a selection in the edition box, the textit will be
+inserted where the cursor is located. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\GETTEXT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

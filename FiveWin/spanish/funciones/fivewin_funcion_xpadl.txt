@@ -1,0 +1,127 @@
+xPadL()
+
+
+
+
+
+
+
+Rellena a la izquierda una cadena de caracteres hasta un cierto tamaño en pixeles.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ xPadL( <cText>, <nPixels> [,<cChar>] ) --> cNewText 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cText> El texto cuya longitud en caracteres será ajustado. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPixels> La longitud total en pixeles.
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cChar> Un caracter opcional a usarse para rellenar del lado izquierdo la cadena de caracteres <cText>. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cNewText> Una nueva cadena de caracteres cuyo lado izquierdo se han agregado caracteres extra <cChar> hasta alcanzar el tamaño <nPixels>.
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\CLASSES\WBrowse.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\xPad.prg 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+[[fivewin_funcion_xPadC |xPadC()]] [[fivewin_funcion_xPadR |xPadR()]]
+
+
+ 
+

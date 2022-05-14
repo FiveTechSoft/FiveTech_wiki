@@ -1,0 +1,17 @@
+
+====== Cursor() ======
+Cursor()
+It loads and it activates a cursor
+====== Sintaxis ======
+
+ Cursor( <cnCursor> ) --> lSuccess 
+====== Parámetros ======
+ <cnCursor> Name or idendificador of the cursor in the file of resources. 
+
+====== Devuelve ======
+ .t. if you could load and to activate. 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\CURSORS.C 
+====== Ver también ======

@@ -1,0 +1,106 @@
+xBrJustify()
+
+
+Configura la alineación de la columna de un objeto xBrowse.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ xBrJustify( <oBrw>, <aJustify> ) --> oBrw 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+ <oBrw>      El objeto xBrowse. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aJustify>   Un arreglo que contiene la configuración de la alineación para cada columna. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Devuelve ======
+
+
+
+
+
+ <oBrw>      El propio objeto xBrowse. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\xbrowse.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+====== Ver también ======

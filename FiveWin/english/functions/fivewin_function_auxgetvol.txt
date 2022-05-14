@@ -1,0 +1,18 @@
+====== Auxgetvol() ======
+Volume output of a device 
+====== Syntax ======
+AuxGetVol(<nIdDevice>, <nVolLeft>, <nVolRight> ) --> nSuccess  
+====== Parameters ======
+^Parameter^Description^
+|<nIdDevice>|Identifier of the specified device.| 
+|<nVolLeft>|Volume of the left speaker.| 
+|<nVolRight>|Volume of the right speaker|
+
+====== Returns ======
+^Returns^Description^
+|<nSucces>|Returns zero if the function was successful. Otherwise, it returns an error number.\\ Possible error returns are:\\ \\ #define MMSYSERR_BASE 0\\ #define MMSYSERR_BADDEVICEID ( MMSYSERR_BASE + 2 )\\ #define MMSYSERR_NODRIVER ( MMSYSERR_BASE + 6 )\\ \\ MMSYSERR_BADDEVICEID - Specified device ID is out of range.\\ MMSYSERR_NODRIVER - The driver failed to install.|
+
+====== Sample ======
+SAMPLES\MMEDIA\MMEDIA.PRG  
+====== Source Code ====== 
+SOURCE\WINAPI\MCI.C

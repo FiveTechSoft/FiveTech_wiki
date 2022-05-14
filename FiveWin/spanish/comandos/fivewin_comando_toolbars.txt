@@ -1,0 +1,25 @@
+====== Comando ToolBar ======
+
+Creando una Barra de Herramientas desde código:
+
+<code clipper>
+DEFINE TOOLBAR <oTlb> ;
+       [ <wnd: OF, WINDOW, DIALOG> <oWnd> ] ;
+       [ SIZE <nWidth>, <nHeight> ] ;
+       [ IMAGELIST <oImg> ] ;
+       [ <balloon: BALLOON > ] ;
+</code>
+
+====== Parámetros ======
+|<oTlb> |Referencia a un objeto Toolbar.|
+|<oWnd> |Referencia a la ventana contenedora de la barra.|
+|<nWidth> |El ancho de los botones|
+|<nHeight> |El alto de los botones|
+|<oImg> |Referencia al objeto Objeto TImagelist asociado con los botones|
+
+====== Cláusulas ======
+|BALLON |Verdadero si se quiere establecer el estilo balloon del tooltip.|
+
+====== Vea tambien ======
+[[fivewin_clase_ttoolbar|Clase ToolBar]]
+

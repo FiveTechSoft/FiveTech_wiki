@@ -1,0 +1,54 @@
+TabDelAllItems()
+
+
+TabDelAllItems()
+ Previous  Top  Next
+
+Removes all items from a tab control.
+
+====== Sintaxis ======
+
+
+ TabDelAllItems( <hWnd> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hWnd> Handle to the tab control. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\TABCTRL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

@@ -1,0 +1,98 @@
+====== ResourceFree() ======
+
+
+To free a given resource
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ResourceFree( <hResource> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hResource> Handle of the given resource loaded with LoadResource. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ Internally every time that is loaded a same resource an accountant is
+increased. This function decreases this accountant until it is zero,
+moment in the one which the resource is liberated really liberating the
+occupied memory. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

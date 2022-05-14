@@ -1,0 +1,57 @@
+====== IsGdiObject() ======
+
+
+Checks if a handle is a Gdi Object
+
+====== Syntax ======
+
+ 
+
+
+ IsGdiObject( <hHandle> ) --> lResult
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hHandle> The handle of object
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <lResult> It returns .F. is a GDI Object otherwise is .F.
+
+
+ 
+
+
+ 
+Sample :
+
+if IsGdiObject( hBitmap )
+   DeleteObject( hBitmap )
+endif
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\DELOBJECT.C 
+
+
+ 
+
+
+
+====== See also ======

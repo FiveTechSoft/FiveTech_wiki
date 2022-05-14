@@ -1,0 +1,15 @@
+
+====== PrnGetPort() ====== 
+PrnGetPort()
+
+Device name of the output port
+====== Sintaxis ======
+ PrnGetPort() --> cPort 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ <cPort> Device name of the predetermined output port. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

@@ -1,0 +1,16 @@
+====== GetDatas() ======
+To get the names of the variables of instance of an object.
+
+====== Syntax ======
+GetDatas( <oBject> ) --> aDatas 
+
+====== Parameters ======
+^Parameter^Description^
+|<oBject>| Objeto to be checked|
+
+====== Returns ======
+^Returns^Description^
+|<aDatas>| Array containing the names of variables of instance of the object being checked. |
+
+====== Source Code ======
+SOURCE\FUNCTION\STATICS.PRG 

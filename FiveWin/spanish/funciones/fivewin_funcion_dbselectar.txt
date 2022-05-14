@@ -1,0 +1,18 @@
+
+====== DbSelectAr() ======
+DbSelectAr()
+
+It changes the area of current work
+====== Sintaxis ======
+ DbSelectArea( <x> ) --> nil 
+
+ Function to obtain compatibility with xBase++ 
+====== Parámetros ======
+
+ <x> Numeric value or of characters that it represents the number of area
+or the alias of an area. 
+====== Devuelve ======
+ DbSelectArea( x ) 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

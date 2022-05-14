@@ -1,0 +1,111 @@
+====== SQLExtendedFetch() ======
+
+
+Fetches the specified rowset of data from the result set and returns data
+for all bound columns.
+
+====== Syntax ======
+
+ 
+
+
+ SQLExtendedFetch( <hStmt>, <nFetchType>, <nRow>, <@nRows>, <aRowStatus>
+) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nFetchType> Type of fetch: 
+
+
+ SQL_FETCH_NEXT 
+
+
+ SQL_FETCH_PRIOR 
+
+
+ SQL_FETCH_FIRST 
+
+
+ SQL_FETCH_LAST 
+
+
+ SQL_FETCH_ABSOLUTE 
+
+
+ SQL_FETCH_RELATIVE 
+
+
+ SQL_FETCH_BOOKMARK 
+
+
+ 
+
+
+ <nRow> Number of the row to fetch. 
+
+
+ 
+
+
+ <nRows> ???. 
+
+
+ 
+
+
+ <aRowStatus> ???. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== See also ======
+

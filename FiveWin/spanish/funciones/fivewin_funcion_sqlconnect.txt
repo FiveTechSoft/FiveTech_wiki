@@ -1,0 +1,85 @@
+SQLConnect()
+
+
+SQLConnect()
+ Previous  Top  Next
+
+Establishes connections to a driver and a data source.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLConnect( <hDbc>, <cDsn>, <cUser>, <cPassword> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hDbc> The connection handle. 
+
+
+ 
+
+
+ <cDsn> The data source name. 
+
+
+ 
+
+
+ <cUser> The user identifier. 
+
+
+ 
+
+
+ <cPassword> The password. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC32X.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

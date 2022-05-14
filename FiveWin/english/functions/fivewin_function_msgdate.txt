@@ -1,0 +1,36 @@
+**MsgDate()** 
+
+It presents a calendar to choose a date.
+  
+**Syntax:** 
+
+ MsgDate( <dDate>, <cPrompt>, <oGet> ) --> dDate    
+  
+**Parameters:** 
+
+| <dDate> | It dates to select the appropriate calendar a day, month and corresponding year.|
+| <cPrompt> | Message that it will appear as title in the dialog box.|
+| <oGet> | Box of edition that we will update with the date resultant of the selection process. | 
+
+  
+**Returns:** 
+
+<dDate> Elect dates if she took place a new election or the date given if you went out of the calendar with " escape ".  
+  
+
+**Observations:**
+
+ This function presents us a dialog box with a combobox for the election of the months, a box of edition for the election of the years and a calendar to choose the day of the month. The last date as parameter will be reflected in the calendar with a box.  
+ 
+
+**Sample:** 
+
+ SAMPLES\MSGDATE.PRG    
+  
+**Source code:** 
+
+ SOURCE\FUNCTION\MSGMETER.PRG    
+  
+**See also:** 
+
+ [[fivewin_function_MsgAbout|MsgAbout()]], [[fivewin_function_MsgAlert|MsgAlert()]], [[fivewin_function_MsgBeep|MsgBeep()]], [[fivewin_function_MsgCalc|MsgCalc()]], [[fivewin_function_MsgGet|MsgGet()]], [[fivewin_function_MsgInfo|MsgInfo()]], [[fivewin_function_MsgList|MsgList()]], [[fivewin_function_MsgLogo|MsgLogo()]], [[fivewin_function_MsgMeter|MsgMeter()]], [[fivewin_function_MsgNoYes|MsgNoYes()]], [[fivewin_function_MsgRetryCancel|MsgRetryCancel()]], [[fivewin_function_MsgRun|MsgRun()]], [[fivewin_function_MsgStop|MsgStop()]], [[fivewin_function_MsgSound|MsgSound()]], [[fivewin_function_MsgYesNo|MsgYesNo()]], [[fivewin_function_MsgWait|MsgWait()]]

@@ -1,0 +1,105 @@
+RegEnumKey()
+
+Enumerates the subkeys of an specific key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RegEnumKey( <nKey>, <nSubKey>, <@cKey> ) --> nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <nKey> Handle of a specific open key 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nSubKey> Index of subkey based to zero. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cKey> Buffer to retrieve the name of the subkey. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Return zero if the function is success. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\REGEDIT.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======

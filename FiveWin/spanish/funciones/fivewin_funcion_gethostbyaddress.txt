@@ -1,0 +1,48 @@
+GetHostByAddress()
+
+
+GetHostByAddress()
+ Previous  Top  Next
+
+Retrieves the host name corresponding to a network address.
+
+====== Sintaxis ======
+
+
+ GetHostByAddress( <cIPAddress> ) --> cHostName 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cIPAddress> The IP address of the machine whose name is to be
+retrieved. The address IP has the format "999.999.999.999" being able to
+be groups of a, two or three figures. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <cHostName> The host name corresponding to the IP address. 
+
+
+ 
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

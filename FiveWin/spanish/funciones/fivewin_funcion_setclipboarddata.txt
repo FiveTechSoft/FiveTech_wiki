@@ -1,0 +1,111 @@
+====== SetClipboardData() ======
+
+SetClipboardData() Coloca algunos datos en el portapapeles
+
+====== Sintaxis ======
+
+SetClipboardData( <nType>, <cText> ) --> nHandle 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<nType>| Especifica el formato de los datos. |
+| |**CF_BITMAP         ** El dato es un bitmap.\\ **CF_DIB            ** El dato es un 'memory object' que contiene una estructura BITMAPINFO seguido por el dato bitmap.\\ **CF_DIF            ** El dato esta en  formato 'Data Interchange' (DIF).\\ **CF_DSPBITMAP      ** El dato es una representacion bitmap de un formato privado. Estos datos se muestran en formato de mapa de bits en lugar de los datos formateados en forma privada.\\ **CF_DSPMETAFILEPICT** Los datos son una representación de metarchivo de un formato de datos privados. Estos datos se muestran en formato de metarchivo de imagen en lugar de los datos privados formato.\\ **CF_DSPTEXT        ** Los datos son una representación textual de un formato de datos privados. Estos datos se muestran en formato de texto en lugar de los datos privados formato.\\ **CF_METAFILEPICT   ** Los datos son un metarchivo (ver la descripción de la estructura METAFILEPICT.\\ **CF_OEMTEXT        ** Los datos son un conjunto de caracteres de texto en el juego de caracteres OEM. Cada línea termina con un carro returnlinefeed (CR-LF) combinación. Un carácter nulo indica el final de los datos.\\ **CF_OWNERDISPLAY   ** Los datos están en un formato privado de que el propietario debe mostrar el portapapeles.\\ **CF_PALETTE        ** Los datos son una paleta de colores.\\ **CF_PENDATA        ** Los datos para las extensiones de la pluma al sistema operativo theWindows.\\ **CF_RIFF           ** Los datos están en formato de archivo de intercambio de recursos (RIFF).\\ **CF_SYLK           ** Los datos están en enlace simbólico (SYLK) formato.\\ **CF_TEXT           ** Los datos son un conjunto de caracteres de texto. Cada línea termina con un retorno de carro de avance de línea (CR-LF) combinación. Un carácter nulo indica el final de los datos.\\ **CF_TIFF           ** Los datos están en formato de archivo de la etiqueta de imagen (TIFF).\\ **CF_WAVE           ** Los datos describen una onda de sonido. Este es un subconjunto del formato CF_RIFF datos, sino que sólo se puede utilizar para archivos RIFF WAVE.|
+|<cText>| El texto que se coloca en el portapapeles. En este momento, FiveWin sólo es compatible con la manipulación de texto. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<nHandle>| El identificador de la información colocada en el portapapeles si a tenido éxito ó 0 si hay un problema. |
+
+====== Ejemplo ======
+
+SAMPLES\TestClip.prg 
+<code>
+// Thiw sample shows how to use Windows ClipBoard from FiveWin.
+
+// To FiveWin, the ClipBoard is also an object!
+
+#include "FiveWin.ch"
+
+static oWnd, oClp
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 ;
+      TITLE "Using Windows ClipBoard" ;
+      MENU BuildMenu()
+
+   DEFINE CLIPBOARD oClp OF oWnd
+
+   SET MESSAGE OF oWnd TO FWVERSION CENTERED
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Using the ClipBoard"
+      MENU
+         MENUITEM "Place some text..." ;
+            ACTION PlaceSomeText()
+
+         MENUITEM "&Retrieve the text..." ;
+            ACTION GetSomeText()
+
+         SEPARATOR
+
+         MENUITEM "&Clear the ClipBoard"  ACTION oClp:Clear()
+         SEPARATOR
+         MENUITEM "Bye, bye..."               ACTION oWnd:End()
+      ENDMENU
+
+      MENUITEM "Call ClipBoard management EXE" ACTION WinExec( "ClipBrd" )
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function PlaceSomeText()
+
+   local cText := Space( 30 )
+
+   if MsgGet( "Ok...", "Write something!", @cText )
+      oClp:SetText( cText )
+   endif
+   
+   MsgInfo( "Number of bytes in clipboard: " + Str( Len( oClp:GetText() ) ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function GetSomeText()
+
+   local cText := oClp:GetText()
+
+   if Empty( cText )
+      nMsgBox( OemToAnsi( "There is nothing there!" ), "I am sorry" )
+   else
+      nMsgBox( cText, "Tadddaa !!!" )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Código fuente ======
+
+SOURCE\WINAPI\ClpBrd.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_OpenClipboard|OpenClipboard()]], [[fivewin_funcion_CloseClipboard|CloseClipboard()]], [[fivewin_funcion_EmptyClipboard|EmptyClipboard()]] 

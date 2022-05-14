@@ -1,0 +1,82 @@
+
+====== GetResources() ====== 
+ 
+
+
+
+Retrieve the Handle of the file of resources
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetResources() --> hResources 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <hResources> Handle of the resources file 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RESOURCE.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

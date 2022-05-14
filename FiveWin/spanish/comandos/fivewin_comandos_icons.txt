@@ -1,0 +1,53 @@
+====== Creación de un control icono mediante código fuente ======
+<code clipper>
+@ <nRow>, <nCol> ICON [ <oIcon> ] ;  
+   [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+   [ FILE | FILENAME | DISK <cIcoFile> ] ;  
+   [ BORDER ] ;  
+   [ COLOR | COLORS <nClrFore>;[,<nClrBack>] ] ;  
+   [ ON CLICK <uClick> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ];  
+   [ UPDATE ] ;  
+   [ WHEN <WhenFunc> ]  
+</code>
+
+====== Redefinición de un icono desde Recursos ====== 
+<code clipper>
+REDEFINE ICON <oIcon>  
+   [ ID <nId> ] ;  
+   [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+   [ FILE | FILENAME | DISK <cIcoFile> ] ;  
+   [ ON CLICK <uClick> ] ;  
+   [ OF | WINDOW | DIALOG <oWnd> ] ;  
+   [ UPDATE ] ;  
+   [ WHEN <WhenFunc> ]  
+</code>
+
+====== Parámetros ======
+|<nRow>, <nCol>   |Coordenadas en pantalla. Se simulan coordenadas de texto.|
+|<oIcon>          |Referencia al objeto icono.|
+|<cResName>       |Nombre del recurso icono si carga el icono desde un archivo RC, RES o DLL.|
+|<cIcoFile>       |Nombre del archivo ICO si carga el icono directamente desde disco.|
+|<uClick>         |Acción a ejecutar cuando se haga clic sobre el icono.|
+|<oWnd>           |Objeto contenedor del icono.|
+|<WhenFunc>       |Expresión a evaluar para determinar si el control está o no disponible.|
+|<nClrFore>       |Color de primer plano como número RGB o como cadena xBase.|
+|<nClrBack>       |Color de fondo como número RGB.|
+
+====== Definición de un Icono sin mostrarlo ====== 
+<code clipper>
+DEFINE ICON <oIcon> ;  
+   [ NAME | RESOURCE | RESNAME <cResName> ] ;  
+   [ FILE | FILENAME | DISK <cIcoFile> ]  
+   [ WHEN <WhenFunc> ]  
+</code>
+
+====== Parámetros ======
+|<oIcon>       |Referencia al objeto icono.|
+|<cResName>    |Nombre del recurso icono si carga el icono desde un archivo RC, RES or a DLL.|
+|<cIcoFile>    |Nombre del archivo ICO si carga el icono directamente desde disco.|
+
+====== Cláusulas ====== 
+
+|UPDATE    |Indica si el control tiene que actualizarse cuando se ejecuta <oDlg>:Update() en su contenedor.|
+|BORDER    |Crea un borde alrededor del control.|

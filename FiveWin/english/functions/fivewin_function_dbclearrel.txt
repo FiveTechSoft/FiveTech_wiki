@@ -1,0 +1,14 @@
+====== DbClearRel() ======
+It erases the active relationships.  Function to obtain compatibility with xBase++ 
+
+====== Syntax ======
+DbClearRel() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nothing
+
+====== Source Code ======
+SOURCE\FUNCTION\DB10.PRG 

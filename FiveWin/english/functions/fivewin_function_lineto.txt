@@ -1,0 +1,146 @@
+====== LineTo() ====== 
+
+
+
+LineTo()
+
+
+
+
+
+
+Draws a line from the current position up to another
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LineTo( <hDC>, <nRow>, <nCol>, <hPen> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDC> Identifies the device context where to paint the line. In FiveWin:
+<oWnd>:GetDC() and later: <oWnd>:hDC. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates of the line End-point. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> If successfully completed. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function draws a line from the current painting position up to the
+end of the line. Use MoveTo() to select the start painting position. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\Lineas.prg SAMPLES\\TestGraf.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\LineTo.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ MoveTo() CreatePen() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

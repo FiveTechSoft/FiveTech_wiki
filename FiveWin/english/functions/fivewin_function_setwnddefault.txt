@@ -1,0 +1,98 @@
+====== SetWndDefault() ======
+
+
+
+
+To make the window for defect the suitable one.
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SetWndDefault( <oWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <oWnd> Window for defect from this moment 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ It is a friend function that gives value to the variable static "
+oWndDefault " and it makes it similar to the one I object oWnd given as
+parameter. This object for defect we will obtain it with the function
+GetWndDefault () . 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\WINDOW.PRG 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

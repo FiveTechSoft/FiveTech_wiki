@@ -1,0 +1,19 @@
+
+====== MidiNoteOn() ====== 
+MidiNoteOn()
+
+Makes sound a certain note for a channel MIDI
+====== Sintaxis ======
+ MidiNoteOn( <hMidi>, <nChanel>, <nOct>, <nNote>, <nVel> ) --> uReturn 
+====== Parámetros ======
+  <hMidi>    Handle of the audio device driver 
+  <nChanel>  Channel number. 
+  <nOct>     Octave number 
+  <nNote>    Note number 
+  <nVel>     Speed with which the note will reproduce 
+====== Devuelve ======
+ uReturn Returned value by the audio device driver. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\MIDI.C 
+====== Ver también ======

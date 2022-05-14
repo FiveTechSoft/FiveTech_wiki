@@ -1,0 +1,14 @@
+
+====== oWndFromhWnd() ====== 
+oWndFromhWnd()
+
+Retrieves a window object through his handle.
+
+Note: Does not work for dialogs
+====== Sintaxis ======
+ oWndFromhWnd( <hWnd> ) --> oWnd 
+====== Parámetros ======
+ <hWnd> Window handle 
+====== Devuelve ======
+ <oWnd> The Window object or nil if not found 
+====== Ver también ======

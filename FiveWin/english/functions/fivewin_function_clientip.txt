@@ -1,0 +1,19 @@
+====== ClientIp() ======
+Client IP address. This function provides us the address IP of the one client that has
+connected with our team server. This function makes use of the function GetPeerName (nSocket) available in Winsock.Dll
+
+====== Syntax ======
+ClientIp() --> cIpAddress 
+
+====== Parameters ======
+None
+
+====== Returns ======
+^Returns^Description^
+|<cIpAdress>| String of four numbers separated by points.\\ For Eg. "100.27.35.42" |
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\FUNCTION\TWEBSERV.PRG

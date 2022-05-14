@@ -1,0 +1,53 @@
+DispFontPerSize()
+
+
+DispFontPerSize()
+ Previous  Top  Next
+
+Returns the ratio between the standard font used and the normal font.
+
+====== Sintaxis ======
+      
+
+ DispFontPerSize() --> nRatio 
+
+
+ 
+
+====== Parámetros ======
+
+ 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nRatio> The calculated ratio. 
+
+
+ 
+
+====== Ejemplo ======
+
+ 
+
+
+ local cVar := DispFontPerSize() 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\HARBOUR.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

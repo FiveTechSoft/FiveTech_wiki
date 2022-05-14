@@ -1,0 +1,129 @@
+HeaderSet()
+
+
+HeaderSet()
+ Previous  Top  Next
+
+Set the attributes of the specified item in a header control.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ HeaderSet( <hWnd>, <nIndex>, <cCaption>, <nWidth>, <nAlign> ) -->
+nResult 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hWnd> The handle of the header control. 
+
+
+ 
+
+
+ <nIndex> The index of the item whose attributes are to be changed. 
+
+
+ 
+
+
+ <cCaption> The caption of the new item. 
+
+
+ 
+
+
+ <nWidth> The width of the new item. 
+
+
+ 
+
+
+ <nAlign> The alignment of the new item: 
+
+
+ 
+
+
+    #define HDF_LEFT   0 
+
+
+ #define HDF_RIGHT   1 
+
+
+ #define HDF_CENTER   2 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nResult> Non zero upon success, or zero otherwise. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\theaders.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+====== Ver también ======
+

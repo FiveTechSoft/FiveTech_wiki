@@ -1,0 +1,21 @@
+
+====== nMciPlay() ====== 
+nMciPlay()
+
+It indicates to the device that begins to reproduce data
+====== Sintaxis ======
+ nMciPlay( <nIdDevice>, <nFrom>, <nTo>, <hWnd> ) --> nResult 
+====== Parámetros ======
+  <nIdDevice>  Identifier of the device 
+  <nFrom>      Specifies the position to play from. 
+  <nTo>        Specifies the position to play to. 
+  <hWnd>       If this window handle is specified the messages MM_MCINOTIFY is correspondents to
+               the mentioned window. These messages are of notification that an operation you
+               it has completed. 
+====== Devuelve ======
+ Return 0 if the function is successful. Otherwhise a MCI error code. 
+====== Ejemplo ======
+ SOURCE\CLASSES\TMCI.PRG 
+====== Código fuente ======
+ SOURCE\WINAPI\MCI.C 
+====== Ver también ======

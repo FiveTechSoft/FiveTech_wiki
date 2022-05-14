@@ -1,0 +1,39 @@
+
+====== MsgMeter() ====== 
+MsgMeter()
+
+General meter progress dialog
+====== Sintaxis ======
+ MsgMeter( <bAction> [,<cMsg>] [,<cTitle>] ) --> nil 
+====== Parámetros ======
+  <bAction> The codeblock to evaluate while the meter evolves. It has to accept four values: 
+               bAction = { | oMeter, oText, oDlg, lEnd | ; YourAction( oMeter, oText, oDlg, @lEnd ) } 
+                             <oMeter> Is a reference to the oMeter (TMeter) object that your user
+                             defined function(YourAction()) will receive. 
+                             <oText> Is a reference to the oText (TSay) object that your user defined
+                             function (YourAction()) will receive. You can<oText>:SetText(<cNewText>)
+                             to change its contains while the meter evolves. 
+                             <oDlg> Is a reference to the oDlg (TDialog) that your user defined
+                             function (YourAction()) will receive. 
+                             <lEnd> A logical value supplied by reference. If you set it to .t., then
+                             all the process will end. 
+  <cMsg>   The text of the SAY object placed at the MsgMeter dialogBox. By default it is "Processing..." 
+  <cTitle> The title of the DialogBox. By default it is "Please, wait" 
+====== Devuelve ======
+ nil 
+
+Observations:
+
+ This function simplifies the process of creating and displaying a
+DialogBox where a progress meter is displayed. This is very typically an
+operation to perform when you are reindexing, or doing some operation
+that requires some user waiting and processing involved. This function,
+though it may seem a little confusing to use, will let you manage Meters
+very easily. 
+====== Ejemplo ======
+ SAMPLES\TestMMt.prg 
+====== Código fuente ======
+ SOURCE\FUNCTION\\MsgMeter.prg 
+====== Ver también ======
+ MsgAlert() MsgStop() MsgAbout() MsgYesNo() MsgRetryCancel() MsgBeep()
+MsgGet()

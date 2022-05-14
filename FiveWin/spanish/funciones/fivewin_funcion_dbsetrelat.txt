@@ -1,0 +1,23 @@
+
+====== DbSetRelat() ======
+DbSetRelat()
+
+It relates two work areas
+====== Sintaxis ======
+ DbSetRelat( <x>, <y>, <z> ) --> nil 
+
+ Function to obtain compatibility with xBase++ 
+
+====== Parámetros ======
+ <x> Numeric value or of characters that it expresses the number of area
+or the alias of the area daughter. 
+
+ <y> Code Block with the key of the relation. 
+
+ <z> Expression of the relation in text form. 
+
+====== Devuelve ======
+ DbSetRelation( x, y, z ) 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

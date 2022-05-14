@@ -1,0 +1,189 @@
+MAPISendDocuments()
+
+
+MAPISendDocuments()
+ Previous  Top  Next
+
+Sends a standard message with one or more attached files and a cover
+note. The cover note is a dialog box that allows the user to enter a list
+of recipients and an optional message. MAPISendDocuments differs from the
+MAPISendMail function in that it allows less flexibility in message
+generation.
+
+====== Sintaxis ======
+
+ 
+
+
+ MAPISendDocuments( <cFilename> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <cFilename> A string containing a comma separated list of the original
+filenames as they should appear in the message. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: 
+
+
+ 
+
+
+ 
+
+ MAPI_E_ATTACHMENT_OPEN_FAILURE 
+
+
+ 
+
+
+ 
+
+ One or more files in the lpszFilePaths parameter could not be located.
+No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_ATTACHMENT_WRITE_FAILURE 
+
+
+ 
+
+
+ 
+
+ An attachment could not be written to a temporary file. Check directory
+permissions. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_FAILURE 
+
+
+ 
+
+
+ 
+
+ One or more unspecified errors occurred while sending the message. It is
+not known if the message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_INSUFFICIENT_MEMORY 
+
+
+ 
+
+
+ 
+
+ There was insufficient memory to proceed. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_LOGIN_FAILURE 
+
+
+ 
+
+
+ 
+
+ There was no default logon, and the user failed to log on successfully
+when the logon dialog box was displayed. No message was sent. 
+
+
+ 
+
+
+ 
+
+ MAPI_E_USER_ABORT 
+
+
+ 
+
+
+ 
+
+ The user canceled one of the dialog boxes. No message was sent. 
+
+
+ 
+
+
+ 
+
+ SUCCESS_SUCCESS 
+
+
+ 
+
+
+ 
+
+ The call succeeded and the message was sent. 
+
+
+ 
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ SAMPLES\fivedit.prg 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MAPI.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

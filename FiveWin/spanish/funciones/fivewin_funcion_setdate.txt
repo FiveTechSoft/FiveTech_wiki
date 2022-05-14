@@ -1,0 +1,140 @@
+SetDate()
+
+
+
+SetDate()
+
+ Previous  Top  Next
+
+
+
+
+Changes the date of the system
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetDate( <nDay>, <nMonth>, <nYear> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nDay> The date day. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nMonth> The date month. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nYear> The date year. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value meaning that the supplied date is valid and
+could be settled as the new date. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestDate.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DateTime.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SysTime() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

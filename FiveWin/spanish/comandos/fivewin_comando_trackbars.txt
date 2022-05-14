@@ -1,0 +1,66 @@
+====== Comando TrackBar ======
+
+Creando un TrackBar desde código:
+
+<code clipper>
+ @ <nRow>, <nCol> TRACKBAR <oTrack> ;
+	 [ OF | WINDOW | DIALOG <oWnd> ] ;
+	 [ SIZE <nWidth>, <nHeight> ] ;
+	 [ PIXEL ] ;
+	 [ DESIGN ] ;
+	 [ MESSAGE <cMsg> ] ;
+	 [ WHEN <uWhen> ] ;
+	 [ ON CHANGE <uChange> ] ;
+	 [ MIN <nMin> ] ;
+	 [ MAX <nMax> ] ;
+	 [ POS <nPos> ] ;
+	 [ FREQUENCY <nFreq> ] ;
+	 [ TICKPOS <nTickPos> ] ;
+	 [ NOAUTOTICKS ] ;
+	 [ NOTOOLTIP ] ;
+	 [ SELRANGE ] ;
+	 [ VERTICAL ]
+</code>
+ 
+
+Creando un TrackBar desde recursos:
+
+<code clipper>
+ REDEFINE TRACKBAR <oTrack> ;
+	 [ ID <nId> ] ;
+	 [ OF | WINDOW | DIALOG <oWnd> ] ;
+	 [ HELPID | HELP ID <nHelpId> ] ;
+	 [ MESSAGE <cMsg> ] ;
+	 [ WHEN <uWhen> ] ;
+	 [ ON CHANGE <uChange> ] ;
+	 [ MIN <nMin> ] ;
+	 [ MAX <nMax> ] ;
+	 [ POS <nPos> ] ;
+	 [ FREQUENCY <nFreq> ]
+</code>
+ 
+====== Parámetros ======
+|<nRow>, <nCol>|Las coordenadas superior e izquierda del control|
+|<oWnd>| Referencia a la ventana contenedora del TrackBar |
+|<nWidth>, <nHeight>|El ancho y el alto del control |
+|<cMsg>| El mensaje asociado con el control control |
+|<uWhen>| La clausula WHEN |
+|<uChange>| La accion a realizar cuando el control cambie|
+|<nMin>|La posicion minima|
+|<nMax|La posicion maxima|
+|<nPos>|La posicion actual |
+|<nFreq>| La frecuencia|
+|<nTickPos>| La posicion de la marca de graduacion |
+|<nId>|El ID del recurso |
+|<nHelpId>| El identificador de la ayuda |
+
+====== Cláusulas ======
+|PIXEL|Para especificar las ccordenadas en pixeles|
+|DESIGN|Para activate el control en modo diseño|
+|NOAUTOTICKS| Para desactivar el modo autotick|
+|NOTOOLTIP| Para no mostrar el tooltip |
+|SELRANGE| Para activar el modo de selección de rango |
+|VERTICAL| Para mostrar el control verticalmente |
+
+====== Vea tambien ======
+ [[fivewin_clase_ttrackbar|Clase TrackBar]]

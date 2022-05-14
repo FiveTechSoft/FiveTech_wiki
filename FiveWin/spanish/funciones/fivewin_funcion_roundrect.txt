@@ -1,0 +1,30 @@
+
+====== RoundRect() ======
+
+Dibuja un rectángilo con esquinas redondeadas y opcionalmente usando un lapiz
+
+====== Syntax ======
+
+RoundRect( <hDC>, <nLeft>, <nTop>, <nRight>, <nBottom>, <nEllipseWidth>,
+<nEllipseHeight> [,<hPen>] ) --> lSuccess 
+
+====== Parameters ======
+
+|<hDC>|Device context of the control| 
+|<nLeft>|Left coordinate|
+|<nTop>|Top coordinate| 
+|<nRight>|Right coordinate| 
+|<nBottom>|Down coordinate|
+|<nEllipseWidth>|Specifies the width of the ellipse used to draw the rounded corners| 
+|<nEllipseHeight>|Specifies the height of the ellipse used to draw the rounded corners| 
+|<hPen>|Optional handle of the pen to use|
+
+====== Returns ======
+
+|<lSuccess>|If the function succeeds, the return value is .t., otherwise .F.| 
+
+====== Source Code ======
+SOURCE\WINAPI\RECTS.C 
+
+====== See also ======
+[[fivewin_function_roundbox|RoundBox()]]

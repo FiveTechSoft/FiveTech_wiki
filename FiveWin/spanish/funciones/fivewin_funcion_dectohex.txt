@@ -1,0 +1,53 @@
+DecToHex()
+
+
+DecToHex()
+ Previous  Top  Next
+
+Converts a number in its hexadecimal form.
+
+====== Sintaxis ======
+
+
+ DecToHex( <nValue> ) --> cHex 
+
+
+ 
+
+
+====== Parámetros ======
+
+
+ < nValue > The number to convert 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <cHex> The resulted hexadecimal string. 
+
+
+ 
+
+====== Ejemplo ======
+
+
+ local cVar := DecToHex( 1234 ) 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\RANDOM.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

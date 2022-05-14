@@ -1,0 +1,48 @@
+====== ValType() ======
+
+Devuelve el tipo de variable a la que hace referencia
+
+====== Syntaxis ====== 
+
+Valtype() --> cVariablecontenedora  
+ 
+
+====== Parametros ====== 
+
+Ninguno
+
+
+
+====== Devuelve ====== 
+
+| <o>| Si la variable es un objeto  |
+| <n>| Si la variable es de tipo numérica |
+| <c>| Si la variable es de tipo carácter  |
+| <d>| Si la variable es de tipo fecha  |
+| <l>| Si la variable es de tipo Lógica  |
+No he terminado
+
+
+
+====== Ejemplo ======
+<code clipper>
+vTotal:="123456"
+MsgInfo( Valtype(vTotal) )  ----> C
+
+vTotal:=123456
+MsgInfo( Valtype(vTotal) )  ----> N
+
+</code>
+
+====== Codigo fuente ====== 
+
+Buscando
+ 
+
+regards, saludos
+
+ 
+
+
+ 
+

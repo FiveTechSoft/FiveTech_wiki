@@ -1,0 +1,9 @@
+====== Class TOdbc ======
+
+Please consult FiveODBC documentation                                          
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TODBC.PRG

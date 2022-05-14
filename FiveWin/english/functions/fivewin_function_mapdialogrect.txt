@@ -1,0 +1,100 @@
+MapDialogRect()
+
+
+
+MapDialogRect()
+
+ Previous  Top  Next
+
+
+
+
+Converts dialogbox units into screen units (pixels)
+
+
+
+====== Syntax ======
+
+
+
+
+
+ MapDialogRect( <hDlg>, <aRect> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hDlg> The handle of the window of the dialogbox.<oDlg>:hWnd. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aRect> An array holding the rect values: { nTop, nLeft, nBottom, nRight
+} 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ The pixel values are stored again inside the aRect array. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Rects.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

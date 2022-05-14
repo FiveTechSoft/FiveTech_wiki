@@ -1,0 +1,171 @@
+SetCurdrive()
+
+
+
+SetCurdrive()
+
+ Previous  Top  Next
+
+
+
+
+Set the default current drive
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ SetCurdrive( <cDrive> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cDrive> A valid letter of drive 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ #include "fivewin.ch" 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ function main() 
+
+
+ 
+
+
+ local oWnd 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ DEFINE WINDOW oWnd 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ @ 10, 10 BUTTON "ok" SIZE 50, 30 ; 
+
+
+ 
+
+
+ OF oWnd ACTION SetCurDrive( "A" ) 
+
+
+ 
+
+
+ @ 12, 10 BUTTON "ok" SIZE 50, 30 ; 
+
+
+ 
+
+
+ OF oWnd ACTION Msginfo( CurDrive( ) ) 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ ACTIVATE WINDOW oWnd 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ Return nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\DRIVES.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

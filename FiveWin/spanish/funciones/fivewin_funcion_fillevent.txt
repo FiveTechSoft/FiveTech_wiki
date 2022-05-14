@@ -1,0 +1,159 @@
+FillEvent()
+
+
+
+
+FillEvent()
+
+ Previous  Top  Next
+
+
+
+
+To give value to the members of the structure EVENTMSG
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FillEvent( <&event>, <&delay>, <message>, <paramL>, <paramH>, <time> )
+--> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Function related with the process of recordings of macros and play-back
+features. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <&event> EVENTMSG structure 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <&delay> Delay 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <message> Message 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <paramL> First message parameter as an INTEGER 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <paramH> Second message parameter as a LONG 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <time> Hour 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PLAYBACK.C 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

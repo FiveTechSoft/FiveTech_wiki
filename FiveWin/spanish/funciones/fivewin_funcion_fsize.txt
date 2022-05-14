@@ -1,0 +1,81 @@
+FSize()
+
+
+
+
+FSize()
+
+ Previous  Top  Next
+
+
+
+
+Retrieves the size of a filename without opening it
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FSize( <cFileName> ) --> nFileSize 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cFileName> The name of the file whose size to retrieve. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nFileSize> A number specifying the size of the file. 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\FileName.prg 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

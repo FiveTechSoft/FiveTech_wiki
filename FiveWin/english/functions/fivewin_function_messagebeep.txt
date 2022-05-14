@@ -1,0 +1,76 @@
+====== MessageBeep() ======
+
+
+Plays a waveform sound. The waveform sound for each sound type is
+identified by an entry in the registry.
+
+====== Syntax ======
+
+ 
+
+
+ MessageBeep( <nType> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <nType> Specifies the sound type, as identified by an entry in the
+registry. This parameter can be one of the following values: 
+
+
+ 
+
+
+ 
+   -1            Standard beep using the computer speaker   
+   MB_ICONASTERISK      SystemAsterisk   
+   MB_ICONEXCLAMATION   SystemExclamation   
+   MB_ICONHAND         SystemHand   
+   MB_ICONQUESTION      SystemQuestion   
+   MB_OK            SystemDefault   
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ Nil. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\MSGBEEP.C 
+
+
+ 
+
+
+
+====== See also ======
+

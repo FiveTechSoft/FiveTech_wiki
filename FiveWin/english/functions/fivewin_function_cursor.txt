@@ -1,0 +1,24 @@
+====== Cursor() ====== 
+It loads and activates a cursor
+
+====== Syntax ======
+Cursor( <cnCursor> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<cnCursor>| Name or identifier of the cursor in the resource file| 
+
+====== Returns ======
+^Returns^Description^
+|lResult| .T. if it could load and activate the cursor, else .F.|
+
+====== Example ======
+
+
+====== Source Code ======
+SOURCE\WINAPI\CURSORS.C 
+
+====== See also ======
+[[fivewin_function_cursorwait|CursorWait()]], [[fivewin_function_cursorarrow| CursorArrow()]]
+[[fivewin_function_cursordrag|CursorDrag()]], [[fivewin_function_cursorhand| CursorHand()]]
+[[fivewin_function_cursoribeam|CursorIBeam()]]

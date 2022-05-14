@@ -1,0 +1,159 @@
+====== PrintBegin() ====== 
+
+
+
+PrintBegin()
+
+
+
+
+
+
+Call to the New method () of the class TPrinter
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PrintBegin( <cDoc>, <lUser>, <lPreview>, <xModel>, <lModal> ) -->
+oPrinter 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ By means of this function we establish the parameters for to call to
+create an object oPrinter. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <cDoc> The name to assign to cDocument DATA, which it is the name of the
+spooler document to generate. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lUser> To let the user interactively select the printer to use. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lPreview> To PREVIEW the printout work. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <xModel> To select a different printer from the default one. It is the
+name of any printer installed in the system. A printer name is provided
+of those that appear in the configuration of the system (" WIN.INI "
+[DEVICES]).In the event of not giving this parameter or of notto be in
+the file " WIN.INI " will be printed by the printer for defect. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <lModal> For not showing the main window of the viewer of report.
+Directly the listing is printed in the printer. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <oPrinter> TPrinter object. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

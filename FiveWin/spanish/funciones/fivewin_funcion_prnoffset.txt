@@ -1,0 +1,14 @@
+
+====== PrnOffset() ======
+Left coordinate superior of the printable area
+====== Sintaxis ======
+ PrnOffset( <hDC> ) --> aPoint 
+====== Parámetros ======
+|<hDC>|Device context of the printer| 
+====== Devuelve ======
+|<aPoint>|Array with the left superior coordinates of the area printable of the printer {x,y}| 
+====== Ejemplo ======
+
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

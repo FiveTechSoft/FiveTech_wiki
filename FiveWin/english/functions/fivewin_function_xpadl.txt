@@ -1,0 +1,30 @@
+
+====== xPadL() ======
+
+Left fills a string up to a certain pixel dimension , like Clipper's PadL() but based on pixels.
+
+====== Syntax: ======
+
+ xPadL( <cText>, <nPixels> [,<cChar>] ) --> cNewText    
+
+====== Parameters: ======
+
+| <cText> | The text whose character length is to be adjusted.|
+| <nPixels> | The total length in pixels.|
+| <cChar> | An optional character to use to fill by the left side the <cText> string.| 
+
+====== Returns: ======
+
+|<cNewText> | A new string whose left side has been added with extra <cChar> characters to reach the <nPixels> size.|
+
+====== Sample: ======
+
+ SOURCE\CLASSES\WBrowse.prg  
+
+====== Source code: ======
+
+ SOURCE\FUNCTION\xPad.prg  
+
+====== See also: ======
+
+ [[fivewin_function_xPadC()|xPadC()]], [[fivewin_function_xPadR()|xPadR()]]

@@ -1,0 +1,68 @@
+====== LargeFonts() ====== 
+
+
+LargeFonts()
+
+
+
+
+Returns .T. if large fonts are used
+
+
+
+====== Syntax ======
+
+
+
+
+
+ LargeFonts() --> lYesNo 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+      True if large fonts are used
+
+
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+SOURCE\FUNCTION\GETSYSIN.PRG
+
+
+====== See also ======
+

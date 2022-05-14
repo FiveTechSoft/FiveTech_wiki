@@ -1,0 +1,51 @@
+====== cNewFileName() ====== 
+cNewFileName(). This function can be used to generate a unique file name in a specific folder and with a required file extension name
+
+====== Syntax ======
+cNewFileName( <cRootName>, <cExt> ) --> cNewFileName 
+
+====== Parameters ======
+^Parameter^Description^
+|<cRootName>| A root name to be used to build a new filename. For eg. "C:\" or "C:\MyApp\" etc.|
+|<cExt>| The extension to be used to build the new filename. For eg "Dbf" "Txt" "Ntx" etc.|
+
+====== Returns ======
+^Returns^Description^
+|<cNewFileName>| It is a new non-existing filename, with the format:\\ <cRootName>XXX.<cExt> |
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch" 
+
+//-----------------------------------//
+Function main() 
+ Local cString
+
+ MsgInfo( cNewFileName("c:\","Dbf") ) // Result C:\1.dbf
+ MsgInfo( cNewFileName("c:\My","Dbf") ) // Result C:\My1.dbf
+ 
+ MsgInfo( cNewFileName("c:\","Txt") ) // Result C:\1.Txt
+ MsgInfo( cNewFileName("c:\Test","Txt") ) // Result C:\Test1.Txt
+ 
+ MsgInfo( cNewFileName("C:\Fwh\WhatsNew","Txt") ) // Result C:\Fwh\WhatsNew1.Txt
+ 
+ /* Remember, this fuction does not check the existance of a folder. I do not have R: drive on my PC
+    but I still get the result
+ /* 
+ MsgInfo( cNewFileName("R:\Fwh\WhatsNew","Txt") ) // Result R:\Fwh\WhatsNew1.Txt
+
+ /* If already have whatsnew1.txt in the folder c:\Fwh, then it will generate 
+    a file name c:\Fwh\whatsnew2.txt
+ */
+ MsgInfo( cNewFileName("C:\Fwh\WhatsNew","Txt") ) // Result C:\Fwh\WhatsNew2.Txt
+
+ MsgInfo( cNewFileName("","Dbf") ) // Result 1.Dbf
+ MsgInfo( cNewFileName("","Txt") ) // Result 1.Txt
+ 
+ MsgInfo( cNewFileName("","") ) // Result 1.
+
+Return nil 
+</code>
+
+====== Source Code ======
+SOURCE\\FUNCTION\\FileName.prg

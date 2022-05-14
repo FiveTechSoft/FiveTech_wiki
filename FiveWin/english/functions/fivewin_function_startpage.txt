@@ -1,0 +1,95 @@
+====== StartPage() ======
+
+
+Start prinitng a new page
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StartPage( <hDC> ) --> nRetCode 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the device context for the print job. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nRetCode> The return value is positive if the function is successful. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\PrintDC.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ EndPage() StartDoc() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

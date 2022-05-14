@@ -1,0 +1,19 @@
+====== GetClassName() ======
+This function retrieves the class name of a window. 
+
+====== Syntax ======
+GetClassName( <hWnd> ) --> cClassName 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The handle of the window whose classname ( API classname not Clipper!) we want to know.| 
+
+====== Returns ======
+^Returns^Description^
+|<cClassName>| The API classname registered for the window. |
+
+====== Source Code ======
+SOURCE\WINAPI\WndUpdat.c 
+
+====== See also ======
+[[fivewin_function_CreateWindow|CreateWindow()]]

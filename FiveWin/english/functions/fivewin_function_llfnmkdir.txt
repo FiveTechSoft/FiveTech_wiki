@@ -1,0 +1,100 @@
+====== lLfnMkDir() ====== 
+
+
+
+lLfnMkDir()
+
+
+
+
+
+Create a dicrectory with long names
+
+
+
+====== Syntax ======
+
+
+
+
+
+ lLfnMkDir( <cDirName> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <cDirName> Name of directory with possibility of negotiating long names 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lSuccess> It returns true if the directory is created 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\TESTLFN.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MKDIR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== See also ======
+

@@ -1,0 +1,98 @@
+SQLGetData()
+
+
+SQLGetData()
+ Previous  Top  Next
+
+Retrieves data for a single column in the result set.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLGetData( <hStmt>, <nField>, <nType>, <nLen>, <cData>, <lIsNull> ) -->
+nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <nField> Number of the column for which to return data. 
+
+
+ 
+
+
+ <nType> The type identifier. 
+
+
+ 
+
+
+ <nLen> The size of the data. 
+
+
+ 
+
+
+ <cData> The buffer in which to return the data. 
+
+
+ 
+
+
+ <lIsNull> .t. if the data is null. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_NO_DATA, SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

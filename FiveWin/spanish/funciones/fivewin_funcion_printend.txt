@@ -1,0 +1,44 @@
+PrintEnd()
+
+
+PrintEnd()
+ Previous  Top  Next
+
+It calls the methods Preview() or End() of the class TPrinter.
+
+====== Sintaxis ======
+
+
+ PrintEnd() --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ None 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

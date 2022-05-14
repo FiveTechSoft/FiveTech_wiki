@@ -1,0 +1,14 @@
+====== EnableWindow() ======
+Enables or disables mouse and keyboard activity.  This function enables or disables mouse and keyboard input to the given function or control. When input is disabled, the window ignores input such as mouse clicks and key presses. When input is enabled, the window processes all input. 
+
+====== Syntax ======
+EnableWindow( <hWnd>, <lEnable> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hWnd>| The handle of the window or control. ie oWnd:hWnd.|
+|<lEnable>| A logical value indicating whether to perform an enable or disable operation.|
+
+====== Returns ======
+^Returns^Description^
+|<lSuccess>| A logical value true if the operation was successful. |

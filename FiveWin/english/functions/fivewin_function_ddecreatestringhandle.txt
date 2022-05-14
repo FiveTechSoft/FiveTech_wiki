@@ -1,0 +1,25 @@
+====== DDECreateStringHandle() ======
+Creates a handle that identifies the specified string. 
+
+====== Syntax: ======
+DDECreateStringHandle( <hInst>, <cText>, <nCodePage> ) --> hText  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|<hInst>| Instance identifier. | 
+|<cText>| The service-name string. | 
+|<nCodePage>| The codepage identifier for the string.  |
+
+====== Returns: ======
+^Returns^Description^ 
+|<hText>| The handle of the service-name string.  |
+ 
+====== Sample: ======
+
+====== Source Code: ======
+SOURCE\WINAPI\DDEML.C 
+
+====== See also ======
+[[fivewin_function_DDECommand|DDECommand()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

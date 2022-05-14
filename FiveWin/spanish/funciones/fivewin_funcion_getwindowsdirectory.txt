@@ -1,0 +1,37 @@
+
+====== GetWindowsDirectory() ====== 
+
+
+
+Recupera la ruta dela carpeta de Windows.
+
+====== Sintaxis ======
+
+
+ GetWindowsDirectory() --> cWinPath 
+
+
+ 
+
+====== Parámetros ======
+
+
+ Ninguno 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <cWinPath> La ruta de la carpeta de Windows. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\FUNCTION\MKDIR.C 
+
+

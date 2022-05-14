@@ -1,0 +1,101 @@
+ZipType()
+
+
+
+Tipo de mensajes acerca del proceso de compactación
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ ZipType( <nZipInfo> ) --> nType 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ Recibimos mensajes informativos acerca del proceso de compatación cada vez que se ha compactado un archivo. 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nZipInfo> Estructura PZFILEINFO entregada automáticamente por el bloque de código bZip. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <nType> Tipo de mensaje 
+
+
+ 
+
+ ZIP_NAME   1   Nombre del archivo actualmente en progreso 
+
+ ZIP_BLOCK  2   Tamaño del bloque 
+
+ ZIP_MSG    3   Mensaje de texto
+
+
+ 
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TESTZIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\CLIPZIP2.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======

@@ -1,0 +1,14 @@
+
+====== GetWndRect() ======
+GetWndRect()
+Retrieves the window all area coordinates
+====== Sintaxis ======
+ GetWndRect( <hWnd> ) --> aRect 
+====== Parámetros ======
+ <hWnd> The handle of the window whose rect area is to be retrieved. 
+====== Devuelve ======
+ <aRect> An array with the { nTop, nLeft, nBottom, nRight } 
+====== Código fuente ======
+ SOURCE\WINAPI\Rects.c 
+====== Ver también ======
+ GetClientRect() GetCoors()

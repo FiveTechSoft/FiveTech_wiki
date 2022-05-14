@@ -1,0 +1,25 @@
+====== Decrypt() ======
+Decrypts a string with an optional key. 
+
+====== Syntax ====== 
+Decrypt( <cEncryptedText> [,<cKey> ] ) --> cDecryptedText  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <cEncryptedText> | It is the text to decrypt.  |
+| <cKey> | It is an optional text key to use it to generate a personalized decrypted text.  |
+
+====== Returns ====== 
+^Returns^Description^
+| <cDecryptedText>| The resulted decrypted text.|  
+
+====== Example ======
+<code clipper>
+MsgInfo( Decrypt( ..., "mykey" ) ) 
+</code>
+
+====== Source Code ====== 
+Not provided for security reasons.  
+
+====== See also ====== 
+[[fivewin_function_encrypt|Encrypt()]]  

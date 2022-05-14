@@ -1,0 +1,15 @@
+====== Class TParser ======
+
+Dynamic parser machine                                                         
+====== DATA ======
+|aRules|Array of rules|
+|aStates|Array of states|
+====== METHODS ======
+|New|Constructor from source code|
+|Add|Add a new rule|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TPARSER.PRG

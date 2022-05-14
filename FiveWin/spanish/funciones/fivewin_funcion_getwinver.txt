@@ -1,0 +1,62 @@
+====== GetWinVer() ======
+
+
+
+Devuelve la versión de Windows.
+
+====== Sintaxis ======
+
+ 
+
+
+ GetWinVer() --> aVersion 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ Ninguno. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <aVersion> Un arreglo con los número mayor y menor de versión de Windows. 
+
+
+ 
+
+
+ 
+Ejemplo:
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Código fuente:
+
+ 
+
+
+ SOURCE\WINAPI\WNDIS.C 
+
+
+ 
+
+
+

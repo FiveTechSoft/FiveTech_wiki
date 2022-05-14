@@ -1,0 +1,28 @@
+
+====== nDbl2Flt() ======
+
+Convierte un valor numerio Double a Float.
+
+====== Syntaxis ======
+
+nDbl2Flt( <nDouble> ) --> nFloat
+ 
+====== Parámetros ======
+
+| <nDouble> | Numero de doble precisión. |
+
+====== Devuelve ======
+
+| <nFloat> | Numero en punto flotante. |
+
+====== Ejemplo ======
+
+Ninguno
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\NDBL2FLT.C
+
+====== Ver también ======
+
+Ninguno

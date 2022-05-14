@@ -1,0 +1,87 @@
+RaEnumEntries()
+
+
+
+RaEnumEntries()
+
+ Previous  Top  Next
+
+
+
+
+Retrieve the entries names of a remote access phone book
+
+
+
+====== Syntax ======
+
+
+
+
+
+ RaEnumEntries() --> aEntries 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aEntries> Array with all entries of a remote acces phone 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\RASAPI.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

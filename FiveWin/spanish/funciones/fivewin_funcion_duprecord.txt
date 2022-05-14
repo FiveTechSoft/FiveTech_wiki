@@ -1,0 +1,23 @@
+
+====== DupRecord() ======
+DupRecord()
+
+Duplicates current record
+====== Sintaxis ======
+ DupRecord() --> nil 
+
+ This function adds a register at the end of our base of data with the
+same data that the current register. 
+====== Parámetros ======
+ None 
+
+====== Devuelve ======
+ Nil 
+
+Observations:
+
+ In the event of not being able to block the register in use, you it will
+produce an error message. 
+====== Código fuente ======
+ SOURCE\FUNCTION\DBTOOLS.PRG 
+====== Ver también ======

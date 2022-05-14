@@ -1,0 +1,39 @@
+====== Crea un RADIO menu desde código fuente ======
+<code clipper>
+@ <nRow>, <nCol> RADIO [ <oRadMenu> VAR ] <nVar> ;
+   [ OF | WINDOW | DIALOG <oWnd> ] ;
+   [ PROMPT | PROMPTS | ITEMS <acItems> ] ;
+   [ SIZE <nWidth>, <nHeight> ] ;
+   [ UPDATE ]
+</code>
+
+====== Ejemplos ====== 
+FWH\SAMPLES\testrad.prg
+
+<code>
+#include "FiveMac.ch"
+
+function Main()
+
+   local oWnd, oRad, nRad := 2
+
+   DEFINE WINDOW oWnd TITLE "Testing RadioButtons" PANELED
+
+   @ 200, 30 RADIO oRad VAR nRad ITEMS { "One", "Two", "Three" } OF oWnd
+
+   @ 23,  20 BUTTON "Value" OF oWnd ACTION MsgInfo( nRad )
+
+   @ 23, 120 BUTTON "End" OF oWnd ACTION oWnd:End()
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Want to end ?" )
+
+return nil
+</code>
+{{:testrad.png|:testrad.png}}
+
+====== Código fuente ======
+FMC\include\FiveMac.ch
+
+====== See Also ======
+[[fivemac_clase_tradmenu|Clase TRadMenu]], [[fivemac_clase_tradio|Clase TRadio]]

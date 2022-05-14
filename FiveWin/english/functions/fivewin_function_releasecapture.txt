@@ -1,0 +1,133 @@
+ReleaseCapture()
+
+
+
+ReleaseCapture()
+
+ Previous  Top  Next
+
+
+
+
+Let the other applications use the mouse
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ReleaseCapture() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+ 
+
+
+ 
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function releases the mouse capture and restores normal input
+processing. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\NewHelp.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\WMouse.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ SetCapture() GetCapture() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

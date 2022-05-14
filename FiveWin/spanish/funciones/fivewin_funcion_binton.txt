@@ -1,0 +1,28 @@
+====== BinToN() ======
+
+Convierte un arreglo de digitos binarios ( expresados como valores logicos, .t. para 1 y .f. para 0 ) en un numero decimal de tipo integer
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BinToC( <aBin> ) --> nValue
+
+====== Parametros: ( Parameters: ) ======
+
+ <aBin> Es el arreglo de digitos binarios a convertir.  
+
+====== Retorno: ( Returns: ) ======
+
+ <nValue> El numero resultado de la conversion.
+
+====== Ejemplo: ( Sample: ) ======
+<code clipper> 
+ local nVar:=BinToN({.f.,.t.,.f.,.f.})
+</code>
+
+
+====== Codigo Fuente: ( Source code: ) ======
+ 
+ SOURCE\FUNCTION\MATH.PRG  
+
+====== Ver tambien ====== 
+[[fivewin_funcion_BinToC|BinToC()]]

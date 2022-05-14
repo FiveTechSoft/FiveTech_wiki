@@ -1,0 +1,15 @@
+
+====== DelResource() ======
+DelResource()
+
+To erase a resource
+====== Sintaxis ======
+ DelResource( <hResource> ) --> lSuccess 
+====== Parámetros ======
+ <hResource> Handle of the resource. 
+====== Devuelve ======
+ <lSuccess> .t. if the operation is sucessful 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\DELOBJEC.C 
+====== Ver también ======

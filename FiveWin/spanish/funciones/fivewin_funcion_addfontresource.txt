@@ -1,0 +1,30 @@
+====== AddFontResource() ======
+
+Para calcular las coordenadas de la celda de edición de un Browse
+Agrega un nuevo font a la table de fuentes de Windows.
+
+
+
+====== Sintaxis ======
+
+AddFontResource( <cFontFile> | <hFontResource> ) --> nFontsAdded  
+
+Adiciona un font a la tabla de fuentes de Windows. Cualquier aplicación puede usar este font. 
+
+
+====== Parámetros ======
+
+| <cFontFile> | Nombre de archivo externo en donde hemos guardado algunas fuentes que queremos usar en nuestra aplicación.  |
+| <hFontResource> | Handle a un módulo (DLL) en donde hemos guardado algunas fuentes que queremos usar en nuestra aplicación.  |
+
+====== Devuelve ======
+
+| <nFontsAdded> | Número de fuentes agregados con éxito.  |
+
+====== Ejemplo ======
+<code clipper>AddFontResource( "MyApp.dll" ) </code>
+====== Codigo fuente ======
+
+SOURCE\\WINAPI\\FontCrea.c
+
+

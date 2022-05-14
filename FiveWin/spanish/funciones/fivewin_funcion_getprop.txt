@@ -1,0 +1,23 @@
+
+====== GetProp() ======
+GetProp()
+
+Retrieves a data handle from the Windows property list
+====== Sintaxis ======
+ GetProp( <hWnd>, <cPropIdentifier> ) --> hData 
+====== Parámetros ======
+  <hWnd> Identifies the window whose property list is to be searched. 
+  <cPropIdentifier> A string identifies the data to be retrieved. 
+====== Devuelve ======
+ <hData> The data handle of the associated property of the window. 
+
+Observations:
+
+ FiveWin uses this API function for storing some extra values related to
+the windows, dialogs and controls.Basicly these functions let you
+assciate extra values to the windows, and later you can retrieve them.
+You can use this way, or you can use the :Cargo data of all windows. 
+====== Código fuente ======
+ SOURCE\WINAPI\Prop.c 
+====== Ver también ======
+ SetProp() RemoveProp() EnumProps()

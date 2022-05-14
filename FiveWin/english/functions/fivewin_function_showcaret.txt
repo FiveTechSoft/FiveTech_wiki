@@ -1,0 +1,79 @@
+====== ShowCaret() ======
+
+
+Shows the caret on the screen
+
+
+
+====== Syntax ======
+
+
+
+
+
+ ShowCaret( <hWnd> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hWnd> Handle of the window 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\CARET.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

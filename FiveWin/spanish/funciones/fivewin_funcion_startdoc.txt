@@ -1,0 +1,67 @@
+StartDoc()
+
+
+
+StartDoc()
+
+ Previous  Top  Next
+
+Start generating a new printing document.
+
+====== Sintaxis ======
+
+
+ StartDoc( <hDC>, [<cDocName>], [<cOutput>] ) --> nPrintJob 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <hDC> Identifies the device context for the print job. 
+
+
+ 
+
+
+ <cDocName> The name of the document. 
+
+
+ 
+
+
+ <cOutput> The name of an output file. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ <nPrintJob> The print job identifier for the document. Less than of
+equal to zero in case of failure. 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\WINAPI\PrintDC.c 
+
+
+ 
+
+See also:
+
+
+ Class TPrinter 
+
+
+ 
+
+
+
+====== Ver también ======
+

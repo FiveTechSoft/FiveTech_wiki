@@ -1,0 +1,40 @@
+
+====== cFileName() ======  
+
+Retrieves the filename without its path. Excludes drive letters and paths and gives just the file name alone as output. Please note: Output is always in uppercase 
+
+====== Syntax ======  
+
+cFileName( <cFullFileName> ) --> cFileName  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cFullFileName> | The full filename including path and optional extension.|  
+
+====== Returns ======  
+^Returns^Description^
+|<cFileName>| Excludes drive letters and paths and gives just the file name alone as output. Please note: Output is always in uppercase|
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch" 
+//---------------------------------//
+Function Main()  
+Local cTest
+MsgInfo(cFileName( "C:\Fwh\Samples\WhatsNew.Txt" ) )  // Result WHATSNEW.TXT
+
+MsgInfo(cFileName( "\Fwh\Source\Class\xBrowse.Prg" ) ) // Result XBROWSE.PRG
+
+MsgInfo(cFileName( "" ) )  // Result Nothing
+
+MsgInfo(cFileName( "Test.Bat" ) )  // Result TEST.BAT
+
+MsgInfo(cFileName( "..\Functions\MyTest.Prg" ) )  // Result MYTEST.PRG
+
+MsgInfo(cFileName( "\MyApps\Test" ) ) // Result TEST
+
+Return nil  
+</code>
+
+====== Source Code ======  
+SOURCE\FUNCTION\FileName.prg  

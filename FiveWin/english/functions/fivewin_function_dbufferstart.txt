@@ -1,0 +1,30 @@
+
+====== DBufferStart() ======
+
+Part of the double buffer painting technique. Creates a memory DC as a temporary replacement for the actual DC of the window on which the painting takes place.
+
+This function is to be used from functions, not from the Method Paint(). Please use FWDispBegin() from the Method Paint().
+
+====== Syntax ====== 
+DBufferStart( <hWnd>, <hDC> ) --> aInfo  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <hWnd> | The handle of the painting window.  |
+| <hDC> | The actual DC of the window . |
+
+====== Return ====== 
+^Returns^Description^
+| <aInfo> | An array of informations required by FWDispEnd().  |
+
+
+====== Sample ======
+
+====== Source Code ====== 
+
+SOURCE\WINAPI\DC.C  
+
+====== See Also ====== 
+[[fivewin_function_dbufferend|DBufferEnd()]]
+[[fivewin_function_fwdispend|FWDispEnd()]]
+[[fivewin_function_fwdispend|FWDispBegin()]]

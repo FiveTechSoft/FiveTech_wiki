@@ -1,0 +1,28 @@
+====== XBREPORT ======
+
+Easy way to generate quick reports using syntax similar to XBrowse. This command uses XBrowse's Report() method, without displaying the window or xbrowse.
+
+<code clipper>
+XBREPORT <oXbr> [<clauses,...>] ;
+   [TITLE <cTitle>] ;
+   [BRWSETUP <bBrwSetup>] ;
+   [REPSETUP <bRepSetup>] ;
+</code>
+
+====== EXAMPLE ======
+<code clipper>
+#include "fivewin.ch"
+
+function Main()
+
+   local oXRep
+
+   USE CUSTOMER
+   XBREPORT oXRep DATASOURCE "CUSTOMER" ;
+      TITLE "CUSTOMER LIST" ;
+      COLUMNS "First", "City", "Salary" ;
+      BRWSETUP oXRep:Salary:nFooterType := AGGR_SUM
+   CLOSE CUSTOMER
+
+return nil
+</code>

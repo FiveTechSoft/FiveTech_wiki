@@ -1,0 +1,154 @@
+Escape()
+
+
+
+Escape()
+
+ Previous  Top  Next
+
+
+
+
+Directly access a device driver
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ Escape( <hDC>, <nEscape>, <cInput>, <@cOutPut> ) --> nReturn 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Device context 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nEscape> Specifies the escape function to be performed. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cInput> Specifies the Input Data required for the specified escape 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <@cOutPut> Buffer passed by Reference, where the output of the Escape is
+stored. 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ If the returned value is smaller than zero, it has happened a error. In
+another case it has gone well except for the QUERYESCSUPPORT printer
+escape, which checks for implementation only. The return value is zero if
+the escape is not implemented. A return value less than zero indicates an
+error. 
+
+
+ 
+
+
+ 
+
+
+
+Errors
+
+
+
+
+
+SP_ERROR      General error.
+SP_OUTOFDISK   Not enough disk space is currently available for spooling,
+and no more space will become available.
+SP_OUTOFMEMORY   Not enough memory is available for spooling.
+SP_USERABORT   User terminated the job through Print Manager.
+
+SP_ERROR      (-1)
+SP_APPABORT   (-2)
+SP_USERABORT   (-3)
+SP_OUTOFDISK   (-4)
+SP_OUTOFMEMORY   (-5)
+
+
+
+
+
+====== Ejemplo ======
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\PRINTDC.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

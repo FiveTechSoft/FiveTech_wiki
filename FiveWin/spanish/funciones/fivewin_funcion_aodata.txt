@@ -1,0 +1,63 @@
+====== aOData() ======
+
+Devuelve una matriz con los nombres de todas las propiedades de un Objeto
+
+====== Sintaxis ======
+
+aOData( <oObject> ) --> aClassDataNames  
+
+====== Parámetros ======
+
+
+| <oObject> | Este es un objeto.  |
+
+====== Devuelve ======
+
+<aData>  Retorna una matriz con los nombres de todas las propiedades del Objeto dado.
+
+====== Ejemplo ======
+
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+   LOCAL aData
+   LOCAL oClient := TClient():new( "Charles", 36, .t., .t. )
+   
+   ?oClient:GetName()
+   
+   aData := aOData( oObjeto )
+   
+   FOR x:=1 TO len( aData )
+      ?aData[x]
+   NEXT
+   
+   oClient := NIL
+   
+RETURN    
+
+CREATE CLASS TClient
+   DATA cName
+   DATA nAge
+   DATA lMale
+   DATA lMarried
+   
+   METHOD New( cName, nAge, lMale, lMarried )
+   METHOD GetName() INLINE ::cName
+      
+ENDCLASS
+
+METHOD New( cName, nAge, lMale, lMarried ) CLASS TClient
+      
+   ::cName := cName
+   ::nAge  := nAge
+   ::lMale := lMale
+   ::lMarried := lMarried
+   
+RETURN Self
+</code>
+
+====== Código fuente ======
+
+SOURCE\FUNCTION\AODATA.PRG
+

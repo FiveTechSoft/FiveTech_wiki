@@ -1,0 +1,93 @@
+====== WNetError() ====== 
+
+WNetError()
+
+Retrieves the latest Net error
+
+
+====== Syntax ======
+
+ WNetError() --> nErrorCode 
+
+
+====== Parameters ======
+
+
+
+
+
+ None. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nErrorCode> The last net error code ocurred 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestNet.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Net.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ WNetGetUser() WNetError() WNetGetErrorText() 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

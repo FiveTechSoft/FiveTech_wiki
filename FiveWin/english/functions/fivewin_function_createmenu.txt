@@ -1,0 +1,21 @@
+====== CreateMenu() ====== 
+Creates an empty menu
+
+====== Syntax ======
+CreateMenu() --> hMenu 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+^Returns^Description^
+|<hMenu>| Handle of the new menu. Otherwise NULL |
+
+====== Example ======
+SOURCE\CLASSES\MENU.PRG 
+
+====== Source Code ======
+SOURCE\FUNCTION\MENUS.C 
+
+====== See also ======
+[[fivewin_function_destroymenu|DestroyMenu()]], [[fivewin_function_createpopupmenu|CreatePopUpMenu()]]

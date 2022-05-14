@@ -1,0 +1,17 @@
+====== Class TComObject ======
+
+COM interface support                                                          
+====== DATA ======
+|nIDispatch|COM object handle|
+====== METHODS ======
+|New|Creates a new OLE object instance|
+|End|Ends the OLE object|
+|ClassName|Retrieves the OLE object class name|
+|Invoke|Calls a method of the OLE object|
+|OnError|Error handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWPPC\SOURCE\CLASSES\TCOMOBJECT.PRG

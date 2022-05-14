@@ -1,0 +1,17 @@
+
+====== GetPixel() ======
+GetPixel()
+
+Retrieves the RGB color of a pixel
+====== Sintaxis ======
+ GetPixel( <hDC>, <nCol>, <nRow> ) --> nRGBColor 
+====== Parámetros ======
+  <hDC> The handle of the device context. 
+  <nCol> <nRow> The coordinates of the pixel whose color is to be
+        retrieved. 
+====== Devuelve ======
+ <nRGBColor> The RGB (numeric long) color of that pixel. 
+====== Código fuente ======
+ SOURCE\WINAPI\SetPixel.c 
+====== Ver también ======
+ SetPixel()

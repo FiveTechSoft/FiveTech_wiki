@@ -1,0 +1,41 @@
+
+====== GetWindowsDirectory() ====== 
+
+
+
+Retrieves the Windows directory path.
+
+====== Syntax ======
+
+
+ GetWindowsDirectory() --> cWinPath 
+
+
+ 
+
+====== Parameters ======
+
+
+ None 
+
+
+ 
+
+====== Returns ======
+
+
+ <cWinPath> The path of the Windows directory. 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\FUNCTION\MKDIR.C 
+
+
+ 
+
+
+

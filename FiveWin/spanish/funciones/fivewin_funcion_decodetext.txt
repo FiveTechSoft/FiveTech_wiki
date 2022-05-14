@@ -1,0 +1,76 @@
+DecodeText()
+
+
+DecodeText()
+ Previous  Top  Next
+
+Decoding of a RTF text
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ DecodeText( <cText> ) --> cDecodedText 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <cText> The RTF text to decode. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <cDecodedText> The decoded text. 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\codegtf.c 
+
+
+ 
+
+
+
+====== Ver también ======
+

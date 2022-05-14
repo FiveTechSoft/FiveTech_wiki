@@ -1,0 +1,95 @@
+====== Switch ======
+** Creando un Switch desde codigo fuente **
+<code clipper>
+@ <nRow>, <nCol> SWITCH [ <oSw> VAR ] <lVar> ;
+	[ PROMPT <cCaption> ] ;
+	[ <of: OF, WINDOW, DIALOG> <oWnd> ] ;
+	[ SIZE <nWidth>, <nHeight> ] ;
+	[ <help:HELPID, HELP ID> <nHelpId> ] ;
+	[ FONT <oFont> ] ;
+	[ <change: ON CLICK, ON CHANGE> <uClick> ] ;
+	[ VALID   <ValidFunc> ] ;
+	[ <color: COLOR, COLORS> <nClrFore> [,<nClrBack>] ] ;
+	[ <design: DESIGN> ] ;
+	[ <pixel: PIXEL> ] ;
+	[ MESSAGE <cMsg> ] ;
+	[ <update: UPDATE> ] ;
+	[ WHEN <WhenFunc> ] ;
+	[ BORDERSIZE <nBorderSize> ] [ BORDERCOLOR <nClrBorder> ] ;
+	[ THUMBSIZE  <nThumbSize>  ] [ THUMBCOLOR  <nClrThumb> ] ;
+	[ <lRad: RADIOSTYLE> ] [ <lOval: OVALSTYLE> ];
+</code>
+** Creando un Switch desde Recursos **
+No disponible todavia
+
+====== Parameters ======
+| <nRow>, <nCol> | Coordenadas del control switch. Se simulan coordenadas de texto.| 
+| <oSw> | Referencia al objeto Switch. | 
+| <lVar> | Variable logica del control switch. | 
+| <cCaption> | Una cadena de texto asociada al control. | 
+| <oWnd> | Referencia a la ventana contenedora del control switch. | 
+| <nWidth> <nHeigth> | Las dimensiones del control. | 
+| <nHelpId> | Una lista de identificadores numericos de ayuda asociados al control SWITCH. | 
+| <oFont> | Una referencia al objeto FONT que va a ser usado en el SWITCH.| 
+| <uClick> | Una accion que sera ejecutada cuando el switch ha sido pulsado | 
+| <ValidFunc> | Espresion a evaluar cuando el control pierde el foco. | 
+|<nClrFore> | Color de fondo como numero RGB , or como cadena xBase de fondo. |
+||<nClrBack> | Color como numero RGB |
+| <cMsg> | Mensaje asociado a este control | 
+| <WhenFunc> | Es una expresion que evalua si el control esta o no activo. | 
+|<nBorderSize> <nClrBorder>|tamaño del borde del control. Color control, CLR_BLUE...etc |
+|<nThumbSize> <nClrThumb>|tamaño boton switch. Color control , CLR_RED... etc |
+| <lRad> <lOval> | Estilo Control Switch RadioStyle, OvalStyle|
+
+====== CLAUSES ======
+| DESIGN | Permite al usuario mover y redimensionar el control con el raton. | 
+| PIXEL | Para usar coordeandas en pixeles en vez de coorrdenadas de texto. |    
+| UPDATE | Este control puede ser actualizado desde TDialog:Update() METHOD |
+
+
+
+===== Ejemplo que muestra como crear un Switch desde Prg =====
+
+<code clipper>
+#include "FiveWin.ch"
+
+FUNCTION Main()
+
+   LOCAL oDlg, oSay, oSw, lSw, oBtn, aColors:={CLR_RED,CLR_BLUE,CLR_GREEN,CLR_YELLOW}, i:=1
+
+   DEFINE DIALOG oDlg SIZE 400, 300 TITLE "Probando Clase Switch"
+
+   @ 3, 1 BUTTON oBtn PROMPT "Cambia Estilo" OF oDlg SIZE 63,25 ;
+   ACTION (IIF(oSw:lOValStyle,(oSw:lRadioStyle:=.T.,oSw:lOValStyle:=.F.), ;
+   (oSw:lRadioStyle:=.F.,oSw:lOValStyle:=.T.) ), oDlg:Update() )
+
+   @ 5, 1 BUTTON oBtn PROMPT "Cambia Color" OF oDlg SIZE 63,25 ;
+   ACTION (oSw:nClrThumb:= aColors[i++] , oDlg:Update(), IF(i==4,i:=1,) )
+
+   @ 5, 15 SWITCH oSw VAR lSw OF oDlg ;
+      SIZE 80, 20 ON CLICK ( IIF( lSw, MsgInfo( "Switch Activado" ), ) ) ;
+      COLORS "B" UPDATE OVALSTYLE
+
+   @ 2, 1 SAY oSay PROMPT "Probando Clase TSwitch" + IF(oSw:lOvalStyle,"OValStyle","RadioStyle") ;
+   OF oDlg SIZE 80, 20 UPDATE
+
+   ACTIVATE DIALOG oDlg CENTERED
+RETURN NIL
+</code>
+
+===== Captura de pantalla del ejemplo de arriba =====
+{{:wiki:switch3.jpg|:wiki:switch.jpg}}
+
+
+
+====== Codigo de Ejemplo ======
+\Fwh\Samples\Switchtst.Prg
+
+===== Captura de pantalla del ejemplo de arriba =====
+{{:wiki:switch2.jpg|:wiki:switch2.jpg}}
+
+
+
+
+====== Ver tambien ======
+[[fivewin_clase_tswitch | Clase TSwitch]]

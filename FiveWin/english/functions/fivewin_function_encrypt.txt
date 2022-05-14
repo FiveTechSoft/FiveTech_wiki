@@ -1,0 +1,25 @@
+====== Encrypt() ======
+Encrypts a string with an optional key 
+
+====== Syntax ====== 
+Encrypt( <cText> [,<cKey> ] ) --> cEncryptedText  
+
+====== Parameters ====== 
+^Parameter^Description^
+|<cText>| It is the text to encrypt.|  
+|<cKey>| It is an optional text key to use it to generate a personalized encrypted text.|  
+
+====== Returns ====== 
+|<cEncryptedText> |The resulted encrypted text.|  
+
+
+====== Example ======
+<code clipper>
+MsgInfo( Encrypt( "Hello world", "mykey" ) ) 
+</code>
+ 
+====== Source Code ====== 
+Not provided for security reasons.  
+
+====== See also ====== 
+[[fivewin_function_decrypt|Decrypt()]]

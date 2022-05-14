@@ -1,0 +1,24 @@
+
+====== LoadValue() ====== 
+LoadValue()
+
+To load strings from resources.
+====== Sintaxis ======
+ LoadValue( <nId>, <cType> [,<uValue>] ) --> uResult 
+====== Parámetros ======
+  <nId>     Numeric identifier of the string in the file of resources 
+  <cType>   Type of the variable to load " C ", " N ", " L " 
+  <uValue>  Variable to identify the type in the event of not to provide the parameter <cType> 
+====== Devuelve ======
+ <uResult> Value returned by the function that will be of the declared
+type in the second parameter. 
+
+Observations:
+
+ By means of an editor of resources we can store strings that later on
+they will recover from program. We can to make it with the function of
+the API LoadString() or in way simplified with FiveWin LoadValue's
+function(). 
+====== Código fuente ======
+ SOURCE\FUNCTION\LOADVAL.PRG 
+====== Ver también ======

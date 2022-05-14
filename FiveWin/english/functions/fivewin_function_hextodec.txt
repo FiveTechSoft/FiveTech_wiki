@@ -1,0 +1,34 @@
+====== HexToDec() ======
+It converts hexadecimal to a decimal number
+
+====== Syntax ======
+HexToDec( <cHexNumber> ) --> nDecNumber 
+
+====== Parameters ======
+^Parameter^Description^
+|<cHexNumber>| Hexadecimal string to convert |
+
+====== Returns ======
+^Returns^Description^
+|<nDecNumber>| Decimal number converted |
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch"
+//-----------------------------------//
+Function main()  
+  
+  MsgInfo(DecToHex( 1234 ) )  // Returns "4D2"
+  
+  MsgInfo(HexToDec("4D2"))  // Returns 1234
+  
+  MsgInfo(Hex2Str("4D2"))  // Returns "M"
+
+Return NIL
+</code>
+
+====== Source Code ======
+SOURCE\FUNCTION\HEX2DEC.C 
+
+====== See also ======
+[[fivewin_function_dectohex|DecToHex()]], [[fivewin_function_hex2str|Hex2Str()]]

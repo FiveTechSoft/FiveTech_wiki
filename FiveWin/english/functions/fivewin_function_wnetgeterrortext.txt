@@ -1,0 +1,22 @@
+====== WNetGetErrorText() ====== 
+Text of a error code 
+
+====== Syntax ====== 
+
+ WNetGetErrorText( <nError> ) --> cErrorText  
+ 
+====== Parameters ====== 
+
+|<nError>| Error code|  
+ 
+====== Returns ====== 
+
+|<cErrorText>| Text error|  
+ 
+====== Sample ====== 
+
+====== Source Code ====== 
+
+ SOURCE\WINAPI\NET.C
+
+====== See Also ======

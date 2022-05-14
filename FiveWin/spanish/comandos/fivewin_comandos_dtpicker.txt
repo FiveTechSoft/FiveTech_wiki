@@ -1,0 +1,143 @@
+
+====== Creating a DTPICKER from source code ======
+<code clipper>
+ @ <nRow>, <nCol> DTPICKER [ <oDTPicker> VAR ] <uVar> ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ VALID <uValid> ] ;
+ [ COLOR | COLORS <nClrText> [,<nClrBack> ] ] ;
+ [ SIZE <nWidth>, <nHeight> ];
+ [ FONT <oFont> ] ;
+ [ DESIGN ] ;
+ [ CURSOR <oCursor> ] ;
+ [ PIXEL ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ UPDATE ] ;
+ [ WHEN <uWhen> ] ;
+ [ ON CHANGE <uChange> ] ;
+ [ HELPID | HELP ID <nHelpId> ]
+</code>
+====== Using a DTPicker from a resource Dialog Box ======
+<code clipper>
+ REDEFINE DTPICKER [ <oDTPikcer> VAR ] <uVar> ;
+ [ ID <nId> ] ;
+ [ OF | WINDOW | DIALOG <oWnd> ] ;
+ [ HELPID | HELP ID <nHelpId> ] ;
+ [ COLOR | COLORS <nClrText> [,<nClrBack> ] ] ;
+ [ FONT <oFont> ] ;
+ [ CURSOR <oCursor> ] ;
+ [ MESSAGE <cMsg> ] ;
+ [ UPDATE ] ;
+ [ WHEN <WhenFunc> ] ;
+ [ VALID <ValidFunc> ] ;
+ [ ON CHANGE <uChange> ] ;
+</code>
+Note: In order to use it from resources you MUST indentify the control as 'SysDateTimePick32'
+| <nRow>, <nCol> |    The coordinates of the control. We simulate Text coordinates|
+| <oDTPicker> |       A reference to the DTPicker Object|
+| <uVar> |            The variable which the DTPicker Object is manipulating|
+| <oWnd> |            The container window of the control|
+| <ValidFunc> |       Validating expression or function. The same as in MsDos|
+| <nClrText>, <nClrBack>The fore and back colors of the DTPicker Object|
+| <WhenFunc> |        When Clause. Not available yet!
+| <nWidth>, <nHeight> The dimensions in pixels of the control|
+| <oFont> |           A reference to the Font Object to be used with the control|
+| <oCursor> |         A reference to the Cursor Object to dispay over this control|
+| <cMsg> |            The associated message of this control|
+| <nId> |             The numeric resource identifier of the Control|
+| <nHelpId> |         Help topic identifier for control from resources|
+| <uChange> |         An action to be performed when the control changes|
+====== CLAUSES ======
+|UPDATE|              This control may be updated from TDialog:Update() METHOD|
+|PIXEL|               To use pixel coordinates instead of Text coordinates|
+|HELP ID, HELPID|     An optional Help Id to request topic help|
+|DESIGN|              Allows the user to move and resize with the mouse|
+
+====== Sample Code ======
+\Fwh\Samples\DateTime.Prg
+<code clipper>
+// Date picker and Time picker samples
+#include "FiveWin.ch"
+#include "dtpicker.ch"
+
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   local oDlg, aGet[5], aVAR[5], aSAY[5]
+
+   Set Date British
+   
+   DEFINE DIALOG oDlg RESOURCE "Main"
+
+   aVAR[1] := Date()
+   REDEFINE DTPicker aGet[1] VAR aVAR[1] ID 120 UPDATE OF oDlg
+   REDEFINE SAY aSAY[1] ID 130 UPDATE OF oDlg
+
+   aVAR[2] := Date()
+   REDEFINE DTPicker aGet[2] VAR aVAR[2] ID 121 UPDATE OF oDlg
+   REDEFINE SAY aSAY[2] ID 131 UPDATE OF oDlg
+
+   aVAR[3] := ctod('')
+   REDEFINE DTPicker aGet[3] VAR aVAR[3] ID 122 UPDATE OF oDlg
+   REDEFINE SAY aSAY[3] ID 132 UPDATE OF oDlg
+
+   aVAR[4] := Hora()
+   REDEFINE TMPicker aGet[4] VAR aVAR[4] ID 123 UPDATE OF oDlg 
+   REDEFINE SAY aSAY[4] ID 133 UPDATE OF oDlg
+
+   aVAR[5] := ''
+   REDEFINE TMPicker aGet[5] VAR aVAR[5] ID 124 UPDATE OF oDlg 
+   REDEFINE SAY aSAY[5] ID 134 UPDATE OF oDlg
+
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION ps_Show(aGet, aSAY)
+   REDEFINE BUTTON ID 4 OF oDlg ACTION ps_Clean(aSAY)
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+static proc ps_Show(aGet, aSAY)
+   local i, xValor
+
+   for i:= 1 to len(aGet)
+     xValor := Eval(aGet[i]:bSetGet)
+     xValor := if( Empty(xValor), 'EMPTY', xValor )
+     xValor := if( Valtype(xValor)='D', dtoc(xValor), xValor )
+     aSAY[i]:SetText( xValor )
+   next
+return
+
+static proc ps_Clean(aSAY)
+   local i, xValor
+
+   for i:= 1 to len(aSAY)
+     aSAY[i]:SetText( '' )
+   next
+return
+
+FUNCTION Hora()
+
+  local nAux, nMin, nHor, nSec, cMin, cHor, cSec
+  nSec := Seconds()
+  nAux := Int(nSec) / 3600
+  nHor := Int(nAux)
+  nAux := (nAux - nHor) * 60
+  nMin := Int(nAux)
+  nSec := Int( (nAux - nMin) * 60 )
+  cHor := Padl( alltrim(str(nHor)), 2, '0')
+  cMin := Padl( alltrim(str(nMin)), 2, '0')
+  cSec := Padl( alltrim(str(nSec)), 2, '0')
+
+return cHor + cMin + cSec
+</code>  
+
+====== Screen Snapshot ======
+{{:dtpicker.jpg|:dtpicker.jpg}}
+
+
+====== Include file: ======
+DTPICKER.CH
+
+====== Ver también ======
+[[fivewin_clase_tdatepick | Clase TDatePick ]]

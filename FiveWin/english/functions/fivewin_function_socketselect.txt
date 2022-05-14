@@ -1,0 +1,80 @@
+====== SocketSelect() ======
+
+
+
+Determine the status of a socket
+
+
+
+====== Syntax ======
+
+
+
+
+
+ SocketSelect( <nSocket> ) --> nNumReady 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSocket> Socket number 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <nNumReady> Total number of descriptors which are ready 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\WINSOCK.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

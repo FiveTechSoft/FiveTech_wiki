@@ -1,0 +1,93 @@
+
+======  GetKeyToggle() ====== 
+
+
+
+
+
+
+State of a toggle key
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetKeyToggle( <nKey> ) --> lState 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nKey> Code of the key that we will examine 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <lState> Returns.t. if the key this active one (TOGGLED ON) 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SOURCE\CLASSES\MSGBAR.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\KEYBRD.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

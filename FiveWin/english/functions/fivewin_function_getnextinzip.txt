@@ -1,0 +1,123 @@
+GetNextInZip()
+
+
+
+GetNextInZip()
+
+ Previous  Top  Next
+
+
+
+Retrieves info for the next file in the ZIP file
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetNextInZip() --> aFileInfo 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ <aFileInfo> An array of 9 items containing the following next file in
+ZIP information. GetFirstInZip() must be called prior to use
+GetNextInZip(): 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+aFileInfo[ 1 ]   // The returning code
+
+      // #define ZIP_OK         0
+      // #define ZIP_FILEERROR      -1
+      // #define ZIP_INTERNALERROR      -2
+      // #define ZIP_NOMOREITEMS      1
+
+aFileInfo[ 2 ]   // the filename   
+aFileInfo[ 3 ]   // Date   
+aFileInfo[ 4 ]   // Time   
+aFileInfo[ 5 ]   // File size   
+aFileInfo[ 6 ]   // Compressed size   
+aFileInfo[ 7 ]   // offset insize the ZIP file   
+aFileInfo[ 8 ]   // Pack Method   
+aFileInfo[ 9 ]   // File attributes   
+
+
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\\TestZip.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\FUNCTION\\UnZip.c 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

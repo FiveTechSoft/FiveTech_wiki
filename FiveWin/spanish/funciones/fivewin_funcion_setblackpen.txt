@@ -1,0 +1,24 @@
+====== SetBlackPen() ======
+
+SetBlackPen() Selecciona el lapiz negro para pintar
+
+====== Sintaxis ======
+
+SetBlackPen( <hDC> ) --> hPrevPen 
+
+====== Parámetros ======
+^Nombre^Descripción^
+|<hDC>| Identifica el manejador del dispositivo de contexto donde se seleccionara el lápiz negro. |
+
+====== Devuelve ======
+^Nombre^Descripción^
+|<hPrevPen>| Identifica el manejador del lápiz seleccionado anteriormente. |
+
+====== Código fuente ======
+
+SOURCE\WINAPI\GetStokB.c 
+
+====== Ver también ======
+
+[[fivewin_funcion_SetWhitePen|SetWhitePen()]], [[fivewin_funcion_GetStockObject|GetStockObject()]]
+

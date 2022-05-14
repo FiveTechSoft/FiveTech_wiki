@@ -1,0 +1,121 @@
+====== PokeByte() ====== 
+
+
+
+PokeByte()
+
+
+
+
+
+
+To write a byte in a position of memory
+
+
+
+====== Syntax ======
+
+
+
+
+
+ PokeByte( nSegment, nOffset, nByte ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <nSegment> Segment of memory 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nOffset> Offset of memory inside the segment nSegment Byte that we will
+write in the memory address given. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nByte> 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+
+
+ SAMPLES\PEEKPOKE.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\WINAPI\PEEKPOKE.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

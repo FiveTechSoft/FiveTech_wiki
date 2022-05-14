@@ -1,0 +1,130 @@
+WindowFromPoint()
+
+
+
+WindowFromPoint()
+
+ Previous  Top  Next
+
+
+
+
+Retrieves the window which is at certain position
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WindowFromPoint( <nCol>, <nRow> ) --> hWnd 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <nCol> <nRow> The point coordinates 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <hWnd> The handle of the window where the point is. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ The WindowFromPoint function does not retrieve the handle of a hidden,
+disabled, or transparent window, even if the point is within the window.
+An application should use the ChildWindowFromPoint function for a
+nonrestrictive search. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\NewHelp.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+   SOURCE\WINAPI\WndPt.c
+
+
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ ChildWindowFromPoint() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

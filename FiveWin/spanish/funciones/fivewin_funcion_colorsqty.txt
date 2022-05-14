@@ -1,0 +1,14 @@
+
+====== ColorsQty()======
+ColorsQty()
+Return the total number of colors of the display driver
+====== Sintaxis ======
+ ColorsQty() --> nColors 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ Total number of colors
+====== Ejemplo ======
+====== Código fuente ======
+SOURCE\FUNCTION\GETSYSIN.PRG
+====== Ver también ======

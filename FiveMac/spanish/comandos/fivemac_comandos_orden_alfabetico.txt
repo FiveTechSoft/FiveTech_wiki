@@ -1,0 +1,318 @@
+====== Lista desde FiveMac.ch ======
+@ ... OUTLINE | TREE
+
+@ ... BROWSE
+
+@ ... BTNBMP
+
+@ ... BUTTON
+
+@ ... CHECKBOX
+
+@ ... COMBOBOX
+
+@ ... COVERFLOW
+
+@ ... DATEPICKER
+
+@ ... FOLDER
+
+@ ... GET
+
+@ ... GET
+
+@ ... GROUP
+
+@ ... IMAGE
+
+@ ... LISTBOX
+
+@ ... MOVIE
+
+@ ... PDFVIEW
+
+@ ... PROGRESS
+
+@ ... RADIO
+
+@ ... SAY
+
+@ ... SEGMENTBTN
+
+@ ... SIMAGE
+
+@ ... SLIDER
+
+@ ... SPLITTER
+
+@ ... TABS
+
+@ ... WEBVIEW
+
+ACTIVATE DIALOG
+
+ACTIVATE ROOTNODE
+
+ACTIVATE WINDOW
+
+DATABASE <oDbf>
+
+DEFAULT <uVar1>
+
+DEFINE <bar:
+
+DEFINE BUTTON
+
+DEFINE DIALOG
+
+DEFINE MSGBAR
+
+DEFINE NODE
+
+DEFINE ROOTNODE
+
+DEFINE SOUND
+
+DEFINE VIEW
+
+DEFINE WINDOW
+
+ENDMENU =>
+
+MENU [<oMenu>]
+
+MENUITEM [
+
+REDEFINE <bar:
+
+REDEFINE <outline:
+
+REDEFINE BROWSE
+
+REDEFINE BUTTON
+
+REDEFINE CHECKBOX
+
+REDEFINE COMBOBOX
+
+REDEFINE COVERFLOW
+
+REDEFINE GET
+
+REDEFINE IMAGE
+
+REDEFINE MOVIE
+
+REDEFINE PDFVIEW
+
+REDEFINE PROGRESS
+
+REDEFINE SAY
+
+REDEFINE SEGMENTBTN
+
+REDEFINE SLIDER
+
+REDEFINE TABS
+
+REDEFINE TBUTTON
+
+REDEFINE WEBVIEW
+
+SEPARATOR 
+
+SOUND PLAY
+
+
+====== A, B ======
+
+===== Bar =====
+[[fivemac_comandos_bar|==>]]
+===== Bitmaps =====
+[[fivemac_comandos_bitmaps|==>]]
+===== Browse =====
+[[fivemac_comandos_browse|==>]]
+===== Brushes =====
+[[fivemac_comandos_brushes|==>]]
+===== Buttons =====
+[[fivemac_comandos_buttons|==>]]
+===== BtnBmp =====
+[[fivemac_comandos_btnbmp|==>]]
+
+====== C ======
+
+===== CheckBox =====
+[[fivemac_comandos_checkbox|==>]]
+===== Clipboard =====
+[[fivemac_comandos_clipboard|==>]]
+===== ComboBox =====
+[[fivemac_comandos_combobox|==>]]
+===== Cursor =====
+[[fivemac_comandos_cursor|==>]]
+
+====== D, E ======
+
+===== DDE =====
+[[fivemac_comandos_dde|==>]]
+===== DataBase =====
+[[fivemac_comandos_database|==>]]
+===== DataBase from Dictionary =====
+[[fivemac_comandos_from|==>]]
+===== DbCombo =====
+[[fivemac_comandos_dbcombo|==>]]
+===== Dbms =====
+[[fivemac_comandos_dbms|==>]]
+===== Dbms Dictionary =====
+[[fivemac_comandos_dictionary|==>]]
+===== Default =====
+[[fivemac_comandos_default|==>]]
+
+===== Diálogos =====
+[[fivemac_comandos_dialogos|==>]]
+
+===== DLL =====
+[[fivemac_comandos_dll|==>]]
+===== Do Until =====
+[[fivemac_comandos_until|==>]]
+===== DTPicker =====
+[[fivemac_comandos_dtpicker|==>]]
+
+====== F ======
+
+===== File GTF =====
+[[fivemac_comandos_gtf|==>]]
+===== Format Get =====
+[[fivemac_comandos_get|==>]]
+===== Folders =====
+[[fivemac_comandos_folders|==>]]
+===== Fonts =====
+[[fivemac_comandos_fonts|==>]]
+
+====== G ======
+
+===== GETs =====
+[[fivemac_comandos_gets|==>]]
+===== Graphs =====
+[[fivemac_comandos_graphs|==>]]
+===== Group =====
+[[fivemac_comandos_group|==>]]
+
+====== H ======
+
+===== Help =====
+[[fivemac_comandos_help|==>]]
+
+====== I ======
+
+===== Icons =====
+[[fivemac_comandos_icons|==>]]
+===== Icon Group =====
+[[fivemac_comandos_group|==>]]
+===== Idle Action =====
+[[fivemac_comandos_action|==>]]
+===== Image =====
+[[fivemac_comandos_image|==>]]
+===== Ini =====
+[[fivemac_comandos_ini|==>]]
+
+====== J, K, L ======
+
+===== ListBox =====
+[[fivemac_comandos_listbox|==>]]
+
+====== M, N ======
+
+===== Mail =====
+[[fivemac_comandos_mail|==>]]
+===== MDI =====
+[[fivemac_comandos_mdi|==>]]
+===== Menus =====
+[[fivemac_comandos_menus|==>]]
+===== MetaFile Controls =====
+[[fivemac_comandos_metafile|==>]]
+===== Meter =====
+[[fivemac_comandos_meter|==>]]
+===== MRU =====
+[[fivemac_comandos_mru|==>]]
+===== MsgBar =====
+[[fivemac_comandos_msgbar|==>]]
+
+====== O ======
+
+===== ODBC =====
+[[fivemac_comandos_odbc|==>]]
+===== Outlook =====
+[[fivemac_comandos_outlook|==>]]
+
+====== P, Q ======
+
+===== Pages =====
+[[fivemac_comandos_pages|==>]]
+===== Pen =====
+[[fivemac_comandos_pen|==>]]
+===== Printer =====
+[[fivemac_comandos_printer|==>]]
+
+====== R ======
+
+===== RadioButtons =====
+[[fivemac_comandos_radiobuttons|==>]]
+===== Ras =====
+[[fivemac_comandos_ras|==>]]
+===== Reports =====
+[[fivemac_comandos_reports|==>]]
+===== Resources =====
+[[fivemac_comandos_resources|==>]]
+===== RichEdit =====
+[[fivemac_comandos_richedit|==>]]
+
+====== S ======
+
+===== Say =====
+[[fivemac_comandos_say|==>]]
+===== Selector =====
+[[fivemac_comandos_selector|==>]]
+===== Serial Communications =====
+[[fivemac_comandos_serial|==>]]
+===== Set Multiple =====
+[[fivemac_comandos_multiple|==>]]
+===== ScrollBars =====
+[[fivemac_comandos_scrollbars|==>]]
+===== Slider =====
+[[fivemac_comandos_slider|==>]]
+===== Splitter =====
+[[fivemac_comandos_splitter|==>]]
+===== StatusBars =====
+[[fivemac_comandos_statusbars|==>]]
+===== Struct =====
+[[fivemac_comandos_struct|==>]]
+
+====== T ======
+
+===== Tabs =====
+[[fivemac_comandos_tabs|==>]]
+
+===== TcBrowse =====
+[[fivemac_comandos_tcbrowse|==>]]
+===== TToolBar =====
+[[fivemac_comandos_toolbars|==>]]
+
+===== Timers =====
+[[fivemac_comandos_timers|==>]]
+===== TrackBars =====
+[[fivemac_comandos_trackbars|==>]]
+===== Trees =====
+[[fivemac_comandos_trees|==>]]
+
+====== U, V ======
+
+===== URL Links =====
+[[fivemac_comandos_links|==>]]
+===== Video =====
+[[fivemac_comandos_video|==>]]
+===== VBXs =====
+[[fivemac_comandos_vbxs|==>]]
+
+====== W, X, Y, Z ======
+===== windows =====
+[[fivemac_comandos_window|==>]]

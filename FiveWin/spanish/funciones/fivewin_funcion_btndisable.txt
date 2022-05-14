@@ -1,0 +1,23 @@
+
+====== BtnDisable() ======
+
+ Dibuja un boton deshabilitado. Este presenta la misma imagen de un boton con bitmap pero en los tipicos tonos grises de las opciones deshabilitadas 
+
+====== Sintaxis: ( Syntax: ) ======
+ 
+ BtnDisable( <hWnd>, <hDC> )  --> Nil
+ 
+====== Parametros: ( Parameters: ) ======
+
+ <hWnd> El manejador del boton.
+
+ <hDC> Es el manejador del contexto donde se dibujara el boton.  
+
+====== Retorno: ( Returns: ) ======
+
+ Nil
+
+====== Ejemplo: ( Sample: ) ======
+ 
+ SOURCE\CLASSES\BTNBMP.PRG
+

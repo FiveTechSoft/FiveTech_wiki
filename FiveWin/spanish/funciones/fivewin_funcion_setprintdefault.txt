@@ -1,0 +1,44 @@
+SetPrintDefault()
+
+
+SetPrintDefault()
+ Previous  Top  Next
+
+Sets the specified printer as the default printer.
+
+====== Sintaxis ======
+
+
+ SetPrintDefault( <cModel> ) --> nil 
+
+
+ 
+
+====== Parámetros ======
+
+
+ <cModel> The name of the new default printer. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+====== Código fuente ======
+
+
+ SOURCE\CLASSES\PRINTER.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

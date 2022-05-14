@@ -1,0 +1,74 @@
+SQLFile()
+
+
+SQLFile()
+ Previous  Top  Next
+
+Returns the list of table, catalog, or schema names, and table types,
+stored in a specific data source.
+
+====== Sintaxis ======
+
+ 
+
+
+ SQLFile( <hStmt>, <cTableName> ) --> nRetCode 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hStmt> The statement handle. 
+
+
+ 
+
+
+ <cTableName> The table name. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ <nRetCode> The return code: SQL_SUCCESS, SQL_SUCCESS_WITH_INFO,
+SQL_STILL_EXECUTING, SQL_ERROR, or SQL_INVALID_HANDLE. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ODBC.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

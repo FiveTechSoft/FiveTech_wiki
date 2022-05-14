@@ -1,0 +1,38 @@
+====== ARead() ======
+
+Used to reconstruct an array from a coded string (converted using ASave() ). 
+ARead() is used to convert the Binary data back to array. We use the function ASave() to save the contents of an array to Binary data. Using the Aread() we can convert the binary data back to Array.
+
+====== Syntax ======
+ARead() -> aArray
+
+ 
+====== Parameters ======
+^Parameter^Description           ^
+|<cInfo>| String coded previously by the function ASave()|
+
+==========================Returns====================
+^Returns^Description           ^
+<aArray>  Reconstructed Array
+
+====== Sample Code ======
+<code clipper>
+#include 'fivewin.ch'
+
+//------------------------------------------------//
+Function Main()
+Local aData1,aData2,cBinData
+
+aData1:={"Tom","Dickenson","Harry"}
+cBinData:=ASave(aData1)  // Converts Array Data and to Binary and stores in cStr
+
+aData2:=ARead(cBinData)  // Reads data from Binary and then converts back to Array
+MsgList(aData2)
+
+Return nil
+</code>
+
+====== See also ======
+[[fivewin_function_asave|ASave()]]
+====== Source Code =======
+SOURCE\CLASSES\WINDOW.PRG

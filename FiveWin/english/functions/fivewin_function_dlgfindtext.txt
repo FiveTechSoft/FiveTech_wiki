@@ -1,0 +1,41 @@
+====== DlgFindText() ======
+Standard Common Dialog FindText
+
+====== Syntax ======
+DlgFindText( <cText>, <oEdit> ) --> oDlg 
+
+====== Parameters ======
+^Parameter^Description^
+|<cText>| Text to search.|
+|<oEdit>| Edit box where the text is located where we will carry out the search.|
+
+====== Returns ======
+^Returns^Description^
+|<oDlg>| Common dialog box of search of texts.|
+
+====== Example ======
+SOURCE\CLASSES\MGET.PRG ( to see method Find () ) 
+<code clipper>
+#include "FiveWin.ch"
+//----------------------
+Function Main()
+
+   Local oWnd, oGet, cText := "This is a test"
+
+   DEFINE WINDOW oWnd
+
+   @ 2, 2 GET oGet VAR cText SIZE 100, 25
+
+   DlgFindText( "test", oGet )
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:dlgsearch.jpg|:dlgsearch.jpg}}
+
+====== Source Code ======
+SOURCE\CLASSES\DLGFIND.PRG 

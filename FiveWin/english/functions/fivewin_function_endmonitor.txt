@@ -1,0 +1,16 @@
+====== EndMonitor() ======
+Function that frees the resources that are not released by the system properly. It must be used jointly with the StartMonitor() 
+
+====== Syntax ======
+EndMonitor() --> nil 
+
+====== Parameters ======
+None 
+
+====== Returns ======
+Nil 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\FUNCTION\MONITOR.C 

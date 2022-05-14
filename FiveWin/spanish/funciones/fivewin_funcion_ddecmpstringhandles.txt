@@ -1,0 +1,24 @@
+
+====== DDECmpStringHandles() ======
+
+Compara los valores de las dos títulos de la cadena
+
+====== Sintaxis ======
+ 
+ DDECmpStringHandles( <hSZ1>, <hSZ2> ) --> nResult
+
+
+====== Parámetros ======
+
+|<hSZ1>| Título de primera línea |
+|<hSZ2>| Título de segunda línea |   
+
+====== Retorno ======
+
+ 
+====== Ejemplo ======
+ 
+
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DDEML.C  

@@ -1,0 +1,17 @@
+
+====== DbUnlockAl() ======
+
+DbUnlockAl()
+
+Release file/record locks in all the work areas
+====== Sintaxis ======
+ DbUnlockAl() --> nil 
+
+ Function to obtain compatibility with xBase++ 
+====== Parámetros ======
+ None 
+====== Devuelve ======
+ DbUnLockAll() 
+====== Código fuente ======
+ SOURCE\FUNCTION\DB10.PRG 
+====== Ver también ======

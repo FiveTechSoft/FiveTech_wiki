@@ -1,0 +1,22 @@
+
+====== PrnDuplex() ====== 
+PrnDuplex()
+
+Set Duplex (double-sided) printing
+====== Sintaxis ======
+ PrnDuplex( <nValue> ) --> nOldValue 
+====== Parámetros ======
+ <nValue> Can be one of the following values: 
+    DMDUP_SIMPLEX      1 
+    DMDUP_HORIZONTAL   2 
+    DMDUP_VERTICAL     3 
+====== Devuelve ======
+ <nOldValue> Devuelve el antiguo valor 
+====== Ejemplo ======
+Observations:
+
+ It is indispensable so that this function has effect that the printer
+has these capacities duplex printing. 
+====== Código fuente ======
+ SOURCE\WINAPI\PRINTDC.C 
+====== Ver también ======

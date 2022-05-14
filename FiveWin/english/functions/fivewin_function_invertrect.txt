@@ -1,0 +1,124 @@
+====== InvertRect() ======
+
+
+
+
+Inverts the colors of a window rectangle
+
+
+
+====== Syntax ======
+
+
+
+
+
+ InvertRect( <hDC>, <aRect> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ <hDC> Identifies the window device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aRect> Identifies the rectangle to be inverted:{ nTop, nLeft, nBottom,
+nRight } 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ nil. 
+
+
+ 
+
+
+ 
+
+
+
+Observations:
+
+
+
+
+
+ This function inverts the colors of a window rectangle. Basically if
+performs an xOR operation over the colors. Thus, inverting twice a region
+will restore the original region colors. 
+
+
+ 
+
+
+ 
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Rects.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ FillRect() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

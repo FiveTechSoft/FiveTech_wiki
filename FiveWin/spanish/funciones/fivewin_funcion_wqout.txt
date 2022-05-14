@@ -1,0 +1,113 @@
+WQOut()
+
+
+
+WQOut()
+
+ Previous  Top  Next
+
+
+
+
+FiveWin QOut() replacement
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ WQOut( <aParams> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <aParams> An array containing all the values to be displayed on the
+screen. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SAMPLES\TestBVbx.prg 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\WQOut.prg 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ Msg...() functions 
+
+
+ 
+
+
+ 
+
+
+====== Ver también ======
+

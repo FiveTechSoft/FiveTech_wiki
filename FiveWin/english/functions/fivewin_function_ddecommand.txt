@@ -1,0 +1,50 @@
+====== DDECommand() ======
+DDE command FiveWin management function.  This is a FiveWin internal function for DDE support. Use FiveWin DDE
+classes and xBase commands as they are much easier to use and more powerful. 
+
+====== Syntax ======
+DDECommand( <cDDECommand> ) --> pGlobalMemory 
+
+====== Parameters ======
+^Parameter^Description^
+|<cDDECommand>| A character expression that holds the DDE order we want to process. |
+
+====== Returns ======
+^Returns^Description^
+|<pGlobalMemory>| A numeric value which holds the pointer of a global memory to be supplied to DDE services.|
+
+====== Example ======
+\Fwh\SAMPLES\TestDDE.prg, DDEClien.prg, DDEServe.prg 
+<code clipper>
+// Testing DDE Client and DDE server capabilities with FiveWin
+// Run DdeServe.exe before this!
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oDde
+
+   DEFINE WINDOW oWnd TITLE "I am a DDE Client!"
+
+   DEFINE DDE oDde SERVICE "DdeServe" TOPIC "Testing DDE"
+
+   @ 2, 2 BUTTON "&Hey!" SIZE 80, 20 OF oWnd ;
+      ACTION oDde:Execute( "Hey Server, serve me!" )
+
+   ACTIVATE WINDOW oWnd ;
+      ON INIT oDde:Activate()
+
+return nil
+
+</code>
+
+====== Source Code ======
+SOURCE\\WINAPI\\DDE.c 
+
+====== See also: ======
+[[fivewin_function_DDEConnect|DDEConnect()]], 
+[[fivewin_function_DDEGetCommand|DDEGetCommand()]], 
+[[fivewin_function_DDETerminate|DDETerminate()]]

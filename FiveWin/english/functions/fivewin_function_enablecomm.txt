@@ -1,0 +1,35 @@
+Enables or disables WM_COMMNOTIFY message posting to the given window
+
+
+====== Syntax ======        
+
+
+EnableCommNotification(<nComDev>,; <hWnd>,; <nInBytes>,; <nOutBytes>  ) -->lSucces
+
+If an application specifies -1 for the nInBytes parameter, the WM_COMMNOTIFY message is sent to the specified window for CN_EVENT and CN_TRANSMIT notifications but not for CN_RECEIVE notifications. If -1 is specified for the nOutBytes CN_EVENT and CN_RECEIVE notifications are sent but CN_TRANSMIT notifications are not.
+
+If a timeout occurs before as many bytes as specified by the nInBytes parameter are written to the input queue, a WM_COMMNOTIFY message is sent with the CN_RECEIVE flag set. When this occurs, another message will not be sent until the n bytes in the input queue falls below the number specified in the nInBytes parameter. Similarly, a WM_COMMNOTIFY message in which the CN_RECEIVE flag is set is sent only when the output queue is larger than the number of bytes specified nOutBytes parameter.
+
+====== Parameters ======
+
+
+| <nComDev>   Communications-device identifier |
+
+| <hWnd>   Handle of window receiving messages |
+
+| <nInBytes>   Number of bytes written before notification |
+
+| <nOutBytes>   Mimum number of bytes in output queue |
+
+====== Returns ======         
+
+
+| Retrives .t. if the function is successful. |
+
+====== Sample ======
+
+
+====== Source Code ======  
+
+
+SOURCE\WINAPI\COMM.C

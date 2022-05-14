@@ -1,0 +1,75 @@
+====== MoveWindow() ======
+
+Changes the position /and dimensions of a window.
+
+====== Syntax ======
+
+
+ MoveWindow( <hWnd>, <nTop>, <nLeft>, <nWidth>, <nHeight>, <lRepaint> )
+--> lSuccess 
+
+
+ 
+
+====== Parameters ======
+
+
+ <hWnd> The handle of the window to move / and resize. 
+
+
+ 
+
+
+ <nTop>, <nLeft> The new origin position coordinates 
+
+
+ 
+
+
+ <nWidth>, <nHeight> The new dimensions (if specified) 
+
+
+ 
+
+
+ <lRepaint> If the window has to be repainted after this operation 
+
+
+ 
+
+====== Returns ======
+
+
+ <lSuccess> If the operation was successfully completed. 
+
+
+ 
+
+====== Example ======
+
+
+ SAMPLES\TESTSELE.PRG 
+
+
+ 
+
+====== Source Code ======
+
+
+ SOURCE\WINAPI\WndMove.c 
+
+
+ 
+
+See also:
+
+
+ TWindow:Move() 
+
+
+ 
+
+
+
+====== See also ======
+

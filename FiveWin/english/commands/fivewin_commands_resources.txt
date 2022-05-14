@@ -1,0 +1,146 @@
+====== Resources ======
+** Use of resources from a DLL **
+You may store your application's resources in a DLL, or embed them inside your EXE file use the Microsoft RC.EXE resource compiler. 
+To use resources from inside a DLL: 
+Using DLLs as resources: 
+<code clipper>
+ SET RESOURCES TO <cDllName> [,<cDllName>... ]  
+</code> 
+Selecting one of the opened resources 
+<code clipper>
+ SET RESOURCES TO <cDllName>  
+</code> 
+Ending the use of the resource 
+<code clipper>
+ SET RESOURCES TO  
+</code> 
+| <cDllName> |Is the name of a DLL where resources have been placed. It is possible to specify multiple DLLs for resources. After opening several DLLs as resources it is necessary to select the one we are going to use. To do so we must again issue the command: SET RESOURCES TO <TheSameResourceName>. It is similar to selecting a certain Work Area. |
+
+====== Use of resources from inside your EXE ======
+
+No special command is required. Just call: 
+
+** RC.EXE -K MyApp.rc MyApp.exe **
+
+After linking your EXE, provide an RC file with all the resource definitions for your application. The SAMPLES\Build.bat we provide automatically calls RC.EXE if a RC is defined with the same name as the .prg you are building with build.bat. Applications requiring multiple .prgs, must have their own .rmk file or batch file to build them. Use the above mentioned RC.EXE syntax to embed your resources into your final .exe 
+
+RC.EXE is the Windows resource compiler and it is a utility you may get from any Windows C/C++ compiler. FiveWin does not provide RC.EXE. 
+
+Setting a variable contents from a resource string: 
+<code clipper>
+REDEFINE <uVar> 
+ [ AS [ CHARACTER| NUMERIC | LOGICAL | DATE ] ];  
+ [ RESOURCE | RESNAME | NAME <nIdRes> ];  
+</code> 
+|<uVar>| The string resource identifier|    
+|<nIdRes>|  The name of the Clipper variable|    
+
+====== CLAUSES ======
+|AS| To specify the type of the variable value we want to get| 
+
+====== Sample code ======
+<code clipper>
+
+
+#include "FiveWin.ch"
+#include "Dbf01.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   SET _3DLOOK ON
+
+   #ifdef __CLIPPER__
+      SET RESOURCES TO "Dbf02.dll"
+   #else   
+      SET RESOURCES TO "Dbf02_32.dll"
+   #endif   
+
+   USE Clients ALIAS "Clients"
+
+   DEFINE WINDOW oWnd FROM 2, 2 TO 20, 70 MDI ;
+      TITLE "Testing Drag & Drop in a Browse" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd ;
+       TO "FiveWin - Drag & Drop, wow !!!" CENTERED
+
+   ACTIVATE WINDOW oWnd MAXIMIZED ;
+       VALID MsgYesNo( "Do you really want to end ?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Clients"
+      MENU
+         MENUITEM "&Browse..." ACTION ClientsBrw() ;
+            MESSAGE "Clients browse management dialog"
+
+         SEPARATOR
+
+         MENUITEM "&Exit Test..."  ACTION oWnd:End() ;
+            MESSAGE "End doing this tutorial"
+      ENDMENU
+   ENDMENU
+
+return oMenu
+
+//--------------------------------------------------------------------------//
+
+STATIC FUNCTION ClientsBrw()
+
+   local oWndBrw, oBrw
+   local oCursor
+   local oBar
+
+   DEFINE CURSOR oCursor RESOURCE "CATCH"
+
+   DEFINE WINDOW oWndBrw FROM 0, 0 TO 24, 79 ;
+      TITLE "Browse" MDICHILD
+
+   DEFINE BUTTONBAR oBar SIZE 34, 34 3D OF oWndBrw
+
+   DEFINE BUTTON RESOURCE "ADD" OF oBar ;
+      ACTION  MsgInfo( "Hello, I'm your Append function" ) ;
+      ON DROP MsgInfo( "Hello, I'm your Append function with Drop" ) ;
+      TOOLTIP "Append a new record"
+
+   DEFINE BUTTON RESOURCE "EDT" OF oBar ;
+      ACTION  MsgInfo( "Hello, I'm your Edit function" ) ;
+      ON DROP MsgInfo( "Hello, I'm your Edit function with Drop" ) ;
+      TOOLTIP "Edit the select record"
+
+   DEFINE BUTTON RESOURCE "DEL" OF oBar ;
+      ACTION  MsgInfo( "Hello, I'm your Del function" ) ;
+      ON DROP MsgInfo( "Hello, I'm your Del function with Drop" );
+      TOOLTIP "Delete a record"
+
+   @ 2.2, 0 LISTBOX oBrw ;
+      FIELDS Clients->Name, Clients->Adress ;
+      HEADERS "Name", "Address" ;
+      SIZE 700, 800 ;
+      OF oWndBrw
+
+   oWndBrw:SetControl( oBrw )
+
+   // The Drag & Drop System
+
+   oBrw:oDragCursor = oCursor
+   oBar:bDropOver   = { || MsgStop( "I'm not a Button, try again" ) }
+
+   ACTIVATE WINDOW oWndBrw
+
+RETURN NIL
+
+//--------------------------------------------------------------------------//
+</code>
+{{:resources.jpg|:resources.jpg}}

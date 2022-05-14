@@ -1,0 +1,102 @@
+StartMonitor()
+
+
+
+StartMonitor()
+
+ Previous  Top  Next
+
+
+
+
+Start the resource monitor
+
+
+
+====== Syntax ======
+
+
+
+
+
+ StartMonitor() --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ The system uses resources to show the elements graphics. If these they
+are not liberated appropiately they will take place lost. These lost ones
+can cause the fall of the system. This function used next to EndMonitor()
+she makes that the resources are liberated. 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+
+
+ None 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ Nothing 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MONITOR.C 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== See also ======
+

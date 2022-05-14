@@ -1,0 +1,27 @@
+
+====== DestroyIcon() ======
+
+Destruye un icono
+
+====== Sintaxis ======
+ 
+DestroyIcon( <hIcon> ) --> lSuccess
+
+
+====== Parámetros ======
+
+| <hIcon> |Título del icono a destruir |
+
+====== Retorno ======
+
+| <lSuccess> | .t. si la operación tiene éxito.| 
+
+====== Ejemplo ======
+
+
+
+====== Código Fuente ======
+
+SOURCE\WINAPI\ICONS.C
+
+====== Ver también ====== 

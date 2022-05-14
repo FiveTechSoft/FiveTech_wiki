@@ -1,0 +1,62 @@
+
+====== ChooseFont() ======
+ChooseFont()
+
+Font selection standard DialogBox.
+
+====== Sintaxis ======
+
+ ChooseFont( <aPreviousFont>, <@nRGBColor>, <hPrinterDC>, <nFlags> ) -->
+aFont 
+
+ This function calls the Windows standard font selection DialogBox. 
+
+ This function is automatically called from TFont():Choose() METHOD and
+automates the process of providing parameters. 
+
+ Also you may call TWindow():SelFont() METHOD for a much easier way of
+managing this. 
+
+====== Parámetros ======
+
+ <aPreviousFont> An array with the default font description to show as
+selected when invoking the DialogBox. These are the elements of this
+array: 
+
+   #define LF_HEIGHT      1   
+   #define LF_WIDTH      2   
+   #define LF_ESCAPEMENT   3   
+   #define LF_ORIENTATION   4   
+   #define LF_WEIGHT      5   
+   #define LF_ITALIC      6   
+   #define LF_UNDERLINE      7   
+   #define LF_STRIKEOUT      8   
+   #define LF_CHARSET      9   
+   #define LF_OUTPRECISION   10   
+   #define LF_CLIPPRECISION   11   
+   #define LF_QUALITY      12   
+   #define LF_PITCHANDFAMILY   13   
+   #define LF_FACENAME      14   
+
+ <nRGBColor> A numeric RGB color supplied by reference where the
+DialogBox will place the user color selection. 
+
+ <hPrinterDC> Handle to the device context of the printer whose fonts
+will be listed in the dialog box. 
+
+ <nFlags> A set of bit flags that you can use to initialize the dialog
+box. 
+ 
+====== Devuelve ======
+
+ <aFont> An array that holds the new font definition, with the same
+structure as <aDefaultFont>. 
+
+====== Ejemplo ======
+ See IDE-->SOURCE for several samples used. 
+
+====== Código fuente ======
+ SOURCE\WINAPI\FontChoo.c 
+
+====== Ver tambi�n ======
+   TFont():Choose() and TWindow():SelFont()

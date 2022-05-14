@@ -1,0 +1,31 @@
+====== Crando conexiones DDE ======
+
+Cración de conexión DDE:
+
+<code clipper>
+ DEFINE [ DDE | LINK ] <oDde> ;
+        [ SERVICE <cService> ] ;
+        [ TOPIC <cTopic> ] ;
+        [ ITEM <cItem> ] ;
+        [ ACTION <uAction> ] ;
+        [ VALID <uEnd> ]
+</code>
+
+Activando el DDE:
+<code clipper>
+ ACTIVATE [ DDE | LINK ] <oDde>
+</code>
+
+Terminando la conexión DDE:
+<code clipper>
+ RELEASE [ DDE | LINK ] <oDde>
+</code>
+
+Parámetros:
+
+| <oDde> |Referencia al objeto DDE|
+| <cService> |Servicio que establece la conexión|
+| <cTopic> |Tema que establece la conexión|
+| <cItem> |Item que establece la conexión|
+| <uAction> |Acción a realizar una vez establecida la conexión|
+| <uEnd> |Acción a realizar cuando termina la conexión|

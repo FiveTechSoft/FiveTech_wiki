@@ -1,0 +1,326 @@
+
+====== Report Generator ======
+**General syntax: **
+<code clipper>
+ REPORT ...  
+ COLUMN ...  
+ COLUMN ...  
+ [ GROUP ... ]  
+ ENDREPORT  
+ ACTIVATE REPORT ...  </code>
+ 
+
+**Report creation: **
+<code clipper>
+ REPORT [ <oReport> ] ;  
+ [ TITLE <bTitle, ...> [< LEFT | CENTER | CENTERED | RIGHT > ] ];  
+ [ HEADER <bHead, ...> [< LEFT | CENTER | CENTERED | RIGHT > ] ];  
+ [ FOOTER <bFoot, ...> [< LEFT | CENTER | CENTERED | RIGHT > ] ];  
+ [ FONT <oFont, ...> ] ;  
+ [ PEN <oPen, ...> ] ;  
+ [ SUMMARY ] ;  
+ [ FILE | FILENAME | DISK <cRptFile> ] ;  
+ [ NAME | RESNAME | RESOURCE <cResName> ] ;  
+ [ TO PRINTER ] ;  
+ [ PREVIEW ] ;  
+ [ TO FILE <toFile> ] ;  
+ [ TO DEVICE <oDevice> ] ;  
+ [ CAPTION <cName> ]  </code>
+
+
+^ Parameters ^ Description                        ^
+| <oReport> | Variable that holds the report object |
+| <bTitle, ...> | List of line titles separated by commas. You can use any expression that returns a string |
+| <bHead, ...> | List of line headers separated by commas. You can use any expression that returns a string |
+| <bFoot, ...> | List of line footers separated by commas. You can use any expression that returns a string |  
+| <oFont, ...> | List of Fonts object separated by commas. See the programming guide for more explanation on how to change the default font of every section of the report |
+| <oPen, ...> | List of pens separated by commas |
+| <cRptFile> | Name of the configuration text file to use (Not implemented yet) |
+| <cResName> | Name of the configuration resource file to use (Not implemented yet) |
+| <toFile> | Name of the Ascii file to use for the output report |
+| <oDevice> | The target device where to print |
+| <cName> | Name of the report for the Windows printer manager |
+| <oRtpGrp> | Variable that holds the group object | 
+| <bGroup> | Expression to use for controlling the group breaks | 
+| <bHeader> | Expression to use for the group header. It should return a String  | 
+| <bFooter> | Expression to use for the group footer. It should return a String |  
+| <uFont> | Ordinal font to use in the list of fonts of the report object. It can be an expression that return a numeric value in the range from 1 to the quantity of the fonts defined on the report object | 
+| <oRptCol> | Variable that holds the column object | 
+| <bTitle, …> | List of column title lines separated by commas. You can use any expression that returns a string | 
+| <nCol> | Exact column to use in pixels. Not used normally since the report engine automatically centers the report on the page and makes all the calculations for you |
+| <bData, …> | List of column data lines separated by commas. You can use any expression. | 
+| <nSize> | Size of the column in characters. By default the report engine uses the width of char: 'B' for the calculations since the font used may be proportional |    
+| <cPicture, …> | List of pictures to use for every data line separated by commas | 
+| <uFont> | Ordinal font to use in the list of fonts of the report object. It can be an expression that return a numeric value in the range from 1 to the quantity of the fonts defined on the report object |
+| <bTotalExpr> | When this expression returns TRUE all the numeric data of the column will be added for the TOTAL info. If the expression return FALSE then the TOTAL value will not be affected for the current record. This clause is useful when creating master-detail reports |
+| <nPen> | Ordinal pen to use in the list of pens of the report object. It can be an expression that return a numeric value in the range from 1 to the quantity of the pens defined on the report object. |
+| <oReport> | Variable that holds the report object | 
+| <bFor> | A expression which holds the FOR clause. |   
+| <bWhile> | A expression which holds the WHILE clause. By default: .not. EOF() } | 
+| <bInit> | A expression to evaluate at the beginning of the report | 
+| <bEnd> | A expression to evaluate at the end of the report but before the grand totals are printed | 
+| <bPostEnd> | A expression to evaluate at the end of the report | 
+| <bStartLine> | A expression to evaluate at the beginning of every report body line | 
+| <bEndLine> | A expression to evaluate at the end of every report body line | 
+| <bStartPage> | A expression to evaluate a the beginning of every report page | 
+| <bEndPage> | A expression to evaluate a the end of every report page but before the page totals are printed | 
+| <bPostPage> | A expression to evaluate a the end of every report page | 
+| <bStartGroup> | A expression to evaluate a the beginning of every group break | 
+| <bEndGroup> | A expression to evaluate a the end of every group break but before group totals are printed | 
+| <bPostGroup> | A expression to evaluate a the end of every group break  | 
+| <bChange> | A expression to evaluate on every record or list process. The expression is evaluated after the record is processed. | 
+
+
+
+**CLAUSES **
+
+^ Clause   ^ Description                                               ^
+| SUMMARY  | Not detailed report body information, only report groups. |
+| TO PRINTER | Print directly to the default printer device. This clause is incompatible with the TO DEVICE clause |
+| PREVIEW | Shows a preview on screen of the report. This clause is incompatible with the TO DEVICE clause |
+| EJECT | Performs a page eject after every group break |
+| TOTAL | Creates a total on that column. If any group are defined it will also create a sub-total on every group brake | 
+| LEFT or CENTER or CENTERED or RIGHT | Alignment of the column | 
+| SHADOW | Creates a light gray shadow on that column | 
+
+**Group creation: **
+<code clipper>
+ GROUP [ <oRptGrp> ] ;  
+ [ ON <bGroup> ] ;  
+ [ HEADER <bHead> ] ;  
+ [ FOOTER <bFoot> ] ;  
+ [ FONT <uFont> ] ;  
+ [ EJECT ]  </code>
+ 
+
+**Column creation: **
+<code clipper>
+ COLUMN [ <oRptCol> ] ;  
+ [ TITLE <bTitle, ...> ] ;  
+ [ AT <nCol> ] ;  
+ [ DATA <bData, ...> ] ;  
+ [ SIZE <nSize> ] ;  
+ [ PICTURE <cPicture, ...> ] ;  
+ [ FONT <uFont> ] ;  
+ [ TOTAL [ FOR <bTotalExpr> ] ] ;  
+ [ LEFT | CENTER | CENTERED | RIGHT ] ;  
+ [ SHADOW ] ;  
+ [ GRID [ <nPen> ] ]  </code>
+ 
+**Finishing report definition: **
+<code clipper> 
+ ENDREPORT  
+ END REPORT  </code>
+
+**Report activation: **
+<code clipper>
+ ACTIVATE REPORT <oReport> ;  
+ [ FOR <bfor> ] ;  
+ [ WHILE <bwhile> ] ;  
+ [ ON INIT <bInit> ] ;  
+ [ ON END <bEnd> ] ;  
+ [ ON POSTEND <bPostEnd> ];  
+ [ ON STARTPAGE <bStartPage> ] ;  
+ [ ON ENDPAGE <bEndPage> ] ;  
+ [ ON POSTPAGE <bPostPage> ];  
+ [ ON STARTGROUP <bStartGroup> ] ;  
+ [ ON ENDGROUP <bEndGroup> ] ;  
+ [ ON POSTGROUP <bPostGroup> ];  
+ [ ON STARTLINE <bStartLine> ] ;  
+ [ ON ENDLINE <bEndLine> ] ;  
+ [ ON CHANGE <bChange> ]  </code>
+
+
+====== Samples Code ======
+Many samples are available in the Folder \Fwh\Samples\Report
+<code clipper >
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep02()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport TITLE  "*** My First Report ***" PREVIEW
+
+     COLUMN TITLE "St"         DATA Test->State
+     COLUMN TITLE "First Name" DATA Test->First
+     COLUMN TITLE "   Salary"  DATA Test->Salary TOTAL
+
+     END REPORT
+
+     ACTIVATE REPORT oReport
+
+     CLOSE TEST
+
+RETURN NIL
+</code>
+
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep06()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport TITLE  "*** My First Report ***"  ;
+          CAPTION "The Firm - Salary Report" ;
+          PREVIEW
+
+     COLUMN TITLE "St"         DATA Test->State
+     COLUMN TITLE "First Name" DATA Test->First
+     COLUMN TITLE "Last Name"  DATA Test->Last
+     COLUMN TITLE "   Salary"  DATA Test->Salary TOTAL
+
+     END REPORT
+
+     ACTIVATE REPORT oReport
+
+     CLOSE TEST
+
+RETURN NIL
+</code>
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+
+STATIC oReport
+
+Function Rep22()
+
+     LOCAL oFont1, oFont2, oFont3, oPen1, oPen2
+
+     DEFINE FONT oFont1 NAME "ARIAL" SIZE 0,-10
+     DEFINE FONT oFont2 NAME "ARIAL" SIZE 0,-10 BOLD
+     DEFINE FONT oFont3 NAME "ARIAL" SIZE 0,-10 BOLD ITALIC
+
+     DEFINE PEN oPen1 WIDTH 3 COLOR CLR_HGREEN
+     DEFINE PEN oPen2 WIDTH 1 COLOR CLR_HMAGENTA
+
+     USE TEST //INDEX TEST NEW
+
+     GO TOP
+
+     REPORT oReport ;
+          TITLE  "*** FiveWin Report DEMO ***",;
+                 "",;
+                 OemtoAnsi("by FiveTech"),;
+                 "" ;
+          FONT   oFont1,;
+                 oFont2,;
+                 oFont3 ;
+          PEN    oPen1,;
+                 oPen2 ;
+          HEADER "Date: "+dtoc(date()),;
+                 "Time:  "+time() ;
+                 RIGHT ;
+          FOOTER OemtoAnsi("Page: ")+str(oReport:nPage,3) ;
+                 CENTERED ;
+          PREVIEW
+
+     GROUP ON Test->State ;
+           FOOTER "Total State "+oReport:aGroups[1]:cValue+ ;
+                  " ("+ltrim(str(oReport:aGroups[1]:nCounter))+")" ;
+           FONT 2
+
+     COLUMN TITLE "ST" ;
+          DATA Test->State ;
+          FONT 2  ;
+          GRID 2
+
+     COLUMN TITLE "City" ;
+          DATA Test->City ;
+          GRID 2
+
+     COLUMN TITLE "First Name","Last Name" ;
+          DATA Test->First , Test->Last ;
+          GRID 2
+
+     COLUMN TITLE "   Salary" ;
+          DATA Test->Salary ;
+          PICTURE "9,999,999" ;
+          SIZE 9 ;
+          TOTAL ;
+          SHADOW ;
+          GRID
+
+     END REPORT
+
+     IF oReport:lCreated
+
+          /*
+          First line of title bold
+          */
+
+          oReport:oTitle:aFont[1] := {|| 2 }
+
+          /*
+          Total descriptors
+          */
+
+          oReport:cGrandTotal := "Grand Total..."
+          oReport:cPageTotal := "Page Total..."
+
+          /*
+          Italic when salary greater than 100,000
+          */
+
+          oReport:aColumns[4]:bDataFont := {|| iif(Test->Salary>100000,3 ,1 ) }
+
+          /*
+          Change some colors
+          */
+
+          oReport:SetTxtColor(CLR_HBLUE,1)
+          oReport:SetTxtColor(CLR_HRED,2)
+          oReport:SetTxtColor(CLR_YELLOW,3)
+          oReport:SetPenColor(CLR_HCYAN)
+          oReport:SetShdColor(CLR_GREEN)
+
+     ENDIF
+
+     ACTIVATE REPORT oReport ON STARTGROUP oReport:NewLine() ;
+                             ON STARTPAGE StartPage()
+
+     /*
+     Close and release
+     */
+
+     oFont1:End()
+     oFont2:End()
+     oFont3:End()
+     oPen1:End()
+     oPen2:End()
+
+     CLOSE TEST
+
+RETURN NIL
+
+
+STATIC Function StartPage()
+
+     oReport:Box(0.1,                            ;
+                 0.1,                            ;
+                 oReport:PhyHeight()-0.1,        ;
+                 oReport:PhyWidth() -0.1         )
+
+     oReport:Line(0.9, 0.55, 2, 0.55, 2 )
+     oReport:Line(0.55, 0.9, 0.55, 2, 2 )
+     oReport:SayBitmap(.3,.3,"ICO.BMP",.5,.5)
+     oReport:SayBitmap(3,2,"CONFIDEN.BMP",4,4)
+
+RETURN NIL
+</code>
+
+====== Screen snapshot of the above given sample ======
+{{:report.jpg|:report.jpg}}
+
+
+====== See also ======
+[[fivewin_class_treport|Class TReport]], [[fivewin_class_tprinter|Class TPrinter]]

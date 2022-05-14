@@ -1,0 +1,18 @@
+
+====== LoadResource() ====== 
+LoadResource()
+
+Loads the specified resource in memory.
+====== Sintaxis ======
+ LoadResoure( <hResource>, <hFindResource> ) --> hInstance 
+====== Parámetros ======
+  <hResource>      Handle of the module that contains the specified resource. 
+  <hFindResource>  Identifier of the resources to load. This handle it should be created
+                     with the function FindResource 
+====== Devuelve ======
+ The return value is the instance handle of the global memory object
+containing the data associated with the resource. 
+====== Ejemplo ======
+====== Código fuente ======
+ SOURCE\WINAPI\RESOURCE.C 
+====== Ver también ======

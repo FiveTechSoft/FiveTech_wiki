@@ -1,0 +1,102 @@
+SetScrollRange()
+
+
+SetScrollRange()
+ Previous  Top  Next
+
+Sets the scroll range of a scrollbar.
+
+====== Sintaxis ======
+
+ 
+
+
+ SetScrollRange( <hWnd>, <nFlags>, <nMin>, <nMax>, <lRedraw> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <hWnd> The handle of the scrollbar. 
+
+
+ 
+
+
+ 
+
+ <nFlags> Scroll bar flags 
+
+
+ 
+      
+   SB_CTL   2   Retrieves the position of a scroll bar control. In this
+case, the hwnd parameter must be the window handle of a scroll bar
+control.
+   SB_HORZ   0   Retrieves the position of a window's horizontal scroll
+bar.   
+   SB_VERT   1   Retrieves the position of a window's vertical scroll
+bar.   
+
+ 
+
+
+ <nMin> The minimum scroll position. 
+
+
+ 
+
+
+ <nMax> The maximum scroll position. 
+
+
+ 
+
+
+ <lRedraw> If .t., the scrollbar is redrawn. 
+
+
+ 
+
+
+ 
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\SCROLL.C 
+
+
+ 
+
+
+
+====== Ver también ======
+

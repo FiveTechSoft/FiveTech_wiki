@@ -1,0 +1,30 @@
+
+====== BtnPaint() ======
+
+Paints the contents of a bitmap button. 
+
+====== Syntax: ======
+
+ BtnPaint( <hWnd>, <hDib1>, <hPalette1>, <hDib2>, <hPalette2>, <lPressed>, <lAdjust> ) --> nil  
+ 
+====== Parameters: ======
+^Parameter^Description^
+|<hWnd>| The handle of the window which is painting.  |
+|<hDib1>| The DIB handle for the normal status.  |
+|<hPalette1>| The palette handle for the normal status.  |
+|<hDib2>| The DIB handle for the pressed status.  |
+|<hPalette2>| The palette handle for the pressed status.  |
+|<lPressed>| If the button is being pressed.  |
+|<lAdjust>| If the bitmap has to be adjusted on the surface.  |
+
+====== Returns: ======
+
+Nothing.  
+
+**Observations** 
+
+This is a FiveWin function used internally to paint the buttonbar buttons.  
+
+====== Source Code: ======
+
+SOURCE\WINAPI\BMPDRAW.C   

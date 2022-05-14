@@ -1,0 +1,133 @@
+====== TrackBar ======
+
+**Creating a TrackBar from source code **
+<code clipper>
+ @ <nRow>, <nCol> TRACKBAR <oTrack> ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ PIXEL ] ;  
+ [ DESIGN ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ MIN <nMin> ] ;  
+ [ MAX <nMax> ] ;  
+ [ POS <nPos> ] ;  
+ [ FREQUENCY <nFreq> ] ;  
+ [ TICKPOS <nTickPos> ] ;  
+ [ NOAUTOTICKS ] ;  
+ [ NOTOOLTIP ] ;  
+ [ SELRANGE ] ;  
+ [ VERTICAL ]  </code>
+
+**Creating a TrackBar from resources **
+<code clipper>
+ REDEFINE TRACKBAR <oTrack> ;  
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ HELPID | HELP ID <nHelpId> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <uWhen> ] ;  
+ [ ON CHANGE <uChange> ] ;  
+ [ MIN <nMin> ] ;  
+ [ MAX <nMax> ] ;  
+ [ POS <nPos> ] ;  
+ [ FREQUENCY <nFreq> ]  </code>
+
+| <nRow>, <nCol> | The top and left coordinates of the control | 
+| <oWnd> | A reference to the container window object | 
+| <nWidth>, <nHeight> | The width and the height of the control | 
+| <cMsg> | The message associated with the control | 
+| <uWhen> | The WHEN clause | 
+| <uChange> | The action to perform when the control changes | 
+| <nMin>  | The minimum position | 
+| <nMax  | The maximum position | 
+| <nPos> | The current position | 
+| <nFreq> | The frequency | 
+| <nTickPos> | The tick position | 
+| <nId>  | Resource identifier | 
+| <nHelpId> | Help identifier | 
+
+**CLAUSES **
+
+| PIXEL | To specify pixel coordinates | 
+| DESIGN | To activate the control in design mode | 
+| NOAUTOTICKS | To deactivate autotick mode | 
+| NOTOOLTIP | To not show the tooltip | 
+| SELRANGE | To activate selection range mode | 
+| VERTICAL | To show the control vertically | 
+
+====== Sample Code ======
+\Fwh\Samples\TrBar.Prg
+<code clipper>
+// Win32 common controls trackbar & updown
+
+#include "FiveWin.ch"
+
+#define TBS_AUTOTICKS           1
+#define TBS_VERT                2
+#define TBS_HORZ                0
+#define TBS_TOP                 4
+#define TBS_BOTTOM              0
+#define TBS_LEFT                4
+#define TBS_RIGHT               0
+#define TBS_BOTH                8
+#define TBS_ENABLESELRANGE      32
+#define TBS_TOOLTIPS            256
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oTrack1, oTrack2, oTrack3, oTrack4, oTrack5, oTrack6
+   local oGet, nGet := 50
+
+   DEFINE WINDOW oWnd TITLE "Testing Win32 TrackBar"
+
+   @  30,  50 TRACKBAR oTrack1 OF oWnd PIXEL POS 50 ;
+              ON CHANGE oGet:cText( nGet := oTrack1:GetPos() )
+
+   @  80,  85 GET oGet VAR nGet OF oWnd PIXEL SIZE 30, 20 ;
+              PICTURE "999" SPINNER MIN 0 MAX 100 ;
+              ON CHANGE oTrack1:SetPos( nGet, .t. )
+
+   @ 110,  50 TRACKBAR oTrack2 OF oWnd PIXEL TICKPOS TBS_BOTH ;
+              WHEN nGet > 50
+
+   @  30, 225 TRACKBAR oTrack3 OF oWnd PIXEL VERTICAL SIZE 40, 120
+
+   @  30, 275 TRACKBAR oTrack4 OF oWnd PIXEL VERTICAL SIZE 40, 120 TICKPOS TBS_RIGHT
+
+   @  30, 350 TRACKBAR oTrack5 OF oWnd PIXEL SELRANGE SIZE 150, 40 FREQUENCY 20
+
+   @ 100, 350 TRACKBAR oTrack6 OF oWnd PIXEL SELRANGE SIZE 150, 40 FREQUENCY 20 ;
+              TICKPOS TBS_BOTTOM
+
+   @ 180, 200 BUTTON "From resources ..." OF oWnd PIXEL ;
+              ACTION FromRes() SIZE 150, 30
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function FromRes()
+
+   local oDlg, oTrack
+
+   DEFINE DIALOG oDlg RESOURCE "TRACKBAR"
+
+   REDEFINE TRACKBAR oTrack ID 101 OF oDlg
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+====== Screen Snapshot ======
+{{:trackbar.jpg|:trackbar.jpg}}
+
+
+====== See also ======
+[[fivewin_class_ttrackbar | Class TTrackBar ]], [[fivewin_class_tslider | Class TSlider ]], [[fivewin_commands_slider | Command Slider ]]

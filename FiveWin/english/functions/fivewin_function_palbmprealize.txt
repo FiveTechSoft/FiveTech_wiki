@@ -1,0 +1,69 @@
+====== PalBmpRealize() ====== 
+
+
+PalBmpRealize()
+
+
+Realize a bitmap.
+
+====== Syntax ======
+
+ 
+
+
+ PalBmpRealize( <hWnd>, <hPalette> ) --> nResult 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hWnd> The handle of a window. 
+
+
+ <hPalette> The palette handle of the bitmap. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <nResult> ???. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\FUNCTION\FWBMP.C 
+
+
+ 
+
+
+
+====== See also ======
+

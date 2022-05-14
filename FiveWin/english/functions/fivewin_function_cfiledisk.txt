@@ -1,0 +1,30 @@
+====== cFileDisc() ====== 
+
+Retrieves the drive letter from a filename with full path 
+
+====== Syntax ======  
+
+cFileDisc( <cFileName> ) --> cDrive  
+
+====== Parameters ======  
+^Parameter^Description^
+| <cFileName> | The filename from which the drive letter to be retrieved. (please note, cFileName whould contain the full path|  
+
+====== Returns ======  
+^Returns^Description^
+|<cDrive>| A two characters string with the format: A:, B:, C:, etc...|
+
+====== Sample Code ======
+<code clipper>
+#include "Fivewin.ch"
+//---------------------------------//
+Function Main()  
+MsgInfo(cFileDisc( "g:\Test\Abc.Txt" ) )  // Result G:
+
+MsgInfo(cFileDisc( "F:\Wh\Samples\Whatsnew.Txt" ) )  // Result F:
+   
+Return nil 
+</code>
+
+====== Source Code ======  
+SOURCE\FUNCTION\FileName.prg  

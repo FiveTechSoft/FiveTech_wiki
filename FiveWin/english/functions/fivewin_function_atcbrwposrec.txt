@@ -1,0 +1,19 @@
+====== aTcBrwPosRec() ======
+To calculate the coordinates of the cell beiing edited in a TCBrowse control
+====== Syntax: ======
+aTCBrwPosRec( <hWnd>, <nRow>, <nCol>, <nWidth>, <hFont> ) --> aCoors
+
+====== Parameters: ======
+^Parameter^ Description                   ^
+| <hWnd> | Handle of the object TCBrowse. |
+| <nRow> | Active line of the TCBrowse. |
+| <nCol> | Active column of the TCBrowse. |
+| <nWidth> | Width of the cell to publish. |
+| <hFont> | Handle of the object font of the TWBrowse |
+
+====== Returns: ======
+|<aCoors> | Array of four elements that represent the coordinates calculated of the cell of being edited on the TWBrowse. nTop, nLeft, nBottom, nRight |
+====== Note: ======
+Function used in the class TCBrowse to determine the coordinates where the active cell will be published. This function is used in the method: :EditCol ().
+====== Source code: ======
+SOURCE\FUNCTION\TCBFUNCS.C 

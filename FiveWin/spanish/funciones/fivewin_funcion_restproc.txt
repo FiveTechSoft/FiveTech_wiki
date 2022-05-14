@@ -1,0 +1,27 @@
+====== RestProc() ====== 
+
+Restaura el procedimiento de ventana. Usado internamente por FiveWin
+
+====== Sintaxis ======
+ RestProc( <hWnd>, <nOldProc> ) --> nil 
+
+====== Parámetros ======
+|hWnd|El manejador de la ventana cuyo procedimiento original va a ser restaurado|
+|nOldProc|El puntero al antiguo procedimiento de ventana| 
+
+====== Devuelve ======
+ nil 
+
+====== Observaciones ======
+
+Esta función la usa FiveWin automáticamente para desubclasear una ventana subclaseada.
+
+Deje que FiveWin realice esto automaticamente
+
+====== Ejemplo ======
+ SOURCE\CLASSES\Window.prg METHOD UnLink() 
+====== Código fuente ======
+ SOURCE\WINAPI\ChangePr.c 
+
+====== Ver también ======
+ [[fivewin_funcion_changeproc|ChangeProc()]]

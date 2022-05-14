@@ -1,0 +1,149 @@
+FillRect()
+
+
+
+
+FillRect()
+
+ Previous  Top  Next
+
+
+
+
+Fills a given rectangle with a specified brush
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ FillRect( <hDC>, <aRect>, <hBrush> ) --> nil 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ This function fills a rect with the specified brush. 
+
+
+ 
+
+
+ 
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <hDC> The handle of the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <aRect> A 4 element Clipper array, representing a rect: 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ nTop, nLeft, nBottom, nRight 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <hBrush> The handle of a brush. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+ 
+
+
+ 
+
+
+ Nothing. 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\\WINAPI\\Rects.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+
+
+ GetClientRect() GetWndRect() InvertRect() 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

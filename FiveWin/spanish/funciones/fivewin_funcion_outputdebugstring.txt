@@ -1,0 +1,30 @@
+
+====== OutputDebugString() ====== 
+OutputDebugString()
+
+Displays a debugging msg at Microsoft dbwin.exe
+====== Sintaxis ======
+ OutputDebugString( <cText> ) --> nil 
+====== Parámetros ======
+ <cText> A text to display of the Microsoft dbwin.exe debugging monitor
+utility. Microsoft provides this small dbwin.exe utility to help tracing
+several Windows API operations. 
+====== Devuelve ======
+ nil. 
+
+Comments:
+
+ Some Windows API can not be interrupted, this is why dbwin.exe is
+extremelly usefull to trace some sections of the activity of our
+application.DbWin.exe must be loaded before we can use
+OutputDebugString(). 
+
+ FiveWin also supplies this function from low level C source code, so we
+can use it from our own C routines. 
+====== Ejemplo ======
+ // Load Microsoft DbWin.exe first! 
+
+ OutputDebugString( "Hello world!" ) 
+====== Código fuente ======
+ Not provided. 
+====== Ver también ======

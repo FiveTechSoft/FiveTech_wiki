@@ -1,0 +1,101 @@
+fMimeEnc()
+
+
+
+
+fMimeEnc()
+
+ Previous  Top  Next
+
+
+
+
+Encript of a MIME file
+
+
+
+====== Sintaxis ======
+
+
+
+   fMimeEnc( <cIn>, <cOut> ) --> nil
+
+
+
+====== Par�metros ======
+
+
+
+
+
+ <cIn> Name from the file to encript. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cOut> Name of the encripted file 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ Nil 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+
+ 
+
+
+ 
+
+
+
+====== C�digo fuente ======
+
+
+
+
+
+ SOURCE\FUNCTION\MIMECLIP.PRG 
+
+
+ 
+
+
+ 
+
+
+====== Ver tambi�n ======
+

@@ -1,0 +1,12 @@
+====== ffMimeEnc() ======
+Encript to a MIME file 
+====== Syntax: ======
+fMimeEnc(<nIn>,   <nOut> ) --> nil 
+====== Parameters: ======
+| <nIn>  |Handle of the file to encrypt.  |
+| <nOut> |Handle of the file encrypted.  |
+====== Returns: ======
+Nil
+====== Source code: ======
+SOURCE\FUNCTION\MIMECLIP.PRG  
+

@@ -1,0 +1,60 @@
+TaskDelIcon()
+
+
+TaskDelIcon()
+ Previous  Top  Next
+
+Deletes an icon from the taskbar.
+
+====== Sintaxis ======
+
+
+ TaskDelIcon( <oNotifyIconData> ) --> nil 
+
+
+ 
+
+
+ 
+====== Parámetros ======
+
+
+ <oNotifyIconData> The handle of the taskbar icon to delete. 
+
+
+ 
+
+====== Devuelve ======
+
+
+ Nil 
+
+
+ 
+
+
+ 
+====== Ejemplo ======
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\SHELLAPI.PRG 
+
+
+ 
+
+
+
+====== Ver también ======
+

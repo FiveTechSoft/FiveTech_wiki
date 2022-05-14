@@ -1,0 +1,10 @@
+
+^CATEGORIA| Manejo de archivos de Ayuda|
+^Parámetros|**<cString>**|
+|  | Es un parámetro opcional que especifica la cadena que deseamos buscar|
+^Valor de retorno| Nil|
+^Descripción:| Llama a la caja de diálogo de búsqueda de WinHelp. Si ha especificado un texto de búsqueda, entonces, automáticamente se muestra el resultado  |
+|  | de la búsqueda, sino tiene que teclear dinámicamente la expresión |
+^Ejemplo|HelpSearch( "Hello" ) |
+^Código| SOURCE\WINAPI\Help.c |
+^ Ver también | WinHelp, GetHelpTopic, HelpIndex, GetHelpFile, HelpSetPos, HelpSetTopic, HelpTopic, SetHelpFile, HelpPopup| 

@@ -1,0 +1,27 @@
+====== GetMdiChlp ======         
+
+Procesador de mensajes por defecto para MDIChild
+
+====== Sintaxis ======
+
+GetMDIChlP() --> nlPointer
+
+====== Parámetros ======   
+
+Ninguno
+
+
+====== Retorno ======        
+
+Devuelve el procedimiento que maneja los mensajes que la ventana MDIChild no maneja explicitamente. Los mensajes de esa ventana que no son procesados por el procedimiento DefWindowProc seran pasados a DefMDIChildProc.    
+
+====== Observaciones ======
+
+Todos los mensajes que una ventana no procesa son pasados a la función por defecto para que esta los procese (DefWinProc). Cuando en lugar de trabajar con una ventana normal, trabajamos con las ventanas MDI los procedimientos se hacen llamar ellos mismo de diferentes formas: DefFrameProc and DefMDIChildProc. Nuestra función obtiene el procedimiento DefMDIChildProc. En resumen es como un bucle do case... endcase  que trata los posibles mensajes de una ventana y si después de revisar todos los mensajes no encuentra que hacer usa la acción especificda en " otherwise ".
+
+====== Ejemplo ====== 
+
+
+====== Código fuente ======   
+
+SOURCE\WINAPI\MDI.C

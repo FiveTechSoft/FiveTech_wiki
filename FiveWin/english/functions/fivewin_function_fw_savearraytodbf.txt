@@ -1,0 +1,68 @@
+====== FW_SaveArrayToDBF() ======
+Save an array data to fields
+
+
+====== Syntax ====== 
+FW_SaveArrayToDBF( acFieldList, aData ) --> nil  
+
+====== Parameters ====== 
+^Parameter^Description^
+| <acFieldList> | Array with the fields names to save |
+| <aData> | Array with the data to save |
+
+====== Return ====== 
+^Returns^Description^
+| <nil> | Nothing|
+
+
+====== Sample ======
+<code clipper>
+#include "FiveWin.ch"
+//----------------//
+Function Main()
+
+    Local aTest1:={"Tom","John","Harry"}
+    Local aTest2:={ {"Tom",21},{"John",20},{"Harry",28}}
+    Local aTest3:={ {"Tom",21,Date()},{"John",20,Date()},{"Harry",28,Date()}}
+    
+    Local cText,cArray,aArray,cDate,dDate
+ 
+    cText:=FW_ValToExp(aTest1)+CRLF+;
+           FW_ValToExp(aTest2)+CRLF+;
+           FW_ValToExp(aTest3)+CRLF+;
+           FW_ValToExp("Tom")+CRLF+;
+           FW_ValToExp(28)+CRLF+;
+           FW_ValToExp(Date())+CRLF+;
+           FW_ValToExp(Time())
+           
+     MemoWrit("Test.txt",cText)
+     MsgInfo(cText)
+
+     cArray:=FW_ValToExp(aTest3) // Converts the multi dimension array to a Text form which can be later restored back as an array 
+     aArray:= &(cArray)  // Restoring the text as array using a simple macro
+     xBrowser aArray  // The Multi dimension array is displayed using xBrowse
+
+     cDate:=FW_ValToExp(Date())
+     MsgInfo(ValType(cDate))  // Returns C -> Character Type
+     dDate:=&(cDate)
+     MsgInfo(ValType(dDate))  // Returns D -> Date Type
+
+Return nil
+</code>
+
+**The output text in Test.Txt would be**
+<code clipper>
+{[Tom],[John],[Harry]}
+{{[Tom],21},{[John],20},{[Harry],28}}
+{{[Tom],21,SToD("20111012")},{[John],20,SToD("20111012")},{[Harry],28,SToD("20111012")}}
+[Tom]
+28
+SToD("20111012")
+[09:50:38]
+</code>
+
+====== Source Code ====== 
+\fwh\source\classes\database.prg
+
+====== See also ======
+[[fivewin_function_asave|Function aSave()]]

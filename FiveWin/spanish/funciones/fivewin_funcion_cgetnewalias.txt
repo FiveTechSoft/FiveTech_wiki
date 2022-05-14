@@ -1,0 +1,46 @@
+
+====== cGetNewAlias() ======
+
+Retorna un alias no usado para abrir una tabla DBF.
+
+====== Syntaxis ======
+
+cGetNewAlias( <cAlias> ) --> cAliasNuevo
+ 
+====== Parametros ======
+
+| <cAlias> | Nombre del cual se iniciara a crear una alias que no este en uso.  |
+
+====== Devuelve ======
+
+| <cAliasNuevo> |  Nuevo alias que usaremos para asignar a una nueva tabla DBF.  |
+
+====== Ejemplo ======
+<code clipper>
+
+#include "fivewin.ch"
+
+PROCEDURE Main()   
+   LOCAL aWorkAreaInUse, nCount, x
+   
+   USE clients NEW cGetNewAlias( "CLIENTE" )
+   USE clients NEW cGetNewAlias( "CLIENTE" )   
+   
+   aWorkAreaInUse := aGetWorkAreas() 
+   nCount := len( aWorkAreaInUse )
+   
+   FOR x:=1 TO nCount
+      ?"Area en uso:", alias( x )
+   NEXT
+   
+RETURN    
+
+</code>
+
+====== Codigo fuente ======
+
+SOURCE\FUNCTION\DBTOOLS.PRG    
+
+====== Ver tambien ======
+
+[[fivewin_funcion_agetworkareas|aGetWorkAreas()]]

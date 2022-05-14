@@ -1,0 +1,37 @@
+
+====== cChr2Data() ======
+
+Convierte a minúsculas todas las letras excepto la segunda que la convierte a mayúscula.
+
+====== Sintaxis: ======
+ 
+ cChr2Data( <cString> ) --> cString
+
+====== Parámetros: ======
+
+^Parameter^Description^ 
+| <cstring> | Es la cadena a convertir |  
+
+====== Retorno: ======
+
+^Retorna^Descripción^
+|<cString>| Retorna la cadena convertida. El segundo caracter de la cadena retornada estará siempre en mayúscula y el resto en minúsculas | 
+
+
+====== Ejemplo: ======
+ 
+Ver \Fwh\Samples\ObjInsp.Prg
+<code clipper>
+#include "FiveWin.ch" 
+//------------------------------//
+Function Main()  
+
+MsgInfo(cChr2Data( "antony" ))  // Result aNtony
+MsgInfo(cChr2Data( "Test" ))   // Result tEst
+MsgInfo(cChr2Data( "This is a Test" )) // Result tHis is a test
+Return nil  
+</code>
+
+====== Codigo Fuente: ======
+
+SOURCE\FUNCTION\CHR2DATA.C

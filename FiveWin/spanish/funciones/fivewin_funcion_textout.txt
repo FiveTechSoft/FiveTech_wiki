@@ -1,0 +1,144 @@
+TextOut()
+
+
+
+TextOut()
+
+ Previous  Top  Next
+
+
+
+
+Draws text to a specified location
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ TextOut( <hDC>, <nRow>, <nCol>, <cText> ) --> lSuccess 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <hDC> Identifies the device context. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow>, <nCol> The coordinates where to print. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <cText> The text to be drawn. 
+
+
+ 
+
+
+ 
+
+
+
+====== Devuelve ======
+
+
+
+
+
+ <lSuccess> A logical value indicating that the operation was completed
+successfully. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ CLASS TPrinter METHOD Say 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\WINAPI\Text.c 
+
+
+ 
+
+
+ 
+
+
+
+See also:
+
+
+
+ 
+
+
+ 
+
+
+ ExtTextOut() WSay() 
+
+
+ 
+
+
+ 
+
+
+
+
+
+====== Ver también ======
+

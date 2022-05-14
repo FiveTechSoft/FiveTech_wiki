@@ -1,0 +1,27 @@
+====== SetForegroundWindow() ======
+
+Pone el subproceso que creó la ventana especificada en el primer plano y activa la ventana.
+
+
+
+====== Sintaxis ====== 
+
+SetForegroundWindow( <hWnd> ) --> lExito
+
+
+====== Parametros ====== 
+
+| <hWnd>| handle de la Ventana Contenedora  |
+
+
+====== Devuelve ====== 
+
+| <lExito>| Si la ventana se puso en primer plano, el valor de retorno es. t., de lo contrario. f.. |
+
+
+====== Codigo fuente ====== 
+
+SOURCE\WINAPI\INSTANCE.C  
+
+====== Ver también ====== 
+ 

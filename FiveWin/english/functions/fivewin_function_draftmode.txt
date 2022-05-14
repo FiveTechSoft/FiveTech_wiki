@@ -1,0 +1,15 @@
+====== DraftMode() ======
+Specifies the printer resolution
+
+====== Syntax ======
+DraftMode( <lDraft> ) --> nil
+
+====== Parameters ======
+^Parameter^Description^
+|<lDraft>| If this value is .t. the printer resolution is DMRES_DRAF else it is DMRES_HIGHT| 
+
+====== Returns ======
+None 
+
+====== Source Code ======
+SOURCE\WINAPI\PRINTDC.C 

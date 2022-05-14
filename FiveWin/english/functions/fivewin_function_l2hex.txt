@@ -1,0 +1,28 @@
+
+====== L2Hex() ======
+
+Converts a long (4 bytes) into a hex string (8 chars)
+
+====== Syntax: ======
+ 
+ L2Hex( <nLong> ) --> cHex
+
+
+====== Parameters: ======
+
+| <nLong> | A number in the range 0 - 2147483647 (+ or -) |
+
+
+====== Returns: ======
+
+| <cHex> | A eight characters hex string. |
+
+====== Sample: ======
+
+ MsgInfo( L2Hex( 123456789 ) )   // returns a "075BCD15" hex
+====== Source code: ======
+
+ SOURCE\FUNCTION\or.c 
+====== See also: ======
+
+[[fivewin_function_c2hex|C2Hex()]], [[fivewin_function_i2hex|I2Hex()]]

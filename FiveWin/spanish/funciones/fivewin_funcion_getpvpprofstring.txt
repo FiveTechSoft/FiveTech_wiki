@@ -1,0 +1,37 @@
+====== Getpvpprofstring ======    
+
+Devuelve el valor de una cadena en un archivo privado INI.
+
+====== Sintaxis ======    
+
+GetPvpProfString( <cSection>, <cEntry>, <cDefault>, <cIniFile> )  --> <cValue>
+
+====== Parámetros ======
+
+| <cSection> | Especifica la sección conteniendo la entrada. |
+| <cEntry> | La entrada cuyo valor debe ser recuperado. |
+| <cDefault> | Especifica el valor de cadena predeterminado que se devuelve si la entrada no se puede encontrar. |
+| <cIniFile> | Es el nombre del archivo privado INI a usar. |
+
+====== Retorno ======
+
+| <cValue> |  El valor de cadena en el archivo INI que sigue a la entrada especificada. |
+
+
+====== Observaciones ======
+
+Esta función devuelve un valor de un archivo INI definido por el usuario.
+
+====== Ejemplo ======
+
+SAMPLES\\TestIni.prg
+
+====== Código fuente ======         
+
+SOURCE\\WINAPI\\Profile.c
+
+====== Ver también ======           
+
+[[fivewin_function_GetProfInt|GetProfInt()]]
+[[fivewin_function_GetPvpProfile|GetPvpProfile()]]
+[[fivewin_function_GetPvpProfString|GetPvpProfString()]]

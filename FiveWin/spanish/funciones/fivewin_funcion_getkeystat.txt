@@ -1,0 +1,24 @@
+====== GetKeyStat() ======
+
+Indica si una tecla esta siendo presionada.
+
+====== Sintaxis: ======
+
+GetKeyState( <nKey> ) --> lPressed  
+ 
+Este función nos indica si una tecla esta siendo presionada.
+ 
+====== Parámetros: ======
+ 
+|<nKey>| El código de la tecla que queremos comprobar (normal o virtual)  |
+ 
+====== Retorno: ======
+
+|<lPressed>| Sí se presiona o no  |
+
+====== Código fuente: ======
+
+ See SOURCE\CLASSES\TGet.prg  
+
+====== Ver también: ======
+[[fivewin_function_GetAsynKey|GetAsynKey()]]

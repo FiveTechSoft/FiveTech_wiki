@@ -1,0 +1,32 @@
+
+====== DDEClientTransaction()  ======
+
+Comienza una operación de datos DDE
+
+
+====== Sintaxis ======
+ 
+DDEclientt( <hData>, <nLen>, <hConv>, <hszItem>, <nClipFmt>, <nType>, <nTimeOut>, <@nResult> ) --> hDDEData   
+
+
+====== Parámetros ======
+
+|<hData>| de datos para pasar a un servidor |
+|<nLen>| Longitud de los datos |
+|<hConv>| Título de conversación| 
+|<hszItem>| Título de tema-cadena de nombre| 
+|<nClipFmt>| formato de datos del Portapapeles| 
+|<nType>| tipo de transacciones |
+|<nTimeOut>| duración de tiempo de espera| 
+|<@nResult>| Resultado de la transacción |
+  
+
+====== Retorno ======
+
+
+====== Ejemplo ======
+
+ 
+====== Código Fuente ======
+ 
+ SOURCE\WINAPI\DDEML.C 

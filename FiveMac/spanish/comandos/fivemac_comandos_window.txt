@@ -1,0 +1,20 @@
+====== Crea una ventana desde código fuente ======
+<code clipper>
+DEFINE WINDOW <oWnd> ;
+   [ TITLE <cTitle> ] ;
+   [ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;
+   [ TEXTURED ] ; 
+   [ PANELED ]
+</code>
+
+====== Activa la ventana ======
+<code clipper>
+ACTIVATE WINDOW <oWnd> ;
+   [ ON [ LEFT ] CLICK <uLClicked> ] ;
+   [ VALID <uValid> ]
+</code>
+====== Código fuente ======
+include\FiveMac.ch
+
+====== Ver también ======
+[[fivemac_clase_twindow|Clase TWindow]], [[fivemac_clase_tdialog|Clase TDialog]]

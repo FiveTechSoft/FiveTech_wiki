@@ -1,0 +1,103 @@
+GetMItemId()
+
+
+
+GetMItemId()
+
+ Previous  Top  Next
+
+
+
+
+To obtain the identifier of a MenuItem for their position
+
+
+
+====== Syntax ======
+
+
+
+
+
+ GetMItemId( <hMenu>, <nPos> ) --> nItemId 
+
+
+ 
+
+
+ 
+
+
+
+====== Parameters ======
+
+
+
+ 
+
+
+ 
+
+
+ <hMenu> Handler del menu 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nPos> Position that occupies the menuitem inside the menu beginning to
+count from zero. 
+
+
+ 
+
+
+ 
+
+
+
+====== Returns ======
+
+
+
+
+
+ It returns the badge of the menuitem if the function you it executes
+with normality. If hMenu is not a handler of valid menu the function it
+returns -1 and if hMenu is a SEPARATOR the function it returns zero. 
+
+
+ 
+
+
+ 
+
+
+
+====== Example ======
+
+
+
+====== Source Code ======
+
+
+
+
+
+ SOURCE\FUNCTION\MENUS.C 
+
+
+ 
+
+
+ 
+
+
+====== See also ======
+

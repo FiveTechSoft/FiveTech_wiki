@@ -1,0 +1,232 @@
+xBrowseNew()
+
+
+xBrowseNew()
+ Previous  Top  Next
+
+Creates and sets a xBrowse object.
+
+
+
+====== Sintaxis ======
+
+
+
+
+
+ xBrowseNew( <oWnd>, <nRow>, <nCol>, <nWidth>, <nHeight>, <aFlds>,
+<aHeaders>, <aColSizes>, <bChange>, <bLDblClick>, <bRClick>, <oFont>,
+<oCursor>, <nClrFore>, <nClrBack>, <cMsg>, <lUpdate>, <cAlias>, <bWhen>,
+<lDesign>, <bValid> ) --> oBrw 
+
+
+ 
+
+
+ 
+
+
+
+====== Parámetros ======
+
+
+
+
+
+ <oWnd>   The parent window. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ <nRow>   The coordinates of the xBrowse. 
+
+
+ <nCol> 
+
+
+ 
+
+
+ <nWidth>   The width of the xBrowse. 
+
+
+ 
+
+
+ <nHeight>   The height of the xBrowse. 
+
+
+ 
+
+
+ <aFlds>   An array of codeblocks to display as columns. 
+
+
+ 
+
+
+ <aHeaders>   An array of texts to be used as headers. 
+
+
+ 
+
+
+ <aColSizes>   An array of column sizes in pixels. 
+
+
+ 
+
+
+ <bChange>   A codeblock to be evaluated when selecting a new row. 
+
+
+ 
+
+
+ <bLDblClick>   A codeblock to be evaluated when double left clicking. 
+
+
+ 
+
+
+ <bRClick>   A codeblock to be evaluated when right clicking. 
+
+
+ 
+
+
+ <oFont>   A font to be used for the xBrowse. 
+
+
+ 
+
+
+ <oCursor>   A cursor to be used for the xBrowse. 
+
+
+ 
+
+
+ <nClrFore>   The xBrowse text color. 
+
+
+ 
+
+
+ <nClrBack>   The xBrowse background color. 
+
+
+ 
+
+
+ <cMsg>   A text to be displayed in the message bar when the xBrowse get
+the focus. 
+
+
+ 
+
+
+ <lUpdate>   A logical value indicating if the browse has to be refreshed
+when a oDlg:Update() is issued. 
+
+
+ 
+
+
+ <cAlias>   A string containing the alias of the DBF associated with the
+browse. 
+
+
+ 
+
+
+ <bWhen>   A codeblock that evaluates in a logical value indicating if
+the browse is to be enabled or disabled. 
+
+
+ 
+
+
+ <lDesign>   A logical value indicating if the design mode is to be
+activated. 
+
+
+ 
+
+
+ <bValid>   A codeblock that evaluates in a logical value indicating if
+the focus can be moved from the browse. 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+====== Devuelve ======
+
+
+
+
+
+ <oBrw>      The newly created xBrowse object. 
+
+
+ 
+
+
+ 
+
+
+
+====== Ejemplo ======
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+====== Código fuente ======
+
+
+
+
+
+ SOURCE\CLASSES\xbrowse.prg 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+====== Ver también ======
+

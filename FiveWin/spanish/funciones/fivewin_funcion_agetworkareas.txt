@@ -1,0 +1,26 @@
+====== aGetWorkAreas() ======
+
+Retorna una matriz con todas las áreas de trabajo (tablas) usadas.
+
+
+====== Sintaxis ======
+
+aGetWorkAreas() --> aWorkAreas  
+
+
+====== Parámetros ======
+
+ninguno
+
+====== Devuelve ======
+
+| <aWorkAreas> | Matriz con los nombres de todas las áreas de trabajo en uso.  |
+
+====== Ejemplo ======
+
+<code clipper>local aAreas := aGetWorkAreas()</code>
+
+====== Codigo fuente ======
+
+SOURCE\\FUNCTION\\DbTools.prg
+

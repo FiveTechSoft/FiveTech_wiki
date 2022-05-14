@@ -1,0 +1,21 @@
+====== DestroyIcon() ======
+It destroys an icon
+
+====== Syntax ======
+DestroyIcon( <hIcon> ) --> lSuccess 
+
+====== Parameters ======
+^Parameter^Description^
+|<hIcon>| Handle of the icon to be destroyed.|
+
+====== Returns ======
+^Parameter^Description^
+|<lSuccess>| .T. if the operation is successful.| 
+
+====== Example ======
+
+====== Source Code ======
+SOURCE\WINAPI\ICONS.C 
+
+====== See also ======
+[[fivewin_function_destroycursor|DestroyCursor()]]

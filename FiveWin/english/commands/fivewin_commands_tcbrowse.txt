@@ -1,0 +1,184 @@
+====== TcBrowse ======
+
+**TcBrowse**
+<code clipper>
+ @ <nRow>, <nCol> [ COLUMN ] BROWSE <oBrw>  
+ [ [ FIELDS] <Flds,...> ];  
+ [ ALIAS <cAlias> ];  
+ [ FIELDSIZES | SIZES | COLSIZES <aColSizes, ...> ];  
+ [ HEAD | HEADER | HEADERS <aHeaders, ....> ];  
+ [ SIZE <nHeigth> <nWidth> ];  
+ [ DIALOG <oDlg> ];  
+ [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ];  
+ [ ON CHANGE | ON CLICK <uChange> ];  
+ [ ON [ LEFT ] DBLCLICK <uLDblClick> ];  
+ [ ON RIGHT CLICK <uRClick> ];  
+ [ FONT <oFont> ];  
+ [ CURSOR <oCursor> ];  
+ [ COLOR | COLORS <uClrFlore> [ <nClrBack> ];  
+ [ MESSAGE <cMsg> ];  
+ [ UPDATE ];  
+ [ PIXEL ];  
+ [ WHEN <uWhen> ];  
+ [ DESIGN ];  
+ [ VALID <uValid> ];  
+ 
+  
+ DEFINE COLUMN <oCol>  
+ [ DATA | SHOWBLOCK <uData> ];  
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];  
+ [ COLORS | COLOURS <uClrFlore> [ <nClrBack> ];  
+ [ ALIGN ] [ LEFT | CENTERED | RIGHT ];  
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ];  
+ [ PICTURE <cPicture> ];  
+ [ BITMAP ];  
+ [ EDITABLE ];  
+ [ MESSAGE <cMsg> ];  
+ [ VALID <uValid> ];  
+ [ ERROR [MSG] [MESSAGE ] <cErr> ];  
+ [ NOBAR | NOHILITE ];  
+ [ ORDER | INDEX | TAG <cOrder> ];  </code>
+
+** From Resource **
+
+<code clipper>
+ REDEFINE [ COLUMN ] BROWSE <oBrw>  
+ [ <Flds,...> ];  
+ [ ALIAS <cAlias> ];  
+ [ ID <nId> ];  
+ [ OF | DIALOG <oDlg> ];  
+ [ FIELDSIZES | SIZES | COLSIZES <aColsizes,...> ];  
+ [ HEAD | HEADER | HEADERS <aHeaders, ....> ];  
+ [ SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ];  
+ [ ON CHANGE | ON CLICK <uChange> ];  
+ [ ON [ LEFT ] DBLCLICK <uLDblClick> ];  
+ [ ON RIGHT CLICK <uRClick> ];  
+ [ FONT <oFont> ];  
+ [ CURSOR <oCursor> ];  
+ [ COLOR | COLORS <uClrFlore> [ <nClrBack> ];  
+ [ MESSAGE <cMsg> ];  
+ [ UPDATE ];  
+ [ WHEN <uWhen> ];  
+ [ VALID <uValid> ];  </code>
+
+**General data columns **
+<code clipper>
+ ADD [ COLUMN ] TO [ BROWSE ] <oBrw>  
+ [ DATA | SHOWBLOCK <uData> ];  
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];  
+ [ COLORS | COLOURS <uClrFore> [ <uClrBack> ];  
+ [ ALIGN ] [ LEFT | CENTERED | RIGHT ];  
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ];  
+ [ PICTURE <cPicture> ];  
+ [ BITMAP ];  
+ [ EDITABLE ];  
+ [ MESSAGE <cMsg> ];  
+ [ VALID <uValid> ];  
+ [ ERROR [MSG] [MESSAGE ] <cErr> ];  
+ [ NOBAR | NOHILITE ];  
+ [ ORDER | INDEX | TAG <cOrder> ]  </code>
+
+**Array columns **
+<code clipper>
+ ADD [ COLUMN ] TO [ BROWSE ] <oBrw> [ DATA ] ARRAY;  
+ [ ELM | ELEM | ELEMENT <elm> ];  
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];  
+ [ COLORS | COLOURS <uClrFore> [ <uClrBack> ];  
+ [ ALIGN ] [ LEFT | CENTERED | RIGHT ];  
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ];  
+ [ PICTURE <cPicture> ];  
+ [ BITMAP ];  
+ [ EDITABLE ];  
+ [ MESSAGE <cMsg> ];  
+ [ VALID <uValid> ];  
+ [ ERROR [MSG] [MESSAGE ] <cErr> ];  
+ [ NOBAR | NOHILITE ]  </code>
+
+**Database object columns **
+<code clipper>
+ ADD [ COLUMN ] TO [ BROWSE ] <oBrw> [ DATA ];  
+ ODBF | FIELD [ FIELD ] <cField> ];  
+ [ ALIAS <cAlias> ];  
+ [ TITLE | HEADER <cHead> [ OEM | ANSI | CONVERT ] ];  
+ [ COLORS | COLOURS <uClrFore> [ <uClrBack> ];  
+ [ ALIGN ] [ LEFT | CENTERED | RIGHT ];  
+ [ WIDTH | SIZE <nWidth> [ PIXELS ] ];  
+ [ PICTURE <cPicture> ];  
+ [ BITMAP ];  
+ [ EDITABLE ];  
+ [ MESSAGE <cMsg> ];  
+ [ VALID <uValid> ];  
+ [ ERROR [MSG] [MESSAGE ] <cErr> ];  
+ [ NOBAR | NOHILITE ];  
+ [ ORDER | INDEX | TAG <cOrder> ]  </code>
+
+| <Flds,...> | The list of fields or expressions to display on the browse. | 
+| <cAlias> | The workarea alias where the browse was created. | 
+| <aHeaders, ....> | Array of texts for the Header of each column. | 
+| <aColSizes, ...> | Array of sizes for each column. | 
+| <oDlg> | The window or dialog container of this control.| 
+| <uLDblClick> | An optional action to perform when doble clicking on the browse.| 
+| <uValue1><uValue2> | FOR clause expression in SELECT ... FOR ... TO ... | 
+| <oFont> | An optinal font object to use. | 
+| <nHeigth> <nWidth> | The height and width dimensions. | 
+| <nId> | The resource identifier for this control. | 
+| <cField> | The name of the field to use for a column object. | 
+| <uClrFore> <uClrBack> | The fore and background colors to use. | 
+| <uChange> | An optional action to perform everytime a row is selected. | 
+| <uRClick> | An optional action to peform when the mouse is right clicked.|     
+| <oCursor> | An optional cursor object to use. | 
+| <uWhen> | A WHEN clause to evaluate | 
+| <cMsg> | A related msg text to display on its container message bar. | 
+| <uData> | A codeblock to evaluate to get the column containts. | 
+| <uValid> | A VALID clause to evaluate. | 
+| <cOrder> | The name of the index order to activate. | 
+| <cHead>  | The column header text. | 
+| <cPicture> | An optional picture clause to use for the column containts. | 
+| <cErr>  | An optional error message to show when editing the column containts. | 
+| <elm> | To include this column on a certain column position. | 
+
+**CLAUSES **
+
+| PIXEL  | To specify pixel coordinates. |
+| UPDATE | To update this control when its container is updated. |
+| OEM, ANSI, CONVERT | To automatically convert the column data from Oem To Ansi and viceversa. |
+| LEFT, CENTERED, RIGHT | To set the column data alignment. |
+| EDITABLE | To enable the automatic editing of the column cell. |
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+#include "tcbrowse.ch"
+//----------------------------//
+Function Main()
+
+   USE Customer
+   DEFINE DIALOG oDlg RESOURCE "Browse"
+
+       REDEFINE BROWSE oBrw  ;
+          ALIAS "Customer" ;
+          SIZES   250, 300 ;
+          ID 110 OF oDlg ;
+          COLOR CLR_BLUE, RGB( 255, 255, 235 ) ;
+	  UPDATE
+
+	ADD COLUMN TO BROWSE oBrw ;
+	DATA customer->first ;
+	HEAD "Nombre" ;
+	OEM WIDTH 50 ;
+        COLORS RGB(1,1,1) , RGB(192,192,192)  
+
+	ADD COLUMN TO BROWSE oBrw ;
+	DATA customer->last ;
+	HEAD "Direccion" ;
+	OEM WIDTH 220
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   USE
+
+return nil
+</code>
+
+====== See also ======
+[[fivewin_class_tcbrowse | Class TcBrowse ]]

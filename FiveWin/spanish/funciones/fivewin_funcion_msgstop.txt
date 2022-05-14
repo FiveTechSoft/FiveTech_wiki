@@ -1,0 +1,42 @@
+
+====== MsgStop() ======
+
+Muestra un logo flotante, tipicamente usdo al inicio de las aplicaciones.
+
+====== Syntaxis ======
+
+MsgStop( <cMensaje> [,<cTitulo>] ) --> NIL
+ 
+====== Parámetros ======
+
+| <cMensaje> | El Mensaje a desplegar. |
+| <cTitulo> | El titulo del cuadro de dialogo, por defecto es 'Stop'.  |
+
+====== Devuelve ======
+
+| <> | Ninguno. |
+
+====== Ejemplo ======
+<code clipper>
+#include "fivewin.ch"
+
+PROCEDURE Main()
+
+   MsgStop("Finalizando Programa, tenga buen dia!","Error Fatal :-)")
+      
+RETURN    
+</code>
+
+====== Código fuente ======
+
+SOURCE\WINAPI\MSGBOX.C
+
+====== Ver también ======
+[[fivewin_funcion_messagebeep|MessageBeep()]]
+[[fivewin_funcion_msgalert|MsgAlert()]]
+[[fivewin_funcion_msginfo|MsgInfo()]]
+[[fivewin_funcion_msgstop|MsgStop()]]
+[[fivewin_funcion_msgyesno|MsgYesNo()]]
+[[fivewin_funcion_msgnoyes|MsgNoYes()]]
+[[fivewin_funcion_msgdate|MsgDate()]]
+[[fivewin_funcion_msgretrycancel|MsgRetryCancel()]]

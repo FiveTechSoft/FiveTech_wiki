@@ -1,0 +1,26 @@
+====== nToBin() ====== 
+
+Converts a number to its binary form (an array of logical values, .t. for 1 and .f. for 0).
+
+====== Syntax ======
+
+nToBin( <nValue> ) --> aBin 
+
+====== Parameters ======
+
+< nValue > This is a number which is converted to its binary form 
+
+====== Returns ======
+
+<aBin> The result of the conversion. It is an array of logical values. 
+
+====== Example ======
+
+local aVar := nToBin( 123 ) 
+
+====== Source Code ======
+
+SOURCE\FUNCTION\MATH.PRG 
+
+====== See also ======
+

@@ -1,0 +1,63 @@
+======  GlobalDelAtom() ====== 
+
+
+Deletes a string from the Windows atom table system.
+
+====== Syntax ======
+
+ 
+
+
+ GlobalDelAtom( <hAtom> ) --> hAtom 
+
+
+ 
+
+
+ 
+====== Parameters ======
+
+
+ <hAtom> Handle of a global atom. 
+
+
+ 
+
+
+ 
+====== Returns ======
+
+
+ <hAtom> Zero if the function is successful or hAtom itself if fails. 
+
+
+ 
+
+
+ 
+Sample :
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+Source code:
+
+ 
+
+
+ SOURCE\WINAPI\ATOM.C 
+
+
+ 
+
+
+
+====== See also ======
+
