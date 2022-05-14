@@ -1,0 +1,52 @@
+====== Clase TListView ======
+
+Control para el soporte de SysListView win32
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|aPrompts|Arreglo que contiene los prompts del listview|
+|bAction|Bloque de código evaluado se cambia el item seleccionado|
+|nOption|El número total de los items|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|Redefine|Constructor desde recursos|
+|InsertItem|Inserta un item nuevo al listview|
+|SetImageList|Asocia un objeto imagelist (lista de imágenes) con el listview|
+
+
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch" 
+
+function Main() 
+ 
+   local oWnd, oLvw, nOption := 1, oImageList
+
+   DEFINE WINDOW oWnd TITLE "ListView Test"
+
+   DEFINE IMAGELIST oImageList SIZE 32, 32
+
+   oImageList:AddIcon( "console" )
+   oImageList:AddIcon( "form" )
+   oImageList:AddIcon( "library" )
+
+   @ 1, 1 LISTVIEW oLvw SIZE 300, 300 PROMPTS "One", "Two", "Three" ;
+      ACTION MsgInfo( nOption )
+
+   oLvw:SetImageList( oImageList )
+
+   ACTIVATE WINDOW oWnd
+   
+   oImageList:End()
+
+return nil
+</code>
+
+{{:listview1.jpg|:listview1.jpg}}
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TLISTVIEW.PRG

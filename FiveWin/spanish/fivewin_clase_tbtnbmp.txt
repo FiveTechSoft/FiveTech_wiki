@@ -1,0 +1,104 @@
+====== Clase TBtnBmp ====== 
+
+Button Bitmaps Object. 
+
+Hereda de TControl. 
+
+====== DATOS ====== 
+
+^  Nombre  ^  Descripción  ^
+|bAction|CodeBlock for the click event.|    
+|cAction|A string description of the action|    
+|lPressed|Is button is pressed.|    
+|lCaptured|Is mouse is captured by the button.|    
+|lGroup|Beginning of new button group|    
+|lWorking|If .t. button is pressed|    
+|lBtnUp|If .t. Button is not pressed|    
+|lBtnDown|If .t. Button is pressed|    
+|lAdjust * Obsolete| Si el bitmap tiene que ajustar su tamaño para cubrir toda su superficie|    
+|lProcessing|If .t. bAction is been evaluated at this moment|    
+|lBorder|If .t. the button has a border|    
+|hBitmap1|The bitmap handle of the main image of button when not pressed|    
+|hPalette1|The palette handle of the main image of button when not pressed|    
+|hBitmap2|The bitmap handle of the image of button pressed for animated button.|    
+|hPalette2|The palette handle of the image of button pressed for animated button.|    
+|hBitmap3|The bitmap handle of the image of button when disabled|    
+|hPalette3|The palette handle of the image of button when disabled|    
+|cResName1|The main image of button when not pressed (from resource)|    
+|cResName2|The image of button pressed for animated button (from resource)|    
+|cResName3|The image of button when disabled (from resource)|    
+|cBmpFile1|The main image of button when not pressed|    
+|cBmpFile2|The image of button pressed for animated button.|    
+|cBmpFile3|The image of button when disabled|    
+|oPopup|Popup menu to show when the button is pressed|    
+|nLayout|The button layout type|    
+
+====== METODOS ====== 
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|    
+|NewBar|Constructor from source code for Button Bar|    
+|ReDefine|Creates a BtnBmp from resources|    
+|Click|Mouse left button event handler|    
+|FreeBitMaps|Releases all the bitmaps associated with this control|    
+|cGenPRG|Generates the source code of this control|    
+|Display|Displays the bitmap button|    
+|Disable|Disables the button|    
+|Enable|Enables the button|    
+|End|Ends the button|    
+|GoUp|Forces the button to go Unpressed|    
+|GoDown|Forces the button to go Pressed|    
+|GotFocus|Action to be performed when getting the focus|    
+|HandleEvent|Generic events handler|    
+|Initiate|Generic Control initialization method|    
+|KeyChar|Action to be performed when pressing a key|    
+|KeyDown|Action to be performed when pressing a key|    
+|LostFocus|Action to be performed when losing the focus.|    
+|LbuttonDown|Behavior when pressing the mouse|    
+|LbuttonUp|Behavior when releasing the mouse click|    
+|LoadBitmaps|Load the bitmap/s from resources|    
+|Paint|Draws the Button|    
+|MouseMove|Behavior when moving the mouse over it|    
+|Destroy|Destroy the Button image|    
+|ResetBorder|Resets the border|    
+|SetFile|Changes to a different BMP file|    
+|ShowPopup|Activates the popup menu of the button if it is defined| 
+|Toggle|Changes the state of the button|
+
+====== Ejemplo ======
+FWH\samples\testbtnb.prg
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Main" COLOR "N/B"
+
+   REDEFINE BTNBMP ID 110 OF oDlg ;
+      RESOURCE "Yes" NOBORDER ACTION oDlg:End()
+      
+   oDlg:aControls[ 1 ]:lTransparent = .t.   
+
+   REDEFINE BTNBMP ID 120 OF oDlg ;
+      RESOURCE "No"
+
+   REDEFINE BTNBMP ID 130 OF oDlg ;
+      RESOURCE "Cancel"
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+====== Código fuente ======
+FWH\source\classes\btnbmp.prg
+
+====== Ver también ======
+
+Note: The data lAdjust is not supported because now the bitmaps background color is automatically adjusted to his window or control conteiner. The pixel 0,0 (Left-Top) indicates the mask color to use for the adjustment. It is important that the color in that pixel is not used on any other part of the bitmap except where the mask should be applied. This kind of color adjustment is not possible with bitmap streching

@@ -1,0 +1,64 @@
+====== Clase TBar ====== 
+
+Objetos Button Bar (Barra de botones)
+
+Hereda de la [[fivewin_clase_tcontrol|Clase TControl]] 
+
+====== DATOS ====== 
+^  Nombre  ^  Descripción  ^
+|nGroups|Número de grupos|    
+|nMode|Posición de la BtnBar en la ventana|    
+|nBtnWidth|El alto y ancho de sus botones. Por defecto 28x28|    
+|nBtnHeight|El alto de la barra es automáticamente ajustado a la altura de los botones.|    
+|l3D|Si la BtnBar ha de ser mostrada con vista de 3D| 
+|l2007|Si la BtnBar ha de ser mostrada con apariencia 2007| 
+
+====== METODOS ====== 
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|    
+|NewAt|Constructor desde código fuente a una cierta localización.|    
+|Add|Adiciona un BtnBmp a la barra.|    
+|AddGroup|Adiciona un nuevo grupo lógico a la barra.|    
+|Adjust|Adjusta la barra de botones a las dimensiones de la ventana contenedora.|    
+|AdjMode|Cambia la posición de la barra a flotante.|    
+|BtnAdjust|Ajusta los botones a las dimensiones de la barra.|    
+|Del|Elimina un botón de la barra.|    
+|DelGroup|Elimina un grupo lógico de la barra.|    
+|Display|Despliega la barra de botones.|    
+|EraseBkGnd|Borra el fondo del control.|    
+|cGenPRG|Retorna una cadena con el código fuente de la barra de botones.|    
+|Float|Vuelve la barra de botones en modo flotante.|    
+|FloatClick|Procesa el MouseClicks en barra de botones mode flotante.|    
+|GetBtnTop|Retorna el nTop apropiado cuando es adicionado un nuevo botón.|    
+|GetBtnLeft|Retorna el nLeft apropiado cuando es adicionado un nuevo botón.|    
+|GoDown|vuelve la barra de botones en modo inferior.|    
+|GoLeft|vuelve la barra de botones en modo isquierda.|    
+|GoRight|vuelve la barra de botones en modo derecha.|    
+|GoTop|vuelve la barra de botones en modo superior.|    
+|LButtonDown|Procesa el clicks izquierdo del mouse en la barra de botones.|    
+|LButtonUp|Procesa el soltado del botón izquierdo del mouse en la barra de botones.|    
+|LeftMode|Cambia el la posición del BtnBar a la izquierda de la ventana.|    
+|MouseMove|Activa los mensajes por defecto en el MsgBar de la ventana contenedora.|    
+|Paint|Despliega la barra de botones. Utilice :Refresh() en lugar de este.|    
+|RButtonDown|Procesa el click derecho del mouse en la barra de botones.|    
+|RightMode|Cambia la posición del BtnBar a la derecha de la ventana.|    
+|TopMode|Cambia la posición del BtnBar a la parte superior de la ventana.|    
+|Click|Manejador de evento del botón izquierdo del mouse.|    
+|SaveIni|Grabar la barra en un archivo INI.|    
+|GetBtnCol|Calcula la columna de un botón nuevo.|    
+|SetMsg|Define el texto en la barra de mensajes de su ventana contenedora.| 
+
+====== Ejemplo ======
+FWH\samples\test2007.prg
+<code clipper>
+DEFINE BUTTONBAR oBar OF oWnd SIZE 60, 60 2007
+
+   DEFINE BUTTON OF oBar ACTION Print() ;
+      RESOURCE "attach" PROMPT "Attach" TOOLTIP "Attach"
+</code>
+
+====== Código fuente ======
+FWH\source\classes\bar.prg
+
+====== Ver también ======

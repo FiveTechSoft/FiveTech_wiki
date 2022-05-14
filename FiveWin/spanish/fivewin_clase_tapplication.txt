@@ -1,0 +1,19 @@
+====== Clase TApplication ====== 
+
+Objeto Aplicación (BAJO DESARROLLO)
+
+====== DATA ====== 
+
+|aForms|              Arreglo de Objetos TForm|    
+
+====== METODOS ====== 
+
+|New|Constructor desde código fuente|    
+|AddForm|Adiciona un objeto TForm específico a aForms|    
+|Run|Ejecuta el primer form desde (aForms[ 1 ])|    
+
+====== Ejemplo ======
+
+====== Código fuente ======
+
+====== Ver también ======

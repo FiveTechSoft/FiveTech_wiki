@@ -1,0 +1,23 @@
+====== Clase TView ======
+
+View Objects (EN DESARROLLO)                                               
+
+====== DATOS ======
+
+^  Nombre  ^  Descripción  ^
+|cName|El nombre de la vista|
+|aWorkAreas|Las areas envueltas en la vista|
+
+====== METODOS ======
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor de codigo fuente. Toma el nombre de la vista como parametro.|
+
+====== Ejemplo ======
+
+
+====== Codigo Fuente ======
+
+FWH\SOURCE\CLASSES\TVIEW.PRG
+
+====== Vea también ======

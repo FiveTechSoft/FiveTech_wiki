@@ -1,0 +1,61 @@
+====== Clase TWebServer ====== 
+
+Servidor de paginas WEB de internet y Proxy
+
+====== DATOS ====== 
+^Nombre^Descripción^
+|oSocket|Objeto socket principal que escucha|
+|aSockets|Objetos socket que asisten a los Clientes|
+|cAddress|La dirección del sitio web|
+|cDefPage|Pagina Web predeterminada|
+|cDefPath|Directorio predeterminado de las paginas Web|
+|cCookie|nombre del Cookie|
+|lDebug|Modo Debug|
+|cLogFile|Nombre del archivo de registro|
+|cHtmlError|cadena de error Html|
+
+====== METODOS ====== 
+^Nombre^Descripción^
+|New|Constructor. |
+| |Sintaxis: TWebServer():New( <nPort> )\\ **<nPort>** nPort especifica el puerto de uso|
+|Activate|coloca al socket principal en estado de escucha|
+|End|Cierra la conexion|
+|Explore|Abre la dirección HTML dada |
+|FileExists|Verifica la existencia de un archivo|
+|HtmlMerge|Combina el contenido de la direccion HTML dada|
+|HtmlRead|lectura del contenido de la direccion HTML dada|
+|OnAccept|manejador de eventos de Accept|
+|OnGet|manejador de eventos Get|
+|OnPost|manejador de eventos Post|
+|OnProxyRequest|manejador de eventos de requerimientos Proxy |
+|OnRead|manejador de eventos Read|
+|Sockets|Indica el numero de sockets en aSockets|
+
+====== Ejemplo ====== 
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oBar, oWebServer
+
+   DEFINE WINDOW oWnd TITLE "Web Server"
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D
+
+   DEFINE BUTTON OF oBar ;
+      ACTION ( oWebServer := TWebServer():New(),;
+               oWebServer:Activate(), oWebServer:Explore() )
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+====== Vea también ====== 
+
+[[fivewin_clase_TWebClient|Clase TWebClient]]
+
+====== El código fuente ====== 
+
+FWH\SOURCE\CLASSES\TWEBSERVER.PRG

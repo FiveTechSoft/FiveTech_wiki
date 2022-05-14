@@ -1,0 +1,83 @@
+====== Clase TAnimate ======
+ 
+Soporte del control común Win32 SysAnimate 
+
+heredada desde TControl 
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|cAvi|El archivo AVI| 
+
+====== METODOS ====== 
+
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente| 
+|Redefine|Constructor desde recursos| 
+|Close|Cierra la ventana de animación| 
+|CopyFile|Abre la ventana de copia de archivo| 
+|CopyFiles|Abre la ventana de copias de archivos| 
+|CopyInternet|Abre la ventana de copia de internet| 
+|DelFile|Abre la ventana de borrado de archivo| 
+|DestFile|Abre la ventana de destino de archivo| 
+|EmptyCan|Abre la ventana de can vacia| 
+|FindFile|Abre la ventana de encontrar archivo| 
+|Locate|Abre la ventana de localizar archivo| 
+|Open|Abre la ventana de animación| 
+|OpenEx|Abre la ventana de borrado de archivo| 
+|Play|Inicia visualización del archivo AVI| 
+|Search|Abre la ventana de búsqueda| 
+|Seek|Visualiza el cuadro especificado| 
+|Stop|Detine la visualización del archivo AVI| 
+
+====== Ejemplo ======
+FWH\samples\win32.prg
+<code clipper>
+   oAnimate = TAnimate():Redefine( 160, oDlg )
+
+   REDEFINE BUTTON ID 170 OF oDlg ACTION oAnimate:Play()
+   REDEFINE BUTTON ID 180 OF oDlg ACTION oAnimate:Stop()
+
+   REDEFINE COMBOBOX nAvi ID 190 OF oDlg ;
+      ITEMS { "Search", "FindFile", "Locate", "CopyFiles", "CopyFile",;
+              "DelFile", "EmptyCan", "DestFile", "CopyInternet" } ;
+      ON CHANGE SetCommonAvi( oAnimate, nAvi )
+
+function SetCommonAvi( oAnimate, nAvi )
+
+   do case
+      case nAVI == 1
+           oAnimate:Search()
+
+      case nAVI == 2
+           oAnimate:FindFile()
+
+      case nAVI == 3
+           oAnimate:Locate()
+
+      case nAVI == 4
+           oAnimate:CopyFiles()
+
+      case nAVI == 5
+           oAnimate:CopyFile()
+
+      case nAVI == 6
+           oAnimate:DelFile()
+
+      case nAVI == 7
+           oAnimate:EmptyCan()
+
+      case nAVI == 8
+           oAnimate:DestFile()
+
+      case nAVI == 9
+           oAnimate:CopyInternet()
+   endcase
+
+return nil
+      
+</code>
+
+====== Código fuente ======
+FWH\source\classes\tanimate.prg
+
+====== Ver también ======

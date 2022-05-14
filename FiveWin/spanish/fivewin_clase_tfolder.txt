@@ -1,0 +1,49 @@
+====== Clase TFolder ======
+
+Folder Objects                                                                 
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|aPrompts|Array of Prompts|
+|aDialogs|Array of NonModal DialogBox objects|
+|aHelps|Array with the IDs or names (also mixed) from the help-file; each for every page|
+|nOption|Current selected page|
+|nTabSize|Size of the tabs|
+|nFdHeight|Height of the folder|
+|oFont2|Bold Font type|
+|aEnable|Array of enabled pages|
+|lAllWidth|Make all the tabs the same width|
+|lWin95Look|If .t. Win95 look|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|ReDefine|Constructor from Resource|
+|AddItem|Adds an Item to the Folder.|
+|AdjustRect|Adjust the size of the folder pages|
+|CtlColor|CtlColor event handler|
+|cToChar|Generates a data template to build a Dialog|
+|Default|Default control initialization|
+|DelItem|Deletes an Item from the Folder.|
+|DelPages|Deletes all the Item from the Folder|
+|Destroy|Destroy the Folder object.|
+|Display|Displays the control. Use :Refresh() to force repaint|
+|GetHotPos|Returns the page index of a specified hotkey|
+|GotFocus|Event response code when receiving focus|
+|Initiate|Generic Control initialization method|
+|LButtonDown|Action to be performed when clicking the mouse|
+|LoadPages|Loads items from a given resource|
+|MouseMove|Mouse move event handler|
+|Notify|Notify event handler|
+|Paint|Draws the control. This process occurs internally from Display.|
+|Refresh|Repaints the folder on the screen|
+|ReSize|Event response code when resizing the folder|
+|SetOption|Changes the current active folder page|
+|SetPrompts|Sets the prompt of the folder|
+|Update|Sends an Update message to all the contained Dialog objects|
+
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFOLDER.PRG

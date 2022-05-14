@@ -1,0 +1,197 @@
+====== Clase TWBrowse ======
+
+Clase TWBrowse Hereda de TControl
+
+====== DATOS ======
+
+|lRegistered|Un valor CLASSDATA. Ver TWindow: lRegistered.|
+|cAlias|El alias del area de trabajo donde el navegador fue creado por defecto.|
+| |cAlias contiene el nombre area de trabajo cuando el objeto browse se crea.\\ Al navegar por una matriz, cAlias contiene "ARRAY".\\ Al navegar por un árbol, cAlias contiene "TREE".\\ Si cAlias es cero, entonces la actual fila seleccionada no se pinta de nuevo.(Esto es para evitar el repintado de Windows por defecto cuando una ventana emergente está cubriendo los navegar -por ejemplo, cuando termina una ventana MDIChild que contiene un objeto de búsqueda-).\\ El método: lCloseArea() cierra la zona actual y hace nula: cAlias, evitando así la vaya a ser pintado de nuevo(al abrir el SYSMENU de una ventana MDIChild causa una pintar cuando se cierra, es por eso que tenemos que hacer el: cAlias cero y evitar que la final de repintado que causaría un error de Clipper(alias no existe).\\ Ver IDE \ Source \ *. prg para ver algunos ejemplos sobre el uso de: lCloseArea()|
+|cField|expresión de la cláusula SELECT en SELECT ... FOR ... TO ...|
+| |FiveWin implementa un potente sistema basado en los índices para simular subíndices cuando se trabaja con el índices estándar NTX.\\ Si está utilizando Comix o SixDriver entonces debería usar los controladores ... SetScope(...) funciona como son más rápidos y más eficiente. Pero si tiene que seguir trabajando con archivos estándar de NTX, entonces el sistema alcance FiveWin le ayudará a evitar un montón de trabajo de su lado.\\ Imagine que tiene una base de datos de clientes indexado por última + nombres de pila, y desea revisar sólo los clientes de 'D' a 'L'.\\ Clipper no le ofrece una manera de hacerlo(excepto usando Comix o SixDriver), permite ver cómo se puede navegar sólo en los clientes con FiveWin: \\ <code clipper> 
+REDEFINE LISTBOX oBrw ;
+FIELDS cliente>ultimo, cliente->Primero;
+HEADERS "Ultimo", "Primero";
+ID ... OF oDlg ;
+SELECT cliente->ultimo + cliente->primero FOR "D" TO "L"</code> Recuerde que SELECT debe basarse en el índice activo de la base de datos utilizada.\\ FiveWin hace una búsqueda para la expresión de la cláusula, y controles en cada PASE que el registro actual coincida con la expresión SELECT especificada.\\ Si no se especifica la cláusula TO, entonces FiveWin mantendrá saltar mientras se corresponde con la cláusula. es decir: En el ejemplo anterior si sólo especifica el DE "D", FiveWin se saltará hasta la "E" que sigue a la "D".\\ Echa un vistazo a SAMPLES \ FwBorl2.prg para una muestra de trabajo.\\ Usted puede cambiar dinámicamente la selección actual establece en su navegar. Véase la explicación de: Seleccionar() en esta sección también.|
+|uValue1|Clausula FOR de la expression SELECT ... FOR ... TO ...|
+| |Una expresión utilizada por la cláusula SELECT dela browse para realizar un SEEK cuando se hace IR ARRIBA en el browse.\\ Importante: Esta expresión se busca en el índice activo de la Base de Datos! El navegador buscará basado en el índice!|
+|uValue2|Clausula TO en la expresión SELECT ... FOR ... TO ...|
+| |Expresión utilizada por la cláusula SELECT del browse para seguir buscando mientras se navega. Si lo encuentra, significará que ha llegado al final de la selección.\\ Por defecto, si no se especifica esta cláusula, la cláusula SELECT alcanza el final cuando el valor asociado al índice actual ha cambiado, es decir: si la cláusula FOR es 'L', el navegador estara al final cuando se llega a 'M'.|
+|bLine|Recupera una matriz de expresiones de cada columna. El navegador actual de FiveWin realmente difiere de la versión MsDos que no maneja los objetos columna (pronto tendremos uno de gran potencia basado en la columna !)|
+| |El DATA bLine es un Codeblock que devuelve una matriz \\ Utilizamos la matriz para pintar cada fila del navegador \\ Hemos adoptado este sistema para obtener la mayor velocidad de ejecución, aunque últimamente hemos sido capaces de obtener la misma velocidad de trabajo basado en la columna (el que estamos desarrollando ahora)\\ Cuando se especifica la cláusula: \\ REDEFINE .. LISTBOX; \\ CAMPOS <Expression1, Expression2, ..., ExpressionN>; ..\\ Estamos construyendo automáticamente a través de la pre-procesador Codeblock siguiente: \\ <oBrw>:bLine=%%(||%%(<expression1>, <expression2>, ..., <ExpressionN>))\\ Como puede ver, nosotros generar un Codeblock que devuelve una matriz que contiene la lista de las expresiones \\ Si usted no proporciona esas expresiones, FiveWin generará automáticamente un: bLine basado en los campos de la area de trabajo  seleccionado \\ Ver _aFields función WBROWSE.prg()\\ Se pueden modificar libremente el: Codeblock bLine incluso durante la ejecución de un navegar! es decir: Si usted quiere intercambiar dos columnas de las Personas, sólo tiene que cambiar el: bLine para devolver una matriz diferente: \\ <oBrw>:bLine=%%(||%%(<expression2>, <expression1> , ..., <ExpressionN>))\\ Planeamos ofrecer compatibilidad con el navegador actual, aunque en breve pondremos en marcha una columna basada en uno.|
+|bSkip|Como Clipper TBrowse:skipBlock.|
+| |Proveemos una por defecto el: bSkip DATOS mantiene un Codeblock que se utiliza en la misma forma que el estándar Clipper MsDos.\\ Si se evalúa que recibirá un valor numérico que indica cuántas filas de navegar quiere saltar, y se regreso, de hecho, ¿cuántos de ellos se omiten(esto sucede exactamente lo mismo en el Clipper MsDos navegar): \\ <oBrw>:bSkip =%%(|<nRowsWanted>|%% ... <nRowsToDo>)\\ Por defecto suministramos una norma: bloque bSkip que llama a una rutina de C muy rápido para saltar los registros tan rápido como sea posible! Cuando quieres ir a una matriz que es necesario proporcionar un bSkip especial.\\ Ver SAMPLES \ TestArr .... prg.\\ De todos modos, podemos suministrar un método: SetArray() que automáticamente generará este complejo: bSkip.\\ Administrar la: bSkip datos a medida que la gestión en sus aplicaciones MsDos!|
+|bGoTop|Como Clipper TBrowse:goTopBlock.|
+| |Proveemos un defecto uno que mantiene la Codeblock para evaluar cuando se hace un <oBrw>:GoTOP().\\ Por defecto se hace una(<oBrw>: cAlias) ->(DbGoTop()), a menos que usted está manejando un SELECT ... FOR ... TO ... navegar cláusula, en caso afirmativo, lo hace una búsqueda de la DE <expression> especificado.|
+|bGoBottom|Como Clipper TBrowse:goBottomBlock.|
+| |Proveemos un defecto one_ Mantiene el Codeblock para evaluar cuando se hace un <oBrw>:GoBottom().\\ Por defecto se hace una(<oBrw>: cAlias) ->(DbGoBottom()), a menos que usted está manejando un SELECT ... FOR ... TO ... navegar cláusula, si es así, que hace una búsqueda de la A <expression> especificado, o lo hace una búsqueda para la siguiente clave del índice después de la <expression> PARA especificado.|
+|bLogicLen|Codeblock que recupera de longitud de los datos|
+| |Proveemos uno se mantiene un Codeblock que devuelve el número total de expedientes gestionados por el navegar \\ De forma predeterminada devuelve el(<oBrw>: cAlias) ->(reccount()), o si usted está haciendo un SELECT. .. PARA ... A ... cláusula sólo el número de registros que coincidían con que la selección \\ Importante: El objeto de búsqueda utiliza el valor numérico devuelto por este Codeblock para mostrar la gama apropiada representada por la barra de desplazamiento vertical de la navegar \\ Si la gestión de los registros eliminados, entonces usted puede producen una variación entre los registros que se muestra(si es SET DELETED OFF), y la gama representada por la barra de desplazamiento \\ Para evitar esto es necesario utilizar Comix o SixDrivers, ya que cubren funciones para calcular el número de registros que coincidían con un índice específico \\ Si índice NO DELETED, a continuación, los conductores se informe cuántos registros no se borran, y este será el valor que se devuelve esta Codeblock: <oBrw>: bLogicLen =%%(||%% ... NumberOfRecordsNotDeleted()) En Comix la función se llama CmxKeyCount().|
+|bChange|Codeblock para llevar a cabo al pasar de una fila a otra Esta Codeblock se evalúa cada vez que seleccione una fila diferente en la navegación.|
+| |Cualquier navegar método que cambia el actual seleccionado navegar fila, hará que este Codeblock para ser evaluados.\\ Este Codeblock se le asigna en la cláusula sobre el Cambio ... cuando se declara la búsqueda en tu código fuente.|
+|bAdd|El Codeblock a ejecutar para añadir un nuevo registro para ejecutar un Codeblock cuando se utiliza el METHOD :RecAdd().|
+| |El Método: RecAdd() es llamado automáticamente desde el interior de la Búsqueda FiveWin automático() la función.\\ Ver FUENTE \ función \ Browse.prg.\\ Por defecto: las llamadas bAdd(<oBrw>: cAlias) ->(DbAppend())|
+|nRowPos|La fila que tiene el foco.|
+| |El número de la fila que se centra actualmente en la navegación.\\ nRowPos está en el rango 1 a:: nRowCount() que es un método que devuelve el número de líneas visibles de la navegación.|
+|nColPos|La columna de la izquierda visible en la pantalla.|
+| |Un valor numérico que mantiene automáticamente la columna visible más a la izquierda de la navegación.\\ Columnas FiveWin son simulados y no son columnas reales(por ahora).\\ Próxima versión de FiveWin contendrá una columna ofrecido completo de la base navegar, tanto más compatible posible con la actual.\\ nColPos indica el número de columnas que ya se han desplazado a la izquierda.|
+|nLen|El número de elementos.|
+| |Por defecto es Eval( ::bLogicLen ) nLen mantiene un valor numérico con el número total de filas lógica(no sólo los visibles) manipulado por los navegador.\\ Por defecto se mantiene el valor devuelto por la evaluación del Codeblock ::bLogicLen del navegador.|
+|nAt|El elemento de la matriz seleccionada actualmente al navegar matrices, el navegador FiveWin implementa el METHOD :SetArray() una forma de navegar de forma automática una matriz.|
+| |En estas ocasiones, el DATA :nAt tiene el elemento seleccionado actual de la matriz. Vea en esta sección la explicación del METHOD :SetArray().|
+|nColAt|columna Real seleccionado|
+|nMaxFilter|Número máximo o registros de contar con filtros de indexado|
+|lHitTop|Como Clipper TBrowse:hitTop.|
+| |Un valor lógico administrados automáticamente por el navegar, que se mantiene si el navegar alcanzado BOF o la expresión TOP si el SELECT ... FOR ... TO ... cláusula en su última operación.\\ Tan pronto como el navegar se mueve de nuevo, este valor será modificado para ser .F. si no BOF o condiciones más importantes que se corresponden.|
+|lHitBottom|Como Clipper TBrowse:hitBottom.|
+| |Un valor lógico administrados automáticamente por el navegar, que se mantiene si el navegar alcanzado EF o la de expresión, si el SELECT ... FOR ... TO ... cláusula en su última operación.\\ Tan pronto como el navegar se mueve de nuevo, este valor será modificado para ser .F. si no hay EF o las condiciones son iguales.|
+|lCaptured|Si el ratón está siendo capturada(cambiar el tamaño de las columnas) Un valor lógico que se queda .T. mientras el usuario cambiar el tamaño de una columna con el ratón.|
+| |Tan pronto como el usuario suelta el cambio de tamaño, lCaptured los datos .F. otra vez.|
+|lMChange|Si se le permite cambiar el tamaño de las columnas.|
+| |Un valor lógico que indica si el usuario de forma automática o no puede cambiar el tamaño de las columnas con el ratón.\\ Por defecto es .T..\\ Turn it into .F. para evitar el cambio de tamaño automático: <oBrw>: lMChange = .F.|
+|lAutoEdit|Si .T. entonces AutoEditable habilitado|
+|lAutoSkip|Si .T. luego AutoEditable salta al campo siguiente o registro|
+|lCellStyle|Menú de navegación de la célula estilo de modo|
+|aHeaders|matriz de cText para el encabezado de cada columna.|
+| |Una matriz con todas las cadenas de cabeceras que se utiliza para pintar cada encabezado de la columna.\\ Si no se especifica en los encabezados de la cláusula ..., FiveWin utiliza el nombre de los campos de la: cAlias conservados por el objeto de búsqueda.\\ Ver FUENTE \ CLASSES \ _aFields función WBrowse.prg() para la inicialización por defecto.|
+|aColSizes|matriz de nSize para cada columna.|
+| |Un conjunto de valores numéricos utilizados para calcular el ancho de cada columna muestra navegar.\\ De forma predeterminada, FiveWin utiliza el ancho de la letra "B" más el len de la expresión que se muestran.\\ No es un buen truco cuando navega edificio para calcular automáticamente el ancho adecuado de las columnas de navegar: \\ 1. Realiza tus navegar sin considerar la COLSIZES ... valores.\\ 2. Especifique la cláusula siguiente en DblClick: \\ REDEFINE CAMPOS oBrw LISTBOX ... ; \\ SOBRE DblClick AEVAL(oBrw: aColSizes,%%(|nSize|\%% MsgInfo(nSize))). \ 3. Ejecuta tus explorar y cambiar el tamaño con el ratón el ancho de las columnas a la deseada y el futuro de valores.\\ 4. Haga doble clic en el botón Navegar para ver el seleccionado actualmente: aColSizes valores.\\ 5. Revisión de nuevo su código fuente y el lugar que los valores que se obtiene! en el COLSIZES ... cláusula! Esta es la manera más fácil!|
+|nClrBackHead|color de fondo del encabezado.|
+| |Un valor numérico que representa el color RGB utiliza para mostrar el color de fondo de las cabeceras de la navegación.\\ FiveWin Por defecto usa el color de fondo de los títulos de las ventanas.\\ Manipularla directamente para cambiar su valor: <oBrw >: nClrBackHead NRGB =(123, 244, 37)\\ sólo una muestra!|
+|nClrForeHead|color de primer plano de cabecera.|
+| |Un valor numérico que representa el color RGB utiliza para mostrar el color del texto de los encabezados de la navegación.\\ FiveWin Por defecto usa el color del texto de los títulos de las ventanas.\\ Manipularla directamente para cambiar su valor: <oBrw >: nClrForeHead NRGB =(123, 244, 37)\\ sólo una muestra!|
+|nClrBackFocus|Enfocados color de fondo de la línea A de valor numérico que representa el color RGB utiliza para mostrar el color de fondo de la fila centrado en la navegación.|
+| |Por defecto FiveWin utiliza Dark Cyan.\\ Manipularla directamente para cambiar su valor: <oBrw>: nClrBackFocus NRGB =(123, 244, 37)\\ sólo una muestra!|
+|nClrForeFocus|Enfocados color de primer plano de línea.\\ Un valor numérico que representa el color RGB utiliza para mostrar el color del texto de la fila centrado en la navegación.\\ Por defecto FiveWin utiliza blanco.\\ manipularla directamente para cambiar su valor: < > oBrw: nClrForeFocus NRGB =(123, 244, 37)\\ sólo una muestra!|
+|aJustify|Una serie de elementos lógicos, uno por columna, por el derecho de justificar una matriz de valores lógicos que indica cuáles deben ser justificados por la derecha.|
+| |Por defecto FiveWin hace que los valores numéricos sean justificados por la derecha.\\ Para justificar a la derecha valor manipule: el arreglo aJustify directamente: <oBrw>:aJustify = { .F., .F., .F., .T., .F. }|
+|aActions|Una arreglo de acciones codeblocks para hacer clic en los encabezados, Una arreglo de codeblocks para ejecutar la correspondiente accion al hacer clic del ratón sobre un encabezado de columna.|
+| |Es ideal para la búsqueda de una expresión específica, para cambiar el indice activo, etc .|
+|oGet|Control TGet a utilizar para la edición en línea|
+|nLineStyle|Estilo de línea del navegador|
+| |# Define LINES_NONE 0,\\ # define LINES_BLACK 1,\\ # define LINES_GRAY 2,\\ # define LINES_3D 3,\\ # define LINES_DOTED 4|
+|lIconView|Para activar el modo iconview|
+|aIcons|matriz de iconos para mostrar en el modo de iconview|
+|bIconDraw|La acción a realizar en la elaboración de los iconos|
+|bIconText|La acción a realizar en la elaboración de los textos de los iconos|
+|nIconPos|La posición de icono seleccionado|
+|nVScrollPos|La actual posición de la barra de desplazamiento vertical|
+
+====== MÉTODOS ======
+
+|Nuevo|Constructor de código fuente|
+| |TWBrowse:New(nRow, aHeaders nCol, nWidth, nHeight, bLine, aColSizes,\\ oWnd, cField, uVal1, uVal2, bChange, bLDblClick, bRClick, oFont, oCursor,\\ nClrFore, nClrBack, cMsg, lUpdate, cAlias, lPixel, bWhen, lDesign,\\ bValid, bLClick)\\ **<nrow>**, **<ncol>** las coordenadas donde colocar el navegar. Ellos son simuladas texto coordenadas menos que se especifique la cláusula de pixel a tratarlos como píxeles.\\ **<nWidth>**, **<nHeight>** Las dimensiones en píxeles de la navegación.\\ **<bLine>** A Codeblock que devuelve una matriz con el \\ expresiones para mostrar el contenido de la fila seleccionada.\\ **<aHeaders>** Una serie de expresiones de cadena con los encabezados de columna ofeach.\\ **<aColSizes>** Una matriz de valores numéricos con el ancho de cada columna.\\ **<oWnd>** El objeto contenedor de la navegación. Normalmente es la ventana o el cuadro de diálogo \\ donde se coloca el navegar.\\ **<cField>** La expresión para el SELECT <cField> FOR ... TO ... cláusula. Es una expresión de cadena.\\ **<uVal1>** La expresión de la SELECT ... FOR <uVal1> PARA ... cláusula. Puede ser de cualquier tipo y que se utiliza para realizar una búsqueda de la misma al hacer la <oBrw>: GOTOP()\\ **<uVal2>** La expresión de la SELECT ... FOR ... TO  <uVal2> cláusula. Puede ser de cualquier tipo y es usado para buscar o el último valor seleccionado.\\ Por defecto FiveWin buscará el valor más cercano, donde la clave de índice \\ cambios.\\ **<bChange>** Un codeblock para evaluar cada vez que una nueva fila en el \\ navegar está seleccionado.\\ **<bLDblClick>** Un Codeblock para evaluar si se deja el doble \\ clic con el ratón sobre el botón Examinar.\\ **<bRClick>** Un Codeblock para evaluar al hacer clic derecho con el ratón sobre el botón Examinar.\\ **<oFont>** el objeto de fuente a utilizar para mostrar el texto de las filas. Por defecto se toma la fuente de \\ su objeto contenedor.\\ **<oCursor>** Un objeto cursor opcional para cambiar el \\ aparición del ratón cuando el ratón está sobre el navegar. Por defecto, el \\ ratón se verá con la flecha estándar.\\ **<nClrFore>** Un valor numérico que indica el color RGB a utilizar para el color del texto de la navegación.\\ **<nClrBack> numérico valor que indica el color RGB a utilizar para el color \\ fondo de la navegación.\\ **<cMsg>** un mensaje opcional para mostrar en \\ la barra de botones, si la define-de su objeto contenedor.\\ **<lUpdate>** Un valor lógico que indica que este control debe ser automáticamente \ \: Refresh() ed al hacer un <oDlg>: Update() a su objeto contenedor.\\ ** El <cAlias> alias cuando este navegar debe operar. Por defecto, el navegar \\ asume la area de trabajo  seleccionado actual.\\ **<lPixel>** Si las coordenadas nRow y nCol suministrada debe ser considerado como "pixels".\\ **<bWhen>** Un Codeblock a evaluar para permitir o deshabilitar el control.\\ **<lDesign>** Si el navegar se debe trasladar al pulsar el ratón sobre ella. Por defecto es .F. Si \\ into.t. que lo cambie, incluso en tiempo de ejecución-que será capaz de arrastrar todo \\ el control con el clic del ratón.\\ **<bValid>** Un Codeblock para controlar si este el control debe dejar o no el foco.\\ **<bLClick>** Un Codeblock para evaluar si se deja hacer clic en el ratón sobre ella. Esta Codeblock será \\ evaluados, además de cambiar el seleccionado navegar fila.|
+|Redefinir|Constructor de recursos|
+| |TWBrowse:Redefine(nID, bLine, oDlg, aHeaders, aColSizes, cField,\\ uVal1, uVal2, bChange, bLDblClick, bRClick, oFont, oCursor, nClrFore,\\ nClrBack, cMsg, lUpdate, cAlias, bWhen)\\ **<nId>** El número de identificación del control dentro del Dialogo.\\ **<bLine>** Un Codeblock que devuelve un arreglo con la expresion para mostrar el contenido de la fila seleccionada.\\ **<oDlg>** El diálogo contenedor del objeto de la navegación.\\ **<aHeaders>** Una arreglo de expresiones cadena con las cabeceras de cada columna.\\ **<aColSizes>** Un arreglo de valores numericos con el ancho de cada columna.\\ **<cField>** La expresión para la clausula SELECT <cField> FOR ... TO .... Es una expresión cadena.\\ **<uVal1>** La expresión <uVal1> de la cláusula SELECT ... FOR .... Puede ser de cualquier tipo y que se utiliza para realizar una búsqueda de la misma al hacer el <oBrw>:GOTOP()\\ **<uVal2>** La expresión <uVal2> de la cláusula SELECT ... FOR ... TO . Puede ser de cualquier tipo y se utiliza para buscar el ultimo valor seleccionado. De forma predeterminada FiveWin buscará el valor más cercano cuando la clave indice cambie.\\ **<bChange>** Un Codeblock para evaluar cada vez que se selecciona una nueva fila en el navegador.\\ **<bLDblClick>** Un Codeblock a evaluar cuando se hace doble clic izquierdo con el ratón, sobre el navegador.\\ **<bRClick>** Un codeblock a evaluar al hacer clic derecho con el ratón sobre el navegador.\\ **<oFont>** el objeto fuente a utilizar para mostrar el texto de las filas. Por defecto este toma la fuente de su objeto contenedor.\\ **<oCursor>** Una objecto cursor opcional para cambiar la apariencia del ratón cuando el ratón se mueve progresivamente. Por defecto, el ratón se verá con la flecha estándar.\\ **<nClrFore>** Un valor numérico que indica el color RGB a utilizar para el texto del navegador.\\ **<nClrBack>** Un valor numérico que indica el color RGB para el color de fondo de la navegación.\\ **<cMsg>** muestra un mensaje opcional en la barra de botones, si la define su objeto contenedor.\\ **<lUpdate>** Un valor lógico que indica que este control debe ser actualizado de forma automática: Refresh()al hacer un <oDlg>:Update() a su objeto contenedor.\\ **<cAlias>** cAlias sobre el que el browse debe operar. Por defecto, el browse asume el area de trabajo  seleccionado actual.\\ **<bWhen>** Un Codeblock a evaluar para activar o desactivar el control.\\ **<bValid>** Un Codeblocks para controlar si este control debe dejar o no el foco.\\ **<bLClick>** A codeblockto evaluar cuando se hace clic izquierdo en el ratón sobre el. Esta codeblock sera evaluado, además de cambiar la fila seleccionada|
+|SetArray|Establece automáticamente la matriz a ser navegado|
+| |TWBrowse:SetArray(<aArray>)\\ **<aArray>** una matriz para ser navegado. Si desea navegar por una matriz multidimensional podría usar Este METHOD para establecer la GoTop, Skip y GoBottom codeblocks correctamente y después cambia el: bLine del browse para mostrar algunos valores específicos, es decir: local aArray := { { 1, 2, 3 }, { 4, 5, 6 }, ... } oBrw:SetArray( aArray ) oBrw:bLine = %%{||%% aArray[ oBrw:nAt ][ 2 ] } Usted verá: 2, 5. Importante: Este METHOD establece los DATA :cAlias del browse a "ARRAY" internamente sabe que se esta navegando por una matriz.|
+|SetTree|Establece automáticamente un árbol para ser navegado|
+| |TWBrowse:SetTree(<oTree>)\\ **<oTree>** Una referencia a un objeto de TLinkList FiveWin(un árbol), construida con el árbol ... ENDTREE cláusulas, o con las llamadas clases adecuadas. Importante: Este METHOD establece los datos: cAlias de la vaya a "árbol" internamente sabe que es navegar por una matriz. Véase IDE \ Source \ Menus.prg para una muestra de trabajo.|
+|Set3DStyle|Para cambiar la apariencia del navegador por el viejo estilo de Fivewin 3D|
+|SetDefStyle|Para cambiar el estilo por defecto Fivewin nueva imagen si ha cambiado a través del método Set3DStyle()|
+|lCloseArea|Cierra la zona de asociados de los navegar|
+| |TWBrowse:lCloseArea()\\-->nil \\ Este METHOD cierra la area de trabajo  especificados en los datos: cAlias de los navegar y vaciar la DATOS: cAlias de la navegación. Que devuelve .T. si la operación fue un éxito. Usted debe utilizar Este METHOD cuando la validación de una ventana MDIChild que mantiene un navegar como el control de su: principales oControl revisados, para evitar problemas cuando el dibujo de la SYSMENU MDIChild se cierra después de la selección final de la ventana MDIChild.(Windows emite un WM_PAINT después de cerrar la SYSMENU, pero si el alias ya se ha cerrado antes de obtener un error porque el navegar no se encuentra el: cAlias más. Este METHOD evita estos problemas, principalmente). Véase IDE \ Source \ *. prg para las muestras de trabajo.|
+|LDblClick|gestionador de evento del doble clic Izquierdo|
+| |TWBrowse:LDblClick(<nrow>, <ncol>, <nKeyFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario haga doble clic en el izquierdo del ratón sobre el botón Examinar. El: Codeblock bLDblClick será evaluado, si se define, y <nrow>, <ncol> Y <nKeyFlags> será automáticamente suministrada a la codeblocks son los parámetros: \\ **<nrow>**, **<ncol>** Las coordenadas donde el ratón es el doble clic.\\ **<nKeyFlags>** Algunos indicadores que indican el estado de la keyboard.See TWindow MÉTODO LDblClick para una explicación de estos valores.|
+|Default|inicialización por defecto|
+| |TWBrowse:Default()\\-->nil \\ Este METHOD es llamado automáticamente por FiveWin cuando el navegar objectis se está creando. Se establecen algunas navegar valores específicos.|
+|VertLine|vertical de cambio de tamaño de las columnas|
+| |TWBrowse:VertLine(nColPos, nColInit)\\ Este METHOD se invoca automáticamente cuando el usuario cambia el tamaño de una columna con el ratón.|
+|BugUp|Corrige la pintura cuando se navegado muy pocos registros|
+| |TWBrowse:BugUp()\\-->nil \\ Este METHOD tiene la misma funcionalidad(es el mismo pero con un nombre diferente) como: UpStable MÉTODO. Véase: UpStable() una explicación en esta sección.|
+|lEditCol|Edita una celda de la navegar en modo de modal|
+| |TWBrowse:lEditCol(nCol, Uvar, cPicture, bValid, nClrFore, nClrBack)\\ Este METHOD permite hacer una edición de la celda de una celda de la Personas, en la fila seleccionada. Se crea automáticamente un DialogBox sin fronteras o leyenda, y que mantiene un GET y un botón "Aceptar". Sólo el AEC será visible y se ajuste exactamente a la superficie de la célula.\\ **<ncol>** La columna para ser editado.\\ **<uVar>** El valor de la variable inicial para ser editado. Usted debe dar el mismo valor que se muestra en la navegación. Importante: Hay que suministrada por referencia: @ <uValue> <cPicture> La cláusula de imagen para ser utilizado en el GET.\\ **<bValid>** La cláusula válida para ser usada en el GET, suministra como un Codeblock.\\ **<nClrFore>** Un valor numérico que indica el color del texto RGB para el GET.\\ **<nClrBack>** Un valor numérico que indica el color de fondo RGB para el GET.|
+|EditCol|Edita una celda de la navegar en modo no modal|
+| |TWBrowse:lEditCol(nCol, Uvar, cPicture, bSave, nClrFore, nClrBack)\\ Este METHOD permite hacer una edición de la celda de una celda de la Personas, en la fila seleccionada.\\ **<ncol>** Columna a ser editado.\\ **<uVar>** El valor de la variable inicial para ser editado. Usted debe dar el mismo valor que se muestra en la navegación.\\ **<cPicture>** La cláusula de imagen para ser utilizado en el GET.\\ **<bSave>** El proceso Codeblock posterior. Este Codeblock es el responsable de guardar el nuevo valor, ya que este método es no-modal. El Codeblock recibe dos parámetros el valor actual obtenido y la última tecla procesada\\ Por ejemplo: oBrw:EditCol(1, xVar, "@K !!!!!!!!!!" , %%{ v,k %% xVar := v })\\ **<nClrFore>** Un valor numérico que indica el color del texto RGB para el GET.\\ **<nClrBack>** Un valor numérico que indica el color de fondo RGB para el GET.|
+|GetDlgCode|Devuelve el GetDlgCode asociados|
+| |TWBrowse:GetDlgCode(<nLastKey>)\\-->nil \\ Este METHOD es llamado automáticamente por Windows para saber el tipo de comportamiento que el navegar se han respetado los DialogBox. Ver TWindow clase para una explicación completa de Este METHOD|
+|GoUp|Sube una línea.|
+| |TWBrowse:GoUp()\\-->nil \\ Hace que el navegador suba una fila.|
+|Godown|baja una línea.|
+| |TWBrowse:GoDown()\\-->nil \\ Hace que el navegador baje una fila.|
+|GoLeft|va a la izquierda una columna.|
+| |TWBrowse:GoLeft()\\-->nil \\ Hace que el navegador se desplaze una columna a la derecha.|
+|GoRight|va a la derecha de una columna.|
+| |TWBrowse:GoRight()\\-->nil \\ Hace que el navegador se desplaze de una columna a la izquierda.|
+|GOTOP|Va al primer elemento navegado.|
+| |TWBrowse:GOTOP()\\-->nil \\ Hace que el navegador vaya a la primera fila.|
+|GoBottom|Va al último elemento navegado.|
+| |TWBrowse:GoBottom()\\-->nil \\ Hace que el navegador vaya a la última fila.|
+|HandleEvent|manejador de eventos specifico del navegador|
+| |TWBrowse:handleEvent(nMsg, nWParam, nLParam)\\ METHOD manejador de eventos specifico del navegador. Llamado automáticamente a partir de FiveWin. Ver Clase TWindow METHOD handleEvent() para una explicación completa.|
+|HScroll|barras de desplazamiento horizontal gestor de eventos|
+| |TWBrowse:HScroll(nWParam, nLParam)\\ Este METHOD es llamado automáticamente por FiveWin cuando la barra de desplazamiento horizontal es administrado por el usuario.|
+|Iniciar el proceso|de inicialización|
+| |TWBrowse:Init(<hDlg>)\\ Este METHOD es llamado automáticamente por FiveWin durante una inicialización DialogBox para inicializar correctamente el control. Ver Clase TControl método Iniciar() para una explicación completa.|
+|RePág|Sube una página|
+| |TWBrowse:RePág(<nLines>)\\ Hace que el navegar por hacer una página hacia arriba.\\ **<nLines>** El número de filas para saltar al hacer la página hacia arriba. Por defecto es el valor devuelto por: nRowCount() MÉTODO.|
+|PageDown|baja una página|
+| |TWBrowse:PageDown(<nLines>)\\ Hace que el navegar por hacer una página hacia abajo.\\ **<nLines>** El número de filas para saltar al hacer la página hacia arriba. Por defecto es el valor devuelto por: nRowCount() MÉTODO.|
+|KeyDown|Método para controlar los eventos WM_KEYDOWN.|
+| |TWBrowse:KeyDown(<nKey>, <nFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando la llave de pressa usuario. Ver Clase TWindow método KeyDown() para una explicación completa.|
+|KeyChar|Método para controlar los eventos WM_CHAR.|
+| |TWBrowse:KeyChar(<nKey>, <nFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario ha pulsado un botón y esto genera una clave para ser procesados. Ver Clase TWindow MÉTODO KeyChar() para una explicación completa.|
+|LButtonDown|click izquierdo del ratón gestor de eventos|
+| |TWBrowse:LButtonDown(<nrow>, <ncol>, <nKeyFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario haga clic izquierdo del ratón sobre el botón Examinar. Ver Clase TWindow MÉTODO LButtonDown() para una explicación completa.|
+|LButtonUp|izquierdo del ratón la liberación de gestor de eventos|
+| |TWBrowse:LButtonUp(<nrow>, <ncol>, <nKeyFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario suelta el izquierdo del ratón sobre el botón Examinar. Ver Clase TWindow MÉTODO LButtonUp() para una explicación completa.|
+|MouseMove|Ratón eventos Movimientos gerente|
+| |TWBrowse:MouseMove(<nrow>, <ncol>, <nKeyFlags>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario mueve el ratón sobre el botón Examinar. Ver Clase TWindow MÉTODO MouseMove() para una explicación completa.|
+|Pintura|Método de Pintura|
+| |TWBrowse:Pintura()\\-->nil \\ Este METHOD es llamado automáticamente por FiveWin para mostrar la surfaceof la navegación. No llame directamente. Hacer un <oBrowse>: Refresh() para forzar un repintado del control.|
+|VScroll|barra de desplazamiento vertical gestor de eventos|
+| |TWBrowse:VScroll(<nWParam>, <nLParam>)\\ Este METHOD es llamado automáticamente por FiveWin cuando el usuario gestiona la barra de desplazamiento vertical de la navegación.|
+|Salta|Mueve el cursor hacia arriba o hacia abajo.|
+| |TWBrowse:Skip(<nRows>) Hace que la vaya a saltar <nRows> filas. Se evaluará el: Codeblock bSkip.|
+|DrawLine|vuelve a dibujar una fila específica sin mirar el foco de entrada|
+| |TWBrowse:DrawLine(<nrow>) Pinturas <nrow> la fila especificada.|
+|DrawSelect|fila cursor vuelve a dibujar con la mirada foco de entrada|
+| |TWBrowse:DrawSelect()\\ -> Pinturas cero de la fila seleccionada actual de los navegar|
+|RecAdd|Agrega un nuevo registro evaluación de la Codeblock bRecAdd|
+| |TWBrowse:RecAdd()\\-->nil \\ Evalúa el: Codeblock bAdd si está definida. Por defecto se agrega un registro a la <oBrowse>: cAlias.|
+|SetFilter|Cambios en los valores asignados actualmente para los filtros de indexado|
+| |TWBrowse:SetFilter(<cField>, <uVal1>, <uVal2>)\\ cambia dinámicamente el SELECT ... FOR ... TO ... utilizado por la cláusula de navegar.\\ **<cField>** La expresión de la <cField> PARA SELECCIONAR ... A ... cláusula. Es una expresión de cadena! Debido a que construir un "macro" de él! es decir: Uso "MyArea-> Nombre" en lugar de MyArea-> Nombre.\\ **<uVal1>** La expresión de la SELECT ... FOR <uVal1> PARA ... cláusula. Puede ser de cualquier tipo y que se utiliza para realizar una búsqueda de la misma al hacer la <oBrw>: GOTOP()\\ **<uVal2>** La expresión de la SELECT ... FOR ... TO  <uVal2> cláusula. Puede ser de cualquier tipo y se utiliza para buscar el último valor seleccionado. De forma predeterminada FiveWin buscará el valor más cercano en donde el índice de los cambios clave.|
+|GotFocus|procesos se centran Got|
+| |TWBrowse:GotFocus()\\-->nil \\ Este METHOD es llamado automáticamente por FiveWin navegar cuando la recibe el foco. Ver Clase TWindow MÉTODO GotFocus() para una explicación completa.|
+|UpStable|Fuerzas de estabilizar adecuadamente cuando se navegado muy a Documentos|
+| |TWBrowse:UpStable()\\-->nil \\ Este METHOD propiamente estabiliza el navegar cuando se realiza una búsqueda y el resultado puede ser ubicado en el grupo de registros mostrados en la pantalla visible misma. Navega Clipper tienen un error al realizar una búsqueda hacia atrás si el nuevo registro se coloca en la misma pantalla de la navegación. FiveWin navegar imita los comportamientos de MsDos navegar y hacer eso y también tiene el mismo error, pero Este METHOD resuelve el problema, y colocará a la fila seleccionada navegar correctamente. Usted debe llamar a Este METHOD después de hacer una búsqueda que puede ser localizado hacia atrás en la pantalla visible de la misma navegar. resuelve|
+|nRowCount|Devuelve el número de líneas visibles en el navegar|
+| |TWBrowse:nRowCount()\\-->nil \\ Devuelve el número de filas visibles en la pantalla. El número de filas depende de la altura de la de control y navegar en la altura de la fuente utilizada por el navegar.|
+|GetColSizes|Devuelve una matriz con todos los tamaños de las columnas|
+| |TWBrowse:GetColSizes()\\-->nil \\ Este METHOD devuelve una matriz numérica de los anchos de cada columna. Se comprueba si el: aColSize es un Codeblock o un arreglo y lo evalúa o simplemente devolver su valor en consecuencia. Usted puede cambiar dinámicamente el ancho de columna para cada fila. Esta técnica se utiliza para navegar por los árboles FiveWin.|
+|LostFocus|La pérdida de los procesos de fondo|
+| |TWBrowse:LostFocus()\\-->nil \\ Este METHOD es llamado automáticamente por FiveWin navegar cuando el control pierde el foco.|
+Devoluciones|nAtCol|la columna coloca en una posición de píxel específico|
+| |TWBrowse:nAtCol(<nPixelCol>)\\ -> <ncol> \\ Este METHOD devuelve la columna en la posición del píxel determinados correspondiente. Cuando se hace click con el ratón en el navegador, el parámetro <ncol> del evento de ratón especifica el píxel de coordenadas del clic. Usando Este METHOD usted puede saber la columna correspondiente a esa posición.\\ <oBrw>:bLDblClick=%%(|nRow, nCol,|nKeyFlags%%;\\ MsgInfo( "Seguido a la columna:" + str(oBrw:nAtCol(nCol))))\\ Esto le permitirá realizar fácilmente una: lEditCol() para modificar esa celda específica. Ver FUENTE \ función \ Browse.prg para una muestra de trabajo de la forma de editar una celda de forma automática cuando el usuario hace doble clic en una columna(usando Este METHOD).|
+|nAtIcon|Devuelve el índice de icono en la fila y columna dada la posición|
+|Informe|Genera automáticamente un informe de la navegar|
+| |TWBrowse:Informe(<cTitle>, <lPreView>)\\-->nil \\ Este METHOD generará un informe ofrecido completo, incluso con vista previa!, Basado en la información real mostró por la navegación. Este METHOD podría ahorrar horas y horas de trabajo, ya que automáticamente tendrá todos los informes de las tablas de aplicación hecha en pocos minutos! \\ **<cTitle>** El título del informe. Por defecto usa el título de la DialogBox que contiene el control de navegar.\\ **<lPreView>** Un valor lógico que indica si una vista previa que debe hacerse. Lo es .T. de forma predeterminada. Este METHOD es muy útil. Utilícelo para reducir drásticamente el tiempo de desarrollo! Ver FUENTE \ función \ Browse.prg para una muestra de trabajo. Es el valor predeterminado FiveWin Personas() function!|
+|IsColVisible|Recupera si una columna específica es visible|
+|SetCols|Sustituye las columnas del browse|
+| |TWBrowse:SetCols(aData, aHeaders, aColSizes)\\-->nil \\ aData es una matriz de codeblocks para la aHeaders columnas de datos es una matriz de cadena para los encabezados de columna aColSizes es una matriz con todos los tamaños de las columnas de la ShowSizes Muestra un cuadro de MsgInfo con el tamaño actual de todas las columnas|
+|Presentación|Muestra el control|
+|DrawIcons|Preparar los iconos en el modo de iconview|
+|Editar|Edita las columnas dadas|
+|DrawIcon|Preparar el icono con el índice dado|
+|MouseWheel|controlador de eventos de rueda de ratón|
+|Reccount|Devuelve el número total de registros en el ámbito de aplicación|
+|Resize|Controlador de evento de redimencionamiento|
+|VSetPos|Establece la posición de la barra de desplazamiento vertical|
+|VThumbPos|Establece la posicion de la barra de desplazamiento vertical|
+|VGetPos|Devuelve la posición actual de la barra de desplazamiento vertical|
+|VSetRange|Establece el valor de posicion mínimo y máximo de la barra de desplazamiento vertical|
+|VGetMax|Devuelve la posición máxima de la barra de desplazamiento vertical|
+|VGoDown|Mueve la barra de desplazamiento vertical hacia abajo|
+|VGoUp|Mueve la barra de desplazamiento vertical hacia arriba|
+|VGetThumbPos|Devuelve la posición de la barra de desplazamiento vertical|
+|VGoBottom|Mueve la barra de desplazamiento vertical a la posición máxima|
+|VGoTop|Mueve la barra de desplazamiento vertical a la posición mínima|
+
+====== Ejemplo ======
+
+====== Vea también ======
+
+====== El código fuente ======
+
+FWH\Source\CLASSES\TWBROWSE.PRG

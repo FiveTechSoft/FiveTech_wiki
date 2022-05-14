@@ -1,0 +1,79 @@
+Administra las columnas de la tReport
+
+====== DATA ======
+|oReport     |Contenedor del Objeto tReport|
+|aData       |Una matriz con todas los datos en codeblocks  |
+|aTitle      |Una matriz con todos los tilulos en codeblocks|
+|aPicture    |Una matriz con todos pictures |
+|bDataFont   |Devuelve un codeblock con la fuente utilizada para los datos |
+|bTitleFont  |Devuelve un codeblock con la fuente utilizada para los titulos |
+|bTotalFont  |Devuelve un codeblock con la fuente utilizada para los Totales |
+|bTotalExpr  |Devuelve un codeblock cuando un total es calculado |
+|bColor      |No usado|
+|cTotalPict  |Picture para los totales|
+|nWidth      |Ancho de la columna en píxeles|
+|nDataHeight |Altura de la columna de datos|
+|nTitleHeight|Altura del título de la columna|
+|nTotal      |Total acumulado ya calculado para la columna|
+|nCol        |Posición de la columna si se ha definido|
+|nSize       |Ancho de los caracteres en píxeles si se ha definido por el usuario|
+|nPad        |La posición relativa dentro de la columna: LEFT, CENTER, RIGHT |
+|nPen        |Elemento nPen de la tReport |
+|nOrder      |Orden de las columnas en el informe|  
+|nCalCol     |Posición de la columna de anclaje |
+|nCurLine    |Numero de la Línea actual|
+|lTotal      |Si la columna tiene total |
+|lGrid       |Si la columna tiene que ser bordeado con líneas|
+|lShadow     |Si la columna tiene que ser llenado con un fondo de sombra|
+|lTotalExpr  |Si bTotalExpr deben ser evaluados    |
+|lUnderline  |Para subrayar la columna   |
+|lDobleUnd   |Para subrayado doble de la columna|
+|lTextUnd    |Para subrayar los datos |
+|lSeparator  |Para dibujar un separador de columna |
+|Cargo       |Slot generico de cargo |
+
+====== METHODS ======
+|New        |Metodo constructor: crea una nueva columna|
+|Stabilize  |Estabilizador de la columna. Es llamado por la Stabilize de tReport|
+|SayTitle   |Imprime el titulo |
+|SayData    |Imprime los datos |
+|SayTotal   |Imprime los totales |
+|Separator  |Imprime la línea de separación|
+|Underline  |Subraya la columna |
+|TitleHeight|Recupera la altura de una línea específica|
+
+
+====== EJEMPLOS ======
+<code>
+ FWH\SAMPLES\report
+</code>
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep01()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport TITLE  "*** My First Report ***" PREVIEW
+
+     COLUMN TITLE "St"         DATA Test->State
+     COLUMN TITLE "First Name" DATA Test->First
+     COLUMN TITLE "   Salary"  DATA Test->Salary
+
+     END REPORT
+
+     oReport:CellView()
+
+     ACTIVATE REPORT oReport
+
+     CLOSE TEST
+
+RETURN NIL
+</code>
+
+====== Codigo Fuente ======
+FWH\SOURCE\CLASSES\RCOLUMN.PRG
+

@@ -1,0 +1,64 @@
+Tray icon management 
+
+====== DATA  ======
+
+| oTray | estructura del objeto Bandeja |
+| oWnd | objeto de la ventana del propietario |
+| oicon | icono de la bandeja de objetos |
+| cCaption | tooltip icono de la bandeja |
+| bLClicked | Acción para llevar a cabo cuando se hace clic izquierdo del ratón |
+| bRClicked | Acción para llevar a cabo al hacer clic derecho del ratón |
+| bMMoved | Acción para llevar a cabo cuando el ratón en movimiento |
+| bLDblClick | Acción para llevar a cabo cuando se hace clic izquierdo del ratón doble |
+| bLButtonUp | Acción para llevar a cabo cuando el ratón a la izquierda liberar |
+| bRButtonUp | Acción para llevar a cabo cuando el ratón derecho liberando | 
+
+====== METODOS ======
+| New | Constructor de código fuente |
+| End | Destruye el icono de la bandeja |
+| Refresh | Actualiza el icono de la bandeja |
+| SetIcon | Establece un nuevo icono de la bandeja y descripción |
+| SetText | Establece un nuevo icono de la bandeja descripción |
+| Command | controlador de eventos de comandos |
+
+====== EJEMPLOS ======
+FHW\SAMPLES\TESTTRAY.PRG
+<code clipper>
+#INCLUDE "Fivewin.CH"
+
+STATIC oApp, oTray, oIcon
+
+FUNCTION TESTIT()
+
+  LOCAL oIcon1
+
+  DEFINE ICON oIcon  FILE "..\icons\fivewin.ICO"
+  DEFINE ICON oIcon1 FILE "..\icons\folder.ico"
+
+  DEFINE WINDOW oApp TITLE "Icon Tray Class for FiveWin! from Jim Gale" ICON oIcon
+
+  ACTIVATE WINDOW oApp ;
+           ON INIT oTray := TTrayIcon():New(oApp,oIcon,"Testing tray ...",{||MsgInfo("Left CLick")},{|nRow,nCol|MenuTray(nRow,nCol,oTray)}) ;
+           VALID oTray:End() ;
+           ON RIGHT CLICK oTray:SetIcon( oIcon1, "Another" )
+
+RETURN NIL
+
+FUNCTION MenuTray( nRow, nCol, oTray )
+
+LOCAL oMenu
+
+   MENU oMenu POPUP
+      MENUITEM "Show" ACTION oApp:Show(), oApp:SetFocus()
+      MENUITEM "Hide" ACTION oApp:Hide()
+      SEPARATOR
+      MENUITEM "Close Application"   ACTION oApp:end()
+   ENDMENU
+
+   ACTIVATE POPUP oMenu AT nRow, nCol OF oTray:oWnd
+
+RETURN NIL
+</code>
+
+====== CODIGO FUENTE ======
+FWH\SOURCE\CLASESS\TRAY.PRG

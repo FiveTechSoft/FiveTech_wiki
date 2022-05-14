@@ -1,0 +1,18 @@
+====== Clase TSymTable ======
+
+Object oriented manipulation of Clipper internal symbol table                  
+====== DATOS ======
+|None||
+|METHOD||
+|Get|Returns the symbol at a given position of the symbol|
+|table||
+|GetFirst|Returns the first symbol of the table|
+|GetLast|Returns the last symbol of the table|
+|Len|Returns the number of symbols of the app symbol table|
+|Size|Returns the physical size of the symbol table|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSYMTABLE.PRG

@@ -1,0 +1,33 @@
+====== Clase TLinkList ======
+
+Managing Linked-Lists data structures                                          
+FiveWin implements a Class TLinkList to manage 'trees'. Trees are a            
+visual representation of Linked-Lists data structures. Using a TWBrowse        
+object we can visually represent the Link-List structure as a tree where       
+each leave is a TTreeItem object.                                              
+Windows 95 implements its own 'Tree' control, but thanks to Class              
+TLinkList and Class TTreeItem (and using a TWBrowse object) we may use         
+trees under Windows 3.1 and NT 3.51.                                           
+See xBase TREE ... ENDTREE explanation to understand how to create a tree      
+object. Once the tree is created, you may visualize it using the TWBrowse      
+Method SetTree                                                                 
+(oTree ):                                                                      
+<oBrw>:SetTree( <oTree> )                                                      
+====== DATOS ======
+|oFirst|First item referenced by the LinkList|
+|oLast|Last item referenced by the LinkList|
+====== METODOS ======
+|Add|Adds an item to the LinkList|
+|Draw|Recalculates all drawing lines of the entire tree|
+|End|Destroyes the LinkList object|
+|GetLast|Returns the last item of the LinkList (including|
+|subtrees)||
+|nCount|Total Number of items|
+|OpenAll|Open all subtrees|
+|Eval|Evals a codeblock for each TreeItem of the LinkList.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLINKLIST.PRG

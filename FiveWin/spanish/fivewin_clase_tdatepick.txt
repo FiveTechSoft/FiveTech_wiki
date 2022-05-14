@@ -1,0 +1,30 @@
+====== Clase TDatePick ======
+
+Control estándar DateTime picker del API de Windows 32 bits 
+(Commoncontrols.dlg).                                                          
+
+Para utilizarlo desde recursos DEBE identificar el control como:
+'SysDateTimePick32'                                                            
+
+Hereda de TControl                                                         
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|ReDefine|Constructor desde recursos|
+|cText|Get/Set del texto del Objeto TGet.|
+|cToChar|Genera ana plantilla de datos para construir un dialogo|
+|Initiate|Inicialización del control genérico|
+|SetDate(date)|Fija la fecha del control|
+|GetDate|Obtiene la fecha del control|
+|LostFocus|Acción a ser realizada cuando se pierde el foco|
+|Change|Notification that the control has change|
+|Changed|Manejador de enventos de cambio|
+|Refresh|Actualiza los datos del control|
+|Consult|El ejemplo TESTDTP.PRG en el directorio de ejemplos.|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TDATEPICK.PRG

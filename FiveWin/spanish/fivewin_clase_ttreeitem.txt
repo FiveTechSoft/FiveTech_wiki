@@ -1,0 +1,48 @@
+====== Clase TTreeItem ======
+
+Arboles TreeItems en FiveWin\\                                                      
+Vea la clase  TLinkList y el comando xBase TREE ... ENDTREE para una explicación de los arboles en FiveWin.
+
+====== DATOS ======
+
+^  Nombre  ^  Descripción  ^
+^cDraw|Contiene los caracteres para dibujar este elemento.|
+^cPrompt|Contiene la etiqueta de texto asociada a este elemento.|
+^oPrev|Referencia al objeto TreeItem previo.|
+^oNext|Referencia al objeto TreeItem siguiente.|
+^oTree|Referencia al objeto Tree contenido.|
+^lOpened|Indica si el objeto Tree está abierto o no.|
+^nLevel|Nivel de Indentado del elemento.|
+^hBmpOpen|Manejador del bitmap para el estado abierto.|
+^hBmpClose|Manejador del bitmap para el estado cerrado.|
+^Cargo|Variable de carga genérica.|
+
+====== METODOS ======
+
+^  Nombre  ^  Descripción  ^
+^New|Constructor de código fuente|
+^End|Finaliza el control y hace que este desaparezca|
+^Add|Añade un nuevo item siguiente.|
+^Close|Cierra el actual treeitem.|
+^ColSizes|Retorna un arreglo con colsizes a usar para el pintado de la fila del navegador.|
+^Delete|Borra treeitem.|
+^Draw|Dibuja the elemento.|
+^GetLabel|recupera la etiqueta del treeitem.|
+^GetNext|Recupera el siguiente treeitem.|
+^GetPrev|Recupera el treeitem previo.|
+^GetText|Recupera el texto del treeitem.|
+^Open|Abre el árbol opcional contenido por TreeItem.|
+^SetNext|Establece un nuevo valor para el siguiente treeitem.|
+^SetText|Establece un nuevo texto para el actual treeitem.|
+^Skip|Va al siguiente treeitem.|
+^Toggle|Cambia el estado del  treeitem, si este esta abierto lo cierra, caso contrario lo abre.|
+
+====== Ejemplo ======
+
+====== Vea tambien ======
+
+[[fivewin_comandos_trees|Comando TREE ... ENDTREE]]
+
+====== Codigo fuente ======
+
+FWH\SOURCE\CLASSES\TTREEITEM.PRG

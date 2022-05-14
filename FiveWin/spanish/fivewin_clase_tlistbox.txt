@@ -1,0 +1,63 @@
+====== Clase TListBox ======
+
+ListBox controls Class                                                         
+Hereda de TControl
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|aItems|Array of Items of the ListBox|
+|aBitmaps|Array of related bitmaps handles for ownerdraw ListBox.|
+|lOwnerDraw|If it is a ownerdraw ListBox.|
+|nBmpHeigth|Height of bitmaps if ListBox is OwnerDraw|
+|nBmpWidth|Width of Bitmaps if Listbox is OwnerDraw|
+|cFileSpec|FileSpec to display a fields directory items.|
+|bDrawItem|Optional codeblock to select what bitmap to draw on a ownerdraw|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|EraseBkGnd|Erases the background of the control|
+|Add|Add an Item to the list.|
+|aSelections|Array with selected items on a MultiSelect ListBox.|
+|cGenPrn|Generates the xBase source code of the control|
+|Default|Default initialization for the control|
+|Display|Displays the control|
+|Change|Changed event handler.|
+|cToChar|Generates a data template to build a DialogBox|
+|Default|Default Listbox initialization|
+|Del|Deletes an Item.|
+|Destroy|Destroys the control. Automatically called.|
+|DrawItem|DrawItem event handler.|
+|FillMeasure|FillMeasure event handler.|
+|GetItem|Retrieves the text of any item.|
+|GetPos|Retrieves the index of the currently selected item.|
+|GetSel|Index number of the selected item. Zero if no item selected|
+|GetSelCount|Retrieves the number of selected items on a multiselect ListBox|
+|GetSelText|Retrieves the current select item as text|
+|GetSelItems|Retrieves all the current selected items (Array of numbers)|
+|GoBottom|Go to the last item in the listbox|
+|GoTop|Go to the first item in the listbox|
+|Initiate|Generic control initialization|
+|Insert|Insert an Item.|
+|IsMultipleSel|Check if the ListBox is multiple selection style|
+|Len|Retrieves the length of the list.|
+|LostFocus|Behavior when losing the focus|
+|LButtonUp|Behavior when unclicking the mouse left button|
+|Modify|Modify the text of an Item.|
+|MouseMove|Behavior when moving the mouse over the control|
+|Paint|Paints the control|
+|Reset|Empties the list.|
+|Select|Select an item by its order|
+|Set|Select an item by its text|
+|SetBitmaps|Sets the ownerdraw related bitmaps|
+|SetItems|Changes the items of the listbox|
+|SetSel|Selects a different item|
+|SetSelItems|Select a group of items on a multiselection ListBox|
+|SwapDown|Toggles an item with its following one|
+|SwapUp|Toggles an item with its preceding one|
+|VScroll|Vertical scroll events handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLISTBOX.PRG

@@ -1,0 +1,53 @@
+====== Clase TPreview ======
+
+Clase para vista preliminar de impresión
+
+====== DATOS ======
+^oWnd|The parent window|
+^oBar|The toolbar of the preview window|
+^oFont|The font object used on the toolbar|
+^oImageList|The imagelist used for the buttons of the toolbar|
+^oDevice|The printer object|
+^oHand|The cursor object used for the buttons of the toolbar|
+^oCursor|The cursor object used on the preview|
+^oMeta1|The metafile object used for the preview|
+^oMeta2|The second metafile object used for two pages preview mode |
+^oSay|The Say object used for the label of the factor combobox |
+^oFactor|The Combobox object that allows the user to set the zoom factor|
+^oPage|The Say object used for the current page number|
+^oTwoPages|The toolbar button used for setting single page/two pages mode|
+^oZoom|The toolbar button used for setting normal/zoomed view mode|
+^oMenuZoom|The menu object used for setting zoomed view mode|
+^oMenuTwoPages|The menu object used for setting two pages mode|
+^oMenuUnZoom|The menu object used for setting normal view mode|
+^oMenuOnePage|The menu object used for setting single page mode|
+^cResFile|The name of the DLL containing the resources for the preview window|
+^aFactor|An array containing the supported zoom factors|
+^nPage|The current page number|
+^nZFactor|The currently selected zoom factor|
+^lTwoPages|.T. when in two pages mode|
+^lZoom|.T. when in zoomed view mode|
+^lExit|.T. when the preview window has exited|
+^cPageNum|The prompt for the page number on the toolbar|
+^oWndMain|A CLASSDATA containing the main window object|
+
+====== METODOS ======
+
+^New|Costructor from source code|
+^Activate|Activates the preview window|
+^NextPage|Goes to the next page|
+^PrevPage|Goes to the previous page|
+^TopPage|Goes to the first page|
+^BottomPage|Goes to the last page|
+^TwoPages|Activates the two pages mode|
+^Zoom|Activates the zoomed view mode|
+^SetFactor|Sets a zoom factor|
+^PrintPage|Prints the preview on the printer object showing an option dialog first|
+^PrintPrv|Prints the preview on the printer object with the specified parameters|
+
+====== Ejemplo ======
+
+====== See Also ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPREVIEW.PRG

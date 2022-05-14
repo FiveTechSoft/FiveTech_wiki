@@ -1,0 +1,30 @@
+====== Clase TPOP3 ======
+
+Clase de FiveWin para recuperación de correo de Internet 
+
+====== DATA ======
+|oSocket|Socket utilizado durante la sesión de correo|
+|nPort|Puerto predeterminado|
+|User|Nombre de usuario|
+|Pass|Clave de usuario|
+|lAllOk|Si todos los mensajes fueron recibidos correctamente|
+|aMsgs|Arreglo de los mensajes recibidos|
+|nAtMsg|Mensaje actual procesado|
+|cIpServer|IP del servidor de correo|
+|AllOk|Sin errores|
+|nStatus|Estado de la sesión temporal|
+|lDelMsgs|Si el mensaje debe ser eliminado del servidor de correo|
+|bConnecting|Acción a realizarse mientras se intenta la conexión|
+|bConnected|Acción a realizarse cuando se establece la conexión|
+|bDone|Acción a realizarse cuando el Msg ha sido enviado|
+====== METODOS ======
+|New|Constructor desde código fuente.|
+|GetMail|Recuper el correo|
+|OnRead|Acción a realizar en la lectura|
+|LogError|Genera un log de error|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPOP3.PRG

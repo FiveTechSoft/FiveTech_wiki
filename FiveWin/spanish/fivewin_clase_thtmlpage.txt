@@ -1,0 +1,17 @@
+====== Clase THtmlPage ======
+
+HTML page viewer
+====== DATOS ======
+|aSays|Array of text strings|
+|aImages|Array of images|
+|aFrames|Array of frames|
+|aTables|Array of tables|
+====== METODOS ======
+|New|Constructor from source code|
+|Display|Displays the HTML page|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\THTMLPAGE.PRG

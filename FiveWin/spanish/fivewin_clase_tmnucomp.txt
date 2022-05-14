@@ -1,0 +1,16 @@
+====== Clase TMnuComp ======
+
+Hereda de TComponent                                                            
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|oMenu|Objeto Menu|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente.|
+|aItems|Devuelve un arreglo con los elementos del menú.|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMNUCOMP.PRG

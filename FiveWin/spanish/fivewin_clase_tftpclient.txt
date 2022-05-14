@@ -1,0 +1,41 @@
+====== Clase TFTPClient ======
+
+Internet FTP client class
+====== DATOS ======
+|oSocket|Socket used during the control session|
+|oDataSocket|Socket used during the trasmission data|
+|oMultiplex|A TCtrlSocket object|
+|nBasePort|Port base number|
+|nPort|Port number used|
+|User|Username|
+|Pass|Password|
+|lOk|Not used|
+|cIPServer|IP of the FTP server|
+|AllOk|Connection ok|
+|nStatus|Temporary session status|
+|bConnecting|Action to perform while trying to connect|
+|bConnected|Action to perform when already connected|
+|bDone|Action to perform when Msg has been already sent|
+|SrvLastMsg|Last message from the server|
+|lWaiting|Waiting for data from the server|
+|lTimeout|Timeout is occurred|
+|nSended|Not used|
+====== METODOS ======
+|New|Constructor from source code|
+|OnConnect|Connect event handler|
+|bConnecting|Action to perform while trying to connect|
+|PWD|Sends PWD command|
+|CWD|Sends CWD command|
+|MKD|Sends MKD command|
+|DELE|Sends DELE command|
+|QUIT|Sends QUIT command|
+|TYPE|Sends TYPE command|
+|STOR|Sends STOR command|
+|RETR|Sends RETR command|
+|DoWait|Waits for response from the server|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTPCLIENT.PRG

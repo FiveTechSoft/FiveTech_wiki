@@ -1,0 +1,32 @@
+====== Clase TAccTable ======
+
+Clase tabla de Aceleradores
+
+====== DATOS ======
+
+|nHandle|manejador de la tabla de aceleradores |
+|aItems|Un array que contiene un array por cada acelerador |
+
+====== METODOS ======
+
+|New|Crea una nueva tabla de aceleradores |
+|Activate|Establece esta tabla de aceleradores como la activa |
+|Add|Añade un nuevo elemento acelerador  |
+|DeActivate|Desactiva esta tabla de aceleradores |
+|Del|Borra un acelerador |
+|End|Destruye la tabla de aceleradores y la desactiva en caso de estar en uso |
+
+====== ejemplo ======
+FWH\source\classes\menuitem.prg
+<code clipper>
+      if ::oMenu:oAccTable == nil
+         ::oMenu:oAccTable = TAccTable():New()
+      endif
+      ::oMenu:oAccTable:Add( nVirtKey, nVKState, ::nId )
+</code>
+
+====== código fuente ======
+FWH\source\classes\tacctbl.prg
+
+====== ver también ======
+[[fivewin_clase_tmenuitem|Class TMenuItem]]

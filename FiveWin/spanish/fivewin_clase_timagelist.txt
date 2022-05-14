@@ -1,0 +1,26 @@
+====== Clase TImageList ======
+
+Standard ImagList control of Windows 32 bits API (Commoncontrols.dlg).         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|hImageList|Array of TTVItem objects.|
+|aBitmaps|Array of bitmaps objects|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor: nWidth, nHeight (Bitmaps dimensions)|
+|End|Destructor|
+|Add|Add a new bitmap to the Imagelist object.|
+|  |**Parameters:** \\ **oBmpImage:** Bitmap object for image \\ **oBmpMask:** Bitmap object for the mask The masked bitmap should be the same as the the Image bitmap but with a diferent color for his background to set the transparency. The color used for the background shoud not be used on the rest of the bitmap|
+|AddIcon|Add a new icon to the Imagelist object|
+|AddMasked|Add a new bitmap to the Imagelist object.|
+|  |**Parameters:** \\ **oBmpImage:**Bitmap object for image nMaskColor: Color for the mask|
+|SetBkColor|Sets the background color|
+|  |**Parameters:** nColor|
+|ReadBitmap|Loads a bitmap and replace the image list.|
+|  |**Parameters:** \\ **cFilename:** The bitmap to load, nWidth: The width of each image, \\ **nImages:** The number of images that the image list can contain, \\ **nClrTransparent:** The color of the image that is considered transparent.|
+====== Ejemplo ======
+FWH\SAMPLES\RE.PRG
+====== Ver también ======
+[[fivewin_clase_TTreeview|TTreeview]],[[fivewin_clase_TTVitem|TTVitem]]
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TIMAGELIST.PRG

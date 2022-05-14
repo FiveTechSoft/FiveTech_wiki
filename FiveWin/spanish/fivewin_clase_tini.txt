@@ -1,0 +1,199 @@
+Gestionar archivos INI como objectos
+
+====== DATA ======
+|cIniFile| Nombre del archivo INI      |
+|lAutoSet| .T. activar el modo autoset |
+
+====== METODOS ======
+|New       |Constructor desde recursos|
+|Get       |Recupera datos desde el archivo INI|    
+|Set       |Escribe los datos en el archivo INI|
+|Sections  |Devuelve una matriz con todos los nombres de las secciones|
+|DelEntry  |Elimina una entrada de la sección INI|
+|DelSection|Borra una sección entera INI|
+
+====== EJEMPLOS ======
+FHW\SAMPLES\TESTINI.PRG
+<code clipper>
+// Sample showing how to use INI files with FiveWin
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oIni, oBar
+   local cTitle, cMsg, cLogo
+   local nRow  := 3, nCol := 5, nWidth := 50, nHeight := 50
+   local cBtn1 := "", cBtn2 := ""
+
+   INI oIni FILE ".\MyApp.ini"
+      GET cTitle  SECTION "main" ENTRY "Title"   OF oIni DEFAULT "FiveWin App"
+      GET cMsg    SECTION "main" ENTRY "Message" OF oIni DEFAULT "Main message"
+
+      GET cLogo   SECTION "Logo" ENTRY "File"    OF oIni
+      GET nRow    SECTION "Logo" ENTRY "Row"     OF oIni
+      GET nCol    SECTION "Logo" ENTRY "Col"     OF oIni
+      GET nWidth  SECTION "Logo" ENTRY "Width"   OF oIni
+      GET nHeight SECTION "Logo" ENTRY "Height"  OF oIni
+
+      GET cBtn1   SECTION "ButtonBar" ENTRY "Button1" OF oIni
+      GET cBtn2   SECTION "ButtonBar" ENTRY "Button2" OF oIni
+   ENDINI
+
+   DEFINE WINDOW oWnd FROM 1, 5 TO 20, 60 ;
+      TITLE cTitle
+
+   DEFINE BUTTONBAR oBar OF oWnd
+
+   if ! Empty( cBtn1 )
+      DEFINE BUTTON OF oBar FILE cBtn1
+   endif
+   if ! Empty( cBtn2 )
+      DEFINE BUTTON OF oBar FILE cBtn2
+   endif
+
+   SET MESSAGE OF oWnd TO cMsg
+
+   @ nRow, nCol BITMAP FILE cLogo SIZE nWidth, nHeight OF oWnd
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+FWH\SAMPLES\TESTINI2.PRG
+<code clipper>
+// Using Windows .INI files FOR configuration inFormation       ê
+/*
+File Name  : TESTINI1.PRG
+
+Description: This applications shows various ways to USE both
+             Win.ini and private .INI files.
+
+Author     : Chris Welch / Hummingbird Software
+
+Modified   :
+  08/28/95 : Code formatted, Grokked & verified by QA Team
+             Tested by QA under FiveWin 1.9
+*/
+
+#INCLUDE "FiveWin.ch"
+
+//-------------------------------------------------------------//
+
+FUNCTION Main()
+   LOCAL cIniFile := GetWinDir()+"\FiveWin.ini"
+   LOCAL cMSG , cVer , csLanguage , cCurrency
+   LOCAL lIsMAPI , cDateFmt
+   LOCAL cInc , cObj , cLib
+   LOCAL nExecs   :=                                            ;
+      val( GetPvProfString( "TestIni2", "Executions", "0",      ;
+      cIniFile ) ) + 1
+
+   IF GetPvProfString("FiveWin","ThreeD","1",cIniFile ) == "1"
+     SET _3DLOOK ON
+   ENDIF
+
+   /* Get Windows language setting from Win.ini             */
+   csLanguage  :=                                               ;
+      upper(GetProfString( "intl" ,"sLanguage" , "ENU" ) )
+
+   /* What Currency setting are we using                    */
+   cCurrency   := GetProfString( "intl" ,"sCurrency" , "$" )
+
+   /* Is a MAPI eMail package installed ?                   */
+   lIsMAPI := iif(GetProfString("MAIL","MAPI","0")== "1",.T.,.F.)
+
+   /* What date format are we using ?                       */
+   cDateFmt :=                                                  ;
+      upper(GetProfString( "intl","sShortDate","MM/DD/YY" ))
+
+
+   /* Which language is Windows set to USE ? */
+   DO CASE
+      CASE csLanguage == "DAN" ; cMsg :="Danish [dan] "
+      CASE csLanguage == "DEU" ; cMsg :="German [deu] "
+      CASE csLanguage == "ENG" ; cMsg :="Int. English [eng]"
+      CASE csLanguage == "ENU" ; cMsg :="US English [enu] "
+      CASE csLanguage == "ESN" ; cMsg :="Modern Spanish [esn]"
+      CASE csLanguage == "ESP" ; cMsg :="Castilian Spanish [esp]"
+      CASE csLanguage == "FIN" ; cMsg :="Finnish [fin]"
+      CASE csLanguage == "FRA" ; cMsg :="French [fra]"
+      CASE csLanguage == "FRC" ; cMsg :="French Canadian [frc]"
+      CASE csLanguage == "ISL" ; cMsg :="Icelandic [isl]"
+      CASE csLanguage == "ITA" ; cMsg :="Italian [ita]"
+      CASE csLanguage == "NLD" ; cMsg :="Dutch [nld] "
+      CASE csLanguage == "NOR" ; cMsg :="Norwegian [nor]"
+      CASE csLanguage == "PTG" ; cMsg :="Portuguese [ptg]"
+      CASE csLanguage == "SVE" ; cMsg :="Swedish [sve]"
+   ENDCASE
+
+   /* Update FiveWin.ini with your Current Clipper Environment */
+
+   cObj  := iif( !empty( getenv("OBJ") )                      , ;
+      getenv("OBJ")                                           , ;
+      "c:\clipper5\obj;c:\fivewin\obj" )
+
+   cLib  := iif( !empty( getenv("LIB") )                      , ;
+      getenv("LIB")                                           , ;
+      "c:\clipper5\lib;c:\fivewin\lib" )
+
+   cInc := iif( !empty( getenv("INCLUDE") )                   , ;
+      getenv("INCLUDE")                                       , ;
+      "c:\clipper5\include;c:\fivewin\include" )
+
+   WritePProString( "PATH" , "OBJ"     , cObj  , cIniFile )
+   WritePProString( "PATH" , "LIB"     , cLib  , cIniFile )
+   WritePProString( "PATH" , "INCLUDE" , cInc  , cIniFile )
+
+   /* Show what we've found out */
+
+   MsgInfo( "You have run this program "+ltrim(str(nExecs,4))+  ;
+      " times"                                 + CRLF + CRLF +  ;
+      "Using " + cMsg                          + CRLF + CRLF +  ;
+      "Currency is set to " + cCurrency        + CRLF + CRLF +  ;
+      "You "+iif( lIsMAPI ,"","do not ")+ "have MAPI enabled"+  ;
+                                                 CRLF + CRLF +  ;
+      "Date format is "+cDateFmt                              , ;
+      FWVERSION                                              )
+
+      /* Update the number of executions */
+   WritePProString( "TestIni2", "Executions", ltrim(str(nExecs))   , ;
+      cIniFile )
+
+RETURN( NIL )
+//-------------------------------------------------------------//
+
+FWH\SAMPLES\TESTINI3.PRG
+<code clipper>
+// Retrieving all entries from an INI section
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cEntries := StrTran( GetProfString( "Devices" ), Chr( 0 ), CRLF )
+   local n
+
+   for n = 1 to MlCount( cEntries )
+      MsgInfo( GetProfString( "Devices", MemoLine( cEntries,, n ) ),;
+               MemoLine( cEntries,, n ) )
+   next
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+procedure AppSys  // XBase++ requirement
+
+return
+</code>
+
+====== CODIGO FUENTE ======
+FWH\SOURCE\CLASSES\INI.PRG

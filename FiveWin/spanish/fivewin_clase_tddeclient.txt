@@ -1,0 +1,32 @@
+====== Clase TDDEClient ======
+
+Dynamic Data Exchange as Objects. Client side                                  
+====== DATOS ======
+|oWnd|Main window object.|
+|hService|The handle to the service.|
+|hTopic|The handle to the topic.|
+|hItem|The handle to the item.|
+|hWndServer|The handle to the DDE server|
+|lActive|If the DDE connection is still active|
+|nAck|The messages from the DDE server|
+|nRetCode|The POKE command return code|
+|lCommand|If a command is currently executed|
+|cData|The data requested by the method Request|
+|hData|Handle to a global memory object|
+====== METODOS ======
+|New|Constructor from source code|
+|Activate|To initiate a conversation with server applications|
+|responding|to the specified application and topic names.|
+|Execute|To send a string to the server to be processed as a|
+|series|of commands.|
+|Request|Requests the server for the value of a data item|
+|Poke|Sends a data item to the server|
+|End|Ends the DDE connection|
+|DDE_ACK|WM_DDE_ACK event handler|
+|DDE_DATA|WM_DDE_DATA event handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDDECLIENT.PRG

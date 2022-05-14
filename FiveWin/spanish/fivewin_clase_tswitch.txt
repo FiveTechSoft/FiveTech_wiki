@@ -1,0 +1,135 @@
+
+====== Clase TSwitch ======
+
+Control Logico Switch
+
+Hereda de [[fivewin_clase_tcontrol|Clase TControl]]                
+
+====== CLASSDATA ======
+^ Data   ^ Descripcion    
+|lRegistered|ClassData logica|
+====== DATA ======
+^ Data   ^ Descripcion                              ^
+|nBorderSize|Tamaño del borde del control default 4|
+|nThumbSize|Tamaño del control default 16|
+|nClrThumb|Color control default CLR_BLACK|
+|nClrBorder|Color control default CLR_HGRAY|
+|lHover|Si control Flotante INIT .F.|
+|lRadioStyle|Si RadioStyle control INIT .F.|
+|lOvalStyle|Si Ovalstyle control INIT .F.|
+|lReadOnly|Si control solo lectura INIT .F.|
+
+====== METHODS ======
+|New|Constructor desde codigo fuente.|
+|Default|Inicializacion por defecto.|
+|Initiate|Inicializacion general.|
+|Reset|Resetea el control|
+|LButtonUp|Evento soltar el boton, devuelve el evento de su Ancestro(Super) |
+|Change|Evaluea el codeblock bChange sin cambiar el estado.|
+|Click|Antes cambia el estado y evalua el codeblock.|
+|Check|Ajusta el switch a on|
+|UnCheck|Ajusta el switch a off|
+|SetCheck|Ajusta el switch on o off segun el valor logico .T. on|
+|Toggle|Cambia el estado del control  on o off|
+|Display|Muestra el control|
+|Paint|Dibuja el Control|
+|PaintBox|Dibuja caja en el Control|
+|PaintCheck|Dibuja el control CheckButton |
+|PaintRadio|Dibuja el el estilo del control a ORadioStyle |
+|PaintOval|Dibuja el estilo del control a OValStyle |
+|GotFocus( hCtlLost )|Manejo del evento Gotfocus |
+|LostFocus( hWndGetFocus )|Manejo del evento Lostfocus |
+|MouseLeave( nRow, nCol, nFlags )|Accion a ser ejecutada cuando el raton deja de estar encima.|
+|MouseMove( nRow, nCol, nKeyFlags )|Accion a ser ejecutada cuando el raton se mueve por encima , devuelve 0.|
+|HandleEvent( nMsg, nWParam, nLParam )|Manejador de evento, Devuelve el manejador de evento Ancestro(Super).|
+|KeyDown( nKey, nFlags )|Evento KeyDown, devuelve el evento KeyDown de su ancestro(Super) |
+
+
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+
+FUNCTION Main()
+
+   LOCAL oDlg, oSay, oSw, lSw, oBtn, aColors:={CLR_RED,CLR_BLUE,CLR_GREEN,CLR_YELLOW}, i:=1
+
+   DEFINE DIALOG oDlg SIZE 400, 300 TITLE "Probando Clase Switch"
+
+   @ 3, 1 BUTTON oBtn PROMPT "Cambia Estilo" OF oDlg SIZE 63,25 ;
+   ACTION (IIF(oSw:lOValStyle,(oSw:lRadioStyle:=.T.,oSw:lOValStyle:=.F.), ;
+   (oSw:lRadioStyle:=.F.,oSw:lOValStyle:=.T.) ), oDlg:Update() )
+
+   @ 5, 1 BUTTON oBtn PROMPT "Cambia Color" OF oDlg SIZE 63,25 ;
+   ACTION (oSw:nClrThumb:= aColors[i++] , oDlg:Update(), IF(i==4,i:=1,) )
+
+   @ 5, 15 SWITCH oSw VAR lSw OF oDlg ;
+      SIZE 80, 20 ON CLICK ( IIF( lSw, MsgInfo( "Switch Activado" ), ) ) ;
+      COLORS "B" UPDATE OVALSTYLE
+
+   @ 2, 1 SAY oSay PROMPT "Probando Clase TSwitch" + IF(oSw:lOvalStyle,"OValStyle","RadioStyle") ;
+   OF oDlg SIZE 80, 20 UPDATE
+
+   ACTIVATE DIALOG oDlg CENTERED
+RETURN NIL
+</code>
+{{:wiki:switch3.jpg|:wiki:switch3.jpg}}
+
+
+** Ejemplo de codigo 2 **
+\Fwh\Samples\Switchtst.Prg
+<code clipper>
+#include "fivewin.ch"
+
+function Main()
+
+   local oWnd, oFont
+   local lVar1, lVar2, lVar3
+   local oYn1, oYn2, oYn3, oSay1, oSay2, oSay3
+
+   lVar1 := lVar2 := lVar3 := .t.
+
+   DEFINE FONT oFont NAME "Segoe UI Light" SIZE 0,-18 BOLD
+
+   DEFINE WINDOW oWnd COLOR CLR_GRAY,CLR_WHITE
+   oWnd:SetFont( oFont )
+//   oWnd:nOpacity := 140
+
+   @  98, 40 SAY oSay1 PROMPT If( lVar1, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 100,207 SWITCH oYn1 VAR lVar1 PIXEL OF oWnd UPDATE ;
+      COLOR CLR_GREEN, CLR_GRAY ;
+      ON CHANGE oWnd:Update()
+
+   @ 128, 40 SAY oSay2 PROMPT If( lVar2, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 130,207 SWITCH oYn2 VAR lVar2 PIXEL OF oWnd UPDATE OVALSTYLE ;
+      COLOR CLR_GREEN, CLR_GRAY ;
+      THUMBSIZE 16 THUMBCOLOR CLR_BLUE ;
+      ON CHANGE oWnd:Update()
+
+   @ 158, 40 SAY oSay3 PROMPT If( lVar3, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 160,207 SWITCH oYn3 VAR lVar3  PIXEL OF oWnd UPDATE RADIOSTYLE ;
+      ON CHANGE oWnd:Update()
+
+   ACTIVATE WINDOW oWnd
+   RELEASE FONT oFont
+
+return nil
+</code>  
+
+** Captura de pantalla 2 **
+
+{{:wiki:switch2.jpg|:wiki:switch2.jpg}}
+
+
+
+
+
+
+====== Ver Tambien ======
+[[fivewin_comandos_switch | Comando Switch ]]
+
+====== Codigo fuente ======
+FWH\SOURCE\CLASSES\TSWITCH.PRG

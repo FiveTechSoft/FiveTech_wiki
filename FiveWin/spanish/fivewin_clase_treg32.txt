@@ -1,0 +1,21 @@
+====== Clase TReg32 ======
+
+Managing Register services from FiveWin                                        
+====== DATOS ======
+|cRegKey|Register key string|
+|nKey|Key type: \\ HKEY_CLASSES_ROOT   0 \\ HKEY_CURRENT_USER   1 \\ HKEY_LOCAL_MACHINE   2 \\ HKEY_USERS         3|
+|nHandle|Internal handle|
+|nError|Last error|
+|lError|If the was an error|
+====== METODOS ======
+|New|Opens a specific register value|
+|Create|Creates a specefic register value|
+|Get|Retrives the value of a specific subkey|
+|Set|Sets the value of a specific subkey|
+|Close|Close a new or created Key|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TREG32.PRG

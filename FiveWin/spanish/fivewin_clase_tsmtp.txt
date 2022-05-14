@@ -1,0 +1,80 @@
+====== Clase TSMTP ======
+
+Clase de FiveWin para manejo del envio de correo electrónico en internet
+====== DATOS ======
+|oSocket|Socket ussado durante la sesión del correo|
+|cIPServer|IP del servidor de correo|
+|cFrom|Dirección electrónica del remitente|
+|aTo|Arreglo de cadenas por cada uno de las direcciones de email de los destinatarios|
+|nStatus|Estado de la sesión temporal|
+|nTo|Temporary recipient index into aTo recipients array|
+|cMsg|Mensaje de texto a ser enviado|
+|cSubject|Asunto del mensaje|
+|dDate|Fecha del mensaje|
+|cTime|Hora del mensaje|
+|nGmt|Desviación GMT|
+|cPriority|Prioridad del mensaje: normal, high, low (normal, alta, baja)|
+|aFiles|Arreglo con los archivos adjuntados|
+|bConnecting|Acción a realizar mientras se intenta la conexión|
+|bConnected|Acción a realizar cuando se estableció la conexión|
+|bDone|Acción a realizar cuando el mensaje fue enviado|
+====== METODOS ======
+|New|Constructor desde código fuente.|
+|OnRead|Acción a realizar en la lectura|
+|SendMail|Enviar el correo|
+|Priority|Retorna del código prioridad|
+|End|Cierra la conexión|
+====== Ejemplo ======
+
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Sending Internet Mail from FiveWin"
+
+   DEFINE BUTTONBAR oBar _3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION SendMail() TOOLTIP "Send Mail"
+
+   SET MESSAGE OF oWnd TO "Ready" NOINSET DATE TIME KEYBOARD
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function SendMail()
+
+   local oOutMail, cIP
+
+   oWnd:SetMsg( "Sending Internet email..." )
+
+   WSAStartup()
+   oOutMail := TSmtp():New( cIP := GetHostByName( "mail.fivetechsoft.com" ) )
+   MsgInfo( cIP )
+
+   oOutMail:bConnecting = { || oWnd:SetMsg( "Connecting to smtp.fivetechsoft.com..." ) }
+   oOutMail:bConnected  = { || oWnd:SetMsg( "Connected" ) }
+   oOutMail:bDone       = { || oWnd:SetMsg( "Message sent successfully" ) }
+
+   oOutMail:SendMail( "alinares@fivetechsoft.com",;     // From
+                      { "alinares@fivetechsoft.com" },; // To
+                      "It is working!!!",;              // Msg Text
+                      "Testing FiveWin Class TSmtp enhancements",; // Subject
+                      { "testsmtp.prg", "testsmtp.zip" } )  // attached files
+
+return nil
+
+</code>
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TSMTP.PRG

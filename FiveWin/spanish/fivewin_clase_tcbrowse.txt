@@ -1,0 +1,80 @@
+====== Clase TCBrowse ======
+
+Browse with colum objects                                                      
+Hereda de TWBrowse                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|aColumns|Array of TcColumn objects|
+|aArray|Array of data when browsing an array|
+|lNoHScroll|If .t. No Horizontal scrollbar|
+|lNoLiteBar|If .t. No lite bar|
+|lNoGrayBar|If .t. No gray bar|
+|lLogicDrop|Use crazy logic dropbox|
+|nAdjColumn|Column expand to flush table window right|
+|lRePaint|Bypass paint if false|
+|nFreeze|Freezes left most column|
+|oDbf|Database object|
+|oCtx|Context object|
+|lColDrag|Drag column|
+|lLineDrag|Drag line|
+|nDragCol|Drag column number|
+|lAutoCtx|If .t. auto context|
+|hBmpCursor|Bitmap cursor for first column|
+|bSeekChange|Code block that is evaluated when the seek expression|
+|cSeek|String to seek|
+|nColOrder|Ordered column number|
+|nOClrForeHead|Color for ordered columns foreground|
+|nOClrBackHead|Color for ordered columns background|
+|cOrderType|Order type (C, N, D, L)|
+|aImages|Array with bitmap names|
+|aBitmaps|Array with bitmap handles|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code.|
+|Redefine|Constructor from resource|
+|AddColumn|Adds a column object to the browse|
+|BeginPaint|Automatically called when the control is to be|
+|painted||
+|Default|Default initialization of the control|
+|Destroy|Destroy the control|
+|DrawHeaders|Draws the header line of the browse|
+|DrawLine|Draws a given row of the browse|
+|DrawSelect|Draws the selected row of the browse|
+|EndPaint|Automatically called when ending painting|
+|Exchange(nCol1,|nCol2)Switches two columns, refreshes the TCBrowse and|
+|set|focus to it|
+|GoDown|Move the cursor one row down|
+|GotFocus|Gotfocus event handler|
+|GoUp|Move the cursor one row up|
+|Inspect|Object inspector|
+|KeyChar|Keychar event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|LDblClick|Left mouse double click event handler|
+|lEditCol|Activates the editing mode for the cell at the|
+|current|row and at the given column|
+|LoadFields|Adds all the TcColumn objects|
+|LostFocus|Lostfocus event handler|
+|MouseMove|Mouse move event handler|
+|nAtCol|Returns the browse column corresponding to a given|
+|horizontal|pixel coordinate|
+|PageDown|Move the cursor one page down|
+|PageUp|Move the cursor one page up|
+|Paint|Paints the control|
+|Report|Prints a quick report of the data in the browse|
+|Reset|Resets the browse to its starting cell|
+|ResetSeek|Resets Seek|
+|ResetBarPos|Resets the bar position|
+|Seek|Incremental seek|
+|SetArray|Sets the array to browse|
+|SetContext|Sets a new context|
+|SetoDBF|Sets a new database object|
+|SetOrder|Sets the column to be used as the controlling order|
+|SwichCols(nCol1,|nCol2)Switches two columns|
+|VertLine|Hilites a column (used during column resize)|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCBROWSE.PRG

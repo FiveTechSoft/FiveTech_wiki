@@ -1,0 +1,102 @@
+====== Clase TSplitter ======
+
+control Splitter                                                                
+Hereda de TControl                                                         
+====== DATOS ======
+|lVertical|True splitters verticales, false para horizontales|
+|aPrevCtrols|Arreglo de los controles previos|
+|aHindCtrols|Arreglo controls posteriores|
+|bFirstMargin|Bloque de código el primer margen del splitter|
+|bLastmargin|Bloque de código el último margen del splitter|
+|nLong|Longitud del Splitter|
+|nWidth|Ancho del Splitter|
+|nBreadth|Internamente usado|
+|nAdjust|Internamente usado|
+|nAdjTop|Internamente usado|
+|nAdjLeft|Internamente usado|
+|nFirst|Medida en pixeles desde el splitter a la borde izquierdo o delantero de la ventana contenedora|
+|nLast|Medida en pixeles desde el splitter al borde derecho o inferior de la ventana contenedora|
+|lStatic|Si es TRUE el splitter no puede ser movido|
+|lCaptured|TRUE cuando el splitter es movido, usado internamente|
+|l3D|TRUE para aspecto 3D|
+|lMoving|TRUE si el splitter es movido|
+
+====== METODOS ======
+|New|CONSTRUCTOR|
+|ReDefine|Constructor desde recursos|
+|Default|Inicialización por defecto del Splitter|
+|Display|Muestra el control|
+|EraseBkGnd|Borra el fondo del control|
+|Initiate|Método genérico de inicialización del control|
+|HandleEvent|Manejador de eventos genérico|
+|AdjClient|Ajusta el splitter a su ventana contenedora. Este método debe ser llamado en cada vez que se redimiensiona la ventana contenedora|
+|AdjTop|Adjusta el splitter a la parte superior de su ventana contenedora|
+|AdjBottom|Adjusta el splitter a la parte inferior de su ventana contenedora|
+|AdjLeft|Adjusta el splitter al lado izquierdo de su ventana contenedora|
+|AdjRight|Adjusta el splitter al lado derecho de su ventana contenedora|
+|Paint|Dibuja splitter|
+|FirstMargin|Retorna el primer margen del splitter|
+|LastMargin|Retorna el último margen del splitter|
+|SetPosition|Cambia la posición del splitter (en pixeles)|
+|Move|Mueve el splitter|
+|lButtonDown|Acción a ser realizada cuando se clikea con el mouse.|
+|lButtonUp|Acción a ser realizada cuando se suelta el botón del mouse.|
+|MouseMove|Acción a ser realizada cuando se mueve el mouse.|
+|Invert|Pinta la barra invertida durante el redimensionamiento del splitter|
+|Adjust|Ajusta el splitter a su ventana contenedora|
+|AdjustCtrols|Ajusta los controles previos y posteriorers. Usado internamente|
+|_CoorsUpdate|Actualiza los datos del control para reflejar la coordenadas actuales|
+
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Splitter.ch"
+
+
+static oWnd
+
+static oLbx, oGet
+
+static oSplit
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cTitle := "Testing the Splitter controls"
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 400, 600 PIXEL ;
+      TITLE cTitle
+
+   SELECT 1
+   USE EJEMPLO1.DBF
+
+   @ 0,0 LISTBOX oLbx FIELDS SIZE 500,200 PIXEL OF oWnd
+
+   @ 205,0 GET oGet VAR EJEMPLO1->SINTAX TEXT SIZE 500,150 PIXEL OF oWnd
+
+   oLbx:bChange:={|| oGet:Refresh() }
+
+   @ 200,0  SPLITTER oSplit ;
+            HORIZONTAL ;
+            PREVIOUS CONTROLS oLbx ;
+            HINDS CONTROLS oGet ;
+            TOP MARGIN 80 ;
+            BOTTOM MARGIN 80 ;
+            SIZE 500, 4  PIXEL ;
+            OF oWnd ;
+            _3DLOOK
+
+  ACTIVATE WINDOW oWnd ;
+    ON RESIZE oSplit:AdjClient()
+
+return nil
+</code>
+
+{{:splitter.jpg|:splitter.jpg}}
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TSPLITTER.PRG

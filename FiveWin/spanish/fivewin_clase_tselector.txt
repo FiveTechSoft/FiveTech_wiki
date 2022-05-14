@@ -1,0 +1,52 @@
+====== Clase TSelector ======
+
+Control Selector
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|nOrigin|First mark in sexagesimal degree|
+|nLast|Last mark in sexagesimal degree|
+|nRow|Internal row pos|
+|nCol|Internal col pos|
+|nPos|Actual selector position|
+|nArc|Internal arc|
+|nRadius|Internal radius value|
+|nClrBtn|Button color|
+|nClrMarks|Marks color|
+|bPos|Codo to be evaluated on change event|
+|nMin,nMax| Range mininum and maximum values|
+|nMarks|Number of marks|
+|lExact|If .T. the selector goes to the nearest mark when is moved|
+|aMarks|Array of defined marks|
+|lCaptured|TRUE when moving the selector, used internally|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Default|Default initialization of the control|
+|GetDlgCode|Returns the GetDlgCode associated|
+|Initiate|Initializes the control|
+|Display|Displays the control|
+|Change|Change event handler|
+|GotFocus|Gotfocus event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|LostFocus|Lostfocus event handler|
+|MouseMove|Mouse move event handler|
+|KeyDown|Keydown event handler|
+|nGetPos|Gets internal selector position|
+|nGetVal|Gets actual selector position (based on range values)|
+|Paint|Paints the control|
+|Resize|Resize event handler|
+|Set|Sets actual selector position (based on range values)|
+|PlaceMark|Internal method for marks painting|
+|Position|Internal method to calculate selectorl position|
+|SetPosition|Internal method to se actual position|
+|ShowFocus|Gives focused looking style to the control|
+ You must consult the ancestor class for additional information on data and methods.
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSELECTOR.PRG

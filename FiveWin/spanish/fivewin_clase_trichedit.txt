@@ -1,0 +1,142 @@
+====== Clase TRichEdit ======
+
+Standard Rich Edit control of Windows 32 bits API (Commoncontrols.dlg).        
+In order to use it from resources you MUST indentify the control as:           
+'RichEdit20A'                                                                  
+Hereda de TMultiGet                                                        
+====== DATOS ======
+|cFileName|RTF filename|
+|nRTFSize|The maximum editing size|
+|lURL|If ULR autodetect is on or off|
+|lRE30|If Rich Edit DLL version is >= 30|
+|lHighLight|If true uses syntax highlighting|
+|lReadOnly|If true the control is readonly|
+|aKeyWords1|Array 1of highlited keywords|
+|aKeyWords2|Array 2 of highlited keywords|
+|cSeparators|String of separators|
+|nClrNumber|Color for numbers|
+|nClrString|Color for strings|
+|nClrComment|Color for comments|
+|nClrSeparator|Color for separators|
+|nClrText|Color for text|
+|nClrKey1|Color for keywords 1|
+|nClrKey2|Color for keywords 2|
+====== METODOS ======
+|New|Constructor from source code: nTop, nLeft, oWnd,|
+|nPos,|nClrFore, nClrBack, lPixel, lDesign, nWidth, nHeight, cMsg|
+|ReDefine|Constructor from resources: nId, bSetGet, oWnd,|
+|nHelpId,|nClrFore, nClrBack, oFont, oCursor, cMsg, lUpdate, bWhen,|
+|lReadOnly,|bValid, bChanged|
+|CanCopy|.T. if ready for a copy operation|
+|CanCut|.T. if ready for a cut operation|
+|CanDel|.T. if ready for a delete operation|
+|CanPaste|.T. if ready for a paste operation|
+|CanUndo|.T. if ready for an undo operation|
+|CanRedo|.T. if ready for a redo operation|
+|Change|Change event handler|
+|Colorize|Sets color to a specific text range. Parameters:|
+|nStart:|Start offset nEnd: End offset nColor: Color to set|
+|Copy|Copy the selected text to the clipboard|
+|cText|Returns and optionally sets the current text|
+|Cut|Copy the selected text to the clipboard and then|
+|deletes|it|
+|Default|Default initialization of the control|
+|Del|Deletes the selected text|
+|DLLVersion|If the Rich Edit DLL version is >= 30|
+|Find|Find a text|
+|GetAlign|Retrieves the alignment mode of the current paragraph|
+|GetAutoURLDetect|Retrieves the current URL autodetect setting|
+|GetCharFormat|Retrieves the format of the currently selected text|
+|GetDlgCode|Returns the GetDlgCode associated|
+|GetHighLight|Retrieves the current highlight status|
+|GetLine|Retrieves the specified line|
+|GetLineCount|Returns the total number of lines|
+|GetLineFromChar|Returns the line containing the specified char index|
+|GetCol|Retrieves the current column number|
+|GetRow|Retrieves the current row number|
+|GetPos|Retrieves the current cursor position|
+|GetPosFromChar|Retrieves the position of a given char index|
+|GetSel|Returns the currently selected text|
+|GetSelection|Retrieves the starting and ending position of the|
+|current|selection|
+|GetTypographyOptionsReturns|the current state of the typography options|
+|GetZoom|Returns an array with nNumerator, nDenominator that|
+|represent|the zoom factor as a fraction|
+|GoTo|Move the cursor to the specified line|
+|GoToLine|Move the cursor to the specified line|
+|HandleEvent|Generic event handler|
+|HideSel|Remove the selection|
+|HighLightAllText|Highlightes all the control text|
+|HighLightLine|Highlightes a specific line. Parameters: nLine: Line|
+|to|highlight|
+|Initiate|Initialize the control|
+|InsertPicture|Inserts an image of BMP, DIB or ICO format resizing|
+|it|to the specified sizes|
+|InsertPictureFile|Inserts an image of one of the formats supported|
+|by|TImage class|
+|InsertBitmap|Inserts a bitmap resizing it to the specified sizes|
+|IsModify|If the text has been modified|
+|IsSelection|If there is a current selection|
+|KeyChar|Keychar event handler|
+|KeyDown|Keydown event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|LDblClick|Left mouse double click event handler|
+|Len|Retrieves the text total lenght|
+|LimitText|Sets the maximum editing size|
+|LimitUnDo|Sets the maximum number of undo operations|
+|LineIndex|Retrieves the character index of the specified line|
+|LoadRTF|Loads RTF from a string|
+|LoadAsRTF|Loads RTF from a string|
+|LoadFromRTFFile|Loads RTF from a filename|
+|MouseMove|Mouse move event handler|
+|Notify|Notify event handler|
+|PageBreak|Inserts a page break|
+|PageSetup|Shows the page layout setting dialog|
+|Paste|Pastes from clipboard|
+|PasteSpecial|Pastes a specific format from clipboard|
+|Preview|Shows the print preview|
+|Print|Prints the text|
+|PrintBox|Prints the content of a rectangle selection|
+|RButtonDown|Right mouse click event handler|
+|ReDo|Redo last undo|
+|ReplaceSel|Replaces the current selection with the given text|
+|Resize|Resize event handler|
+|SaveAsRTF|Returns a RTF string containing the current text|
+|SaveToFile|Saves the current text to a filename in text format|
+|SaveToRTFFile|Saves the current text to a filename in RTF format|
+|Search|Searches the given text|
+|SelectAll|Selects all the text|
+|SetAlign|Sets the alignment mode for the current paragraph|
+|SetAttribute|Sets the current attributes|
+|SetAutoUrlDetect|Activates or deactivates auto URL detect|
+|SetBold|Activates or deactivates bold mode|
+|SetItalic|Activates or deactivates italic mode|
+|SetUnderline|Activates or deactivates underline mode|
+|SetStrikeOut|Activates or deactivates strikeout mode|
+|SetBkGndColor|Sets the background color|
+|SetCharFormat|Sets the font to use Parameter: oFont: font object|
+|SetClear|Clears modify status|
+|SetFontName|Sets used font name|
+|SetFontSize|Sets used font size|
+|SetFont2RTF|Adjust the font size for RTF|
+|SetHighLight|Sets the color for the highlight|
+|SetModify|Sets modify status on|
+|SetPos|Sets the caret position|
+|SetReadOnly|Activates or deactivates readonly mode|
+|SetSel|Sets the current selection|
+|SetText|Sets the control Text (plain text) Parameters: cText:|
+|String|text|
+|SetTextColor|Sets used text color|
+|SetTypographyOptionsSets|the typography options|
+|SetZoom|Sets the zoom factor from 1/63 up to 63/1|
+|UnDo|Undo last operation|
+|See|samples re.prg on your samples directory.|
+|See|also TTVItem object|
+|See|also TImageListobject|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TRICHEDIT.PRG

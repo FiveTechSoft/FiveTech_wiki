@@ -1,0 +1,16 @@
+====== Clase TReBar ======
+
+Soporte al control común de Win32 Rebar
+Hereda de TControl                                                         
+====== DATOS ======
+|Ninguno|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+^New|Constructor desde código fuente|
+^InsertBand|Inserta una nueva banda|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TREBAR.PRG

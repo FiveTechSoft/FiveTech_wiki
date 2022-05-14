@@ -1,0 +1,66 @@
+====== Clase TNewsInstance ======
+
+News client                                                                    
+====== DATOS ======
+|oSocket|Socket object|
+|oDbfGrp|DBF object for group|
+|oDbfPost|DBF object for post|
+|oServer|Server object|
+|bBlock|The action to perform in various situations|
+|cGroup|Group name|
+|cPostFile|Name for post file|
+|cSendFile|Name for send file|
+|cAlias|Alias|
+|nRecord|Record number|
+|nInstance|Instance number|
+|nGrpRecord|Groud record number|
+|nPostFile|Post file number|
+|nSendFile|Send file filename|
+|lPosting|If it is currently posting|
+|lBody|If it is currently posting the body|
+|lSending|If it is currently sending|
+|lPostAllow|If the posting is allowed|
+====== METODOS ======
+|New|Constructor from source code|
+|End|Ends the news client|
+|OnRead|Read event handler|
+|SendData|Sends data|
+|Article|Retrieves an article|
+|SendHeader|Sends header|
+|SendBody|Sends body|
+|Sending|Sends article|
+|Head|Retrieves header|
+|Body|Retrieves body|
+|Stat|Retrieves articles status|
+|ModeReader|Notifies the user about the server status|
+|(allowed/not|allowed to post)|
+|List|Lists groups|
+|bList|Lists groups (used by List)|
+|ListGroup|List articles|
+|bListGroup|List articles (used by ListGroup)|
+|XOver|List range of articles|
+|bXOver|List range of articles (used by XOver)|
+|Quit|Quits the connection|
+|Group|Retrieves group status|
+|NewGroups|Lists new groups|
+|bNewGroups|Lists new groups (used by NewGroups)|
+|Post|Notifies the user about its status (allowed/not|
+|allowed|to post)|
+|Posting|Posts article|
+|PostHeader|Posts header|
+|PostBody|Posts body|
+|Reset|Resets news client|
+|GenLog|Generates log file|
+|OpenFile|Opens file|
+|GetHdrInfo|Gets header info|
+|GetAuthor|Gets author|
+|GetSubject|Gets subject|
+|GetDate|Gets date|
+|GetRef|Gets references|
+|SendError|Sends error message|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TNEWSINSTANCE.PRG

@@ -1,0 +1,20 @@
+====== Clase TPanel ======
+
+Principalmente se usa para técnicas de alineación automática
+Hereda de TControl                                                         
+
+====== DATOS ======
+|Ninguno|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+^New|Constructor desde código fuente|
+^EraseBkGnd|Borra el fondo del control|
+^Paint|Pinta el control|
+^Display|Despliega el control|
+^Notify|Manejador del evento Notify|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPANEL.PRG

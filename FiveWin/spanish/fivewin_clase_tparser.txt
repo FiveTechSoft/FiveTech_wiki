@@ -1,0 +1,15 @@
+====== Clase TParser ======
+
+Dynamic parser machine                                                         
+====== DATOS ======
+|aRules|Array of rules|
+|aStates|Array of states|
+====== METODOS ======
+|New|Constructor from source code|
+|Add|Add a new rule|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TPARSER.PRG

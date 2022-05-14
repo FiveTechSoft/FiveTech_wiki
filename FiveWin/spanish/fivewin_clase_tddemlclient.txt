@@ -1,0 +1,27 @@
+====== Clase TDDEMLClient ======
+
+DDEML Client Object management                                                 
+
+====== DATOS ======
+|hInst|A handle of the DDEML instance session|
+|hConv|A handle of the DDEML conversation|
+|cService|The name of the service|
+|hService|The handle of the service|
+|cTopic|The name of the topic to keep the conversation about|
+|hTopic|The handle of the topic|
+|nTimeOut|The timeout to wait for an answer. Default 1000. Use -1 for ASync.|
+
+====== METODOS ======
+|New|Constructor METHOD|
+|Connect|To connect to a Server|
+|Disconnect|To disconnect from the Server|
+|End|Disconnects from the Server. Same as above|
+|Execute|Sends a command to the Server.|
+|Request|Request data from the Server.|
+====== Example ======
+
+====== See Also ======
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDDEMLCLIENT.PRG

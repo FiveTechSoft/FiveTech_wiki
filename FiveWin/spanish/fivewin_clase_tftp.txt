@@ -1,0 +1,25 @@
+====== Clase TFTP ======
+
+Microsoft WinINet.dll FTP object oriented management
+====== DATOS ======
+|oInternet|TInternet container object|
+|cSite|URL address|
+|hFTP|Handle of the FTP connection|
+|cUserName|User name to login|
+|cPassword|Password to login|
+====== METODOS ======
+|New|Constructor. cFTPSite = URL to connect to. oInternet|
+|=|previous created TInternet object|
+|End|Generic destructor|
+|DeleteFile|Deletes a remote FTP file|
+|Directory|As Clipper Directory() but on a FTP site!|
+|RenameFile|Renames a remote FTP file|
+|SetCurrentDirectory|Sets the remote FTP current directory|
+|CreateDirectory|Create a remote FTP directory|
+====== Example ======
+
+====== See Also ======
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTP.PRG

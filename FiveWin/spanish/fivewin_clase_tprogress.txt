@@ -1,0 +1,26 @@
+====== Clase TProgress ======
+
+Soporte del control Progress
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+^nMin|Posición mínima|
+^nMax|Posición máxima|
+^nPos|Posición actual|
+^nStep|Intervalos de avance|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+^New|Constructor desde código|
+^Redefine|Constructor desde recursos|
+^DeltaPos|Avance de la posición actual con el incremento proporcionado|
+^SetPos|Ajusta la posición actual|
+^SetRange|Ajusta las posiciones mínima y máxima|
+^nPosition|Devuelve la posición actual|
+^SetStep|Ajusta el intervalo de avance|
+^StepIt|Avanza la posición actual con el intervalo de avance|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPROGRESS.PRG

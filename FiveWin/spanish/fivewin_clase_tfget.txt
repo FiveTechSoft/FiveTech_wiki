@@ -1,0 +1,182 @@
+====== Clase TFGet ======
+
+Format Get control                                                             
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^ Descripción^
+|hGetDC|Temporal DC handle|
+|nWidth|The width of the control|
+|nHeight|The height of the control|
+|bLocate|Codeblock to evaluate every time the control changes.|
+|Useful|for indicating current line and row for example.|
+|bBof|Codeblock to evaluate when the beginning of the text is reached|
+|bEof|Codeblock to evaluate when the end of the text is reached|
+|bFormat|Codeblock to evaluate when selecting format|
+|lReadOnly|True if editing is not allowed|
+|nAlign|Actual align mode Left (0) Right (2) Center (1)|
+|hFont|Actual handle del font|
+|nColor|Actual color del font|
+|aFonts|Array of fonts|
+|nRow|Current row in pixels|
+|nCol|Current column in pixels|
+|nLineRow|Current row line number (GetRow() method)|
+|nLineCol|Current column line number (GetCol() method)|
+|oLine|Current Line object|
+|oLineInit|First Line object|
+|oLineEnd|Last Line object|
+|lBak|True if undo is possible|
+|oGetBak|Format Get object that holds undo information|
+|nLeftMargin|Control Left Margin for horizontal text scroll|
+|lVScroll|.T. to show the vertical scrollbar|
+|lHScroll|.T. to show the horizontal scrollbar|
+|nTextWidth|Used internally (The maximum width reached)|
+|nCharWidth|Used internally (Standard character width)|
+|nLineCount|Number of lines|
+|nLineVisib|Number of visible lines|
+|nRowFirst|First visible row|
+|nLineFirst|First visible line|
+|oLineFirst|First line object visible|
+|lShift|True if shift key is pressed|
+|lCaptured|.T. if the cursor is captured|
+|lFocusBlock|A CLASSDATA internally used|
+|lBlock|True if a block is marked|
+|nLineRowBlock|Row line of marked block|
+|nLineColBlock|Col line of marked block|
+====== METODOS ======
+^  Nombre  ^ Descripción^
+|New|Constructor|
+|ReDefine|Constructor from resources|
+|Clone|Creates a clone control to be used on undo operations|
+|Default|Default initialization of the control|
+|Destroy|Destroys the control|
+|GetDlgCode|Returns the GetDlgCode associated|
+|Initiate|Initializes the control|
+|Display|Displays the control|
+|End|Ends the control|
+|Paint|Paints the control|
+|GotFocus|Gotfocus event handler|
+|LostFocus|Lostfocus event handler|
+|Resize|Resize event handler|
+|Refresh|Refreshes the control|
+|Bakup|Calls the clone method when necessary|
+|Copy|Copies the current block to the clipboard|
+|Cut|Cuts the current block to the clipboard|
+|Paste|Pastes the current clipboard data or cText to the control|
+|Del|Delete current block|
+|Undo|Restores previous format get cloned control|
+|SelectAll|Selects all text|
+|Print|Prints the text|
+|MoveCaret|Used internally (moves the cursor to the row nRow, and column nCol (in pixels)|
+|BlockUp|Used internally (Activates current block)|
+|BlockDn|Used internally (Deactivates current block)|
+|BlockWord|Used internally (Activates as block the current word)|
+|DelBlock|Used internally (Deletes current block)|
+|GetBlock|Used internally (Retrieves the text of current block)|
+|PutBlock|Used internally (Puts the formatted text as current block)|
+|FormatBlock|Used internally (Formats current block accord font and color passed)|
+|VisibleBlock|Used internally (Shows or hides the current selected block|
+|KeyChar|Keychar event handler|
+|KeyDown|Keydown event handler|
+|KeyUp|Keyup event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|LDblClick|Left mouse double click event handler|
+|MouseMove|Mouse move event handler|
+|RButtonDown|Right mouse click event handler|
+|Len|Text length|
+|cText|Gets and optionally sets the text in the control|
+|Find|Search for cText|
+|FindNext|Search for cText from actual cursor position|
+|GetColor|Chooses and selects the default text color, using standard dialog box|
+|GetFontColor|Chooses and selects the default font and color, using standard dialog box|
+|SetFormat|Selects oFont and nColor as default font and color|
+|SetAlign|Select nAlign as default align mode|
+|Char|Inserts the chareacter cChar|
+|String|Inserts the string cString|
+|Return/Ret|Inserts a character return|
+|Delete|Deletes a character from the right side|
+|BackSpace|Deletes a character from the left side|
+|DeleteInit|Delete to the beginning of actual line|
+|DeleteEnd|Deletes to the end of actual line|
+|GoPrevPage|Goes to previous page|
+|GoNextPage|Goes to next page|
+|GoPrevLine|Goes to previous line|
+|GoNextLine|Goes to next line|
+|GoPrevChar|Goes to previous character|
+|GoNextChar|Goes to next character|
+|GoBeginLine|Goes to beginning of line|
+|GoEndLine|Goes to the end of line|
+|GoPrevWord|Goes to the beginning of previous word|
+|GoNextWord|Goes to the beginning of next word|
+|ToggleInsert|Used internally (Toggles actual insert/overwrite mode)|
+|HideCaret|Hides cursor|
+|ShowCaret|Shows cursor|
+|VScrAdjust|Adjust the vertical scrollbar|
+|HScrAdjust|Adjust the horizontal scrollbar|
+|GoTop|Goes to the beginning of text|
+|GoBottom|Goes to the end of text|
+|GoLine/Goto|Goes to line nLine|
+|LineUp|Moves to the line above|
+|LineDown|Moves to the line below|
+|Page|Goes to page that has line nLine|
+|PageUp|Moves to the page above|
+|PageDown|Move the the page below|
+|TextLeft|Move text to the left nScroll pixels|
+|TextRight|Move text to the right nScroll pixels|
+|TextPos|Reformats text starting at nPos position (in pixels)|
+|AddChar|Used internally (Adds the caracter cChar to the oLine object)|
+|InsChar|Used internally (Inserts the caracter cChar to the oLine object at nPos position)|
+|OverChar|Used internally (Overwrites the caracter cChar to the oLine object at nPos position)|
+|DelChar|Used internally (Deletes on oLine object a character from the right of nPos|
+|LineTextFormat|Used internally (Returns a Line object from a formatted text)|
+|InsInitLine|Used internally (Inserts at the beginning of oLine a formatted text cTextFormat|
+|InsEndLine|Used internally (Inserts at the end of oLine a formatted text cTextFormat|
+|InsPosLine|Used internally (Inserts at nPos of oLine a formatted text cTextFormat|
+|DelInitLine|Used internally (Deletes on oLine the text from nPos up to the beginning)|
+|DelEndLine|Used internally (Deletes on oLine the text from nPos up to the end)|
+|DelSubLine|Used internally (Deletes on object oLine the text from nStart up to nEnd)|
+|GetSubLine|Used internally (Returns from oLine object the formatted text from position nStart up to nEnd)|
+|GetCurColor|Returns the actual selected color|
+|GetCurFont|Returns the actual selected font|
+|FormatLine|Used internally (Formats oLine object text starting|
+|on|nStart position up to End with the font and color specified)|
+|AlignParagraph|Used internally (Aligns the paragraph contained in oLine object with nAlign mode)|
+|DrawLines|Draws the actual visible lines of the control|
+|DrawLine|Used internally (Draws the oLine, starting from nRow|
+|position.|The Var lBlock specifies if the paragraph should be selected or not)|
+|DrawCurLine|Draws the actual line|
+|VisibleCurLine|Makes actual line visible|
+|lStopVScroll|Used internally (If true indicates that it has been reached the maximum text allowed without vertical scroll bar)|
+|LenLine|Used internally (Minimum length in standard|
+|characters|of the oLine object to fit on a with of nWidth (in pixels)|
+|LenLineRound|Used internally (Minimum length in standard|
+|characters|of the oLine object to fit on a with of nWidth (in pixels)|
+|HeightLine|Used internally (Height of oLine object at position nPos|
+|WidthLine|Used internally (Length in pixels of oLine object for a width of nLen characters)|
+|WidthTrimLine|Used internally (Length in pixels of oLine for a width in characters of nLen, without counting space characters at the end of the string line|
+|FindText|Used internally (Finds cText from object oLine starting at nPos position, and return an array with 4 elements: the starting object oline, the starting position, the ending object oLine and the ending position)|
+|LenText|Returns the number total of characters of the control|
+|GetLine|Returns of Line object in nLine|
+|GetRow|Returns actual row|
+|GetCol|Return actual column|
+|GetLineCount|Returns total number of lines|
+|GetStartWord|Returns the starting line and position of a word|
+|GetEndWord|Returns the ending line and position of a word nLine Returns the line of a line object|
+|AddLine|Used internally (Adds a new line object to the control)|
+|InsLine|Used internally (Inserts object oLine after oLineDown object|
+|DelLine|Used internally (Deletes object oLine|
+|JoinLine|Used internally (Joins object oLine)|
+|SplitLine|Used internally (Truncates object oLine starting at nPos)|
+|LineAdjust|Used internally (Reformats text from oLineStart object to oLineEnd object|
+|GetTextLine|Used internally (Returns text from oLine object)|
+|GetFormatLine|Used internally (Returns an array with the font handle and the color of the oLine object at nPos position.|
+|SelectFormat|Updates the values hFont, nColor, and nAlign for the actual cursor position|
+|SetTextFormat|Puts the formatted text cTextFormat in the control (the same as method cText())|
+|GetTextFormat|Returns the formatted text of the control (the same as method cText())|
+|You|must consult the ancestor class for additional information on data and methods.|
+====== Ejemplo ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFGET.PRG

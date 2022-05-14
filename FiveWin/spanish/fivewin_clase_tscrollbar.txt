@@ -1,0 +1,46 @@
+====== Clase TScrollBar ======
+
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|lVertical|If it is a vertical ScrollBar.|
+|lReDraw|If the scrollbar must update automatically its position|
+|lIsChild|If belongs to a Window with ScrollBars style|
+|nMin,nMax|The numeric range to be represented by the Scrollbar|
+|nPgStep|The increment of value when PgUp or PgDn on the ScrollBar|
+|bGoUp|A codeblock to eval when going up|
+|bGoDown|A codeblock to eval when going down|
+|bGoTop|A codeblock to eval when top is selected|
+|GoBottom|A codeblock to eval when bottom is selected|
+|bPageUp|A codeblock to eval when PageUp is selected|
+|bPageDown|A codeblock to eval when PageDown is selected|
+|bPos|A codeblock to eval when the Thumb is moved to a new position|
+|bTrack|A codeblock to eval when the thumb track is moved|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code.|
+|WinNew|Constructor for non-true scrollbar.|
+|ReDefine|Constructor from resource.|
+|cToChar|Generates a data template to build a Dialog.|
+|GetPos|Retrieves the current value represented by the Scrollbar.|
+|GetRange|Returns an array of two elements with the Min and the Max values|
+|GoBottom|Evaluates the bGoBottom block and updates thumb position|
+|GoDown|Evaluates the bGoDown block and updates thumb position|
+|GoTop|Evaluates the bGoTop block and updates thumb position|
+|GoUp|Evaluates the bGoUp block and updates thumb position|
+|HandleEvent|Redefined events manager|
+|Initiate|Generic initialization|
+|MouseMove|Specific MouseMove behavior|
+|PageDown|Evaluates the bPageDown block and updates thumb posit|
+|PageUp|Evaluates the bPageUp block and updates thumb posit|
+|SetPage|Sets the page size|
+|SetPos|Changes the position of the thumb|
+|SetRange|Changes the represented range of the ScrollBar|
+|ThumbPos|Changes the position of the Thumb|
+|ThumbTrack|Processes the Thumb track movement|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSCROLLBAR.PRG

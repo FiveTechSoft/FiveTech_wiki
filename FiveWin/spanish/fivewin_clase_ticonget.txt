@@ -1,0 +1,16 @@
+====== Clase TIconGet ======
+
+IconGet control                                                                
+Hereda de TMultiGet                                                        
+====== DATOS ======
+|Ninguno|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|KeyDown|Evento manejador de tecla presionada|
+====== Ejemplo ======
+
+====== Ver También ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TICONGET.PRG

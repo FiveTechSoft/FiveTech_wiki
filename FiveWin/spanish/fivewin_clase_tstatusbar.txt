@@ -1,0 +1,73 @@
+====== Clase TStatusBar ======
+
+Barra de estado (StatusBar), control Win32
+
+Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|cMsgDef|Mensaje por defecto de la barra de estado|
+|oTimer|El temporizador usado por el reloj|
+|nPartTime|El número de partes|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|CheckTimer|Activa el timer si este no esta ya activo|
+|ClockOn|Activa el reloj|
+|Display|Muestra el control|
+|EraseBkGnd|Borra el fondo del control|
+|GetParts|Retorna el número de secciones|
+|Paint|Dibuja el control|
+|SetMsg|Define el mensaje de la barra de estado|
+|SetParts|Define el número de secciones y la coordenada del lado derecho de cada sección.|
+|SetPartText|Define el texto en la sección especificada.|
+|SetPrompts|Define un texto especificado.|
+
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oStatusBar
+
+   DEFINE WINDOW oWnd TITLE "Testing Win32 StatusBar" ;
+      MENU BuildMenu()
+
+   @ 2, 2 BUTTON "Set Part Text" SIZE 100, 20 ;
+      ACTION oStatusBar:SetPartText( 2, "Works!" )
+
+   @ 5, 2 BUTTON "Clock On" SIZE 100, 20 ;
+      ACTION oStatusBar:ClockOn()
+
+   DEFINE STATUSBAR oStatusBar PROMPT "  Win32 StatusBar" OF oWnd ;
+      SIZES 150, 200, 240 ;
+      PROMPTS "One", "Two", "Three"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+   
+   MENU oMenu
+      MENUITEM "&One" MESSAGE "One"
+      MENU
+         MENUITEM "First"  MESSAGE "First"
+         MENUITEM "Second" MESSAGE "Second"
+      ENDMENU
+      
+      MENUITEM "&Two" MESSAGE "Two"
+      MENUITEM "T&hree" MESSAGE "Three"
+   ENDMENU
+   
+return oMenu   
+</code>
+{{:statusbar.jpg|:statusbar.jpg}}
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TSTATUSBAR.PRG

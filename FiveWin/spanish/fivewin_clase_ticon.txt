@@ -1,0 +1,112 @@
+====== Clase TIcon ======
+
+Controles que muestran un icono (*.ICO)
+
+===== Hereda de =====
+
+[[fivewin_class_tcontrol|Clase TControl]]
+
+====== DATOS ======
+
+|cIcoFile |*.ICO, Nombre del archivo a cargar desde el disco|
+|cResName |Nombre a cargar desde recursos ( DLL, RES, RC )  |
+|hIcon    |Identificador de Windows para los iconos         |
+
+
+====== METODOS ======
+
+|New        |Constructor desde codigo fuente|    
+|ReDefine   |Constructor desde recursos     |
+|Destroy    |Finalizar el objecto|
+|Display    |Muestra el control. Usar :Refresh() Fuerza el respintado |
+|End        |Finaliza el control y lo desapare|
+|HandleEvent|Controlador de eventos genéricos|
+|Initiate   |Método genérico de inicialización del control|
+|Paint      |Pintar el control. Este proceso ocurre dentro de la pantalla|
+|SetFile    |Nombre del archivo de icono|
+|SetName    |Establecer un nuevo nombre para el icono|
+
+
+====== EJEMPLOS ======
+FWH/SAMPLES/TESTICO.PRG
+<code clipper>
+// Animations using Icons and Timers
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBrush
+
+   #ifdef __CLIPPER__
+       SET RESOURCES TO "Animat16.dll"
+   #else
+       SET RESOURCES TO "Animat32.dll"
+   #endif
+
+   DEFINE BRUSH oBrush STYLE TILED
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 60 ;
+      TITLE "Icons & Timers" BRUSH oBrush
+
+   SET MESSAGE OF oWnd ;
+      TO FWVERSION + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd ;
+      ON INIT DisplayIcons()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function DisplayIcons()
+
+   local oIco, oTimer
+
+   static nFrame := 1
+
+   @ 2, 2 ICON oIco RESOURCE "ICON1" OF oWnd BORDER
+
+   DEFINE TIMER oTimer OF oWnd ;
+      INTERVAL 400 ;
+      ACTION ( nFrame := If( ++nFrame > 20, 1, nFrame ) , ;
+               oIco:SetName( "ICON" + AllTrim( Str( int(nFrame) ) ) ) )
+
+   ACTIVATE TIMER oTimer
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+procedure AppSys  // XBase++ requirement
+
+return
+
+//----------------------------------------------------------------------------//
+</code>
+
+FWH/SAMPLES/TESTICO2.PRG
+<code clipper>
+#include "Fivewin.ch"
+
+FUNCTION MAIN()
+
+    LOCAL oWnd, oIco
+
+    DEFINE ICON oIco FILE "..\icons\fivewin.ico"
+
+    DEFINE WINDOW oWnd;
+           TITLE "Test";
+           ICON oIco
+
+    ACTIVATE WINDOW oWnd
+
+RETURN NIL
+</code>
+
+====== CODIGO FUENTE ======
+FHW\SOURCE\CLASSES\ICON.PRG

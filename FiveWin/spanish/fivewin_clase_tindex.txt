@@ -1,0 +1,23 @@
+====== Clase TIndex ======
+
+Class TIndex Indexes as Objects
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|cDbfName|DBF name.|
+|cName|Key name.|
+|cTag|Tag name.|
+|cExpression|Expression to evaluate for Index creation.|
+|lUnique|Logical Unique|
+|lDescending|Ascending(default)/Descending|
+|cType|Index type|
+|cComments|Additional Comments|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code.|
+|Create|Create a physical index file.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TINDEX.PRG

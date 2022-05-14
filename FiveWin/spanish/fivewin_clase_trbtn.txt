@@ -1,0 +1,136 @@
+
+====== Clase TRBtn ======
+Botones usados en RibbonBar
+
+====== DATOS ======
+|bAction|...|
+|cAction|...|
+|hBitmap1|...|
+|hPalette1|...|
+|hArrow|...|
+|hBack|...|
+|hRgn|...|
+|cName|...|
+|cMsg|...|
+|oPopup|...|
+|nLayout|...|
+|nTopEx|...|
+|nLeftEx|...|
+|nTypeButton|...|
+|nPopupMargin|...|
+|nClrBoxIn| Color del borde interno |
+|nClrBoxOut| Color del borde externo |
+|lMOver|...|
+|bClrGradNormal|...|
+|aClrGradOver|...|
+|bClrGradSubOver|...|
+|aClrGradUnder|...|
+|aClrGradBack|...|
+|aGradiant|...|
+|bClrText|...|
+|bClrGradSelectPress|...|
+|bClrGradSelect|...|
+|aClrGradBtnGr|...|
+|lAlpha|...|  
+|lSubOver|...|
+|lSelected|...| 
+|lProcessing|...|
+|lBorder|...|
+|lRound|...|
+|lPressed|...|
+|lAdjust|...|
+|lGroup|...|
+|lWorking|...|
+|lBtnUp|...|
+|lBtnDown|...|
+|lGrouping|...|
+|lFirstElm|...|
+|lEndElm|...|
+|bAlphaLevel|...|
+|hAlphaLevel|...|
+
+====== METODOS ======
+|New()|...|
+|Click()|...|
+|Display()|...|
+|Destroy()|...|
+|Disable()|...|
+|Enable()|...|
+|EraseBkGnd()|...|
+|FreeBitmaps()|...|
+|GoUp()|...|
+|GoDown()|...|
+|ResetBorder()|...|
+|LButtonDown()|...|
+|LButtonUp()|...|
+|LoadBitmaps()|...|
+|GotFocus()|...|
+|Initiate()|...|
+|KeyChar()|...|
+|KeyDown()|...|
+|LostFocus()|...|
+|Paint()|...|
+|MouseMove()|...|
+|SetFile()|...|
+|Toggle()|...|
+|HandleEvent()|...|
+|HasAlpha()|...|
+|MouseLeave()|...|
+|ShowPopup()|...|
+|SetColor()|...|
+|nAlphaLevel()|...|
+
+====== Ejemplo ======
+FWH\samples\Ribbon.prg
+
+Example 2 --> By Carlos Gallego
+<code clipper>
+Function main()
+  local oWnd, oBar, oMenu
+  SetDialogEsc(.F.)
+  MENU oMenu 2007
+    // MENUITEM "&Salir" ACTION oWnd:End()
+  ENDMENU
+  DEFINE WINDOW oWnd TITLE "TRBGroup and TRBtn Classes Test" MDI COLORS nRGB(0,0,0),nRGB(255,255,255) MENU oMenu
+    DEFINE BUTTONBAR oBar 3D SIZE 62,80 OF oWnd TOP 2007 // Ancho,Alto
+    oBar:SetColor(CLR_WHITE, RGB(255,255,255))
+    oBar:bRClicked:={||NIL}
+    WndCenter(oWnd:hWnd)
+  activate window oWnd ON INIT (SetRBContrl(oWnd,oBar))
+return nil
+
+
+Procedure SetRBContrl(oWnd,oBar)
+  local oRb1, oBtn1, oBtn2, oBtn3, oBtn4, oBtn5
+
+   @ 07,15 RBGROUP oRB1 OF oBar PROMPT "Borola" SIZE 100,65 // TRANSPARENT
+
+       @ 05, 15 RBBTN oBtn1 OF oRB1 BITMAP "c:\fwh-908\bitmaps\alphabmp\files.bmp";
+               SIZE 80, 33   PROMPT "Test 1" MOSTLEFT TRANSPARENT;
+               ACTION ( MsgInfo("Hello 01") ) PIXEL
+
+   @ 05,192 RBBTN oBtn2 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\files.bmp";
+           SIZE 180, 33   PROMPT "Test 02" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 02") ) PIXEL
+
+   @ 42,192 RBBTN oBtn3 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\graphics.bmp";
+           SIZE 180, 33   PROMPT "Test 03" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 03") ) PIXEL
+
+   @ 05,400 RBBTN oBtn4 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\graphics.bmp";
+           SIZE 180, 33   PROMPT "Test 04" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 04") ) PIXEL
+
+   @ 23,600 RBBTN oBtn5 OF oBar BITMAP "C:\FWH-908\bitmaps\32x32\quit.BMP";
+           SIZE 70, 40   PROMPT "Exit" MOSTLEFT TRANSPARENT;
+           ACTION ( oWnd:End() ) PIXEL
+
+Return
+</code>
+
+
+====== código fuente ======
+FWH\source\classes\trbtn.prg
+
+====== ver también ======
+[[fivewin_clase_tribbonbar|Clase TRibbonBar]], [[fivewin_clase_trbgroup|Clase TRbGroup]], [[fivewin_comandos_ribbonbar|Comandos RIBBONBAR]]

@@ -1,0 +1,22 @@
+====== Clase TOutLook2003Group ======
+
+Outlook 2003 group for Outlook 2003 control                                    
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|cPrompt|The prompt of the group|
+|oBitmap|The bitmap of the group|
+|lSelected|.T. if the group is the active one|
+|lHeader|.T. if the container Outlook 2003 control doesn't have a header|
+|nClrStart|The starting color of the gradient|
+|nClrEnd|The ending color of the gradient|
+|nClrText|The text color of the group|
+|oContainer|The container Outlook 2003 control|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Costructor from source code|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TOUTLOOK2003GROUP.PRG

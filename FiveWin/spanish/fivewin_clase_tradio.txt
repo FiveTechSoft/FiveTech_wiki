@@ -1,0 +1,72 @@
+Clase hereda de Tcontrol
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|lChecked |Si el control de la radio está seleccionado actualmente |
+|oRadMenu |relacionados TRadMenu contenedor de objetos|
+|nPos     |posición relativa en el respeto a los otros botones del menú Radios|
+
+====== MÉTODOS ====== 
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde codigo fuente|
+|ReDefine|Constructor desde recursos|    
+|Click|Evento del boton izquierdo del Mouse|
+|cToChar|Generar codigo fuente| 
+|EraseBkGnd|Borra el control en background|
+|LostFocus|Cabezera de perdida de foco|
+|Default|Inicilizacion por defecto del control|
+|Initiate|Inicializacipn Generica del Control|
+|KeyDown|Accion cuando se presiona una tecla|
+|lIsChecked|Informa el estado logico del control|
+|MouseMove|Comportamiento cuando se mueve el ratón sobre el control|
+|Refresh|Repitando del control|
+|SetCheck|Cambia el estado Encendido/Apagado|
+|Check|Seleciona el control del radio|
+|UnCheck|Anula la selección de la radio control |
+|SetText|Cambia el título de la radio control |
+
+====== Ejemplos ====== 
+FWH\SAMPLES\testrad.prg
+
+<code clipper>
+// Radio Buttons management sample
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oRadMenu, oBrush
+   local nOption := 2
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Radios"
+
+   REDEFINE RADIO oRadMenu VAR nOption ID 110, 120, 130, 140, 150 OF oDlg ;
+      ON CHANGE MsgInfo( "select" ) // Beep()
+
+   REDEFINE BUTTON ID 100 OF oDlg ACTION oRadMenu:GoNext() ;
+      WHEN nOption == 3
+
+   REDEFINE BUTTON ID 102 OF oDlg ACTION oRadMenu:GoPrev()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oRadMenu:aItems[ 1 ]:SetText( "Hello" )
+
+   SET _3DLOOK OFF
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+procedure AppSys  // XBase++ requirement
+
+return
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== Fuente ====== 
+FWH\SOURCE\CLASSES\RADIO.PRG

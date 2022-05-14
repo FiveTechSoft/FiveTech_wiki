@@ -1,0 +1,18 @@
+====== Clase TCursor ======
+
+Cursor del Mouse manejafo como objetos.                                              
+====== DATA ======
+|hCursor|Manejador (Handele) del cursor.|
+|lPredef|Si es un cursor predefinido en un sistema Windows : ARROW,|
+| | IBEAM, WAIT, CROSS, UPARROW, SIZE, ICON, SIZENWSE, SIZENESW, SIZEWE,|
+| | SIZENS, HAND, STOP, DRAG|
+====== METODOS ======
+|New|Constructor desde código fuente|
+|NewBmp|Constructor desde código fuente (cursor bitmap)|
+|End|Destructor del objeto cursor|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TCURSOR.PRG

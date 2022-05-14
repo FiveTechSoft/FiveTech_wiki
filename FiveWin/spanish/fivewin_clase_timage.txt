@@ -1,0 +1,21 @@
+====== Clase TImage ======
+
+Objeto imagen  para cualquiera de los siguientes formatos : JPG, JIF, GIF, BMP, DIB, RLE, TGA, PCX.
+
+Hereda de  TBitmap
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|nProgress|1 si la información de progreso de cargado es mostrado.|
+====== METODOS ======
+|New|Constructor desde código fuente|
+|Define|Constructor desde recursos|
+|LoadImage|Carga la imagen desde un archivo de recursos|
+|Progress|Si el lMode es TRUE información de progreso de cargado es mostrado|
+Nota: Revisar la clase TBitmap para mayor información acerca sus DATAs & METODOS
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TIMAGE.PRG

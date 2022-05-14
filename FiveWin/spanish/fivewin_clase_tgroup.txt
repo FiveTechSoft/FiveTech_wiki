@@ -1,0 +1,20 @@
+====== Clase TGroup ======
+
+Group Dialog control Class                                                     
+Hereda de TControl
+====== DATOS ======
+|No data is added|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|cToChar|Control Data to template convertor for creating DialogBoxes.|
+|EraseBkGnd|Erase the background of the control|
+|HandleEvent|Generic control Handle Event method.|
+|Initiate|Generic Control initialization method.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TGROUP.PRG

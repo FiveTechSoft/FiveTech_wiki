@@ -1,0 +1,105 @@
+FiveWin tiene su propio browse el cual tiene importantes diferencias con el tradicional MsDos Clipper TBrowse. Estas diferencias se basan en el hecho que deseamos que los navegadores de FiveWin se ejecuten tan rápido como sea posible. Windows es un ambiente gráfico, así que las aplicaciones con interfase al usuario tienden a ser más lentas que sus equivalentes en MsDos. Si desea trabajar en eñ modo MsDos, FiveWin también cuenta con la nueva clase TCBrowse, que es un navegador basado en columnas.
+
+TWBrowse de FiveWin no trabaja con objetos columna, en lugar de ello, mantiene una bloque de código (DATA bLine) que devuelve un arreglo. El contenido de ese arreglo se usa para desplegar el contenido de cada columna visible. Esto hace una importante diferencia: Supongamos que tenemos un browse de 10 columnas y 25 renglones en la pantalla. Si trabajáramos con el browse tradicional para repintar completamente tendríamos que hacer lo siguiente:
+
+ 10 columnas x 25 renglones	= 250 evaluaciones de bloques de código.
+
+ Con el TWBrowse de Fivewin = 25 evaluaciones de bloques de código solamente !!!
+
+
+Este hecho hace al TWBrowse de FiveWin extremadamente rápido, aunque cambia un poco la manera que acostumbra trabajar con los browsers. La idea principal es que la DATA bLine mantiene un bloque de código que devuelve un arreglo:
+
+<code clipper>
+<oBrw>:bLine = { || { "One", "Two", "Three", ... } }
+</code>
+La segunda diferencia es que siendo un entorno gráfico nuestros usuarios quieren que también se muestren bitmaps (gráficos) como elementos del navegador. Cómo podríamos distinguir el manejo de un dato normal de uno bitmap ? La solución fue que una cadena de caracteres mantiene datos normales y los valores numéricos se consideran manejos de bitmap:
+
+<code clipper>
+<oBrw>:bLine = { || { nHBitmap, "One", "Two", "Three", ... } }
+</code>
+Cuando el TWBrowse de Fivewin evalúa este bloque de código, detecta que hay un valor numérico como parte del arreglo, así que ese número es tratado como un control de bitmap, y se pinta automáticamente en la columna elegida. Como puede elegir el uso de expresiones par devolver ese valor numérico, cuenta con una forma sencilla de pintar diferentes bitmaps basados en cualquier condición:
+<code clipper>
+<oBrw>:bLine = { || { If( Clients->Balance > 0, hBmpPlus, hBmpNeg ),;
+
+Clients->Last, Clients->First,;
+Str( Clients->Balance ) } }
+</code>
+Importante:	Siempre use expresiones tipo caracter como elementos del arreglo bLine! Un número siempre significa control de bitmap handle. Un control inválido de bitmap (si por error envía un número en lugar de una expresión tipo caracter) causará resultados extraños!
+
+Además de esta diferencia, el Objeto TWBrowse es casi idéntico al MsDos Clipper TBrowse. Hemos usado la  'notación Húngara' (especificamos el tupo de un DATA -instvar- precedido del nombre DATA ) para especificar el tipo de cada DATA en el objeto TWBrowse:
+
+
+
+^FiveWin TWBrowse  ^	Clipper MsDos TBrowse^
+|bGoTop	|  GoTopBlock|
+|BgoBottom|	GoBottomBlock |
+|Bskip|	SkipBlock|	
+|nTop|	nTop|
+|nLeft| 	nLeft|
+|nBottom|	nBottom|
+|nRight|	nRight|
+|nRowPos|	RowPos|
+|nRowCount()| 	RowCount|
+|nColPos| 	ColPos|
+|lHitTop|	HitTop|
+|lHitBottom|                	HitBottom|
+|nClrText|	nClrPane|
+|nClrBackHead|	NClrBackFocus|
+|nClrForeHead|	NClrForeFocus|
+|GoUp()|                     	Up()|
+|GoDown()|                   	Down()|
+|GoTop()|                    	GoTop()|
+|GoBottom()|                 	GoBottom()|
+|GoLeft()|                  	Left()|
+|GoRight()|                  	Right()|
+|PageUp()|                   	PageUp()|
+|PageDown()|                 	PageDown()|
+|Refresh()|                  	RefreshAll()|
+|DrawSelect()|               	RefreshCurrent()|
+|SetCols() (All of them)|    	SetColumn()|
+|GetColSizes()|              	ColWidth()|
+|FiveWin TWBrowse|  	Clipper MsDos TColumn|
+|aHeaders (All of them)     	Heading
+|bLine    (All of them)     	Block
+|aSizes   (All of them)     	Width
+Además de esto, el TWBrowse de Fivewin le ofrece mucho más funcionalidad interconstruida que el browse tradicional de MsDos Clipper. Los siguientes métodos no están disponibles en TBrowse de Clipper para MsDos:
+
+
+  * KeyDown()
+  * KeyChar()  
+  * LButtonDown()  (MOUSE)      		
+  * LButtonUp()
+  * MouseMove()
+  * LDblClick()
+  * RButtonDown()
+  * RButtonUp()
+  * nAtCol()
+  * lEditCol() (Automatic editing)
+  * VScroll() (SCROLLBARS)
+  * HScroll()
+  * Skip()
+  * SetFilter()  (Index based )
+  * Report()   (Automatic Reporting)
+  * SetArray()   (Arrays editing)
+  * SetTree()       (Trees)
+
+           	
+
+Finalmete, FiveWin tiene comandos xBase sencillos para construir un browse completo con un solo comando xBase (no existe uno equivalente en el TBrowse de Clipper en MsDos):
+<code clipper>
+Desde código: @ <nRow>, <nCol> LISTBOX <oLbx> ;
+
+FIELDS <Expression,...> ;
+HEADERS <Title,...> ;
+COLSIZES <Size,...> ;
+etc...
+
+Desde recursos: REDEFINE LISTBOX <oLbx> ;
+
+FIELDS <Expression,...> ;
+HEADERS <Title,...> ;
+COLSIZES <Size,...> ;
+</code>
+etc...
+
+Ver los comandos xBase del Browse de Fivewin y la explicación de clase [[fivewin_clase_twbrowse|TWBrowse]] en este wiki para una descripción completa de los comando xBase mostrados anteriormente. Recuerde que FiveWin también le proporciona un nueva y poderosa Clase [[fivewin_clase_tcbrowse|TCBrowse]] en caso de que desee trabajar con Objeto columna. TCBrowse también es un navegador rápido, aunque no tanto como TWBrowse.

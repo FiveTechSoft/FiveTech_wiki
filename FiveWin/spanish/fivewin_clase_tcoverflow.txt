@@ -1,0 +1,143 @@
+====== Descripción ======
+
+Proporciona una apariencia similar al coverflow de Apple en tus aplicaciones, aunque sin tener que usar OpenGL ni otras librerias externas pesadas. Esta clase es autocontenida y muy ligera.
+
+Hereda de la Clase TControl
+
+Puedes imaginarla como un browse de imágenes (pudiendo estar relacionadas con imágenes de tus bases de datos, etc)
+
+{{:coverflow.png|:coverflow.png}}
+
+
+
+
+
+
+
+
+
+
+
+====== DATAS ======
+|aCovers|An array of TCover objects|
+|bAction|codeblock to evaluate when a coverflow is selected|
+|hBmpResize|handle of the central cover when resized|
+|lWork|The coverflow is busy working|
+|lAnimated|Coverflow animation is on|
+|lAdjust|Coverflow should be adjusted when resized|
+|lSpcAction|...|
+|lAnimaOnClick|...|
+|lAdjustCenter|...|
+|lMaxRes|Max resolution on Resize|
+|nAt|Selected cover index|
+|nLeftMargin, nTopMargin|Left and top margins|
+|nSeparation|Separation between each cover|
+|nCenterSeparation|Separation of both sides of central cover|
+|nCoverHeight, nCoverWidth|Dimensions for the covers|
+|nCoversL, nCoversR|Amount of left and right covers|
+|nMaxCover|Max amount of covers on each side|
+|nAngle|Internal, cover angle|
+|nMaxAnimaFrame|Max amount of animation frames|
+|nHorizon|Internal, horizon position|
+|nMoveType|Internal, movement direction|
+|nOnClickCovers, nOnMoveCovers|...|
+|nRatioResize|central cover resize percentage|
+|nPorcent|...|
+|nOrgCWidth,nOrgCHeight, nOrgSep, nOrgCSep|...|
+
+====== METHODS ======
+|New( nTop, nLeft, nBottom, nRight, oWnd )|Constructor|
+|AddCover( cBmpName, cText )|Add a new cover given a bitmap filename and prompt|
+|AddCoverH( hBmp, cText )|Add a new cover given a bitmap handle and prompt|
+|AtCover(nRow,nCol)|Returns the cover placed in coordinates nRow, nCol|
+|CalcPosL()|Calculates left covers position|
+|CalcPosR()|Calculates right covers position|
+|CalcPosC()|Calculates central cover position|
+|CalcPosLAnima()|Calculates left position for animation|
+|Destroy()|Destructor, invoked when it is released|
+|Display()|Controls painting process|
+|EraseBkGnd( hDC )|Processes surface painting|
+|GoLeft()|Selects the left cover|
+|GoRight()|Selects the right cover|
+|GoTo( nCover )|Goes to a certain cover|
+|KeyDown( nKey, nFlags )|A key has been pressed|
+|HandleEvent( nMsg, nWParamo, nLParam )|Process events|
+|Initialize()|Initialize coverflow internal data|
+|LButtonDown( nRow, nCol, nFlags )|Mouse Left button clicked|
+|LButtonUp( nRow, nCol, nFlags )|Mouse Left button released|
+|MouseLeave( nRow, nCol, nFlags )|Mouse moved out of borders|
+|MouseMove( nRow, nCol, nFlags )|Mouse moved in area|
+|MouseHover( nRow, nCol )|Mouse over the coverflow|
+|Paint()|Paints the coverflow|
+|PaintLSide()|Paints left covers|
+|PaintRSide()|Paint right covers|
+|PaintCenter()|Paint center cover|
+|ResizeCenter()|Zooms in or out, central cover|
+|ResizeCover( nNewW, nNewH )|Resizes a cover|
+|Resize()|Resizes the coverflow|
+|DispBegin()|Double buffer painting begin|
+|DispEnd( aRestore )|Double buffer painting end|
+
+
+
+====== Ejemplo ======
+FWH\samples\TestCF1.prg
+<code clipper>
+// CoverFlow example
+
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oCF
+   LOCAL oBrush := TBrush():New( ,CLR_CYAN )
+
+   DEFINE WINDOW oWnd  FROM 2, 2 TO 40, 96 color CLR_BLACK, CLR_CYAN BRUSH oBrush
+
+   oWnd:Center()
+ 
+   oCF = TCoverFlow():New( 30, 30 )
+
+   oCF:bAction = { | o, nCover, nOld | msginfo( "Seleted: " + str( nCover, 2 ) + CRLF + "From: " + str( nold ) ) }
+
+   oCF:nMaxCover    = 5
+   
+   oCF:lAnimated= .T.
+   oCF:SetColor( 0, CLR_WHITE )
+   
+   oCF:AddCover( "..\bitmaps\shakira.bmp", "shakira.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLUE )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\007.bmp", "007", CLR_YELLOW )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_BLUE )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_RED )   
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_RED )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_YELLOW )
+
+   oWnd:oClient = oCF
+
+   ACTIVATE WINDOW oWnd on init( oCF:Resize(), oCF:Refresh() )
+                       
+return nil
+</code>
+
+
+====== Código fuente ======
+FWH\Classes\TCvrFlow.prg
+
+
+
+
+
+====== Ver también ======
+
+[[fivewin_clase_tcover|Clase TCover]], [[fivewin_clase_tcontrol|Clase TControl]]

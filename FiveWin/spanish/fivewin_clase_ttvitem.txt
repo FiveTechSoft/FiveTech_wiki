@@ -1,0 +1,40 @@
+====== Clase TTVItem ======
+
+Objectos item para el objeto TTreeView.                                         
+
+====== DATOS ======
+
+^  Nombre  ^  Descripción  ^
+^hItem|Manejador Item|
+^oTree|Objeto TTreeView|
+^aItems|Arreglo de objetos TTVitem (ramas que salen del item actual )|
+^cPrompt|Texto a mostrar del item|
+^nImage|Numero Ordinal de la imagen del objeto oTree:oImageList para el item|
+^Cargo|Dato para su uso propio|
+
+====== METODOS ======
+
+^New|Constructor desde código fuente|
+| |**Sintaxis:** TTVitem:New( hItem, oTree, Cargo, cPrompt,nImage) \\ Usado internamente por la clase TTreeView|
+^Add|Añade un elemento a oTree.|
+| |** Parámetros:** \\ **cPrompt** texto para el nuevo elemento \\ **nImage** Número Ordinal de la imagen del objeto oTree:oImageList \\ **Cargo** para su propio uso \\ **Devuelve** \\ Un objeto TTVItem|
+^Collapse|Cierra todas las ramas del elemento|
+^DeleteBranches|Elimina todas las ramas del elemento|
+^Expand|Expande todas las ramas del elemento|
+^GetParent|Recupera el elemento padre del elemento actual|
+^MakeVisible|Asegura que el elemento sea visible, expandiendo el elemento padre o desplazando el TreeView, si es necesario|
+^Set|Establece el texto y la imagen del elemento|
+^SetText|Establece el texto del elemento|
+^Toggle|Cambia el estado de expandido/cerrado del elemento|
+
+====== Ejemplo ======
+
+FWH\SAMPLES\re.prg
+
+====== Vea tambien ======
+
+[[fivewin_comando_treeview|Comando TreeView]], [[fivewin_clase_TTreeView|Clase TreeView]], [[fivewin_clase_timagelist|Clase ImageList]]
+
+====== Codigo fuente ======
+
+FWH\SOURCE\CLASSES\TTVITEM.PRG

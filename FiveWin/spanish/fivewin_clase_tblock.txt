@@ -1,0 +1,40 @@
+====== Clase TBlock ====== 
+
+Clase de FiveWin para almacenar Bloques de código
+
+====== DATA ====== 
+
+|cExpression|Una cadena con la expresión del bloque|    
+|bBlock|La expresión del bloque de código|    
+
+====== METODOS ====== 
+
+|New|Crea un nuevo bloque|    
+|Eval / Exec|Evalua o ejecuta el bloque| 
+
+====== Ejemplo ======
+FWH\samples\testbloc.prg
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBlock
+
+   oBlock = TBlock():New( "{ | cMsg | MsgInfo( cMsg ) }" )
+
+   oBlock:Eval( "CodeBlocks storables on disk!" )
+
+   // Now lets try to build a 'bad' CodeBlock
+
+   oBlock = TBlock():New( "{ || MsgAlert( cTest )" )   // '}' missing !
+   
+return nil
+</code>
+
+====== Código fuente ======
+FWH\source\classes\block.prg
+
+====== Ver también ======

@@ -1,0 +1,60 @@
+====== Clase TTreeView ======
+
+Vista en arbol, control estandar del API Windows32 bits (Commoncontrols.dlg).\\
+Para poder usar este control desde recursos usted DEBE identificar el control como: 'SysTreeView32'\\
+Hereda de TControl                                                         
+
+====== DATOS ======
+
+^  Nombre  ^  Descripción  ^
+^aItems|Arreglo de objetos TTVItem.|
+^oImageList|Objeto TImagelist|
+^bChanged|Bloque de código a ser evaluado cuando cambia el estado del TreeView|
+
+
+
+
+====== METODOS ======
+
+^  Nombre  ^  Descripción  ^
+^New|Constructor de codigo fuente:|
+| |**Sintaxis:** \\ TTreeview:New(nTop, nLeft, oWnd, nClrFore, nClrBack, lPixel, lDesign, nWidth, nHeight, cMsg)|
+^ReDefine|Constructor desde recursos:|
+| | **Sintaxis:** \\ TTreeview:ReDefine( nId, oWnd, nClrFore, nClrBack, lDesign, cMsg)|
+^Add|Añade un elemento al TreeView|
+| |**Parámetros:** \\ **cPrompt** Texto para el nuevo elemento \\ **nImage** Numero Ordinal de la imagen del objeto oImageList \\ **nValue** Un valor que puede recuperarse más tarde usando la función  TVIParam() \\ **Devuelve:** \\ Un objeto TTVItem|
+^CollapseAll|Cierra todas las ramas del TreeView|
+^CollapseBranch|Cierra el rama dada|
+^DeleteAll|Borra todos los elementos del Treeview|
+^Expand|Expande todas las ramas del TreeView|
+^ExpandAll|Expande todas las ramas del elemento dado|
+^ExpandBranch|Expande la rama dado|
+^GetCheck|Devuelve el estado de la casilla de selección del elemento|
+^GetItem|Devuelve el Objeto TTVItem por su manejador|
+| |**Parámetros:** \\ **hItem**: control TTVItem|
+^GetSelected|Devuelve el objeto TTVItem seleccionado|
+^GetSelText|Devuelve el texto del elemento actual seleccionado|
+^HitTest|Devuelve el TTVItem en las coordenadas especificadas|
+| |** Parámetros:** \\ **nRow**, **nCol** \\ **Devuelve** un objeto TTVItem o nil \\ Este método puede ser usado para cambiar el elemento seleccionado al hacer clic izquierdo o derecho o doble clic izquierdo del mouse|
+^Select|Selecciona un elemento específico.|
+| |** Parámetros:** \\ **oItem**: objeto TTVItem|
+^SelChanged|Cambia el manejador de eventos del elemento seleccionado|
+^SetCheck|Establece el estado de la casilla de selección de un elemento|
+^SetColor|Establece el color de frente y de fondo del control|
+^SetImageList|Establece el objeto Imagelist.|
+| |**Parámetros:** \\ **oImagList**: objeto TImagelist \\ **Devuelve:** \\ nil|
+^Toggle|Cambia el estado de expandido/cerrado de todas las ramas del TreeView|
+^ToggleAll|Cambia el estado de expandido/cerrado de todas las ramas del elemento dado|
+^ToggleBranch|Cambia el estado de expandido/cerrado delelemento dado|
+
+====== Ejemplo ======
+
+FWH\SAMPLES\re.prg 
+
+====== Vea tambien ======
+
+[[fivewin_comando_treeview|Comando TreeView]], [[fivewin_clase_ttvitem|Clase TTvItem]], [[fivewin_clase_timagelist|Clase TImageList]] 
+
+====== Codigo fuente ======
+
+FWH\SOURCE\CLASSES\TTREEVIEW.PRG

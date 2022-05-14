@@ -1,0 +1,820 @@
+====== Clase TXBrowse ======
+
+Class TXBrowse                                                                 
+Hereda de TControl                                                         
+Este browse es el más completo y complejo de los que ofrece FiveWin.                       
+Lo primero en lo que que debe poner atención, es que la costrucción del control se hace en dos fases:
+  * Creación del control TXBrowse.
+  * Creación del control del API de Windows basado en el control TXBrowse
+
+Esta modificación se hizo con objeto de permitir al programador la asignación propiedades de cualquier objeto antes de que la ventana sea realmente creada. Por ejemplo, puede deshabilitar la barra de desplazamiento fácilmente con solo cambiar el dato lVScroll o lHScroll antes de crear la ventana. Como siempre se hace en todos los controles Fivewin la creación del objeto se realiza mediante el método constructor 'New' que ahora solo recibe un parámetro que es la ventana contenedora:
+<code clipper>
+    oMyBrw:= TXBrowse():New( oWnd )
+</code>
+Después de ello puede cambiar cualquier propiedad del control, agregándole columnas, etc. Cuando se haya realizado completamente la configuración, puede llamar al método constructor así:
+   * CreateFromCode
+   * CreateFromResource( nId )
+Los nombres de los métodos son auto-explicatorios, el primero crea una ventana TXBrowse como lo hace con el típico '@ nRow, nCol' y el segundo se emplea cunado se crea el control desde recursos y usted proporciona el ID de control como parámetros.
+La clase TXBrowse también usa otra clase para sus columnas cuyo nombre es TXBrwColumn.
+Para agregar nuevas columnas al objeto TXBrowse solo necesita llamar al método 'AddCol':
+<code clipper>
+|oCol|:= oBrw:AddCol()|
+</code>
+El control TXBrowse internamente llama al método 'Adjust' cuando se crea completamente. Este método es responsable de calcular la dimensión de datos, encabezados y pies de página de cada columna ya ajusta adecuadamente el navegador. El método 'Adjust' también está presente en cada Objeto columna que también es llamado por el métod 'Adjust' dentro de TXBrowse 'Adjust' method. El método 'Adjust' únicamente modifica las propiedades del objeto si hubiera un 'nil' antes de llamar al método. Así si quiere ejecutar el método 'Adjust' manualmente debe tomar en cuenta que también debe asignar 'nil' a todas las propiedades que desee recalcular como por ejemplo la altura del encabezado.
+Recomendamos ampliamente que observe el ejemplo Testxbrw.prg para que pueda comprender mucho mejor el control TXBrowse!
+
+
+
+
+
+===== DATAS =====
+^  Nombre  ^  Descripción  ^
+|oSeek|Optional TSay control to display the value of current ::cSeek value|
+|aSelected|Currently records selected (only use with marquee style MARQSTYLE_HIGHLROWMS|
+|aArrayData|Array data filled by SetArray() method|
+|bGoTop|Codeblock para ir a la primera línea|
+|bGoBottom|Codeblock para ir a la última línea|
+|bSkip|Codeblock for skiping rows, it receives the number of rows to skip. IT SHOULD RETURN THE NUMBER OF ROWS SKIPPED|
+|bBof|Codeblock que chequea si estamos en la primera línea|
+|bEof|Codeblock que chequea si estamos en la última linea|
+|bKeyNo|SETGET codeblock to be used for positioning the vertical scrollbar. When no parameter is passed it should return the actual position, when a parameter is passed should perform a jump to that position. The codeblock also receives a second parameter with a reference to Self For example: %%{|n| iif( n == nil, OrdKeyNo(),OrdKeyGoto(n)}%% |
+|bKeyCount|Codeblock that returns the total number of rows.|
+|bBookMark|SETGET codeblock to be used for bookmarking a specific row. When no parameter is passed it should return a bookamark value,when a parameter is passed should return to that bookmark position. For example: %%{|n| iif( n == nil, Recno(), DbGoto(n) }%%|
+|bSeek|Block expresion for autoincremental search. It should return .T. when found. It receives the proposed seek string.|
+|bPastEof|Block to evaluate if trying to go down after the last row|
+|bClrHeader|Default color pair for header. This code-block should return an two dimension array with {nFore, nBack} colors|
+|bClrFooter|Default color pair for footer. This code-block should return an two dimension array with {nFore, nBack} colors|
+|bClrStd|Default color pair for normal rows. This code-block shouldreturn an two dimension array with {nFore, nBack} colors|
+|bClrSel|Default color pair for selected row. This code-block shouldreturn an two dimension array with {nFore, nBack} colors|
+|bClrSelFocus|Default color pair for selected row when control has focus. This code-block should return an two dimension array with {nFore,nBack} colors|
+|cAlias|Alias when accesing via RDD|
+|cSeek|String that hold the current string searched (for autoincremental seek)|
+|nRowSel|Current row selected based on current display|
+|nColSel|Current columns based on current display|
+|nFreeze|Number of columns to freeze|
+|nColOffset|Actual first column to be shown after freeze|
+|nHeaderLines|Number of lines of the header|
+|nFooterLines|Number of lines of the footer|
+|nDataLines|Number of lines of the data rows|
+|nDataType|Data type to be used: 0->rdd, 1->array, ... (more to come) If navigation codeblocks are not specified then get automatically|
+|initialized|when adjusting the browse depending on this DATA value|
+|nHeaderHeight|Header height. If this value is NIL, the is calculated on the Adjust method|
+|nFooterHeight|Footer height. If this value is NIL, the is calculated on the Adjust method|
+|nRowHeight|Data row height. If this value is NIL, the is calculated on the Adjust method|
+|nRecSelColor|Background color for the record selector column, by default uses the backgrounf footer|
+|nRowDividerStyle|Row divider style: 0 No lines 1 Black line 2 Dark gray line 3 Raised 4 Inset 5 Fore Color 6 Light gray|
+|nColDividerStyle|Column divider style: 0 No lines 1 Black line 2 Dark gray line 3 Raised 4 Inset 5 Fore Color 6 Light gray|
+|nMarqueeStyle|Marquee style (row selected) 0 No Marquee 1 Dotted cell 2 Solid cell 3 Highlight cell 4 Highlight row & Raise Cell 5|
+|Highlight|row 6 Highlight row & multiselect|
+|nLastEditCol|Last edited column (display based)|
+|lRecordSelector|If true a record selector column is displayed|
+|lHScroll|Horizontal Scrollbar, it should be assigned before the createfrom..() method|
+|lVScroll|Vertical Scrollbar, it should be assigned before the createfrom..() method|
+|lAllowRowSizing|If true horizontal row sizing is allowed|
+|lAllowColSwapping|If true column swapping is allowed|
+|lAllowColHiding|If true column hiding is allowed|
+|lColDividerComplete|If true the vertical lines are displayed to the bottom of the browse even there are not enough data rows|
+|lFastEdit|If true, editable columns go to edit mode just pushing an alpha or digit character. This feature is incompatible with Incremental seek and is only available when the marquee style is cell based.|
+|l2007|If true the 2007 look is activated|
+|lHeader|Browse has header, if this value is nil then is|
+|initialized|automatically on the Adjust method|
+|lFooter|Browse has footer|
+|oRS|The ADO recordset object if SetADO() method was used|
+
+===== MÉTODOS: =====
+^  Nombre  ^  Descripción  ^
+|New|Constructor. Receives the parent window or dialog control|
+|End|Destructor|
+|nAt|Returns the currently selected column|
+|SetRDD|Sets the navigation code blocks to RDD database navigation|
+|SetArray|Sets the navigation code blocks to array navigation.|
+|Receives|the array to use and a second optional parameter to indicate if auto sort and incremental seek should be available, By default is false|
+|AddCol|Adds a TXBrwColumn object|
+|InsCol|Inserts TXBrwColumn object at nPos position|
+|DelCol|Deletes TXBrwColumn object at nPos position|
+|SwapCols|Swaps to column. The columns to swap can be referenced by his position in the array property aCols or directly indicating the objects|
+|CreateFromCode|Creates the TXBrowse from code|
+|CreateFromResource|Creates the TXBrowse from resource. It receives the control identifier as first and only parameter|
+|SelectCol|Moves the browse to nCol (based on displayed cols)|
+|GoLeft|Moves the browse one column to the left|
+|GoRight|Moves the browse one column to the right|
+|GoLeftMost|Moves the browse to this first column|
+|GoRightMost|Moves the browse to this last column|
+|GoUp|Moves the browse one row up|
+|GoDown|Moves the browse one row down|
+|PageUp|Moves the browse a page up|
+|PageDown|Moves the browse a page down|
+|GoTop|Moves the browse to the beginning of data|
+|GoBottom|Moves the browse to the end of data|
+|KeyCount|Counts the number of available rows and updates that information internally. It should be used after any scope, filter, append or delete operation.|
+|Skip|Skips 'nSkip' rows and returns the exactly skipped rows|
+|Bof|True if at the beginning of data|
+|Eof|True if at the end of data|
+|SaveState|Saves the actual browse state to a string|
+|RestoreState|Restores the browse state saved with SaveState method|
+|Seek|Seeks the string cSeek, if found updates the data row|
+|Select|Select operation when Multiselect marquee is used: 0->Delete all keys 1 -> Add current key 2 -> Swap current key (Ctrl+lClick) 3 -> Typical Shift with mouse 4 ->Select all|
+|SelectAll|The same as Select(4)|
+|SelectNone|The same as Select(0)|
+|Adjust|Adjust all the browse dimensions. Used internally from the Create method, but you can call it manually afterwards, but you should assign to 'nil' the properties that you want to be recalculated.|
+|Report|Prints an automatic customizable report from the current browse|
+|Refresh|Refresh the control. It completely redraws the Xbrowse control|
+|SetAdo|Sets the browse to display data from an ADO recordset|
+|SelFont|Shows the font selection dialog allowing the user to|
+|choose|a font for the browse and then apply it to all the column of the browse itself|
+|VUpdatePos|Updates the vertical scrollbar position. It should be used after a change of current Tag.|
+|VUpdateAll|Updates the vertical scrollbar range and position. It calls first the method KeyCount() and then adjust the scrollbar values.|
+|See|also TXBrwColumn control|
+
+
+====== Ejemplos ======
+
+FWH\samples\TestXbrw.prg, TestXbr2.prg, TestXbr3.prg, TestXbr4.prg, TestXbr5.prg, TestXbr6.prg
+
+** Xbrowse used to display directory tree, similar to Windows Explorer, The sample also shows how to use Tree object along with xBrowse **
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, oTree, oFont, b
+
+   SET DATE ITALIAN
+
+   oTree := MakeTree()
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      TITLE 'Directory' ;
+      FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE 300,200 PIXEL OF oDlg
+
+   oBrw:SetTree( oTree, { "CLOSE", "OPEN", "TXTMIN" } )
+   oBrw:bKeyChar  := { |nKey| If( nKey == VK_RETURN .and. ! Empty( oBrw:oTreeItem:bAction ), ;
+                                Eval( oBrw:oTreeItem:bAction, oBrw:oTreeItem ), nil ) }
+ 
+
+   WITH OBJECT oBrw:aCols[ 1 ]
+
+      :nWidth     := 300
+      :cHeader    := 'File/Folder'
+      b           := :bLDClickData
+
+      :bLDClickData  := { |r,c,f,o| ToggleFolder( r,c,f,o,b ) }
+
+      :bBmpData   := { || If( 'D' $ oBrw:oTreeItem:Cargo[ 5 ], ;
+                          If( oBrw:oTreeItem:lOpened, 1, 2 ), ;
+                           3 ) ;
+                     }
+
+   END
+
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 2 ] ;
+         PICTURE '@EZ 999,999,999' HEADER 'Bytes'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 3 ] HEADER 'Date'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 4 ] HEADER 'Time'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 5 ] HEADER 'Attr'
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTER
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function ToggleFolder( r, c, f, oCol, b )
+
+   local oBrw  := oCol:oBrw
+   local oItem := oBrw:oTreeItem
+
+   If ! oItem:lOpened .and. ! Empty( oItem:bAction )
+      Eval( oItem:bAction, oItem )
+   endif
+
+   Eval( b, r, c, f, oCol )
+
+return nil
+
+
+//----------------------------------------------------------------------------//
+static function MakeTree()
+
+   local oTree, oItem
+   local cPath := 'D:\FWH'
+
+   TREE oTree
+      TREEITEM oItem PROMPT cPath
+      oItem:Cargo    := { cPath, 0, CtoD( '' ), Space( 8 ), 'D', cPath }
+      oItem:SetTree( SubTree( oItem ) )
+      oItem:Open()
+   ENDTREE
+
+return oTree
+
+//----------------------------------------------------------------------------//
+
+static function SubTree( oParent )
+
+   local oTree, n, oItem, nLevel
+   local cFolder := oParent:Cargo[ 6 ]
+   local aDir     := Directory( cFolder + '\*.*', 'D' )
+
+   nLevel   := oParent:nLevel + 1
+
+   TREE oTree
+   for n := 1 to Len( aDir )
+      if ! ( aDir[ n ][ 1 ] = '.' )
+
+         TREEITEM oItem PROMPT aDir[ n ][ 1 ]
+
+         oItem:nlevel := nLevel
+         oItem:Cargo  := aDir[ n ]
+
+         AAdd( oItem:Cargo, cFolder + '\' + aDir[ n ][ 1 ] )
+
+         if 'D' $ aDir[ n ][ 5 ]
+            oItem:bAction  := { |o| o:SetTree( SubTree( o ) ), o:bACtion := nil }
+         else
+            oItem:bAction  := { |o| MsgInfo( o:cPrompt ) }
+         endif
+      endif
+   next
+   ENDTREE
+
+return oTree
+//----------------------------------------------------------------------------//
+</code> 
+
+** Screen Snapshot **
+
+{{:xbrowse1.jpg|:xbrowse1.jpg}}
+
+** Sample Code 2 **
+
+** A sample demonstrating the capability of displaying Alpha Channel Images on Header, Footer and Data Rows **
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+REQUEST DBFCDX
+
+static hLib
+
+function main()
+
+   local oDlg
+   local oBrw
+   local nI
+   local hBitMap1, hBitMap2, hBitMap3, hBitMap4
+   local aArray:={}
+   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\text.bmp", 50 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\phone.bmp", 100 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\ichat.bmp", 150 } )   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\settings.bmp", 200 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\movie.bmp", 255 } )      
+
+
+   DEFINE DIALOG oDlg title "TEST" size 800,600
+
+   @ 0,0 XBROWSE oBrw OF oDlg columns {1,2,3};
+      Array aArray sizes {100,300, 100} LINES CELL autocols fastedit
+
+   oBrw:nMarqueeStyle              := 1
+   oBrw:nRowHeight                 := 100
+   oBrw:lFooter                    := .t.
+        
+   oBrw:aCols[ 1 ]:nEditType       := TYPE_IMAGE
+   oBrw:aCols[ 1 ]:lBmpStretch     := .f.
+   oBrw:aCols[ 1 ]:lBmpTransparent := .t.
+   oBrw:aCols[ 1 ]:bStrImage       := {|oCol, oBrw| oBrw:aRow[ 2 ] }
+   oBrw:aCols[ 1 ]:nDataBmpAlign   := AL_CENTER
+   oBrw:aCols[ 1 ]:bPopUp          := { | o | ColMenu( o ) } 
+   oBrw:aCols[ 1 ]:bAlphaLevel     := { | o | o:oBrw:aRow[ 3 ] }
+   
+   oBrw:aCols[ 2 ]:nEditType       := EDIT_BUTTON
+   oBrw:aCols[ 2 ]:bEditBlock      := {|nRow, nCol, oCol| oCol:Value := cGetFile( "*.*", "Select a file" )  }
+   oBrw:aCols[ 2 ]:AddBmpFile( "..\bitmaps\AlphaBmp\sound.bmp" )
+   oBrw:aCols[ 2 ]:nHeadBmpNo      := 1
+   
+   
+   oBrw:aCols[ 3 ]:nEditType       := 1
+   oBrw:aCols[ 3 ]:bOnPostEdit     := {|oCol, xVal, nKey| oCol:Value( xVal ) }
+   oBrw:aCols[ 3 ]:AddBmpFile( "..\bitmaps\AlphaBmp\video.bmp" )
+   oBrw:aCols[ 3 ]:nFootBmpNo      := 1
+   
+   oDlg:oClient                    := oBrw
+   
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED ON INIT oDlg:Resize()
+
+return nil 
+
+static function ColMenu( ocol )
+
+   local oPop
+
+   MENU oPop POPUP 2007
+      MENUITEM "Left Align" WHEN oCol:nDataBmpAlign > 0 ;
+         ACTION ( oCol:nDataBmpAlign:= AL_LEFT, oCol:oBrw:Refresh() )
+      MENUITEM "Center Align" WHEN oCol:nDataBmpAlign != AL_CENTER ;
+         ACTION ( oCol:nDataBmpAlign := AL_CENTER, oCol:oBrw:Refresh() )
+      MENUITEM "Right Align" WHEN oCol:nDataBmpAlign != AL_RIGHT ;
+         ACTION ( oCol:nDataBmpAlign := AL_RIGHT , oCol:oBrw:Refresh() )
+
+      MenuAddItem( "Transparent", ,oCol:lBmpTransparent, .t., ;
+         { |oItem| oCol:lBmpTransparent := !oCol:lBmpTransparent, ;
+            oItem:SetCheck( oCol:lBmpTransparent ), ;
+            oCol:oBrw:refresh() } )
+
+      MenuAddItem( "Stretch", ,oCol:lBmpStretch, .t., ;
+         { |oItem| oCol:lBmpStretch := !oCol:lBmpStretch, ;
+            oItem:SetCheck( oCol:lBmpStretch ), ;
+            oCol:oBrw:refresh() } )
+
+   ENDMENU
+
+return oPop
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot 2 **
+
+{{:xbrowsealpha.jpg|:xbrowsealpha.jpg}}
+
+** Sample Code 3 **
+
+** A sample demonstrating the capability of displaying Gradient colors **
+\Fwh\Samples\XbrGrad.Prg
+<code clipper>
+/*
+*  xbrgrad.prg
+*  Grandient fills on Xbrowse
+*  Dynamic modifications
+*
+*/
+
+#include 'fivewin.ch'
+#include 'ord.ch'
+#include 'xbrowse.ch'
+
+REQUEST DBFCDX
+
+static aStack  := {}
+static cGrad
+static nGrad := 50
+
+//------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, cAlias := cGetNewAlias( "CUST" )
+   local oBr, oFont
+   local aGrad := ;
+      { ;
+         { 0.5,    RGB( 140,  56,   6 ),  RGB( 237, 234, 109 )   }, ;
+         { 0.5,    RGB( 237, 234, 109 ),  RGB(  85,  62,  84 )   }  ;
+      }
+   SET DATE ITALIAN
+   SET CENTURY ON
+   XBrNumFormat( 'E', .t. )
+   SetBalloon( .t. )
+
+   USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+   SET ORDER TO TAG FIRST
+   GO TOP
+
+   DEFINE FONT oFont   NAME "TAHOMA" SIZE 0,-11 BOLD
+   DEFINE BRUSH oBr    RESOURCE "beige2"
+
+   DEFINE DIALOG oDlg SIZE 760,460 FONT oFont BRUSH oBr ;
+      TITLE 'Xbrowse Color Gradient Designer'
+
+   @ 10,10 XBROWSE oBrw  ;
+            COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+            COLSIZES nil,10 OF oDlg ;
+            SIZE 360,170 PIXEL ;
+            ALIAS cAlias AUTOSORT FOOTERS LINES CELL ;
+            BACKGROUND aGrad VERTICAL
+
+   oBrw:nStretchCol   := 2
+   oBrw:Married:SetCheck( , .t. )
+
+   WITH OBJECT oBrw:Salary
+      :nTotal   := 0 ; :lTotal   := .t. ; :nEditType := EDIT_GET
+   END
+
+   oBrw:MakeTotals()
+   oBrw:CreateFromCode()
+
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+
+   @ 189,354 BUTTONBMP BITMAP 'COPY' SIZE 16,16 PIXEL OF oDlg ;
+      ACTION CopyToClipBoard( oBrw )
+   ATail( oDlg:aControls ):cToolTip :=  'Copy Gradient Array to Clip Board'
+
+   @ 185, 10 SAY 'Gradient Array :' SIZE 60,10 PIXEL OF oDlg TRANSPARENT
+
+   @ 195, 10 GET cGrad ;
+         SIZE 340,10 PIXEL OF oDlg COLOR CLR_BLACK,CLR_WHITE UPDATE ;
+         VALID { |oGet| SetGradArray( oGet, oBrw ) }
+
+   @ 210, 10 BUTTON 'Orientation'  SIZE 40,12 PIXEL OF oDlg ;
+      ACTION oBrw:SetBackGround( ,!oBrw:oBrush:Cargo[2] )
+   ATail( oDlg:aControls ):cToolTip := 'Change Orientaion of Gradient'
+
+   @ 210, 52 BUTTON 'Top Color'    SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 1 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Top Color of Gradient'
+
+   @ 210, 94 BUTTON 'Center Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 2 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Center Color of Gradient'
+
+   @ 210,136 BUTTON 'Bottom Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 3 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Bottom Color of Gradient'
+
+   @ 210,178 BUTTON 'Undo' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION ( oBrw:SetBackGround( ATail( aStack ) ), ;
+               ASize( aStack, Len( aStack ) - 1 ), ;
+               oDlg:Update(), oDlg:aEvalWhen() ) ;
+      WHEN Len( aStack ) > 0
+   ATail( oDlg:aControls ):cToolTip := 'Undo Last Change'
+
+   @ 210,220 GET nGrad PICTURE '999 %' SIZE 20,12 PIXEL OF oDlg ;
+      SPINNER MIN 10 MAX 90 RIGHT UPDATE ;
+      ON CHANGE SetGradTrans( Self, oBrw ) ;
+      VALID { |oGet| SetGradTrans( oGet, oBrw ) }
+
+   @ 210,330 BUTTON 'Close' SIZE 40,12 PIXEL OF oDlg CANCEL ;
+      ACTION oDlg:End()
+   ATail( oDlg:aControls ):cToolTip := 'Exit Application'
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   RELEASE BRUSH oBr
+   RELEASE FONT oFont
+
+   CLOSE (cAlias)
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function SelBrwGradClr( oBrw, nPart )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+   local aSave := AClone( aGrad )
+   local lVert := oBrw:oBrush:Cargo[ 2 ]
+   local nClr
+
+   nClr  := If( nPart == 1, aGrad[ 1 ][ 2 ], If( nPart == 2, aGrad[ 1 ][ 3 ], aGrad[ 2 ][ 3 ] ) )
+   nClr  := ChooseColor( nClr )
+   SetBrwGradClr( oBrw, nPart, nClr )
+   AAdd( aStack, aSave )
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+   oBrw:oWnd:Update()
+   oBrw:oWnd:aEvalWhen()
+   oBrw:SetFocus()
+
+return aSave
+
+//------------------------------------------------------------------//
+
+static function SetBrwGradClr( oBrw, nPart, nClr )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+
+   if nPart == 1
+      aGrad[ 1 ][ 2 ] := nClr
+   elseif nPart == 2
+      aGrad[ 1 ][ 3 ] := aGrad[ 2 ][ 2 ] := nClr
+   elseif nPart == 3
+      aGrad[ 2 ][ 3 ] := nClr
+   endif
+   oBrw:SetBackGround( aGrad )
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradTrans( oGet, oBrw )
+
+   local n  := oGet:oGet:VarGet() * 0.01
+   local aGrad := AClone( oBrw:oBrush:Cargo[ 1 ] )
+
+   if n >= .1 .and. n <= .9
+      aGrad[ 1 ][ 1 ] := n; aGrad[ 2 ][ 1 ] := 1 - n
+      oBrw:SetBackGround( aGrad )
+      cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+      oBrw:oWnd:Update()
+
+   endif
+
+return .t.
+
+//------------------------------------------------------------------//
+
+static function CopyToClipBoard( oBrw )
+
+   local oClip
+
+   DEFINE CLIPBOARD oClip OF oBrw:oWnd
+
+   if oClip:Open()
+      oClip:SetText( cClrToCode( oBrw:oBrush:Cargo[ 1 ] ) )
+      oClip:Close()
+   endif
+   oClip:End()
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradArray( oGet, oBrw )
+
+   local lValid   := .f.
+   local cText := StrTran( AllTrim( oGet:oGet:VarGet() ), 'RGB','nRGB' )
+   local aGrad
+
+   TRY
+      aGrad := &cText
+      if IsVaildGradArray( aGrad )
+         AAdd( aStack, oBrw:oBrush:Cargo[ 1 ] )
+         oBrw:SetBackGround( aGrad )
+         cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+         oBrw:oWnd:Update()
+         oBrw:oWnd:aEvalWhen()
+         lValid   := .t.
+      endif
+   CATCH
+      oGet:oGet:VarPut( PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 ) )
+      oGet:Refresh()
+   END
+
+   if ! lValid
+      MsgInfo( 'Not a valid Gradient Array' )
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+
+static function IsVaildGradArray( aGrad )
+
+   local lValid   := .t.
+   local n, x
+
+   if Len( aGrad ) == 2
+      for n := 1 to 2
+         if Len( aGrad[ n ] ) == 3
+            if ( ( x := aGrad[ n ][ 1 ] ) > 0 .and. x < 1 ) .and. ;
+               ( ( x := aGrad[ n ][ 2 ] ) >= 0 .and. x <= CLR_WHITE ) .and. ;
+               ( ( x := aGrad[ n ][ 3 ] ) >= 0 .and. x <= CLR_WHITE )
+            else
+               lValid   := .f.
+               exit
+            endif
+         else
+            lValid   := .f.
+            exit
+         endif
+      next n
+   endif
+
+   if lValid
+      aGrad[ 2 ][ 1 ] = 1 - aGrad[ 1 ][ 1 ]
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+static function GradStr( aGrad )
+return StrTran(StrTran( cClrToCode( aGrad ), ';' + CRLF, '' ),' ','' )
+//------------------------------------------------------------------//
+
+EXTERNAL nRGB
+</code>
+
+** Screen Snapshot 3 **
+
+{{:xbrowsegradient.jpg|:xbrowsegradient.jpg}}
+
+
+** Sample Code 4 **
+
+** A sample demonstrating the the usage of Windows 7 row selection colors in xBrowse **
+
+\Fwh\Samples\Xbrwin7.Prg
+<code clipper>
+// Using Windows 7 row selection colors in xbrowse
+
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+function Main()
+
+   local oDlg, oBrw, oFont
+
+   USE CUSTOMER ALIAS CUST
+
+   DEFINE FONT oFont NAME 'Tahoma' SIZE 0, -14
+   
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      FONT oFont TITLE 'XBrowse Gradient Rows'
+
+   @ 10, 10 XBROWSE oBrw OF oDlg ;
+      SIZE 300, 200 PIXEL ;
+      AUTOCOLS ALIAS 'CUST' BACKGROUND ""
+      
+   oBrw:nRowDividerStyle = LINESTYLE_NOLINES
+   oBrw:nColDividerStyle = LINESTYLE_NOLINES
+   oBrw:nMarqueeStyle    = MARQSTYLE_HIGHLROW
+
+   AEval( oBrw:aCols, { | oCol | oCol:bPaintText := { | oCol, hDC, cData, aRect | ;
+          PaintCol( oCol, hDC, cData, aRect ) } } )
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oFont:End()
+
+return nil
+
+static function PaintCol( oCol, hDC, cData, aRect )
+
+   if oCol:oBrw:VGetPos() == Cust->( OrdKeyNo() )
+      GradientFill( hDC, aRect[ 1 ] - 2, aRect[ 2 ] - 3, aRect[ 3 ] + 1, aRect[ 4 ] + 5,;
+                    { { 1, RGB( 220, 235, 252 ), RGB( 193, 219, 252 ) } }, .T. )
+      RoundBox( hDC, 2, aRect[ 1 ] - 1, WndWidth( oCol:oBrw:hWnd ) - 22, aRect[ 3 ] + 1, 2, 2,;
+                RGB( 235, 244, 253 ), 1 ) 
+      RoundBox( hDC, 1, aRect[ 1 ] - 2, WndWidth( oCol:oBrw:hWnd ) - 21, aRect[ 3 ] + 2, 2, 2,;
+                RGB( 125, 162, 206 ), 1 ) 
+   endif
+
+   SetTextColor( hDC, 0 )
+   DrawTextEx( hDC, cData, aRect, oCol:nDataStyle )
+
+return nil
+</code>
+
+** Screen Snapshot 4 **
+
+{{:xbrowsewin7.jpg|:xbrowsewin7.jpg}}
+
+** Sample Code 5 **
+
+** A sample demonstrating the Vertical font headers in xBrowse **
+
+\Fwh\Samples\TestXbr5.Prg
+<code clipper>
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+static oFont, ovFont
+
+function main()
+
+   local oWnd, oBrw
+
+   use customer
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE FONT oVfont NAME 'TAHOMA' SIZE 0,-12 NESCAPEMENT 900
+
+   DEFINE WINDOW oWnd
+   oWnd:SetFont( oFont )
+
+   @ 0,0 XBROWSE oBrw ;
+      COLUMNS 'First', 'Last', 'Age' ;
+      OF oWnd ;
+      ALIAS 'CUSTOMER' ;
+      LINES CELL
+
+   WITH OBJECT oBrw:oCol( "Age" )
+      :oHeaderFont := oVFont
+      :cHeader := "Age Of Employee"
+      :AddBmpFile( '..\bitmaps\attach.bmp' )
+      :nHeadBmpNo := 1
+   END
+
+
+   oBrw:CreateFromCode()
+   oWnd:oClient := oBrw
+
+   SET MESSAGE OF oWnd TO "XBrowse Vertical Fonts" 2007
+   ACTIVATE WINDOW oWnd
+
+return nil
+//===========================
+</code>
+
+** Screen Snapshot 5 **
+
+{{:xbrowsevertical.jpg|:xbrowsevertical.jpg}}
+
+** Sample 6: How to use xBrowse to display data from multiple Alias **
+
+//Difference between COLUMNS and FIELDS//
+
+COLUMNS CLAUSE is a list of column names of the Alias assigned to the browse.
+FIELDS clause is for any expressions. FIELDS clause is to be used for data from other related Aliases or any complext expressions.
+
+When we want to display any field of the alias assigned to XBrowse, it is desirable to use COLUMNS clause but not FIELDS clause. When we use COLUMNS clause, XBrowse automatically reconginses fieldtype,fieldlen, fielddec and suitably decides, alignment, picture clauses and also automatically generates bOnPostEdit blocks and cSortOrder. We forgo this advantage if we use FIELDS clause or use OOPS syntax of creating columns by oBrw:AddCol(), etc. methods. We deirve the maximum power of XBrowse when we use the COMMAND syntax.
+
+When both COLUMNS and FIELDS clauses are speicified, XBrowse places the columns first and then the fields. We can later rearrange the sequence of xbrowse columns.
+
+Here is an example assuming 2 DBFs BILLS and CUSTOMER.
+
+<code clipper>
+USE BILLS
+USE CUSTOMER ALIAS CUST
+SET ORDER TO CUSTID
+SELECT BILLS
+SET RELATION TO CUSTID INTO CUST
+
+@ 10,10 XBROWSE oBrw SIZE 400,300 PIXEL OF oDlg ;
+  COLUMNS 'NUMBER', 'CUSTID', 'QUANTITY', 'RATE' ;
+  FIELDS CUST->CUSTNAME, CUST->STATE, BILLS->QUANTITY * BILLS->RATE ;
+  HEADERS 'BillNo', 'ID', 'Quantity', 'Rate', 'Customer', 'State', 'Amount' ;
+  PICTURES nil, nil, nil, nil, nil, nil, '999,999.99' ;
+  ALIAS BILLS
+
+  // we defined picture clause only for the last calculated column.
+  // XBrowse automatically decides picture clauses for NUMBER,CUSTID,QUANITY and RATE
+  // based on the DbStruct() of BILLS.
+
+  oBrw:ReArrangeCols( 'BillNo', 'ID', 'Customer', 'State', 'Quantity', 'Rate', 'Amount' )
+  oBrw:nStretchCol := STRETCHCOL_WIDEST
+</code>
+
+FiveWin discourages use of bStrData directly. This should be left for internal use by the XBrowse column object. Instead, it is desirable to assign the codeblock to oCol:bEditValue and specify the picture in oCol:cEditPicture. Still it is a lot more advantageous to use the COMMAND syntax rather than the OOPS style.
+
+** Sample 7: How to use xBrowse to display Array Data **
+
+Using command syntax helps faster, shorter, bug-free and portable coding than using methods like oBrw:SetArray, oBrw:SetRDD, etc. This approach also helps taking the best advantage of the full built-in power of xBrowse.
+
+<code clipper>
+#include "FiveWin.Ch"
+#include "xbrowse.ch"
+
+//-----------------------//
+Function Main()
+
+   Local aData := { ;
+     { 1, 'One',     45, date(),   .t. }, ;
+     { 2, 'Two',   2222, date()-1, .f. } , ;
+     { 3, 'Three', 3333, date()-2, .t. }, ;
+     { 4, 'Four',  4444, date()-3, .f. } }
+   Local oDlg, oBrw, oFont
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 440,240 PIXEL FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE -10,-10 PIXEL OF oDlg ;
+      COLUMNS 1, 2, 3, 5, 4 ;
+      HEADERS 'No', 'Description', 'Number', 'Status', 'Date' ;
+      PICTURES '99', nil, '@E 99,999.99', nil, 'dd-mmm-yyyy' ;
+      ARRAY aData CELL LINES NOBORDER FASTEDIT
+
+   oBrw:Status:SetCheck( , .t. )
+   AEval( oBrw:aCols, { |o| o:nEditType := EDIT_GET } )
+
+   oBrw:nStretchCol  := STRETCHCOL_WIDEST
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+   RELEASE FONT oFont
+
+Return ( 0 )
+</code>
+
+{{:xbrarr.jpg|:xbrarr.jpg}}
+
+
+
+
+
+
+
+
+====== Ver también ======
+[[fivewin_comandos_xbrowse|Comandos XBROWSE]]
+
+[[fivewin_clase_txbrwcolumn|Clase TXBrwColumn]]
+
+[[fivewin_xbrowse_notas|Notas acerca de XBrowse]]
+
+
+
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\XBROWSE.PRG

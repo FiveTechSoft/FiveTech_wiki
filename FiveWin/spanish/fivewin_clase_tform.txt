@@ -1,0 +1,29 @@
+====== Clase TForm ======
+
+Form Objects Class (UNDER DEVELOPMENT)                                         
+====== DATOS ======
+|nBorderStyle|The border style of the form|
+|OnMouseMove|Mouse move event handler|
+|OnKeyDown|Keydown event handler|
+|OnMove|Move event handler|
+|OnPaint|Paint event handler|
+|OnResize|Resize event handler|
+====== METODOS ======
+|New|Constructor from source code|
+|LoadRes|Loads form from resources|
+|cCaption|Gets and optionally sets the caption of the form|
+|nTop|Gets and optionally sets the top coordinate of the|
+|form||
+|nLeft|Gets and optionally sets the left coordinate of the|
+|form||
+|nClrPane|Gets and optionally sets the background color of the|
+|form||
+|SetColor|Sets the foreground color, background color and brush|
+|of|the form|
+|ShowModal|Shows the form in modal style|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFORM.PRG

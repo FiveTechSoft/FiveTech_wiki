@@ -1,0 +1,16 @@
+====== Clase TDBase ======
+
+Database (SQL database) management                                             
+====== DATOS ======
+|cDatabase|Database name|
+|aRelations|Array of relations|
+|aIntos|Array of ???|
+|aTables|Array of tables|
+====== METODOS ======
+|New|Constructor from source code|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDBASE.PRG

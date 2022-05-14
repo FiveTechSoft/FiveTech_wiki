@@ -1,0 +1,17 @@
+====== Clase TComObject ======
+
+COM interface support                                                          
+====== DATOS ======
+|nIDispatch|COM object handle|
+====== METODOS ======
+|New|Creates a new OLE object instance|
+|End|Ends the OLE object|
+|ClassName|Retrieves the OLE object class name|
+|Invoke|Calls a method of the OLE object|
+|OnError|Error handler|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCOMOBJECT.PRG

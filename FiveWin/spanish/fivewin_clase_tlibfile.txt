@@ -1,0 +1,15 @@
+====== Clase TLibFile ======
+
+Provides manipulation for LIB files                                            
+Hereda de TFile                                                            
+====== METODOS ======
+|nSignature|Signature of a LIB file|
+|nPageSize|Number of pages inside LIB|
+|nDirPages|Number of pages of LIB dir|
+|aModules|Array with all module names|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLIBFILE.PRG

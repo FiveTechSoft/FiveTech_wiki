@@ -1,0 +1,15 @@
+====== Class TDlgFnd ======
+
+Diálogo estándar de Windows para búsqueda de texto.
+Hereda de TDialog                                                          
+====== DATA ======
+|nFindMsgString|Un CLASSDATA que contiene el manejador interno usado|
+====== METHODS ======
+^New|Constructor desde código fuente|
+^HandleEvent|Manjeador de eventos genérico|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código Fuente ======
+FWH\SOURCE\CLASSES\TDLGFND.PRG

@@ -1,0 +1,66 @@
+====== Clase TTabs ======
+
+Control Tab Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+^oBtnLeft|Objeto botón izquierdo|
+^oBtnRight|Objeto botón derecho|
+^aPrompts|Etiqueta de los tab (pestañas).|
+^aSizes|Tamaño de los tab.|
+^bAction|Bloque de código que se evalua cuando se cambia de tab|
+^nOption|Tab (pestaña) actual|
+^nOffset|Indice del tab más a la izquierda que se visualiza|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+^New|Constructor desde código fuente|
+^ReDefine|Constructor desde recursos|
+^AddItem|Adiciona un item al tab.|
+^Default|Inicilización por defecto|
+^DelItem|Elimina un item del tab.|
+^Destroy|Destruye el control|
+^Display|Muestra el control. Use :Refresh() para forzar el redibujado|
+^End|Finaliza el control|
+^GetHotPos|Retorna las opciones de los tabs que coinciden con una tecla asceleradora|
+^Initiate|Método para la inicialización genérica del control|
+^Inspect|Inspector de objeto|
+^LButtonDown|Acción a realizar cuando al hacer click con el mouse|
+^Paint|Dibuja el control|
+^RButtonDown|Acción a realizar cuando se oprime el botón derecho del mouse|
+^SetOption|Selecciona la opción del tab activo.|
+^SetTabs|Define el arreglo de tabs y opciones. Por defecto "One","Two" y "Three".|
+^SysCommand|Comportamiento cuando se presiona una combinación con Alt+...|
+^EditPrompts|Edita las etiquetas de los tabs|
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+
+FUNCTION MAIN()
+
+local odlg
+local otabs
+
+DEFINE DIALOG oDlg TITLE "Selecci¢n  articulos" FROM 77,178 TO 353,662 ;
+    PIXEL //FIVEWIDI
+
+ACTIVATE DIALOG odlg ;
+   ON INIT PlaceTabs( oDlg, oTabs )
+
+RETURN Nil
+
+function PlaceTabs( oDlg, oTabs )
+
+@ 119.00,1.00 TABS oTabs OF oDlg ITEMS "Ordre Natural","Codi Article", ;
+    "AlfabŠtica" ACTION (MSGALERT("Error en TABS", "Ah¡ va") ) ;
+    PIXEL SIZE 242.00,;
+    32.00 MESSAGE "Orden de la llista" //FIVEWIDI
+
+return nil
+</code>
+
+{{:ttab.jpg|:ttab.jpg}}
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TTABS.PRG

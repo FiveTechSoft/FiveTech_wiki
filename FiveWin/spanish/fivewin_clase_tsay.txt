@@ -1,0 +1,85 @@
+Objecto Say
+
+Hereda de TControl
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|l3D       |Muestra el say 3D|
+|cPicture  |Picture del say|
+|bGet      |Codeblock que contiene el título del Say |
+|lWantClick|.T.  Ejecuta el click del raton          |
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New         |Constructor de código fuente|
+|Redefine    |Constructor desde los recursos|
+|cToChar     |Genera un modelo de datos para construir un diálogo|
+|Default     |Inicialización por defecto del control|
+|cGenPRG     |Devuelve una cadena con el código fuente del control|
+|EraseBkGnd  |Borra el fondo del control|
+|HandleEvent |Controlador de eventos genéricos|
+|Initiate    |Inicializa el control| 
+|Refresh     |Refresca el control|
+|SetText     |Cambia el título del Say|
+|VarPut      |Cambia los valores asociados con Codeblock bGet|
+
+====== EJEMPLOS ======
+FWH/SAMPLES/TESTSAY.PRG
+<code clipper>
+// A small sample showing how to use :Say() with fonts
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oFont
+
+   DEFINE FONT oFont NAME "Arial" SIZE 40, 60
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 50 TITLE "Testing Method Say()"
+
+   @ 1, 1 BUTTON " &Say " OF oWnd SIZE 60, 25 ;
+      ACTION oWnd:Say( 3, 3, "Hello", nRGB( 25, 40, 95 ), nRGB( 192, 192, 192 ),;
+                       oFont )
+
+   ACTIVATE WINDOW oWnd
+
+   RELEASE FONT oFont
+
+return
+
+//----------------------------------------------------------------------------//
+
+</code>
+
+FWH\SAMPLES\TESTSAY2.PRG
+<code clipper>
+/ A sample showing to to let a SAY accept Clicks events
+
+#include "FiveWin.ch"
+
+#define COLOR_BTNFACE       15
+
+function Main()
+
+   local oDlg, oSay, oCursor
+
+   DEFINE CURSOR oCursor HAND
+
+   DEFINE DIALOG oDlg
+
+   @ 2, 2 SAY oSay PROMPT "Test"
+
+   oSay:lWantClick = .t.
+   oSay:bLClicked  = { || oSay:SetColor( CLR_WHITE, GetSysColor( COLOR_BTNFACE ) ),;
+                          oSay:Refresh(), MsgInfo( "Hello" ) }
+   oSay:oCursor    = oCursor
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+====== CODIGO FUENTE ======
+FWH\SOURCE\CLASSES\SAY.PRG

@@ -1,0 +1,56 @@
+====== Clase TRLine ======
+
+FiveWin Report Engine Line objects                                             
+These objects are used by the TReport objects to keep some entire lines        
+of the report as the header, footer and the title.                             
+A TRLine object keeps multiple lines of information, related just with         
+one report object component. We call 'line element' to each element of         
+the line.                                                                      
+In a report it is possible to identify some vertical information               
+(normally knowns as the report columns) and some other horizontal info         
+which remains the same from page to page as the header, the footer and         
+the title.                                                                     
+Managing this report components as objects gives an extraordinary              
+flexibility of using different fonts, etc...
+====== DATOS ======
+|oReport|Its TReport object container.|
+|aLine|An array of codeblocks with all the line data elements.|
+|aFont|An array of codeblocks with all the fonts to be used. You may use different fonts with every line element. The same goes for the aPad styles.|
+|aRow|Internally used during printing.|
+|aWidth|An array with each line element width|
+|aPad|An array with each line element pad type: LEFT, CENTER, RIGHT|
+|nCol|Internally used to print the line.|
+|nHeight|The height of the line.|
+|nWidth|The largest width defined of its elements.|
+|Cargo|Generic cargo slot|
+====== METODOS ======
+|New|Method constructor: creates a new TRLine object.|
+|TRLine::New(|aLine, oReport, nPad ) -> Self aLine An array of codeblocks with all line elements data. oReport Its TReport object container. nPad|
+|The|pad style to use: LEFT 1, RIGHT 2, CENTER | CENTERED 3|
+|Stabilize|Stabilizes the line. Called by the report stabilize|
+|method.|TRLine::Stabilize( [ nFirstRow ] [, nFirstCol ] ) \\ nil|
+|Stabilizes|the TRLine object. With no parameters it calculates the height|
+|and|width of the object. If the parameters are specified, then the|
+|coordinates|where the object will be printed are defined. nFirstCol The|
+|col|where start printing the object. By default it is ::oReport:nMargin.|
+|nFirstRow|The horizontal fixed position where to start printing the|
+|TRLine|object.|
+|Say|Prints the line. TRLine::Say( [ nStartRow ] ) \\ nil|
+|Prints|the TRLine object with all its lines elements. nStartRow The|
+|device|row where start printing. By default it uses aRow[ 1 ].|
+|Add|Adds a new item to the line. TRLine::Add( bLine,|
+|bFont,|nPad ) \\ nil bLine A codeblock with the data item. bFont A|
+|codeblock|with the font item. nPad The alignment type for the data item.|
+|Ins|Inserts a new item in the line. TRLine::Ins( nLine,|
+|bLine,|bFont, nPad ) \\ nil nLine The line position in which to insert|
+|the|new item. bLine A codeblock with the data item. bFont A codeblock|
+|with|the font item. nPad The alignment type for the data item.|
+|Del|Deletes a group of items from the line. TRLine::Del(|
+|nLinIni,|nLinFin ) \\ nil nLinIni The first item to delete. nLinFin The|
+|last|item to delete.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TRLINE.PRG

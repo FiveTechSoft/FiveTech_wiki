@@ -1,0 +1,53 @@
+====== Clase TCheckBox ======
+
+Control para casillas de verificación
+
+Hereda de la [[fivewin_clase_tcontrol|Clase TControl]]                                                         
+
+====== DATOS ======
+|Nada|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente.|
+|ReDefine|Constructor desde recursos.|
+|Click|Manejdor del evento botón izquierdo del mouse.|
+|Default|Inicialización por defecto.|
+|cToChar|Genera una plantilla de datos para crear una dialogo.|
+|EraseBkGnd|Borra el fondo del control|
+|LostFocus|Manejo del evento cuando se pierde el foco (Lostfocus)|
+|Initiate|Inicialización genérica.|
+|MouseMove|Acción a realizarse cuando el mouse se mueve por encima.|
+|Refresh|Redibuja el control.|
+|cGenPRG|Genera el código fuente del control.|
+|Reset|Inicializa el checbox sin selección|
+|Check|Selecciona el check|
+|UnCheck|Quita la selección del check|
+|SetCheck|Selecciona o quita la selección del check en función de un parámetro lógico proporcionado|
+|SetText|Cambia la leyenda del control|
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local lValue := .t., oChk
+
+   DEFINE WINDOW oWnd TITLE "Testing CheckBox ON CHANGE clause"
+
+   @ 3, 3 CHECKBOX oChk VAR lValue PROMPT "&ClickMe" SIZE 100, 20 OF oWnd ;
+      ON CHANGE oChk:SetText( "New Text" ) COLOR "W+/B"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+</code>
+{{:checkbox.jpg|:checkbox.jpg}}
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TCHECKBOX.PRG

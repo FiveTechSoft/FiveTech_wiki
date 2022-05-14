@@ -1,0 +1,24 @@
+====== Clase TFTPFile ======
+
+Microsoft WinINet.dll FTP files object oriented management
+====== DATOS ======
+|oFTP|TFTP container object|
+|cFileName|Name of the file|
+|hFile|Internet handle of the file|
+|lBinary|Binary management vs. ascii management|
+====== METODOS ======
+|New|Constructor. cFileName = name of the file to manage|
+|oFTP|= a previous built TFTP object..|
+|End|Generic destructor|
+|OpenRead|Opens the file for reading|
+|OpenWrite|Opens the file for writting|
+|Write|Write data to the file|
+|Read|Read n bytes from the file|
+|Seek|Skips + / - bytes file pointer|
+====== Example ======
+
+====== See Also ======
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTPFILE.PRG

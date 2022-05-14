@@ -1,0 +1,22 @@
+====== Clase TTable ======
+
+Manejo de Tablas (DBF simple)
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|cName|Nombre de la Tabla|
+|cAlias|Alias de la Tabla|
+|lShared|Modo compartido|
+|cComments|Comentarios de la Tabla|
+|aFields|Arreglo de campos|
+|aIndexes|Arreglo de índices|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|Import|Importar desde un archivoDBF|
+|Create|Crea la tabla|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuentes ======
+FWH\SOURCE\CLASSES\TTABLE.PRG

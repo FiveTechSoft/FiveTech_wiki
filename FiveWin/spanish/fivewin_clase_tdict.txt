@@ -1,0 +1,42 @@
+====== Clase TDict ======
+
+FiveWin DataDictionary (Diccionario de datos)
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+|cPath|Camino completo al archivo de base de dato.|
+|lAutoBuild|No usado|
+|lCheckFiles|No usado|
+|oScripts|No usado|
+|oApplication|Objeto base de datos para la aplicación|
+|oBrowses|Objeto base de datos para los browses|
+|oBrwCols|Objeto base de datos para las columnas de los browses|
+|oForms|Objeto base de datos para los formularios (forms)|
+|oLangs|Objeto base de datos para los idiomas|
+|oMenus|Objeto base de datos para los menús|
+|oHelp|Objeto base de datos para las ayudas|
+|oTables|Objeto base de datos para las tablas|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|Activate|Activa el diccionario|
+|CloseDatabase|Cierra la base de datos|
+|CreateTable|Crea una tabla nueva|
+|End|Finaliza el diccionario|
+|GetNewAlias|Retorna un alias único|
+|Import|Importa datos desde un conjunto de bases de datos|
+|BuildSubMenu|Construye un nuevo submenu|
+|LoadMenu|Carga el menú|
+|LoadWebBrowse|???|
+|LoadWebEdit|???|
+|LoadWebRecord|???|
+|OpenDatabase|Abre una nueva base de datos|
+|OpenTable|Abre una nueva tabla|
+|Report|Crea un nuevo reporte|
+|WebRecSave|???|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TDICT.PRG

@@ -1,0 +1,80 @@
+====== Clase TGet ======
+
+Gets objects Class                                                             
+Hereda de TControl
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|oGet|Standard MsDos Get related object to use its buffer contents|
+|bMin|Minimum value for the spinner|
+|bMax|Maximum value for the spinner|
+|nClrDef|Default color|
+|nPos|Position of the cursor (caret)|
+|lReadOnly|If .t. get is readonly|
+|lPassword|If .t. then a echo of asterisk is shown instead of thechars|
+|cError|A place to store an error message|
+|hHeap|Handle of memory|
+|cPicture|The picture of the GET|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|Assign|Assigns the buffer value to the GET related variable|
+|bPostKey|A codeblock that is evaluated after a keystroke and the buffer has changed.|
+|cGenPrg|Generates the xBase source code of this control|
+|Copy|Copy the contents of the buffer in the Clipboard|
+|Create|Creates a GET control. Internally used|
+|cText|Get/Set the text of the TGet Object.|
+|cToChar|Generates a data template to build a Dialog|
+|Cut|Cut selected text and copies it at the clipboard.|
+|Default|Default control initialization|
+|Destroy|Destroys the control|
+|Display|Displays the control|
+|DispText|Displays the buffer contents|
+|EditUpdate|Updates the variable and the display|
+|EraseBkGnd|Erase the background of the control|
+|GetDelSel|Returns the text selected and deleted|
+|GetDlgCode|Returns the GetDlgCode associated|
+|GetMargins|Gets the left and right margins of the GET|
+|GetSel|Returns the selected text|
+|GetSelPos|Returns the selected text positions|
+|GoHome|Moves the cursor (caret) to the first position of the GET|
+|GotFocus|Action to be performed when receiving the focus|
+|HandleEvent|Generic events handler|
+|HideSel|Hides the selection|
+|Initiate|Generic control initialization|
+|KeyChar|Action to be performed when pressing a key|
+|KeyDown|Action to be performed when pressing a control key.|
+|KeyUp|Action to be performed when releasing a keystroke.|
+|LButtonDown|Action to be performed when clicking the mouse left button.|
+|LButtonUp|Action to be performed when releasing the mouse left button|
+|LimitText|Sets unlimited text size.|
+|LostFocus|Action to be performed when losing the focus|
+|lValid|Validates the get|
+|MouseMove|Action to be performed when moving the mouse over|
+|Move|Action to be performed when moving the mouse over the control|
+|Paint|Paints the control|
+|Paste|Paste the Clipboard contents into the editing buffer|
+|RButtonDown|Action to be performed when clicking the right button of mouse.|
+|Refresh|Repaints the control|
+|Resize|Event response code when resizing the control|
+|Save|Updates the variable value from the buffer|
+|ScrollDate|Increase or decrease the date of a given amount|
+|ScrollNumber|Increase or decrease the number of a given amount|
+|SelectAll|Selects all the text.|
+|SetGetColorFocus|Activates color change when focused and optionally sets the focus color to use.|
+|SetMargins|Sets the left and right margins of the GET|
+|SetPos|Changes the cursor (caret) position.|
+|SetSel|Set a certain text as selected.|
+|SelFile|Selects a file and puts his contents on the get control|
+|Spinner|Initializes the spinner|
+|Inc|(++)            Increments the get value (only for numeric and date values)|
+|Dec|(--)            Decrements the get value (only for numeric and date values)|
+|Value|Return the value of the Get|
+|VarPut|Return the value of the Get|
+|UnDo|Undoes the last modification.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TGET.PRG

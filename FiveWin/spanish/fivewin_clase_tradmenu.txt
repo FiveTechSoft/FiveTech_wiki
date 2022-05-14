@@ -1,0 +1,93 @@
+====== Clase TRadMenu ======
+
+Administra un grupo de botones de selección.
+
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|aItems   |Una matriz con todos los elementos de control de radio|
+|bSetGet  |Un Codeblock para controlar la variable numérica relacionadas|
+|bChange  |Acción a realizar cuando se cambia el radio seleccionado |
+|cMsg     |Texto a mostrar en la MSSBAR de la venta principal|
+|cVarName |Nombre de la variable que identifica este objecto|
+|lUpdate  |Si el menú de radio tiene que ser actualizado desde TDialog:Update()|
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New    |Constructor desde codigo fuente   |
+|ReDefine|Constructor desde recursos|
+|Define  |Construye un menú de radio sin la construcción de sus elementos|
+|AddRadio|Agrega un elemento nuevo radio|
+|nOption |Metodo que simula la opción nOption de SETGET|
+|Refresh |Fuerzas del control conjunto para ser pintados|
+|Set3DLook |Activa el aspecto 3D, si su contenedor es una ventana|
+|End     |Poner fin a todos los elementos de radio|
+|Disable |Desactiva todos los elementos de radio| 
+|Enable   |Activa todos los elementos de radio |
+|SetOption |Cambia la seleccion actual del radio|
+|Select  |Selecciona un elemento diferente del radio|    
+|GoNext  |Proximo elemento del radio|
+|GoPrev  |Elemento anterior del radio|    
+|Show    |Muestra todos los elementos del radio|
+|Hide    |Esconde todos los elementos del radio| 
+
+
+
+
+
+====== Ejemplo ======
+<code>
+FHW/SAMPLES/TESTRAD.PRG
+FHW/SAMPLES/TESTRAD2.PRG
+FHW/SAMPLES/TESTRAD3.PRG
+FHW/SAMPLES/TESTRAD4.PRG
+FHW/SAMPLES/TESTRAD5.PRG
+FHW/SAMPLES/TESTRAD6.PRG
+</code>
+
+
+<code clipper>
+// Radio Buttons management sample
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oRadMenu, oBrush
+   local nOption := 2
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Radios"
+
+   REDEFINE RADIO oRadMenu VAR nOption ID 110, 120, 130, 140, 150 OF oDlg ;
+      ON CHANGE MsgInfo( "select" ) // Beep()
+
+   REDEFINE BUTTON ID 100 OF oDlg ACTION oRadMenu:GoNext() ;
+      WHEN nOption == 3
+
+   REDEFINE BUTTON ID 102 OF oDlg ACTION oRadMenu:GoPrev()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oRadMenu:aItems[ 1 ]:SetText( "Hello" )
+
+   SET _3DLOOK OFF
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+procedure AppSys  // XBase++ requirement
+
+return
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== código fuente ======
+FWH\source\classes\radmenu.prg
+
+====== ver también ======
+
+[[fivewin_comandos_radiobuttons|Comandos RADIO]], [[fivewin_clase_tradio|Clase TRadio]]

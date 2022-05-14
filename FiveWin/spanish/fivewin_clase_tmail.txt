@@ -1,0 +1,26 @@
+====== Clase TMail ======
+
+Windows MAPI management as objects                                             
+====== DATOS ======
+|cSubject|Mail subject description|
+|cNoteText|Text of the mail|
+|cConversationID|Conversation ID|
+|cMsgType|Message type|
+|dDate|Date of the mail|
+|cTime|Time of the mail|
+|lReceipt|Has received the mail|
+|lFromUser|Interactively select the mail subject, target, etc|
+|aOrigin|An array with all origin senders|
+|aRecipients|An array with all recipients receivers|
+|aFiles|An array with all related files to send attached|
+|nRetCode|Code returned from send operation|
+====== METODOS ======
+|New|Constructor from source code|
+|Activate|Start the mail.|
+|End|End the mail.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMAIL.PRG

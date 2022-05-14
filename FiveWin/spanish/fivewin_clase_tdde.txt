@@ -1,0 +1,24 @@
+====== Clase TDDE ======
+
+Dynamic Data Exchange as Objects.                                              
+====== DATOS ======
+|nService|The service on which to establish the connection.|
+|nTopic|The topic on which to establish the connection.|
+|nItem|The item on which to establish the connection.|
+|bAction|Action to be performed|
+|bEnd|Action to perform when ending the DDE link (VALID)|
+|oWndServer|Container TWindow object of the TDDE object.|
+|lActive|If the DDE connection is still active|
+====== METODOS ======
+|New|Constructor from source code|
+|Activate|To initiate a conversation with server applications|
+|responding|to the specified application and topic names.|
+|Execute|To send a string to the server to be processed as a|
+|series|of commands.|
+|End|Ends the DDE connection|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDDE.PRG

@@ -1,0 +1,38 @@
+====== Clase TString ======
+
+Clase para manejar Strings (cadenas) > 64 Kb 
+====== DATOS ======
+
+|Handle|Manejador de la cadena|
+====== METODOS ======
+|New|Constructor desde código fuente|
+|Len|Longitud de la cadena|
+|Sum|Concatenación de cadenas (operador +)|
+|Assign|Asignación de cadena (operador =)|
+|Compare|Comparación de cadenas (operador ==)|
+|Byte|Indexación de cadenas (operador [\])|
+|End|Destructor de la cadena|
+
+====== Ejemplo ======
+<code clipper>
+function Main()
+
+   local oStr := TString():New( 200000 ) // 200000 bytes string
+
+   MsgInfo( oStr:Len() )
+
+   MsgInfo( oStr[ 1 ] )
+
+   oStr[ 1 ] := 123
+
+   MsgInfo( oStr[ 1 ] )
+
+   oStr:End()
+
+return nil
+</code>
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TSTRING.PRG

@@ -1,0 +1,23 @@
+====== Clase TLocks ======
+
+Bloqueos SQL
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|oOdbc|ODBC object|
+|cTable|Table name|
+|nId|Lock id|
+|nDec|Number of decimals in numeric fields.|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Creates a new lock.|
+|CreateEnvironment|Creates table lock and stored procedure|
+|Lock|Put a lock|
+|UnLock|Release a lock|
+|RefreshLock|Refreshes a lock|
+|SeekRegLock|Seeks a lock|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLOCKS.PRG

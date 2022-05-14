@@ -1,0 +1,55 @@
+====== Clase TSlider ======
+
+Control Señalamiento
+Hereda de TControl                                                         
+
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|lHorizontal|If .T. the slider has a horizontal shape|
+|nDirection|Slider button direction: \\ NONE_DIRECTION 0, \\ TOP_DIRECTION 1, \\ LEFT_DIRECTION 2, \\ BOTTOM_DIRECTION 3, \\ RIGHT_DIRECTION 4|
+|nRow|Internal row position|
+|nCol|Internal col position|
+|nPos|Actual slider position|
+|nLong|Internal long|
+|nClrBtn|Slider color|
+|nClrMarks|Marks color|
+|bPos|Codo to be evaluated on change event|
+|nMin,nMax|Range mininum and maximum values|
+|nMarks|Number of marks|
+|lExact|If .T. the selector goes to the nearest mark when is moved|
+|aMarks|Array of defined marks|
+|aRectBtn|The coordinates of the button|
+|lCaptured|TRUE when moving the selector, used internally|
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Default|Default initialization of the control|
+|GetDlgCode|Returns the GetDlgCode associated|
+|Initiate|Initializes the control|
+|Display|Displays the control|
+|nGetPos|Gets internal slider position|
+|nGetVal|Gets actual slider position (based on range values)|
+|Paint|Paints the control|
+|ShowFocus|Gives focused looking style to the control|
+|GotFocus|Gotfocus event handler|
+|LostFocus|Lostfocus event handler|
+|Set|Sets actual slider position (based on range values)|
+|Change|Change event handler|
+|PlaceMark|Internal method for marks painting|
+|Position|Internal method to calculate selectorl position|
+|SetPosition|Internal method to se actual position|
+|Resize|Resize event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|MouseMove|Mouse move event handler|
+|KeyDown|Keydown event handler|
+
+You must consult the ancestor class for additional information on data and methods.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSLIDER.PRG

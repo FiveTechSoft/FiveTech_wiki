@@ -1,0 +1,28 @@
+====== Clase TMeter ======
+
+Meter class                                                                    
+Inherits TControl                                                              
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|nTotal|Total amount to be represented by the Meter|
+|nRefresh|SysRefresh interval used in Set method|
+|nClrBar|RGB color to use for the filled background of the meter|
+|nClrBText|RGB color to use for the filled text of the meter|
+|cText|The text to show on the meter|
+|lPercentage|If the % sign is to be painted|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code.|
+|ReDefine|Constructor from resources.|
+|Default|Default meter initialization.|
+|Display|Displays the control|
+|Initiate|Control initialization.|
+|Paint|Paints the Meter.|
+|Set|Changes the value represented and the value of the variable.|
+|SetTotal|Sets the maximum value of the meter|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMETER.PRG

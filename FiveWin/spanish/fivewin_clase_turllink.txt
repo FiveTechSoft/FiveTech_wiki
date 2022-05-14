@@ -1,0 +1,89 @@
+Etiqueta de enlace Url
+
+Hereda de Tsay 
+
+====== DATA ======
+^  Nombre  ^  Descripción  ^
+^cUrl      |El URL que abre con el click del ratón    |
+^nClrInit  |Color del vinculo no visitado   |
+^nClrOver  |Color del vinculo cuando el ratón pasa por encima|
+^nClrVisit |Color del vinculo cuando es visitado|
+
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+^New         | Constructor desde código fuente   |
+^Redefine    | Constructor desde recursos    |
+^Default     | Inicialización predeterminada del control    |
+^HandleEvent | Controlador de eventos genéricos |
+^Initiate    | Controlador de eventos de inicialización  |
+^LButtonDown | Controla los eventos del click izquierdo del ratón  | 
+^MouseLeave  | Controla cuando se suelta el click|
+^MouseMove   | Control de movimiento del ratón|
+^Refresh     | Refresca el control    |
+
+====== EJEMPLOS ======
+FWH\SAMPLES\TESTURL.PRG
+<code clipper>
+#include "FiveWin.ch"
+#include "URLLink.ch"
+
+#define COLOR_BTNFACE  15
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local nColor := GetSysColor( COLOR_BTNFACE )
+   local oDlg, oFont, oFnt1, oFnt2, oBmp
+
+   DEFINE FONT oFont NAME GetSysFont() SIZE 0, -12
+   DEFINE FONT oFnt1 NAME "ARIAL" SIZE 0, -20 BOLD
+   DEFINE FONT oFnt2 NAME "ARIAL" SIZE 0, -14 BOLD
+
+   DEFINE DIALOG oDlg RESOURCE "Main" FONT oFont
+
+   REDEFINE BITMAP oBmp ID 301 OF oDlg RESOURCE "Fivewin"
+
+   oBmp:cToolTip := "Logotipo de Fivewin"
+
+   REDEFINE SAY ID 101 PROMPT "FW/FWH/FW++/FWC3" FONT oFnt1 ;
+            COLOR CLR_BLACK, nColor OF oDlg
+
+   REDEFINE SAY ID 102 PROMPT "Fivetech © 1993-2004" FONT oFnt2 ;
+            COLOR CLR_MAGENTA, nColor OF oDlg
+
+   REDEFINE SAY ID 103 ;
+            PROMPT "La mejor librería para crear con CA-Clipper " + ;
+                   "auténticas aplicaciones Windows. Es muy fácil " + ;
+                   "de usar y los resultados son excelentes. " + ;
+                   "Visite la página oficial de Fivewin:" ;
+            FONT oFont OF oDlg
+
+   REDEFINE URLLINK ID 104 URL "www.fivetechsoft.com" OF oDlg ;
+            TOOLTIP "Sitio oficial de FiveTech"
+
+   REDEFINE SAY ID 105 ;
+            PROMPT "Fivewin para Harbour le ofrece el poder de " + ;
+                   "los 32 bits. Además, ya está disponible FW " + ;
+                   "para el nuevo compilador C3. " + ;
+                   "Contacte con nosotros enviando un e-mail a:" ;
+            FONT oFont OF oDlg
+
+   REDEFINE URLLINK ID 106 URL "mailto:alinares@fivetechsoft.com" OF oDlg ;
+            TOOLTIP "E-mail de FiveTech"
+
+   REDEFINE BUTTON ID 201 ACTION ( oDlg:End() )
+
+   oDlg:lHelpIcon := .f.
+
+   ACTIVATE DIALOG oDlg CENTER ;
+            VALID ( oFont:End(), oFnt1:End(), oFnt2:End(), .t. )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+</code>
+
+====== CODIGO FUENTE ======
+FWH/SOURCE/CLASSES/URLLINK.PRG

@@ -1,0 +1,22 @@
+====== Clase TPen ======
+
+Administrador de Lápiz como objetos
+\\                                                      
+====== DATA ======
+|hPen|El manejador del lápiz|
+|nStyle|El estilo del lápiz|
+|nColor|Especifica el color del lápiz como un valor RGB|
+|nWidth|Especifica el grueso del lápiz en unidades lógicas|
+|oDevice|Espeficica el dispositivo para el que se crea el lápiz|
+====== METODOS ======
+|New|Método Constructor|
+|Release|Método Destructor|
+|End|Método destructor. Utilice este método para destruir el lápiz.|
+====== Ejemplo ======
+
+
+====== Ver también ======
+[[fivewin_comandos_pen| Comandos Pen]]
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPEN.PRG

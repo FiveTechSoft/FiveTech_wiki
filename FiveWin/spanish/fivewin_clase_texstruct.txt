@@ -1,0 +1,27 @@
+====== Clase TExStruct ======
+Esta clase tiene algunos beneficios sobre la clase TStruc, como ser:                 
+- Las estructuras pueden ser anidadas                                                      
+- Un miembro de la estructura puede ser de cualquier tipo de dato                             
+- La longitud y tipo de los miembros es opcional
+debido a que las dos clases usan la misma sintaxis es importante que no las utilice  ambas en el mismo archivo PRG.                                   
+
+TStruc debe ser usada cuando son necesarias estructuras como en ´C´ que pueden ser usadas para invocar a cualquier
+DLL externa, TExStruc puede ser utilizada en el resto de los casos.           
+====== DATA ======
+
+|aMembers|Arreglo de todos los miembros de la estructura|
+|lGenError|Si un error en tiempo de ejecución debe darse si un miembro inexistente es invocado|
+====== METHODS ======
+
+|New|Constructor|
+|AddMember|Añade un miembro nuevo a la estructura|
+|MemberList|Retorna una cadena con toda la estructura de miembros|
+|GetMember|Retorna índice de posición de un miembro en la estructura|
+|SetValue|Asigna un valor a un miembro de la estructura|
+|OnError|Manejador de errores|
+====== Ejemplo ======
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TEXSTRUCT.PRG

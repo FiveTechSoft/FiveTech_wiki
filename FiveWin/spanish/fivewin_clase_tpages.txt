@@ -1,0 +1,74 @@
+====== Clase TPages ======
+
+Manejador de páginas de cuadros de dialogo múltiples
+
+===== Hereda de =====
+
+[[fivewin_clase_tcontrol|Clase TControl]]
+
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|nOption|Página actual seleccionada|
+|aDialogs|Arreglo de los objetos de cuadros de dialogo no modales |
+|aHelps|Arreglo con los IDs o nombres (también combinados) de los archivos de ayuda; uno por cada página|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Método Constructor desde código fuente|
+|Redefine|Método constructor desde recursos |
+|AddPage|Adiciona una página nueva |
+|Initiate|Inicialización genérica del control |
+|Default|Inicialización por defecto del Control. Llamado desde Initiate|
+|DelPage|Elimina una página |
+|Destroy|Método genérico de destrucción |
+|SetOption|Configura diferentes páginas seleccionadas|
+|GoPrev|Selecciona la página previa a la actual seleccionada |
+|GoNext|Selecciona la página siguiente a la actual seleccionada |
+|GotFocus|Manejador del evento de obtención de foco|
+|ReSize|Manejador del evento de redimensionamiento|
+
+
+
+====== Ejemplo ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Folder.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oPags
+   local lTest  := .t.
+   local lTest2 := .t.
+   local cText := Space( 50 )
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Main"
+
+   REDEFINE PAGES oPags ID 110 OF oDlg ;
+      DIALOGS "One", "Two", "Three"
+
+   // The same as we do with folders
+   REDEFINE CHECKBOX lTest  ID 110 OF oPags:aDialogs[ 1 ]
+
+   REDEFINE CHECKBOX lTest2 ID 120 OF oPags:aDialogs[ 1 ]
+
+   REDEFINE GET cText ID 120 OF oPags:aDialogs[ 2 ] MEMO
+
+   REDEFINE BUTTON ID 120 OF oDlg ACTION oPags:GoPrev()
+
+   REDEFINE BUTTON ID 130 OF oDlg ACTION oPags:GoNext()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+{{:tpages.jpg|:tpages.jpg}}
+
+====== Ver también ======
+[[fivewin_comandos_pages|Comandos PAGES]], [[fivewin_clase_tfolder|Clase TFolder]]
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TPAGES.PRG

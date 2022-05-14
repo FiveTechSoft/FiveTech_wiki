@@ -1,0 +1,76 @@
+====== Clase TControl ======
+
+===== Hereda de =====
+
+[[fivewin_clase_twindow|Clase TWindow]]
+
+===== Heredada por =====
+
+[[fivewin_clase_tbar|Clase TBar]], [[fivewin_clase_tbutton|Clase TButton]], [[fivewin_clase_tcheckbox|Clase TCheckbox]], [[fivewin_clase_tclipboard|Clase TClipboard]], [[fivewin_clase_tcombobox|Clase TCombobox]], [[fivewin_clase_tfolder|Clase TFolder]], [[fivewin_clase_tget|Clase TGet]], [[fivewin_clase_tgroup|Clase TGroup]], [[fivewin_clase_timage|Clase TImage]], [[fivewin_clase_tlistbox|Clase TListbox]], [[fivewin_clase_tmenu|Clase TMenu]], [[fivewin_clase_tmsgbar|Clase TMsgBar]], [[fivewin_clase_tsay|Clase TSay]], [[fivewin_clase_tscrollbar|Clase TScrollbar]], [[fivewin_clase_twbrowse|Clase TWBrowse]], [[fivewin_clase_txbrowse|Clase TXBrowse]]  
+
+====== Datos ======
+
+
+^Type ^Defined In ^Name ^Type ^Description^
+|DATA|Tcontrol|**bSetGet**|codeblock|A bSetGet codeblock to manage a related variable value|
+|DATA|TControl|**bWhen**|codeblock|A codeblock to evaluate to activate or not the control|
+|DATA|TControl|**lUpdate**|logical|Update the control contents if its container is updated|
+|DATA|TControl|**nTop**|numer|Top coordinate|
+|DATA|TControl|**nLeft**|numer|Left coordinate|
+|DATA|TControl|**nWidth	**|numer|Width|
+|DATA|TControl|**nHeight**|numer|Height|
+|**The following properties are inherited from parent class TWindow:** |||||
+|DATA|TWindow|**hWnd**|handle|An internal handle of the window, dialog or control|
+|DATA|TWindow|**oWnd**|object|The container parent window or dialog|
+|DATA|TWindow|**oMenu**|object|The pulldown menu object if defined|
+|DATA|TWindow|**oPopup**|object|The popup menu object if defined|
+|DATA|TWindow|**oMsgBar**|object|The message bar object if defined|
+|DATA|TWindow|**aControls**|array|An array with all the child controls objects|
+|DATA|TWindow|**bValid**|codeblock|Evaluated to allow the close or focus loose on controls|
+|DATA|TWindow|**bLClicked**|codeblock|Evaluate when the mouse is L clicked|
+|DATA|TWindow|**bLDblClick**|codeblock|Evaluated when the mouse is L double clicked|
+|DATA|TWindow|**bRClicked**|codeblock|Evaluated when the mouse is R clicked|
+|DATA|TWindow|**bRDblClick**|codeblock|Evaluated when the mouse is R double clicked|
+|DATA|TWindow|**bReSized**|codeblock|Evaluated when the window is resized|
+|DATA|TWindow|**bKeyDown**|codeblock|Evaluated when a key is pressed|
+|DATA|TWindow|**bLostFocus**|codeblock|Evaluated when the focus is lost|
+|DATA|TWindow|**bInit**|codeblock|Evaluated when the window is created|
+|DATA|TWindow|**cargo**|variant|User defined cargo value|
+|static|TWindow|**aWindows**|array|  |  
+|static|TWindow|**oWndDefault**|object|  |  
+
+====== Métodos ======
+
+
+^Type^Defined In^Name^Details^
+|METHOD|TControl|**AdjClient**()  --> nil|Adjust the control to the full area of his conteiner window or dialog|
+|METHOD|TControl|**LostFocus**()  --> nil|This method is called by the eventhandler when the control loses focus. LostFocus() will clear the message line (if it was defined) and the calls the LostFocus() method of its ancestor (TWindow Class).|
+|INLINE METHOD|TControl|**End**()|The End() method is used to remove a control. When End() is called it will look at the ::aControls instance variable of the window/dialog the control was linked to. If it can find the control it will remove itself from the ::aControls instance variable. After that it calls the End() method of its ancestor class (TWindow).|
+|VIRTUAL METHOD|TControl|HandleEvent(<nMsg>, <nWParam>, <nLParam>)||
+|INLINE METHOD|TControl|Show()||
+|**The following methods are inherited from parent class TWindow:** ||||
+|CONSTRUCTOR|TWindow|**New(** <cTitle>, <oMenu>, <nWidth>, <nHeight>) --> self |Creates a new TWindow object with title <cTitle> menu <oMenu, <nWidth> pixels wide and <nHeight> pixels high. It returns a pointer to the newly instantiated object.|
+|METHOD|TWindow|**Activate**(<bValid>, <bLClicked>, <bRClicked>, <lMaximized>, <bInit> --> nil|Activates the window. <bValid> will be evaluated when there is an attempt to close the window, <bLClicked>  when the left mouse button is clicked, <bRClicked> on the right mouse button. If <lMaximised> is  .T. the window will be created maximised|
+|INLINE METHOD|TWindow|**AddControl**(<oCtrl>)--> self ???|Adds the control <oCtrl> to the window|
+|METHOD|TWindow|**AEvalWhen**() --> nil|Evaluates the WHEN condition of all the object's child controls|
+|INLINE METHOD|TWindow|**Center**() --> ???|Centers the window on the screen|
+|INLINE METHOD|TWindow|**_cToolTip**(<cText>) --> ???|Sets the associated tooltip text for the object to <cText>|
+|INLINE METHOD|TWindow|**Disable()** --> ???|Disable the window / dialog / control|
+|INLINE METHOD|TWindow|**Enable()** --> ???|Enable the window / dialog / control|
+|INLINE METHOD|TWindow|**Hide**() --> ???|Hide the window / dialog / control|
+|INLINE METHOD|TWindow|**LButtonDown**() --> ???|Invokes the Left Button Down Code Block|
+|INLINE METHOD|TWindow|**lFocused**() --> <lHasFocus>|Returns .T. if the window / dialog / control has the focus|
+|METHOD|TWindow|**Link**() --> nil|Adds the window / dialog / control to the aWindows array|
+|INLINE METHOD|TWindow|**Maximize**() --> ???|Maximize the window / dialog / control|
+|INLINE METHOD|TWindow|**nLeft**() --> <nPixLeft>|Returns the left coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow|**nHeight**() --> <nPixHeight>|Returns the height of the window / dialog / control|
+|INLINE METHOD|TWindow|**nTop**() --> <nPixTop>|Returns the top coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow|**nWidth**() --> <nPixWidth>|Returns the width of the window / dialog / control|
+|INLINE METHOD|TWindow|**RButtonDown**() --> ???|Invokes the Right Button Down Code Block|
+|INLINE METHOD|TWindow|**Refresh**() --> ???|Refreshes the window / dialog / control|
+|METHOD|TWindow|**Resize**(<nSizeType>, <nWidth>, <nHeight>) --> nil|Resizes the window / dialog / control to <nWidth> pixels wide by <nHeight> pixels high|
+|INLINE METHOD|TWindow|**SetFocus**() --> ???|grabs the focus for the window / dialog / control|
+|METHOD|TWindow|**SetMenu**(<oMenu>) --> nil|Adds menu object <oMenu> to the window / dialog / control|
+|INLINE METHOD|TWindow|**SetText**(<cText>) --> ???|Sets the text for the window / dialog / control to <cText>|
+|INLINE METHOD|TWindow|**Update**() --> ???|Updates children of the window / dialog / control|
+

@@ -1,0 +1,38 @@
+====== Clase TBrush ====== 
+
+Objetos brocha 
+
+====== DATA ====== 
+
+|hBrush|              Manejador de la brocha.|    
+|hBitmap|             Manejador del  Bitmap si la brocha es una imagen.|    
+|nCount|              Contador interno para la existencia del control|    
+|cStyle|              Estilo básico|    
+|nRGBColor|           Color|    
+|cBmpFile|            Archivo Bitmap|     
+|cBmpRes|             Recurso Bitmap|    
+|lSystem|             .T. si es una brocha del sistema|    
+|aBrushes|            CLASSDATA internamente usada para la reutilización de la brocha|    
+
+====== METODOS ====== 
+
+|New|                 Constructor desde código fuente.|    
+|cGenPRG|             Retorna una cadena con el código fuente de la brocha.|    
+|End/Release|         Destruye la imagen de la brocha.| 
+
+====== Ejemplo ======
+FWH\samples\fwborl.prg
+<code clipper>
+...
+DEFINE BRUSH oBrush STYLE BORLAND
+
+   DEFINE WINDOW oWnd FROM 1, 5 TO 20, 75 ;
+      TITLE "Using Dialogs from DLLs and Borland's Dialog Boxes!" ;
+      BRUSH oBrush ;
+      MENU  BuildMenu()     
+</code>
+
+====== Codigo fuente ======
+FWH\source\classes\brush.prg
+
+====== Ver también ======

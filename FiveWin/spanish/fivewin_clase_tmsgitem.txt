@@ -1,0 +1,39 @@
+====== Clase TMsgItem ======
+
+Bar message item objects                                                       
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|oMsgBar|Reference to its MsgBar container object.|
+|cMsg|Shown text.|
+|nWidth|Width of the MsgItem.|
+|nClrText|Text color as a RGB number.|
+|nClrPane|Pane color as a RGB number.|
+|nClrDisabled|Disabled color as a RGB number.|
+|bMsg|Optional codeblock to evaluate to generate the cMsg text.|
+|bAction|Action to be preformed when clicking on it.|
+|oFont|Font object used.|
+|lActive|.T. if the msgitem is active|
+|lTimer|.T. if the item is refreshed from the timer (internal used)|
+|lWasActive|.T. if the item was active (internal used)|
+|hBitmap1|Handle of bitmap for active msgitem|
+|hPalette1|Handle of palette for active msgitem|
+|hBitmap2|Handle of bitmap for non-active msgitem|
+|hPalette2|Handle of bitmap for non-active msgitem|
+|cToolTip|ToolTip|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor from source code|
+|Click|Action to be performed when clicking the mouse.|
+|Paint|Paints the item|
+|Refresh|Repaints the item|
+|SetFont|Set the font for the MsgItem.|
+|SetText|Set the message for the MsgItem.|
+|Show|Makes the item visible|
+|IsOver|.T. if the coors are over the MsgItem|
+|nLeft|Left coordinate of the msgitem|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMSGITEM.PRG

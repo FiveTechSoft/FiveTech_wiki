@@ -1,0 +1,509 @@
+====== Clase TGraph ======
+
+Clase Graph Hereda de TControl                                                         
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|l3D|Muestra 3D|
+|lxGrid|Muestra rejilla en x|
+|lyGrid|Muestra rejilla en y|
+|lDotted|Rejilla de puntos|
+|lxVal|Muestra valores de x|
+|lyVal|Muestra valores de y|
+|nBarD|Profundidad de la barra|
+|lTitle|Muestra el título|
+|lLegends|Muestra las etiquetas|
+|nType|Tipo de grafico|
+|cTitle|Título del grafico|
+|cPicture|Mascara de los valores|
+|aSeries|Series|
+|aData|Datos|
+|aSTemp|Series|
+|aDTemp|Datos|
+|aYVals|Valores Y|
+|aYTemp|Valores Y temporales|
+|aFont| Arreglo de fuentes para Title, xFont, yFont, Legends, Subtitle, xTitle, yTitle, Values|
+|nClrT|Color título|
+|nClrX|Color etiquetas x|
+|nClrY|Color etiquetas y|
+|nClrL|Color leyendas|
+|nClrV|Color valores|
+|nClrST|Color subtítulo|
+|nClrXT|Color Título X|
+|nClrYT|Color Título Y|
+|nPieX|posición del grafic de torta|
+|nPieSt|Inicio del grafico de torta (ángulo)|
+|nPoint|Tipo de punto|
+|nBarSep|Separación entre barras|
+|nXRanges|Rangos de n|
+|nValues|Valores de la torta (Serie/Periódo)|
+|lViewVal|Visualizar valores|
+|nClr|Color lápiz|
+|hPen|Manejdadore del lápiz|
+|hOldPen|Manejador de lápiz antiguo|
+|nPenWidth|Ancho del lápiz en gráficos de línea|
+|lBorders|Borde de la barra|
+|lcTitle|Centrado del título|
+|nClrGrid|Color de la rejilla|
+|nClrBack|Color de fondo|
+|nClrBLeg|Color de fonde de la leyendas|
+|cBitmap|Bitmap de fondo|
+|cSubTit|Subtítulo|
+|cTitX|Título X|
+|cTitY|Título Y|
+|lPopUp|menú PopUp|
+|lSelView|Selección opción de visualización|
+|lSelBack|Selección opción retroceder|
+|nLanguage|Idióma (1-Inglés, 2 Español, 3-...)|
+|aSTitle|Títulos sombreados|
+|lBordLeg|Leyendas con bordes|
+|nXMaxVal|Valor máximo en el eje X|
+|nXMinVal|Valor mínimo en el eje X|
+|XY_Values|Matriz con los valores XY { {x1,y1},{x2,y2}....} |
+|XY_nPenwidth|Anchura del trazo en las líneas XY|
+|XY_nPixels|Tamaño de los puntos en las gráficas XY|
+|cXpicture|Máscara Picture de los valores del eje X|
+|nXXRanges|Número de rangos en el eje X|
+====== METODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Constructor desde código fuente|
+|Redefine|Constructor desde recursos|
+|Initiate|Inicialización del control|
+|Default|Inicialización por defecto del control|
+|Paint|Dibuja el control|
+|Display|Muestra el control|
+|DrawBar|Dibuja una barra|
+|DrawBox|Dibuja un cajón|
+|DrawLine|Dibuja una línea|
+|DrawPoint|Dibuja un punto|
+|DrawPie|Dibuja una torta|
+|DrawPoly|Dibuja un línea poligonal|
+|AddSerie|Adiciona ana serie|
+|SelSerie|Seleciona ana serie|
+|SetYVals|Define los valores de Y|
+|SelPeriod|Selecciona un periódo|
+|ClrShadow|Cambia el color del sombreado|
+|CountPoint|???|
+|Destroy|Destruye del control|
+|End|Finaliza el control|
+|FillRect|Rellena una rectángulo|
+|CreatePen|Crea un lápiz|
+|DeletePen|Elimina un lápiz|
+|nMax|Retorna el máximo de los valores|
+|SaveToBmp|Graba el grafico a un archivo BMP|
+|CopyToClipBoard|Copia el grafico al clipboard|
+|PopMenu|Menú popup de opciones|
+|Print|Imprime el grafico|
+|AddXYSerie|Añade una serie XY con los parámetros correspondientes |
+
+
+
+====== Ejemplo 1 ======
+<code clipper>
+// Program : Timer test (Compilar con B.Bat : B TstTimer)
+// Author  : Arteaga
+
+#Include "Fivewin.Ch"
+
+#Define GRAPH_TYPE_BAR   1
+#Define GRAPH_TYPE_LINE  2
+
+Static oWnd, oGraph, oTimer, aVals, nP
+
+FUNCTION Main()
+
+   LOCAL oReg, oIcon
+
+   nP:=19
+   aVals:=Array(20)
+   Afill(aVals,0)
+
+   DEFINE WINDOW oWnd TITLE "TGraph, timer test" FROM 0, 0 TO 8,40
+   oGraph:=TGraph():New(0,0,oWnd,oWnd:nWidth()-8,oWnd:nHeight()-40)
+
+   oGraph:cPicture := "999"
+   oGraph:l3D      := .F.
+   oGraph:aYVals   := {}
+   oGraph:lDotted  := .F.
+   oGraph:lLegends := .F.
+   oGraph:lTitle   := .F.
+   oGraph:lPopUp   := .T.
+   oGraph:nPenWidth:= 1
+   oGraph:nClrBack := CLR_BLACK
+   oGraph:nClrGrid := CLR_GREEN
+   oGraph:nType    := GRAPH_TYPE_LINE
+
+   aVals[19] :=  15
+   aVals[20] := 150
+
+   oGraph:AddSerie(aVals, "", RGB(255, 255, 0))
+
+   Define Timer oTimer Interval 900 Action Update() OF oWnd
+   Activate Timer oTimer
+
+   WndCenter(oWnd:hWnd)
+
+   ACTIVATE WINDOW oWnd                          ;
+      ON PAINT (oGraph:nWidth:=oWnd:nWidth()- 8, ;
+                oGraph:nHeight:=oWnd:nHeight-40, ;
+                oGraph:Refresh(.f.))
+
+   oTimer:End()
+
+RETURN (NIL)
+
+Function Update(oReg)
+  LOCAL aTmp :={150, 15,135, 30,120, 45,105, 60, 90, 75,;
+                 75, 90, 60,105, 45,120, 30,135, 15,150 }
+  LOCAL aTemp[20]
+  nP--
+  nP:=IF(nP=0,20,nP)
+  ACopy(aVals,aTemp,2)
+  aTemp[20]:=aTmp[nP]
+  aVals:=AClone(aTemp)
+  SysRefresh()
+  oGraph:aData[1]:=aVals
+  oGraph:Refresh()
+RETURN (NIL)
+</code>
+{{:graph.jpg|:graph.jpg}}
+
+
+
+====== Ejemplo 2 ======
+<code clipper>
+#include "FiveWin.ch"
+
+
+
+#Define GRAPH_TYPE_XY_LINES   6
+#Define GRAPH_TYPE_XY_POINTS  7
+
+Static oWnd
+
+
+FUNCTION Main()
+
+  LOCAL oMenu, oFont
+
+
+   MENU oMenu
+      MENUITEM "&Opciones"
+      MENU
+         MENUITEM "Ejemplo 1 " ACTION  ejemplo( 1 )
+         MENUITEM "Ejemplo 2 " ACTION  ejemplo( 2 )
+         MENUITEM "Ejemplo 3 sin/cos" ACTION  ejemplo( 3 )
+         MENUITEM "Ejemplo 4 ecuación grado 2" ACTION  ejemplo( 4 )
+         MENUITEM "Ejemplo 5" ACTION  ejemplo( 5 )
+         SEPARATOR
+         MENUITEM "&Salir"         ACTION oWnd:End()
+      endmenu
+   ENDMENU
+
+   DEFINE FONT oFont NAME "MS Sans Serif" SIZE 0,-10
+   DEFINE WINDOW oWnd FROM 1, 1 TO 350, 550 PIXEL MDI TITLE "TGraph" MENU oMenu
+
+   SET MESSAGE OF oWnd TO "Class TGraph " KEYBOARD CLOCK DATE NOINSET
+   SET FONT OF oWnd TO oFont
+
+   oWnd:bKeyDown = { | nKey | if(nKey == 32 , ejemplo( 3 ) , if( nKey==27,oWnd:end() , nil )) }
+
+      ACTIVATE WINDOW oWnd MAXIMIZED // ON INIT GraphTest()
+
+   oFont:End()
+
+RETURN (Nil)
+
+
+
+// ------------------------------------------------------------------------------- //
+function ejemplo( op )
+
+   local oDlg,oChart
+
+   define dialog oDlg title "Test" size 600,440
+
+   oChart:=TGraph():new(  10 ,10 , oDlg, 280 , 180 )
+
+   @ 200 , 50 button "Points" pixel action  (oChart:nType := GRAPH_TYPE_XY_POINTS , oChart:refresh() )
+   @ 200 , 100 button "Lines" pixel action  (oChart:nType := GRAPH_TYPE_XY_LINES , oChart:refresh() )
+   @ 200 , 150 button "Grid" pixel action  (oChart:lxGrid := !oChart:lxGrid , oChart:lyGrid := !oChart:lyGrid , oChart:refresh() )
+   @ 200 , 200 button "Values" pixel action  (oChart:lXVal := !oChart:lXVal , oChart:lYVal := !oChart:lYVal , oChart:refresh() )
+   @ 200 , 250 button "Cerrar" pixel action  oDlg:end()
+
+  ACTIVATE DIALOG oDlg CENTERED  on init graph(oChart,op) valid (oChart:destroy() , .t.)
+
+
+
+return nil
+
+// ------------------------------------------------------------------------------ //
+static function graph(oChart , op)
+
+   do case
+      case op==1
+         test1(oChart)
+      case op==2
+         test2(oChart)
+      case op==3
+         sin_cos(oChart)
+      case op==4
+         ec_grado2(oChart)
+      case op==5
+         test5(oChart)
+
+   otherwise
+      msginfo("Error")
+   endcase
+
+return nil
+
+
+// ------------------------------------------------------------------------------ //
+static function test1(oChart )
+   local aSerie1,aSerie2,aSerie3,aSerie4
+
+
+
+   oChart:nType    :=  GRAPH_TYPE_XY_LINES
+   oChart:ltitle := .t.
+   oChart:cTitle := "Test"
+   oChart:cTitX   := "Kilograms"
+   oChart:cTitY   := "Distance"
+   oChart:lXVal   :=.t.
+   oChart:lYVal   :=.t.
+   oChart:lxGrid   :=.t.
+   oChart:lyGrid   :=.t.
+   oChart:lViewVal:=.f.
+   oChart:lLegends:=.t.
+   oChart:lPopUp  :=.T.
+   oChart:l3d  :=.f.
+   oChart:cPicture := "9999"
+   oChart:cXPicture := "9999"
+   oChart:XY_npixels := 7
+   oChart:XY_nPenwidth := 3
+//   oChart:nXMaxVal := 700
+//   oChart:nXMinVal         // Min Value X axis
+//    oChart:nMaxVal := 1000         // Max Value Y axis
+//  oChart:nMinVal         // Min Value Y axis
+
+
+
+
+   aSerie1 := { {2,9.8},{4.3,3.2},{3.2,3.2},{3.4,3},{2.1,1,9},{1.8,3}  }
+   aSerie2 := { {1,3},{2,2.5},{4.8,3.6},{1.2,5.2},{2.4,3},{4.1,1,9},{3.8,3}  }
+   aSerie3 := { {1.5,2},{3,8},{2,2.6},{2.3,3},{1,3},{1,4.6}  }
+   aSerie4 := { {2.5,2.5},{3.8,2},{3,5.6},{1.3,3},{2,4},{2,5.6}  }
+
+
+   oChart:AddXYSerie(  aSerie1 , "Serie 1",RGB(128,128,255) , GRAPH_TYPE_XY_LINES ) // always lines
+   oChart:AddXYSerie(  aSerie2 , "Serie 2",RGB(255,0,0), GRAPH_TYPE_XY_POINTS ) // always points
+   oChart:AddXYSerie(  aSerie3 , "Serie 3",RGB(0,255,0) ) // lines or points acording to oChart:nType
+   oChart:AddXYSerie(  aSerie4 , "Serie 4",RGB(255,255,0) ) // lines or points acording to oChart:nType
+ // ... serie, 4 etc
+
+   oChart:refresh()
+
+return nil
+
+
+// ------------------------------------------------------------------------------ //
+static function test2(oChart )
+   local aSerie1,aSerie2,aSerie3,aSerie4,aserie5
+
+
+
+   oChart:nType    :=  GRAPH_TYPE_XY_LINES
+   oChart:ltitle := .t.
+   oChart:cTitle := "Test"
+   oChart:cTitX   := "Kilograms"
+   oChart:cTitY   := "Distance"
+   oChart:lXVal   :=.t.
+   oChart:lYVal   :=.t.
+   oChart:lxGrid   :=.t.
+   oChart:lyGrid   :=.t.
+   oChart:lViewVal:=.f.
+   oChart:lLegends:=.t.
+   oChart:lPopUp  :=.T.
+   oChart:l3d  :=.f.
+   oChart:cPicture := "9999"
+   oChart:cXPicture := "9999"
+   oChart:XY_npixels := 7
+   oChart:XY_nPenwidth := 3
+   oChart:nXMaxVal := 700
+   // oChart:nXMinVal         // Min Value X axis
+    oChart:nMaxVal := 1000         // Max Value Y axis
+//  oChart:nMinVal         // Min Value Y axis
+
+
+   aSerie1 := { {0,0},{20,200},{22,190},{90,600},{92,550},{150,800},{180,900},{200,950},{250,850},{690,880}  }
+
+
+   oChart:AddXYSerie(  aSerie1 , "Serie 1",RGB(0,0,255) ) // lines or points acording to oChart:nType
+
+
+   oChart:refresh()
+
+return nil
+
+
+// ------------------------------------------------------------------------------ //
+static function sin_cos(oChart )
+   local aSerie1,aSerie2,aSerie3,aSerie4,aserie5
+   local x
+
+
+
+   oChart:nType    :=  GRAPH_TYPE_XY_LINES
+   oChart:ltitle := .t.
+   oChart:cTitle := "Sin/Cos"
+   oChart:cTitX   := "Units"
+   oChart:cTitY   := "Degrees"
+   oChart:lXVal   :=.t.
+   oChart:lYVal   :=.t.
+   oChart:lxGrid   :=.t.
+   oChart:lyGrid   :=.t.
+   oChart:lViewVal:=.f.
+   oChart:lLegends:=.t.
+   oChart:lPopUp  :=.T.
+   oChart:l3d  :=.f.
+   oChart:cPicture := "99.9"
+   oChart:cXPicture := "999"
+   oChart:XY_npixels := 7
+   oChart:XY_nPenwidth := 3
+   oChart:nXMaxVal :=  359
+   oChart:nXMinVal :=  0        // Min Value X axis
+   oChart:nMaxVal := 1         // Max Value Y axis
+   oChart:nMinVal := -1         // Min Value Y axis
+
+
+   aSerie1 := {}
+   aSerie2 := {}
+
+   for x := 0 to 359
+      aadd( aSerie1 , { x , sin( DegToRad( x ) )  } )
+      aadd( aSerie2 , { x , cos( DegToRad( x ) )  } )
+   next x
+
+// xbrowse(aSerie1)
+
+   oChart:AddXYSerie(  aSerie1 , "sin",RGB(0,0,255) ) // lines or points acording to oChart:nType
+   oChart:AddXYSerie(  aSerie2 , "cos",RGB(255,0,0) ) // lines or points acording to oChart:nType
+
+   oChart:refresh()
+
+return nil
+
+
+// ------------------------------------------------------------------------------ //
+static function ec_grado2(oChart )
+   local aSerie1,aSerie2,aSerie3,aSerie4,aserie5
+   local x
+   local a1 := 8
+   local b1 := 3
+   local c1:= -10
+   local a2 := -7
+   local b2 := 5
+   local c2:= +10
+
+
+
+   oChart:nType    :=  GRAPH_TYPE_XY_LINES
+   oChart:ltitle := .t.
+   oChart:cTitle := "Ec_grado2 - y=ax2+bx+c"
+   oChart:cTitX   := "Y_Units"
+   oChart:cTitY   := "X_Units"
+   oChart:lXVal   :=.t.
+   oChart:lYVal   :=.t.
+   oChart:lxGrid   :=.t.
+   oChart:lyGrid   :=.t.
+   oChart:lViewVal:=.f.
+   oChart:lLegends:=.t.
+   oChart:lPopUp  :=.T.
+   oChart:l3d  :=.f.
+   oChart:cPicture := "9999.9"
+   oChart:cXPicture := "9999.9"
+   oChart:XY_npixels := 7
+   oChart:XY_nPenwidth := 3
+ //  oChart:nXMaxVal := 2
+ //  oChart:nXMinVal :=  -2        // Min Value X axis
+//   oChart:nMaxVal := 1         // Max Value Y axis
+//   oChart:nMinVal := -1         // Min Value Y axis
+
+
+
+
+   aSerie1 := {}
+   aSerie2 := {}
+
+   for x := -5 to 5 step .2
+      aadd( aSerie1 , { x , a1*x**2+b1*x+c1  } )  // y=ax2+bx+c
+      aadd( aSerie2 , { x , a2*x**2+b2*x+c2  } )  // y=ax2+bx+c
+   next x
+
+// xbrowse(aSerie1)
+
+   oChart:AddXYSerie(  aSerie1 , "y=8x2+3x-10",RGB(0,0,255) )
+   oChart:AddXYSerie(  aSerie2 , "y=-7x2+5x+10",RGB(255,0,0),GRAPH_TYPE_XY_POINTS )
+
+   oChart:refresh()
+
+return nil
+
+// ------------------------------------------------------------------------------ //
+static function test5(oChart )
+   local aSerie1,aSerie2,aSerie3,aSerie4,aserie5
+
+
+
+   oChart:nType    :=  GRAPH_TYPE_XY_LINES
+   oChart:ltitle := .t.
+   oChart:cTitle := "Test"
+   oChart:cTitX   := "Kilograms"
+   oChart:cTitY   := "Distance"
+   oChart:lXVal   :=.t.
+   oChart:lYVal   :=.t.
+   oChart:lxGrid   :=.t.
+   oChart:lyGrid   :=.t.
+   oChart:lViewVal:=.f.
+   oChart:lLegends:=.t.
+   oChart:lPopUp  :=.T.
+   oChart:l3d  :=.f.
+   oChart:cPicture := "99.9"
+   oChart:cXPicture := "99.9"
+
+   oChart:XY_nPenwidth := 3
+   oChart:nXMaxVal := 1.1
+   oChart:nXMinVal := -.2
+   oChart:nMaxVal := 1.1
+   oChart:nMinVal := -.2
+
+
+   oChart:XY_npixels := 20
+
+   aSerie1 := { {0.08,0.18},{0,.45},{.02,0.8},{0,.45},{.55,.4},{.62,0},{.55,.4},{.85,.8},{1,.5},{.85,.8},{.6,1}  }
+
+
+   oChart:AddXYSerie(  aSerie1 , "Serie 1",RGB(0,0,255) ) 
+   oChart:AddXYSerie(  aSerie1 , "Serie 2",RGB(0,0,255) , GRAPH_TYPE_XY_POINTS )
+
+   oChart:refresh()
+
+return nil
+
+
+// ------------------------------------------------------------------------------- //
+static function DegToRad( x )
+return x*PI()/180
+
+
+</code>
+{{:tgraph_test1.jpg|:tgraph_test1.jpg}}
+{{:tgraph_test2.jpg|:tgraph_test2.jpg}}
+{{:tgraph_test3_sin_cos.jpg|:tgraph_test3_sin_cos.jpg}}
+{{:tgraph_test4_ecuacion_grado2.jpg|:tgraph_test4_ecuacion_grado2.jpg}}
+{{:tgraph_test5.jpg|:tgraph_test5.jpg}}
+
+====== Ver también ======
+
+====== Código fuente ======
+FWH\SOURCE\CLASSES\TGRAPH.PRG

@@ -1,0 +1,33 @@
+====== Clase TCColumn ======
+
+Column objects for TcBrowse Class                                              
+====== DATOS ======
+^  Nombre  ^  Descripción  ^
+|cHeading|Optional Header text|
+|bData|Mandatory Code block to return column data|
+|cData|The column data as string|
+|cPicture|Optional picture clause|
+|bClrFore|Optional Foreground Color block|
+|bClrBack|Optional Background Color block|
+|nAlign|Optional Alignment DT_LEFT or so on|
+|nWidth|Optional Width|
+|lBitMap|Optional Bitmap Flag|
+|lEdit|True if editing is allowable|
+|lNoLite|True to skip cell during SelectlLine()|
+|cMsg|Editing message|
+|bValid|Editing valid block|
+|cError|Bad valid error message|
+|cOrder|Index tag name|
+|OnEdit|Edit event handler|
+|Cargo|Generic cargo slot|
+====== MÉTODOS ======
+^  Nombre  ^  Descripción  ^
+|New|Method constructor. Creates a new column object|
+|Save|Generates a binary representation of the column object|
+|Load|Loads the column properties from a saved binary representation||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCCOLUMN.PRG

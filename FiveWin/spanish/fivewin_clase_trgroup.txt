@@ -1,0 +1,57 @@
+
+====== Clase TRGroup ======
+
+FiveWin Report Engine Group objects                                            
+====== DATOS ======
+|oReport|Its TReport object container.|
+|aTotal|An array of numeric totals, one for each report|
+|column.||
+|bGroup|A codeblock which holds the group expression.|
+|bHeader|A codeblock that returns the header of the group.|
+|bFooter|A codeblock that returns the footer of the group.|
+|bHeadFont|A codeblock that return the ordinal font to use of|
+|TReport|for the group header|
+|bFootFont|A codeblock that return the ordinal font to use of|
+|TReport|for the group footer|
+|cValue|It keeps the latest group evaluated expression.|
+|cOldValue|Internal used|
+|nCounter|Counter of records processed. This counter goes to|
+|zero|on every group break|
+|nHeaderHeight|The header height|
+|nFooterHeight|The footer height|
+|nOrder|Internal used|
+|lEject|If eject is to be performed on each group change.|
+|lNeedStart|if the group has not been initialized by the report|
+|engine||
+|lHeader|If there is a group header|
+|lFooter|If there is a group footer|
+|Cargo|Generic cargo slot|
+====== METODOS ======
+|New|Method constructor: creates a new TRGroup object.|
+|TRGroup:New(|bGroup, bHeader, bFooter, bFont, lEject, oReport ) \\ Self|
+|Most|of the following parameters are just the values to be kept in the|
+|object|DATAs. bGroup A codeblock with the group expression. bHeader A|
+|codeblock|that returns the header of the group. bFooter A codeblock that|
+|returns|the footer of the group. bFont A codeblock that return the|
+|ordinal|font to use of TReport for the group header and footer lEject If|
+|eject|is to be performed on each group change. oReport The TReport object|
+|container.||
+|Reset|Resets the accumulated total value of all aTotal to|
+|0.|TRGroup:Reset() \\ nil|
+|Stabilize|Stabilizes the group data|
+|Header|Prints the header of the group. TRGroup:Header( nRow|
+|)|\\ nil nRow The device row where start printing.|
+|Footer|Prints the footer of the group. TRGroup:Footer( nRow|
+|)|\\ nil nRow The device row where start printing.|
+|Total|Prints the totals of the group. TRGroup:Total( nRow )|
+|\\|nil nRow The device row where start printing.|
+|Evaluate|Calculates the group expression TRGroup::Evaluate() \\|
+|Nil||
+|Check|Checks if the group condition has changed|
+|TRGroup::Check()|\\--> lYesNo|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TRGROUP.PRG
