@@ -1,0 +1,80 @@
+======= Linux Survival Page =======
+
+Clearly it is beyond the scope of this wiki to teach you Linux.  However the information on this page will hopefully ease the transition for people coming to Linux from a DOS / Windows background and who need to get FiveLinux / (x)Harbour installed and operational.
+
+
+===== Files and Folders (Directories) =====
+
+=== Case Sensitivity ===
+
+File and folder names are case sensitive in Linux unlike DOS.  Thus in Linux
+
+   myfile.txt
+   myfile.Txt
+   MyFile.txt
+
+refer to three different files.  In DOS they would all refer to the one file.  Not that this flows through to commands and the name of executables (which are files after all).  Watch out for this with the names of database files and indexes as well as include files.  Some of the sample code in xHarbour's documentation won't compile as listed for this reason.  Remember it's:
+<code>
+   #include <hbclass.ch>
+   #include <FiveLinux.ch>
+</code>
+This can be a problem when copying to thumb drives or CDROM, DVDROM etc.  Also if you attempt to file transfer to a DOS / Windows machine.
+
+=== Use a Forward Slash ===
+
+The folder-name to folder-name and folder-name to file-name separator in Linux is a forward slash /, not the back slash \ that DOS uses.
+
+=== No Drive Letters ===
+
+All file and device names in Linux start from the root /.  There are no drive letters.  So whilst under DOS a DVD-ROM might be assigned as F: drive, under Linux it will be something like /media/cdrom
+
+=== Deleting Files ===
+
+The Linux command to delete a file is rm (remove) rather than del.  Please be careful. \\
+The Linux command to remove an empty directory is rmdir
+
+=== Moving Between Folders ===
+
+The Linux command to change directory (folder) is cd as in DOS.  There are a number of important differences, howvever.  As in DOS . means the current directory and .. means its parent directory.  However to change to the parent directory 
+<code>
+   cd ..
+</code>
+is legal and works, however unlike DOS
+<code>
+   cd..
+</code> is incorrect and will generate an error.
+To construct a relative pathname (that is relative to the current directory) start with
+<code>
+   ./
+</code>
+otherwise construct an absolute (starting at root) pathname beginning
+<code>
+   /
+</code>
+=== Determining the Current Directory ===
+Your prompt may tell you, but you can always use the pwd (print working directory) command.
+=== Listing the Files In a Directory ===
+The Linux equivalent to the DOS dir command is ls. ls is much more powerful than dir and has a host of options that are beyond the scope of this introduction.  As with any linux command if you type 
+<code>
+   man ls
+</code>
+you will get the manual page for the ls command.  Plent of explanation is available on the internet.
+===== Calling Executable Files =====
+=== The $PATH Setting ===
+When you enter the name of a file to execute Linux searches for it in the folders in the $PATH environment setting in the order that the folders are listed in $PATH.  It does not search the current folder first - unlike DOS.  So if you want to execute a file in the current directory you have to be specific.  For example if you have an executable file MyApp in the current directory you should enter
+<code>   
+   ./MyApp
+</code>
+If you simply enter
+<code>
+   MyApp
+</code>
+you will get an error unless there happens to be an executable file MyApp somewhere in $PATH.
+=== Shell Scripts ===
+Shell scripts are the Linux equivalent of DOS batch files, only potentially much more powerful.  There are actually a number of different shells available, however this discussion assumes you will be using the bash shell - which is the Ubuntu default.  Learning shell script programming is beyond the scope of this wiki but if you are interested you can start with http://www.troubleshooters.com/codecorn/shellscript/index.htm.  build.sh and buildx.sh are shell scripts supplied to build the FiveLinux samples.  They are explained elsewhere on this wiki.  Note that shell scripts have .sh suffixes.
+=== Flagging Files Executable ===
+In order to execute a file in Linux it has to be flagged as executable.  This happens automatically when you build and link a FiveLinux appliaction.  However if you create a shell script using a text editor you will need to flag the file as executable before you will be able to run it.  This can be done using the command
+<code>
+   chmod +x <myfile>
+</code>
+Linux was designed from the start as a secure, multi user, multi task operating system.  So there is a lot to learn about file ownership and the granting of rights.  The above is really just a quick fix to get you going on your own Linux box.  In a networked environment you will need to understand about setting up users and groups, assigning rights etc.  Again that is beyond the scope of this wiki.

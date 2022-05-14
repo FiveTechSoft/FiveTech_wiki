@@ -1,0 +1,46 @@
+===== Please Note =====
+The following instructions , whilst applying in general to all Linux distributions, contain commands that work on Ubuntu Linux and may need to be altered for other Linux distributions.  The instructions also assume that you have a working internet connection.  If you are new to Linux you may wish to read the [[fivelinux_survivalpage|Linux Survival Page]].
+
+====== Installing the Required Packages ======
+In order to develop and run FiveLinux applications you will need to install a series of packages.  The simplest way to do this is to use your package management software which will automatically determine and resolve any dependencies there might be.  The package manager for Ubuntu is apt which it inherits from Debian.  The following will probably be sufficient for getting the required packeages installed, but if you need more information on apt you can go to  http://www.debian.org/doc/manuals/apt-howto/ for instructions in English as html pages or go to http://www.debian.org/doc/user-manuals and look under APT HOWTO for the same information in many languages (including English) in html, plain text, postscript and pdf formats.
+
+To install a package you need to run the apt-get install command.  However in order to do this you need root or super user privileges.  The way you do this in Ubuntu is by using sudo.  Thus, for example, to install gcc (the c compiler and linker that is required for Five Linux) you would type the following at a terminal prompt (to get a terminal prompt click [Applications] [Accessories] [Terminal]):
+<code script>
+sudo apt-get install gcc
+</code>
+If you run that command you will be asked for your password.  (Note that you need to be logged in as a user with the "Administer sytem" privilege.  The user you created when you installed Ubuntu will have this privilege.)  If your system is up to date you will get a message informing you that:
+<code>
+gcc is already the latest version
+0 upgraded, 0 newly installed,0 to remove and 50 not upgraded
+</code>
+(Note: if you need further information on sudo look at https://help.ubuntu.com/community/RootSudo)\\
+\\
+The packages you need to install are:
+
+   gcc
+   libgtk2.0-dev
+   libncurses5-dev
+   libgpmg1-dev
+   libgnomeprintui2.2-dev
+   glade-2
+   libglade2-dev
+   unixODBC-dev
+
+You can install them one at a time (remembering that the names are case sensitive) using
+<code>
+   sudo apt-get install <package>
+</code>
+But that can be frustrating as some of the packages can take quite some time to download depending upon the speed of your internet connection.  So you may prefer to combine them all into the one command as follows:
+<code>
+   sudo apt-get install gcc libgtk2.0-dev libncurses5-dev libgpmg1-dev libgnomeprintui2.2-dev glade-2 libglade2-dev unixODBC-dev
+</code>
+To save yourself having to retype this you can highlight the above command, paste it into your text editor, save it as getpkgs.sh, make getpkgs.sh executable by typing:
+<code>
+   chmod +x getpkgs.sh
+</code>
+and then running that shell script by typing:
+<code>
+   ./getpkgs.sh
+</code>
+=== Possible Problems ===
+apt-get may not be able to find some of these packages.  The most likely cause for this is that you have not enabled the repositories that hold those packages.  To fix that click on [System] [Administration] [Software Sources].

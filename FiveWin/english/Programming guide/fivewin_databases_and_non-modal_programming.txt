@@ -1,0 +1,38 @@
+
+
+If you choose to develop your application using a Non-modal style you may be aware of certain design rules:
+
+**1. What is a Non-modal application ?
+**
+
+If you use MDI windows in your app, or if you use DialogBoxes with the clause NOWAIT, then you are implementing Non-modal designs.
+
+A non-modal design will let user select several things at the same time. If you place a browse inside a MDIChild window, that MdiChild window may be opened several times! Or if a DialogBox is editing a certain Database, it may be issued several times.
+
+
+**2. How a non-modal design affects my DataBases manipulation design ?
+**
+
+A non-modal design works exactly as if you were workin on a NetWork, so NetWork programming rules have to be used. If a MdiChild window opens several times (at the same time) the same DataBase it will be the same situation as if different users were being opening several times those Databases on a NetWork.
+
+**3. Does Clipper offer DataBase capabilities for Non-modal programming ?
+**
+
+Yes! Clipper let you open the same physical database in different alias, though acting in the same way as if you were working on a NetWork.
+
+
+
+//**Important**//:	In order to let Clipper manage the same DataBase on different alias, you HAVE to specify different ALIAS:
+
+<code clipper>
+USE Customer ALIAS Cust1 NEW
+USE Customer ALIAS Cust2 NEW
+</code>
+ From that moment you have to use Cust1 or Cust2 to reference your fields.
+
+**4. How difficult is coding for a NetWork ?
+**
+
+If you have never coded for a NetWork, don't be afraid. In next item in this documentation we explain the foundation for doing NetWork coding with Clipper. It is quite easy!
+
+

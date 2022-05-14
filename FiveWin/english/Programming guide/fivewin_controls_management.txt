@@ -1,0 +1,36 @@
+In Windows, a distinct component of a Dialog Box through which the user interacts to select and complete certain information is a 'Control'
+
+In Clipper, the only control we have really used is the typical GET. Through a GET the user completes certain information. In Windows this concept gets extended and, so, the user may interact with command buttons -PushButtons-, selection boxes -CheckBoxes-, single selection options -RadioButtons-, etc...
+
+There is no limit to the variety of controls we can find or design in a program. Essentially, a control has been designed to obtain or show certain information to the user of the program.
+
+In xBase, this kind of action usually has been identified with the syntax:
+<code clipper>
+@ <nRow>, <nCol> GET ...
+</code>
+Now, in Windows xBase we extend that syntax towards new types of controls:
+<code clipper>
+@ <nRow>, <nCol> BUTTON ...    OF <ContainerObject>
+@ <nRow>, <nCol> CHECKBOX ...  OF <ContainerObject>
+
+etc...
+</code>
+With every one of those lines of code we are building an Object. An Object that inherits from the FiveWin TControl CLASS is specialized in the way it interacts with the user. You don't have to worry too much about the existence of this Object, FiveWin controls all these processes automatically.  However, it is convenient to understand the basis of this functionality.
+
+Controls may be created from inside the same source code of your program, using the syntax we have shown you:
+<code clipper>
+@ <nRow>, <nCol> <ObjectClass> ... OF <ContainerObject>
+</code>
+If you are using Dialog Boxes designed with a resource editor, then you have to REDEFINE certain behaviors of those controls, because those Objects are already 'built' inside Window's resources:
+<code clipper>
+REDEFINE <ObjectClass> ID <nIdentifier> OF <ContainerObject> ;
+....
+</code>
+Remember that in FiveWin the READ command is GONE. The program is in a constant state of interaction with Windows. A Dialog Box will start working when you activate it:
+<code clipper>
+ACTIVATE DIALOG <oDlg>
+</code>
+Consult and review the examples we included with FiveWin. Through them you will understand the design and management of Windows controls.
+
+Review the file FIVEWIN.CH which is located in the \FIVEWIN\INCLUDE directory to see the different syntax supported by FiveWin.
+

@@ -1,0 +1,844 @@
+====== Managing the FiveWin report engine ======
+
+All the reports have the following construction:
+
+<code clipper>
+LOCAL oReport
+
+REPORT oReport ...
+COLUMN ...
+COLUMN ...
+END REPORT
+
+ACTIVATE REPORT oReport ...
+
+</code>
+As you can see the basic construction is very simple. Here is the complete syntax with all the optional bells and whistles:
+
+<code clipper>
+REPORT [ <oReport> ] ;
+
+[ TITLE <bTitle, ...> [< LEFT|CENTER|CENTERED| RIGHT > ] ];
+[ HEADER <bHead, ...> [<LEFT|CENTER|CENTERED|RIGHT> ] ];
+[ FOOTER <bFoot, ...> [<LEFT|CENTER|CENTERED|RIGHT> ] ];
+[ FONT <oFont, ...> ]  ;
+[ PEN <oPen, ...> ]  ;
+[ < lSum:SUMMARY >  ] ;
+[ < file: FILE |  FILENAME |  DISK >  <cRptFile> ] ;
+[ < resource: NAME |  RESNAME | RESOURCE >  <cResName> ] ;
+[ < toPrint: TO PRINTER >  ] ;
+[ < toScreen: PREVIEW >  ] ;
+[ TO FILE <toFile> ] ;
+[ TO DEVICE <oDevice> ] ;
+
+[ CAPTION <cName> ]
+
+
+
+GROUP [ <oRptGrp> ] ;
+
+[ ON <bGroup> ] ;
+[ HEADER <bHead> ] ;
+[ FOOTER <bFoot> ] ;
+[ FONT <uFont> ] ;
+[ < lEject:EJECT >  ]
+
+
+
+COLUMN [ <oRptCol> ] ;
+
+[ TITLE <bTitle, ...> ] ;
+[ AT <nCol> ] ;
+[ DATA <bData, ...> ] ;
+[ SIZE <nSize> ] ;
+[ PICTURE <cPicture, ...> ] ;
+[ FONT <uFont> ] ;
+[ < total: TOTAL >  [ FOR <bTotalExpr> ] ] ;
+[ < ColFmt:LEFT | CENTER | CENTERED | RIGHT >  ] ;
+[ < lShadow:SHADOW >  ] ;
+[ < lGrid:GRID >  [ <nPen> ] ]
+
+
+    ENDREPORT
+
+
+ACTIVATE REPORT <oReport> ;
+
+[ FOR <for> ] ;
+[ WHILE <while> ] ;
+[ ON INIT <uInit> ] ;
+[ ON END <uEnd> ] ;
+[ ON POSTEND <uPostEnd> ] ;
+[ ON STARTPAGE <uStartPage> ] ;
+[ ON ENDPAGE <uEndPage> ] ;
+[ ON POSTPAGE <uPostPage> ] ;
+[ ON STARTGROUP <uStartGroup> ] ;
+[ ON ENDGROUP <uEndGroup> ] ;
+[ ON POSTGROUP <uPostGroup> ] ;
+[ ON STARTLINE <uStartLine> ] ;
+[ ON ENDLINE <uEndLine> ] 
+[ ON CHANGE <bChange> ]
+</code>
+
+With the command COLUMN (syntax above) you indicate all the columns that the report will have indicating the data and the title of each column. This can be very simple. For example:
+
+<code clipper>
+COLUMN TITLE "Name" DATA Test->Name
+</code>
+
+**IMPLEMENTING TOTALS:**
+
+If you want a Total on any column just add the word TOTAL in the command, for example:
+
+<code clipper>
+COLUMN TITLE "Salary" DATA Test->Salary TOTAL
+</code>
+
+**HEADERS & FOOTERS:**
+
+You can put any header and footer on the report by declaring them in the REPORT command. For example:
+
+<code clipper>
+REPORT oReport TITLE "My First Report" ;
+
+HEADER "This is the header" ;
+FOOTER "This is the footer"
+</code>
+
+
+You can even specify how it will be written: left, centered or right, adding the word LEFT, RIGHT or CENTER|CENTERED. For example:
+
+
+<code clipper>
+REPORT oReport TITLE "My First Report" ;
+
+HEADER "This is the header" RIGHT ;
+FOOTER "This is the footer" CENTER
+</code>
+
+
+Remember: by default Titles are centered and Headers and Footers are written on the left side.
+
+**MULTILINE TITLES, HEADERS AND FOOTERS:**
+
+If you want more than one line for a title just put a comma between each title. For example:
+
+<code clipper>
+
+REPORT oReport ;
+
+TITLE "My First Report", "with FiveWin"
+</code>
+
+
+The same happens with headers and footers.
+
+The report engine NEVER puts a white line between the header and the title or between the title and the column titles. It is up to you to put the blank lines wherever you want them. For example, if you want to put a blank line between the header and the title, just indicate a second line on the header with nothing on it -- just an empty chain:
+
+<code clipper>
+
+REPORT oReport TITLE "My Report ;
+
+HEADER "My Header", " "
+
+</code>
+
+USING EXPRESSIONS:
+
+You can put almost anything you want in your reports because you can use any expression that returns a character string, remember this is the key to do almost anything you want. For example, if you want to put the date() on the report plus the current page number, just do the following:
+
+
+<code clipper>
+REPORT oReport TITLE "My Report" ,;
+
+"date:"+DtoC(Date())  ;
+FOOTER "Page Number: "+ ;
+Str(oReport:nPage,3)
+</code>
+
+
+You can put expressions rather than character strings in almost anywhere: Titles, Headers, footers, Column titles, column data, etc...
+
+**REPORT DESTINATION:
+**
+By default, the report is sent to the printer, but you can change it when you create the report:
+
+<code clipper>
+
+REPORT oReport .... ;
+
+TO PRINTER  => (The default)
+
+
+REPORT oReport .... ;
+
+PREVIEW  => (To Screen)
+
+
+REPORT oReport .... ;
+
+TO FILE <cFile>  => (Txt format)
+
+</code>
+
+When you send the report to the screen (PREVIEW), the report engine creates all the pages until you push the button Preview, and then you will immediately see the first page created.
+
+When you create a Report you can specify a caption for it. This caption would be the title of the preview Window if you send the report to the screen, or it will be the description on the spooler if you send it to the printer. (In previous releases we used the word NAME for this.)
+
+**USING FONTS:**
+
+
+You can use any font you want with your reports. This is the way you use them:
+
+First you have to define them with the command DEFINE FONT oFont ....
+
+<code clipper>
+
+DEFINE FONT oFont1 NAME "ARIAL" SIZE 0,-10
+DEFINE FONT oFont2 NAME "ARIAL" SIZE 0,-10 BOLD
+</code>
+
+
+The size (width,height) specs. use different units of measure when printed versus displayed on screen.  On screen, the units are pixels, but when printed, the units are font "points".  Thus, for printed text, we only use the second size specification (height) to give the point size, leaving the "width" as "0".  The point size is given as a negative number, i.e. "10 point" is "-10".  Remember that point size for proportionally spaced type is different than "pitch," which is the term often used for non-proportionally spaced "typewriter" type  like Courier.  Point size refers to letter height, whereas pitch refers to the number of equal-spaced letters printed per inch. Regular  "pica" sized typewriter type is 10 pitch - 10 letters per inch. But represented in point size, this is 12 point -- very confusing because  the smaller "elite" typewriter type is 12 pitch - 12 letters per inch,   which is 9 point.  (With "pitch," the bigger the number, the smaller  the font -- just the opposite of how "point" size works.) Now to add to the confusion, remember that in this Report Engine, we let FiveWin know that we're working with point size instead of pixels by using negative numbers for points (and we must use points instead of pitch for equal-spaced fonts like Courier).  In this case, the "-" sign isn't mathematical -- it doesn't mean (as math rules would suggest) that your point size gets smaller as the integer gets bigger.  Just the reverse. The bigger the integer, the bigger the point size.  If you're still confused, there's a fellow named Guttenberg on CIS who can explain it all to you.
+
+
+When you create the report, you specify the fonts you want to use, separating each one with a comma.
+
+For example:
+
+
+REPORT oReport TITLE ..... ;
+
+FONT oFont1, oFont2, oFont3
+
+
+The first font in the list (oFont1) will be the standard font, so if you do not specify a font for a specific column it will use the standard font (oFont1).
+
+If you want a column to use the second font just do the following:
+
+
+COLUMN TITLE ... DATA .... FONT 2
+
+
+As you can see, you indicate the ordinal number in the list of fonts defined when you create the report.
+
+Again, you can use an expression this way:
+
+
+COLUMN TITLE ... DATA ... ;
+
+FONT iff(Test->Salary>1000,2,1)
+
+
+Remember to release the fonts after the report is done.
+
+CONFIGURING COLUMNS:
+
+When you create the columns, you can specify a lot of behavior:
+
+
+-	PICTURE: As same as GETS
+-	SIZE: Length of the column (number of Chars)
+-	AT: Print at specific column (better not use it)
+-	FONT: Font to use (number in the list of fonts)
+-	TOTAL: if the column should have a total
+
+
+If you specify that the column has a total, the DATA should be a number. But if not, do not worry -- the report engine does not break. The TOTAL clause can have also a FOR condition. For example:
+
+
+COLUMN DATA ... TOTAL FOR Test->Name = "Peter"
+
+
+LEFT|CENTER|CENTERED|RIGHT: You can also specify the way the text is  going to be printed, left, center or right. By default, everything is  left formated except numeric data which is right.
+
+MULTILINE COLUMNS:
+
+This is something you will really love: suppose you need to put another column but you do not have enough width on the paper to do it?
+
+You could use a smaller font, but this is not the best way. The best way is to use multi lines for columns. That means that one database register can use more than one line on the report. So we can do something like this:
+
+
+
+Name 	Salary
+Test->First        
+Test ->Last	Test->Salary
+
+This is as simple as:
+
+
+COLUMN DATA Test->First, Test->Last
+
+
+Just separate with a comma the data you want to be printed.
+
+You can do the same with the column title, like this:
+
+
+COLUMN DATA Test->First, Test->Last ;
+
+TITLE "First Name" ,"Last Name"
+
+
+If you put a TOTAL on that column, all the numeric data will be added. All the data will have the same picture, but I will explain later how to change this behavior.
+
+MAKING GROUPS:
+
+To make a group means to have a subtotal on a particular kind of data. With the report form you can make two groups. With other report generators you can make up to 9, but with FiveWin Report Engine you have no limit.
+
+If you want the totals of the groups to be printed you must totalize at least one column.
+
+
+The data, of course, should be sorted in accord with the group expression.
+
+To make a Group just do the following:
+
+
+REPORT oReport ....
+
+COLUMN ....
+COLUMN ....
+GROUP ON Test->State EJECT
+
+END REPORT
+
+
+The report will totalize each column that has been created with the TOTAL clause for every State and will make a page eject when the State changes.
+
+You can even specify a Header, a Footer and a font to use for that group (just one line on Headers and Footers):
+
+
+GROUP ON Test->State ;
+
+FOOTER "Total State:"  ;
+FONT 2 ;
+EJECT
+
+
+Remember, you can have all the groups you want.
+
+SUMMARY REPORTS:
+
+If you specify the clause SUMMARY when you create the report:
+
+
+REPORT oReport TITLE ... SUMMARY
+
+
+it will only print the information about groups. So the clause SUMMARY should only be used when there is at least one group defined.
+
+When you use the SUMMARY clause the report engine does not put any group separator line.
+
+CONTROLLING THE FLOW OF THE REPORT:
+
+When you activate the report, it is possible to define FOR and WHILE conditions. For example:
+
+
+ACTIVATE REPORT oReport    ;
+
+WHILE Test->State = "A"  ;
+FOR Test->Salary > 1000
+
+
+Because the report engine can make a report even from an array, by default the WHILE condition is "!Eof()". So if you change the WHILE condition, you must take care that if you are making a report from a database it is a good practice to include in the WHILE condition the text  ".and. !Eof()":
+
+
+ACTIVATE REPORT oReport    ;
+
+WHILE Test->State = "AZ"  .AND. !Eof() ;
+FOR Test->Salary > 100000
+
+
+You can even control the flow of the report in the same manner as you do with other windows.
+
+When you activate the report you can indicate functions that will be called when the report is in a particular state:
+
+
+ACTIVATE REPORT oReport ;
+
+ON INIT ... ;
+ON END .... ;
+ON STARTPAGE ....;
+ON ENDPAGE ... ;
+ON STARTGROUP .... ;
+ON ENDGROUP .... ;
+ON STARTLINE ... ;
+ON ENDLINE .... ;
+ON CHANGE ...
+
+
+The INIT function is called just one time on the first page after the column titles are printed.
+
+The END function is called just one time on the last page after the Grand totals are printed.
+
+The STARTPAGE is called on every start of a page. This is one of the most used because in this clause you will put bitmaps, lines, boxes, etc...
+
+The ENDPAGE is called on every end of a page, when all the text is printed (not very useful).
+
+The STARTGROUP is called on every start of a group and before the header of the group is printed (if there is one).
+
+
+The ENDGROUP is called on every end of a group.
+
+The STARTLINE is called on every start of a line of the report body. When STARTLINE is evaluated, the report engine is controlling if the  following line will fit in the current page, and if not, it will do an Eject and start a new page. Be carefull when using STARTLINE,    because if you use Multiline columns there will be at least two  STARTLINES for each record processed.
+
+The ENDLINE is called on every end of line of the body report. When ENDLINE is evaluated all the line has been printed and the current report line is been incremented.
+
+
+The CHANGE is called on every "SKIP" if you are listing a database. For practical purposes, this function is called before the SKIP and not after. This is also a clause you will use a lot.
+
+In the source code we have include a blank line on StartGroup and a sound beep when the report is finished.
+
+
+IMPORTANT:	Be careful when using these clauses. Remember you are inside the report flow, so you must take care of all the databases, indexes, etc.. that the report is using.
+
+
+UNDERSTANDING THE REPORT OBJECT:
+
+You can access almost any part of the report if you understand how  it works and how it is designed.
+
+The report object has a lot of data and methods that you should know and use.
+
+An object report has at least one object column, one object Line (for the title), one object device and if it has group(s), it will also have a Group object.
+
+The objects TRColumn, TRLine and TRGroup are the basis of the report engine.
+
+TRColumn holds all the columns of the report including its title, data, totals, etc.. (vertical object)
+
+
+TRLine holds all the lines wich go across the report from left to right. You can think of them as horizontal objects. These include Titles, Header and Footers.
+
+TRGroup holds all the information about each group defined in the report.
+
+You can manipulate the behavior of any object modifying its data or using some of its methods.
+
+Take a look at the classes data and methods. You will be impressed about all you can do. The only limit is your imagination.
+
+Examples:
+
+
+1.	Change the TITLE font of column 3 to use the second font. Also because the column is multiline, change the picture of the second  line to "999,999":
+
+
+
+LOCAL oColumn
+
+oColumn := oReport:aColumns[3]
+oColumn:bTitleFont := {|| 2}     // It's a block
+oColumn:aPicture[2] := "999,999"
+
+
+
+2.	Left Justify the first line of the title using font 2 and right justify the second line using font 3:
+
+
+
+#define LINE_LEFT     1
+#define LINE_RIGHT   2
+
+LOCAL oLine
+
+oLine := oReport:oTitle
+oLine:aPad[1]:= LINE_LEFT        // pad of line 1
+oLine:aPad[2]:= LINE_RIGHT       // pad of line 2
+oLine:aFont[1]:= {|| 2}          // font of line 1
+oLine:aFont[2]:= {|| 3}          // font of line 2
+
+
+
+As you can see, the object TRLine also holds multiple lines. That way the DATA is mostly arrays.
+
+
+
+3.	On the footer of each group, print the current value of it and the counter of how many records have been included:
+
+
+
+GROUP ON Test->State ;
+
+FOOTER "Total State "+;
+oReport:aGroups[1]:cValue+ ;
+str(oReport:aGroups[1]:nCounter)
+
+
+GOING BACKWARDS:
+
+Just do a GO BOTTOM, change the way the Report does the skip, and change the while condition:
+
+
+USE TEST NEW
+GO BOTTOM
+
+REPORT oReport ....
+     COLUMN ...
+END REPORT
+
+oReport:bSkip := {|| DbSkip(-1)}
+
+ACTIVATE oReport WHILE !Bof()
+
+
+PRINTING ARRAYS:
+
+Use a static variable to hold the current array element and change the Skip block and While block.
+
+
+STATIC  nField
+
+Function Main()
+
+nField := 1
+
+REPORT oReport ....
+
+COLUMN ...
+COLUMN ...
+
+END REPORT
+
+oReport:bSkip := {|| nField++}
+
+ACTIVATE REPORT oReport ;
+
+WHILE nField <= len(aStructure)
+
+
+SHADOWS & GRIDS:
+
+There are two clauses that you can use when you create your columns:
+
+- SHADOW: This clause puts the background of a column in light gray.
+
+- GRID: This clause puts two lines vertically on both sides of a column.
+
+For example:
+
+
+COLUMN TITLE ... SHADOW GRID
+
+
+You can modify the type of grid, width and color. To do this you have to create the pens you need:
+
+
+COLUMN TITLE ... GRID <nPen>
+
+
+By default the pen used is black, solid, with a width of 1.
+
+The creation of pens is identical as for fonts. (Consult the Norton Guide for more information about pens.) For example:
+
+
+DEFINE PEN oPen WIDTH 5
+
+REPORT oReport PEN oPen
+
+COLUMN TITLE .... GRID 1
+
+END REPORT
+
+ACTIVATE REPORT
+
+
+CHANGING THE ASPECT:
+
+There is some DATA on the report objects that lets you change the aspect of the report, for example:
+
+
+·	nTotalLine: Is the aspect for total lines. By default it is  RPT_DOUBLELINE (2)
+
+
+
+·	nGroupLine: Is the aspect for group lines. By default it is  RPT_SINGLELINE (1)
+
+
+
+·	nTitleUpLine: Is the aspect for the up lines in column titles. By default it is RPT_DOUBLELINE (2)
+
+
+
+·	nTitleDnLine:  Is the aspect for the down lines in column titles. By default it is RPT_DOUBLELINE (2)
+
+
+
+·	cPageTotal: Is a description for page total. By default it is ""
+
+
+
+·	cGrandTotal: Is a description for grand total. By default it is ""
+
+
+And also some methods like:
+
+
+·	Margin(nValue,nType,nScale): This method lets you change the top, down, left and right margin of the report -- in inches or centimeters.
+
+
+
+·	Say(nCol, xText, nFont, nPad, nRow): This method lets you write the text you want on the report, indicating the column (where the column objects start), the text, the number of font to use, the number of pad(left, right, center) and the Row (by default the current row).
+
+
+BITMAPS:
+
+To put a bitmap on your report is very easy. In the STARTPAGE clause,  just make a call to a function of your own which draws the bitmap via the Saybitmap method() of the class TReport. An example:
+
+
+ACTIVATE REPORT oReport ;
+
+ON STARTPAGE Mybitmap()
+
+
+Function Mybitmap()
+
+
+oReport:SayBitmap(.3,.3,"ICO.BMP",.5,.5)
+
+
+RETURN NIL
+
+
+These are the parameters of the method Saybitmap:
+
+
+·	nRow
+·	nCol
+·	cBitmap file (only)
+·	nWidth
+·	nHeight
+·	nScale
+
+
+If Scale is in INCHES (1) then 1,2,4 and 5 are in inches, and if  Scale is CMETERS (2) 1,2,4 and 5 are in centimeters.
+
+BOXES & LINES:
+
+To put a box or a line on your report is very easy. On the STARTPAGE clause, just make a call to a function of your own which draws the line or box via the box or line method() of the class TReport. An example:
+
+
+ACTIVATE REPORT oReport ;
+
+ON STARTPAGE Mybox()
+
+
+Function Mybox()
+
+oReport:Box(.1, .1, 11.1, 7.6)
+
+RETURN NIL
+
+
+These are the parameters of the BOX method:
+
+
+·	nRow
+·	nCol
+·	nBottom
+·	nRight
+·	nPen
+·	nScale
+
+
+If nScale is in INCHES (1) then 1,2,3  and 4 are in inches, and if nScale is CMETERS (2) 1,2,3 and 4 are in centimeters.
+
+The fifth parameter is the number in the list of pens stated when you created the report.
+
+These are the parameters of the LINE method:
+
+
+·	nTop
+·	nLef
+·	nBottom
+·	nRight
+·	nPen
+·	nScale
+
+
+If nScale is in INCHES (1) then 1,2,3  and 4 are in inches, and if nScale is CMETERS (2) 1,2,3 and 4 are in centimeters.
+
+The fifth parameter is the number in the list of pens stated when you created the report.
+
+PRINTING MEMOS:
+
+Printing memos on reports is sometimes a difficult job in other reporting systems, but is quite easy with the FiveWin Report Engine.
+
+Look how we do it:
+
+
+1.	Create a column with empty DATA, but indicating the size (width of line in chars) that you want for the memo:
+
+
+
+COLUMN TITLE "Comments" DATA " " SIZE 50
+
+
+
+2.	Create a function to be called by the ON CHANGE clause, like this:
+
+
+
+Function SayMemo()
+
+
+LOCAL nLines, nFor
+nLines := Mlcount(Test->Comment,50)
+
+
+
+/*	
+Since ON CHANGE has caused the line to be incremented, we need to
+decrement the current line once.
+*/
+
+
+
+oReport:BackLine(1)
+
+	
+
+/*
+
+Now we can start the printing. But remember: before we print anything, we have to make a call to StartLine, and also afterwards a call to EndLine. This way the program controls the page breaks.
+
+*/
+
+
+
+FOR nFor := 1 to nLines
+
+oReport:StartLine()
+oReport:Say(nMemoColumn , ;
+MemoLine(Test->Comment,50,nFor)
+oReport:EndLine()
+
+NEXT
+
+
+RETURN NIL
+
+
+And that is all there is to it.
+
+PUTTING IT ALL TOGETHER:
+
+Just take a close look at the code for REP21.PRG.
+
+ALL TOGETHER AND WITH COLORS!
+
+You can change the color of each font using the SetTxtColor method.
+
+SetTxtColor() receives two parameters. The first one indicates the  nColor to use (see Colors.ch) and the second one the NUMBER of the Font in the report. For example:
+
+
+oReport:SetTxtColor(CLR_HRED,1)
+
+
+You can also control the color of any Pens just by indicating their colors when you create them. For example:
+
+
+DEFINE PEN oPen COLOR CLR_BLUE
+
+
+If you want to change the color of the horizontal pen used in titles and totals, use the method SetPenColor.  For example:
+
+
+oReport:SetPenColor(CLR_RED)
+
+
+You can also change the color of the shadows using the method SetShdColor(nNewColor), which by default is LIGHTGRAY.
+
+PRINTING FROM A .TXT FILE:
+
+In Rept23.PRG we are using the memo printing technique to print a text file.  This is very useful for quickly converting Clipper DOS reports to windows.
+
+For example, if your DOS application has reports created via the  R&R Code Generator or Bandit, use that DOS report's option to have each report sent to a .TXT file.  Then adapt the simple code in this  example to have FiveWin print the report's .TXT file.  Make sure that the font specified in this code matches the font used in the creation of the report. Guess what this means....you can convert each of your existing DOS reports to windows in 20 minutes each MAX, no matter how intricate they may be!
+
+
+Caveat: of course, whatever user interface screen code you have at the beginning of your DOS report .prg (for prompts/responses to specify various report options) will have to be converted to FiveWin GUI. Still quick -- after you establish a standard and adaptable format for your prompts/responses.
+
+NOTE: When previewing this report, until you zoom out it will appear garbled due to the use of the fixed pitch Courier font.  If you print it, it won't be garbled.
+
+
+
+
+
+
+===== Las Clases Report =====
+     -  [[fivewin_clase_treport| TReport]]
+     -  [[fivewin_esp_basic_con_print| TRColumn]]
+     -  [[fivewin_esp_basic_con_print| TRLine]]
+     -  [[fivewin_esp_basic_con_print| TRGroup]]
+     -  [[fivewin_esp_samples_report| Ejemplos de Report]]
+
+===== Mezclando gráficas y texto =====
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep18()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport ;
+          TITLE  "*** Fivewin Report ***"  ;
+          PREVIEW
+
+     COLUMN TITLE "St" DATA Test->State
+
+     COLUMN TITLE "First Name", "Last Name" ;
+            DATA  Test->First, Test->Last
+
+     COLUMN TITLE "Street", "City"  ;
+            DATA  Test->Street, Test->City
+
+     COLUMN TITLE "   Salary"  ;
+            DATA  Test->Salary ;
+            TOTAL
+
+
+     END REPORT
+
+     ACTIVATE REPORT oReport ;
+          ON STARTPAGE Bitmaps()
+
+     CLOSE TEST
+
+RETURN NIL
+
+
+STATIC Function Bitmaps()
+
+     oReport:SayBitmap(.3,.3, "EXIT",.5,.5)
+     oReport:SayBitmap(3,2,  "CONFIDEN.BMP",4,4)
+
+RETURN NIL
+
+</code>
+
+
+
+===== Vista preliminar de impresión =====
+
+Usted puede crear una vista preliminar de sus impresiones, con solo especificar la cláusula PREVIEW cuando construya el Objeto impresora:
+<code clipper>
+PRINT oPrn NAME "My Printout" PREVIEW
+      ...
+PAGE
+         ...
+oPrn:Say( nRow, nCol, cText, ... )
+         ...
+ENDPAGE
+      ...
+ENDPRINT
+</code>
+Esto provocará que la impresión sea revisada primero en pantalla, dando al usuario una vista preliminar de ella, permitiéndole al mismo tiempo elegir lo que desea imprimir o en su caso cancelar la impresión de lo que ve en pantalla.
+
+FiveWin usa archivos estándar "Windows Metafiles" para almacenar las páginas impresas. Para manejar estos metaarchivos, FiveWin se dirige a la carpeta temporal de su computadora. Recuerde ajustar una carpeta TEMP en su configuración:
+
+
+SET TEMP=c:\temp
+
+FiveWin almacenará temporalmente los metaarchivos dentro de esa carpeta, y los eliminara una vez que finalice la vista preliminar. Todas estas operaciones son manejadas automáticamente por FiveWin.
+
+
+

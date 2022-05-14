@@ -1,0 +1,666 @@
+====== Accelerators ======
+^Function^Short Description^
+|[[fivewin_function_loadaccelerators|Loadaccelerators()]]|Loads the specified accelerator table|
+|[[fivewin_function_setacctable|Setacctable()]]|Sets the accelerator table|
+
+
+
+====== Arrays ======
+^Function^Short Description^
+|[[fivewin_function_AAt |AAt()]]|Returns the position of a string from an array of strings| 
+|[[fivewin_function_ARead |ARead()]]|To reconstruct an array from a coded string.|
+|[[fivewin_function_ASave |ASave()]]|To code an array in a string. |
+|[[fivewin_function_ASend |ASend()]]|Send an OOP message to an array of Objects|
+
+
+====== AVI's ======
+^Function^Short Description^
+|[[fivewin_funcion_AnimOpen |AnimOpen()]]|Abre un clip AVI y muestra su primer cuadro en un control de animación. |
+|[[fivewin_funcion_AnimOpenEx |AnimOpenEx()]]|Abre un clip AVI desde un recurso en un módulo especificado y muestra su primer cuadro en un control de animación. |
+|[[fivewin_funcion_AnimPlay |AnimPlay()]]|Reproduce un clip AVI en un control. El control reproduce el clip en el fondo mientras sigue el hilo de ejecución. |
+
+
+
+
+
+====== Bitmaps ======
+^Function^Short Description^
+|[[fivewin_funcion_CreateBmpCursor |CreateBmpCursor()]]|Crea un Cursor desde un manejador BMP|
+|[[fivewin_function_dibfrombitmap|Dibfrombitmap()]]|Creates a DIB from a bitmap|
+|[[fivewin_function_FWBitmap |FWBitmap()]]|Creates the FiveWin own icon-alike bitmap|
+|[[fivewin_function_nbmpcolors|Nbmpcolors()]]|It returns the number of colors of a Bitmap|
+|[[fivewin_function_nbmpheight|Nbmpheight()]]|It returns the height in pixels of a Bitmap|
+|[[fivewin_function_nbmpwidth|Nbmpwidth()]]|It returns the width in pixels of a Bitmap|
+|[[fivewin_function_palbmpdraw|Palbmpdraw()]]|Displays a FiveWin combined bitmap and palette handle|
+|[[fivewin_function_palbmpload|Palbmpload()]]|Loads from resources a bitmap and their palette|
+|[[fivewin_function_palbmpread|Palbmpread()]]|It loads a bitmap and its palette from file .BMP|
+|[[fivewin_function_palbmprealize|Palbmprealize()]]|Realize a bitmap|
+|[[fivewin_function_palbtnpaint|Palbtnpaint()]]|It draws a button with images|
+|[[fivewin_function_pbmpcolors|Pbmpcolors()]]|Resolution of a Bitmap|
+|[[fivewin_function_pbmpheigh|Pbmpheigh()]]|Return the height of a bitmap|
+|[[fivewin_function_pbmpwidth|Pbmpwidth()]]|Retrieve the width in pixels of a bitmap|
+|[[fivewin_function_readbitmap|Readbitmap()]]|Reads a bitmap from disk|
+|[[fivewin_function_realizepalette|Realizepalette()]]|Maps a palette to the system palette|
+|[[fivewin_function_selectpalette|Selectpalette()]]|Select a palette of colors|
+|[[fivewin_funcion_TransBmp |TransBmp()]]|Copia un Bitmap en un dispositivo de contexto con efecto transparente.|
+|[[fivewin_function_wndbitmap|Wndbitmap()]]|Make a bitmap with the window image|
+
+
+
+====== Browsers ======
+^Function^Short Description^
+|[[fivewin_function_aBrwPosRect |aBrwPosRect()]]|To calculate coordinates of the edition cell in a Browse| 
+|[[fivewin_function_aWBrwRowDim |aWBrwRowDim()]]|Calculates the vertical coordinates of a row in a Browse.|
+|[[fivewin_function_aTcBrwPosRec |aTcBrwPosRec()]]|To calculate coordinated of the edition cell in a TCBrowse|
+|[[fivewin_function_Browse |Browse()]]|Automatic full featured FiveWin browse.|
+|[[fivewin_function_xBrJustify |xBrJustify()]]|Sets the alignments of the column of a xBrowse object.|
+|[[fivewin_function_xBrowseNew |xBrowseNew()]]|Creates and sets a xBrowse object.|
+|[[fivewin_function_xBrwAddColumn |xBrwAddColumn()]]|Sets and adds a column to a xBrowse object.|
+
+
+
+====== Brushes ======
+^Function^Short Description^
+|[[fivewin_function_CreateHatchBrush |CreateHatchBrush()]]|Creates a brush with the specified hatched pattern |
+|[[fivewin_function_CreatePatternBrush |CreatePatternBrush()]]|Creates a brush with the specified pattern bitmap|
+|[[fivewin_function_CreateSolidBrush |CreateSolidBrush()]]|Creates a brush that has a specified solid color |
+|[[fivewin_function_delwndbrus|Delwndbrus()]]|To erase the last brush created with WndBrush|
+|[[fivewin_function_FWBrushes |FWBrushes()]]|Creates any of the predefined FiveWin bitmaps|
+|[[fivewin_function_setbrushorg|Setbrushorg()]]|Specifies the origen of the brush|
+|[[fivewin_function_wndbrush|Wndbrush()]]|Create a tiled brush|
+
+
+====== Clipboard ======
+^Function^Short Description^
+|[[fivewin_function_CloseClipboard |CloseClipboard()]]|Closes the clipboard |
+|[[fivewin_function_EmptyClipboard |EmptyClipboard()]]|Empties the clipboard|
+|[[fivewin_function_getclpdata|Getclpdata()]]|Retrieves the handle of the current clipboard data|
+|[[fivewin_function_OpenClipboard |OpenClipboard()]]|Open the Windows clipboard to start using it |
+|[[fivewin_function_setclipboarddata|Setclipboarddata()]]|Places some data at the clipboard|
+|[[fivewin_function_setclpdata|Setclpdata()]]|Changes the contents of the clipboard|
+
+
+
+====== Color ======
+^Function^Short Description^
+|[[fivewin_function_getbkcolor|Getbkcolor()]]|Retrieve the current background color|
+|[[fivewin_function_getsyscolor|Getsyscolor()]]|To obtain the current color of an element of the screen|
+|[[fivewin_function_ncolorton|Ncolorton()]]|Returns the numeric color equivalent of an xBase color|
+|[[fivewin_function_ngetbackrgb|Ngetbackrgb()]]|Returns the numeric value of an xBase back color|
+|[[fivewin_function_ngetforergb|Ngetforergb()]]|Returns the numeric value of an xBase fore color|
+|[[fivewin_function_nrgb|Nrgb()]]|Generates a RGB numeric value|
+|[[fivewin_function_nrgbblue|Nrgbblue()]]|Blue component of a RGB color|
+|[[fivewin_function_nrgbgreen|Nrgbgreen()]]|Green component of a RGB color|
+|[[fivewin_function_nrgbred|Nrgbred()]]|Red component of a RGB color|
+|[[fivewin_function_setbkcolor|Setbkcolor()]]|Set the background to a specific color|
+|[[fivewin_function_settextcolor|Settextcolor()]]|Set the text color to the specific color|
+
+
+====== Coordinates management ======
+^Function^Short Description^
+|[[fivewin_function_ClientToScreen |ClientToScreen()]]|Converts client coordinates into screen coordinates|
+|[[fivewin_function_dptolp|Dptolp()]]|Converts device coordinates into logical coordinates|
+|[[fivewin_function_getpixel|Getpixel()]]|Retrieves the RGB color of a pixel|
+|[[fivewin_function_getpromptrect|Getpromptrect()]]|Returns the coordinate of a prompt|
+|[[fivewin_function_lptodp|Lptodp()]]|Converts logical coordinates into device coordinates|
+|[[fivewin_function_screentoclient|Screentoclient()]]|Converts screens coordinates in Client coordinates|
+
+
+
+
+====== Communications ======
+^Function^Description^
+|[[fivewin_function_Bindtoport |Bindtoport()]]|A Socket associates with a certain port |
+|[[fivewin_function_BuildCommDCB |BuildCommDCB()]]|Translates a device string into a control block|
+|[[fivewin_function_CloseComm |CloseComm()]]|Closes the communication device and frees memory|
+|[[fivewin_function_EnableCommNotification |EnableCommNotification ()]]|Enables or disables WM_COMMNOTIFY message posting to the given window|
+|[[fivewin_function_EscapeComm |EscapeComm()]]|Directs the specified communications device to carry out an extended function|
+|[[fivewin_function_FlushComm |FlushComm()]]|Flushes all characters from transmision or receiving|
+|[[fivewin_function_getcommerror|Getcommerror()]]|Retrieves the most recent comm error value|
+|[[fivewin_function_inportbyte|Inportbyte()]]|Reads a byte from a hardware port|
+|[[fivewin_function_inportword|Inportword()]]|Reads a word (2 bytes) from a hardware port|
+|[[fivewin_function_OpenComm |OpenComm()]]|Open the communication port to start using it |
+|[[fivewin_function_OutportByte |OutportByte()]]|Sends a byte to a hardware port|
+|[[fivewin_function_OutportWord |OutportWord()]]|Sends a word (2 bytes) to a hardware port |
+|[[fivewin_function_readcomm|Readcomm()]]|Read the contents of the communication port|
+|[[fivewin_function_setcommstate|Setcommstate()]]|Selects the state of the communication port|
+|[[fivewin_function_writecomm|Writecomm()]]|Writes to the communication port|
+
+====== Carets ======
+^Function^Short Description^
+|[[fivewin_funcion_CaretFLine |CaretFLine()]]|Crea un signo de intercalación en un lína GTF.|
+|[[fivewin_function_CreateCaret |CreateCaret()]]|Create new system caret |
+|[[fivewin_function_destroycaret|Destroycaret()]]|Destroy the system caret|
+
+====== Cursores ======
+^Function^Short Description^
+====== Manejo de bases de datos ======
+^Function^Short Description^
+====== Fecha / Hora ======
+^Function^Short Description^
+====== DDE ======
+^Function^Short Description^
+====== Facilidades de depuración ======
+^Function^Short Description^
+====== Contextos de dispositivos ======
+^Function^Short Description^
+====== Cajas de diálogos ======
+^Function^Short Description^
+====== Mantenimiento de carpetas ======
+^Function^Short Description^
+====== DLLs======
+^Function^Short Description^
+====== Arrastrar y soltar ======
+^Function^Short Description^
+====== Dibujo ======
+^Function^Short Description^
+
+====== Ejecución de otras aplicaciones ======
+^Function^Short Description^
+|[[fivewin_funcion_waitrun|Waitrun()]]|Ejecuta otra aplicación Windows y espera su terminación|
+
+====== Manejo de archivos ======
+^Function^Short Description^
+====== Internas de Fivewin ======
+^Function^Short Description^
+====== Manejo de Fuentes ======
+^Function^Short Description^
+====== Manejo de archivos de ayuda ======
+^Function^Short Description^
+  * [[fivewin_funcion_gethelpfile|GetHelpFile()]]
+  * [[fivewin_funcion_gethelptopic|GetHelpTopic()]]
+  * [[fivewin_funcion_helpindex|HelpIndex()]]
+  * [[fivewin_funcion_helppopup|Winhelp()]]
+  * [[fivewin_funcion_helppopup|HelpPopup()]]
+  * [[fivewin_funcion_helpsearch|HelpSearch()]]
+  * [[fivewin_funcion_helpsetpos|HelpSetPos()]]
+  * [[fivewin_funcion_helptopic|HelpTopic()]]
+  * [[fivewin_funcion_sethelpfile|SetHelpFile()]]
+  * [[fivewin_funcion_winhelp|WinHelp()]]
+====== Iconos ======
+^Function^Short Description^
+====== Archivos INI ======
+^Function^Short Description^
+====== Internet ======
+^Function^Short Description^
+====== Joystick ======
+^Function^Short Description^
+====== Lista de despliegue ======
+^Function^Short Description^
+====== MAPI ======
+^Function^Short Description^
+====== Uso de memoria/variables ======
+^Function^Short Description^
+====== Metaarchivos ======
+^Function^Short Description^
+
+====== Midi ======
+^Function^Short Description^
+|[[fivewin_funcion_cMidiMapper |cMidiMapper()]]|Devuelve el nombre del mapeador MIDI.|
+|[[fivewin_function_midinoteoff|Midinoteoff()]]|Stops a certain note to sound for a channel MIDI|
+|[[fivewin_function_midinoteon|Midinoteon()]]|Makes sound a certain note for a channel MIDI|
+|[[fivewin_function_midisetpatch|Midisetpatch()]]|Activates a patch|
+
+
+====== Mouse ======
+^Function^Short Description^
+|[[fivewin_function_getcapture|Getcapture()]]|Retrieves the window handle that has the mouse captured|
+|[[fivewin_function_releasecapture|Releasecapture()]]|Let the other applications use the mouse|
+|[[fivewin_function_setcapture|Setcapture()]]|Captures all the mouse activity for a window|
+
+====== Manejo de Menús ======
+^Function^Short Description^
+====== Manejo de MIDI ======
+^Function^Short Description^
+====== Manejo de archivos MDX/NTX ======
+^Function^Short Description^
+====== Conexiones de red ======
+^Function^Short Description^
+====== Manipulación numérica  ======
+^Function^Short Description^
+
+
+====== ODBC ======
+^Function^Short Description^
+|[[fivewin_funcion_ODBCDsnEntries |ODBCDsnEntries()]]|Devuelve un arreglo con todas las entradas Dsn disponibles en Odbc. |
+
+
+====== OemANSI ======
+^Function^Short Description^
+|[[fivewin_function_AnsiLower |AnsiLower()]]|Converts the given character string to lowercase|
+|[[fivewin_function_AnsiToOem |AnsiToOem()]]|Translates a Windows string into the OEM MsDos| 
+|[[fivewin_funcion_AnsiToWide |AnsiToWide()]]|Convierte una cadena Ansi a su equivalente Unicode (wide). |
+|[[fivewin_function_AnsiUpper |AnsiUpper()]]|Converts the given character string to uppercase|
+|[[fivewin_function_isansi|Isansi()]]|To see if all the characters of a string are Ansi|
+|[[fivewin_function_isansilower|Isansilower()]]|It checks if a string ansi is in lowercase|
+|[[fivewin_function_isansiupper|Isansiupper()]]|It checks if a string ansi is in uppercase|
+|[[fivewin_function_isoem|Isoem()]]|It checks if the characters of a string are OEM|
+|[[fivewin_function_OemToAnsi |OemToAnsi()]]|Translates a OEM MsDos string into a Windows string |
+
+
+====== OLE ======
+^Function^Short Description^
+|[[fivewin_funcion_CreateOLEObject |CreateOLEObject()]]|Crea un objeto OLE. |
+
+====== POOs ======
+^Function^Short Description^
+====== Plumas ======
+^Function^Short Description^
+====== Impresión ======
+^Function^Short Description^
+====== Manejo API de RAS ======
+^Function^Short Description^
+====== Recursos ======
+^Function^Short Description^
+
+====== Registry ======
+^Function^Short Description^
+|[[fivewin_function_regclosekey|Regclosekey()]]|Close a key of the register|
+|[[fivewin_function_regcreatekey|Regcreatekey()]]|Create/open a specific key|
+|[[fivewin_function_regdeletekey|Regdeletekey()]]|Delete the specific key|
+|[[fivewin_function_regenumkey|Regenumkey()]]|Enumerates the subkeys of an specific key|
+|[[fivewin_function_regenumvalue|Regenumvalue()]]|Enumerates the values of a specific key|
+|[[fivewin_function_registerclass|Registerclass()]]|Register a new Windows class|
+|[[fivewin_function_regopenkey|Regopenkey()]]|Open a specific key|
+|[[fivewin_function_regqueryvalue|Regqueryvalue()]]|Return the text string corresponding to a key|
+|[[fivewin_function_regsetvalue|Regsetvalue()]]|Set a string text associates to a key|
+
+====== Security/Copy protection ======
+^Function^Short Description^
+|[[fivewin_function_decrypt|Decrypt()]]|Decrypts a string with an optional key|
+|[[fivewin_function_Encrypt |Encrypt()]]|Encrypts a string with an optional key|
+
+
+====== Sound ======
+^Function^Short Description^
+|[[fivewin_function_msgbeep|Msgbeep()]]|MessageBeep beep tone|
+|[[fivewin_function_sndplayresource|Sndplayresource()]]|Plays a WAV sound file from resources|
+|[[fivewin_function_sndplaysound|Sndplaysound()]]|Plays a WAV sound file|
+
+
+
+====== SQL ======
+^Function^Short Description^
+|[[fivewin_function_sqlallocconnect|Sqlallocconnect()]]|Allocates a connection handle|
+|[[fivewin_function_sqlallocenv|Sqlallocenv()]]|Allocates an environment handle|
+|[[fivewin_function_sqlallocstmt|Sqlallocstmt()]]|Allocates a statement handle|
+|[[fivewin_function_sqlcancel|Sqlcancel()]]|Cancels the processing on a statement|
+|[[fivewin_function_sqlcol|Sqlcol()]]|Returns the list of column names in specified tables|
+|[[fivewin_function_sqlcolumns|Sqlcolumns()]]|Returns the list of column names in specified tables|
+|[[fivewin_function_sqlcommit|Sqlcommit()]]|Requests a commit operation for all active operations on all statements|
+|[[fivewin_function_sqlconnect|Sqlconnect()]]|Establishes connections to a driver and a data source|
+|[[fivewin_function_sqldesc32|Sqldesc32()]]|Returns the result descriptor - column name, type, column size, decimal|
+|[[fivewin_function_sqldescribecol|Sqldescribecol()]]|Returns the result descriptor - column name, type, column size, decimal|
+|[[fivewin_function_sqldisconnect|Sqldisconnect()]]|Closes the connection associated with a specific connection handle|
+|[[fivewin_function_sqldriverconnect|Sqldriverconnect()]]|Establishes connections to a driver and a data source|
+|[[fivewin_function_sqldrvc32|Sqldrvc32()]]|Establishes connections to a driver and a data source|
+|[[fivewin_function_sqlerror|Sqlerror()]]|Returns the current SQL error|
+|[[fivewin_function_sqlexecdirect|Sqlexecdirect()]]|Executes a preparable statement|
+|[[fivewin_function_sqlexecute|Sqlexecute()]]|Executes a prepared statement|
+|[[fivewin_function_sqlextendedfetch|Sqlextendedfetch()]]|Fetches the specified rowset of data from the result set and returns data|
+|[[fivewin_function_sqlfetch|Sqlfetch()]]|Fetches the next rowset of data from the result set and returns data for|
+|[[fivewin_function_sqlfile|Sqlfile()]]|Returns the list of table, catalog, or schema names, and table types,|
+|[[fivewin_function_sqlfreeconnect|Sqlfreeconnect()]]|Frees resources associated with a specific connection handle|
+|[[fivewin_function_sqlfreeenv|Sqlfreeenv()]]|Frees resources associated with a specific environment handle|
+|[[fivewin_function_sqlfreestmt|Sqlfreestmt()]]|Stops processing associated with a specific statement, closes any open|
+|[[fivewin_function_sqlgetconnectoption|Sqlgetconnectoption()]]|Returns the current setting of a connection attribute|
+|[[fivewin_function_sqlgetcurname|Sqlgetcurname()]]|Returns the cursor name associated with a specified statement|
+|[[fivewin_function_sqlgetcursorname|Sqlgetcursorname()]]|Returns the cursor name associated with a specified statement|
+|[[fivewin_function_sqlgetd32|Sqlgetd32()]]|Retrieves data for a single column in the result set|
+|[[fivewin_function_sqlgetdata|Sqlgetdata()]]|Retrieves data for a single column in the result set|
+|[[fivewin_function_sqlgetdiagrec|Sqlgetdiagrec()]]|Returns the current values of multiple fields of a diagnostic record that|
+|[[fivewin_function_sqlgetin32|Sqlgetin32()]]|Returns general information about the driver and data source associated|
+|[[fivewin_function_sqlgetinfo|Sqlgetinfo()]]|Returns general information about the driver and data source associated|
+|[[fivewin_function_sqlgetstmtoption|Sqlgetstmtoption()]]|Returns the current setting of a statement attribute|
+|[[fivewin_function_sqlgettextdata|Sqlgettextdata()]]|Retrieves data for a single column in the result set|
+|[[fivewin_function_sqlindex|Sqlindex()]]|Retrieves a list of statistics about a single table and the indexes|
+|[[fivewin_function_sqlnumresultcols|Sqlnumresultcols()]]|Returns the number of columns in a result set|
+|[[fivewin_function_sqlparamdata|Sqlparamdata()]]|It is used in conjunction with SQLPutData to supply parameter data at|
+|[[fivewin_function_sqlprep32|Sqlprep32()]]|Prepares an SQL string for execution|
+|[[fivewin_function_sqlprepare|Sqlprepare()]]|Prepares an SQL string for execution|
+|[[fivewin_function_sqlprimarykeys|Sqlprimarykeys()]]|Returns the column names that make up the primary key for a table|
+|[[fivewin_function_sqlputdata|Sqlputdata()]]|Allows an application to send data for a parameter or column to the|
+|[[fivewin_function_sqlrollback|Sqlrollback()]]|Requests a rollback operation for all active operations on all statements|
+|[[fivewin_function_sqlrowcount|Sqlrowcount()]]|Returns the number of rows affected by an UPDATE, INSERT, or DELETE|
+|[[fivewin_function_sqlscol|Sqlscol()]]|Retrieves special informations about columns within a specified table|
+|[[fivewin_function_sqlsetconnectoption|Sqlsetconnectoption()]]|Sets attributes that govern aspects of connections|
+|[[fivewin_function_sqlsetcurname|Sqlsetcurname()]]|Associates a cursor name with an active statement|
+|[[fivewin_function_sqlsetcursorname|Sqlsetcursorname()]]|Associates a cursor name with an active statement|
+|[[fivewin_function_sqlsetparam|Sqlsetparam()]]|Sets a parameter marker in an SQL statement|
+|[[fivewin_function_sqlsetpos|Sqlsetpos()]]|Sets the cursor position in a rowset|
+|[[fivewin_function_sqlsetstmt|Sqlsetstmt()]]|Sets attributes related to a statement|
+|[[fivewin_function_sqlstatistics|Sqlstatistics()]]|Retrieves a list of statistics about a single table and the indexes|
+|[[fivewin_function_sqltables|Sqltables()]]|Returns the list of table, catalog, or schema names, and table types,|
+|[[fivewin_function_sqltransact|Sqltransact()]]|Requests a commit or rollback operation for all active operations on all|
+
+
+
+====== Strings ======
+^Function^Short Description^
+|[[fivewin_funcion_Alltrim |Alltrim()]]|Suprime espacios al principio y final de una cadena de caracteres. |
+|[[fivewin_function_AnsiToOem |AnsiToOem()]]|Translates a Windows string into the OEM MsDos| 
+|[[fivewin_funcion_AnsiToWide |AnsiToWide()]]|Convierte una cadena Ansi a su equivalente Unicode (wide). |
+|[[fivewin_function_cChr2Data |cChr2Data()]]|It converts to minuscule all the letters except the 2ª...|
+|[[fivewin_function_cValToChar |cValToChar()]]|Converts any value into a string |
+|[[fivewin_function_cValToStr |cValToStr()]]|Converts any value into a string |
+|[[fivewin_funcion_codetext|CodeText()]]|Codificación de un texto en RTF.|
+|[[fivewin_function_decodetext|Decodetext()]]|Decoding of a RTF text|
+|[[fivewin_funcion_extractline|ExtractLine()]]|Extrae una línea de una cadena de caracteres iniciando des una posición dada.|
+|[[fivewin_function_nstrcrc|Nstrcrc()]]|Returns a CRC checksum for a text|
+|[[fivewin_function_nstrhash|Nstrhash()]]|Returns a unique hash value for a string|
+|[[fivewin_function_OemToAnsi |OemToAnsi()]]|Translates a OEM MsDos string into a Windows string |
+|[[fivewin_function_str2hex|Str2hex()]]|Converts the characters of a string in their hexadecimal representation|
+|[[fivewin_function_strbyte|Strbyte()]]|Assign/obtain the value of a byte|
+|[[fivewin_function_strcapfirst|Strcapfirst()]]|Capitalize the first and lowercase|
+|[[fivewin_function_strchar|Strchar()]]|Obtain a character of a string|
+|[[fivewin_function_strcharcount|Strcharcount()]]|Counts the occurrence of a given character inside a string|
+|[[fivewin_function_strcpy|Strcpy()]]|Copy a string into other string|
+|[[fivewin_function_stretchblt|Stretchblt()]]|stretching or compressing the bitmap to fit the destination rectangle|
+|[[fivewin_function_strptr|Strptr()]]|Returns the address of a given character string|
+|[[fivewin_function_strtoken|Strtoken()]]|Returns a token from a string|
+|[[fivewin_function_uCharToVal |uCharToVal()]]|Converts any value into a character string|
+|[[fivewin_function_UnEscape |UnEscape()]]|Transforms characters hexadecimales to text ASCII |
+|[[fivewin_function_widetoansi|Widetoansi()]]|Translates an unicode wide string into the equivalent ansi string|
+|[[fivewin_function_xPadC |xPadC()]]|Center fills a string up to a certain pixel |
+|[[fivewin_function_xPadL |xPadL()]]|Left fills a string up to a certain pixel dimension |
+|[[fivewin_function_xPadR |xPadR()]]|Right fills a string up to a certain pixel dimension|
+
+
+
+
+
+
+
+
+
+
+
+====== System ======
+^Function^Short Description^
+|[[fivewin_funcion_Arg |Arg()]]|Recobra desde la linea de comandos el parametro especificado. |
+|[[fivewin_funcion_AuxGetCaps |AuxGetCaps()]]|Obtiene las características de un dispositivo. |
+|[[fivewin_funcion_AuxGetDev |AuxGetDev()]]|Número de dispositivos auxiliares. |
+|[[fivewin_funcion_Auxgetvol |Auxgetvol()]]|Devuelve el volumen de salida de un dispositivo. |
+|[[fivewin_funcion_Auxsetvol |Auxsetvol()]]|Define el volumen en un dispositivo de salida auxiliar. |
+|[[fivewin_funcion_cArgV |cArgV()]]|Recupera un parámetro de cierta línea de comando.|
+|[[fivewin_funcion_ColorsQty |ColorsQty()]]|Devuelve el número total de colores del driver de pantalla|
+|[[fivewin_funcion_CPUType |CPUType()]]|Verifica el tipo de CPU |
+|[[fivewin_funcion_cWinVersion |cWinVersion()]]|Devuelve la versión de Windows actual como una cadena.En 32 bits esta Function es más exacta que en 16 bits. |
+|[[fivewin_funcion_devicecapabilities|Devicecapabilities()]]|Recupera las capacidades del driver de la impresora.|
+|[[fivewin_funcion_devmode|Devmode()]]|Recupera la información referente al driver de la impresora.|
+|[[fivewin_funcion_ExitWnd |ExitWnd()]]|Termina Windows y reinicia el sistema.|
+|[[fivewin_funcion_FindExecutable|FindExecutable()]]|Encuentra el nombre del archivo ejecutable asociado a un archivo.|
+|[[fivewin_funcion_getcpu|Getcpu()]]|Recupera el tipo de CPU.|
+|[[fivewin_funcion_getcpuspeed|Getcpuspeed()]]|Recupera la velocidad del CPU.|
+|[[fivewin_funcion_getdevicecaps|Getdevicecaps()]]|Recupera información del dispositivo específico.|
+|[[fivewin_funcion_getfreespace|Getfreespace()]]|Revisa el espacio de la pila global para determinar la memoria disponible.|
+|[[fivewin_funcion_getinstance|Getinstance()]]|Devuelve el valor de la instancia de la aplicación.|
+|[[fivewin_funcion_getlasterror|Getlasterror()]]|Obtiene el código de error para la última operación.|
+|[[fivewin_funcion_getmodulefilename|Getmodulefilename()]]|Devuelve la ruta y el archivo ejecutable desde donde se posiciona el módulo.|
+|[[fivewin_funcion_getmodulehandle|Getmodulehandle()]]|Devuelve el valor del controlador del módulo especificado.|
+|[[fivewin_funcion_getnmhdrcode|Getnmhdrcode()]]|Recupera el código de un mensaje de notificación.|
+|[[fivewin_funcion_getnmhdrhwndfrom|Getnmhdrhwndfrom()]]|Recupera el manejador del control enviador de un mensaje de notificación.|
+|[[fivewin_funcion_getnmhdridfrom|Getnmhdridfrom()]]|Recupera el identificador del control enviador de un mensaje de notificación.|
+|[[fivewin_funcion_getnmheabutton|Getnmheabutton()]]|Recupera el índice del botón del mouse usado para generar el mensaje de notificación.|
+|[[fivewin_funcion_getnmheaitem|Getnmheaitem()]]|Recupera el índice el elemento que tiene el foco de un mensaje de notificación.|
+|[[fivewin_funcion_getnmlistviewitem|Getnmlistviewitem()]]|Recupera el índice del elemento de una lista enviando un mensaje de notificación.|
+|[[fivewin_funcion_getnumtasks|Getnumtasks()]]|Recupera el número de tareas actuales en ejecución.|
+|[[fivewin_funcion_getproc32|Getproc32()]]|Devuelve la dirección de un módulo I de 32 bits|
+|[[fivewin_funcion_getprocaddress|Getprocaddress()]]|Recupera la dirección de la Function del módulo dado.|
+|[[fivewin_funcion_getsysmetrics|Getsysmetrics()]]|Recupera las métricas del sistema.|
+|[[fivewin_funcion_gettasks|Gettasks()]]|Recupera un arreglo con los nombres de todas las tareas acuvas corriendo en Windows.|
+|[[fivewin_funcion_getversion|Getversion()]]|Recupera los número de versión de Windows y MsDos.|
+|[[fivewin_funcion_getwindir|Getwindir()]]|Recupera la ruta de la carpeta de Windows.|
+|[[fivewin_funcion_getwindowsdirectory|Getwindowsdirectory()]]|Recupera la ruta de la carpeta de Windows.|
+|[[fivewin_funcion_getwinver|Getwinver()]]|Devuelve la versión de Windows.|
+|[[fivewin_funcion_globaladdatom|Globaladdatom()]]|Agrega una cadena a la tabla atom del sistema de Window.|
+|[[fivewin_funcion_globalalloc|Globalalloc()]]|Asigna un número de bytes de la pila global.|
+|[[fivewin_funcion_globalcompact|Globalcompact()]]|Reacomoda la memoria actualmente asignada a la pila global.|
+|[[fivewin_funcion_globaldata|Globaldata()]]|Ubica un hecho en la memoria global.|
+|[[fivewin_funcion_globaldelatom|Globaldelatom()]]|Elimina una cadena de la tabla de atom de sistema de Windows.|
+|[[fivewin_funcion_globalfree|Globalfree()]]|Libera el objeto dado de la memoria global.|
+|[[fivewin_funcion_globalgetatomname|Globalgetatomname()]]|Devuelve la cadena asociada a un átomo global|
+|[[fivewin_funcion_globallock|Globallock()]]|Obtiene la dirección de un bloque de memoria.|
+|[[fivewin_funcion_globalrealloc|Globalrealloc()]]|Cambia el tamaño de un bloque de la memoria global.|
+|[[fivewin_funcion_globalsize|Globalsize()]]|Devuelve el tamaño real del bloque de memoria.|
+|[[fivewin_funcion_globalunlock|Globalunlock()]]|Desbloquea un bloque de memoria bloqueado con GlobalLock()|
+|[[fivewin_funcion_interruptregister|Interruptregister()]]|Instala un controlador de GPFs definido por el usuario.|
+|[[fivewin_funcion_interruptunregister|Interruptunregister()]]|Desinstala un controlador de GPFs definido por el usuario.|
+|[[fivewin_funcion_isappthemed|Isappthemed()]]|Detecta si Windows y la aplicación están usando o no un tema.|
+|[[fivewin_funcion_iscdrom|Iscdrom()]]|Verifica si una unidad es unCdRom|
+|[[fivewin_funcion_isdiskette|Isdiskette()]]|Verifica si la unidad es de diskette.|
+|[[fivewin_funcion_isexerunning|Isexerunning()]]|Verifica si el EXE dado está actualmente en ejecución.|
+|[[fivewin_funcion_iswin7|Iswin7()]]|Verifica si la versión de Windows es Windows 7|
+|[[fivewin_funcion_iswin2000|Iswin2000()]]|Verifica si la versión de Windows es Windows 2000.|
+|[[fivewin_funcion_iswin64|Iswin64()]]|Verifica si la versión de Windows es 64 bits|
+|[[fivewin_funcion_iswin95|Iswin95()]]|Verifica si la versión de Windows es la 95|
+|[[fivewin_funcion_iswinnt|Iswinnt()]]|Verifica si se está ejecutando WIN NT.|
+|[[fivewin_funcion_iswinvista|Iswinvista()]]|Verifica si la versión de Windows es Vista|
+|[[fivewin_funcion_iswinxp|Iswinxp()]]|Verifica si está ejecutando WIN XP.|
+|[[fivewin_funcion_largefonts|Largefonts()]]|Devuelve .T. si se están usando fuentes grandes.|
+|[[fivewin_funcion_nargc|Nargc()]]|Devuelve el número de parámetros de la línea de comandos.|
+|[[fivewin_funcion_oWndFromhWnd |oWndFromhWnd()]]|Recupera un objeto ventana a través de su controlador. Nota: No funciona en diálogos.|
+|[[fivewin_funcion_paramcount|Paramcount()]]|Devuelve el número de parámetros de un proceso|
+|[[fivewin_funcion_scrresolution|Scrresolution()]]|Devuelve un arreglo con la resolución de la pantalla.|
+|[[fivewin_funcion_setballoon|Setballoon()]]|Configuración global para tips y forma de globo.|
+|[[fivewin_funcion_sethandlecount|Sethandlecount()]]|Cambia el número máximo de archvios disponibles.|
+|[[fivewin_funcion_settaskmanager|Settaskmanager()]]|Habilita o deshabilita Ctrl+Alt+Supr.|
+|[[fivewin_funcion_setidleaction|Setidleaction()]]|Configura/remueve el proceso de FiveWin en segundo plano.|
+|[[fivewin_funcion_setmultiple|Setmultiple()]]|Permite instancias múltiples de la misma aplicación FW.|
+|[[fivewin_funcion_setwin95look|Setwin95look()]]|Establece/libera vista Windows 95.|
+|[[fivewin_funcion_startplayback|Startplayback()]]|Inserta mensajes del mouse y teclado en la cola de mensajes del sistema.|
+|[[fivewin_funcion_startrecording|Startrecording()]]|Graba mensajes desde la cola de mensajes del sistema.|
+|[[fivewin_funcion_stopplayback|Stopplayback()]]|Detiene la reproducción de los mensajes.|
+|[[fivewin_funcion_stoprecording|Stoprecording()]]|Detiene la grabación de mensajes en la cola de mensajes del sistema.|
+|[[fivewin_funcion_stopuntil|Stopuntil()]]|Detiene el programa hasta que la evaluación del bloque de código sea .T.|
+|[[fivewin_funcion_sysrefresh|Sysrefresh()]]|Permite a Windows procesar todos los mensajes pendientes.|
+|[[fivewin_funcion_syswait|Syswait()]]|Detiene el proceso de mensajes pendientes <n> segundos.|
+|[[fivewin_funcion_TaskAddIcon |TaskAddIcon()]]|Agrega un icono en la barra de tareas.|
+|[[fivewin_funcion_TaskChangeIcon |TaskChangeIcon()]]|Cambia un icono de la barra de tareas.|
+|[[fivewin_funcion_TaskDelIcon |TaskDelIcon()]]|Elimina un icono de la barra de tareas.|
+|[[fivewin_funcion_Time |Time()]]|Da la hora actual en formato 00:00:00|
+|[[fivewin_funcion_TimeFromStart |TimeFromStart()]]|Da el tiempo transcurrido desde el inicio de la aplicación.|
+|[[fivewin_funcion_TimeZone |TimeZone()]]|Devuelve la zona horaria local.|
+|[[fivewin_funcion_waitmessage|Waitmessage()]]|La Function WaitMessage suspende temporalmente la ejecución|
+|[[fivewin_funcion_waitseconds|Waitseconds()]]|Pone en espera la aplicación por los segundos especificados|
+|[[fivewin_funcion_winuser|Winuser()]]|Recupera el nombre de usuario de Windows.|
+
+
+
+====== Text ======
+^Function^Short Description^
+|[[fivewin_funcion_drawtext|Drawtext()]]|Dibuja texto formateado dentro de un rectángulo dado.|
+|[[fivewin_funcion_ExtTextOut |ExtTextOut()]]|Escribe una cadena de caracteres dentro de una región rectangular.|
+|[[fivewin_funcion_gettextalign|Gettextalign()]]|Devuelve el estado de la bandera de alineación de textos.|
+|[[fivewin_funcion_gettextcolor|Gettextcolor()]]|Obtiene el color actual del texto.|
+|[[fivewin_funcion_gettextheight|Gettextheight()]]|Recupera la altura de una fuente elegida.|
+|[[fivewin_funcion_gettextwidth|Gettextwidth()]]|Calcula el ancho de una cadena.|
+|[[fivewin_funcion_nfilecrc|Nfilecrc()]]|Devuelve la cifra de control CRC del contenido de un archivo completo.|
+|[[fivewin_funcion_say3d|Say3d()]]|Despliega un texto en vista 3D.|
+|[[fivewin_funcion_settextalign|Settextalign()]]|Selecciona la clase de alineación de texto.|
+|[[fivewin_funcion_settextcolor|Settextcolor()]]|Establece el color del texto a un color específico.|
+|[[fivewin_funcion_settextjustification|Settextjustification()]]|Adiciona espacio a los caracteres de ruptura en una cadena.|
+|[[fivewin_funcion_TextOut |TextOut()]]|Dibuja texto en la ubicación especificada|
+|[[fivewin_funcion_wsay|Wsay()]]|Escribe un texto dentro de una ventana.|
+|[[fivewin_funcion_wsayrect|Wsayrect()]]|Escribe texto dentro de un área definida.|
+
+
+====== Timers ======
+^Function^Short Description^
+|[[fivewin_funcion_KillTimer |KillTimer()]]|Remueve el temporizador especificado.|
+|[[fivewin_funcion_settimer|Settimer()]]|Instala un temporizador de sistema.|
+|[[fivewin_funcion_TimerCount |TimerCount()]]|Devuelve el tiempo transcurrido desde el inicio de la aplicación.|
+|[[fivewin_funcion_TimerEvent |TimerEvent()]]|Evalúa la acción asignada a un objeto TTimer|
+
+====== User quick dialog boxes ======
+^Function^Short Description^
+
+
+
+
+
+
+
+
+====== Windows Management ======
+^Function^ Short Description^
+|[[fivewin_funcion_aBrwPosRect |aBrwPosRect()]]|Calcula las coordenadas de la celda de edición de un Browse. |
+|[[fivewin_funcion_aTcBrwPosRec |aTcBrwPosRec()]]|Para calcular las coordenadas de la celda de edición en un TCBRowse. |
+|[[fivewin_funcion_aTreeBmps |aTreeBmps()]]|Retorna un arreglo con los bitmaps por defecto del árbol. |
+|[[fivewin_funcion_BarAdjust |BarAdjust()]]|Ajusta la barra a las nuevas dimensiones de su contenedor.  |
+|[[fivewin_funcion_Barinvert |Barinvert()]]|Efecto de la barra de botones presionada.  |
+|[[fivewin_funcion_Barpaint |Barpaint()]]|Dibuja la barra de botones.  |
+|[[fivewin_funcion_BeginPaint |BeginPaint()]]|Prepara la ventana para comenzar el pintado.  |
+|[[fivewin_funcion_BringWindowtotop |BringWindowtotop()]]|Pone la ventana en la primera posicion de una lista de ventanas superpuestas.  |
+|[[fivewin_funcion_Btndisable | Btndisable() ]]|Dibuja un botón deshabilitado. Este presenta la misma imagen de un botón con bitmap pero en los típicos tonos grises de las opciones deshabilitadas.  |
+|[[fivewin_funcion_BtnPaint |BtnPaint()]]|Pinta el contenido de un button con bitmap.  |
+|[[fivewin_funcion_CallWindowProc |CallWindowProc()]]|Pasa mensajes con información a un procedimiento específico.|
+|[[fivewin_funcion_cCtrl2Chr |cCtrl2Chr()]]|Genera una cadena con la estructura de control.|
+|[[fivewin_funcion_ChangeProc |ChangeProc()]]|Cambia el procedimiento de una ventana. |
+|[[fivewin_funcion_ChildWindowFromPoint |ChildWindowFromPoint()]]|Encuentra una ventana hija en un punto específico.|
+|[[fivewin_funcion_CloseMetafile |CloseMetafile()]]|Cierra un dispositivo EMF y devuelve un manejador que identifica un metaarchivo en formato mejorado. |
+|[[fivewin_funcion_cMDIStruct |cMDIStruct()]]|Crea una estructura con información de MDIChild|
+|[[fivewin_funcion_CreateCaret |CreateCaret()]]|Crea un nuevo signo de intercalación de sistema. |
+|[[fivewin_funcion_CreateCDC |CreateCDC()]]|Crea un dispositivo de contexto compatible.|
+|[[fivewin_funcion_CreateDC |CreateDC()]]|Crea un dispositivo de contexto para el dispositivo dado.|
+|[[fivewin_funcion_CreateWindow |CreateWindow()]]|Crea una ventana overlapped, pop-up or child. |
+|[[fivewin_funcion_Ctl3dlook |Ctl3dlook()]]|Hace 3D cualquier control. |
+|[[fivewin_funcion_CtrlDrawFocus |CtrlDrawFocus()]]|Dibuja el contorno de un control en la forma de diseño. |
+|[[fivewin_funcion_defwindowproc|Defwindowproc()]]|Llama al procedimiento predeterminado de la ventana.|
+|[[fivewin_funcion_deletedc|Deletedc()]]|Elimina el dispositivo de contexto dado.|
+|[[fivewin_funcion_deleteenhmetafile|Deleteenhmetafile()]]|Elimina un manejador de metaarchivo de formato mejorado.|
+|[[fivewin_funcion_deletemetafile|Deletemetafile()]]|Borra el manejador del metaarchivo dado.|
+|[[fivewin_funcion_deleteobject|Deleteobject()]]|Elimina un objeto de la memoria liberando todos los recursos.|
+|[[fivewin_funcion_destroywindow|Destroywindow()]]|Destruye la ventana especificada.|
+|[[fivewin_funcion_EnableWindow |EnableWindow()]]|Habilita o deshabilita la actividad del teclado y el mouse.|
+|[[fivewin_funcion_EndPaint |EndPaint()]]|Finaliza el pintado de la ventana.|
+|[[fivewin_funcion_Findwindow |Findwindow()]]|Busca una ventana y su manejador.|
+|[[fivewin_funcion_getactivewindow|Getactivewindow()]]|Recupera el manejador de la ventana activa.|
+|[[fivewin_funcion_getallwin|Getallwin()]]|Devuelve un arreglo con todos los objeto ventana creados por nuestra aplicación.|
+|[[fivewin_funcion_getcaretpos|Getcaretpos()]]|Recupera la posición actual del signo de intercalación.|
+|[[fivewin_funcion_getclassinfo|Getclassinfo()]]|Recupera la información de una clase ventana.|
+|[[fivewin_funcion_getclassname|Getclassname()]]|Recupera el nombre de una clase ventana.|
+|[[fivewin_funcion_getclientrect|Getclientrect()]]|Recupera las coordenadas cliente de una ventana.|
+|[[fivewin_funcion_getcoors|Getcoors()]]|Devuelve un arreglo con los valores de las cuatro coordenadas.|
+|[[fivewin_funcion_getctrlid|Getctrlid()]]|Devuelve un identificador de una ventana hija.|
+|[[fivewin_funcion_getdc|Getdc()]]|Devuelve el manejador de un dispositivo de contexto|
+|[[fivewin_funcion_getdesktopwindow|Getdesktopwindow()]]|Recupera el manejador de la ventana del escritorio.|
+|[[fivewin_funcion_getfocus|Getfocus()]]|Recupera el manejador de la ventana que tiene el foco.|
+|[[fivewin_funcion_getframeproc|Getframeproc()]]|Provee el proceso predeterminado para cualquier mensaje de Windows.|
+|[[fivewin_funcion_getgridsize|Getgridsize()]]|Obtiene el tamaño de la cuadricula en la ventana de diseño.|
+|[[fivewin_funcion_gethwnd32|Gethwnd32()]]|Convierte un manejador de ventana de 16 a 32 bits|
+|[[fivewin_funcion_getmapmode|Getmapmode()]]|Recupera el modo de mapeo actual.|
+|[[fivewin_funcion_getmetabit|Getmetabit()]]|Devuelve un metaarchivo que contiene un mapa de bits.|
+|[[fivewin_funcion_getmetafile|Getmetafile()]]|Crea un Metaarchivo.|
+|[[fivewin_funcion_getparent|Getparent()]]|Recupera el manejador de la ventana padre.|
+|[[fivewin_funcion_getprop|Getprop()]]|Recupera le manejador de la lista de propiedades de Windows.|
+|[[fivewin_funcion_getscrollpos|Getscrollpos()]]|Obtiene la posición de la barra de desplazamiento.|
+|[[fivewin_funcion_getscrollrange|Getscrollrange()]]|Obtiene el rango de desplazamiento de la barra.|
+|[[fivewin_funcion_getwindow|Getwindow()]]|Obtiene el manejado de la ventana que tiene relación con la ventana especificada.|
+|[[fivewin_funcion_getwindowlong|Getwindowlong()]]|Recupera información de la ventana especificada.|
+|[[fivewin_funcion_getwindowtext|Getwindowtext()]]|Devuelve el encabezado de una ventana o control.|
+|[[fivewin_funcion_getwindowword|Getwindowword()]]|Recupera un valor palabra desde el inicio especificado.|
+|[[fivewin_funcion_getwinflags|Getwinflags()]]|Recupera la configuración actual de la memoria y de Windows.|
+|[[fivewin_funcion_getwintxtlength|Getwintxtlength()]]|Longitud del texto dentro de un control get multilínea.|
+|[[fivewin_funcion_getwndapp|Getwndapp()]]|Devuelve el objeto ventana principal de la aplicación FiveWin.|
+|[[fivewin_funcion_getwnddefault|Getwnddefault()]]|Recupera la ventana predeterminada actual.|
+|[[fivewin_funcion_getwndframe|Getwndframe()]]|Devuelve la ventana marco principal de la aplicación FiveWin.|
+|[[fivewin_funcion_getwndrect|Getwndrect()]]|Recupera todas las coordenadas del área de la ventana.|
+|[[fivewin_funcion_getwndtask|Getwndtask()]]|Recupera la ventana asociada al manejador de la tarea.|
+|[[fivewin_funcion_globaladdatom|Globaladdatom()]]|Agrega una cadena a la tabla atom del sistema de Window.|
+|[[fivewin_funcion_helpctrlhwnd|Helpctrlhwnd()]]|Obtiene el manejador de la ventana WinHelp.|
+|[[fivewin_funcion_hidecaret|Hidecaret()]]|Oculta el cursor de edición de la pantalla.|
+|[[fivewin_funcion_invalidaterect|Invalidaterect()]]|Obliga el repintado de un rectángulo.|
+|[[fivewin_funcion_ischild|Ischild()]]|Verifica si una ventana es hija de otra dada..|
+|[[fivewin_funcion_isdefbutton|Isdefbutton()]]|Verifica si es el botón por defecto|
+|[[fivewin_funcion_isiconic|Isiconic()]]|Verifica si una ventana esta iconizada|
+|[[fivewin_funcion_iswindow|Iswindow()]]|Verifica si el manejador identifica una ventana existente.|
+|[[fivewin_funcion_iswindowenabled|Iswindowenabled()]]|Verifica si una ventana esta habilitada.|
+|[[fivewin_funcion_iswindowvisible|Iswindowvisible()]]|Verifica si una ventana está visible.|
+|[[fivewin_funcion_iszoomed|Iszoomed()]]|Verifica si una ventana está maximizada.|
+|[[fivewin_funcion_makewin|Makewin()]]|Genera una ventana para encriptar y desencriptar.|
+|[[fivewin_funcion_mdictrladjust|Mdictrladjust()]]|Ajusta oControl a su área MdiChild.|
+|[[fivewin_funcion_mdirecedit|Mdirecedit()]]|Browse en una ventana MDIChild.|
+|[[fivewin_funcion_moveget|Moveget()]]|Establece el rectángulo de formato de un control edit multilínea.|
+|[[fivewin_funcion_moveto|Moveto()]]|Cambia las coordenadas de pintado.|
+|[[fivewin_funcion_movewindow|Movewindow()]]|Cambia la posición / dimensión de una ventana.|
+|[[fivewin_funcion_nwindows|Nwindows()]]|Número de ventanas creadas por la aplicación.|
+|[[fivewin_funcion_nwndchrheight|Nwndchrheight()]]|Altura de la línea en Function de cierta fuente.|
+|[[fivewin_funcion_nwrow|Nwrow()]]|Devuelve cierto número de renglón de una ventana.|
+|[[fivewin_funcion_nwrows|Nwrows()]]|Devuelve el número de renglones de una ventana.|
+|[[fivewin_funcion_peekmessage|Peekmessage()]]|Extrae un mensaje de la cola de mensajes.|
+|[[fivewin_funcion_playenhmetafile|Playenhmetafile()]]|Despliega la imagen almacenada en el metaarchivo de formato mejorado especificado.|
+|[[fivewin_funcion_playmetafile|Playmetafile()]]|Pinta el contenido del meta archivo en un HDC|
+|[[fivewin_funcion_postmessage|Postmessage()]]|Coloca un mensaje al final de la cola de mensajes.|
+|[[fivewin_funcion_postquitmessage|Postquitmessage()]]|Finalización genérica de la Function.|
+|[[fivewin_funcion_releasedc|Releasedc()]]|Termina el uso de un dispositivo de contexto.|
+|[[fivewin_funcion_removeprop|Removeprop()]]|Remueve una ventana de propiedadpreviamente almacenada.|
+|[[fivewin_funcion_resetdc|Resetdc()]]|Actualiza el dispositivo de contexto dado.|
+|[[fivewin_funcion_restoredc|Restoredc()]]|Restaura un dispositivo de contexto a su antiguo valor.|
+|[[fivewin_funcion_restproc|Restproc()]]|Restaura a procedimiento de ventana -usado internamente-|
+|[[fivewin_funcion_savedc|Savedc()]]|Salva un dispositivo de contexto específico.|
+|[[fivewin_funcion_scrollwindow|Scrollwindow()]]|Desplaza una región de una ventana.|
+|[[fivewin_funcion_selectobject|Selectobject()]]|Selecciona un objeto GDI para usarlo en un dispositivo de contexto.|
+|[[fivewin_funcion_sendmessage|Sendmessage()]]|Envía un mensaje Windows a una ventana.|
+|[[fivewin_funcion_set3dlook|Set3dlook()]]|Establece el efecto visual 3d.|
+|[[fivewin_funcion_setactivewindow|Setactivewindow()]]|Cambia la actual ventana activa.|
+|[[fivewin_funcion_setbkmode|Setbkmode()]]|Establece el modo de fondo|
+|[[fivewin_funcion_setcaretpos|Setcaretpos()]]|Establece la posición del signo de inserción.|
+|[[fivewin_funcion_setclassword|Setclassword()]]|Cambia el valor palabra de una ventana|
+|[[fivewin_funcion_setdeskwallpaper|Setdeskwallpaper()]]|Cambia la imagen del escritorio.|
+
+====== Win32 Common Controls ======
+^Function^Description^
+|[[fivewin_function_headerget|Headerget()]]|Retrieves the item of a header control|
+|[[fivewin_function_headerins|Headerins()]]|Insert a new item in a header control|
+|[[fivewin_function_headerlayout|Headerlayout()]]|Retrieves the correct size and position of a header control within the|
+|[[fivewin_function_headerset|Headerset()]]|Set the attributes of the specified item in a header control|
+|[[fivewin_function_iladd|Iladd()]]|Adds an image or images to an image list|
+|[[fivewin_function_iladdicon|Iladdicon()]]|Adds an icon or cursor to an image list|
+|[[fivewin_function_iladdmasked|Iladdmasked()]]|Adds an image or images to an image list, generating a mask from the|
+|[[fivewin_function_ilcreate|Ilcreate()]]|Creates a new image list|
+|[[fivewin_function_ildestroy|Ildestroy()]]|Destroys an image list|
+|[[fivewin_function_illoadimage|Illoadimage()]]|Creates an image list from the specified bitmap|
+|[[fivewin_function_ilsetbkcolor|Ilsetbkcolor()]]|Sets the background color for an image list|
+|[[fivewin_function_lvinsertitem|Lvinsertitem()]]|Inserts a new item in a list view control|
+|[[fivewin_function_propsheet|Propsheet()]]|Activates a property sheet|
+|[[fivewin_function_setdatepick|Setdatepick()]]|Sets the date of the DatePicker control|
+|[[fivewin_function_TabCtrlAdd |TabCtrlAdd()]]|Add a page to tabstrip control |
+|[[fivewin_function_TabCtrl_AdjustRect |TabCtrl_AdjustRect()]]|Calcula el área para desplegar el control Tab. |
+|[[fivewin_function_TabCtrl_GetCurSel |TabCtrl_GetCurSel()]]|Determina la etiqueta actual seleccionada en el control Tab. |
+|[[fivewin_function_TabCtrl_HitTest |TabCtrl_HitTest()]]|Determina cual etiqueta, si alguna está en un posición específica de la pantalla. |
+|[[fivewin_function_TabCtrl_SetCurSel |TabCtrl_SetCurSel()]]|Elige una etioqueta en un control Tab. |
+|[[fivewin_function_TabDelAllItems |TabDelAllItems()]]|Remueve todos los elementos de un control Tab. |
+|[[fivewin_function_TabGetRowCount |TabGetRowCount()]]|Recupera el número actual de renglones de etiquetas en un control Tab. |
+|[[fivewin_function_TabsPaint |TabsPaint()]]|Draw the tabs control |
+|[[fivewin_function_TvDelAllItems |TvDelAllItems()]]|Elimina todos los elementos de un control TreeView.|
+|[[fivewin_function_TvDeleteItem |TvDeleteItem()]]|Elimina un elemento y sus hijos de un control TreeView.|
+|[[fivewin_function_TvGetCheck |TvGetCheck()]]|Obtiene el estado de verificación del elemento especificado.|
+|[[fivewin_function_TvGetSelected |TvGetSelected()]]|Recupera el elemento actual seleccionado en un control TreeView.|
+|[[fivewin_function_TvGetSelText |TvGetSelText()]]|Recupera el texto del elemento actual seleccionado en un control TreeView.|
+|[[fivewin_function_TvHitTest |TvHitTest()]]|Determina la ubicación del punto especificado dentro del area cliente en un control TreeView.|
+|[[fivewin_function_TvInsertItem |TvInsertItem()]]|Inserta un elemento árbol en un control TreeView.|
+|[[fivewin_function_TvIParam |TvIParam()]]|Recupera el valor asociado a un elemento de un control TreeView.|
+|[[fivewin_function_TvSelect |TvSelect()]]|Selecciona el elemento especificado del control TreeView, desplaza el elemento en la vista o redibuja el elemento \\ en el estilo usado para indicar el destino de una operación arrastrar y pegar.|
+|[[fivewin_function_TvSetCheck |TvSetCheck()]]|Establece la imagen de estado a "marcado" o "desmarcado".|
+|[[fivewin_function_TvSetColor |TvSetColor()]]|Establece el color del texto y fondo de un control TreeView.|
+|[[fivewin_function_TvSetImageList |TvSetImageList()]]|Establece la lista de imágenes en un control TreeView.|
+|[[fivewin_function_TvSetItemText |TvSetItemText()]]|Establece el texto de un elemento en un control TreeView.|
+|[[fivewin_function_TvSetTextImage |TvSetTextImage()]]|Establece el mensaje de una imagen específica de un elemento de un control TreeView.|
+
+======Zip Files Management ======
+
+^Function^Description^
+^Function^Short Description^
+|[[fivewin_function_ZipBlock |ZipBlock()]]|Returns the size of a zip block|
+|[[fivewin_function_ZipFile |ZipFile()]]|Make the zip file |
+|[[fivewin_function_ZipMsg |ZipMsg()]]|Text message given automaticly|
+|[[fivewin_function_ZipName |ZipName()]]|Name of the file that is extracting now|
+|[[fivewin_function_ZipSize |ZipSize()]]|Size of the current extraction |
+|[[fivewin_function_ZipType |ZipType()]]|Type of messages about the zipping process|
+|[[fivewin_function_CloseZipFile |CloseZipFile()]]|Closes the ZIP file|
+|[[fivewin_function_getfirstinzip|Getfirstinzip()]]|Retrieves info for the first file in the ZIP file|
+|[[fivewin_function_getnextinzip|Getnextinzip()]]|Retrieves info for the next file in the ZIP file|
+|[[fivewin_function_iszip|Iszip()]]|Checks a valid ZIP file|
+|[[fivewin_function_lzcopyfile|Lzcopyfile()]]|Copy and expands a Windows compressed file|
+|[[fivewin_function_UnZipFile |UnZipFile()]]|UnZips a file from the ZIP file.|

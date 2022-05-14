@@ -1,0 +1,124 @@
+====== Class TWindow ======
+
+An object of class TWindow is used to create a GUI window for a FiveLinux application.  It also serves as the base class for most of the FiveLinux GUI classes.
+
+ ==== Inherits From ====
+
+No parent class.
+
+==== Inherited By ====
+
+[[TDialog]]
+[[TControl]] ( and its sub classes: TBar, TButton, TCheckbox, TClipboard, TCombobox, TFolder, TGet, TGroup, TImage, TListbox, TMenu, TMsgBar, TSay, TScrollbar, TWBrowse )
+
+==== Syntax ====
+
+=== Instantiation ===
+
+**DEFINE WINDOW** <oWnd> [ **TITLE** <cTitle> ] [ **MENU** <oMenu> ] [ **SIZE** <nWidth>, <nHeight> ]
+
+where:
+
+<oWnd> = the returned object of class TWindow \\
+<cTitle> = the title of the new window \\
+<oMenu> = the menu to be assigned to the new window \\
+<nWidth> = the width of the new window in pixels \\
+<nHeight> = the height of the new window in pixels
+ 
+=== Activation ===
+
+**ACTIVATE WINDOW** <oWnd> [ **VALID** <uValid> ] [ **ON** [ **LEFT** ] **CLICK** <uLClick> ] [ **ON RIGHT CLICK** <uRClick> ] [ **ON INIT** <uInit> ] [ **MAXIMIZED** ] 
+
+where:
+
+<oWnd> = the TWindow object to be activated \\
+<uValid> = a code block to be evaluated when the TWindow object attempts to close \\
+<uLClick> = a code block to be evaluated when the user clicks the left mouse button on the TWindow object \\
+<uRClick> = a code block to be evaluated when the user clicks the right mouse button on the TWindow object \\
+<uInit> = a code block to be evaluated when the TWindow object is created
+
+==== Properties ====
+
+
+^Type ^Defined In ^Name ^Type ^Description^
+|DATA|TWindow|**hWnd**|handle|An internal handle of the window, dialog or control|
+|DATA|TWindow|**oWnd**|object|The container parent window or dialog|
+|DATA|TWindow|**oMenu**|object|The pulldown menu object if defined|
+|DATA|TWindow|**oPopup**|object|The popup menu object if defined|
+|DATA|TWindow|**oMsgBar**|object|The message bar object if defined|
+|DATA|TWindow|**aControls**|array|An array with all the child controls objects|
+|DATA|TWindow|**bValid**|codeblock|Evaluated to allow the close or focus loose on controls|
+|DATA|TWindow|**bLClicked**|codeblock|Evaluate when the mouse is L clicked|
+|DATA|TWindow|**bLDblClick**|codeblock|Evaluated when the mouse is L double clicked|
+|DATA|TWindow|**bRClicked**|codeblock|Evaluated when the mouse is R clicked|
+|DATA|TWindow|**bRDblClick**|codeblock|Evaluated when the mouse is R double clicked|
+|DATA|TWindow|**bReSized**|codeblock|Evaluated when the window is resized|
+|DATA|TWindow|**bKeyDown**|codeblock|Evaluated when a key is pressed|
+|DATA|TWindow|**bLostFocus**|codeblock|Evaluated when the focus is lost|
+|DATA|TWindow|**bInit**|codeblock|Evaluated when the window is created|
+|DATA|TWindow|**cargo**|variant|User defined cargo value|
+|static|TWindow|**aWindows**|array|  |  
+|static|TWindow|**oWndDefault**|object|  |  
+
+
+==== Methods ====
+
+
+^Type^Defined In^Name^Details^
+|CONSTRUCTOR|TWindow|**New(** <cTitle>, <oMenu>, <nWidth>, <nHeight>) --> self |Creates a new TWindow object with title <cTitle> menu <oMenu> <nWidth> pixels wide and <nHeight> pixels high. It returns a pointer to the newly instantiated object.|
+|METHOD|TWindow|**Activate**(<bValid>, <bLClicked>, <bRClicked>, <lMaximized>, <bInit> --> nil|Activates the window. <bValid> will be evaluated when there is an attempt to close the window, <bLClicked>  when the left mouse button is clicked, <bRClicked> on the right mouse button. If <lMaximised> is  .T. the window will be created maximised|
+|INLINE METHOD|TWindow|**AddControl**(<oCtrl>)--> self ???|Adds the control <oCtrl> to the window|
+|METHOD|TWindow|**AEvalWhen**() --> nil|Evaluates the WHEN condition of all the object's child controls|
+|INLINE METHOD|TWindow|**Center**() --> ???|Centers the window on the screen|
+|INLINE METHOD|TWindow|**_cToolTip**(<cText>) --> ???|Sets the associated tooltip text for the object to <cText>|
+|INLINE METHOD|TWindow|**Disable()** --> ???|Disable the window / dialog / control|
+|INLINE METHOD|TWindow|**Enable()** --> ???|Enable the window / dialog / control|
+|METHOD|TWindow|**End**() --> lEnd|Attempts to close the window / dialog / control and returns .T. if successful, otherwise .F.|
+|METHOD|TWindow|**HandleEvent**(<nMsg>, <nWParam>, <nLParam>) --> nil|Handles events passed back from GTK+. <nMessage> is the event with parameters <nWParam> and  <nLParam>|
+|INLINE METHOD|TWindow|**Hide**() --> ???|Hide the window / dialog / control|
+|INLINE METHOD|TWindow|**LButtonDown**() --> ???|Invokes the Left Button Down Code Block|
+|INLINE METHOD|TWindow|**lFocused**() --> <lHasFocus>|Returns .T. if the window / dialog / control has the focus|
+|METHOD|TWindow|**Link**() --> nil|Adds the window / dialog / control to the aWindows array|
+|INLINE METHOD|TWindow|**Maximize**() --> ???|Maximize the window / dialog / control|
+|INLINE METHOD|TWindow|**nLeft**() --> <nPixLeft>|Returns the left coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow|**nHeight**() --> <nPixHeight>|Returns the height of the window / dialog / control|
+|INLINE METHOD|TWindow|**nTop**() --> <nPixTop>|Returns the top coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow|**nWidth**() --> <nPixWidth>|Returns the width of the window / dialog / control|
+|INLINE METHOD|TWindow|**RButtonDown**() --> ???|Invokes the Right Button Down Code Block|
+|INLINE METHOD|TWindow|**Refresh**() --> ???|Refreshes the window / dialog / control|
+|METHOD|TWindow|**Resize**(<nSizeType>, <nWidth>, <nHeight>) --> nil|Resizes the window / dialog / control to <nWidth> pixels wide by <nHeight> pixels high|
+|INLINE METHOD|TWindow|**SetFocus**() --> ???|grabs the focus for the window / dialog / control|
+|METHOD|TWindow|**SetMenu**(<oMenu>) --> nil|Adds menu object <oMenu> to the window / dialog / control|
+|INLINE METHOD|TWindow|**SetText**(<cText>) --> ???|Sets the text for the window / dialog / control to <cText>|
+|INLINE METHOD|TWindow|**Show()** --> ???|Displays the window / dialog / control|
+|INLINE METHOD|TWindow|**Update**() --> ???|Updates children of the window / dialog / control|
+
+
+
+
+
+
+
+
+
+
+
+==== Example ====
+<code clipper>
+   #include "FiveLinux.ch"
+
+   function Main()
+
+      local oWnd
+   
+      DEFINE WINDOW oWnd TITLE "Testing controls"
+   
+      @ 3, 2 BUTTON "OK" OF oWnd ACTION MsgAlert( "FiveLinux power!" )
+   
+      ACTIVATE WINDOW oWnd ;
+         VALID MsgYesNo( "Are you sure ?" )
+      
+   return nil
+</code>
+
+{{Example5L1.png}}

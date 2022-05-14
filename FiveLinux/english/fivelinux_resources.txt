@@ -1,0 +1,11 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+
+Using predefined stock items from GTK:
+
+http://developer.gnome.org/gtk/2.24/gtk-Stock-Items.html
+
+example:
+
+<code clipper>
+DEFINE BUTTON OF oBar PROMPT "Save" RESOURCE "gtk-save"
+</code>

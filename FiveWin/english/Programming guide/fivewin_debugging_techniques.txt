@@ -1,0 +1,15 @@
+Based on our experience in Windows programming with FiveWin and the experience of our users, we recommend how to debug your applications:
+
+**1.** As the process of compiling and linking is extremely fast and as we have to do many, many times (as often as necessary). This is our first recommendation: Test each additional piece you add to your program. It will be easier to remember and understand what were the reasons for any wrong doing. Do not add large portions of code without testing it, try it as much as you need it regularly.
+
+**2.** Debugging an event system that has been programmed with OOP technology is quite difficult using a debugger. Will go crazy just trying to follow some simple steps. The debugger is only the last option when you are completely lost and often not helpful.
+
+**3.** Use MsgInfo () to put some lights to stop the execution, where you can check some values ​​that might confirm what you think you are doing the program. 80% of the cleaning we do is based on MsgInfo(), for monitoring and verifying values.
+
+**4.** FiveWin Error.log generates a file that might help you get more information about what is happening. Check it! You may find some useful information that will help.
+
+**5.** This is the golden rule: Dude systematically, even what you thinks is safe. Failures are always placed where we could never imagine. The faults are faults of logic, that our brain is not considered. Failures can cause you to lose your precious time. Dude, check everything, but do not lose your head! As soon as you have the feeling that there's nothing else I can do, contact us below! Fast! Don't go crazy!
+
+**6.** A professional programmer always has an incredible intuition. Do not know why, but you can be sure about something. Follow your intuition. Relax, calm your mind and let your intuition brings something magical. Intuition is not logic, is the opposite side of the brain <g> not force! Go and take a nap. It may be that when you wake up magically find the solution! Yes! ZEN is the programming!
+
+We designed it and programmed it ! so for us it is much easier to find a fault. Ask for help! We could solve the problem in minutes what you could take weeks, too, might be our fault! So do not fight with it, just ask us for support!

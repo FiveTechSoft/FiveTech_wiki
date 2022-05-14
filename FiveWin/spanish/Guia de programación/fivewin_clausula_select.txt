@@ -1,0 +1,58 @@
+Los navegadores de FiveWin incluyen una característica poderosa que no spermite recuperar una parte de la base de datos de forma similar a como lo hace un FILTER, pero basado en índices lo que lo hace extremadamente rápido y eficiente (SET FILTER de Clipper no debe usarse en bases de datos medianas o grandes). Los RDDs avanzados de Clipper como Comix o SixDriver tienen algunas caracterísiticas que permiten resultados similares. De cualquier forma decidimos mantener la cláusula SELECT para usuarios estándar de Clipper.
+
+Veamos un ejemplo de su uso: Suponga que tiene una base de datos de clientes indizada por surname. Supongamos que justo quiere revisar clientes cuyo nombre inicie con  L, M, N. entonces haga:
+<code clipper>
+REDEFINE LISTBOX oBrw FIELDS Surname, Address, ...
+ ... SELECT Surname FOR "L" TO "N" ...
+</code>
+Esto hará que el browse solo muestre surnames desde "L" hasta la "N" .
+
+Los llamamos índices filtrados y los manejamos usando la cláusula LISTBOX ... FIELDS ... SELECT ... :
+
+<code clipper>
+... 
+SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ;
+...
+</code>
+Básicamente lo que FiveWin hace es un SEEK del <uValue1> cuando vaya a TOP: para encontrar el primer elemento a mostrarse. Si <uValue2> se proporciona (es opcional) hacemos un SEEK del <uValue2> cuando vaya a BOTTOM: (para encontrar el último elemento a mostrarse). Si <uValue2> no se proporciona entonces usamos el siguiente valor del índice para detener los registros mostrados.
+
+Desde <uValue1> a <uValue2> (si está definido) verificamos que <cField> esté incluido en ese rango.
+
+Para hacer que esta cláusula poderosa trabaje apropiadamente es necesario cumplir con ciertos requerimientos:
+
+·	La base de datos mostrada en el navegador ( LISTBOX ... FIELDS ... ) debe estar indexada y la llave activa debe ser la misma que <uValue1> se va a buscar. Por favor verifique cuidadosamente los tipo de la expresión del índice y el tipo de <uValue1> y <uValue2> (si define este último).
+
+·	FiveWin no verifica si <uValue1> existe. Esto es muy importante: Tiene que verificarlo usted mismo: Cómo ? Solo haga un SEEK <uValue1>. Si existe ( If Find() ) entonces continúe con el browse.  Hay muchas conductas predeterminadas posibles cuando <uValue1> no se encuentra, esto es porque tenemos que decidir, que es su responsabilidad decidir que hacer si <uValue1> no se encuentra.
+
+FiveWin también ofrece un método :SetFilter() para cambiar dinamicamente la SELECTion actual , sin tener que crear nuevamente la caja de diálogo (o la ventana):
+
+<code clipper>
+:SetFilter( <cExpression>, <uValue1>, [<uValue2>] )
+</code>
+Sample:
+
+El browse que tenemos definido con:
+
+<code clipper>
+SELECT StrZero( Page, 3 ) + StrZero(  1, 4 ) ;
+FOR StrZero( nPage, 3 ) + StrZero(    1, 4 ) ;
+TO  StrZero( nPage, 3 ) + StrZero( 9999, 4 ) ;
+</code>
+y luego hacemos:
+
+(previamente, hemos cambiado el valor de las variables Page y nPage)
+
+<code clipper>
+
+oBrw:SetFilter( "StrZero( Page, 3 ) + StrZero( 1, 4 )",;
+
+StrZero( nPage, 3 ) + StrZero( 1, 4 ),;
+StrZero( nPage, 3 ) + StrZero( 9999, 4 ) )
+
+oBrw:GoTop()
+oBrw:Refresh()
+</code>
+
+Esta cláusula ha sido extensamente probada y garantizamos su funcionamiento apropiado. Si no obtiene un comportamiento apropiado podría ser que no lo esté usando adecuadamente. Por favor revise su código y verifique todas las reglas que mostramos aquí que deben observarse en su código.
+
+Si tiene una comportamiento extraño es un claro signo que tiene otros problemas. Le ofrecemos un ejemplo extensamente funcional en el IDE\SOURCE\DOC.prg. Revíselo y verá como obtener todo el poder de esta cláusula realmente útil.

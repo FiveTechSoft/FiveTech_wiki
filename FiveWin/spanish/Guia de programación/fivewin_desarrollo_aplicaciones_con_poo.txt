@@ -1,0 +1,73 @@
+Basándonos en el hecho de que FiveWin integra su propio motor de orientación a objeto, es posible crear todas las nuevas clases que necesite para diseñar aplicaciones basadas en una auténtica POO.
+
+ 
+
+La principal ventaja de codificar usando POO es que la modularidad de las aplicaciones crece considerablemente, por lo que están mejor estructuradas y puede codificar mucho más manteniendo una organización mejor y más simple.
+
+¿Cómo puede crear código POO correcto? La clave está en reconocer los ‘objetos’ de su código. Y sólo con la práctica, podrá reconocer esos objetos fácilmente. Una vez que empiece a reconocerlos, su código se volverá cada vez más POO.
+
+ 
+
+¿Cómo puede reconocer un objeto? Examine las variables que utiliza. Si algunas variables están claramente relacionadas con diferentes aspectos de lo 'mismo', es muy probable que allí exista un objeto:
+
+<code clipper>
+      local cLastName, cAddress, nAge
+</code>
+ 
+
+Es fácil comprobar que pertenecen a un cliente, por lo que puede crear una nueva clase TCustomer:
+
+ 
+
+<code clipper>
+      CLASS TCustomer
+
+      DATA cLastName, cAddress, nAge
+
+      ..
+
+      ENDCLASS
+</code>
+
+ 
+
+Por tanto, su código cambiaría de la siguiente forma:
+
+ 
+<code clipepr>
+      local oCustomer := TCustomer():New()
+</code>
+
+ 
+
+y las asignaciones se harían:
+
+ 
+<code clipper>
+      oCustomer:cAddress= ...
+
+      oCustomer:nAge= ...
+</code>
+
+ 
+
+Ahora que ya ha reconocido un objeto su código resulta más simple.
+
+ 
+
+Es fácil identificar varias acciones que es posible ejecutar sobre los objetos TCustomer. Estas acciones se convierten en métodos: 
+
+ 
+
+| |CLASS TCustomer|
+| |DATA cLastName, cAddress, nAge|
+|function NewCustomer() --->| METHOD New()|
+|function EditCustomer()--->| METHOD Edit()|
+|function DelCustomer() --->| METHOD Del()|
+|  |ENDCLASS |
+
+ 
+
+ 
+
+ 

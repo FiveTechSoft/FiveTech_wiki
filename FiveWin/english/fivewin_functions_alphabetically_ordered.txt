@@ -1,0 +1,856 @@
+====== A ======
+
+|[[fivewin_function_AAt |AAt()]]|Returns the position of a string from an array of strings| 
+|[[fivewin_function_AbortDoc |AbortDoc()]]|Stop a print job |
+|[[fivewin_function_aBrwPosRect |aBrwPosRect()]]|To calculate coordinates of the edition cell in a Browse| 
+|[[fivewin_function_Accept |Accept()]]|It accepts a connection in a socket|
+|[[fivewin_function_AddFontResource |AddFontResource()]]|Adds a new font to the Windows font table. This function add a font resource to the Windows font table. Any application can then use the font| 
+|[[fivewin_function_aDrives |aDrives()]]|It returns an array with all the valid drives ids|
+|[[fivewin_function_aFindFile |aFindFile()]]|It locates files recursivity from a certain path| 
+|[[fivewin_function_aGetWorkAreas |aGetWorkAreas()]]|Returns an array with all available work areas|
+|[[fivewin_function_AnsiToOem |AnsiToOem()]]|Translates a Windows string into the OEM MsDos| 
+|[[fivewin_function_Alert |Alert()]]|Windows equivalent Clipper Alert function|
+|[[fivewin_function_aMidiDevices |aMidiDevices()]]| ... |
+|[[fivewin_function_AnsiLower |AnsiLower()]]| ... |
+|[[fivewin_function_AnsiUpper |AnsiUpper()]]| ... |
+|[[fivewin_function_aOData |aOData()]]| ... |
+|[[fivewin_function_AppendMenu |AppendMenu()]]| ... |
+|[[fivewin_function_Arc |Arc()]]| ... |
+|[[fivewin_function_ARead |ARead()]]| ... |
+|[[fivewin_function_Arg |Arg()]]| ... |
+|[[fivewin_function_ASave |ASave()]]| ... |
+|[[fivewin_function_ASend |ASend()]]| ... |
+|[[fivewin_function_aTcBrwPosRec |aTcBrwPosRec()]]| ... |
+|[[fivewin_function_aTreeBmps |aTreeBmps()]]| ... |
+|[[fivewin_function_AuxGetCaps |AuxGetCaps()]]| ... |
+|[[fivewin_function_AuxGetDev |AuxGetDev()]]| ... |
+|[[fivewin_function_Auxgetvol |Auxgetvol()]]| ... |
+|[[fivewin_function_Auxsetvol |Auxsetvol()]]| ... |
+
+
+
+====== B ======
+|[[fivewin_function_B2Bin |B2Bin()]]|Converts a byte into a string 1 byte len|
+|[[fivewin_function_BarAdjust |BarAdjust()]]| ... |
+|[[fivewin_function_Barinvert |Barinvert()]]| ... |
+|[[fivewin_function_Barpaint |Barpaint()]]| ... |
+|[[fivewin_function_BeginPaint |BeginPaint()]]| ... |
+|[[fivewin_function_Bin2d |Bin2d()]]| ... |
+|[[fivewin_function_Bindtoport |Bindtoport()]]| ... |
+|[[fivewin_function_Bitblt |Bitblt()]]| ... |
+|[[fivewin_function_BringWindowToTop|BringWindowToTop()]]| ... |
+|[[fivewin_function_Browse |Browse()]]| ... |
+|[[fivewin_function_Btndisable |Btndisable()]]| ... |
+|[[fivewin_function_BtnPaint |BtnPaint()]]| ... |
+|[[fivewin_function_BuildCommDCB |BuildCommDCB()]]| ... |
+
+
+
+
+====== C ======
+|[[fivewin_function_C2Hex |C2Hex()]]|Converts a byte into a hex string (2 chars)|
+|[[fivewin_function_CallDll |CallDll()]]|Calls a function placed into a DLL|
+|[[fivewin_function_Calldll32 |Calldll32()]]| ... |
+|[[fivewin_function_CallWindowProc |CallWindowProc()]]| ... |
+|[[fivewin_function_cArgV |cArgV()]]| ... |
+|[[fivewin_function_cChr2Data |cChr2Data()]]| ... |
+|[[fivewin_function_cCtrl2Chr |cCtrl2Chr()]]| ... |
+|[[fivewin_function_cDlg2Chr |cDlg2Chr()]]| ... |
+|[[fivewin_function_cFileDisk |cFileDisk()]]| ... |
+|[[fivewin_function_cFileExt |cFileExt()]]| ... |
+|[[fivewin_function_cFileMask |cFileMask()]]| ... |
+|[[fivewin_function_cFileName |cFileName()]]| ... |
+|[[fivewin_function_cFileNoExt |cFileNoExt()]]| ... |
+|[[fivewin_function_cFileNoPath |cFileNoPath()]]| ... |
+|[[fivewin_function_cFilePath |cFilePath()]]| ... |
+|[[fivewin_function_cFileSubDir |cFileSubDir()]]| ... |
+|[[fivewin_function_cFreadLine |cFreadLine()]]| ... |
+|[[fivewin_function_cGetDir |cGetDir()]]| ... |
+|[[fivewin_function_cGetDir32 |cGetDir32()]]| ... |
+|[[fivewin_function_cGetExpression |cGetExpression()]]| ... |
+|[[fivewin_function_cGetFile |cGetFile()]]| ... |
+|[[fivewin_function_cGetFile32 |cGetFile32()]]| ... |
+|[[fivewin_function_cGetNewAlias |cGetNewAlias()]]| ... |
+|[[fivewin_function_ChangeProc |ChangeProc()]]| ... |
+|[[fivewin_function_Checkmenu |Checkmenu()]]| ... |
+|[[fivewin_function_CheckMenuItem |CheckMenuItem()]]| ... |
+|[[fivewin_function_ChildLevel |ChildLevel()]]| ... |
+|[[fivewin_function_ChildWindowFromPoint |ChildWindowFromPoint()]]| ... |
+|[[fivewin_function_Childwindow|Childwindow()]]| ... |
+|[[fivewin_function_ChooseColor |ChooseColor()]]| ... |
+|[[fivewin_function_ChooseFont |ChooseFont()]]| ... |
+|[[fivewin_function_Chord |Chord()]]| ... |
+|[[fivewin_function_ClassCreate |ClassCreat()]]| ... |
+|[[fivewin_function_ClientIp |ClientIp()]]| ... |
+|[[fivewin_function_ClientToScreen |ClientToScreen()]]| ... |
+|[[fivewin_function_CloseClipboard |CloseClipboard()]]| ... |
+|[[fivewin_function_CloseComm |CloseComm()]]| ... |
+|[[fivewin_function_CloseMetafile |CloseMetafile()]]| ... |
+|[[fivewin_function_CloseSocket |CloseSocket()]]| ... |
+|[[fivewin_function_CloseWindow |CloseWindow()]]| ... |
+|[[fivewin_function_CloseZipFile |CloseZipFile()]]| ... |
+|[[fivewin_function_cMDIStruct |cMDIStruct()]]| ... |
+|[[fivewin_function_cMimeDec |cMimeDec()]]| ... |
+|[[fivewin_function_cMimeEnc |cMimeEnc()]]| ... |
+|[[fivewin_function_cNewFileName |cNewFileName()]]| ... |
+|[[fivewin_function_cNtxKey |cNtxKey()]]| ... |
+|[[fivewin_function_ColorsQty |ColorsQty()]]| ... |
+|[[fivewin_function_CPUType |CPUType()]]| ... |
+|[[fivewin_function_CreateCaret |CreateCaret()]]| ... |
+|[[fivewin_function_CreateCDC |CreateCDC()]]| ... |
+|[[fivewin_function_CreateDC |CreateDC()]]| ... |
+|[[fivewin_function_CreateDlgIndirect |CreateDlgIndirect()]]| ... |
+|[[fivewin_function_CreateFont |CreateFont()]]| ... |
+|[[fivewin_function_CreateHatch |CreateHatch()]]| ... |
+|[[fivewin_function_CreateHatchBrush |CreateHatchBrush()]]| ... |
+|[[fivewin_function_CreateMenu |CreateMenu()]]| ... |
+|[[fivewin_function_CreateOLEObject |CreateOLEObject()]]| ... |
+|[[fivewin_function_CreatePattern |CreatePattern()]]| ... |
+|[[fivewin_function_CreatePatternBrush |CreatePatternBrush()]]| ... |
+|[[fivewin_function_CreatePen |CreatePen()]]| ... |
+|[[fivewin_function_CreatePopUpMenu |CreatePopUpMenu()]]| ... |
+|[[fivewin_function_CreateSolidBrush |CreateSolidBrush()]]| ... |
+|[[fivewin_function_CreateWindow |CreateWindow()]]| ... |
+|[[fivewin_function_cResToStr |cResToStr()]]| ... |
+|[[fivewin_function_cStrWord |cStrWord()]]| ... |
+|[[fivewin_function_cTempFile |cTempFile()]]| ... |
+|[[fivewin_function_CurDrive |CurDrive()]]| ... |
+|[[fivewin_function_Cursor |Cursor()]]| ... |   
+|[[fivewin_function_CursorArrow |CursorArrow()]]| ... |
+|[[fivewin_function_CursorCatch |CursorCatch()]]| ... |
+|[[fivewin_function_CursorDrag |CursorDrag()]]| ... |
+|[[fivewin_function_CursorHand |CursorHand()]]| ... |
+|[[fivewin_function_CursorIbeam |CursorIbeam()]]| ... |
+|[[fivewin_function_CursorNS |CursorNS()]]| ... |
+|[[fivewin_function_CursorSize |CursorSize()]]| ... |
+|[[fivewin_function_CursorStop |CursorStop()]]| ... |
+|[[fivewin_function_CursorWait |CursorWait()]]| ... |
+|[[fivewin_function_CursorWE |CursorWE()]]| ... |
+|[[fivewin_function_cValToChar |cValToChar()]]| ... |
+|[[fivewin_function_cWinVersion |cWinVersion()]]| ... |
+
+
+
+====== D ======
+|[[fivewin_function_D2bin |D2bin()]]|Converts a floating point number into a string|
+|[[fivewin_function_DbClearInd |DbClearInd()]]| ... |
+|[[fivewin_function_DbClearRel |DbClearRel()]]| ... |
+|[[fivewin_function_DbCloseAre |DbCloseAre()]]| ... |
+|[[fivewin_function_DbCommital |DbCommital()]]| ... |
+|[[fivewin_function_DbCopyStru |DbCopyStru()]]| ... |
+|[[fivewin_function_DbCreateIn |DbCreateIn()]]| ... |
+|[[fivewin_function_DbfCdx |DbfCdx()]]| ... |
+|[[fivewin_function_DbfCdxAx |DbfCdxAx()]]| ... |
+|[[fivewin_function_DbfNtx |DbfNtx()]]| ... |
+|[[fivewin_function_DbPx |DbPx()]]| ... |
+|[[fivewin_function_DbRLockLis |DbRLockLis()]]| ... |
+|[[fivewin_function_DbSelectAr |DbSelectAr()]]| ... |
+|[[fivewin_function_DbSetDefa |DbSetDefa()]]| ... |
+|[[fivewin_function_DbSetDrive |DbSetDrive()]]| ... |
+|[[fivewin_function_DbSetFilte |DbSetFilte()]]| ... |
+|[[fivewin_function_DbSetRelat |DbSetRelat()]]| ... |
+|[[fivewin_function_DbUnlockAl |DbUnlockAl()]]| ... |
+|[[fivewin_function_DbZap |DbZap()]]| ... |
+|[[fivewin_function_DDEAccessData |DDEAccessData()]]| ... |
+|[[fivewin_function_DDEAck |DDEAck()]]| ... |
+|[[fivewin_function_DDEclientt |DDEclientt()]]| ... |
+|[[fivewin_function_DDEClientTransaction |DDEClientTransaction()]]| ... |
+|[[fivewin_function_DDEcmpstri |DDEcmpstri()]]| ... |
+|[[fivewin_function_DDECmpStringHandles |DDECmpStringHandles()]]| ... |
+|[[fivewin_function_DDECommand |DDECommand()]]| ... |
+|[[fivewin_function_DDEconnect |DDEconnect()]]| ... |
+|[[fivewin_function_DDECreateDataHandle |DDECreateDataHandle()]]| ... |
+|[[fivewin_function_DDECreateStringHandle |DDECreateStringHandle()]]| ... |
+|[[fivewin_function_DDEDisconnect |DDEDisconnect()]]| ... |
+|[[fivewin_function_DDEdisconn |DDEdisconn()]]| ... |
+|[[fivewin_function_DDEfreedataHandle |DDEfreedataHandle()]]| ... |
+|[[fivewin_function_DDEFreeStringHandle|DDEFreeStringHandle()]]| ... |
+|[[fivewin_function_DDEGetCommand |DDEGetCommand()]]| ... |
+|[[fivewin_function_DDEGetData |DDEGetData()]]| ... |
+|[[fivewin_function_DDEInitialize|DDEInitialize()]]| ... |
+|[[fivewin_function_DDENameService|DDENameService()]]| ... |
+|[[fivewin_function_DDEQueryString|DDEQueryString()]]| ... |
+|[[fivewin_function_DDEServer |DDEServer()]]| ... |
+|[[fivewin_function_DDETerminate |DDETerminate()]]| ... |
+|[[fivewin_function_DDEUninitialize|DDEUninitialize()]]| ... |
+|[[fivewin_function_Decrypt |Decrypt()]]| ... |
+|[[fivewin_function_DefWindowProc|DefWindowProc()]]| ... |
+|[[fivewin_function_DelDbfMdx |DelDbfMdx()]]| ... |
+|[[fivewin_function_DeleteDC |DeleteDC()]]| ... |
+|[[fivewin_function_DeleteMetafile|DeleteMetafile()]]| ... |
+|[[fivewin_function_DeleteObject |DeleteObject()]]| ... |
+|[[fivewin_function_DelIniEntry|DelIniEntry()]]| ... |
+|[[fivewin_function_DelIniSection|DelIniSection()]]| ... |
+|[[fivewin_function_Delresource |Delresource()]]| ... |
+|[[fivewin_function_DelwndBrus |DelwndBrus()]]| ... |
+|[[fivewin_function_DestroyCursor |DestroyCursor()]]| ... |
+|[[fivewin_function_DestroyIcon|DestroyIcon()]]| ... |
+|[[fivewin_function_DestroyMenu |DestroyMenu()]]| ... |
+|[[fivewin_function_DestroyWindow |DestroyWindow()]]| ... |
+|[[fivewin_function_DeviceCapabilities|DeviceCapabilities()]]| ... |
+|[[fivewin_function_DevMode |DevMode()]]| ... |
+|[[fivewin_function_DialogBoxIndirect |DialogBoxIndirect()]]| ... |
+|[[fivewin_function_DibDraw |DibDraw()]]| ... |
+|[[fivewin_function_DibFromBitmap |DibFromBitmap()]]| ... |
+|[[fivewin_function_DibHeight |DibHeight()]]| ... |
+|[[fivewin_function_DibPalette |DibPalette()]]| ... |
+|[[fivewin_function_DibRead |DibRead()]]| ... |
+|[[fivewin_function_DibWidth |DibWidth()]]| ... |
+|[[fivewin_function_DibWrite |DibWrite()]]| ... |
+|[[fivewin_function_Ditbackgrd |Ditbackgrd()]]| ... |
+|[[fivewin_function_DlgFindText |DlgFindText()]]| ... |
+|[[fivewin_function_Dotsadjust |Dotsadjust()]]| ... |
+|[[fivewin_function_DPToLP |DPToLP()]]| ... |
+|[[fivewin_function_Draftmode |Draftmode()]]| ... |
+|[[fivewin_function_DragAccept |DragAccept()]]| ... |
+|[[fivewin_function_Dragfinish |Dragfinish()]]| ... |
+|[[fivewin_function_DragqueryPoint |DragqueryPoint()]]| ... |
+|[[fivewin_function_DrawBitmap |DrawBitmap()]]| ... |
+|[[fivewin_function_DrawFocusRect|DrawFocusRect()]]| ... |
+|[[fivewin_function_DrawGrayed |DrawGrayed()]]| ... |
+|[[fivewin_function_Drawgrid |Drawgrid()]]| ... |
+|[[fivewin_function_DrawIcon |DrawIcon()]]| ... |
+|[[fivewin_function_DrawMasked |DrawMasked()]]| ... |
+|[[fivewin_function_DrawMenuBar|DrawMenuBar()]]| ... |
+|[[fivewin_function_DrawMsgItem |DrawMsgItem()]]| ... |
+|[[fivewin_function_DrawText |DrawText()]]| ... |
+|[[fivewin_function_DupRecord |DupRecord()]]| ... |
+
+
+
+====== E ======
+|[[fivewin_function_EditCell |EditCell()]]|Cell edition in the TCBrowse|
+|[[fivewin_function_Ellipse |Ellipse()]]| ... |
+|[[fivewin_function_EmptyClipboard |EmptyClipboard()]]| ... |
+|[[fivewin_function_EnableCommNotification |EnableCommNotification ()]]| ... |
+|[[fivewin_function_EnableMenu |EnableMenu()]]| ... |
+|[[fivewin_function_EnableWindow |EnableWindow()]]| ... |
+|[[fivewin_function_Encrypt |Encrypt()]]| ... |
+|[[fivewin_function_EndDialog |EndDialog()]]| ... |
+|[[fivewin_function_Enddoc |Enddoc()]]| ... |
+|[[fivewin_function_Endmonitor |Endmonitor()]]| ... |
+|[[fivewin_function_EndPage |EndPage()]]| ... |
+|[[fivewin_function_EndPaint |EndPaint()]]| ... |
+|[[fivewin_function_EnumFontFamilies |EnumFontFamilies()]]| ... |
+|[[fivewin_function_Escape |Escape()]]| ... |
+|[[fivewin_function_EscapeComm |EscapeComm()]]| ... |
+|[[fivewin_function_ExitWindowsExec |ExitWindowsExec()]]| ... |
+|[[fivewin_function_ExitWnd |ExitWnd()]]| ... |
+|[[fivewin_function_ExtFloodFill|ExtFloodFill()]]| ... |
+|[[fivewin_function_ExtractIcon |ExtractIcon()]]| ... |
+|[[fivewin_function_ExtTextOut |ExtTextOut()]]| ... |
+
+
+====== F ======
+|[[fivewin_function_FAttrib |FAttrib()]]|Set new attributes to a file|
+|[[fivewin_function_ffMimeDec |ffMimeDec()]]| ... |
+|[[fivewin_function_ffMimeEnc |ffMimeEnc()]]| ... |
+|[[fivewin_function_Field |Field()]]| ... |
+|[[fivewin_function_FieldType |FieldType()]]| ... |
+|[[fivewin_function_FieldWbloc |FieldWbloc()]]| ... |
+|[[fivewin_function_Fillevent |Fillevent()]]| ... |
+|[[fivewin_function_FillRect |FillRect()]]| ... |
+|[[fivewin_function_FindExecut |FindExecut()]]| ... |
+|[[fivewin_function_FindResource |FindResource()]]| ... |
+|[[fivewin_function_FindText |FindText()]]| ... |
+|[[fivewin_function_Findwindow |Findwindow()]]| ... |
+|[[fivewin_function_FloodFill |FloodFill()]]| ... |
+|[[fivewin_function_FlushComm |FlushComm()]]| ... |
+|[[fivewin_function_fMimeDec |fMimeDec()]]| ... |
+|[[fivewin_function_fMimeEnc |fMimeEnc()]]| ... |
+|[[fivewin_function_FoldPaint |FoldPaint()]]| ... |
+|[[fivewin_function_Freelib32 |Freelib32()]]| ... |
+|[[fivewin_function_FreeLibrary |FreeLibrary()]]| ... |
+|[[fivewin_function_FSize |FSize()]]| ... |
+|[[fivewin_function_FWBitmap |FWBitmap()]]| ... |
+|[[fivewin_function_FWBrushes |FWBrushes()]]| ... |
+
+
+====== G ======
+|[[fivewin_function_GetActiveWindow |GetActiveWindow()]]|Retrieves the window handle of the active window|
+|[[fivewin_function_GetAllWin|GetAllWin()]]| ... |
+|[[fivewin_function_GetASyncKey |GetASyncKey()]]| ... |
+|[[fivewin_function_Getbkcolor |Getbkcolor()]]| ... |
+|[[fivewin_function_GetCapture |GetCapture()]]| ... |
+|[[fivewin_function_GetCaretPos |GetCaretPos()]]| ... |
+|[[fivewin_function_GetClassName |GetClassName()]]| ... |
+|[[fivewin_function_GetClientRect |GetClientRect()]]| ... |
+|[[fivewin_function_GetClpData |GetClpData()]]| ... |
+|[[fivewin_function_GetCommError |GetCommError()]]| ... |
+|[[fivewin_function_GetCoors |GetCoors()]]| ... |
+|[[fivewin_function_Getcpu |Getcpu()]]| ... |
+|[[fivewin_function_GetCpuSpeed |GetCpuSpeed()]]| ... |
+|[[fivewin_function_GetCtrlId |GetCtrlId()]]| ... |
+|[[fivewin_function_Getcurdir |Getcurdir()]]| ... |
+|[[fivewin_function_GetCursorPos |GetCursorPos()]]| ... |
+|[[fivewin_function_GetDatas |GetDatas()]]| ... |
+|[[fivewin_function_GetDC |GetDC()]]| ... |
+|[[fivewin_function_GetDesktopWindow |GetDesktopWindow()]]| ... |
+|[[fivewin_function_GetDeviceCaps |GetDeviceCaps()]]| ... |
+|[[fivewin_function_GetDialogBaseUnits |GetDialogBaseUnits()]]| ... |
+|[[fivewin_function_GetDlgBase |GetDlgBase()]]| ... |
+|[[fivewin_function_GetDlgItem |GetDlgItem()]]| ... |
+|[[fivewin_function_GetDrawItem |GetDrawItem()]]| ... |
+|[[fivewin_function_GetDrawMenu |GetDrawMenu()]]| ... |
+|[[fivewin_function_GetDropInfo |GetDropInfo()]]| ... |
+|[[fivewin_function_GetFirstInZip |GetFirstInZip()]]| ... |
+|[[fivewin_function_GetFocus |GetFocus()]]| ... |
+|[[fivewin_function_GetFontInfo |GetFontInfo()]]| ... |
+|[[fivewin_function_GetFrameProc |GetFrameProc()]]| ... |
+|[[fivewin_function_GetFreeFileHandles|GetFreeFileHandles()]]| ... |
+|[[fivewin_function_GetFreeSpace |GetFreeSpace()]]| ... |
+|[[fivewin_function_GetFTime |GetFTime()]]| ... |
+|[[fivewin_function_GetGridSize |GetGridSize()]]| ... |
+|[[fivewin_function_GetHelpFile |GetHelpFile()]]| ... |
+|[[fivewin_function_GetHelpPopup|GetHelpPopup()]]| ... |
+|[[fivewin_function_GetHelpTopic |GetHelpTopic()]]| ... |
+|[[fivewin_function_GetHostByName |GetHostByName()]]| ... |
+|[[fivewin_function_GetHostName |GetHostName()]]| ... |
+|[[fivewin_function_GethWnd32 |GethWnd32()]]| ... |
+|[[fivewin_function_GetInstance |GetInstance()]]| ... |
+|[[fivewin_function_GetIP |GetIP()]]| ... |
+|[[fivewin_function_GetKeyStat |GetKeyStat()]]| ... |
+|[[fivewin_function_GetKeyToggle |GetKeyToggle()]]| ... |
+|[[fivewin_function_GetLocal |GetLocal()]]| ... |
+|[[fivewin_function_GetMapMode |GetMapMode()]]| ... |
+|[[fivewin_function_GetMDIChlP |GetMDIChlP()]]| ... |
+|[[fivewin_function_GetMeaItem |GetMeaItem()]]| ... |
+|[[fivewin_function_GetMenuState |GetMenuState()]]| ... |
+|[[fivewin_function_GetMetaBit |GetMetaBit()]]| ... |
+|[[fivewin_function_GetMetaFile |GetMetaFile()]]| ... |
+|[[fivewin_function_GetMItemId |GetMItemId()]]| ... |
+|[[fivewin_function_GetModuleFileName |GetModuleFileName()]]| ... |
+|[[fivewin_function_GetNextInZip |GetNextInZip()]]| ... |
+|[[fivewin_function_GetNumTask |GetNumTask()]]| ... |
+|[[fivewin_function_GetOrdNames |GetOrdNames()]]| ... |
+|[[fivewin_function_GetParam |GetParam()]]| ... |
+|[[fivewin_function_GetParent |GetParent()]]| ... |
+|[[fivewin_function_GetPeerName |GetPeerName()]]| ... |
+|[[fivewin_function_GetPixel |GetPixel()]]| ... |
+|[[fivewin_function_Getport |Getport()]]| ... |
+|[[fivewin_function_GetPrinter |GetPrinter()]]| ... |
+|[[fivewin_function_GetProc32 |GetProc32()]]| ... |
+|[[fivewin_function_GetProcAddress |GetProcAddress()]]| ... |
+|[[fivewin_function_GetProfInt |GetProfInt()]]| ... |
+|[[fivewin_function_GetProfStr |GetProfStr()]]| ... |
+|[[fivewin_function_GetProp |GetProp()]]| ... |
+|[[fivewin_function_GetPvProfString |GetPvProfString()]]| ... |
+|[[fivewin_function_GetQuery |GetQuery()]]| ... |
+|[[fivewin_function_GetResources |GetResources()]]| ... |
+|[[fivewin_function_GetScrollPos |GetScrollPos()]]| ... |
+|[[fivewin_function_GetServByName |GetServByName()]]| ... |
+|[[fivewin_function_GetStockObject |GetStockObject()]]| ... |
+|[[fivewin_function_GetSubMenu |GetSubMenu()]]| ... |
+|[[fivewin_function_GetSysColor |GetSysColor()]]| ... |
+|[[fivewin_function_GetSysDir |GetSysDir()]]| ... |
+|[[fivewin_function_GetSysFont |GetSysFont()]]| ... |
+|[[fivewin_function_GetSysMetrics |GetSysMetrics()]]| ... |
+|[[fivewin_function_GetSystemMenu |GetSystemMenu()]]| ... |
+|[[fivewin_function_GetTasks |GetTasks()]]| ... |
+|[[fivewin_function_GetTextAlign |GetTextAlign()]]| ... |
+|[[fivewin_function_GetTextColor |GetTextColor()]]| ... |
+|[[fivewin_function_GetTextHeight |GetTextHeight()]]| ... |
+|[[fivewin_function_GetTextWidth |GetTextWidth()]]| ... |
+|[[fivewin_function_GetTickCount |GetTickCount()]]| ... |
+|[[fivewin_function_GetVersion |GetVersion()]]| ... |
+|[[fivewin_function_GetWinDir |GetWinDir()]]| ... |
+|[[fivewin_function_GetWindowWord |GetWindowWord()]]| ... |
+|[[fivewin_function_GetWinFlags |GetWinFlags()]]| ... |
+|[[fivewin_function_GetWinTxtLength |GetWinTxtLength()]]| ... |
+|[[fivewin_function_GetWndApp |GetWndApp()]]| ... |
+|[[fivewin_function_GetWndFrame |GetWndFrame()]]| ... |
+|[[fivewin_function_GetWndRect |GetWndRect()]]| ... |
+|[[fivewin_function_GetWndTask |GetWndTask()]]| ... |
+|[[fivewin_function_GlobalAddAtom |GlobalAddAtom()]]| ... |
+|[[fivewin_function_GlobalAlloc |GlobalAlloc()]]| ... |
+|[[fivewin_function_GlobalCompact |GlobalCompact()]]| ... |
+|[[fivewin_function_GlobalData |GlobalData()]]| ... |
+|[[fivewin_function_GlobalFree |GlobalFree()]]| ... |
+|[[fivewin_function_GlobalGetAtomName|GlobalGetAtomName()]]| ... |
+|[[fivewin_function_GlobalLock |GlobalLock()]]| ... |
+|[[fivewin_function_GlobalRealloc |GlobalRealloc()]]| ... |
+|[[fivewin_function_GlobalSize |GlobalSize()]]| ... |
+|[[fivewin_function_GlobalUnlock |GlobalUnlock()]]| ... |
+
+
+====== H ======
+|[[fivewin_function_HasResources |HasResources()]]|It checks if a file contains resources |
+|[[fivewin_function_HelpIndex |HelpIndex()]]| ... |
+|[[fivewin_function_HelpPopup |HelpPopup()]]| ... |
+|[[fivewin_function_HelpSearch |HelpSearch()]]| ... |
+|[[fivewin_function_HelpSetPos |HelpSetPos()]]| ... |
+|[[fivewin_function_HelpSetTopic|HelpSetTopic()]]| ... |
+|[[fivewin_function_HelpTopic |HelpTopic()]]| ... |
+|[[fivewin_function_HexToDec |HexToDec()]]| ... |
+|[[fivewin_function_HideCaret |HideCaret()]]| ... |
+|[[fivewin_function_HiliteMenuItem |HiliteMenuItem()]]| ... |
+|[[fivewin_function_Htons |Htons()]]| ... |
+
+
+====== I ======
+|[[fivewin_function_I2Hex |I2Hex()]]|Converts a word (2 bytes) into a hex string (4 chars) |
+|[[fivewin_function_Inet |Inet()]]| ... |
+|[[fivewin_function_InportByte |InportByte()]]| ... |
+|[[fivewin_function_InportWord |InportWord()]]| ... |
+|[[fivewin_function_InsertMenu |InsertMenu()]]| ... |
+|[[fivewin_function_InterruptUnRegister |InterruptUnRegister()]]| ... |
+|[[fivewin_function_InvalidateRect |InvalidateRect()]]| ... |
+|[[fivewin_function_InvertRect |InvertRect()]]| ... |
+|[[fivewin_function_IsAnsi |IsAnsi()]]| ... |
+|[[fivewin_function_IsAnsiLower |IsAnsiLower()]]| ... |
+|[[fivewin_function_IsAnsiUpper |IsAnsiUpper()]]| ... |
+|[[fivewin_function_IsCdRom |IsCdRom()]]| ... |
+|[[fivewin_function_IsChild |IsChild()]]| ... |
+|[[fivewin_function_IsDefButton |IsDefButton()]]| ... |
+|[[fivewin_function_IsDiskette |IsDiskette()]]| ... |
+|[[fivewin_function_IsIconic |IsIconic()]]| ... |
+|[[fivewin_function_IsMenu |IsMenu()]]| ... |
+|[[fivewin_function_IsOEM |IsOEM()]]| ... |
+|[[fivewin_function_IsOverWnd |IsOverWnd()]]| ... |
+|[[fivewin_function_IsWin95 |IsWin95()]]| ... |
+|[[fivewin_function_IsWin2000 |IsWin2000()]]| ... |
+|[[fivewin_function_IsWindowVisible |IsWindowVisible()]]| ... |
+|[[fivewin_function_IsWinNT |IsWinNT()]]| ... |
+|[[fivewin_function_IsZip |IsZip()]]| ... |
+|[[fivewin_function_IsZoomed |IsZoomed()]]| ... |
+
+
+====== J ======
+|[[fivewin_function_JoyGetDevCaps |JoyGetDevCaps()]]|To obtain the capabilities of a joystick |
+|[[fivewin_function_JoyGetNumDevs |JoyGetNumDevs()]]| ... |
+|[[fivewin_function_JoyGetPos |JoyGetPos()]]| ... |
+|[[fivewin_function_JoyGetThreshold |JoyGetThreshold()]]| ... |
+|[[fivewin_function_JoyReleaseCapture |JoyReleaseCapture()]]| ... |
+|[[fivewin_function_JoySetCapture |JoySetCapture()]]| ... |
+|[[fivewin_function_JoySetThre |JoySetThre()]]| ... |
+
+====== K ======
+|[[fivewin_function_KeyFast |KeyFast()]]|Set the fastest Keyboard response speed|
+|[[fivewin_function_KeyToggle |KeyToggle()]]| ... |
+|[[fivewin_function_KillTimer |KillTimer()]]| ... |
+
+
+====== L ======
+|[[fivewin_function_L2Hex |L2Hex()]]|Converts a long (4 bytes) into a hex string (8 chars)|
+|[[fivewin_function_lAnd |lAnd()]]| ... |
+|[[fivewin_function_LargeFonts |LargeFonts()]]| ... |
+|[[fivewin_function_LastMenu |LastMenu()]]| ... |
+|[[fivewin_function_LbxDrawItem |LbxDrawItem()]]| ... |
+|[[fivewin_function_LbxGetItem |LbxGetItem()]]| ... |
+|[[fivewin_function_LbxGetSelItems |LbxGetSelItems()]]| ... |
+|[[fivewin_function_LbxMeasure |LbxMeasure()]]| ... |
+|[[fivewin_function_lChDir |lChDir()]]| ... |
+|[[fivewin_function_lClose |lClose()]]| ... |
+|[[fivewin_function_lCreat |lCreat()]]| ... |
+|[[fivewin_function_Lfn2sfn |Lfn2sfn()]]| ... |
+|[[fivewin_function_lGetTextLine |lGetTextLine()]]| ... |
+|[[fivewin_function_LineTo |LineTo()]]| ... |
+|[[fivewin_function_lIsDir |lIsDir()]]| ... |
+|[[fivewin_function_Listen |Listen()]]| ... |
+|[[fivewin_function_lLFNMkDir |lLFNMkDir()]]| ... |
+|[[fivewin_function_lLFNRmDir |lLFNRmDir()]]| ... |
+|[[fivewin_function_lMDIiExist |lMDIiExist()]]| ... |
+|[[fivewin_function_lMIDIOutOpen |lMIDIOutOpen()]]| ... |
+|[[fivewin_function_lMkDir |lMkDir()]]| ... |
+|[[fivewin_function_Loadaccelerators |Loadaccelerators()]]| ... |
+|[[fivewin_function_LoadBitmap |LoadBitmap()]]| ... |
+|[[fivewin_function_LoadCursor |LoadCursor()]]| ... |
+|[[fivewin_function_LoadIcon |LoadIcon()]]| ... |
+|[[fivewin_function_Loadlib32 |Loadlib32()]]| ... |
+|[[fivewin_function_LoadLibrary |LoadLibrary()]]| ... |
+|[[fivewin_function_LoadMenu |LoadMenu()]]| ... |
+|[[fivewin_function_LoadResource |LoadResource()]]| ... |
+|[[fivewin_function_LoadString |LoadString()]]| ... |
+|[[fivewin_function_LoadValue |LoadValue()]]| ... |
+|[[fivewin_function_LocalShrink |LocalShrink()]]| ... |
+|[[fivewin_function_LogEvent |LogEvent()]]| ... |
+|[[fivewin_function_LogFile |LogFile()]]| ... |
+|[[fivewin_function_LogStatics |LogStatics()]]| ... |
+|[[fivewin_function_lOpen |lOpen()]]| ... |
+|[[fivewin_function_LPToDP |LPToDP()]]| ... |
+|[[fivewin_function_lRMDir |lRMDir()]]| ... |
+|[[fivewin_function_lSaveObject |lSaveObject()]]| ... |
+|[[fivewin_function_lWRunning |lWRunning()]]| ... |
+|[[fivewin_function_lXor |lXor()]]| ... |
+|[[fivewin_function_LZCopyFile |LZCopyFile()]]| ... |
+
+====== M ======
+|[[fivewin_function_MakeWin|MakeWin()]]| ... |
+|[[fivewin_function_MapDialogRect |MapDialogRect()]]| ... |
+|[[fivewin_function_MCIGetErrorString |MCIGetErrorString()]]| ... |
+|[[fivewin_function_MCISendCommand |MCISendCommand()]]| ... |
+|[[fivewin_function_MCISendString |MCISendString()]]| ... |
+|[[fivewin_function_MdiCtrlAdjust |MdiCtrlAdjust()]]| ... |
+|[[fivewin_function_MDIRecEdit |MDIRecEdit()]]| ... |
+|[[fivewin_function_MeasureItem |MeasureItem()]]| ... |
+|[[fivewin_function_MemoEdit |MemoEdit()]]| ... |
+|[[fivewin_function_MemStat |MemStat()]]| ... |
+|[[fivewin_function_MenuAddItem |MenuAddItem()]]| ... |
+|[[fivewin_function_MenuBegin |MenuBegin()]]| ... |
+|[[fivewin_function_MenuDrawItem |MenuDrawItem()]]| ... |
+|[[fivewin_function_MenuEnd |MenuEnd()]]| ... |
+|[[fivewin_function_MenuMeasureItem |MenuMeasureItem()]]| ... |
+|[[fivewin_function_MessageBox |MessageBox()]]| ... |
+|[[fivewin_function_MeterPaint |MeterPaint()]]| ... |
+|[[fivewin_function_MGetCreate |MGetCreate()]]| ... |
+|[[fivewin_function_MGetLine |MGetLine()]]| ... |
+|[[fivewin_function_MGetReplace |MGetReplace()]]| ... |
+|[[fivewin_function_MidiNoteOn |MidiNoteOn()]]| ... |
+|[[fivewin_function_ModifyMenu |ModifyMenu()]]| ... |
+|[[fivewin_function_MoreHeap |MoreHeap()]]| ... |
+|[[fivewin_function_MoveCalendar |MoveCalendar()]]| ... |
+|[[fivewin_function_MoveGet |MoveGet()]]| ... |
+|[[fivewin_function_MoveTo |MoveTo()]]| ... |
+|[[fivewin_function_MoveWindow |MoveWindow()]]| ... |
+|[[fivewin_function_MsgAbout |MsgAbout()]]| ... |
+|[[fivewin_function_MsgAlert |MsgAlert()]]| ... |
+|[[fivewin_function_MsgBeep |MsgBeep()]]| ... |
+|[[fivewin_function_MsgDate |MsgDate()]]| ... |
+|[[fivewin_function_MsgGet |MsgGet()]]| ... |
+|[[fivewin_function_MsgInfo |MsgInfo()]]| ... |
+|[[fivewin_function_MsgList |MsgList()]]| ... |
+|[[fivewin_function_MsgLogo |MsgLogo()]]| ... |
+|[[fivewin_function_MsgMeter |MsgMeter()]]| ... |
+|[[fivewin_function_MsgNoYes |MsgNoYes()]]| ... |
+|[[fivewin_function_MsgPaint |MsgPaint()]]| ... |
+|[[fivewin_function_MsgRetryCancel |MsgRetryCancel()]]| ... |
+|[[fivewin_function_MsgRun |MsgRun()]]| ... |
+|[[fivewin_function_MsgSound |MsgSound()]]| ... |
+|[[fivewin_function_MsgStop |MsgStop()]]| ... |
+|[[fivewin_function_MsgToolBar |MsgToolBar()]]| ... |
+|[[fivewin_function_MsgWait |MsgWait()]]| ... |
+|[[fivewin_function_MsgYesNo |MsgYesNo()]]| ... |
+
+====== N ======
+|[[fivewin_function_nAnd |nAnd()]]| ... |
+|[[fivewin_function_nArgC |nArgC()]]| ... |
+|[[fivewin_function_nBmpHeight |nBmpHeight()]]| ... |
+|[[fivewin_function_nBmpWidth |nBmpWidth()]]| ... |
+|[[fivewin_function_nColorToN |nColorToN()]]| ... |
+|[[fivewin_function_nDbl2Flt |nDbl2Flt()]]| ... |
+|[[fivewin_function_nDDEGetErrorString |nDDEGetErrorString()]]| ... |
+|[[fivewin_function_NDdeShareSetInfo |NDdeShareSetInfo()]]| ... |
+|[[fivewin_function_nDlgBox |nDlgBox()]]| ... |
+|[[fivewin_function_NextDlgTabItem |NextDlgTabItem()]]| ... |
+|[[fivewin_function_nExtMem |nExtMem()]]| ... |
+|[[fivewin_function_nFileCrc |nFileCrc()]]| ... |
+|[[fivewin_function_nGetBackRgb |nGetBackRgb()]]| ... |
+|[[fivewin_function_nGetFileFilter |nGetFileFilter()]]| ... |
+|[[fivewin_function_nGetFilter32 |nGetFilter32()]]| ... |
+|[[fivewin_function_nGetForeRGB |nGetForeRGB()]]| ... |
+|[[fivewin_function_nHex |nHex()]]| ... |
+|[[fivewin_function_nHiByte |nHiByte()]]| ... |
+|[[fivewin_function_nHiWord |nHiWord()]]| ... |
+|[[fivewin_function_nIcons |nIcons()]]| ... |
+|[[fivewin_function_nLoByte |nLoByte()]]| ... |
+|[[fivewin_function_nLoWord |nLoWord()]]| ... |
+|[[fivewin_function_nMakeLong |nMakeLong()]]| ... |
+|[[fivewin_function_nMciOpen |nMciOpen()]]| ... |
+|[[fivewin_function_nMciPlay |nMciPlay()]]| ... |
+|[[fivewin_function_nMciWindow |nMciWindow()]]| ... |
+|[[fivewin_function_nMidiDevices |nMidiDevices()]]| ... |
+|[[fivewin_function_nMsgBox |nMsgBox()]]| ... |
+|[[fivewin_function_nNot |nNot()]]| ... |
+|[[fivewin_function_nOr |nOr()]]| ... |
+|[[fivewin_function_nRandom |nRandom()]]| ... |
+|[[fivewin_function_nRGB |nRGB()]]| ... |
+|[[fivewin_function_nRGBBlue |nRGBBlue()]]| ... |
+|[[fivewin_function_nRGBGreen |nRGBGreen()]]| ... |
+|[[fivewin_function_nRGBRed |nRGBRed()]]| ... |
+|[[fivewin_function_nSerialA |nSerialA()]]| ... |
+|[[fivewin_function_nSerialHD |nSerialHD()]]| ... |
+|[[fivewin_function_nStrCrc |nStrCrc()]]| ... |
+|[[fivewin_function_nStrHash |nStrHash()]]| ... |
+|[[fivewin_function_nTcwRow |nTcwRow()]]| ... |
+|[[fivewin_function_NtxPos |NtxPos()]]| ... |
+|[[fivewin_function_nTxtLines |nTxtLines()]]| ... |
+|[[fivewin_function_nWindows |nWindows()]]| ... |
+|[[fivewin_function_nWndChrHeight |nWndChrHeight()]]| ... |
+|[[fivewin_function_nWRow |nWRow()]]| ... |
+|[[fivewin_function_nWRows |nWRows()]]| ... |
+|[[fivewin_function_nXOr |nXOr()]]| ... |
+====== O ======
+[[fivewin_function_Oclone |Oclone()]]| ... |
+|[[fivewin_function_OemToAnsi |OemToAnsi()]]| ... |
+|[[fivewin_function_OpenClipboard |OpenClipboard()]]| ... |
+|[[fivewin_function_OpenComm |OpenComm()]]| ... |
+|[[fivewin_function_ORead |ORead()]]| ... |
+|[[fivewin_function_OSend |OSend()]]| ... |
+|[[fivewin_function_OutportByte |OutportByte()]]| ... |
+|[[fivewin_function_OutportWord |OutportWord()]]| ... |
+|[[fivewin_function_OutputDebugString |OutputDebugString()]]| ... |
+|[[fivewin_function_oWndFromhWnd |oWndFromhWnd()]]| ... |
+====== P ======
+[[fivewin_function_PageBegin |PageBegin()]]| ... |
+|[[fivewin_function_Paint3D |Paint3D()]]| ... |
+|[[fivewin_function_PalBmpDraw |PalBmpDraw()]]| ... |
+|[[fivewin_function_PalBmpLoad |PalBmpLoad()]]| ... |
+|[[fivewin_function_PalBmpRead |PalBmpRead()]]| ... |
+|[[fivewin_function_PalBtnPaint |PalBtnPaint()]]| ... |
+|[[fivewin_function_ParamCount |ParamCount()]]| ... |
+|[[fivewin_function_pBmpColors |pBmpColors()]]| ... |
+|[[fivewin_function_pBmpHeigh |pBmpHeigh()]]| ... |
+|[[fivewin_function_pBmpWidth |pBmpWidth()]]| ... |
+|[[fivewin_function_PeekByte |PeekByte()]]| ... |
+|[[fivewin_function_PeekMessage |PeekMessage()]]| ... |
+|[[fivewin_function_PeekWord |PeekWord()]]| ... |
+|[[fivewin_function_Pie |Pie()]]| ... |
+|[[fivewin_function_PlayMetafile |PlayMetafile()]]| ... |
+|[[fivewin_function_PokeByte |PokeByte()]]| ... |
+|[[fivewin_function_PokeWord |PokeWord()]]| ... |
+|[[fivewin_function_PolyPolygon |PolyPolygon()]]| ... |
+|[[fivewin_function_PostMessage |PostMessage()]]| ... |
+|[[fivewin_function_PostQuitMessage |PostQuitMessage()]]| ... |
+|[[fivewin_function_PrintBegin |PrintBegin()]]| ... |
+|[[fivewin_function_PrinterEsc |PrinterEsc()]]| ... |
+|[[fivewin_function_PrinterInit|PrinterInit()]]| ... |
+|[[fivewin_function_PrinterSetup |PrinterSetup()]]| ... |
+|[[fivewin_function_PrnBinSource |PrnBinSource()]]| ... |
+|[[fivewin_function_PrnDuplex |PrnDuplex()]]| ... |
+|[[fivewin_function_PrnGetDriver |PrnGetDriver()]]| ... |
+|[[fivewin_function_PrnGetName |PrnGetName()]]| ... |
+|[[fivewin_function_PrnGetOrientation |PrnGetOrientation()]]| ... |
+|[[fivewin_function_PrnGetPort |PrnGetPort()]]| ... |
+|[[fivewin_function_PrnGetSize |PrnGetSize()]]| ... |
+|[[fivewin_function_PrnLandscape |PrnLandscape()]]| ... |
+|[[fivewin_function_PrnOffset |PrnOffset()]]| ... |
+|[[fivewin_function_PrnPortrait |PrnPortrait()]]| ... |
+|[[fivewin_function_PrnSetCopies |PrnSetCopies()]]| ... |
+|[[fivewin_function_PrnSetPage |PrnSetPage()]]| ... |
+|[[fivewin_function_PrnSetSize |PrnSetSize()]]| ... |
+====== R ======
+[[fivewin_function_RaConst |RaConst()]]| ... |
+|[[fivewin_function_Radial |Radial()]]| ... |
+|[[fivewin_function_RaEnumConnections |RaEnumConnections()]]| ... |
+|[[fivewin_function_RaEnumEntries |RaEnumEntries()]]| ... |
+|[[fivewin_function_RaGetConst |RaGetConst()]]| ... |
+|[[fivewin_function_RaGetError |RaGetError()]]| ... |
+|[[fivewin_function_RaHangUp |RaHangUp()]]| ... |
+|[[fivewin_function_Ras |Ras()]]| ... |
+|[[fivewin_function_RddEvent |RddEvent()]]| ... |
+|[[fivewin_function_ReadBitmap |ReadBitmap()]]| ... |
+|[[fivewin_function_ReadComm |ReadComm()]]| ... |
+|[[fivewin_function_ReadEvent|ReadEvent()]]| ... |
+|[[fivewin_function_ReadVar |ReadVar()]]| ... |
+|[[fivewin_function_RealizePalette |RealizePalette()]]| ... |
+|[[fivewin_function_Rectangle |Rectangle()]]| ... |
+|[[fivewin_function_RectDotted |RectDotted()]]| ... |
+|[[fivewin_function_Recv |Recv()]]| ... |
+|[[fivewin_function_RegCloseKey |RegCloseKey()]]| ... |
+|[[fivewin_function_RegCreateKey |RegCreateKey()]]| ... |
+|[[fivewin_function_RegDeleteKey |RegDeleteKey()]]| ... |
+|[[fivewin_function_RegEnumKey |RegEnumKey()]]| ... |
+|[[fivewin_function_RegisterClass |RegisterClass()]]| ... |
+|[[fivewin_function_RegOpenKey |RegOpenKey()]]| ... |
+|[[fivewin_function_RegQueryValue |RegQueryValue()]]| ... |
+|[[fivewin_function_RegSetValue |RegSetValue()]]| ... |
+|[[fivewin_function_ReleaseCapture |ReleaseCapture()]]| ... |
+|[[fivewin_function_ReleaseDC |ReleaseDC()]]| ... |
+|[[fivewin_function_RemoveFont |RemoveFont()]]| ... |
+|[[fivewin_function_RemoveFontResource |RemoveFontResource()]]| ... |
+|[[fivewin_function_RemoveMenu |RemoveMenu()]]| ... |
+|[[fivewin_function_RemoveProp |RemoveProp()]]| ... |
+|[[fivewin_function_Report |Report()]]| ... |
+|[[fivewin_function_ResetDC |ResetDC()]]| ... |
+|[[fivewin_function_ResourceFree |ResourceFree()]]| ... |
+|[[fivewin_function_RestoreDC |RestoreDC()]]| ... |
+|[[fivewin_function_RestProc |RestProc()]]| ... |
+|[[fivewin_function_RLNew |RLNew()]]| ... |
+|[[fivewin_function_RPreview |RPreview()]]| ... |
+|[[fivewin_function_RptAddColumn |RptAddColumn()]]| ... |
+|[[fivewin_function_RptAddGroup |RptAddGroup()]]| ... |
+|[[fivewin_function_RptBegin |RptBegin()]]| ... |
+|[[fivewin_function_RptEnd |RptEnd()]]| ... |
+
+
+====== S ======
+|[[fivewin_function_SaveDC |SaveDC()]]|Save a specific device context |
+|[[fivewin_function_Say3D |Say3D()]]| ... |
+|[[fivewin_function_Scan |Scan()]]| ... |
+|[[fivewin_function_ScreenToClient |ScreenToClient()]]| ... |
+|[[fivewin_function_ScrollWindow |ScrollWindow()]]| ... |
+|[[fivewin_function_SelectObject |SelectObject()]]| ... |
+|[[fivewin_function_SelectPalette |SelectPalette()]]| ... |
+|[[fivewin_function_SendBinary |SendBinary()]]| ... |
+|[[fivewin_function_SendMessage |SendMessage()]]| ... |
+|[[fivewin_function_ServerIP |ServerIP()]]| ... |
+|[[fivewin_function_Set3dLook |Set3dLook()]]| ... |
+|[[fivewin_function_SetActiveWindow |SetActiveWindow()]]| ... |
+|[[fivewin_function_SetBkColor |SetBkColor()]]| ... |
+|[[fivewin_function_SetBkMode |SetBkMode()]]| ... |
+|[[fivewin_function_SetBlackPen |SetBlackPen()]]| ... |
+|[[fivewin_function_SetBrushOrg |SetBrushOrg()]]| ... |
+|[[fivewin_function_SetCapture |SetCapture()]]| ... |
+|[[fivewin_function_SetCaretPos |SetCaretPos()]]| ... |
+|[[fivewin_function_SetClassWord |SetClassWord()]]| ... |
+|[[fivewin_function_SetClipboardData |SetClipboardData()]]| ... |
+|[[fivewin_function_SetClpData |SetClpData()]]| ... |
+|[[fivewin_function_SetCommState |SetCommState()]]| ... |
+|[[fivewin_function_SetCurdrive |SetCurdrive()]]| ... |
+|[[fivewin_function_SetCursor |SetCursor()]]| ... |
+|[[fivewin_function_SetDate |SetDate()]]| ... |
+|[[fivewin_function_SetDeskWallPaper |SetDeskWallPaper()]]| ... |
+|[[fivewin_function_SetDialogEsc |SetDialogEsc()]]| ... |
+|[[fivewin_function_SetDropInfo |SetDropInfo()]]| ... |
+|[[fivewin_function_SetFocus |SetFocus()]]| ... |
+|[[fivewin_function_SetFTime |SetFTime()]]| ... |
+|[[fivewin_function_SetGridSize |SetGridSize()]]| ... |
+|[[fivewin_function_SetHandleCount |SetHandleCount()]]| ... |
+|[[fivewin_function_SetHelpFile |SetHelpFile()]]| ... |
+|[[fivewin_function_SetHelpPopup|SetHelpPopup()]]| ... |
+|[[fivewin_function_SetIdleAction |SetIdleAction()]]| ... |
+|[[fivewin_function_SetMapMode |SetMapMode()]]| ... |
+|[[fivewin_function_SetMenu |SetMenu()]]| ... |
+|[[fivewin_function_SetMinMax |SetMinMax()]]| ... |
+|[[fivewin_function_SetMultiple |SetMultiple()]]| ... |
+|[[fivewin_function_SetParent |SetParent()]]| ... |
+|[[fivewin_function_SetPixel |SetPixel()]]| ... |
+|[[fivewin_function_SetPolyFillMode |SetPolyFillMode()]]| ... |
+|[[fivewin_function_SetProp |SetProp()]]| ... |
+|[[fivewin_function_SetResources |SetResources()]]| ... |
+|[[fivewin_function_SetSockOpt |SetSockOpt()]]| ... |
+|[[fivewin_function_SetTextAlign |SetTextAlign()]]| ... |
+|[[fivewin_function_SetTextColor |SetTextColor()]]| ... |
+|[[fivewin_function_SetTextJustification |SetTextJustification()]]| ... |
+|[[fivewin_function_SetTime |SetTime()]]| ... |
+|[[fivewin_function_SetTimer |SetTimer()]]| ... |
+|[[fivewin_function_SetViewOrg |SetViewOrg()]]| ... |
+|[[fivewin_function_SetViewPortExt |SetViewPortExt()]]| ... |
+|[[fivewin_function_SetWhitePen |SetWhitePen()]]| ... |
+|[[fivewin_function_SetWin95Look |SetWin95Look()]]| ... |
+|[[fivewin_function_SetWindowText |SetWindowText()]]| ... |
+|[[fivewin_function_SetWndDefault |SetWndDefault()]]| ... |
+|[[fivewin_function_ShellAbout |ShellAbout()]]| ... |
+|[[fivewin_function_ShellExecute |ShellExecute()]]| ... |
+|[[fivewin_function_ShowCaret |ShowCaret()]]| ... |
+|[[fivewin_function_ShowCursor |ShowCursor()]]| ... |
+|[[fivewin_function_ShowWindow |ShowWindow()]]| ... |
+|[[fivewin_function_SndPlayRes |SndPlayRes()]]| ... |
+|[[fivewin_function_SndPlaySound |SndPlaySound()]]| ... |
+|[[fivewin_function_Socket |Socket()]]| ... |
+|[[fivewin_function_SocketSelect |SocketSelect()]]| ... |
+|[[fivewin_function_SpoolFile |SpoolFile()]]| ... |
+|[[fivewin_function_StartDoc |StartDoc()]]| ... |
+|[[fivewin_function_StartMonitor |StartMonitor()]]| ... |
+|[[fivewin_function_StartPage |StartPage()]]| ... |
+|[[fivewin_function_StartPlayback |StartPlayback()]]| ... |
+|[[fivewin_function_StartRecording |StartRecording()]]| ... |
+|[[fivewin_function_StopPlayBack |StopPlayBack()]]| ... |
+|[[fivewin_function_StopRecording |StopRecording()]]| ... |
+|[[fivewin_function_StrByte |StrByte()]]| ... |
+|[[fivewin_function_StrCapFirst |StrCapFirst()]]| ... |
+|[[fivewin_function_StrChar |StrChar()]]| ... |
+|[[fivewin_function_StrCpy |StrCpy()]]| ... |
+|[[fivewin_function_StrToken |StrToken()]]| ... |
+|[[fivewin_function_SymName |SymName()]]| ... |
+|[[fivewin_function_SymStat |SymStat()]]| ... |
+|[[fivewin_function_SymTblAt |SymTblAt()]]| ... |
+|[[fivewin_function_SymTblLen |SymTblLen()]]| ... |
+|[[fivewin_function_SysRefresh |SysRefresh()]]| ... |
+|[[fivewin_function_SysTime |SysTime()]]| ... |
+|[[fivewin_function_SysWait |SysWait()]]| ... |
+
+====== T ======
+|[[fivewin_function_TabCtrlAdd |TabCtrlAdd()]]| ... |
+|[[fivewin_function_TabsPaint |TabsPaint()]]| ... |
+|[[fivewin_function_TCBrwScroll |TCBrwSrol()]]| ... |
+|[[fivewin_function_TcDrawCell |TcDrawCell()]]| ... |
+|[[fivewin_function_TerminateApp |TerminateApp()]]| ... |
+|[[fivewin_function_TextOut |TextOut()]]| ... |
+|[[fivewin_function_ThisStruct |ThisStruct()]]| ... |
+|[[fivewin_function_Time |Time()]]| ... |
+|[[fivewin_function_TimerCount |TimerCount()]]| ... |
+|[[fivewin_function_TimerEvent |TimerEvent()]]| ... |
+|[[fivewin_function_TrackPopUpMenu |TrackPopUpMenu()]]| ... |
+|[[fivewin_function_TreeBegin |TreeBegin()]]| ... |
+|[[fivewin_function_TreeEnd |TreeEnd()]]| ... |
+|[[fivewin_function_TvInsertItem |TvInsertItem()]]| ... |
+
+====== U ======
+|[[fivewin_function_uCharToVal |uCharToVal()]]| ... |
+|[[fivewin_function_uLoadStruct |uLoadStruct()]]| ... |
+|[[fivewin_function_UnEscape |UnEscape()]]| ... |
+|[[fivewin_function_UnZipFile |UnZipFile()]]| ... |
+|[[fivewin_function_UpdateWindow |UpdateWindow()]]| ... |
+|[[fivewin_function_uValBlank|uValBlank()]]| ... |
+====== V ======
+|[[fivewin_function_VirtualRdd |VirtualRdd()]]| ... |
+|[[fivewin_function_VolumeName |VolumeName()]]| ... |
+====== W ======
+|[[fivewin_function_WaitRun |WaitRun()]]| ... |
+|[[fivewin_function_WBrwLine |WBrwLine()]]| ... |
+|[[fivewin_function_WBrwPane |WBrwPane()]]| ... |
+|[[fivewin_function_WBrwScroll |WBrwScroll()]]| ... |
+|[[fivewin_function_WBrwSelBox |WBrwSelBox()]]| ... |
+|[[fivewin_function_WindowFromPoint |WindowFromPoint()]]| ... |
+|[[fivewin_function_WinExec |WinExec()]]| ... |
+|[[fivewin_function_WinHelp |WinHelp()]]| ... |
+|[[fivewin_function_WinUser |WinUser()]]| ... |
+|[[fivewin_function_WndAdjBottom |WndAdjBottom()]]| ... |
+|[[fivewin_function_WndAdjClient |WndAdjClient()]]| ... |
+|[[fivewin_function_WndAdjLeft |WndAdjLeft()]]| ... |
+|[[fivewin_function_WndAdjRight |WndAdjRight()]]| ... |
+|[[fivewin_function_WndAdjTop |WndAdjTop()]]| ... |
+|[[fivewin_function_WndBitmap |WndBitmap()]]| ... |
+|[[fivewin_function_WndBottom |WndBottom()]]| ... |
+|[[fivewin_function_WndBox |WndBox()]]| ... |
+|[[fivewin_function_WndBoxIn |WndBoxIn()]]| ... |
+|[[fivewin_function_WndBoxRaised |WndBoxRaised()]]| ... |
+|[[fivewin_function_WndBrush |WndBrush()]]| ... |
+|[[fivewin_function_WndCenter |WndCenter()]]| ... |
+|[[fivewin_function_WndCopy |WndCopy()]]| ... |
+|[[fivewin_function_WndHasScrolls |WndHasScrolls()]]| ... |
+|[[fivewin_function_WndHeight |WndHeight()]]| ... |
+|[[fivewin_function_WndHlineRaised |WndHlineRaised()]]| ... |
+|[[fivewin_function_WndHRaised |WndHRaised()]]| ... |
+|[[fivewin_function_WndInset |WndInset()]]| ... |
+|[[fivewin_function_WndLeft |WndLeft()]]| ... |
+|[[fivewin_function_WndMain |WndMain()]]| ... |
+|[[fivewin_function_WndPrint |WndPrint()]]| ... |
+|[[fivewin_function_WndRaised |WndRaised()]]| ... |
+|[[fivewin_function_WndSetSize |WndSetSize()]]| ... |
+|[[fivewin_function_WndTop |WndTop()]]| ... |
+|[[fivewin_function_WndVLineRaised |WndVLineRaised()]]| ... |
+|[[fivewin_function_WndVRaised |WndVRaised()]]| ... |
+|[[fivewin_function_WndWidth |WndWidth()]]| ... |
+|[[fivewin_function_WNetAddConnection |WNetAddConnection()]]| ... |
+|[[fivewin_function_WNetBrowse |WNetBrowse()]]| ... |
+|[[fivewin_function_WNetConnetDialog |WNetConnetDialog()]]| ... |
+|[[fivewin_function_WNetDisconnectDialog |WNetDisconnectDialog()]]| ... |
+|[[fivewin_function_WNetError |WNetError()]]| ... |
+|[[fivewin_function_WNetGetErrorText |WNetGetErrorText()]]| ... |
+|[[fivewin_function_WNetGetUser |WNetGetUser()]]| ... |
+|[[fivewin_function_WorkSheet |WorkSheet()]]| ... |
+|[[fivewin_function_WQOut |WQOut()]]| ... |
+|[[fivewin_function_WriteComm |WriteComm()]]| ... |
+|[[fivewin_function_WritePProString |WritePProString()]]| ... |
+|[[fivewin_function_WriteProfString |WriteProfString()]]| ... |
+|[[fivewin_function_WSAAsyncSelect |WSAAsyncSelect()]]| ... |
+|[[fivewin_function_WSACleanUp |WSACleanUp()]]| ... |
+|[[fivewin_function_WSAGetLastError |WSAGetLastError()]]| ... |
+|[[fivewin_function_WSAStartUp |WSAStartUp()]]| ... |
+|[[fivewin_function_WSay |WSay()]]| ... |
+|[[fivewin_function_WSayRect |WSayRect()]]| ... |
+|[[fivewin_function_WScroll |WScroll()]]| ... |
+
+
+====== X ======
+
+|[[fivewin_function_xBrJustify |xBrJustify()]]||
+|[[fivewin_function_xBrowseNew |xBrowseNew()]]||
+|[[fivewin_function_xBrwAddColumn |xBrwAddColumn()]]||
+|[[fivewin_function_xPadC |xPadC()]]||
+|[[fivewin_function_xPadL |xPadL()]]||
+|[[fivewin_function_xPadR |xPadR()]]||
+
+
+
+
+====== Z ======
+
+|[[fivewin_function_ZipBlock |ZipBlock()]]|Returns the size of a zip block|
+|[[fivewin_function_ZipFile |ZipFile()]]|...|
+|[[fivewin_function_ZipMsg |ZipMsg()]]|...|
+|[[fivewin_function_ZipName |ZipName()]]|...|
+|[[fivewin_function_ZipSize |ZipSize()]]|...|
+|[[fivewin_function_ZiType |ZiType()]]|...|

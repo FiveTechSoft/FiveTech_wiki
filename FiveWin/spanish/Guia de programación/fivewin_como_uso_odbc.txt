@@ -1,0 +1,14 @@
+Lo más importante que debe hacer es configurar adecuadamente el ODBC usado en Windows.
+
+ 
+
+Los controladores ODBC y Windows deben configurarse adecuadamente a nivel de usuario para funcionar correctamente. No es posible desarrollar una aplicación ODBC que funcione a no ser que todo el mundo tenga ODBC instalado correctamente en su ordenador.
+
+ 
+
+ODBC no es 'autocontenido' como lo es el manejo DBFs de CA-Clipper (donde puede generar sus DBFs e índices sobre la marcha), sino que requiere una instalación específica. Básicamente, Windows necesita saber exactamente, y de forma anticipada, qué bases de datos se van a usar a través de ODBC, dónde se encuentran y qué controladores precisan.
+
+ 
+
+Existe un controlador ODBC para xBase ofrecido por Microsoft, pero que no es tan potente como los RDDs de CA-Clipper. Tenga esto en cuenta.
+

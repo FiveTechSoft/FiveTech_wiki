@@ -1,0 +1,27 @@
+FiveWin requires that all expressions to be shown on a browse to be of character type. The reason for this is that if you specify a number we understand it is a handle of a bitmap so there you want to show a bitmap:
+
+See SAMPLES\FwBrow.prg:
+
+<code clipper>
+@ 1, 1 LISTBOX oLbx FIELDS aHBitmaps[ Max( 1, Clients->Nivel ) ],;
+
+Clients->Nombre, Clients->Direccion,;
+Clients->Telefono,;
+
+Str( Clients->Edad, 3 ) ;
+HEADERS    "L", "Name", "Address", "Phone", "Age" ;
+FIELDSIZES 16, 240, 310, 114, 24 ;
+SIZE 284, 137 OF oDlg
+</code>
+
+aHBitmaps is an array of bitmaps handles, previously loaded with LoadBitmap() or ReadBitmap() functions:
+
+<code clipper>
+local aHBitMaps:= {ReadBitmap( 0, "..\bitmaps\Level1.bmp" ), 
+
+ReadBitmap( 0, "..\bitmaps\Level2.bmp" ), ;
+ReadBitmap( 0, "..\bitmaps\Level3.bmp" ), ;
+ReadBitmap( 0, "..\bitmaps\Level4.bmp" ),;
+ReadBitmap( 0, "..\bitmaps\Level5.bmp" ) }
+
+</code>

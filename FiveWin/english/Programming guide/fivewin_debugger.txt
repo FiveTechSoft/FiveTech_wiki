@@ -1,0 +1,11 @@
+FiveWin provides its own debugger. Simply use **/b** when compiling your PRGs and the debugger will appear automatically.
+
+To test it, simply go to FWH\samples folder and type:
+
+**buildh.bat tutor02 /b**
+
+{{:debugger1.png|:debugger1.png}}
+
+FiveWin also generates a very complete error.log file when an error occurs.  Please review it to find the error description, location, stack calls, etc. to find the error origin in your app.
+
+We encourage to contact us on the tech support forums if you have a problem that you are unable to solve (instead of wasting precious time that you need for development). http://forums.fivetechsupport.com
