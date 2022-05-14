@@ -1,0 +1,107 @@
+
+====== Class TMail ======
+
+Windows MAPI management as objects                                             
+====== DATA ======
+|cSubject|Mail subject description|
+|cNoteText|Text of the mail|
+|cConversationID|Conversation ID|
+|cMsgType|Message type|
+|dDate|Date of the mail|
+|cTime|Time of the mail|
+|lReceipt|Has received the mail|
+|lFromUser|Interactively select the mail subject, target, etc|
+|aOrigin|An array with all origin senders|
+|aRecipients|An array with all recipients receivers|
+|aFiles|An array with all related files to send attached|
+|nRetCode|Code returned from send operation|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Start the mail.|
+|End|End the mail.|
+====== Example ======
+<code clipper>
+// FiveWin - Windows MAPI (mail services) support demonstration
+
+#include "FiveWin.ch"
+#include "Mail.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Using Windows MAIL Services"
+
+   DEFINE BUTTONBAR oBar _3D SIZE 33, 33 OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION MsgInfo( MAPILogOn() ) ;
+      MESSAGE "LogOn in the mail system" TOOLTIP "LogOn"
+
+   DEFINE BUTTON OF oBar ;
+      ACTION ( MAPILogOff(), MsgInfo( "MAIL LogOff done!" ) ) ;
+      MESSAGE "LogOff from the mail system" TOOLTIP "LogOff"
+
+   DEFINE BUTTON OF oBar GROUP ;
+      ACTION InteractiveMessage() ;
+      MESSAGE "Send an interactive message" TOOLTIP "Interactive"
+
+   DEFINE BUTTON OF oBar ;
+      ACTION DirectMessage();
+      MESSAGE "Send a direct message" TOOLTIP "Direct"
+
+   DEFINE BUTTON OF oBar GROUP ACTION oWnd:End() TOOLTIP "End"
+
+   SET MESSAGE OF oWnd TO "FiveWin - Windows MAIL support" CENTERED
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Want to end ?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function InteractiveMessage()
+
+   local oMail
+
+   DEFINE MAIL oMail ;
+      SUBJECT "Testing..." ;
+      TEXT "This is real xBase power at your fingertips!" ;
+      FROM USER ;
+      RECEIPT
+
+   ACTIVATE MAIL oMail
+
+   MsgInfo( oMail:nRetCode )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function DirectMessage()
+
+   local oMail
+
+   DEFINE MAIL oMail ;
+      SUBJECT "FiveWin Mail-control power" ;
+      FILES   "c:\test.doc", "test.doc";
+      TEXT    "This is real xBase power at your fingertips!" ;
+      TO      "ALinares", "FAX: 05909294"
+
+   ACTIVATE MAIL oMail
+
+   MsgInfo( oMail:nRetCode )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+[[fivewin_commands_mail | Command Mail ]], [[fivewin_class_tpop3 | Class TPop3 ]], [[fivewin_class_tsocket | Class TSocket ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMAIL.PRG

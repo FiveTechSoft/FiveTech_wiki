@@ -1,0 +1,70 @@
+
+====== Class TMsgItem ======
+
+Bar message item objects                                                       
+====== DATA ======
+^ Data  ^ Description                             ^
+|oMsgBar|Reference to its MsgBar container object.|
+|cMsg|Shown text.|
+|nWidth|Width of the MsgItem.|
+|nClrText|Text color as a RGB number.|
+|nClrPane|Pane color as a RGB number.|
+|nClrDisabled|Disabled color as a RGB number.|
+|bMsg|Optional codeblock to evaluate to generate the cMsg text.|
+|bAction|Action to be preformed when clicking on it.|
+|oFont|Font object used.|
+|lActive|.T. if the msgitem is active|
+|lTimer|.T. if the item is refreshed from the timer (internal used)|
+|lWasActive|.T. if the item was active (internal used)|
+|hBitmap1|Handle of bitmap for active msgitem|
+|hPalette1|Handle of palette for active msgitem|
+|hBitmap2|Handle of bitmap for non-active msgitem|
+|hPalette2|Handle of bitmap for non-active msgitem|
+|cToolTip|ToolTip|
+====== METHODS ======
+^ Method  ^ Description          ^
+|New|Constructor from source code|
+|Click|Action to be performed when clicking the mouse.|
+|Paint|Paints the item|
+|Refresh|Repaints the item|
+|SetFont|Set the font for the MsgItem.|
+|SetText|Set the message for the MsgItem.|
+|Show|Makes the item visible|
+|IsOver|.T. if the coors are over the MsgItem|
+|nLeft|Left coordinate of the msgitem|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+//------------------------------------------------------//
+Function Main()
+   Local oWnd,oAppIcon,cAppUserName
+
+   cAppUserNAme:="Fernandez"
+   DEFINE ICON  oAppIcon RESOURCE "AppIcon"
+   DEFINE WINDOW oWnd FROM 0,0  TO GetSysMetrics(1), GetSysMetrics(0) MDI ;
+         TITLE "My Test Application" ;
+         ICON  oAppIcon 
+
+   SET MESSAGE OF oWnd TO " " 2007
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "My Company Name" SIZE 160  // Company Name
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "Location : UK" SIZE 90  // Branch Information
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "User : "+cAppUserName SIZE 100   ACTION ChangeUser() // On Click change User Name
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "Fn.Year : 2009-2010"SIZE 110 ACTION SelFnYear() // On click User function to change Fin.Year
+   oWnd:oMsgBar:DateOn()  // displays Date
+   oWnd:oMsgBar:ClockOn()  // Displays Time
+   oWnd:oMsgBar:oClock:bMsg   := { || AMPM( Time() ) } // Displays Time in AmPm format
+   oWnd:oMsgBar:oClock:nWidth += 20  // Increase width of Time column on Msg Bar
+
+   ACTIVATE WINDOW oWnd 
+
+RETURN NIL
+oAppIcon:End()
+</code>
+
+** Screen snapshot **
+
+{{:msgbar.jpg|:msgbar.jpg}}
+====== See Also ======
+[[fivewin_class_tmsgbar|Class TMsgBar]], [[fivewin_commands_msgbar|Command MsgBar]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMSGITEM.PRG

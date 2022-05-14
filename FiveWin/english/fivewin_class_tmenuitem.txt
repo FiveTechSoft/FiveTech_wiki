@@ -1,0 +1,120 @@
+
+====== Class TMenuItem ======
+
+TMenuItem class                                                                
+====== DATA ======
+^ Data ^ Description                 ^
+|cPrompt|The label of the MenuItem|
+|cMsg|The text to be shown on the MsgBar of the main Window|
+|cVarName|A variable name to identifier this object|
+|nId|A numeric identifier for this menuitem|
+|nHelpId|A numeric help topic identifier used to select invoked help|
+|bAction|The action to be performed when selecting the MenuItem|
+|bWhen|A codeblock to be avaluated to enable/disable the menuitem|
+|lChecked|Logical value if the menuitem is checked|
+|lActive|Logical value if the menuitem is enabled|
+|lHelp|If this is a menuitem help type (right placed)|
+|oMenu|A reference of its container Menu object|
+|hBitmap|A handle to a Bitmap if defined|
+|nVKState|Accelerator value|
+|nVirtKey|Accelerator value|
+|lBreak|Separator|
+|Cargo|Generic cargo slot|
+====== METHODS ======
+^ Method ^ Description         ^
+|New|Constructor from source code|
+|ReDefine|Constructor from resource|
+|cCaption|Sets and return the menuitem prompt|
+|Destroy|Called when the menuitem is destroyed.|
+|Disable|Disable the item.|
+|Enable|Enable the item.|
+|End|Ends control and make it disappear.|
+|EveCount|Number of total events for this class (used by the Object Inspector).|
+|Event|Retrieve the event from the event array.|
+|HelpTopic|Activates the help topic page|
+|Load|Set the properties of the menuitem based on a supplied binary information.|
+|PropCount|Number of total property.|
+|Property|Retrieves the property from the property array.|
+|Save|Generates a binary representation of this object.|
+|SetCheck|Enables / Disables check.|
+|SetPrompt|Changes the associated menuitem prompt.|
+|HelpTopic|Method invoked when pressing F1 when this menuitem is selected.|
+====== Example ======
+\FWH\Samples\TestMnu4.Prg
+<code clipper>
+// Some PullDown menu samples
+#include "FIVEWIN.CH"
+static oWnd
+
+//------------------------------------------------------------//
+
+FUNCTION Main()
+
+   DEFINE WINDOW oWnd                                       ;
+      TITLE "Testing PullDown Menus"                        ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+
+//------------------------------------------------------------//
+
+FUNCTION BuildMenu()
+
+   local oMenu, oMenu1, oMenu2
+   local oSub1,oSub2,oSub3
+   MENU oMenu
+   MENUITEM oMenu1 PROMPT "Test &1"
+     MENU
+       MENUITEM oSub1 PROMPT "Subject&1" CHECKED
+         /*
+         MENU
+           MENUITEM "Choice 1"
+           MENUITEM "Choice 2"
+           MENUITEM "Choice 3"
+         ENDMENU */
+       MENUITEM "Subject&2"
+         MENU
+           MENUITEM "Option 1"
+           MENUITEM "Option 2"
+           MENUITEM "Option 3"
+           MENU
+             MENUITEM "Selection 1"
+             MENUITEM "Selection 2"
+             MENUITEM "Selection 3"
+             MENU
+               MENUITEM "Sub-selection 1"
+               MENUITEM "Sub-selection 2"
+               MENU
+                 MENUITEM "Sub-sub-selection 1"
+                 MENUITEM "Sub-sub-selection 2"
+                 MENUITEM "Sub-sub-selection 3"
+                 MENU
+                   MENUITEM "Lowest level 1"
+                   MENUITEM "Lowest level 2"
+                 ENDMENU
+               ENDMENU
+             ENDMENU
+             MENUITEM "Selection 4"
+           ENDMENU
+         ENDMENU
+      MENUITEM "Toggle Subject 1 Check" ACTION oSub1:SetCheck( ! oSub1:lChecked )
+     ENDMENU
+   MENUITEM "Test 2"
+     MENU
+       MENUITEM "Item 1"
+       MENUITEM "Item 2"
+     ENDMENU
+   ENDMENU
+   // oMenu2:Disable()
+RETURN (oMenu)
+</code>
+
+** Screen Snapshot **
+
+{{:menu.jpg|:menu.jpg}}
+====== See Also ======
+[[fivewin_commands_menus | Command Menu]], [[fivewin_class_tmenu | Class Menu]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMENUITEM.PRG

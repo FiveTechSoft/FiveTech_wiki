@@ -1,0 +1,242 @@
+====== Class TSlider ======
+
+Slider control                                                                 
+Inherits from TControl     
+
+
+====== DATA ======
+^Data       ^ Description                            ^
+|lHorizontal|If .T. the slider has a horizontal shape|
+|nDirection|Slider button direction\\ \\ NONE_DIRECTION 0\\ TOP_DIRECTION 1\\ LEFT_DIRECTION 2\\ BOTTOM_DIRECTION 3\\ RIGHT_DIRECTION 4|
+|nRow|Internal row position|
+|nCol|Internal col position|
+|nPos|Actual slider position|
+|nLong|Internal long|
+|nClrBtn|Slider color|
+|nClrMarks|Marks color|
+|bPos|Code to be evaluated on change event|
+|nMin,nMax|Range minimum and maximum values|
+|nMarks|Number of marks|
+|lExact|If .T. the selector goes to the nearest mark when moved|
+|aMarks|Array of defined marks|
+|aRectBtn|The coordinates of the button|
+|lCaptured|TRUE when moving the selector, used internally|
+
+====== METHODS ======
+^Method ^ Description            ^
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Default|Default initialization of the control|
+|GetDlgCode|Returns the GetDlgCode associated|
+|Initiate|Initializes the control|
+|Display|Displays the control|
+|nGetPos|Gets internal slider position|
+|nGetVal|Gets actual slider position (based on range values)|
+|Paint|Paints the control|
+|ShowFocus|Gives focused looking style to the control|
+|GotFocus|Gotfocus event handler|
+|LostFocus|Lostfocus event handler|
+|Set|Sets actual slider position (based on range values)|
+|Change|Change event handler|
+|PlaceMark|Internal method for marks painting|
+|Position|Internal method to calculate selectorl position|
+|SetPosition|Internal method to se actual position|
+|Resize|Resize event handler|
+|LButtonDown|Left mouse click event handler|
+|LButtonUp|Left mouse release event handler|
+|MouseMove|Mouse move event handler|
+|KeyDown|Keydown event handler|
+
+You must see the parent class for additional information on data and methods.
+
+====== Example ======
+\Fwh\samples\testslid.prg 
+<code clipper>
+// Testing FiveWin slider controls
+// Ramón Avendaño 1998
+
+#include "FiveWin.ch"
+#include "Slider.ch"
+
+static oWnd
+
+static oPen, oPen_, oBtn
+
+static oSlide, oSlide1, oSlide2, oSlide3
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cTitle := "Testing the Slider controls"
+
+   local oSay, cSay := Space( 11 )
+
+   local nVar1 := 150, nVar2 := 100, nVar3 := 150
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 400, 600 PIXEL ;
+      COLOR CLR_BLACK, CLR_HGRAY ;
+      TITLE cTitle
+
+   SET MESSAGE OF oWnd TO cTitle KEYBOARD CLOCK DATE NOINSET
+
+   DEFINE PEN oPen  WIDTH 3 COLOR CLR_BLUE
+   DEFINE PEN oPen_ WIDTH 3 COLOR CLR_HGRAY
+
+   @ 10, 130 SAY oSay VAR cSay PIXEL OF oWnd
+
+   @ 30, 20 SLIDER oSlide1 VAR nVar1 OF oWnd ;
+            HORIZONTAL ;
+            TOP DIRECTION ;
+            RANGE 60, 300;
+            MARKS 11;
+            SIZE 310, 33 PIXEL ;
+            ON CHANGE ( cSay:= STR( nVar1 ), oSay:Refresh() ) ;
+            ON THUMBPOS Triangulo( nVar, nVar2, nVar3 )
+
+  @ 295, 20 SLIDER oSlide2 VAR nVar2 OF oWnd ;
+            HORIZONTAL ;
+            BOTTOM DIRECTION ;
+            RANGE 50, 210 ;
+            MARKS 21;
+            EXACT ;
+            SIZE 210, 33 PIXEL ;
+            ON CHANGE Triangulo( nVar1, nVar, nVar3 ) ;
+            ON THUMBPOS Triangulo( nVar1, nVar, nVar3 )
+
+  @ 305, 250 BUTTON oBtn PROMPT "&Pulsa" SIZE 62,18 PIXEL OF oWnd ;
+             ACTION ( oSlide2:Set(150), Triangulo( nVar1, nVar2, nVar3 ) )
+
+  @ 65, 360 SLIDER oSlide3 VAR nVar3 OF oWnd ;
+            VERTICAL ;
+            RANGE 80, 280 ;
+            MARKS 2;
+            SIZE 35, 240 PIXEL ;
+            ON THUMBPOS Triangulo( nVar1, nVar2, nVar )
+
+  @ 75, 400  SAY "Max." PIXEL OF oWnd
+  @ 280, 400 SAY "Min." PIXEL OF oWnd
+
+  @ 200, 450 BUTTON "&Dialog" SIZE 92,22 PIXEL ACTION Test_Dialog() OF oWnd
+  @ 235, 450 BUTTON "&Resource" SIZE 92,22 PIXEL ACTION Test_Resource() OF oWnd
+
+  ACTIVATE WINDOW oWnd ;
+     ON PAINT Triangulo( nVar1, nVar2, nVar3 )
+
+  RELEASE PEN oPen
+  RELEASE PEN oPen_
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function Test_Dialog()
+
+  local oDlg, oFont
+  local oSlide, oSay
+  local n, nVar := 0
+
+  DEFINE FONT oFont NAME "Arial" SIZE 0, -80 BOLD
+
+  DEFINE DIALOG oDlg TITLE "Sliders dialog" WINDOW oWnd ;
+    FROM 50, 50 TO 400, 500 PIXEL
+
+   @ 60, 80 SAY oSay VAR nVar SIZE 100, 50 BORDER CENTERED ;
+             FONT oFont PIXEL OF oDlg
+
+   @ 10, 20 SLIDER oSlide VAR nVar OF oDlg ;
+               VERTICAL ;
+               RIGHT DIRECTION ;
+               RANGE -20, 20 ;
+               MARKS 11;
+               EXACT;
+               ON CHANGE oSay:Refresh() ;
+               SIZE 42, 160 PIXEL
+
+   FOR n := -20 TO 20 STEP 4
+       @ n * 3.6 + 86, 50 SAY n SIZE 12,10 PIXEL OF oDlg
+   NEXT
+
+  ACTIVATE DIALOG oDlg
+
+  RELEASE FONT oFont
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Function Test_Resource()
+
+  local oDlg, oSlide, oSlideA
+  local nVar := 1
+
+  SET _3DLOOK ON
+
+  DEFINE DIALOG oDlg RESOURCE "TEST_SLIDER"  WINDOW oWnd
+
+  REDEFINE SLIDER oSlideA VAR nVar OF oDlg ID 101;
+               VERTICAL ;
+               LEFT DIRECTION ;
+               RANGE 10, 0 ;
+               COLORS CLR_WHITE, CLR_GRAY, CLR_WHITE ;
+               MARKS 11 ;
+               UPDATE
+
+  REDEFINE SLIDER nVar OF oDlg ID 102;
+               VERTICAL ;
+               RIGHT DIRECTION ;
+               RANGE 0, 10 ;
+               COLORS CLR_RED, CLR_HGRAY, CLR_CYAN ;
+               MARKS 11 ;
+               UPDATE
+
+  REDEFINE SLIDER oSlide VAR nVar OF oDlg ID 201;
+               VERTICAL ;
+               RANGE 1, 0 ;
+               ON CHANGE ( oSlide:Set( Round( nVar, 0 ) ), ;
+                           IIF( nVar == 1, oSlideA:Enable(), ;
+                                           oSlideA:Disable() ), ;
+                           MsgBeep() ) ;
+
+
+  ACTIVATE DIALOG oDlg
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+Static function Triangulo( nVal1, nVal2, nVal3 )
+
+  static nVar1 := -100, ;
+         nVar2 := -100, ;
+         nVar3 := -100
+
+  local hDC := GetDC( oWnd:hWnd )
+
+  MoveTo( hDC, nVar1, 80 )
+  LineTo( hDC, nVar2, 280, oPen_:hPen )
+  LineTo( hDC, 320, nVar3, oPen_:hPen )
+  LineTo( hDC, nVar1, 80, oPen_:hPen )
+
+  nVar1 := nVal1
+  nVar2 := nVal2
+  nVar3 := nVal3
+
+  MoveTo( hDC, nVal1, 80 )
+  LineTo( hDC, nVal2, 280, oPen:hPen )
+  LineTo( hDC, 320, nVal3, oPen:hPen )
+  LineTo( hDC, nVal1, 80, oPen:hPen )
+
+  ReleaseDC( oWnd:hWnd, hDC )
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:pen.jpg|:pen.jpg}}
+
+====== See Also ======
+[[fivewin_commands_slider|Command Slider]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TSLIDER.PRG

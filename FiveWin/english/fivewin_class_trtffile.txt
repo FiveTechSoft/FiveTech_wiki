@@ -1,0 +1,23 @@
+====== Class TRtfFile ======
+
+RTF (Rich Text Format) class                                                   
+====== DATA ======
+^ Data^ Description          ^
+|hFile|The handle to the file|
+|aBitmaps|An array with the bitmaps used in the file|
+|cFileName|The filename|
+====== METHODS ======
+^ Method ^ Description          ^
+|New|Constructor from source code|
+|WriteShort|Writes a short entry to the file|
+|WriteLong|Writes a long entry to the file|
+|WriteId|Writes a footnote identifier to the file|
+|WriteSeeAlso|Writes a see also list to the file|
+|NewPage|Writes a new page to the file|
+|End|Closes the file|
+====== Example ======
+
+====== See Also ======
+[[fivewin_class_trichedit | Class TRichEdit]], [[fivewin_commands_richedit | Command RichEdit]] 
+====== Source code ======
+FWH\SOURCE\CLASSES\TRTFFILE.PRG

@@ -1,0 +1,63 @@
+
+====== Class TProxy ======
+
+Internet proxy (multi-protocol) server                                         
+====== DATA ======
+^ Data ^ Description                 ^
+|oSocket|Main listening socket object|
+|cAddress|Proxy server address|
+|cServerIP|Proxy server IP address|
+|lDebug|If in debug mode|
+|nPort|Port number|
+|cLogFile|Log filename|
+====== METHODS ======
+^ Method ^ Description                 ^
+|New|Constructor from source code|
+|Activate|Activates the proxy server|
+|End|Ends the proxy server|
+|OnAccept|Accept event handler|
+|OnRead|Read event handler|
+====== Example ======
+\Fwh\Samples\ProxHttp.Prg
+<code clipper>
+// FiveWin Class TProxy demo
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "HTTP Proxy"
+
+   DEFINE BUTTONBAR oBar 3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION BuildProxy()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildProxy()
+
+   local oHttp := TProxy():New( 80, "192.168.1.41" )
+
+   oHttp:lDebug = .t.
+
+   oHttp:Activate()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+</code>
+====== See Also ======
+[[fivewin_class_tsocket| Class TSocket]], [[fivewin_class_tinternet| Class TInternet]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TPROXY.PRG

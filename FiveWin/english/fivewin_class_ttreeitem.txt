@@ -1,0 +1,123 @@
+====== Class TTreeItem ======
+
+Trees TreeItems in FiveWin
+
+
+====== DATA ======
+^ Data ^ Description                              ^
+|cDraw|Contains the draw characters for this item.|
+|cPrompt|Contains the associated text label of the item.|
+|oPrev|Reference to previous TreeItem object.|
+|oNext|Reference to next TreeItem object.|
+|oTree|Reference to a contained tree object.|
+|lOpened|If the contained tree object is opened or not.|
+|nLevel|Ident level of the item.|
+|hBmpOpen|Handle of the bitmap for opened state.|
+|hBmpClose|Handle of the bitmap for closed state.|
+|Cargo|Generic cargo slot.|
+
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|End|Ends control and make it disappear|
+|Add|Adds a new following item.|
+|Close|Closes the the treeitem.|
+|ColSizes|Returns an array with colsizes to use for painting the browse row.|
+|Delete|Deletes treeitem.|
+|Draw|Draws the item.|
+|GetLabel|Retrieves the treeitem label.|
+|GetNext|Retrieves the next treeitem.|
+|GetPrev|Retrieves the previus treeitem.|
+|GetText|Retrieves the treeitem prompt.|
+|Open|Opens the optional tree contained by the TreeItem.|
+|SetNext|Set a new value for the next treeitem.|
+|SetText|Set a new prompt for the current treeitem.|
+|Skip|Goes to the next treeitem.|
+|Toggle|Change the treeitem status if it's open closes it, else opens it.|
+
+====== Example ======
+<code clipper>
+// Using FiveWin built-in trees
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------//
+
+function Main()
+
+   SET _3DLOOK ON
+
+   // SetResDebug( .t. )
+
+   MsgSelect( { "One", "two", "three" }, "two" )
+
+   // CheckRes()
+
+return nil
+
+//----------------------------------------------------------------//
+
+function MsgSelect( aItems, cValue, cTitle )
+
+   local oDlg, oTree, oLbx
+
+   DEFAULT cTitle := "Please, select"
+
+   TREE oTree
+      TREEITEM "One" RESOURCE "Folder", "Folder2"
+      TREE
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+      ENDTREE
+      TREEITEM "Two"    RESOURCE "Folder"
+      TREE
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+      ENDTREE
+      TREEITEM "Three"  RESOURCE "Folder"
+      TREE
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+         TREEITEM "One more" RESOURCE "Folder"
+         TREEITEM "Two more" RESOURCE "Folder"
+      ENDTREE
+
+   ENDTREE
+
+   DEFINE DIALOG oDlg FROM 5,10 TO 24, 55 TITLE cTitle
+
+   @  1, 2 LISTBOX oLbx FIELDS SIZE 145, 95 OF oDlg
+
+   oLbx:SetTree( oTree )
+   oLbx:nLineStyle = 0  // no lines
+   oLbx:cToolTip = "This is a test"
+
+   @ 7, 7 BUTTON "&OK" OF oDlg SIZE 40, 12 ;
+      ACTION oDlg:End() DEFAULT
+
+   @ 7, 18 BUTTON "&Cancel" OF oDlg SIZE 40, 12 ;
+      ACTION ( cValue := nil, oDlg:End() )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oTree:End() // This is very important to release all the TreeItems bitmaps!!!
+
+return cValue
+
+//----------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:treeitem.jpg|:treeitem.jpg}}
+====== See Also ======
+[[fivewin_commands_trees| Command Tree]], [[fivewin_class_ttreeview | Class TTreeView ]], [[fivewin_class_ttvitem | Class TTvItem ]]
+====== Source code ======
+
+FWH\SOURCE\CLASSES\TTREEITEM.PRG

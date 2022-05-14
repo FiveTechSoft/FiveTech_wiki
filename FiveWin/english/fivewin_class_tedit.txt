@@ -1,0 +1,69 @@
+====== Class TEdit ======
+
+standard Windows edits objects Class                                                             
+Inherits from TControl                                                         
+
+====== DATA ======
+|cPicture|picture to use|
+|cType|data type (C,N,D,L)|
+|lLimitText|The text limit is the maximum amount of text that the user can type into the edit control|  
+|nLimitChars|maximum amount of text in unicode chars|  
+|lPassword|If .t. then a echo of asterisk is shown instead of thechars|
+|bHScroll|action to evaluate when the horizontal scroll is moved|
+|bUpdate|action to evaluate when the edit text changes|
+
+
+
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|Initiate|Generic control initialization|
+|Default|Default data initialization|
+|LostFocus|Action to be performed when losing the focus|
+|VarPut|assigns the edit value to the related Harbour variable|
+|cText|assigns or retrieves the edit value|
+|Read|retrieves the edit value|
+|KeyChar|process a key|
+|Command|process a Windows message|
+
+
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, cFirst := "Hello", cLast := "World"
+
+   DEFINE DIALOG oDlg SIZE 500, 250
+   
+   @ 1, 1 EDIT cFirst OF oDlg SIZE 80, 10
+   
+   @ 2, 1 EDIT cLast OF oDlg SIZE 80, 10
+
+   @ 5, 11 BUTTON "Ok" ACTION MsgInfo( cFirst + ", " + cLast )
+
+   @ 5, 21 BUTTON "Cancel" ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>  
+
+** Screen Snapshot **
+
+{{:tedit.png|:tedit.png}}
+
+
+
+
+====== See Also ======
+[[fivewin_commands_edit | Command Edit]], [[fivewin_class_tfget | Class TFGet ]], [[fivewin_class_tget | Class TGet ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TEDIT.PRG

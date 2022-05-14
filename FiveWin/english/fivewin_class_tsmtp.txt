@@ -1,0 +1,84 @@
+====== Class TSMTP ======
+
+FiveWin Internet outgoing mail Class                                           
+====== DATA ======
+^Data   ^ Description                       ^
+|oSocket|Socket used during the mail session|
+|cIPServer|IP of the mail server|
+|cFrom|Sender email address|
+|aTo|Array of strings for each recipient email address|
+|nStatus|Temporary session status|
+|nTo|Temporary recipient index into aTo recipients array|
+|cMsg|Msg Text to send|
+|cSubject|Msg subject|
+|dDate|Msg date|
+|cTime|Msg time|
+|nGmt|GMT deviation|
+|cPriority|Msg priority: normal, high, low|
+|aFiles|Attached files|
+|bConnecting|Action to perform while trying to connect|
+|bConnected|Action to perform when already connected|
+|bDone|Action to perform when Msg has been already sent|
+====== METHODS ======
+^Method  ^ Description            ^
+|New|Constructor from source code.|
+|OnRead|Action to perform on reading|
+|SendMail|Send mail|
+|Priority|Returns priority code|
+|End|Closes the connection|
+====== Example ======
+
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Sending Internet Mail from FiveWin"
+
+   DEFINE BUTTONBAR oBar _3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION SendMail() TOOLTIP "Send Mail"
+
+   SET MESSAGE OF oWnd TO "Ready" NOINSET DATE TIME KEYBOARD
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function SendMail()
+
+   local oOutMail, cIP
+
+   oWnd:SetMsg( "Sending Internet email..." )
+
+   WSAStartup()
+   oOutMail := TSmtp():New( cIP := GetHostByName( "mail.fivetechsoft.com" ) )
+   MsgInfo( cIP )
+
+   oOutMail:bConnecting = { || oWnd:SetMsg( "Connecting to smtp.fivetechsoft.com..." ) }
+   oOutMail:bConnected  = { || oWnd:SetMsg( "Connected" ) }
+   oOutMail:bDone       = { || oWnd:SetMsg( "Message sent successfully" ) }
+
+   oOutMail:SendMail( "alinares@fivetechsoft.com",;     // From
+                      { "alinares@fivetechsoft.com" },; // To
+                      "It is working!!!",;              // Msg Text
+                      "Testing FiveWin Class TSmtp enhancements",; // Subject
+                      { "testsmtp.prg", "testsmtp.zip" } )  // attached files
+
+return nil
+</code>
+
+
+====== See Also ======
+[[fivewin_class_tpop3|Class TPop3]], [[fivewin_class_tinternet|Class TInternet]], [[fivewin_class_tsocket|Class TSocket]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSMTP.PRG

@@ -1,0 +1,107 @@
+====== Class TScrollBar ======
+
+Inherits from [[fivewin_class_tcontrol|Class TControl]]   
+
+====== DATA ======
+^ Data    ^ Description                  ^
+|lVertical|If it is a vertical ScrollBar.|
+|lReDraw|If the scrollbar must update automatically its position|
+|lIsChild|If belongs to a Window with ScrollBars style|
+|nMin,nMax|The numeric range to be represented by the Scrollbar|
+|nPgStep|The increment of value when PgUp or PgDn on the ScrollBar|
+|bGoUp|A codeblock to eval when going up|
+|bGoDown|A codeblock to eval when going down|
+|bGoTop|A codeblock to eval when top is selected|
+|GoBottom|A codeblock to eval when bottom is selected|
+|bPageUp|A codeblock to eval when PageUp is selected|
+|bPageDown|A codeblock to eval when PageDown is selected|
+|bPos|A codeblock to eval when the Thumb is moved to a new position|
+|bTrack|A codeblock to eval when the thumb track is moved|
+
+====== METHODS ======
+^ Method   ^ Description                  ^
+|New|Constructor from source code|
+|WinNew|Constructor for non-true scrollbar|
+|ReDefine|Constructor from resource|
+|cToChar|Generates a data template to build a Dialog|
+|GetPos|Retrieves the current value represented by the Scrollbar|
+|GetRange|Returns an array of two elements with the Min and the Max values|
+|GoBottom|Evaluates the bGoBottom block and updates thumb position|
+|GoDown|Evaluates the bGoDown block and updates thumb position|
+|GoTop|Evaluates the bGoTop block and updates thumb position|
+|GoUp|Evaluates the bGoUp block and updates thumb position|
+|HandleEvent|Redefined events manager|
+|Initiate|Generic initialization|
+|MouseMove|Specific MouseMove behavior|
+|PageDown|Evaluates the bPageDown block and updates thumb position|
+|PageUp|Evaluates the bPageUp block and updates thumb position|
+|SetPage|Sets the page size|
+|SetPos|Changes the position of the thumb|
+|SetRange|Changes the represented range of the ScrollBar|
+|ThumbPos|Changes the position of the Thumb|
+|ThumbTrack|Processes the Thumb track movement|
+
+====== Example ======
+\Fwh\Sample\TestScrl.Prg
+<code clipper>
+// Sample how to use ScrollBars
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 TITLE "Testing ScrollBars" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO FWVERSION + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Add &ScrollBar" ACTION AddSbr()
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function AddSbr()
+
+   static lAdded
+
+   if lAdded == nil
+      lAdded = .t.
+
+      @ 2, 5 SCROLLBAR OF oWnd ;
+        ON UP   nMsgBox( "Hey!, Go Up" ) ;
+        ON DOWN nMsgBox( "Going down man" )
+
+      @ 2, 15 SCROLLBAR OF oWnd ;
+        ON UP   oWnd:Say( 2, 30, Time() ) ;
+        ON DOWN oWnd:Say( 4, 30, "Hello!" )
+
+   endif
+
+return nil
+//----------------------------------------------------------------------------//
+</code>
+====== Screen Snapshot ======
+{{:scrollbar.jpg|:scrollbar.jpg}}
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSCROLLBAR.PRG
+
+====== See Also ======
+[[fivewin_commands_scrollbars|Commands SCROLLBAR]]

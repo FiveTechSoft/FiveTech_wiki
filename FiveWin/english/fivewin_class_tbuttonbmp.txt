@@ -1,0 +1,87 @@
+
+====== Class TButtonBmp ====== 
+
+Standard Windows button controls with bitmaps support. 
+
+Inherits from TButton 
+
+====== DATA ====== 
+
+^ Data ^ Descript ^
+|hBitmap| The handle of the bitmap| 
+|cBitmap| The filename of the bitmap| 
+|cPosText| The position of the text prompt (TEXTTOP, TEXTBOTTOM, TEXTLEFT, TEXTRIGHT)| 
+
+====== METHOD ====== 
+
+^ Method ^ Descript ^
+|New| Constructor from source code| 
+|ReDefine| Constructor for resources| 
+|LoadBitmap| Loads the specified bitmap|
+
+
+====== Example ======
+FWH\samples\testbubm.prg
+<code clipper>
+#include "FiveWin.ch"
+
+#define COLOR_BTNFACE   15
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd, oBtnBmp
+
+   DEFINE WINDOW oWnd TITLE "FiveWin Xp Theme-aware bitmaped buttons" ;
+      COLOR 0, GetSysColor( COLOR_BTNFACE )
+
+
+   @ 2, 2 BUTTONBMP oBtnBmp OF oWnd ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp"
+
+   @ 4, 2 BUTTONBMP oBtnBmp OF oWnd ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp" PROMPT "Test" TEXTRIGHT SIZE 80, 25 ;
+      MESSAGE "From source code"
+      
+   oBtnBmp:cToolTip = "Tooltip text"   
+      
+   @ 6, 2 BUTTON "From Resources" OF oWnd SIZE 90, 25 ACTION FromResources()   
+
+   DEFINE STATUSBAR OF oWnd PROMPT "StatusBar"
+      
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function FromResources()
+
+   local oDlg
+   
+   DEFINE DIALOG oDlg RESOURCE "Test"
+   
+   REDEFINE BUTTONBMP ID 10 OF oDlg ;
+      ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp"
+
+   REDEFINE BUTTONBMP ID 20 OF oDlg ;
+      ACTION MsgInfo( "XP themes aware Button Bitmaps" ) ;
+      BITMAP "..\bitmaps\16x16\garrow.bmp" PROMPT "Test" TEXTRIGHT
+   
+   ACTIVATE DIALOG oDlg
+
+return nil     
+</code>
+
+** Screen Snapshot **
+
+{{:buttonbmp.jpg|:buttonbmp.jpg}}
+
+====== Source code ======
+FWH\source\classes\buttonb.prg
+
+====== See also ======
+[[fivewin_commands_buttonbmp|Commands BUTTONBMP]], [[fivewin_class_tbutton|Class TButton]]
+

@@ -1,0 +1,41 @@
+
+====== Class TDlgFind ======
+
+Windows standard Common Dialog FindText                                        
+Inherits from TDialog                                                          
+====== DATA ======
+|nFindMsgString|A CLASSDATA containing an internal used handle|
+====== METHODS ======
+|New|Constructor from source code|
+|HandleEvent|Generic event handler|
+====== Example ======
+\Fwh\Samples\DlgFind.Prg
+<code clipper>
+// Class TDlgFind test
+
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oGet, cText := "This is a test"
+
+   DEFINE WINDOW oWnd
+
+   @ 2, 2 GET oGet VAR cText SIZE 100, 25
+
+   DlgFindText( "test", oGet )
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:dlgfind.jpg|:dlgfind.jpg}}
+
+====== See Also ======
+[[fivewin_commands_dialogs | Command Dialog ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDLGFIND.PRG

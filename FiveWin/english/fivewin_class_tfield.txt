@@ -1,0 +1,17 @@
+
+====== Class TField ======
+
+Fields managed as objects.                                                     
+====== DATA ======
+|cName|Name of the field.|
+|cType|Type of the field.|
+|nLen|Length in numeric fields.|
+|nDec|Number of decimals in numeric fields.|
+====== METHODS ======
+|New|Constructor from source code.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFIELD.PRG

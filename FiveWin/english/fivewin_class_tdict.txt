@@ -1,0 +1,41 @@
+
+====== Class TDict ======
+
+FiveWin DataDictionary                                                         
+====== DATA ======
+|cPath|Full path of the data base file.|
+|lAutoBuild|Not used|
+|lCheckFiles|Not used|
+|oScripts|Not used|
+|oApplication|Database object for the application|
+|oBrowses|Database object for the browses|
+|oBrwCols|Database object for the browse columns|
+|oForms|Database object for the forms|
+|oLangs|Database object for the languages|
+|oMenus|Database object for the menus|
+|oHelp|Database object for the help|
+|oTables|Database object for the tables|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the dictionary|
+|CloseDatabase|Closes the databases|
+|CreateTable|Create a new table|
+|End|Ends the dictionary|
+|GetNewAlias|Returns a new unique alias|
+|Import|Imports data from a set of databases|
+|BuildSubMenu|Builds a new submenu|
+|LoadMenu|Load a menu|
+|LoadWebBrowse|???|
+|LoadWebEdit|???|
+|LoadWebRecord|???|
+|OpenDatabase|Opens a new database|
+|OpenTable|Open a new table|
+|Report|Creates a new report|
+|WebRecSave|???|
+====== Example ======
+
+====== See Also ======
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDICT.PRG

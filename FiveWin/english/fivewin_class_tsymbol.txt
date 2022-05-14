@@ -1,0 +1,17 @@
+====== Class TSymbol ======
+
+Object oriented manipulation of internal Clipper symbols                       
+====== DATA ======
+^ Data  ^ Description                 ^
+|hSymbol|Handle of the internal symbol|
+
+====== METHOD ======
+^ Data  ^ Description                 ^
+|IsStatic|Is it a symbol or a static symbol?|
+|Name|Name of the symbol|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSYMBOL.PRG

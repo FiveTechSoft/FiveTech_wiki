@@ -1,0 +1,180 @@
+
+====== Class TBar ====== 
+
+Button Bar Objects 
+
+Inherits from Tcontrol 
+
+====== DATA ====== 
+
+|nGroups|             Number of groups|    
+|nMode|               The position of the BtnBar on the window|    
+|nBtnWidth|           The height and width of its buttons. By default is 28x28|    
+|nBtnHeight|          The height of the Bar is automatically adjusted to the height of the buttons.|    
+|l3D|                 If the BtnBar has to be shown 3DLook| 
+|l2007|               If the BtnBar has to be shown with 2007 look| 
+
+====== METHODS ====== 
+
+|New|                 Constructor from source code|    
+|NewAt|               Constructor from source code at a certain location.|    
+|Add|                 Add a BtnBmp to the bar.|    
+|AddGroup|            Adds a new logical group to the bar.|    
+|Adjust|              Adjust the Button bar to the dimensions of its container window.|    
+|AdjMode|             Changes the BtnBar position to floating|    
+|BtnAdjust|           Adjust the buttons to the dimensions of the Button bar.|    
+|Del|                 Deletes a button from the bar.|    
+|DelGroup|            Deletes a logical group from the bar.|    
+|Display|             Displays the button bar|    
+|EraseBkGnd|          Erases the background of the control|    
+|cGenPRG|             Returns a string with the source code of the button bar|    
+|Float|               Turns the buttonbar into floating mode.|    
+|FloatClick|          Processes MouseClicks on the float mode buttonbar.|    
+|GetBtnTop|           Returns the appropriate nTop when adding a new button|    
+|GetBtnLeft|          Returns the appropriate nLeft when adding a new button|    
+|GoDown|              Turns the buttonbar into down mode.|    
+|GoLeft|              Turns the buttonbar into left mode.|    
+|GoRight|             Turns the buttonbar into right mode.|    
+|GoTop|               Turns the buttonbar into top mode.|    
+|LButtonDown|         Processes mouse left clicks on the buttonbar.|    
+|LButtonUp|           Processes mouse left release on the buttonbar.|    
+|LeftMode|            Changes the BtnBar position to the left of the window|    
+|MouseMove|           Activates the default message on window owner MsgBar|    
+|Paint|               Displays the ButtonBar. Use :Refresh() instead this.|    
+|RButtonDown|         Processes mouse right clicks on the buttonbar.|    
+|RightMode|           Changes the BtnBar position to the Right the window|    
+|TopMode|             Changes the BtnBar position to the Top of the window|    
+|Click|               Mouse left button event handler|    
+|SaveIni|             Saves the bar to an INI file|    
+|GetBtnCol|           Computes the column of the new Button|    
+|SetMsg|              Set the text of the message bar of its container window| 
+
+====== example ======
+FWH\samples\test2007.prg
+<code clipper>
+DEFINE BUTTONBAR oBar OF oWnd SIZE 60, 60 2007
+
+   DEFINE BUTTON OF oBar ACTION Print() ;
+      RESOURCE "attach" PROMPT "Attach" TOOLTIP "Attach"
+</code>
+
+
+====== Sample Code ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   local oBar, oPopup, oBtn   
+
+   SetBalloon( .T. ) // Balloon shape required for tooltips
+
+   DEFINE WINDOW oWnd TITLE "FWH - Office 2007 look in your ButtonBars, MsgBar and Menus" ;
+      MENU BuildMenu() MDI
+
+   DEFINE BUTTONBAR oBar OF oWnd SIZE 60, 60 2007
+
+   DEFINE BUTTON OF oBar ACTION Print() ;
+      RESOURCE "attach" PROMPT "Attach" TOOLTIP "Attach"
+
+   DEFINE BUTTON OF oBar ACTION MsgInfo( "calendar" ) ;
+      RESOURCE "calendar" PROMPT "Calendar" WHEN .F. TOOLTIP "Calendar"
+
+   MENU oPopup POPUP
+      MENUITEM "One" ACTION MsgInfo( 1 )
+      MENUITEM "Two" ACTION MsgInfo( 2 )
+   ENDMENU
+
+   DEFINE BUTTON oBtn OF oBar ACTION oBtn:ShowPopup() ;
+      RESOURCE "people" PROMPT "Clients" GROUP ;
+      MENU oPopup TOOLTIP "Clients"
+
+   DEFINE BUTTON OF oBar ACTION Test() ;
+      RESOURCE "print" PROMPT "Print" TOOLTIP "Print"
+
+   SET MESSAGE OF oWnd TO "Testing the ButtonBar 2007 Office look" ;
+      CENTERED CLOCK KEYBOARD 2007
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Do you want to end?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu 2007
+      MENUITEM "&DataBases"
+      MENU
+         MENUITEM "&Clients..." FILENAME "..\bitmaps\16x16\favorite.bmp"
+         MENUITEM "&Report..."
+         MENU
+            MENUITEM "&One..." DISABLED
+            MENUITEM "&Two..." CHECKED
+            MENUITEM "&Three..." WHEN .F.
+         ENDMENU
+         SEPARATOR
+         MENUITEM "&End" ACTION oWnd:End()
+      ENDMENU
+      
+      MENUITEM "Edit" WHEN .F.
+      
+      oMenu:AddHelp()
+      
+      MENUITEM "Another item"
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function Print()
+
+   local oPrn
+   
+   PRINTER oPrn PREVIEW
+      PAGE
+         oPrn:Say( 2, 2, "Hello" )
+      ENDPAGE
+      PAGE
+         oPrn:Say( 2, 2, "Bye" )
+      ENDPAGE
+   ENDPRINT
+   
+return nil         
+
+//----------------------------------------------------------------------------//
+
+function Test()
+
+   local oDlg, cPass := Space( 4 )
+   
+   DEFINE DIALOG oDlg RESOURCE "test"
+   
+   REDEFINE GET cPass ID 100 OF oDlg
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+   MsgInfo( GetGuiResources() )
+   
+return nil   
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:buttonbar2007.jpg|:buttonbar2007.jpg}}
+
+
+====== source code ======
+FWH\source\classes\bar.prg
+
+
+
+====== see also ======
+[[fivewin_commands_bar | Command Bar ]]

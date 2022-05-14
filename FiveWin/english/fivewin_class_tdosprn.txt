@@ -1,0 +1,126 @@
+
+====== Class TDosPrn ======
+
+Ascii printing class. It simulates CA-Clipper printing in MSDOS                
+environments.                                                                  
+====== DATA ======
+|LastError|The last error code|
+|cPort|Printing port, by default "LPT1"|
+|cCompress|String for compressed mode, by default "15"|
+|cNormal|String for normal mode, by default "18"|
+|cFormFeed|String for EJECT, by default "12"|
+|cBuffer|An internal used buffer|
+|hDC|Printing file Handle (Internal use)|
+|nRow|Current printing row|
+|nCol|Current pringing column|
+|nLeftMargin|Left margin, by default 0|
+|nTopMargin|Top margin, by default 0|
+|lAnsiToOem|If .T. a Ansi to Oem translation is done|
+|automatically|when printing, by default is .T.|
+|cReset|String for reset command|
+|lFile|.T. for printing to file|
+|nLPP|Line per page|
+|bNewPage|The action to perform when starting a new page|
+|nPage|The current printing page|
+|bPageChange|The action to perform when changing page|
+|bOnClose|The action to perform at the end of printing|
+|lPrnError|.T. if a print error is occurred|
+|lPrnSelect|.T. if the printer is selected|
+|lPaperOut|.T. if the printer is out of paper|
+|lDataAck|.T. if the printer has acknoledge the received data|
+|lPrnBusy|.T. if the printer is busy|
+|nLPTBase|The base address of the used port|
+====== METHODS ======
+|New|Constructor, no comment|
+|End|Destructor, no comment|
+|StartPage|Begining of a page, this method is optional|
+|EndPage|End of page, this method is optional if there is only on page|
+|Command|Let you send any command to the printer without|
+|changing|the current row and col. The string to pass as a parameter|
+|should|content the ascii values of the command separated with commas, for|
+|example,|the command to reset Epson printers should be: "27,69"|
+|SetCoors|Let you change the current row and col is the|
+|equivalent|of SetPrc() of Ca-Clipper|
+|NewLine|Increments the current row|
+|Write|Prints a string in the current row and column|
+|Say|Prints the string cText in nRow, nCol. lAtoO|
+|indicates|if the string should be transformed to Oem,by default is ::lAnsiToOem|
+|SayNow|The same as the method Say but prints immediately|
+|SayCmp|The same as the method Say but prints in compressed|
+|mode|and the row is updated accordly.|
+|PrintFile|Prints the given filename|
+|Esc2Cmd|Sends a specific command to the printer.|
+|PrinterStatus|Get the status of the printer|
+====== Example ======
+<code clipper>
+*---------------------------------------------------*
+Function Main()
+*---------------------------------------------------*
+local oPrn, lSpool,lModal,nLin,nPag
+Local nRecNo
+Local nCount:=0
+
+Sele AcMaster_ACM
+nRecNo:=RecNo()
+Go Top
+
+
+lSpool  :=.T.  // If this is not true then app will quit abnormaly if LPT1 is not captured
+lModal   :=.T.
+
+nLin    := 1
+nPag    := 0
+
+SetMTxtPreview( .F., 5, 2, .F., lSpool )
+
+oPrn := TDosPrn():New(.T.)
+
+begin sequence
+oPrn:StartPage()
+		
+Sele AcMaster_ACM
+Go Top
+Do While !eof()
+
+    if nLin = 1
+    
+        nPag++
+        oPrn:Command( oPrn:cNormal )
+        oPrn:Say( nLin, 00, PadC( "Test Printing", 79 ) )
+
+        ++nLin
+        oPrn:Say( ++nLin, 01, "Account Details" )
+        oPrn:Say( nLin, 65, "Pag.: " + StrZero( nPag,3 ) )      // Pagina
+        oPrn:Say( ++nLin, 001, Repl("-", 73) )
+        oPrn:Say( ++nLin, 001,"| Sr#  | AcName                        | Group Name                     |")
+        oPrn:Say( ++nLin, 001, Repl("-", 73) )
+
+    Endif
+    
+    oPrn:Say(++nLin,001,"|"+str(++nCount,5)+" |"+NAME+" | "+Group_ACM->GRNAME+" |")
+	
+    Select AcMaster_ACM
+    Skip	
+	
+    if nLin+1 > oPrn:nMaxLine                          // se passou a linha max
+       oPrn:Say( ++nLin, 001, Repl("-", 73) )
+       nLin:= 1                                        //  volta contador para 1
+    endif                                              //  nova pagina      
+Enddo
+oPrn:Say( ++nLin, 001, Repl("-", 73) )
+oPrn:EndPage()
+oPrn:End()
+end sequence
+
+TxtPreview( oPrn:cDevice, "Anser Test", lModal,,, oPrn, WndMain(), , oPrn:lModoGraf )
+      
+Sele AcMaster_ACM
+Goto nRecNo
+Return NIL
+</code>
+
+====== See Also ======
+[[fivewin_class_treport | Class TReport ]], [[fivewin_class_tprinter | Class TPrinter ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDOSPRN.PRG

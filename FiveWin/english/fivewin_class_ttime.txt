@@ -1,0 +1,51 @@
+====== Class TTime ======
+Time objects management
+
+====== DATA ======
+^ Data ^ Description               ^
+|nTime|Time value as a numeric long|
+
+====== METHOD ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|System|Constructor from computer system time|
+|AddHours|Adds a specified number of hours.|
+|AddMinutes|Adds a specified number of Minutes.|
+|AddSeconds|Adds a specified number of Seconds.|
+|cAdd|Adds another time and returns the result as a string|
+|cGetTime|Retrieves current time as a string.|
+|cSub|Returns the difference, as a string, from another time|
+|SysChange|Change system time|
+
+====== Example ======
+<code clipper>
+// Using Time-Class Objects
+// Time Objects may be used also from MsDos
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oTime1 := TTime():System()
+   local oTime2 := TTime():New( 8, 20 )
+
+   MsgInfo( "System time: " + oTime1:cGetTime() + CRLF + ;
+            "Test time:   " + oTime2:cGetTime() + CRLF + ;
+            "=================="                + CRLF + ;
+            "Difference:  " + oTime1:cSub( oTime2 ) )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:ttime.jpg|:ttime.jpg}}
+
+====== See Also ======
+[[fivewin_class_ttimer|Class Timer]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TTIME.PRG

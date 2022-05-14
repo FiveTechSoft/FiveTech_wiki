@@ -1,0 +1,172 @@
+
+====== Class TOutLook ======
+
+Outlook control class                                                          
+Inherits from Tcontrol                                                         
+====== DATA ======
+^ Data   ^ Description                                ^
+|oDragYes|Cursor object for dragging enable operations|
+|oDragNo|Cursor object for dragging disable operations|
+|oBtnTop|Button object for scrolling up|
+|oBtnBottom|Button object for scrolling down|
+|aGroup|Array that hold all the group information|
+|nActual|Actual group active|
+|nDesp|Number of items displace|
+|nDrag|Internal data to control if we are in a dragging operation|
+|lCaptured|Internal data to control if items Say control is captured|
+
+
+
+
+
+
+
+
+
+
+====== METHODS ======
+^ Method   ^ Description                              ^
+|New|Creates a new outlook object. Consult the command guide for more information. \\ New( nTop, nLeft, nWidth, nHeight, nClrFore,nClrBack,nStyle, oBrush, oFont, lPixel, cMsg, oWnd, nHelpID, bRClick )|
+|End|Destroys the Outlook object End()|
+|Display|Displays the outlook control. Used internally Display()|
+|Paint|Displays the outlook control. Used internally Paint()|
+|DrawButtons|Displays the outlook control items. Used internally DrawButtons()|
+|AddGroup|Adds a new group to the outlook object. AddGroup( cPrompt, bAction, bWhen,cMsg,oFont )|
+|AddItem|Adss a new item to any Outlook object group. AddItem( cPrompt, cBitmap,|
+|cResource,|bAction, nGroup, bWhen, cMsg, bRClick, oFont, lAdjust,lNoBorder,cToolTip, lIcon )|
+|Set|Sets the active group. You can specify the item number or the group by its caption, not both at the same time. \\ Set(nItem,cGroup)|
+|Destroy|Destroys the Outlook object Destroy()|
+|SetColor|Sets the foreground and background color of the Outlook control. SetColor( nClrFore, nClrBack )|
+|GetPos|Retrieves the ordinal position of a specefic Item, it can be the Btnbmp or the Say object of any item. GetPos( oItem )|
+|DeleteItem|Deletes a specific item from a group. DeteleItem(oItem)|
+|MoveToGroup | Moves a specific item to an other group. MoveToGroup(xItem,nGroup, lRefresh ) xItem is the item to move (object or ordinal item position on active group) nGroup is the target group to move|
+|lRefresh,|by default .T. if the control should be refreshed|
+|SwapItems|Swap the order of two items on the same group|
+|MoveToGroup|(xItem1, xItem2, [lRefresh] ) xItem1 is the first item to swap(object or ordinal item position on active group) xItem2 is the second item to swap (object or ordinal item position on active group)|
+|SaveOrder|Returns a string with the current group and item order SaveOrder()|
+|RestoreOrder|Restores the order of a previous saved order with the method SaveOrder RestoreOrder( cString )|
+|GroupBtn|Retrieves the button object of a specific group. By default nGroup is the current active group. GroupBtn( nGroup )|
+|GroupBmps|Retrieves an array with all the Btnbmp objects of a specific group. By default nGroup is the current active group. GroupBmps(nGroup)|
+|GroupSays|Retrieves an array with all the Says objects of a specific group. By default nGroup is the current active group. GroupSays(nGroup)|
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch"
+#include "outlook.ch"
+#include "splitter.Ch"
+
+static lBar := .t.
+
+FUNCTION Main()
+
+   local oWnd, oOut, oSpl, oFont, oFont2, oBar, oBtn, oMenu
+
+   DEFINE FONT oFont NAME GetSysFont() SIZE 0,-14
+
+   MENU oMenu
+      MENUITEM "&File"
+      MENUITEM "&Edit"
+      MENUITEM "&View"
+      MENUITEM "&Favourites"
+      MENUITEM "&Tools"
+      MENUITEM "&Actions"
+      MENUITEM "&?"
+   ENDMENU
+
+   DEFINE WINDOW oWnd FROM 2, 2 TO 35, 85 ;
+      MENU oMenu TITLE "Outlook control test"
+
+   DEFINE BUTTONBAR oBar _3d OF oWnd
+
+   DEFINE BUTTON oBtn RESOURCE "FORM" OF oBar NOBORDER ;
+      PRESSED ;
+      ACTION ( lBar := !lBar,;
+               oBtn:lPressed := lBar,;
+               oBtn:Refresh(),;
+               iif( !lBar, (oOut:Hide(), oSpl:Hide()),;
+                           (oOut:Show(), oSpl:Show())) )
+
+  @ -1, -1 OUTLOOK oOut ;
+    SIZE 100, oWnd:nHeight() ;
+    PIXEL ;
+    FONT oFont ;
+    OF oWnd
+
+  SET MESSAGE OF oWnd TO "Outlook control test" DATE TIME KEYBOARD
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&Principal"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Outgoing messages" ;
+      ACTION msginfo("Your code ...", oSay:cCaption )
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "EXIT" ;
+      PROMPT "Exit from the application" ;
+      ACTION oWnd:End()
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Third control"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Fourth control"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "This is the the fifth control"
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&More options"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "First button on second group bar"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Second button on second group bar"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "EXIT" ;
+      PROMPT "Third button"
+
+  DEFINE GROUP OF OUTLOOK oOut PROMPT "&Another extra group"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "First button"
+
+    DEFINE BITMAP OF OUTLOOK oOut ;
+      RESOURCE "FOLDER" ;
+      PROMPT "Second button"
+
+   @ 0, 100 SPLITTER oSpl ;
+              VERTICAL ;
+              PREVIOUS CONTROLS oOut ;
+              LEFT MARGIN 70 ;
+              RIGHT MARGIN 200 ;
+              SIZE 4, nil  PIXEL ;
+              OF oWnd ;
+              _3DLOOK ;
+              UPDATE
+
+   ACTIVATE WINDOW oWnd ;
+    ON RESIZE oSpl:AdjRight()
+
+RETURN NIL
+
+procedure AppSys  //  Xbase++ requirement
+
+return
+</code>
+
+** Screen Snapshot **
+
+{{:outlook.jpg|:outlook.jpg}}
+
+====== See Also ======
+[[fivewin_commands_outlook | Command OutLook ]], [[fivewin_class_tpanel | Class TPanel ]], [[fivewin_class_ttitle | Class TTitle ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TOUTLOOK.PRG

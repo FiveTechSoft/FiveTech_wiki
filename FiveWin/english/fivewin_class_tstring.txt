@@ -1,0 +1,40 @@
+====== Class TString ======
+
+Strings > 64 Kb management class                                               
+
+====== DATA ======
+^Data ^ Description  ^
+|Handle|String handle|
+
+====== METHODS =======
+^Method ^ Description            ^
+|New|Constructor from source code|
+|Len|String length|
+|Sum|String concatenation (operator + )|
+|Assign|String assignment (operator = )|
+|Compare|String comparison (operator == )|
+|Byte|String indexing (operator [])|
+|End|Destroy the string|
+
+====== Example ======
+<code clipper>
+function Main()
+
+   local oStr := TString():New( 200000 ) // 200000 bytes string
+
+   MsgInfo( oStr:Len() )
+
+   MsgInfo( oStr[ 1 ] )
+
+   oStr[ 1 ] := 123
+
+   MsgInfo( oStr[ 1 ] )
+
+   oStr:End()
+
+return nil
+</code>
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSTRING.PRG

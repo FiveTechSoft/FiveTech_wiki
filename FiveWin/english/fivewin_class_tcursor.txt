@@ -1,0 +1,87 @@
+
+====== Class TCursor ======
+
+Mouse cursors managed as objects.                                              
+====== DATA ======
+|hCursor|Handle of the cursor.|
+|lPredef|If it is a Windows system predefined cursor: ARROW, IBEAM, WAIT, CROSS, UPARROW, SIZE, ICON, SIZENWSE, SIZENESW, SIZEWE, SIZENS, HAND, STOP, DRAG |
+====== METHODS ======
+|New|Constructor from source code|
+|NewBmp|Constructor from source code (bitmap cursor)|
+|End|Destroys the cursor object|
+
+====== Available cursor Styles ======
+
+| ARROW | Arrow design |
+| ICON | Icon design |
+| SIZENS | North-South arrow design |
+| SIZEWE | West-east arrow design |
+| SIZENWSE | Nort-South & West-east arrow design |
+| SIZENESW | North-East & South-west arrow design |
+| IBEAM | Ibeam design |
+| CROSS | Cross design |
+| SIZE | Size adjustment design |
+| UPARROW | Up arrow design |
+| WAIT | Hour-glass design |
+| HAND | Hand design |
+
+====== Example ======
+\Fwh\Samples\TestCurs.Prg
+<code clipper>
+// Testing Cursors !!!
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+function Main()
+
+   local oWnd, oBrush, oBar
+   local oCrsArrow, oCrsLogo, oCrsFW, oCrsHand, oCrsClock
+
+   DEFINE BRUSH oBrush RESOURCE "SoftYello"
+
+   DEFINE CURSOR oCrsArrow RESOURCE "OS2"
+   DEFINE CURSOR oCrsLogo  RESOURCE "OS2Logo"
+   DEFINE CURSOR oCrsFW    RESOURCE "FiveWin"
+   DEFINE CURSOR oCrsHand  RESOURCE "Hand"
+   DEFINE CURSOR oCrsClock RESOURCE "Clock"
+
+   DEFINE WINDOW oWnd FROM 5, 5 TO 20, 60 ;
+      TITLE "OS2 Look-Alike..." ;
+      BRUSH  oBrush ;
+      CURSOR oCrsArrow
+
+   DEFINE BUTTONBAR oBar OF oWnd ;
+      CURSOR oCrsHand
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsArrow ;
+      MESSAGE "Use OS2 style cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsLogo ;
+      MESSAGE "Use OS2 Logo cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsFW ;
+      MESSAGE "Use FiveWin style cursor..."
+
+   DEFINE BUTTON OF oBar ACTION oWnd:oCursor := oCrsClock ;
+      MESSAGE "Use OS2 clock cursor..."
+
+   @ 4, 2 BUTTON "&Hide" SIZE 80, 25 OF oWnd ACTION oBar:Hide()
+
+   @ 7, 2 BUTTON "&Show" SIZE 80, 25 OF oWnd ACTION oBar:Show()
+
+   SET MESSAGE OF oWnd TO "Changing cursors on the fly!!!"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>  
+
+** Screen Snapshot **
+
+{{:cursor.jpg|:cursor.jpg}}
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCURSOR.PRG
+
+====== See Also ======
+[[fivewin_commands_cursor | Command Cursor]]

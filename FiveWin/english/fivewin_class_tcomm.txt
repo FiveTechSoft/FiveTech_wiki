@@ -1,0 +1,89 @@
+
+====== Class TComm ======
+
+Communication as an object                                                     
+Developed by a FiveWin user.                                                   
+====== DATA ======
+|nDevice|Comm device number|
+|nInQueue|In buffer len|
+|nOutQueue|Out buffer len|
+|nId|Handle from OpenComm()|
+|nStop|Stop bits|
+|nBaud|Baud rate|
+|nData|Data length|
+|nErr|Last error number|
+|cParity|Parity type|
+|cStyle|"COM" or "LPT"|
+====== METHODS ======
+|New|Constructor from source code|
+|Break|Blocks the communication port.|
+|Close|Closes the communication port.|
+|Error|Shows the errors messages.|
+|Escape|Sends the escape sequence.|
+|Flush|Leaves empty the communication buffer.|
+|SetUp|Setups the communication port.|
+|UnBreak|Unlock the communication port.|
+|Write|Send a string to the communication port.|
+====== Example ======
+<code clipper>
+#include "fiveWin.ch"
+
+function Main()
+
+   affichefw( "hello", "This is a test" )
+
+return nil
+
+func affichefw(ligne,texte,fin)
+   local cDcb, nBytes
+   local nComm := OpenComm( "COM1", 1024, 128 )
+   local nError
+
+   DEFAULT ligne := messaff
+   DEFAULT texte := repl(" ",20)
+   DEFAULT fin := .f.
+
+  ligne := chr(27)+"uA"+ligne+chr(13)
+  texte := chr(27)+"uB"+texte+chr(13)
+
+   if ! BuildCommDcb( "COM1:9600,n,8,1", @cDcb )
+      nError = GetCommError( nComm )
+      MsgInfo( "BuildCommDcb Error: " + Str( nError ) )
+   endif
+
+   if ( nBytes := WriteComm( nComm, ligne ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if ( nBytes := WriteComm( nComm, texte ) ) < 0
+      nError = GetCommError( nComm )
+      MsgInfo( "WriteComm Error: " + Str( nError ) )
+   else
+      // Windows requires to have a Window at least to perform comunications !!!
+      // Let's use the MessageBox() Window as default
+      MsgInfo( Str( nBytes ) + " bytes sent" )
+   endif
+
+   if FlushComm( nComm, 0 ) != 0
+      nError = GetCommError( nComm )
+      MsgInfo( "FlushComm Error: " + Str( nError ) )
+   endif
+
+   if ! CloseComm( nComm )
+      nError = GetCommError( nComm )
+      MsgInfo( "CloseComm Error: " + Str( nError ) )
+   endif
+
+return nil
+</code>
+
+====== See Also ======
+[[fivewin_commands_serial| Command Serial Communications ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCOMM.PRG

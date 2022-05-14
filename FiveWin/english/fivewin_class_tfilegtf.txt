@@ -1,0 +1,27 @@
+
+====== Class TFileGTF ======
+
+This class is to be used in conjuntion with TFGet and it serves to create      
+formatted text from scratch. Is prefereable to use the FileGTF commands.       
+====== DATA ======
+|cName|Filename|
+|hFile|File handle.|
+|nAlign|Actual align mode|
+|nFont|Actual font object|
+|nColor|Actual color|
+====== METHODS ======
+|New|Constructor|
+|End|Destructor|
+|Write|Writes to the filename the value uval with a specific|
+|Format|(better use the commands)|
+|_Return|Writes to the filename a carriage return|
+====== Example ======
+
+
+
+
+====== See Also ======
+[[fivewin_class_tfget | Class TFGet ]], [[fivewin_class_tget | Class TGet ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFILEGTF.PRG

@@ -1,0 +1,48 @@
+
+====== Class TGroup ======
+
+Group Dialog control Class                                                     
+Inherits from TControl                                                         
+====== DATA ======
+|No|data is added|
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|cToChar|Control Data to template convertor for creating|
+|DialogBoxes.||
+|EraseBkGnd|Erase the background of the control|
+|HandleEvent|Generic control Handle Event method.|
+|Initiate|Generic Control initialization method.|
+====== Example ======
+\Fwh\Samples\TestGrp2.Prg
+<code clipper>
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+    local oDlg, oGrp
+    local cTest := "hello world!"
+    local cValue
+
+    DEFINE DIALOG oDlg TITLE "Testing groups"
+
+    @ 0, 1 GROUP oGrp TO 4, 21.5 PROMPT "Test"
+
+    @ 1, 2 GET cTest
+
+    @ 0.9, 11 LISTBOX cValue ITEMS { "One", "Two", "Three" }
+
+    @ 3.3, 10 BUTTON "Ok" ACTION oDlg:End()
+
+    ACTIVATE DIALOG oDlg CENTERED
+
+return nil</code>  
+
+** Screen Snapshot **
+
+{{:group.jpg|:group.jpg}}
+
+====== See Also ======
+[[fivewin_commands_group | Command Group ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TGROUP.PRG

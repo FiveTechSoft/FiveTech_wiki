@@ -1,0 +1,62 @@
+====== Class TWebClient ======
+
+Internet WEB client
+
+====== DATA ======
+^ Data  ^ Description ^
+|oSocket|Socket object|
+|bOnConnect|Codeblock evaluated when the connection is made|
+|bOnRead|Codeblock evaluated when reading data|
+
+====== METHODS ======
+^ Method  ^ Description ^
+|New|Constructor from source code.|
+|Connect|Connects to a given IP address|
+|OnConnect|Connect event handler|
+|OnRead|Read event handler|
+|GetPage|Sends a GET command with the given page name|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "WebClient test"
+
+   DEFINE BUTTONBAR oBar 3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION WebClient() ;
+      TOOLTIP "Connect to www.fivetech.com and get index.htm"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function WebClient()
+
+   local oWebClient := TWebClient():New()
+
+    oWebClient:bOnConnect = { || MsgInfo( "Connected!" ) }
+    oWebClient:bOnRead    = { | cData | MsgInfo( cData ) }
+
+    oWebClient:Connect( "www.fivetech.com" )
+    oWebClient:GetPage( "index.htm" )
+
+return nil
+</code>
+
+====== See Also ======
+
+[[fivewin_class_twebserver|class twebserver]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TWEBCLIENT.PRG

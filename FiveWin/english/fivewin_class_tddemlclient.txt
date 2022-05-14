@@ -1,0 +1,103 @@
+
+====== Class TDDEMLClient ======
+
+DDEML Client Object management                                                 
+====== DATA ======
+|hInst|A handle of the DDEML instance session|
+|hConv|A handle of the DDEML conversation|
+|cService|The name of the service|
+|hService|The handle of the service|
+|cTopic|The name of the topic to keep the conversation about|
+|hTopic|The handle of the topic|
+|nTimeOut|The timeout to wait for an answer. Default 1000. Use -1 for ASync.|
+====== METHODS ======
+|New|Constructor METHOD|
+|Connect|To connect to a Server|
+|Disconnect|To disconnect from the Server|
+|End|Disconnects from the Server. Same as above|
+|Execute|Sends a command to the Server.|
+|Request|Request data from the Server.|
+====== Example ======
+\Fwh\Samples\DDEmlCli.Prg
+<code clipper>
+// FiveWin Class TDDEMLClient demonstration
+
+#include "FiveWin.ch"
+
+static oWnd, oClient
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar, cData
+
+   DEFINE WINDOW oWnd TITLE "DDEML Client"
+
+   DEFINE BUTTONBAR oBar 3D OF oWnd
+
+   DEFINE BUTTON OF oBar ;
+      ACTION  InitClient() ;
+      TOOLTIP "Connect to the Server"
+
+   DEFINE BUTTON OF oBar ;
+      ACTION  RequestData() ;
+      TOOLTIP "Make a Request"
+
+   DEFINE BUTTON OF oBar ;
+      ACTION  oClient:Execute( "Any command" ) ;
+      TOOLTIP "Send a command"
+
+   DEFINE BUTTON OF oBar ;
+      ACTION If( oClient != nil,;
+               ( oClient:End(), oClient := nil ),) ;
+      TOOLTIP "Disconnect"
+
+   SET MESSAGE OF oWnd TO "FiveWin - DDEML management" NOINSET
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function InitClient()
+
+   if oClient == nil
+
+      oClient = TDDEMLClient():New()
+
+      // for NetDde conversations
+      // if oClient:NetConnect( "ANTONIO", "DdeMlSvr.exe" )
+
+      if oClient:Connect( "DDEMLSVR", "Test" )  // "Test" --> any word
+         MsgInfo( "Connection Established!" )
+      else
+         MsgInfo( "Cannot connect to server" )
+      endif
+
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function RequestData()
+
+   local n
+
+   for n = 1 to 20
+      oWnd:Say( n, 2, oClient:Request( "CUSTOMER->Last" ), 0 )
+      oClient:Request( "CUSTOMER->( DbSkip() )" )
+   next
+   SysRefresh()
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDDEMLCLIENT.PRG

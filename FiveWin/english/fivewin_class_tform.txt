@@ -1,0 +1,67 @@
+====== Class TForm ======
+
+Form Objects Class (UNDER DEVELOPMENT)                                         
+====== DATA ======
+|nBorderStyle|The border style of the form|
+|OnMouseMove|Mouse move event handler|
+|OnKeyDown|Keydown event handler|
+|OnMove|Move event handler|
+|OnPaint|Paint event handler|
+|OnResize|Resize event handler|
+
+====== METHODS ======
+|New|Constructor from source code|
+|LoadRes|Loads form from resources|
+|cCaption|Gets and optionally sets the caption of the form|
+|nTop|Gets and optionally sets the top coordinate of the form|
+|nLeft|Gets and optionally sets the left coordinate of the form|
+|nClrPane|Gets and optionally sets the background color of the form|
+|SetColor|Sets the foreground color, background color and brush of the form|
+|ShowModal|Shows the form in modal style|
+
+====== Example ======
+<code clipper>
+// Testing the new FiveWin 2.0 Class TForm
+
+#include "FiveWin.ch"
+
+static oForm
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   oForm = TForm():New()
+
+   oForm:cCaption = "Hello World!"
+   oForm:nClrPane = CLR_HGREEN
+   oForm:bValid   = { || oForm:SaveFile( "test.ffm" ),;
+                         MsgInfo( "Window saved to disk!" ), .t. }
+
+   oForm:Activate()
+
+   // The object has been saved to disk and now completely
+   // destroy it. Be aware that closing the previous window,
+   // a oForm:End() has already been issued
+
+
+   oForm = nil
+
+   MsgInfo( "now we will create it from disk!" )
+
+   oForm = TForm():New()    // oForm is a new object
+
+   oForm:LoadFile( "test.ffm" ) // we recover the object from disk
+
+   oForm:Activate()
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFORM.PRG

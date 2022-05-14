@@ -1,0 +1,72 @@
+
+====== Class TReg32 ======
+
+Managing Register services from FiveWin                                        
+
+
+====== DATA ======
+^ Data ^ Description        ^
+|cRegKey|Register key string|
+|nKey|Key type: 0,1,2 or 3|
+| |0 -> HKEY_CLASSES_ROOT  |
+| |1 -> HKEY_CURRENT_USER  |
+| |2 -> HKEY_LOCAL_MACHINE |
+| |3 -> HKEY_USERS |
+|nHandle|Internal handle|
+|nError|Last error|
+|lError|If the was an error|
+
+====== METHODS ======
+^ Method ^ Description        ^
+|New|Opens a specific register value|
+|Create|Creates a specefic register value|
+|Get|Retrives the value of a specific subkey|
+|Set|Sets the value of a specific subkey|
+|Close|Close a new or created Key|
+====== Example ======
+\Fwh\Samples\TestRg32.Prg
+<code clipper>
+// Managing Register services from FiveWin
+#include "FiveWin.Ch"
+
+#define  HKEY_LOCAL_MACHINE      2147483650
+
+//---------------------------------------------------------------------------//
+
+function Main()
+
+   LOCAL oReg, cName, uVar
+
+   oReg := TReg32():Create( HKEY_LOCAL_MACHINE, "SOFTWARE\FiveWin\Reg32 Class Test" )
+
+   // Call Set with an empty string to access the default key
+
+   oReg:Set( "", "This is the default value" )
+   oReg:Set( "A number", 12345 )
+   oReg:Set( "A Date", DATE() )
+   oReg:Set( "A logical value", .F. )
+   MsgStop( "Windows registry updated!" )
+
+   oReg:Close()
+
+   oReg := TReg32():New( HKEY_LOCAL_MACHINE, "SOFTWARE\FiveWin\Reg32 Class Test" )
+
+   uVar := oReg:Get( "", "This is the default value" )
+   MsgStop( uVar, "Default: VALTYPE()= " + VALTYPE( uVar ) )
+   uVar := oReg:Get( "A number", 12345 )
+   MsgStop( uVar, "A number: VALTYPE()= " + VALTYPE( uVar ) )
+   uVar := oReg:Get( "A Date", DATE() )
+   MsgStop( uVar, "A Date: VALTYPE()= " + VALTYPE( uVar ) )
+   uVar := oReg:Get( "A logical value", .F. )
+   MsgStop( uVar,"Logic: VALTYPE()= " + VALTYPE( uVar ) )
+
+   oReg:Close()
+
+return nil
+
+//---------------------------------------------------------------------------//
+</code>
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TREG32.PRG

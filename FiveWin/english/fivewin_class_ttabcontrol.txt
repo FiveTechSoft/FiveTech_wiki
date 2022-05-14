@@ -1,0 +1,117 @@
+====== Class TTabControl ======
+
+Win32 SysTabControl common control support                                     
+Inherits from TControl                                                         
+====== DATA ======
+^ Data   ^ Description                                  ^
+|aPrompts|Array containig the prompts of the tab control|
+|bAction|Codeblock evaluated when clicking on a tab|
+====== METHODS ======
+^ Method ^ Description                                  ^
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Add|Adds an item to the tab control|
+|DelItem|Deletes an item from the tab control|
+|GetItemCount|Returns the total number of items|
+|nOption|Returns and change the index of the currently selected item|
+|MouseMove|Mouse move event handler|
+|Notify|Notify event handler|
+|SetBkColor|Sets the background color of the tab control|
+====== Example ======
+\Fwh\Samples\Win32.Prg
+<code clipper>
+// FiveWin Win32 common controls sample
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oTabs, oSay, oProgress, oAnimate, nAVI := 1
+
+   DEFINE DIALOG oDlg RESOURCE "Main"
+
+   oTabs = TTabControl():Redefine( 110, oDlg )
+   oTabs:bAction = { || oSay:SetText( AllTrim( Str( oTabs:nOption ) ) ) }
+
+   REDEFINE SAY oSay ID 150 OF oDlg
+
+   REDEFINE PROGRESS oProgress ID 120 OF oDlg
+
+   REDEFINE BUTTON ID 130 OF oDlg ;
+      ACTION oProgress:nPosition -= 10
+
+   REDEFINE BUTTON ID 140 OF oDlg ;
+      ACTION oProgress:nPosition += 10
+
+   oAnimate = TAnimate():Redefine( 160, oDlg )
+
+   REDEFINE BUTTON ID 170 OF oDlg ACTION oAnimate:Play()
+   REDEFINE BUTTON ID 180 OF oDlg ACTION oAnimate:Stop()
+
+   REDEFINE COMBOBOX nAvi ID 190 OF oDlg ;
+      ITEMS { "Search", "FindFile", "Locate", "CopyFiles", "CopyFile",;
+              "DelFile", "EmptyCan", "DestFile", "CopyInternet" } ;
+      ON CHANGE SetCommonAvi( oAnimate, nAvi )
+
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT ( oTabs:Add( "&Three" ),;
+                oTabs:Add( "&Two" ),;
+                oTabs:Add( "&One" ),;
+                oTabs:nOption := 1,;
+                oProgress:SetRange( 0, 200 ),;
+                oProgress:SetPos( 50 ),;
+                oAnimate:Search(),;
+                oAnimate:Play() )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function SetCommonAvi( oAnimate, nAvi )
+
+   do case
+      case nAVI == 1
+           oAnimate:Search()
+
+      case nAVI == 2
+           oAnimate:FindFile()
+
+      case nAVI == 3
+           oAnimate:Locate()
+
+      case nAVI == 4
+           oAnimate:CopyFiles()
+
+      case nAVI == 5
+           oAnimate:CopyFile()
+
+      case nAVI == 6
+           oAnimate:DelFile()
+
+      case nAVI == 7
+           oAnimate:EmptyCan()
+
+      case nAVI == 8
+           oAnimate:DestFile()
+
+      case nAVI == 9
+           oAnimate:CopyInternet()
+   endcase
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:ttabcontrol.jpg|:ttabcontrol.jpg}}
+
+====== See Also ======
+[[fivewin_class_ttabs| Class TTabs]], [[fivewin_commands_tabs|Command Tab]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TTABCONTROL.PRG

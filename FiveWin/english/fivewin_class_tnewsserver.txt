@@ -1,0 +1,60 @@
+
+====== Class TNewsServer ======
+
+Internet news server (NNTP protocol)                                           
+====== DATA ======
+|oTimer|Internal timer|
+|oSocket|Socket object|
+|oDbfNewsGrp|DBF object for newsgroups|
+|oDbfAccGrp|DBF object for group account|
+|oDbfAccount|DBF object for account|
+|aInstances|Clients attending socket objects|
+|cAddress|Server address|
+|cDefPath|Server default directory|
+|cLogFile|Log filename|
+|lDebug|If in debug mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the server|
+|End|Ends the server|
+|OnAccept|Accept event handler|
+|Timer|Internal timer action|
+
+====== Example ======
+<code clipper>
+// FiveWin Class TNewsServer demo
+
+#include "FiveWin.ch"
+
+static oWnd, oNewsServer
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Internet News server"
+
+   DEFINE BUTTONBAR oBar 3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION BuildServer()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildServer()
+
+   oNewsServer = TNewsServer():New()
+
+   oNewsServer:lDebug = .t.
+   oNewsServer:Activate()
+
+return nil
+</code>
+
+
+====== See Also ======
+[[fivewin_class_tnewsinstance | Class TNewsInstance ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TNEWSSERVER.PRG

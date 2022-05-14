@@ -1,0 +1,48 @@
+
+====== Class TIcon ======
+
+Icons class                                                                    
+Inherits from TControl                                                         
+====== DATA ======
+|cIcoFile|*.ICO filename if load it from disk.|
+|cResName|Resource name if load it from a resource ( DLL, RES,|
+|RC|)|
+|hIcon|Windows handle of the icon.|
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|Destroy|Destroy the object.|
+|Display|Displays the control. Use :Refresh() to force|
+|repaint.||
+|End|Ends control and make it disappear.|
+|HandleEvent|Generic event handler.|
+|Initiate|Generic Control initialization method|
+|Paint|Draws the control. This process occurs inside|
+|Display.||
+|SetFile|Name of the icon file.|
+|SetName|Set a new name for the icon.|
+====== Example ======
+.RC File Entry for the Icon
+<code clipper>
+AppIcon    ICON DISCARDABLE "Images/MyAppLogoIco.ico"
+</code>
+In PRG, Sample code to define icon from Resource file 
+<code clipper>
+DEFINE ICON  oAppIcon RESOURCE "AppIcon"
+DEFINE WINDOW oWnd TITLE "My Application Title" MDI ;
+              ICON  oAppIcon 
+</code>
+In PRG, Sample code to define icon, refering an icon file on hard disk
+<code clipper>
+DEFINE ICON oIco FILE "..\icons\fivewin.ico"
+DEFINE WINDOW oWnd TITLE "My Application Title" MDI ;
+              ICON  oIco 
+</code>
+
+** Screen snapshot **
+
+{{:icon.jpg|:icon.jpg}}
+====== See Also ======
+[[fivewin_commands_icons | Command Icon ]], [[fivewin_class_ticongroup | Class TIconGroup ]], [[fivewin_class_ticonget | Class TIconGet ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TICON.PRG

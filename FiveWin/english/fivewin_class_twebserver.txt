@@ -1,0 +1,58 @@
+====== Class TWebServer ======
+
+InterNet WEB pages and Proxy server
+
+====== DATA ======
+^ Data  ^ Description                ^
+|oSocket|Main listening socket object|
+|aSockets|Clients attending socket objects|
+|cAddress|A web site address|
+|cDefPage|Default web site page|
+|cDefPath|Default web pages directory|
+|cCookie|Cookie name|
+|lDebug|Debug mode|
+|cLogFile|Log file name|
+|cHtmlError|Html error string|
+
+====== METHODS ======
+^ Method  ^ Description                ^
+|New|Constructor.\\ Syntax: TWebServer():New( <nPort> )\\ **<nPort>** specifies the port to use|
+|Activate|Sets main socket in listening state.|
+|End|Closes the connection|
+|Explore|Opens the given HTML address|
+|FileExists|Check for file|
+|HtmlMerge|Merges content of the given HTML address|
+|HtmlRead|Reads content of the given HTML address|
+|OnAccept|Accept event handler|
+|OnGet|Get event handler|
+|OnPost|Post event handler|
+|OnProxyRequest|Proxy request event handler|
+|OnRead|Read event handler|
+|Sockets|Shows the number of sockets in aSockets|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oBar, oWebServer
+
+   DEFINE WINDOW oWnd TITLE "Web Server"
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D
+
+   DEFINE BUTTON OF oBar ;
+      ACTION ( oWebServer := TWebServer():New(),;
+               oWebServer:Activate(), oWebServer:Explore() )
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+====== See Also ======
+[[fivewin_class_TWebClient|Class TWebClient]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TWEBSERVER.PRG

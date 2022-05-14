@@ -1,0 +1,60 @@
+
+====== Class TImageList ======
+
+Standard ImagList control of Windows 32 bits API (Commoncontrols.dlg).         
+====== DATA ======
+|hImageList|Array of TTVItem objects.|
+|aBitmaps|Array of bitmaps objects|
+====== METHODS ======
+|New|Constructor: nWidth, nHeight (Bitmaps dimensions)|
+|End|Destructor|
+|Add|Add a new bitmap to the Imagelist object. Parameters:|
+|oBmpImage:|Bitmap object for image oBmpMask: Bitmap object for the mask|
+|The|masked bitmap should be the same as the the Image bitmap but with a|
+|diferent|color for his background to set the transparency. The color used|
+|for|the background shoud not be used on the rest of the bitmap|
+|AddIcon|Add a new icon to the Imagelist object|
+|AddMasked|Add a new bitmap to the Imagelist object. Parameters:|
+|oBmpImage:|Bitmap object for image nMaskColor: Color for the mask|
+|SetBkColor|Sets the background color Parameters: nColor|
+|ReadBitmap|Loads a bitmap and replace the image list.|
+|Parameters:|cFilename: The bitmap to load, nWidth: The width of each|
+|image,|nImages: The number of images that the image list can contain,|
+|nClrTransparent:|The color of the image that is considered transparent.|
+
+====== Example ======
+Please refer \Fwh\Samples\Re.Prg also
+<code clipper>
+#include "FiveWin.ch" 
+
+function Main() 
+ 
+   local oWnd, oLvw, nOption := 1, oImageList
+
+   DEFINE WINDOW oWnd TITLE "ListView Test"
+
+   DEFINE IMAGELIST oImageList SIZE 32, 32
+
+   oImageList:AddIcon( "console" )
+   oImageList:AddIcon( "form" )
+   oImageList:AddIcon( "library" )
+
+   @ 1, 1 LISTVIEW oLvw SIZE 300, 300 PROMPTS "One", "Two", "Three" ;
+      ACTION MsgInfo( nOption )
+
+   oLvw:SetImageList( oImageList )
+
+   ACTIVATE WINDOW oWnd
+   
+   oImageList:End()
+
+return nil
+</code>
+
+** Screen Sanpshot **
+
+{{:imagelist.jpg|:imagelist.jpg}}
+====== See Also ======
+[[fivewin_class_timage | Class TImage ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TIMAGELIST.PRG

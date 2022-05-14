@@ -1,0 +1,27 @@
+
+====== Class TComponent ======
+
+Visual management of Non-Visual objects                                        
+Inherits from TControl                                                         
+====== DATA ======
+|oObject|Contained non-visual Object|
+|aProperties|Array of editable Properties.|
+|aEvents|Array of editable events.|
+|hBmp|Handle of a related bitmap to represent the|
+|non-visual|object.|
+|bInspect|CodeBlock to inspect the contained non-visual object.|
+====== METHODS ======
+|New|Constructor from source code|
+|Destroy|Destroy the object.|
+|Display|Displays the control. Use :Refresh() to force repaint|
+|Error|Sends an error to the object|
+|LDblClick|Action to be performed on left double click. Invokes|
+|bInspect||
+|Paint|Draws the control. This process occurs inside|
+|Display.||
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCOMPONENT.PRG

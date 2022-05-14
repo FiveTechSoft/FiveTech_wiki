@@ -1,0 +1,104 @@
+
+====== Class TRadio ======
+
+Inherits from TControl                                                         
+====== DATA ======
+^ Data   ^ Description                              ^
+|lChecked|If the radio control is currently selected|
+|oRadMenu|Its related container TRadMenu Object|
+|nPos|Relative position within respect to the other Menu|
+|Radios|buttons|
+====== METHODS ======
+^ Method ^ Description            ^
+|New|Constructor from source code.|
+|ReDefine|Constructor from resource.|
+|Click|Mouse left button event handler.|
+|cToChar|Generates a data template to build a Dialog|
+|EraseBkGnd|Erases the control background|
+|LostFocus|Lostfocus event handler|
+|Default|Default control initialization.|
+|Initiate|Generic control initialization.|
+|KeyDown|Action to be performed when pressing a key.|
+|lIsChecked|Retrieves its current logical value|
+|MouseMove|Behavior when moving the mouse over it.|
+|Refresh|Repaints the control|
+|SetCheck|Changes its select/deselected state.|
+|Check|Selects the radio control|
+|UnCheck|Deselects the radio control|
+|SetText|Changes the caption of the radio control|
+====== Example ======
+\Fwh\Samples\TestRad.Prg
+
+===== Creating Radio using resources ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oDlg, oRadMenu, oBrush
+   local nOption := 2
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Radios"
+
+   REDEFINE RADIO oRadMenu VAR nOption ID 110, 120, 130, 140, 150 OF oDlg ;
+      ON CHANGE MsgBeep()
+
+   REDEFINE BUTTON ID 100 OF oDlg ACTION oRadMenu:GoNext() ;
+      WHEN nOption == 3
+
+   REDEFINE BUTTON ID 102 OF oDlg ACTION oRadMenu:GoPrev()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oRadMenu:aItems[ 1 ]:SetText( "Hello" )
+
+   SET _3DLOOK OFF
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+===== Screen snapshot of the above sample =====
+{{:radio1.jpg|:radio1.jpg}}
+
+===== Sample showing how to create Radio from Prg =====
+
+\Fwh\Samples\TestRad5.Prg
+<code clipper>
+// Radios and WHEN on a GET
+
+#INCLUDE "FIVEWIN.CH"
+
+FUNCTION MAIN()
+
+   LOCAL oDlg, oRadio1, oGet1
+   LOCAL cCurrency := "USD    "
+   LOCAL nOption := 1
+
+   DEFINE DIALOG oDlg                                       ;
+      FROM 1, 1 TO 20, 50
+
+   @ 3, 1 RADIO oRadio1 VAR nOption OF oDlg  UPDATE         ;
+      PROMPT "Porcent ", "Money      "
+
+   @ 8,0 SAY "Currency: " OF oDlg UPDATE
+
+   @ 8,10 GET oGet1 VAR cCurrency OF oDlg UPDATE ;
+      WHEN nOption == 2
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+RETURN NIL
+</code>
+
+** Screen Snapshot of the above sample **
+
+{{:radio2.jpg|:radio2.jpg}}
+
+====== See Also ======
+[[fivewin_commands_radiobuttons|Command RadioButtons]], [[fivewin_class_tradmenu|Class TRadMenu]] 
+====== Source code ======
+FWH\SOURCE\CLASSES\TRADIO.PRG

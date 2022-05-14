@@ -1,0 +1,59 @@
+====== Class TFTPServer ======
+
+Internet FTP server class                                                      
+====== DATA ======
+|oSocket|Main listening socket object|
+|aSockets|Clients attending sockets objects|
+|cAddress|Main socket IP address|
+|cDefPath|Default FTP directory|
+|lDebug|Debug mode|
+|cLogFile|Log filename written in debug mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Activate|Activates the socket|
+|End|Close the socket|
+|OnAccept|Accept event handler|
+|OnRead|Read event handler|
+|Sockets|Shows the total number of attending sockets|
+|Dir|Returns the contents of the default directory|
+
+====== Example ======
+\Fwh\Samples\FtpServ.Prg
+<code clipper>
+// FiveWin Class TFtpServer demo
+
+#include "FiveWin.ch"
+
+static oWnd, oFTPServer
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "FiveWin FTP server"
+
+   DEFINE BUTTONBAR oBar _3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION BuildServer()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildServer()
+
+   oFTPServer := TFtpServer():New()
+
+   oFtpServer:cLogFile = "ftpserv.log"
+   oFtpServer:lDebug   = .t.
+
+   oFTPServer:Activate()
+
+return nil
+</code>
+
+====== See Also ======
+[[fivewin_class_tftp | Class TFtp ]], [[fivewin_class_tftpfile | Class TFtpFile ]], [[fivewin_class_tinternet | Class TInternet ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTPSERVER.PRG

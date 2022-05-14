@@ -1,0 +1,583 @@
+====== Class TRibbonBar ====== 
+
+FiveWin Ribbon Bar Control. 
+This is a very useful control which gives the look and feel of RibbonBars used in MS Office 2007
+
+Inherits from TControl 
+
+{{:ribbon.jpg|:ribbon.jpg}}
+{{:rbnquick.png|:rbnquick.png}}
+
+====== DATA ====== 
+^Data ^ Description      ^
+|oFont| Tabs Font Object |
+|aLeft| Array containing Left position each tabs |    
+|aPrompts| Array containing Names to be displayed on Different Tabs of RibbonBar |    
+|aDialogs| Array containing panel each Tabs |    
+|aSizes| Array containing size each Tabs|    
+|aGrad| Gradient color panel |    
+|aGradFld| Gradient color Tabs |    
+|aGradOver| Gradient color Tabs with MouseOver event |    
+|aGradHigh| Gradient color Tabs Selected with MouseOver event |    
+|aEnable| Array containing Status Enable/Disable each Tabs |    
+|aVisible| Array containing Status Visible/Hide for each Tabs |    
+|bAction| codeblock to be evaluated when left clicking on the tabs|
+|hBrushEx| Brush to create own ribbon Transparent control (group and button) |
+|hSeparation| Seperation between tabs |
+|nHeightFld| Tabs Height |
+|nLastOver| Last Tabs with MouseOver event |
+|nOffSet| (used internally) |
+|nOption| Current Selected Tabs |
+|nGroupSeparation| Group Separation|
+|nTopMargin| RibbonBar Top Margin (protected) |
+|nLeftMargin|RibbonBar Left Margin |
+|nClrPaneRB| RibbonBar Color Pane  |
+|nClrBoxOut| Ribbonbar Out Line color (3d effect)|
+|nClrBoxIn| Ribbonbar In Line color (3d effect)        |
+|nClrBoxSelOut| Tabs Selected Out Line color (3d effect) |
+|nClrBoxSelIn| Tabs Selected In Line color (3d effect) |
+|aClrTabTxt| Array containing Tabs Color Font |
+
+
+
+
+
+
+
+
+
+
+====== METHODS ====== 
+^Method ^ Description      ^
+|New()| Constructor from source code|                         
+|AddTab(cPrompt,nPos,lDefault,bClrTxt)|Adds Tabs to exusting Ribbon Bar control. cPrompt = Name to be displayed, nPos = Position at which the Tab to be inserted, by default it will be inserted at the end |
+|AddGroup( nWidth, cCaption )|                                           |                 
+|CalcPos()|                                           |
+|Default()| Default initialization of RibbonBar|                                    
+|Destroy()| Destroy the RibbonBar object.|
+|Display()| Displays the RibbonBar. Use :Refresh() instead to force it.|
+|Enable( nPos, lOnOff )| |                       
+|EraseBkGnd( hDC )| |
+|HandleEvent(nMsg,nWParam, nLParam)| |
+|Hide( nPos )| Hides a certain tab (nPos) and their controls |
+|Show( nPos )| Shows a certain tab (nPos) and their controls|
+|LButtonDown( nRow, nCol, nFlags )| Action to be performed when clicking the mouse.|
+|CalMaxWidth()|  |                                
+|MouseLeave( nRow, nCol, nFlags )|  |             
+|MouseMove( nRow, nCol, nFlags )|  |            
+|MouseHover( nRow, nCol )|   |
+|nOverPrompt( nRow, nCol )| |                    
+|nSeparation( nValue )| |
+|Paint()| |                                      
+|PaintFld( nPrompt, hDCMem, nType )| |
+|PaintOver( nPrompt, lOn )|  | 
+|ReSize( nType, nWidth, nHeight )| |
+|SetOption( nOption )| Selects a certain (nOption) tab|
+
+
+
+
+
+
+====== Example ======
+FWH\samples\Ribbon.prg
+<code clipper>
+#include "fivewin.ch"
+#include "ribbon.ch"
+
+static nIndex := 1
+static nAvance := 1
+
+static  aBmp := {}
+static aResources := {}
+
+function main()
+
+   local oRBar
+   local oWnd, oMenu
+   local oGr, oGr1, oGr2, oGr3, oGr4
+   local oBtn,   oBtn1,  oBtn2,  oBtn3,  oBtn4, oBtn5
+   local oBtn6,  oBtn7,  oBtn8,  oBtn9,  oBtn10
+   local oBtn11, oBtn12, oBtn13, oBtn14, oBtn15
+   local oBtn16, oBtn17, oBtn18, oBtn19, oBtn20
+   local oBtn21, oBtn22, oBtn23, oBtn24, oBtn25 
+   local oBtn26, oBtn27, oBtn28, oBtn29, oBtn30
+   local oBtn31, oBtn32, oBtn33, oBtn34, oBtn35
+
+   menu oMenu Popup 2007
+   
+      menuitem "Style Set" FILE "..\bitmaps\styleset161.BMP"
+      menuitem "Colors"
+      menuitem "Font"
+      
+   endmenu
+
+   DEFINE WINDOW oWnd TITLE "RibbonBar Test " + FWVERSION from 1,1 to 600,600 pixel //brush oBrush1
+   
+   DEFINE RIBBONBAR oRBar WINDOW oWnd PROMPT "Configuración", "Ficheros", "Informes", "Ayudas" HEIGHT 160 TOPMARGIN 55
+
+   ADD GROUP oGr RIBBON oRBar TO OPTION 1 PROMPT "Clipboard" width 130 //BITMAP "c:\fwh\bitmap\fivetech.BMP"
+   
+   ADD GROUP oGr1 RIBBON oRBar TO OPTION 1 PROMPT "Font" WIDTH 205 
+   
+   ADD GROUP oGr2 RIBBON oRBar TO OPTION 1 PROMPT "Paragraph" WIDTH 215
+   
+   ADD GROUP oGr3 RIBBON oRBar TO OPTION 1 PROMPT "Styles" WIDTH 75 BITMAP "..\bitmaps\style16.BMP"
+   
+   ADD GROUP oGr4 RIBBON oRBar TO OPTION 1 PROMPT "Editing"
+   
+   @ 2,5 ADD BUTTON oBtn1 PROMPT "Paste" BITMAP "..\bitmaps\PASTE32.BMP" GROUP oGr ACTION ( RIBBON() ) ;
+   SPLITPOPUP ROUND SIZE 50,65 
+
+   @ 2, 55 ADD BUTTON oBtn2 GROUP oGr BITMAP "..\bitmaps\cut16.BMP" ;
+     SIZE 60, 20 PROMPT "Cut"  MOSTLEFT round ;
+     action ( msginfo( "Cut" ) )
+   
+   @ 24, 55 ADD BUTTON oBtn3 GROUP oGr BITMAP "..\bitmaps\copy16.BMP" ;
+     SIZE 65, 20 PROMPT "Copy"  MOSTLEFT round ;
+     action( msginfo( "Copy" ) )
+
+   @ 46, 55 ADD BUTTON oBtn4 GROUP oGr BITMAP "..\bitmaps\paste16.BMP" ;
+     SIZE 70, 20 PROMPT "Paste"  MOSTLEFT round ;
+     action( msginfo( "Paste" ) )
+     
+   @ 10, 05 ADD BUTTON oBtn5 GROUP oGr1 BITMAP "..\bitmaps\bold16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND ;
+   ACTION( oBtn5:lSelected := !oBtn5:lSelected )
+   
+   @ 10, 30 ADD BUTTON oBtn6 GROUP oGr1 BITMAP "..\bitmaps\italic16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( oBtn6:lSelected := !oBtn6:lSelected )
+   
+   @ 10, 55 ADD BUTTON oBtn7 GROUP oGr1 BITMAP "..\bitmaps\underline16.bmp" GROUPBUTTON SIZE 35, 20 ROUND Popup
+   
+   @ 10, 90 ADD BUTTON oBtn8 GROUP oGr1 BITMAP "..\bitmaps\strikethru16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( oBtn8:lSelected := !oBtn8:lSelected )
+   
+   
+   @ 10, 115 ADD BUTTON oBtn9 GROUP oGr1 BITMAP "..\bitmaps\subindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( oBtn9:lSelected := !oBtn9:lSelected, oBtn10:lSelected := .f., oBtn10:Refresh() )
+   
+   @ 10, 140 ADD BUTTON oBtn10 GROUP oGr1 BITMAP "..\bitmaps\superindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( oBtn10:lSelected := !oBtn10:lSelected, oBtn9:lSelected := .f., oBtn9:Refresh() )
+   
+   @ 10, 165 ADD BUTTON oBtn11 GROUP oGr1 BITMAP "..\bitmaps\casing16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+
+   @ 40, 05 ADD BUTTON oBtn11 GROUP oGr1 BITMAP "..\bitmaps\hilight16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 40 ADD BUTTON oBtn12 GROUP oGr1 BITMAP "..\bitmaps\fontcolor16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 100 ADD BUTTON oBtn13 GROUP oGr1 BITMAP "..\bitmaps\fontsizeincrease16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND
+
+   
+   @ 40, 125 ADD BUTTON oBtn14 GROUP oGr1 BITMAP "..\bitmaps\fontsizedecrease16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND
+   
+   
+   @ 40, 175 ADD BUTTON oBtn16 GROUP oGr1 BITMAP "..\bitmaps\style16.bmp" SIZE 25, 20 ROUND BORDER
+
+
+   @ 10, 05 ADD BUTTON oBtn17 GROUP oGr2 BITMAP "..\bitmaps\unorderedlist16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 10, 40 ADD BUTTON oBtn18 GROUP oGr2 BITMAP "..\bitmaps\orderedlist16.bmp" GROUPBUTTON SIZE 35, 20 ROUND POPUP
+   
+   @ 10, 75 ADD BUTTON oBtn19 GROUP oGr2 BITMAP "..\bitmaps\multilevellist16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+
+   @ 10, 110 ADD BUTTON oBtn20 GROUP oGr2 BITMAP "..\bitmaps\textalignleft16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND ;
+   ACTION( ChangeSelect( { oBtn20, oBtn21, oBtn22, oBtn23 } ) )
+   
+   @ 10, 135 ADD BUTTON oBtn21 GROUP oGr2 BITMAP "..\bitmaps\textaligncenter16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+      ACTION( ChangeSelect( { oBtn21, oBtn20, oBtn22, oBtn23 } ) )
+   
+   @ 10, 160 ADD BUTTON oBtn22 GROUP oGr2 BITMAP "..\bitmaps\textalignright16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+      ACTION( ChangeSelect( { oBtn22, oBtn21, oBtn20, oBtn23 } ) ) 
+   
+   @ 10, 185 ADD BUTTON oBtn23 GROUP oGr2 BITMAP "..\bitmaps\textalignjustify16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND;
+      ACTION( ChangeSelect( { oBtn23, oBtn21, oBtn22, oBtn20 } ) )
+
+
+   @ 40, 05 ADD BUTTON oBtn24 GROUP oGr2 BITMAP "..\bitmaps\fill16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+   
+   @ 40, 40 ADD BUTTON oBtn25 GROUP oGr2 BITMAP "..\bitmaps\borderbottom16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND
+   
+   @ 40, 80 ADD BUTTON oBtn26 GROUP oGr2 BITMAP "..\bitmaps\indentdecrease16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND 
+
+   @ 40, 105 ADD BUTTON oBtn27 GROUP oGr2 BITMAP "..\bitmaps\indentincrease16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND
+
+   @ 40, 135 ADD BUTTON oBtn28 GROUP oGr2 BITMAP "..\bitmaps\sort16.bmp" SIZE 25, 20 ROUND BORDER
+   
+   @ 40, 160 ADD BUTTON oBtn29 GROUP oGr2 BITMAP "..\bitmaps\paragraphspacing16.bmp" SIZE 25, 20 ROUND BORDER
+      
+   @ 40, 185 ADD BUTTON oBtn30 GROUP oGr2 BITMAP "..\bitmaps\invisiblechars16.bmp" SIZE 25, 20 ROUND BORDER
+
+   @ 3,5 ADD BUTTON oBtn31 PROMPT "Change"+CRLF+"Styles" BITMAP "..\bitmaps\stylechange32.BMP" GROUP oGr3 menu oMenu ;
+   SPLITPOPUP ROUND SIZE 65,75 TOP
+
+   @ 2,5 ADD BUTTON oBtn32 PROMPT "Find" BITMAP "..\bitmaps\find32.BMP" GROUP oGr4 ;
+   SPLITPOPUP ROUND SIZE 50,65
+
+   @ 2, 55 ADD BUTTON oBtn33 GROUP oGr4 BITMAP "..\bitmaps\replace16.BMP" ;
+     SIZE 80, 20 PROMPT "Replace"  MOSTLEFT round ;
+     action( msginfo( "Replace" ) )
+   
+   @ 24, 55 ADD BUTTON oBtn34 GROUP oGr4 BITMAP "..\bitmaps\goto16.BMP" ;
+     SIZE 65, 20 PROMPT "Go To"  MOSTLEFT round ;
+     action( msginfo( "Go To" ) )
+
+   @ 46, 55 ADD BUTTON oBtn35 GROUP oGr4 BITMAP "..\bitmaps\select16.BMP" ;
+     SIZE 70, 20 PROMPT "Select"  MOSTLEFT round POPUP
+
+   SET MESSAGE OF oWnd TO "Testing FWH own Class RibbonBar" ;
+      CENTERED CLOCK KEYBOARD 2007
+   
+   ACTIVATE WINDOW oWnd
+   
+   oRBar:End()
+   
+return nil
+</code>
+
+
+
+Ribbon2.prg   --> By Carlos Gallego
+<code clipper>
+
+
+#include "fivewin.ch"
+#include "ribbon.ch"
+#include "xBrowse.ch"
+
+REQUEST DBFCDX
+
+STATIC oWnd
+STATIC oDlgRB[5]
+STATIC oRBar
+STATIC nOptTab01, nOptTab02, nOptTab03
+
+
+function main()
+
+   local oMenu, oMenuWnd, oBrush1
+   local oGr, oGr1, oGr2, oGr3, oGr4
+   local oBtn,   oBtn1,  oBtn2,  oBtn3,  oBtn4, oBtn5
+   local oBtn6,  oBtn7,  oBtn8,  oBtn9,  oBtn10
+   local oBtn11, oBtn12, oBtn13, oBtn14, oBtn15
+   local oBtn16, oBtn17, oBtn18, oBtn19, oBtn20
+   LOCAL oSay1, oBmp, oFont1
+   LOCAL oCursor
+
+   SET DATE ITALIAN
+   SET CENTURY ON
+   XBrNumFormat( 'E', .t. )
+   SetBalloon( .t. )
+
+   menu oMenu 2007
+   endmenu
+
+   DEFINE FONT oFont1 NAME "Arial" SIZE 0,-30 // BOLD
+   DEFINE CURSOR oCursor HAND
+   DEFINE BRUSH oBrush1 COLOR nRGB(210,210,255) // ,nRGB(255,255,255)
+   DEFINE WINDOW oWnd TITLE "RibbonBar Test " + FWVERSION from 1,1 to 600,600 pixel MDI MENU oMenu brush oBrush1
+
+   DEFINE RIBBONBAR oRBar WINDOW oWnd PROMPT "Tab 01", "Tab 02", "Tab 03";
+         HEIGHT 120 TOPMARGIN 25
+
+   ADD GROUP oGr  RIBBON oRBar TO OPTION 1 PROMPT "Clipboard" width 130 BITMAP "c:\fwh-908\bitmap\fivetech.BMP"
+
+     @ 02, 05 ADD BUTTON oBtn1 GROUP oGr BITMAP "C:\FWH-908\bitmaps\cut16.BMP" ;
+       SIZE 75, 20 PROMPT "Dialog 01"  MOSTLEFT round ;
+       action ( Dialog01() )
+
+     @ 24, 05 ADD BUTTON oBtn2 GROUP oGr BITMAP "C:\FWH-908\bitmaps\copy16.BMP" ;
+       SIZE 75, 20 PROMPT "Dialog 02"  MOSTLEFT round ;
+       action( Dialog02() )
+
+     @ 46, 05 ADD BUTTON oBtn3 GROUP oGr BITMAP "C:\FWH-908\bitmaps\paste16.BMP" ;
+       SIZE 75, 20 PROMPT "Dialog 03"  MOSTLEFT round ;
+       action( Dialog03() )
+
+   ADD GROUP oGr1 RIBBON oRBar TO OPTION 1 PROMPT "Font" WIDTH 205
+
+     @ 10, 05 ADD BUTTON oBtn4 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\bold16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND ;
+     ACTION( oBtn4:lSelected := !oBtn4:lSelected )
+
+     @ 10, 30 ADD BUTTON oBtn5 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\italic16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+        ACTION( oBtn5:lSelected := !oBtn5:lSelected )
+
+     @ 10, 55 ADD BUTTON oBtn6 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\underline16.bmp" GROUPBUTTON SIZE 35, 20 ROUND Popup
+
+     @ 10, 90 ADD BUTTON oBtn7 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\strikethru16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+        ACTION( oBtn7:lSelected := !oBtn7:lSelected )
+
+     @ 10, 115 ADD BUTTON oBtn8 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\subindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND;
+        ACTION( oBtn8:lSelected := !oBtn8:lSelected, oBtn9:lSelected := .f., oBtn9:Refresh() )
+
+     @ 10, 140 ADD BUTTON oBtn9 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\superindex16.bmp" GROUPBUTTON SIZE 25, 20 ROUND ;
+        ACTION( oBtn9:lSelected := !oBtn9:lSelected, oBtn8:lSelected := .f., oBtn8:Refresh() )
+
+     @ 10, 165 ADD BUTTON oBtn10 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\casing16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+     @ 40, 05 ADD BUTTON oBtn11 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\hilight16.bmp" GROUPBUTTON FIRST SIZE 35, 20 ROUND POPUP
+
+     @ 40, 40 ADD BUTTON oBtn12 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\fontcolor16.bmp" GROUPBUTTON END SIZE 35, 20 ROUND POPUP
+
+     @ 40, 100 ADD BUTTON oBtn13 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\fontsizeincrease16.bmp" GROUPBUTTON FIRST SIZE 25, 20 ROUND
+
+     @ 40, 125 ADD BUTTON oBtn15 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\fontsizedecrease16.bmp" GROUPBUTTON END SIZE 25, 20 ROUND
+
+     @ 40, 175 ADD BUTTON oBtn16 GROUP oGr1 BITMAP "C:\FWH-908\bitmaps\style16.bmp" SIZE 25, 20 ROUND BORDER
+
+
+   ADD GROUP oGr2 RIBBON oRBar TO OPTION 1 PROMPT "Exit" width 70 // BITMAP "c:\fwh-908\bitmap\fivetech.bmp"
+
+     @ 15, 20 ADD BUTTON oBtn17 GROUP oGr2 BITMAP "C:\FWH-908\bitmaps\32x32\quit.BMP" ;
+           SIZE 34,52 PROMPT "Exit" action( oWnd:End())
+
+   ADD GROUP oGr3 RIBBON oRBar TO OPTION 2 PROMPT "Font" WIDTH 145
+
+     @ 02, 05 ADD BUTTON oBtn18 GROUP oGr3 BITMAP "C:\FWH-908\bitmaps\AlphaBmp\AddUser.bmp" ;
+       SIZE 125, 70 PROMPT "Dialog 01"  MOSTLEFT round ;
+       action ( Dialog04() )
+
+   ADD GROUP oGr4 RIBBON oRBar TO OPTION 2 PROMPT "Exit" width 70 // BITMAP "c:\fwh-908\bitmap\fivetech.bmp"
+
+     @ 15, 20 ADD BUTTON oBtn19 GROUP oGr4 BITMAP "C:\FWH-908\bitmaps\32x32\quit.BMP" ;
+           SIZE 34,52 PROMPT "Exit" action( oWnd:End())
+
+   nOptTab01 := 1
+   nOptTab02 := 4
+   nOptTab03 := 5
+
+   oRBar:aDialogs[1]:bGotFocus := {||bFunct:=&("{||Dialog"+StrZero(nOptTab01,2)+"()}"),Eval(bFunct)}
+   oRBar:aDialogs[2]:bGotFocus := {||bFunct:=&("{||Dialog"+StrZero(nOptTab02,2)+"()}"),Eval(bFunct)}
+   oRBar:aDialogs[3]:bGotFocus := {||bFunct:=&("{||Dialog"+StrZero(nOptTab03,2)+"()}"),Eval(bFunct)}
+
+   SET MESSAGE OF oWnd TO "Testing FWH own Class RibbonBar" ;
+      CENTERED CLOCK KEYBOARD 2007
+
+   WndCenter(oWnd:hWnd)
+
+   ACTIVATE WINDOW oWnd ON INIT (Dialog01()) // MAXIMIZED
+
+   oRBar:End()
+   dbCloseAll()
+return nil
+
+
+
+Procedure Dialog01()
+   LOCAL aCoords:=GetCoors(oWnd:oWndClient), oBrush, oGet, cTxtGet:="Get in Dialog 01"
+   LOCAL oFont1, oBmpAlpha1, oBmpAlpha2, oBrw, cAlias, aGrad
+   LOCAL lEscapa:=.F.
+
+   HideDlg( 1 )
+
+   if ValType(oDlgRB[1]) <> "O"
+      cAlias := cGetNewAlias( "CUST" )
+      USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+      SET ORDER TO TAG FIRST
+      GO TOP
+      aGrad := { { 0.5, RGB( 140,  56,   6 ), RGB( 237, 234, 109 ) }, ;
+                 { 0.5, RGB( 237, 234, 109 ), RGB(  85,  62,  84 ) } }
+      oBmpAlpha1:=TImage():Define(, "logofive1.bmp" )
+      oBmpAlpha2:=TImage():Define(, "logofive2.bmp" )
+      DEFINE FONT oFont1 NAME "Arial" SIZE 0,-16 BOLD
+      DEFINE BRUSH oBrush FILE "c:\fwh-908\Bitmaps\BackGrnd\Stone.bmp"
+      DEFINE DIALOG oDlgRB[1] FROM 0,0 TO 538,782 OF oWnd:oWndClient PIXEL // COLORS RGB(0,0,0),RGB(255,255,255)
+         oDlgRB[1]:nStyle := nOR(WS_CHILD) // ,WS_THICKFRAME
+         oDlgRB[1]:oBrush := oBrush
+         oDlgRB[1]:lTransparent := .T.
+
+      @ 05,07 SAY "We are in DIALOG 01 of TAB 01" OF oDlgRB[1] PIXEL COLOR nRGB(0,0,125) FONT oFont1
+
+      @ 16,07 GET oGet VAR cTxtGet OF oDlgRB[1] PIXEL
+
+      @ 35,07 XBROWSE oBrw  ;
+               COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+               COLSIZES nil,10 OF oDlgRB[1] ;
+               SIZE 215,135 PIXEL ;
+               ALIAS cAlias AUTOSORT FOOTERS LINES CELL ;
+               BACKGROUND aGrad VERTICAL // NOBORDER
+
+        oBrw:nStretchCol   := 2
+        oBrw:Married:SetCheck( , .t. )
+
+        oBrw:lTransparent := .T.
+        oBrw:nStyle := nOr( WS_CHILD, WS_VISIBLE, WS_TABSTOP )
+
+        WITH OBJECT oBrw:Salary
+            :nTotal   := 0 ; :lTotal   := .t. ; :nEditType := EDIT_GET
+        END
+
+        oBrw:MakeTotals()
+        oBrw:CreateFromCode()
+
+      ACTIVATE DIALOG oDlgRB[1] NOWAIT ; //CENTERED
+          ON INIT (oDlgRB[1]:Move(aCoords[1]+0,aCoords[2]+0,,,.T.));
+          ON PAINT (ABPaint( hDC,452,260, oBmpAlpha1:hBitmap, 255 ),;
+                    ABPaint( hDC,285,360, oBmpAlpha2:hBitmap, 255 ));
+          VALID lEscapa
+   else
+      oDlgRB[1]:Show()
+   endif
+Return
+
+
+
+Procedure Dialog02()
+   LOCAL aCoords:=GetCoors(oWnd:oWndClient), oBrush, oGet, cTxtGet:="Get in Dialog 02"
+   LOCAL oFont1, oBmpAlpha
+   LOCAL lEscapa:=.F.
+
+   HideDlg( 2 )
+
+   if ValType(oDlgRB[2]) <> "O"
+      oBmpAlpha:=TImage():Define(, "c:\fwh-908\Bitmaps\AlphaBmp\World.bmp" )
+      DEFINE FONT oFont1 NAME "Arial" SIZE 0,-16 BOLD
+      DEFINE BRUSH oBrush FILE "c:\fwh-908\Bitmaps\BackGrnd\Stone.bmp"
+      DEFINE DIALOG oDlgRB[2] FROM 0,0 TO 538,782 OF oWnd:oWndClient PIXEL // COLORS RGB(0,0,0),RGB(255,255,255)
+         oDlgRB[2]:nStyle := nOR(WS_CHILD) // ,WS_THICKFRAME
+         oDlgRB[2]:oBrush := oBrush
+         oDlgRB[2]:lTransparent := .T.
+
+         @ 05,07 SAY "We are in DIALOG 02 of TAB 01" OF oDlgRB[2] PIXEL COLOR nRGB(0,0,125) FONT oFont1
+
+         @ 16,07 GET oGet VAR cTxtGet OF oDlgRB[2] PIXEL
+
+      ACTIVATE DIALOG oDlgRB[2] NOWAIT ; //CENTERED
+          ON INIT (oDlgRB[2]:Move(aCoords[1]+0,aCoords[2]+0,,,.T.));
+          ON PAINT (ABPaint( hDC,365,230, oBmpAlpha:hBitmap, 255 ));
+          VALID lEscapa
+   else
+      oDlgRB[2]:Show()
+   endif
+Return
+
+
+
+
+Procedure Dialog03()
+   LOCAL aCoords:=GetCoors(oWnd:oWndClient), oBrush, oGet, cTxtGet:="Get in Dialog 03"
+   LOCAL oFont1, oBmpAlpha
+   LOCAL lEscapa:=.F.
+
+   HideDlg( 3 )
+
+   if ValType(oDlgRB[3]) <> "O"
+      oBmpAlpha:=TImage():Define(, "c:\fwh-908\Bitmaps\AlphaBmp\World.bmp" )
+      DEFINE FONT oFont1 NAME "Arial" SIZE 0,-16 BOLD
+      DEFINE BRUSH oBrush FILE "c:\fwh-908\Bitmaps\BackGrnd\Stone.bmp"
+      DEFINE DIALOG oDlgRB[3] FROM 0,0 TO 538,782 OF oWnd:oWndClient PIXEL // COLORS RGB(0,0,0),RGB(255,255,255)
+         oDlgRB[3]:nStyle := nOR(WS_CHILD) // ,WS_THICKFRAME
+         oDlgRB[3]:oBrush := oBrush
+         oDlgRB[3]:lTransparent := .T.
+
+         @ 05,07 SAY "We are in DIALOG 03 of TAB 01" OF oDlgRB[3] PIXEL COLOR nRGB(0,0,125) FONT oFont1
+
+         @ 16,07 GET oGet VAR cTxtGet OF oDlgRB[3] PIXEL
+
+      ACTIVATE DIALOG oDlgRB[3] NOWAIT ; //CENTERED
+          ON INIT (oDlgRB[3]:Move(aCoords[1]+0,aCoords[2]+0,,,.T.));
+          ON PAINT (ABPaint( hDC,395,260, oBmpAlpha:hBitmap, 255 ));
+          VALID lEscapa
+   else
+      oDlgRB[3]:Show()
+   endif
+Return
+
+
+
+Procedure Dialog04()
+   LOCAL aCoords:=GetCoors(oWnd:oWndClient), oBrush, oGet, cTxtGet:="Get in Dialog 04"
+   LOCAL oFont1, oBmpAlpha1, oBmpAlpha2
+   LOCAL lEscapa:=.F.
+
+   HideDlg( 4 )
+
+   if ValType(oDlgRB[4]) <> "O"
+      oBmpAlpha1:=TImage():Define(, "logofive1.bmp" )
+      oBmpAlpha2:=TImage():Define(, "logofive2.bmp" )
+      DEFINE FONT oFont1 NAME "Arial" SIZE 0,-18 BOLD
+      DEFINE BRUSH oBrush FILE "c:\fwh-908\Bitmaps\BackGrnd\Wood.bmp"
+      DEFINE DIALOG oDlgRB[4] FROM 0,0 TO 538,782 OF oWnd:oWndClient PIXEL // COLORS RGB(0,0,0),RGB(255,255,255)
+         oDlgRB[4]:nStyle := nOR(WS_CHILD) // ,WS_THICKFRAME
+         oDlgRB[4]:oBrush := oBrush
+         oDlgRB[4]:lTransparent := .T.
+
+         @ 40,40 SAY "We are in DIALOG 01 of TAB 02" OF oDlgRB[4] PIXEL COLOR nRGB(0,0,125) FONT oFont1
+
+         @ 55,40 GET oGet VAR cTxtGet OF oDlgRB[4] PIXEL
+
+      ACTIVATE DIALOG oDlgRB[4] NOWAIT ; //CENTERED
+          ON INIT (oDlgRB[4]:Move(aCoords[1]+0,aCoords[2]+0,,,.T.));
+          ON PAINT (ABPaint( hDC,452,260, oBmpAlpha1:hBitmap, 255 ),;
+                    ABPaint( hDC,285,360, oBmpAlpha2:hBitmap, 255 ));
+          VALID lEscapa
+   else
+      oDlgRB[4]:Show()
+   endif
+Return
+
+
+Procedure Dialog05()
+   LOCAL aCoords:=GetCoors(oWnd:oWndClient), oBrush, oGet, cTxtGet:="Get in Dialog 04"
+   LOCAL oFont1, oBmpAlpha1, oBmpAlpha2
+   LOCAL lEscapa:=.F.
+
+   HideDlg( 5 )
+
+   if ValType(oDlgRB[5]) <> "O"
+      oBmpAlpha1:=TImage():Define(, "logofive1.bmp" )
+      oBmpAlpha2:=TImage():Define(, "logofive2.bmp" )
+      DEFINE FONT oFont1 NAME "Arial" SIZE 0,-18 BOLD
+      DEFINE BRUSH oBrush FILE "c:\fwh-908\Bitmaps\BackGrnd\Wood.bmp"
+      DEFINE DIALOG oDlgRB[5] FROM 0,0 TO 538,782 OF oWnd:oWndClient PIXEL // COLORS RGB(0,0,0),RGB(255,255,255)
+         oDlgRB[5]:nStyle := nOR(WS_CHILD) // ,WS_THICKFRAME
+         oDlgRB[5]:oBrush := oBrush
+         oDlgRB[5]:lTransparent := .T.
+
+         @ 40,40 SAY "We are in TAB 03" OF oDlgRB[5] PIXEL COLOR nRGB(0,0,125) FONT oFont1
+
+         @ 55,40 GET oGet VAR cTxtGet OF oDlgRB[5] PIXEL
+
+      ACTIVATE DIALOG oDlgRB[5] NOWAIT ; //CENTERED
+          ON INIT (oDlgRB[5]:Move(aCoords[1]+0,aCoords[2]+0,,,.T.));
+          ON PAINT (ABPaint( hDC,452,260, oBmpAlpha1:hBitmap, 255 ),;
+                    ABPaint( hDC,285,360, oBmpAlpha2:hBitmap, 255 ));
+          VALID lEscapa
+   else
+      oDlgRB[5]:Show()
+   endif
+Return
+
+
+
+Procedure HideDlg( nDlg )
+   LOCAL i:=1
+   for i:=1 TO Len(oDlgRB)
+       if ValType(oDlgRB[i])=="O"
+          oDlgRB[i]:Hide()
+       endif
+   next
+   if oRBar:nOption == 1
+      nOptTab01 := nDlg
+   elseif oRBar:nOption == 2
+      nOptTab02 := nDlg
+   elseif oRBar:nOption == 3
+      nOptTab03 := nDlg
+   endif
+Return
+
+
+</code>
+
+
+====== source code ======
+FWH\source\classes\TRibbon.prg
+
+
+
+
+
+====== See Also ======
+[[fivewin_commands_ribbonbar|Commands RIBBONBAR]], [[fivewin_class_trbgroup|Class TRbGroup]], 
+[[fivewin_class_trbtn|Class TRBtn]]

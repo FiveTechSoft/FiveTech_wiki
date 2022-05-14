@@ -1,0 +1,88 @@
+====== Description ======
+
+This class provides a similar look like the ExploreBar in Windows XP (For. Eg. Control Panel). You can use this class to provide similar interface in your application. This Class is self contained and very light.
+
+Inherits from Class TControl
+
+{{:explbar1.jpg|:explbar1.jpg}}
+
+
+
+
+====== DATAS ======
+^Datas^Description^
+|lSpecial| Logical value indicating whether the panel's title's background should be displayed in special color or not.\\ For Eg. oPanel:lSpecial:=.T.|
+
+====== METHODS ======
+^Method^Description^
+|New( nTop, nLeft, nBottom, nRight, oWnd )| Constructor|
+|AddPanel( cName, cBmpName )|Creates a new panel on the ExplorerBar.\\ \\ cName -> The name/title to be displayed on the Panel\\ cBmpName -> Name of the image to be displayed on the panel |
+|AddLink( cPrompt, bAction, cBitmap )| Adds a link to the panel.\\ \\ cPrompt -> Text to be displayed for the link.\\ bAction -> CodeBlock to be executed when the link is clicked.\\ cBitmap -> Image to be displayed on the left side of the link.|
+
+====== Using your own bitmaps in the ExplorerBar panels ======
+ Class TExplorerBar manages Class TTaskPanel objects. These objects call to functions BmpEBExpanded() and BmpEBCollapsed() that return the bitmaps to paint for both states. 
+
+Simply implement your own functions BmpEBExpanded() and BmpEBCollapsed() in your own PRG and you will be overiding the ones provided by FWH.
+
+You can read the bitmaps from files (BMP) in the disk, or load them from your resources, i.e.:
+<code clipper>
+function BmpEBExpanded()
+
+return ReadBitmap( 0, "expanded.bmp" ) // reading it from an external BMP file
+</code> 
+or
+<code clipper>
+function BmpEBExpanded()
+
+return LoadBitmap( GetResources(), "expanded" ) // load it from your resources, where "expanded" is the identifier of your bitmap
+</code>
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oWnd, oExBar, oPanel1, oPanel2, oPanel3, oPanel4
+   local bClick := { | o | MsgInfo( o:GetText() ) }
+     
+   DEFINE WINDOW oWnd TITLE "FWH Class TExplorerBar"
+   
+   oWnd:SetSize( 350, 600 )
+
+   @ 0, 0 EXPLORERBAR oExBar OF oWnd
+
+   oPanel1 = oExBar:AddPanel( "One", "..\bitmaps\32x32\people.bmp" )
+   oPanel1:lSpecial = .T.
+   oPanel1:AddLink( "First item", bClick, "..\bitmaps\16x16\additem.bmp" )
+   oPanel1:AddLink( "Second item", bClick, "..\bitmaps\16x16\copy.bmp" )
+     
+   oPanel2 = oExBar:AddPanel( "Two", "..\bitmaps\32x32\case.bmp" )
+   oPanel2:AddLink( "First item", bClick, "..\bitmaps\16x16\adddbf.bmp" )
+   oPanel2:AddLink( "Second item", bClick, "..\bitmaps\16x16\delete0.bmp" )
+   oPanel2:AddLink( "Third item", bClick, "..\bitmaps\16x16\envelope.bmp" )
+   oPanel2:AddLink( "Fourth item", bClick, "fourthBMP" )
+
+   oPanel3 = oExBar:AddPanel( "Three", "..\bitmaps\32x32\graphics.bmp" )
+   
+   oPanel4 = oExBar:AddPanel( "Four" )
+   oPanel4:AddLink( "First item", bClick, "firstBMP" )
+   oPanel4:AddLink( "Second item", bClick, "secondBMP" )
+
+   oWnd:oClient = oExBar
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+{{:explbar1.jpg|:explbar1.jpg}}
+
+====== Source code ======
+\FWH\Classes\TExplBar.Prg
+
+====== See Also ======
+[[fivewin_class_ttaskpanel|Class TTaskPanel]], [[fivewin_commands_explorerbar|EXPLORERBAR Commands]]

@@ -1,0 +1,71 @@
+
+====== Class TProgress ======
+
+Progress control support                                                       
+Inherits from TControl                                                         
+====== DATA ======
+^ Data ^ Description  ^
+|nMin|Minimum position|
+|nMax|Maximum position|
+|nPos|Current position|
+|nStep|Step increment|
+====== METHODS ======
+^ Method ^ Description  ^
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|DeltaPos|Advances the current position by the given increment|
+|SetPos|Sets the current position|
+|SetRange|Sets minimum and maximum positions|
+|nPosition|Returns the current position|
+|SetStep|Sets the step increment|
+|StepIt|Advances the current position by the step increment|
+
+====== Example ======
+\Fwh\Samples\Progres1.Prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg, oProg1, oProg2
+   
+   DEFINE DIALOG oDlg TITLE "Progress Bars"
+   
+   @ 1, 1 PROGRESS oProg1 SIZE 80, 12
+
+   @ 1, 20 PROGRESS oProg2 SIZE 12, 50 VERTICAL
+   
+   @ 3,  9 BUTTON "Ok" ACTION oDlg:End()
+   
+   oDlg:bStart = { || Increase( oProg1, oProg2 ) }
+   
+   ACTIVATE DIALOG oDlg CENTER ;
+      ON INIT ( oProg1:SetRange( 0, 100 ), oProg1:SetStep( 1 ),;
+                oProg2:SetRange( 0, 100 ), oProg2:SetStep( 1 ) )
+   
+return nil   
+
+function Increase( oProg1, oProg2 )
+
+   local n
+
+   for n = 1 to 111
+      // oProg1:StepIt()
+      // oProg2:StepIt()
+      oProg1:SetPos( n )
+      oProg2:SetPos( n )
+      Sleep( 50 )
+      SysRefresh()
+   next
+   
+return nil       
+</code>
+
+** Screen Snapshot **
+
+{{:progress.jpg|:progress.jpg}}
+
+====== See Also ======
+[[fivewin_commands_meter| Command Meter ]], [[fivewin_class_tmeter| Class TMeter]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TPROGRESS.PRG

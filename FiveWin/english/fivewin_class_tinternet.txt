@@ -1,0 +1,45 @@
+
+====== Class TInternet ======
+
+Microsoft 32 bits WinINet.dll object oriented support                          
+====== DATA ======
+|hWinINet|Handle to opened WinINet.dll|
+|hSession|Handle of current session|
+|aFTPs|Array of all TFTP objects in use|
+====== METHODS ======
+|New|Constructor|
+|End|Generic destructor|
+|FTP|Generates a new TFTP object and connects to it|
+====== Example ======
+<code clipper>
+// Testing the FiveWin new Internet Classes
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oInternet := TInternet():New()
+   local oFTP      := TFTP():New( "ftp.microsoft.com", oInternet ) // Microsoft FTP
+   local aFiles
+
+   if ! Empty( oFTP:hFTP )
+      aFiles = oFTP:Directory( "*.*" )
+      AEval( aFiles, { | aFile | MsgInfo( aFile[ 1 ], aFile[ 3 ] ) } )
+   else
+      MsgAlert( "oFTP:hFTP is null" )
+   endif
+
+   oInternet:End()
+
+   MsgInfo( "Done!" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+====== See Also ======
+[[fivewin_class_tftp | Class TFtp ]], [[fivewin_class_tftpclient | Class TFtpClient ]], [[fivewin_class_tftpserver | Class TFtpServer ]] 
+====== Source code ======
+FWH\SOURCE\CLASSES\TINTERNET.PRG

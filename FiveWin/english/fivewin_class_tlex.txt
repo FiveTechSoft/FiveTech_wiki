@@ -1,0 +1,138 @@
+
+====== Class TLex ======
+
+Lexical analizer. It returns the different tokens found inside a file          
+Inherits from TFile                                                            
+====== DATA ======
+|aTokens|Array of string tokens to identify|
+|aIds|Array of numeric identifiers for each found token|
+|lSkipBlank|To automatic skip spaces|
+|lSkipCRLF|To automatic skip carriage-return and line-feed|
+|cToken|Last read token string value|
+|cSeparators|A string with all separators|
+|uValue|The last extracted token|
+|cText|To analyze text from memory|
+|nTxtPos|Text index position when using cText|
+|nTokNum|Token identifier for numbers|
+====== METHODS ======
+|New|Constructor from source code|
+|lEoF|Retrieves the total number of lines.|
+|nGetByte|Get a byte from the file.|
+|nGetToken|Get a token from the file.|
+|SetText|Sets a new text string|
+|Add|Adds a token|
+
+
+====== Example ======
+<code clipper>
+// Automatic documentation for a Class source code using a TLex object
+
+// This is a good sample for understanding how to use a Lexical analyzer
+// and what it is a 'states machine'.
+
+// Tokens used
+#define T_CLASS      257
+#define T_FROM       258
+#define T_DATA       259
+#define T_METHOD     260
+#define EOF           -1      // Predefined TLex Class token
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cClassPrg := cGetFile( "*.prg", "Select a Class to document" )
+   local oLex, nToken
+   local cEHT := ""
+   local nState := 0      // To control our states machine
+
+   if Empty( cClassPrg )
+      MsgStop( "Sorry, I need a valid Filename" )
+      return nil
+   endif
+
+   if ! File( cClassPrg )
+      MsgStop( "I don't find that file!" )
+      return nil
+   endif
+
+   oLex = TLex():New( cClassPrg,;
+                      { "CLASS", "FROM", "DATA", "METHOD" },;
+                      { T_CLASS, T_FROM, T_DATA, T_METHOD } )
+
+   while ( nToken := oLex:nGetToken() ) != EOF
+
+      SysRefresh()
+
+      do case
+         case nState == 0              // Start state:  . CLASS <x>
+              do case
+                 case nToken == T_CLASS
+                      cEHT += "!short: CLASS "
+                      nState = 1
+              endcase
+
+         case nState == 1              // CLASS . <x>
+              cEHT += oLex:cToken
+              nState = 2
+
+         case nState == 2              // CLASS <x> . FROM
+              do case
+                 case nToken == T_FROM
+                      cEHT += " inherits from "
+                      nState = 3
+
+                 case nToken == T_DATA
+                      cEHT += CRLF + "!short:" + ;
+                              CRLF + "!short: DATA"
+                      nState = 4
+              endcase
+
+         case nState == 3              // CLASS <x> FROM . <y>
+              cEHT += oLex:cToken
+              nState = 2
+
+         case nState == 4              // DATA . <x>
+              cEHT += CRLF + "!short: " + oLex:cToken
+              nState = 5
+
+         case nState == 5              // DATA <x> .
+              do case
+                 case nToken == Asc( "," )
+                      nState = 6
+
+                 case nToken == T_DATA  // DATA <x> . DATA <y>,
+                      nState = 4
+              endcase
+
+         case nState == 6               // DATA <x>, . <y>
+              cEHT += CRLF + "!short: " + oLex:cToken
+              nState = 7
+
+         case nState == 7
+              do case
+                 case nToken == Asc( "," )
+                      nState = 6
+
+                 case nToken == T_DATA  // DATA <x> . DATA <y>,
+                      nState = 4
+              endcase
+      endcase
+   end
+
+   MsgInfo( cEHT, "Done!" )
+
+return nil 
+
+//----------------------------------------------------------------------------//</code>
+
+** Screen Snapshot **
+
+{{:lex.jpg|:lex.jpg}}
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLEX.PRG

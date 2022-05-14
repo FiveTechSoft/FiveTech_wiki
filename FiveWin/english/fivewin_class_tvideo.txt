@@ -1,0 +1,58 @@
+====== Class TVideo ======
+
+Fivewin AVI support\\                                                            
+Inherits from TMCI                                                             
+
+====== DATA ======
+^ Data ^ Description                                       ^
+|lRegistered|ClassData to store the WinApi registered state of the Class|
+|oMci|A reference to a contained MCI Object|
+|cAviFile|The name of the associated AVI or MPG file|
+
+====== METHODS ======
+^ Method ^ Description                                       ^
+|New|Constructor from source code|
+|ReDefine|Constructor from resources|
+|End|Close the Mci file|
+|Length|Return the total length of the file|
+|Play|Start playing the AVI or MPG file|
+|PlayFull|Start playing the AVI or MPG file in full screen mode|
+|Position|Return the current position of the file|
+
+====== Example ======
+<code clipper>
+#include "Fivewin.ch"
+
+FUNCTION MAIN()
+
+    LOCAL oDlg, oVideo, oTimer
+
+    DEFINE DIALOG oDlg
+
+    @ 0, 0 VIDEO oVideo FILE "..\avis\fivewin.avi"
+    // @ 0, 0 VIDEO oVideo FILE "test.mpg" MPG
+
+    DEFINE TIMER oTimer;
+           INTERVAL 100;
+           ACTION IF( oVideo:Position() = oVideo:Length(), oDlg:End(), )
+
+    oDlg:bStart = { || oTimer:hWndOwner := oDlg:hWnd, oTimer:Activate(), oVideo:PlayFull() }
+
+    ACTIVATE DIALOG oDlg;
+             CENTER
+
+    oTimer:End()
+
+    RETURN NIL
+</code>
+
+** Screen Snapshot **
+
+{{:video.jpg|:video.jpg}}
+
+
+====== See Also ======
+[[fivewin_class_tmci|Class TMci]], [[fivewin_commands_video|Command Video]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TVIDEO.PRG

@@ -1,0 +1,23 @@
+====== Class TVbxArray ======
+
+To manage VBX controls array properties
+
+====== DATA ======
+^ Data ^ Description   ^
+|oVbx|The VBX object|
+|nProperty|Number of properties|
+
+====== METHODS ======
+^ Method ^ Description   ^
+|New|Constructor from source code|
+|Items|Sets and/or retrieve the property at the given position|
+
+====== Example ======
+
+====== See Also ======
+
+[[fivewin_class_tvbcontrol|Class tvbcontrol]], [[fivewin_commands_vbxs|Command Vbxs]]
+
+====== Source code ======
+
+FWH\SOURCE\CLASSES\TVBXARRAY.PRG

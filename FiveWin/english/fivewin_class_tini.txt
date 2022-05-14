@@ -1,0 +1,88 @@
+
+====== Class TIni ======
+
+INI files management as objects                                                
+====== DATA ======
+|cIniFile|INI physical filename|
+|lAutoSet|.T. to activate autoset mode|
+====== METHODS ======
+|New|Constructor from source code|
+|Get|Retrieves data from the INI file.|
+|Set|Writes data into the INI file.|
+|Sections|Returns an array with all the section names|
+|DelEntry|Deletes an INI section entry.|
+|DelSection|Deletes an entire INI section.|
+====== Example ======
+\Fwh\Samples\TestIni.Prg
+<code clipper>
+// Sample showing how to use INI files with FiveWin
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oWnd, oIni, oBar
+   local cTitle, cMsg, cLogo
+   local nRow  := 3, nCol := 5, nWidth := 50, nHeight := 50
+   local cBtn1 := "", cBtn2 := ""
+
+   INI oIni FILE ".\MyApp.ini"
+      GET cTitle  SECTION "main" ENTRY "Title"   OF oIni DEFAULT "FiveWin App"
+      GET cMsg    SECTION "main" ENTRY "Message" OF oIni DEFAULT "Main message"
+
+      GET cLogo   SECTION "Logo" ENTRY "File"    OF oIni
+      GET nRow    SECTION "Logo" ENTRY "Row"     OF oIni
+      GET nCol    SECTION "Logo" ENTRY "Col"     OF oIni
+      GET nWidth  SECTION "Logo" ENTRY "Width"   OF oIni
+      GET nHeight SECTION "Logo" ENTRY "Height"  OF oIni
+
+      GET cBtn1   SECTION "ButtonBar" ENTRY "Button1" OF oIni
+      GET cBtn2   SECTION "ButtonBar" ENTRY "Button2" OF oIni
+   ENDINI
+
+   DEFINE WINDOW oWnd FROM 1, 5 TO 20, 60 ;
+      TITLE cTitle
+
+   DEFINE BUTTONBAR oBar OF oWnd
+
+   if ! Empty( cBtn1 )
+      DEFINE BUTTON OF oBar FILE cBtn1 PROMPT cBtn1
+   endif
+   if ! Empty( cBtn2 )
+      DEFINE BUTTON OF oBar FILE cBtn2 PROMPT cBtn1
+   endif
+
+   SET MESSAGE OF oWnd TO cMsg
+
+   @ nRow, nCol BITMAP FILE cLogo SIZE nWidth, nHeight OF oWnd
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+Contents of MyApp.Ini
+<code clipper>
+[main]
+Title=FiveWin App
+Message=Main message
+
+[ButtonBar]
+Button1=B1
+Button2=B2
+
+[Logo]
+File=C:\Fwh\Bitmaps\007.Bmp
+Row=0
+Col=0
+Width=200
+Height=239
+</code>
+
+
+** Screen Snapshot **
+
+{{:ini.jpg|:ini.jpg}}
+
+====== See Also ======
+[[fivewin_commands_ini | Command Ini ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TINI.PRG

@@ -1,0 +1,9 @@
+====== Class TDbOdbcDirect ======
+
+Please consult FiveODBC documentation                                          
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDBODBCDIRECT.PRG

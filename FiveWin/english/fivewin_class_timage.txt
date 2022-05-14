@@ -1,0 +1,104 @@
+
+====== Class TImage ======
+
+Image object from any of the following formats: JPG, JIF, GIF, BMP, DIB,       
+RLE, TGA, PCX.                                                                 
+Inherits from TBitmap                                                          
+====== DATA ======
+|nProgress|If 1 a load progress info is shown .|
+====== METHODS ======
+|New|Constructor from source code|
+|Define|Constructor from resources|
+|LoadImage|Load image from resources or file|
+|Progress|If lMode is TRUE the a load progress info is shown|
+|Note:|Check TBitmap class for more info about his DATAs & METHODs|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Image.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   LOCAL oDlg, oImage, lSetAlpha := .t.
+
+//   setalpha( .f. )
+
+   DEFINE DIALOG oDlg FROM 0, 0 TO 22, 60 ;
+      TITLE FWDESCRIPTION + " JPG,JIF,GIF,BMP,DIB,RLE,TGA,PCX support!"
+
+   @ 0, 0 IMAGE oImage SIZE 150, 150 OF oDlg SCROLL // ADJUST
+
+   oImage:Progress( .f. )
+
+   @ 1, 28 BUTTON "Select Image" SIZE 50,10 OF oDlg ACTION GetImage( oImage )
+
+   @ 2, 28 BUTTON "Print" SIZE 50,10 OF oDlg ACTION PrintImage( oImage )
+
+   @ 3, 28 BUTTON "Copy" SIZE 50, 10 OF oDlg ;
+      ACTION oImage:CopyToClipboard()
+
+   @ 4, 28 BUTTON "Paste" SIZE 50, 10 OF oDlg ;
+      ACTION ( oImage:LoadFromClipboard(), oImage:Refresh() )
+
+   @ 5, 28 BUTTON "Save" SIZE 50, 10 OF oDlg ;
+      ACTION ( oImage:SaveImage( "SAVED.JPG", 2, 25 ), MsgInfo( "saved as saved.jpg" ) )
+
+   @ 6, 28 BUTTON "Exit" SIZE 50, 10 OF oDlg ACTION oDlg:End()
+   
+   @ 10, 26 CHECKBOX oImage:lStretch PROMPT "Stretch" SIZE 50, 10 OF oDlg ;
+      ON CHANGE ( oImage:ScrollAdjust(), oImage:Refresh() )
+
+   @ 11, 26 CHECKBOX lSetAlpha PROMPT "Set Alpha Channel" SIZE 80, 10 OF oDlg ;
+      ON CHANGE ( SetAlpha( lSetAlpha ), oImage:Refresh() )
+
+
+   ACTIVATE DIALOG oDlg CENTER
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function GetImage( oImage )
+
+   local gcFile := cGetFile( "Bitmap (*.bmp)| *.bmp|" +         ;
+                             "DIB   (*.dib)| *.dib|" +          ;
+                             "PCX   (*.pcx)| *.pcx|"  +         ;
+                             "JPEG  (*.jpg)| *.jpg|" +          ;
+                             "GIF   (*.gif)| *.gif|"  +         ;
+                             "TARGA (*.tga)| *.tga|" +          ;
+                             "RLE   (*.rle)| *.rle|" +          ;
+                             "All Files (*.*)| *.*"             ;
+                            ,"Please select a image file", 4 )
+
+   if ! Empty( gcFile ) .and. File( gcFile )
+      oImage:LoadBmp( gcFile )
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function PrintImage( oImage )
+
+   local oPrn
+
+   PRINT oPrn NAME "Image Printing" PREVIEW
+      PAGE
+         oPrn:SayImage( 0, 0, oImage )
+      ENDPAGE
+   ENDPRINT
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:image.jpg|:image.jpg}}
+
+====== See Also ======
+[[fivewin_class_timage|Class TImage]] , [[fivewin_class_tbitmap | Class TBitMap ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TIMAGE.PRG

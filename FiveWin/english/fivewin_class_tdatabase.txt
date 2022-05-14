@@ -1,0 +1,188 @@
+====== TDataBase ======
+Management of DataBases as objects. DataBase OOPS management 
+
+====== DATAS ======
+^Data^Usage^Type^Default^Details^
+|//aBuffer//|ReadOnly|A| |Array holding the field values of the current record when ::lBuffer is .T.|
+|//aFldNames//|ReadOnly|A| |Array containing field names of DBF|
+|//aStruct//|ReadOnly|A| |Structure of the table, similar to DBSTRUCT(). aStruct has additional columns 7 for picture and 8 for index tag.\\ When programmer assigns an alternate name for a field using ::MapCol(), astruct contains the new name.\\ When programmer addes virtual columns using ::AddCol(), aStruct contains virtual column information also.\\ Programmer may modify columns 7 (picture) and 8 (index tag) but not any other column.|
+|bBoF| |B| |If assigned, executed when BOF() is true|
+|bEdit| |B| |Optional. Format { %%|%%oRec%%|%% UserEdit( oRec ) }\\ If assigned, used to edit current/new record with ::Record() object as parameter. See ::Record() and ::Edit() methods.|
+|bEoF| |B| |If assigned, executes when EOF() is true|
+|bNetError| |B| |Optional. If assigned, evaluated when record lock fails|
+|BookMark| |N| |ACCESS ::BookMark --> RecNo()\\ ASSIGN ::BookMark := n --> ::DbGoTo( n )\\ |
+|bTrigger| |B| |Optional. If asigned, executed when record is modified.|
+|bValidRow| |B|{%%||%%.t.}|Optional codeblock to check validity of contents of a row before saving. Save() method evaluates this codeblock with Self as parameter and saves data only if the return value is TRUE.|
+|//cAlias//|ReadOnly|C|""|Alias() of DBF|
+|Cargo| |U| |For programmer's use|
+|//cDriver//|ReadOnly|C| |RDD name of DBF\\ |
+|//cFile//|ReadOnly|C|""|File name of DBF with full path|
+|//hFlds//|ReadOnly|H| |Hash mapping fields names (original, alternate and virtual) to ordinal position on aStruct array.|
+|//hRec//|ReadOnly|H| |Save() method populates the Hash with values prior to modification and provides as 3rd paramter while Evaluating ::bTrigger. Current values of the fields can be compared with old values and necessary action may be taken inside the trigger.|
+|//lADS//|ReadOnly|L|.F.|True when RDD is ADS|
+|lBuffer| |L|.T.|If .T., contents of current record are read into ::aBuffer array whenever row is moved or modified. If .f., ::aBuffer is not used and fields are directly assessed and written.|
+|lOemAnsi| |L|.F.|If .T., charactger values are converted using OemToAnsi() and AnsiToOem() while reading and saving.|
+|lReadOnly| |L|.F.|True if the file is opened in readonly mode.|
+|//lShared//|ReadOnly|L|! Set(_SET_EXCLUSIVE)|True if the DBF is used in shared mode|
+|//nArea//|ReadOnly|N|0|Area number of the DBF used.|
+|nBufRec| |N| |RecNo() corresponding to the values in ::aBuffer. In case of ::Blank() this value is 0.|
+|//oCn//|ReadOnly|O| |ADO Connection object to the folder containing the DBF. Created if and when ::SqlQuery() method is called. Closed by the ::Close() method. Uses VFPOLEDB if installed when DBFCDX is used.|
+
+
+
+
+====== METHODS ======
+^Method^Usage^Details^
+|New|**CONSTRUCTOR**|__( [ncArea], [cFile], [cDriver], [lShared], [lReadOnly] ) --> Self__\\ **Usage 1: Single or no parameters:\\ oDbf := TDataBase():New( [nArea/cAlias] )**\\ nArea/cAlias defaults to currently selected workarea.\\ This usage creates the object for a DBF that is already open. Eg:\\ <code clipper>USE STATES
+oDbf := TDataBase():New()</code>\\ **Usage 2: Two or more parameters:\\ oDbf := TDataBase():New( nil, cFile, [cDriver],[lShared],[lReadOnly] ) --> Self**\\ This usage creates the object but does not open. Requires a call to method ::Use() to open DBF. Datas can be modified before calling ::Use().\\ 3.__[cDriver]:__ Default RDDSETDEFAULT()\\ 4.__[lShared]:__ Default !Set(_SET_EXCLUSIVE)\\ 5.__[lReadOnly]:__ Default .F.\\ <code clipper>oDbf := TDataBase():New( nil, "states.dbf", "DBFCDX" )
+oDbf:lReadOnly := .t.
+oDbf:Use()</code>\\ \\ This method creates the object but does not open the dbf. We need to call ::Use() method to open the dbf.\\ \\ **Recommended** to use ::Open() constructor which opens the dbf in a single call.|
+|Open|**CONSTRUCTOR**|__( [cAlias], **cFile**, [cDriver], [lShared], [lReadOnly] ) --> Self__\\ Highly recommended to leave [cAlias] parameter as nil, allowing the class to use a new alias name.\\ Parameter cFile is compulsory.\\ Other parameters are similar to method New()\\ Opens cFile and returns Self.\\ \\ <code clipper>oDbf := TDataBase():Open( nil, "states.dbf" )</code>|
+|//Create//|**CONSTRUCTOR**|__( cFile, aStruct, [cDriver], [cIndexFields] )__\\ If called as constructor, cFile is created, indexes created and opened.\\ If called by an already created object, creates dbf file.|
+|Activate()| |Same as ::Use()|
+|AddCol| |__( cCol, uExpr, cType, nLen, nDec, cPic, cTag ) --> nNewCol__\\ Creates a new virtual (calculated) column. uExpr can be character expression or a codeblock. Column name (cCol) can have more than 10 characters.\\ <code clipper>
+oDbf:AddCol( "DUE", "::Sales - ::Paid", "N", 12, 2, NUMPICT( 12, 2 ), "SALES" )
+? oDbf:Due</code>|
+|AddIndex| |__( cFile, cTag )__\\ Adds new index file. Use with NTX files|
+|//AnsiToOem()//|Internal|Internally used when ::lOemToAnsi is .T.|
+|Append| |__( [aFlds], [aVals] ) --> lSuccess__\\ **Usage 1: Append()** without parameters:\\ Appends a blank record and returns success\\ This usage is consistent with all previous versions.\\ \\ **Usage 2:**\\ **Append( aFldsAndValues )**\\ aFldsAndValues is a multi-dim array in the form of { { fld1, val1 }, ... { fldN, valN } }.\\ fldN can be field name of field number.\\ \\ **Append( flds, aVals )**\\ **flds** can be nil ( all fields) or list of fields or array of field names/numbers\\ **aVals** can be an array of corresponding values. aVals can be a single row or multiple rows.|
+|AppendFrom| |__( cFile, aFields, bFor, bWhile, nNext, nRec, lRest )__\\ Executes APPEND FROM command|
+|Blank()| |Fills ::aBuffer with blank values. (From ver 17.08 fills default values where necessary.) The blank values can be edited/modified normally and can be appended to dbf by calling ::Append() followed by ::Save().\\ <code>oDbf:Blank()
+// edit/modify
+oDbf:Append() // Optional from 17.08
+oDbf:Save()</code>\\ Notes: (1) Record pointer should not be moved during the entire operation because that will overwrite the ::aBuffer\\ (2) oDbf:Append() should be called before calling Save(). Otherwise, the new data may overwrite an existing record. There is no such problem with 17.08.\\ From FWH17.08\\ <code>oDbf:Blank()
+// edit/modify
+oDbf:Save()</code>\\ \\ \\ |
+|Bof()| |returns BOF()|
+|BookMark| |__( [nGoTo] ) --> RecNo()__\\ ::BookMark() --> RecNo()\\ ::BookMark( n ) --> ::GoTo( n ) and return new RecNo|
+|ClearFilter()| |Same as DBCLEARFILTER()|
+|ClearRelation()| |Executes DbClearRelation()|
+|Close()| |Closes the Alias and ::oCn if already open.\\ Till 17.07, calling ::Close() again after the dbf is closed could have some side effects in some cases. 17.08 makes it safe.|
+|CloseIndex()| |Closes index|
+|Commit()| |Performs COMMIT for the Alias|
+|CopyTo| |__( cFile, aFields, bFor, bWhile, nNext, nRec, cRdd, cCp )__\\ Executes COPY TO command|
+|CreateIndex| |__( cFile, cTag, cKey, bKey, lUnique)__\\ ( ::nArea )->( OrdCreate( cFile, cTag, cKey, bKey, lUnique ) )|
+|DbCreate| |__( aStruct )__\\ DbCreate( ::cFile, aStruct, ::cDriver )|
+|Deactivate()| |Closes Alias|
+|Delete()| |Deletes current record and skips to next undeleted record.|
+|Deleted()| |Returns .T. if current record is deleted|
+|DeleteIndex| |__( cTag, cFile )__\\ Removes the index tag from the order bag|
+|Edit| |__( [cFiedList], [lNew] )__\\ Creates a record object and invokes Edit(). This is a safe way to edit existing or new records. By default Edit() calls native dialog of record object, but user can specify his own dialog with ::bEdit|
+|End()| |Closes DBF and ::oCn object|
+|Eof()| |True if EOF()|
+|Eval| |__( bBlock, bFor, bWhile, nNext, nRecord, lRest )__\\ Executes DBEVAL() with same parameters|
+|Exec| |__( bAction )__\\ Evaluates bAction in the WorkArea of the object.|
+|//ExecTigger()//|Internal|EValiuates ::bTrigger with Self as parameter and returns the result. This method is internally used by Save() method and when ::lBuffer is .t. and FieldPut() method when ::lBuffer is .f.\\ Application programs may use this method only when DBF is directly modified at RDD level.|
+|FCount()| |Total number of fields, including virtual fields created by programmer using ::AddCol() method|
+|FieldBlock| |__( nCol )__\\ returns FIELDWBLOCK() for this column|
+|FieldDefault| |__( nFld/cFldName, [uDefault], [lRO] ) --> uDefault__ \\ Sets/Queries default value to be used for the field while appending new data. Default values are first saved to DBF before saving data in aBuffer( FWH 17.08)|
+|FieldGet| |__( nPos/FieldName ) --> uValue__\\ 1. Parameter can be field number, field name, alternative name or virtual field name. Returns value of the field.\\ 2. Parameter can also be an expression. Returns value of the expression.|
+|FieldName| |__( nField )__\\ FieldName (alternative name is used)|
+|FieldPos| |__( cField )__\\ cField can also be alternate name assigned by ::MapCol() or virtual field name created by ::AddCol()|
+|FieldPut| |__( nPos/FieldName, uValue )__\\ First parameter can be field number or fieldname (original, alternative or virtual). Assigns uvalue to the field.\\ If ::lBuffer is .T. (default), the value is stored in the buffer and saved to DBF only when ::Save() is called.\\ If ::lBuffer is .F., data is immediately saved to DBF.|
+|FieldReadOnly| |__( nFld/cFldName, [lRO] ) --> lReadOnly__ \\ Sets or queries the readonly flag of the field. AutoInc and timestamp fields ( +,=,@ ) are automatically flagged as readonly and can not be changed by the application. In addition application can  toggle readonly flag of other fields. FieldPut does not modify readonly fields.\\ (FWH 17.08)|
+|FieldType| |__( n, [c] )__\\ Returns field type of nth field.|
+|Found()| |Returns success of immediately preceeding Seek or Locate()|
+|GoBottom()| |Go to last record|
+|GoTo| |__( nRecNo )__\\ Go to nRecNo|
+|GoTop()| |Goes to first record|
+|IndexBagName| |__( [nInd] )__\\ Order bag name of index tag at position nInd, if specified or else current index tag|
+|IndexKey| |__( [ncTag], [cFile] )__\\ Index expression of currently active index or the specified index tag and orderbag|
+|IndexName| |__( [nTag], [cFile] )__\\ Active index tag name or at the position specified|
+|IndexOrder| |__( cTag, cFile )__\\ Serial number of index tag|
+|IsFileLocked()| |If dbf is locked with FLOCK()|
+|IsRecLocked| |__( [nRecNo := recno()] ) --> lLocked__\\ Returns .t. if the record or file is locked already.|
+|KeyCount()| |Returns OrdKeyCount().\\ Note: The count includes deleted records also unless filter is set to include "!DELETED()"|
+|KeyGoTo| |__( nkeyNo )__\\ Goes to record at the position in the order of the active index. For accurate results include "!DELETED()" in the filter expression.|
+|KeyNo()| |Serial number of the record in the index order. For accurate results include "!DELETED()" in the filter expression.|
+|LastRec()| |Total records in the DBF, including deleted records.|
+|Load()| |Reads field values from current record into ::aBuffer in memory, if ::lBuffer is true. Normally there is no need for the programmer to call this method in the application, as this method is automatically executed after every record movement and modification.|
+|Lock()| |Executes FLOCK()|
+|Locked()| |Same as ::IsRecLocked()|
+|LookUp| |__( uSeek, [cOrder/cField], bcRetExpr ) --> uResult__\\ Looks up value in the table and return the result of expression in the 3rd parameter. The record position and sort order are restored before returning the result.\\ Parameters:\\ 1. uValue: Value/Expression to be looked up.\\ if 2nd param is an order name, DBSEEK( uValue ) is executed after switching the sort order.\\ If 2nd param is field name LOCATE is executed for cField = uValue\\ If 2nd param is omitted and uValue is character value, LOCATE is executed for uValue as expression.\\ 2. Order name or field name\\ 3. Any expression of codeblock which is evaluated and result is returned.\\ <code>val := oDbf:LookUp( 108, "ID", "SALARY" )
+val := oDbf:LookUp( "ID=99", nil, "SALARY += 100" )
+//Salary field is incremented by 100 and returns the incremented value\\ </code>|
+|//lValidRow//|Internal|__( cOperation, [hRec] ) --> lValid__\\ Evaluates ::bValidRow with parameters Self, cOpertion and optional hRec and returns the result. The method is internally used by Save() method.|
+|MapCol| |__( cFld, cNewName ) --> lSuccess__\\ Programmer can set a user friendly name to a field, which can be more than 10 chars. The field can be accessed using either the original name or new name. Eg:\\ <code clipper>oDbf:MapCol( "STATE", "StateName" ) 
+? oDbf:StateName</code>|
+|Modified()| |Returns true if any values in the ::aBuffer are changed and not yet saved.|
+|Move| |__( n )__\\ Same as ::Skip( n ). This method is created for compatibility with ADO syntax|
+|MoveFirst()| |Same as GoTop().|
+|MoveLast()| |Same as GoBottom()|
+|MoveNext()| |Same as Skip( 1 )|
+|MovePrevious()| |Same as Skip( -1 )|
+|//OemToAnsi()//|Internal|Internally used when ::lOemToAnsi is set to .T.|
+|OrdDescend| |__( cnTag, cFile, lDesc )__\\ Toggles index order to descending/ascending|
+|OrdScope| |__( nScopeType, uValue )__\\ Calls OrdScope() to set scope.|
+|Pack()| |Packs the DBF, removing all deleted records. Fails if the DBF is opened as shared or readonly.|
+|Recall()| |Recalls the current record, if deleted.\\ Executes ::bTrigger and if it succeeds Recall is executed|
+|RecCount()| |Total number of records in the DBF|
+|RecLock| |__( [nRecNo], @lLocked ) --> lLocked__\\ nRecNo defaults to current RecNo().\\ Locks the record using DBRLOCK( nRecNo ), if the dbf is shared and record/file is not already locked. lLocked is set to .t. if the record is locked in this method.\\ Returns .t. if the file is exclusive or record/file is locked earlier or by this method, indicating that data can be written to the record.|
+|RecNo()| |Current Record Number|
+|Record| |__( [cFieldList], [lNew] ) --> oRec__\\ 1.__[cFieldList]:__ Default all fields (including virtual fields)\\ 2.__[lNew]:__ Default current record.\\ Creates and returns Record Object (TDataRow) for the current record or optionally new blank record for edit. After edit, executing oRec:Save() saves changes to the record or appends new record if lNew is .t.|
+|RecUnLock| |__( [nRecNo] )__\\ nRecNo defaults to current record. Unlocks specified record only|
+|ReIndex()| |ReIndexes the database.\\ FWH 17.08|
+|RollBack()| |Cancels any changes made to current record of DBF, pending commit to disk. See also ::Updated()|
+|//RowGet//|Internal|__( cFieldList, lBlank )__\\ Used internally by TDataRow()|
+|//RowPut//|Internal|__( aData, nPutRec, lCommit, oRec, lSaved )__\\ Used internally by TDataRow|
+|Save()| |Saves changes made to ::aBuffer if the file is not readonly and ::Modified() is true and  Eval( ::bValidRow ) is true, to the record corresponding to the buffer. If the buffer is created by ::Blank() method, then the data is appended,|
+|//SaveBuff()//|Internal|Used by ::Save()|
+|Seek| |__( uExpr, [lSoft], [lWildSeek] ) --> lFound__\\ Seeks uExpr and returns lFound.|
+|//SetArea//|Internal|__( nWorkArea )__|
+|SetBuffer| |__( [lOnOff] ) --> ::lBuffer__\\ Optionally sets ::lBuffer and returns value of ::lBuffer|
+|SetFilter| |__( [cFilter] ) --> cFilter__\\ Sets filter to cFilter.\\ Clears filter if cFilter is ""|
+|SetOrder| |__( cnTag, [cFile] )__\\ Sets order to index no/tag name in the optional orderbag.|
+|SetRelation| |__( uChild, cRelation, [lScoped] )__\\ Sets relation to another workarea/database object. uChild can be workarea number of other TDatabase object|
+|//SetXBrowse//|Internal|__( oBrw, aCols, lAutoSort, lAutoCols )__\\ Used by XBrowse SetoDbf() method|
+|Skip| |__( nRecords )__\\ Skips nRecords, executes bBof or bEof when necessary and loads field values into ::aBuffer if ::lBufer is true.|
+|//Skipper//|Internal|Used by XBrowse, This method is not useful directly in application.|
+|SqlQuery| |__( cSql, lExecute, lCompact )__|
+|UnLock()| |Removes all pending locks.\\ Note: RecUnlock( nRecNo ) unlocks the record only and retains other existing locks.|
+|Update| |__( aFlds, aVals ) --> lSaved__\\ Syntax similar to ADO Update()\\ \\ 1. oDbf:Update( aValues )\\ 2. oDbf:Update( aFldNames/Nos, aValues )\\ 3. oDbf:Update( cFieldList, aValues )\\ 4. oDbf:Update( aFieldValueArray )\\ \\ Data is saved only if ::bEditRow is evaluated to true.|
+|Updated()| |True if some fields of the current record are written to dbf but not yet written to disk. RDD writes changes to disk only when record pointer is moved or DBCOMMIT() is executed. At this stage, it is still possible to cancel the changes by calling oDbf:RollBack().\\ Note: This is not the same as ::Modified(). See ::Modified()|
+|Use()| |Opens the DBF set with ::New() method.\\ Instead of using ::New() and then calling ::Use(), it is recommended to use ::Open() method.\\ \\ Side-effects of calling Use when the dbf is alerady open are removed in FWH 17.08.\\ \\ After the dbf is closed with Close()/End() methods Use() can be called to reopen the dbf.(from 17.08)|
+|Used()| |True if dbf is already opened and in use.|
+|//xads_KeyGoTo//|Internal|__( n )__\\ ::KeyGoTo() uses this method internally for ADS RDD.|
+|xBrowse| |__( oWnd, cTitle, aCols, lAutoSort, bSetUp )__\\ Quick way to create and show XBrowse of the table in oWnd. If oWnd is MDI, xbrowse is shown in a new MDICHILD of the window or shown in the window.\\ If oWnd is nil, XBrowser is used.|
+|Zap()| |Zaps() all records. Fails if dbf is opened as shared or readonly.|
+|//td_Destroy()//|**DESTRUCTOR**|This method calls ::Close() method.\\ This method should not be called directly in the application and it is called by (x)Harbour when all references to the object go out of scope in memory.|
+
+
+====== Example ======
+<code clipper>
+#include "fivewin.ch"
+
+REQUEST DBFCDX
+
+function Main()
+
+   local oWnd, oBar, oBrw, oStates
+
+   oStates  := TDataBase():Open( nil, "c:\fwh\samples\states.dbf", "DBFCDX", .t. )
+
+   WITH OBJECT oStates
+      :MapCol( "CODE", "StateCode" )
+      :MapCol( "NAME", "StateName" )
+   END
+
+   DEFINE WINDOW oWnd
+   DEFINE BUTTONBAR oBar OF oWnd SIZE 80,32 2007
+   DEFINE BUTTON OF oBar PROMPT "Add"  CENTER ACTION oBrw:EditSource( .t. )
+   DEFINE BUTTON OF oBar PROMPT "Edit" CENTER ACTION oBrw:EditSource()
+
+   @ 0,0 XBROWSE oBrw OF oWnd DATASOURCE oStates ;
+      AUTOCOLS AUTOSORT FASTEDIT ;
+      CELL LINES NOBORDER
+
+   WITH OBJECT oBrw
+      :CreateFromCode()
+   END
+   oWnd:oClient   := oBrw
+   ACTIVATE WINDOW oWnd CENTERED
+   oStates:Close()
+
+return nil
+</code>  
+
+====== See also ======
+[[fivewin_commands_database | Command Database ]]

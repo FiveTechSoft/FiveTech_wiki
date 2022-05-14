@@ -1,0 +1,130 @@
+
+====== Class TMenu ======
+
+Menu Class                                                                     
+====== DATA ======
+^ Data ^ Description                 ^
+|hMenu|The Windows handle of the Menu|
+|aItems|An array of MenuItems|
+|oWnd|A reference to the container Window of the Menu|
+|lSysMenu|If it is a System menu|
+|lPopup|If it is a popup menu|
+|nHelpId|The help topic identifier of this Menu|
+|cVarName|A variable name to identifier this object (visual editor)||
+|oAccTable|Accelerators table object|
+|oMenuItemPopup|It overcomes the limitation of API TrackPopupMenu() under 16 bit|
+|oLastItem|A CLASSDATA containing the last menu item selected|
+
+====== METHODS ======
+^ Method ^ Description         ^
+|New|Creating a new Menu|
+|NewSys|Redefining a SysMenu|
+|Redefine|Creates a menu from resource|
+|Activate|PopMenu activating method|
+|Add|Adding a new menuitem to the Menu|
+|AddEdit|Adds standard editing menu options|
+|AddHelp|Adds standard help menu options|
+|AddMdi|Adds standard MDI menu options|
+|AddFile|Adds standard File menu options|
+|Command|Processes the user selection command|
+|DelItems|Invoked when destroying the menu. Destroys each menuitem|
+|Destroy|Destroys the menu|
+|Disable|Disables the entire menu|
+|End|Ends the menu|
+|GetMenuItem|Retrieves a reference to a MenuItem Object given its Id|
+|GetPopup|Retrieves a reference to a contained Popup given its position|
+|GetSubMenu|Retrieves a reference to a submenu|
+|HelpTopic|Invoked when pressing enter over this menu|
+|Hilite|Hilites a specific menuitem|
+|Initiate|Called everytime the menu is going to be shown|
+|Insert|Inserts a new menuitem at a specified position|
+|LastItem|A reference to last processed MenuItem Object|
+|Load|Changes some menu properties based on a binary info|
+|Refresh|Repaints the menu|
+|Release|Destroy the Menu Object|
+|Reset|Reset to the original System Menu of a Window|
+|Save|Generates a binary representation of the menu|
+|UnHilite|DeHelites a specific menuitem|
+|Disable|Disables de menu|
+|Enable|Enables de menu|
+
+====== Example ======
+\FWH\Samples\TestMnu4.Prg
+<code clipper>
+// Some PullDown menu samples
+#include "FIVEWIN.CH"
+static oWnd
+
+//------------------------------------------------------------//
+
+FUNCTION Main()
+
+   DEFINE WINDOW oWnd                                       ;
+      TITLE "Testing PullDown Menus"                        ;
+      MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+
+//------------------------------------------------------------//
+
+FUNCTION BuildMenu()
+
+   local oMenu, oMenu1, oMenu2
+   local oSub1,oSub2,oSub3
+   MENU oMenu
+   MENUITEM oMenu1 PROMPT "Test &1"
+     MENU
+       MENUITEM oSub1 PROMPT "Subject&1" CHECKED
+         /*
+         MENU
+           MENUITEM "Choice 1"
+           MENUITEM "Choice 2"
+           MENUITEM "Choice 3"
+         ENDMENU */
+       MENUITEM "Subject&2"
+         MENU
+           MENUITEM "Option 1"
+           MENUITEM "Option 2"
+           MENUITEM "Option 3"
+           MENU
+             MENUITEM "Selection 1"
+             MENUITEM "Selection 2"
+             MENUITEM "Selection 3"
+             MENU
+               MENUITEM "Sub-selection 1"
+               MENUITEM "Sub-selection 2"
+               MENU
+                 MENUITEM "Sub-sub-selection 1"
+                 MENUITEM "Sub-sub-selection 2"
+                 MENUITEM "Sub-sub-selection 3"
+                 MENU
+                   MENUITEM "Lowest level 1"
+                   MENUITEM "Lowest level 2"
+                 ENDMENU
+               ENDMENU
+             ENDMENU
+             MENUITEM "Selection 4"
+           ENDMENU
+         ENDMENU
+      MENUITEM "Toggle Subject 1 Check" ACTION oSub1:SetCheck( ! oSub1:lChecked )
+     ENDMENU
+   MENUITEM "Test 2"
+     MENU
+       MENUITEM "Item 1"
+       MENUITEM "Item 2"
+     ENDMENU
+   ENDMENU
+   // oMenu2:Disable()
+RETURN (oMenu)
+</code>
+
+** Screen Snapshot **
+
+{{:menu.jpg|:menu.jpg}}
+
+====== See Also ======
+[[fivewin_commands_menus | Command Menu]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMENU.PRG

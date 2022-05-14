@@ -1,0 +1,267 @@
+====== Class TXBrwColumn ======
+
+TXBrowse column objects                                                        
+====== DATA ======
+^Data^Usage^Type^Default^Details^
+|//oBrw//|//ReadOnly//|O| |XBrowse container. Assigned by ::New()\\ |
+|//oBarGet//|//ReadOnly//|O| |Get object in GetBar. Created by the column object if ::uBarGetVal is assigned a value, while  creating the Browse|
+|oBrush| |OB| |Optional oBrush or { %%|%%oCol%%|%% oBrush }\\ If assigned, used to fill cell background.|
+|//oBtnElip//|//ReadOnly//|O| |Button for edit with user code-block, when nEditTye is EDIT_BUTTON or EDIT_GET_BUTTON|
+|//oBtnList//|//ReadOnly//|O| |Button for edit with listbox, when nEditType is EDIT_LISTBOX or EDIT_GET_LISTBOX.|
+|oDataFont| |OB|oBrw:oFont|Optional font object or codeblock { %%|%%oCol%%|%%oFont}. Font to paint cell data..|
+|oDataFontBold| |O|oBrw:oFont|Not used|
+|//oDragWnd//|Internal|O| |Used internally as temporary window while swapping columns.|
+|oEditFont| |O|oDataFont|Used during inline edit|
+|//oEditGet//|//ReadOnly//|O| |Get object for inline edit, created by Edit() method.|
+|//oEditLbx//|//ReadOnly//|O| |Listbox object for editing|
+|oFooterFont| |OB|oBrw:oFont|Font object or codeblock {%%|%%oCol%%|%%oFont}\\ Used for painting footers|
+|oGrpFont| |OB|oHeaderFont|Used to paint Group Headers|
+|oHeaderFont| |OB|oBrw:oFont|Used to paint Headers|
+|//aBitmaps//|//ReadOnly//|A| |Two dimentional array holding information of bitmaps attached to the column object. Each element is an array of lentgh 5.\\ aBitmaps[n, 1] -> handle / pointer\\ aBitmaps[n, 2] -> palette\\ aBitmaps[n, 3] -> width\\ aBitmaps[n, 4] -> heigtht\\ aBitmaps[n, 5] -> Has Alpha\\ The array is built by method AddBitmap( <uaBmp> )\\ |
+|aChartColors| |A| ->|//Default: {METRO_AMBER, METRO_OLIVE, CLR_HMAGENTA, CLR_HBLUE, CLR_HRED, CLR_HGREEN, CLR_RED, CLR_MAGENTA, CLR_GREEN}//\\ Array of colors used for drawing chart in cell.\\ |
+|aChartCols| |AC| |Array of column objects or group header, whose values to be displayed as Chart.|
+|aClrText| |A| |If an array of colors is specified, multi line text delimited by CRLF are painted using the colors.|
+|aDataFont| |A| |If an array of fonts is specified, multi line text delimited by CRLF is painted using these fonts.|
+|aEditListBound| |A| ->|//Default: aEditListTxt is single dimentional array or 1st column of aEditListTxt if 2 dimentional array.//\\ Used when nEditType is EDIT_LISTBOX or EDIT_GET_LISTBOX. \\ When column data equals an element in this array corresponding value in aEditListTxt is displayed in the cell. When user selects a value in EditListTxt, corresponding value in this array is savedto the datasource.\\ |
+|aEditListTxt| |A| |Needs to be specified when nEditType is EDIT_LISTBOX or EDIT_GET_LISTBOX. Can be a single dimentional array or 2 dimentional array of prompts. In case of 2 dimentional array, 1st column is treated as aEditListBound and 2nd coumn is treated as aEditListTxt.\\ |
+|aImgRect| |A| |Optional aRect { top, left, bottom, right, [nResizeMode] } with coordinates relative to cell area. If specified, data image is restricted to this area. Optional resizemode : 0 -> no resize, 1 -> full strech, 2 --> zoom/shrink to fill rect, 3 -> zoom/shrint to fit inside rect.|
+|//aMerge//|Internal|A| |Merge data internally used, in case of Vertical Merged columns|
+|aProgBarRect| |A| |Optional aRect { top, left, bottom, right } with coordinates relative to cell area. If specified, progress bar painting is restricted to this area.|
+|//aRows//|Internal|A| |Array of columns shown as rows inside a cell, set by method SetColsAsRows()|
+|bAlphaLevel| |B| |Optional codeblock { %%|%%oCol%%|%% nAlpha } for rendering bitmaps|
+|bBarGetValid| |B| |Valid block for oGarGet. Not implemented yet.|
+|bBmpData| |B| |Codeblock evaluated with oCol:Value should return ordinal position in the Array ::aBitmaps. The bitmap at that position is painted. \\ To paint a bitmap in oBrw:aBitmaps array the codeblock may return a -ve value.|
+|bCellToolTip| |B| |Format: { %%|%%oCol%%|%% acToolTipText }\\ Displays tooltip when mouse is over a cell.|
+|bClrBtn| |B|::bClrHeader|returns button color in case of listboxes, editbuttons.|
+|bClrEdit| |B|::bClrStd|Color pair for edition. This code-block should return an array with {nFore, nBack} colors.|
+|bClrFooter| |B|::oBrw:bClrFooter|Color pair for footer. This code-block should return an array with {nFore, nBack} colors. Used in Flat and non 2007+ styles|
+|bClrGrad| |B|::oBrw:bClrGrad|Used to paint Headers and footers in 2007+ styles|
+|bClrHeader| |B|::oBrw:bClrHeader|Color pair for header. This code-block should return an array with {nFore, nBack} colors. Used for non-2007+ styles|
+|bClrProg| |B|->|//Default := { %%|%%%%|%% { RGB(200,200,255), CLR_YELLOW } }//\\ Colors used to paint Progress Bars|
+|bClrSel| |B|::oBrw:bClrSel|Color pair for selected rows. This code-block should return a two dimension array with {nFore, nBack} colors. nBack can also be gradient array|
+|bClrSelFocus| |B|::oBrw:bClrSelFocus|Color pair for selected and focused rows. This code-block should return a two dimension array with {nFore, nBack} colors.nBack can also be gradient array|
+|bClrStd| |B|::oBrw:bClrStd|Color pair for normal rows. This code-block should return a two dimension array with {nFore, nBack} colors. nBack can also be gradient array|
+|bCreateBtn| |B| |Optional. Format { %%|%%oCol%%|%% <createbtnproc>() }\\ Overrides default creation of buttons for listbox and editbuttons in method ::CreateButtons()|
+|bEditBlock| |B| |//Format: { %%|%%nRow,nCol,oCol,nKey%%|%% <action> }//\\ Applies to nEditType EDIT_BUTTON or EDIT_GET_BUTTON.\\ Return value of the codeblock is saved to column's data. If return value is nil the data is not changed.|
+|bEditValid| |B| |Codeblock to validate edit gets. This block should not execute any screen i/o.|
+|bEditValue| |B| |//Format: { %%|%%x,oCol%%|%% If( x == nil, <data>, <data> := x }//\\ SetGet Codeblock to retrieve the value of the cell and to set the value to be saved. Normally when XBrowse/column is created with command syntax, this codeblock is created. Programmer need to explicitly assign this block only where it is required to override the default.|
+|bEditWhen| |B| |Inline edit is invoked only if the column is not lReadOnly and bEditwhen evaluates to .t.. This block should not perform any screen i/o. It should also be kept in mind that this block is evaluated multiple times.|
+|bFooter| |B| |Optional codeblock that returns value to be displayed as footer|
+|bGetChange| |B| |//Optional. Format: { %%|%%nKey,nFlags,oGet,oCol%%|%%<onchange>}//\\ If specified ::oEditGet:bChange executes this codeblock|
+|bIndent| |B| |//Optional. Format: { %%|%%oCol%%|%% nIndent }//\\ To indent text display inside a cell|
+|bKeyChar| |B|::oBrw:bKeyChar|Key char handler for the column|
+|bKeyDown| |B| |//{ %%|%%mRow,mCol,nFlags,oCol%%|%% <action> }// As name indicates\\ |
+|bLClickFooter| |B| |//{ %%|%%mRow,mCol,nFlags,oCol%%|%% <action> }// As name indicates\\ |
+|bLClickHeader| |B| |//{ %%|%%mRow,mCol,nFlags,oCol%%|%% <action> }// As name indicates\\ |
+|bLDClickData| |B| |//{ %%|%%mRow,mCol,nFlags,oCol%%|%% <action> }// As name indicates\\ |
+|bLeftFooter| |B| |//{ %%|%%oCol%%|%% cText }//\\ If specified, this text is diaplyed left justified, while the footer value is right justified.|
+|bLeftText| |B| |//{ %%|%%oCol%%|%% cText }//\\ If specified, this text is diaplyed left justified, while the cell data is right justified. Useful to display currency symbols, units, etc.|
+|bMergeValue| |B| |//Optional: Format { %%|%%oCol%%|%% uValue }//\\ Applies when ::lMergeVert is true. By default rows are merged when cell values are equal. If specified, rows are merged when values returned by the codeblock are equal|
+|bOnChange| |B| |//Format: { %%|%%oCol,uPrevValue%%|%% <action> }//\\ Evaluated by method ::PostEdit() after saving any changes to the cell value. Any locks placed while saving are still retained.\\ This codeblock may be used to take any action consequent on modification of cell value, including saving corresponding changes to other fields and tables.|
+|//bOnPostEdit//|//Internal//|B| |//Format: { %%|%%oCol, uNewValue, nLastKey%%|%% <action to save> }//\\ Eg: { %%|%%oCol,uVal,nKey%%|%% If( nKey != VK_ESCAPE, oCol:Value := x, nil ) }\\ This codeblock is responsible for saving changes to the datasource after inline edit.\\ When XBrowse is created using command syntax, this codeblock is automatically created appropriate to the datasource.\\ Application program may override this codeblock only where the default behavior is inadequate.\\ |
+|bOnPreEdit| |B| |// { %%|%%oCol%%|%% OnPreEdit( oCol ) } //\\ If specified, the codeblock is evaluated after inline EditGet is created and before editing.|
+|bPaintFooter| |B| |// Format: { %%|%% oCol, nRow, nCol, nHeight, lInvert %%|%% <func> }//\\ Enables programmers to implement his own custom function to paint footer overriding the buil-in method.\\ |
+|bPaintHeader| |B| |// Format: { %%|%% oCol, nRow, nCol, nHeight, lInvert, hDC, nGrpWidth, aBitmap %%|%% <func> }//\\ Enables programmers to implement his own custom function to paint header overriding the buil-in method.|
+|bPaintText| |B| |// Format: { %%|%% oCol, hDC, cData, oRect:aRect, aColors, lHighLite, lSelected %%|%% <func> }//\\ Enables custom implementation of painting cell text.\\ \\ |
+|bPopUp| |B| |//Format: { %%|%%oCol%%|%% oPopupMenu }//\\ If specified, displays the popupmenu returned by the codeblock at the correct position when right clicked on the column. Overrides oBrw:bPopup|
+|bRClickData| |B| |Codeblock to be evaluated when right clicking on the data|
+|bRClickFooter| |B| |Codeblock to be evaluated when right clicking on the footer|
+|bRClickHeader| |B| |Codeblock to be evaluated when right clicking on the header|
+|//bStrData//|//Internal//|B| |//Format: { %%|%%uIgnored,oCol%%|%% <text> }//\\ Should return text to be displayed in the cell or nil to skip display. While ::bEditValue returns the value of the cell, ::bStrData returns formatted value or any other correspoding value to be displayed, eg. a lookup value.\\ XBrowse internally constructs this codeblock using ::bEditValue, ::cEditPicture, ::aEditListTxt, etc.\\ Direct use of this data in the application program is deprecated. Instead, ::bEditValue should be used to return the unformatted value of the cell.\\ However, this data may be used in exceptional cases where the text to be displayed is different from the value of the cell.\\ Usage of the codeblock is supported in legacy applications for backward compatibility.|
+|bStrImage| |B| |//Format: {%%|%%oCol,oBrw%%|%% <imagebuffer> }//\\ Instead if cell data is image buffer, it is automatically displayed as image.\\ |
+|bSumCondition| |B| |//Format: { %%|%%@value,oCol%%|%% lIncludeInTotals }//\\ Used for conditional / calculated totals by MakeTotals(). If specified, the cell value is included in totals only if the block returns .t.. In addition, the block can set the 1st parameter to a different calculated value to be included in totals. Also see method ::SumValue()|
+|//bToolTip//|Obsolete|B| |Use ::bCellToolTip instead|
+|cBarGetPic| |C| |Optional picture for BarGet\\ |
+|cBtnCaption| |C| |Optional caption for button|
+|cChartType| |C|BAR|BAR/LINE|
+|cDataType| |C| |Datatype of cell value. Set by XBrowse when created from known datasources using COLUMNS syntax. In other cases, desirable to set this value and other datas viz. nDataLen, nDataDec|
+|cEditKeys| |C| |If specified, pressing one of the keys in the list only invokes edit in fastedit mode.|
+|cEditPicture| |CB| |Picture mask to be used for display and edit|
+|cExpr| |C| |Literal expression for the column as entered by programmer when defining the browse.|
+|cFooter| |C| |Footer string|
+|cFooterPicture| |C|::cEditPicture|Picture mask for footer|
+|//cGrpHdr//|ReadOnly|C| |Set by ::oBrw:SetGroupHeader() method.|
+|cHeader| |C| |Header string|
+|cnLocaleID| |CN| |If specified, used for sorting of arrays containing utf-8 strings|
+|cOrdBag| |C| |if ::cSortOrder tag is in ordbag different from the default.|
+|//cOrder//|//ReadOnly//|C| |Used internally for autosorting (""->None,"A"->Ascending,"D"->Descending)|
+|cSortOrder| |C| |Index tag/sort order to use in case of autosort. XBrowse automatically assigns correct values when created by command syntax using columns clause. In other cases, programmer may provide the required value.|
+|cToolTip| |CA| |Tooltip text when the mouse is over Header|
+|//DataFont//|ReadOnly|O| |//:= XEval( IfNil( ::oDataFont, ::oBrw:oFont ), Self )//|
+|//EditFont//|ReadOnly|O| |//:= XEval( IfNil( ::oEditFont, ::oDataFont, ::oBrw:oFont ), Self )//|
+|//FooterFont//|ReadOnly|O| |//:= XEval( IfNil( ::oFooterFont, ::oBrw:oFont ), Self )//|
+|//hColPen//|Internal|H| |Internal use|
+|//HeaderFont//|ReadOnly|O| |//:= XEval( IfNil( ::oHeaderFont, ::oBrw:oFont ), Self )//|
+|lAllowSizing| |L|.t.|If true Column visual resizing is allowed|
+|lAutoSave| |L|.f.|By default, incomplete inline edit is cancelled when the get and browse lose focus. If lAutoSave is set to .T., the unconfirmed edit is saved.|
+|lBmpStretch| |L|.f.|When set to .T., the bitmap is stretched and painted in the entire cell.|
+|lBmpTransparent| |L|.t.|Default is .t. for bitmaps and .f. for images|
+|lBtnTransparent| |L|.f.|Sets button transparency|
+|lCaseSensitive| |L|f.|By default, Array Sort is case insensitive. When set to .T., the sort is case sensitive|
+|lColTransparent| |L|.f.|If .t., unselected cells are painted transparent|
+|lDisplayZeros| |L|::oBrw:lDisplayZeros|It set to .F., empty values of numbers/dates are displayed as blanks.|
+|//lEditable//|ReadOnly|L| |//:=( ! ::oBrw:lReadOnly .and. ! ::lReadOnly .and.  ::nEditType > 0 .and. ::bOnPostEdit != nil .and.  ( ::bEditWhen == nil .or. Eval( ::bEditWhen, Self ) ) )//|
+|lEditBorder| |L|.f.|If true Edit Get has border|
+|lFullHeight| |L|.f.|If .t., the current cell is displayed using full height of the browse|
+|lHide| |L|.f.|Can be set to .T. at the time of creation of browse to hide the column, During runtime use oCol:Hide() or oCol:Show() instead of directly setting value of this data.|
+|lMergeVert| |L|.f.|If set to .T. at the time of creation of browse, all cells with same value are merged vertically.|
+|lOemAnsi| |L|.f.|If set to .T., functions OemToAnsi() and AnsiToOem() are used to read and write data.|
+|//lOnPostEdit//|Internal|L|.f.|It is true during bPostEdit evaluation. Used internally|
+|lProgBar| |L|.f.|If set to .t., numeric data is displayed as progress bars.|
+|lReadOnly| |L|.f.|Normally False. XBrowse initially sets this value depending on the datasource and field type. When lReadOnly is .T., cell edit is rejected. Programmer can override this setting, but with caution.|
+|lRTF| |L|.f.|In case of memo fields, double click invokes memoedit() in RTF mode if the content is rtf and in text mode otherwise. If set to .T., memoedit is invoked in RTF mode always.|
+|//lRunBtnAction//|Internal|L|.f.| |
+|//lTotal//|//Internal//|L|.f.| |
+|lWillShowABtn| |L|.f.|If set to .t. during creation of browse, an additional space to fit button is allocated by the column.|
+|nAlphaLevel| |N|255|Alphalevel to display bitmap|
+|nAlphaLevelFooter| |N|255|Alpha level for footer bitmaps|
+|nAlphaLevelHeader| |N|255|Alphalevel for header bitmap|
+|nArrayCol| |N|0|Column number of array in case of Array browse|
+|nBmpWidth| |N| |Fixes the width allotted for display of bitmaps. Useful when using bitmaps of different sizes.|
+|nBtnBmp| |N| |Ordinal position in aBitmap array to be used as bitmap on the button|
+|nBtnWidth| |N| |Overrides default width of button|
+|nCellHeight| |N| |Internally used in case of more than one column is shown inside one cell|
+|nChartMaxVal| |N| |Maximum value of Y-Axis for chats|
+|nChrGrp| |N|0|Applies to Unicode applications. Possible values of CHR_ANY (0), CHR_ANSI (-1), CHR_WIDE(1). This value is automatically set by XBrowse during creation by examining the datasource and field type. Can be set/overridden by programmer.|
+|nClrBmpBack| |N| |Color used to paint background of all bitmaps.|
+|nColDividerColor| |N| |Color used to paint col divider|
+|nColDividerStyle| |N| |Linestyles defined in xbrowse.ch|
+|//nColDividerWidth//|Protected|N| |Not yet implemented|
+|nCount| |N|0|Calcualted by oBrw:MakeTotals()|
+|//nCreationOrder//|ReadOnly|N| |Ordinal creation order of the columns|
+|nDataBmpAlign| |N|0|Data bitmap alignment (0-left or 2-right)|
+|nDataDec| |N|0|FieldDec|
+|nDataLen| |N| |FieldLen|
+|nDataLines| |N|1|During initialization, Cell height is calculated to accommodate nDataLines|
+|nDataStrAlign| |N| |Data|
+|nDataStyle| |N| |Style for data string (DrawTextEx() API function flags)|
+|nDisplayCol| |N| |Actual column display value in pixels|
+|nEditType| |N|0|Inline edit is enabled if the value is set > 0\\ EDIT_NONE             0\\ EDIT_GET              1\\ EDIT_LISTBOX          2\\ EDIT_BUTTON           3\\ EDIT_GET_LISTBOX      4\\ EDIT_GET_BUTTON       5\\ EDIT_DATE             6\\ EDIT_TIME             7\\ |
+|nFieldPos| |N| |Some datasources store the fieldpos in this data|
+|nFootBmpAlign| |N| |Footer bitmap alignment (0-left or 2-right)|
+|nFootBmpNo| |N|0|Footer ordinal bitmap to use of ::aBitmaps|
+|nFooterType| |N| |AGGR_SUM, AGGR_COUNT, AGGR_MIN, AGGR_MAX, AGGR_AVG, AGGR_STD|
+|nFootStrAlign| |N| |Footer string alignment (0-left,1-center, 2-right)|
+|nFootStyle| |N| |Style for footer string (DrawTextEx()API function flags)|
+|nGrpBmpNo| |N| |Ordinal position in aBitmap array to be shown in Group Header|
+|nGrpHeight| |N|0|Height of Groupheader by Adjust method|
+|nHeadBmpAlign| |N| |Header bitmap alignment (0-left or 2-right)|
+|nHeadBmpNo| |N| |Header ordinal bitmap to use of ::aBitmaps|
+|nHeaderType| |N| |Not used|
+|nHeadStrAlign| |N| |0 -> Left, 1 -> Right, 2 -> Center|
+|nHeadStyle| |N| |Style for header string (DrawTextEx()API function flags)|
+|nMaxLen| |N| |In case of Unicode data, indicates maximum number of characters that can be entered in Get|
+|nMaxVal| |N| |Calculated by oBrw:MakeTotals()|
+|nMinVal| |N| |Calculated by oBrw:MakeTotals()|
+|nPos| |N| |Actual column position in the browse. If columns is not visible nPos == 0|
+|nProgTot| |N|1|Length of progress bar is calculated as oCol:Value / oCol:nProgTot\\ |
+|nResizeCol| |N| |Used internally during resizing the col|
+|nTotal| |N| |Calculated by oBrw:MakeTotals()|
+|nTotalSq| |N|0.0|Calculated by oBrw:MakeTotals()|
+|nWidth| |N| |Column width in pixels. Calculated on Adjust method if nil|
+|nWidthChr| |N| |Width of the column in number of characters using the assigned font.|
+|//StrData//|ReadOnly|C| |//:= XEval( ::bStrData, nil, Self )//|
+|uBarGetVal| | | |Variable used by BarGet. Assigning a value to the variable during creation of browse creates the Get.|
+|Value| | | |Value returned by Evaluating ::bEditValue\\ When a value is assigned, evaluates ::bEditValue (setget block) with the assigned value.|
+|//Var//|ReadOnly| |::Value()| |
+|Cargo| | | |For programmer's use|
+====== METHODS ======
+^Method^Usage^Details^
+|// aBitmap//|//Internal//|//( nPos ) --> aBitmap//\\ Returns Bitmap Array at ordinal position of nPos in oCol:aBitmaps or oBrw:aBitmaps[-nPos] if nPos is -ve. Used internally while painting bitmaps\\ |
+| AddBitmap| |//( uBmp, [{ width, height}] ) --> nBmpNo//\\ __1.uBmp__ : Single/Array of ImageSources\\ __2.aResize__: Max width and height for resizing large imgaes\\ __--> nBmpNo__: Length of ::aBitmaps array.\\ Use this method to add bitmaps to the column.\\ ImageSource: imagefile, resource, shape array, glyph, bitmap handle, ref to image on web.\\ |
+|<del>AddBmpFile</del>|Obsolete|//( cBmpFile, [@nBmpNo] )//\\ Use ::AddBitmap() instead. Retained for backward compatibility of Legacy applications.\\ |
+|<del> AddBmpHandle</del>|Obsolete|//( hBmp, [@nBmpNo] )//\\ Use ::AddBitmap() instead. Retained for backward compatibility of Legacy applications.\\ |
+|<del> AddResource</del>|Obsolete|//( cnResource, [@nBmpNo] )//\\ Use ::AddBitmap() instead. Retained for backward compatibility of Legacy applications.\\ |
+| AddVar| |//( uKey, uVal )//\\ You can add new DATA or METHOD to this column object only. You can use these DATAs/METHODs like any other DATAs/METHODs of the class.\\ Examples:\\ <code clipper>
+oCol:AddVar( "DefaultVal", 1234 )
+? oCol:DefaultVal // --> 1234
+oCol:AddVar( "Multiply", { |Self,x| MsgInfo( ::Value * x ) } )
+oCol:Multiply( 2 )
+</code>\\ |
+| Adjust()| |Configures the column object's properties taking into account all the settings made by the program. This method is called internally by ::oBrw:Adjust(). \\ This method may be directly called by the program **only when** a new column is created by oBrw:AddCol() or oBrw:InsCol() during runtime.\\ |
+| AutoFit| |//( [nRowsOrlVisible], [lDataOnly] )//\\ Adjusts the width of column to exactly fit the maximum visible width of contents of the column. By default, contents of the column in all rows is considered.\\ __1.nRowsOrlVisible:__ If numeric value, contents of only the first nRows are considered. If .T. is specified contents of visible rows only are considered.\\ __2.lDataOnly:__ Header and footer widths are not considered.\\ oBrw:AutoFit() calls this method for all columns.\\ |
+| CheckToggle| |//( lOverRide )//\\ Toggles on/off status of logical field with checkbox. If lOverRide is .T., ignores Readonly status.\\ |
+| End()| |Called by ::oBrw:DelCol() and ::oBrw:Destroy()\\ |
+| Hide()| |Hides the column and refreshes the browse, if called during runtime.\\ |
+| IsVisible| |//( lComplete ) --> lIsVisible//\\ If lComplete is .T., returns .T. if the entire column is fully visible in the browse window otherwise returns .t. even if a part of the column is visible.\\ |
+| New| |//( oBrw )//\\ Called by oBrw:AddCol() and oBrw:InsCol(n). Not to be directly called in the application program.\\ |
+| RefreshFooter()| |Repaints footer of the column.\\ |
+| SetAlign| |//( nAlign )//\\ Change cell alighment during runtime.\\ |
+| SetCheck| |//( [aBmps], [uEdit], [aPrompts] )//\\ To display OnOff bitmaps for logical values.\\ Should be called before oCol:Adjust() is executed. Should not be called more than once and never after oCol:Adjust() is executed.\\ __1.[aBmps]__: Array of 2 or 3 bitmaps { uBmpOn, uBmpOff, [uBmpNull] }. If not provided, internal bitmaps are used.\\ __2.[uEdit]__: Logical Value: .T. to enable edit and .F. to disable edit.\\ __3.[aPrompts]__: { cPromptOn, cPromptOff }. If provided prompts are also displayed in addition to bitmaps.\\ The column is aligned center.\\ \\ |
+| SetColsAsRows| |//( aCols ) or ( col1, col2, ... colN)//\\ Columns can be indicated by numbers, headers or column objects.\\ Values of all the columns are displayed one below the other in the cell of col1.\\ These columns can not be edited inline.\\ |
+| SetLogical| |//( uTrue, uFalse )//\\ If a column value is numeric like 1,0 or character like "Y","N", the column can be treated as logical column, Eg:<code clipper>oCol:SetLogical( 'Y', 'N' )
+oCol:SetCheck()</code>\\ |
+| SetOrder()| |Returns lSorted ( .T./.F. )\\ When oBrw:lAutoSort is .T., this method is called when the column's header is clicked. This method can be called in the application program also if required. This method works if oCol:cSortOrder is specified. When browse is created using command syntax with COLUMNS clause, this data is automatically provided by the xbrowse.\\ On first call, the column is sorted in the ascending order. Second call sorts in descending order except when the underlying datasource does not provide for it or ::oBrw:lSortDescend is set to .F. by the programmer. \\ After sort, vertically merged columns, if any, are recalculted and browse is refreshed.\\ |
+| SetProgBar| |//( [bnProgTotal], [nWidth], [bClrProg] ) -- nil//\\ Call this method to display progress bar in the cell.\\ __1.[bnProgTotal]__: Default value is 1.0. Value of the cell is compared with this total for drawing the progress bar. The value can be codeblock also, which is evaluated with oCol as parameter.\\ __2.[nWidth]__: Width of progressbar.\\ __3.[bClrProg]__: Codeblock returning array { nClrFore, nClrBack}. Default bClrStd\\ |
+| Show()| |Shows a hidden column and refreshes the browse. Can be used at runtime.\\ |
+| VarGet()| |returns value of the Cell. Same as ::Value\\ |
+| VarPut| |//( uVal )//\\ Assigns new value to the cell and saves data to the datasource. Result is same as inline edit of cell.\\ |
+| WorkMergeData()| |When the DATA ::lMergeVert is set to .T., this method initially calculates which rows are to be merged. Inline edit of data is not convenient. Needs to be called by the program during runtime only when any cell value in the column is changed.\\ |
+
+====== INTERNAL METHODS ======
+These methods can not be directly called from application program. Details are provided here to help understanding the internal working and also to help sub-classing when required.
+
+^Method^Details^
+| BlankValue()|Returns blank value corresponding to the datatype of column. Used when Eval( bEditvalue ) is nil or fails.\\ |
+| Box|//( nRow, nCol, nHeight, nType )//\\ Draws box around the cell. Used internally to paint border of cell in cases of MarqeeStyles DOTTEDCELL, SOLIDCELL, HIGLROWRC.\\ |
+| CalcBmpWidth()|Used by ::Adjust() method to calculate width of bitmaps\\ |
+| cAlign|//( nAlign )//\\ Used to convert numeric constants to char notation to be used with ::SayText(), etc.\\ |
+| ChartArrayVals|::ChartArrayVals() --> Values of chart columns for drawing chart. Used by ::DrawChart() called by ::PaintCell()\\ ::ChartArrayVals(.t.) --> Colinfo for configuring report. Used internally by ::oBrw:Report() method.\\ |
+| CheckBarGet|oBrw:PaintHeader() calls this method for each column. This method is responsible to show/hide BarGet or BarSeek.\\ |
+| ClpText()|Formats cell value in the fomat to be copied and pasted to Excel, etc.\\ Used by oBrw:ClpRow(), oBrw:Copy() and oBrw:ToExcel() methods.\\ |
+| CreateBarGet()|During initialization, ::Adjust() mehod calls this method to create barget if ::uBarGetVal was already assigned a value.\\ |
+| CreateButtons()|During initialization, ::Adjust() mehod calls this method to create buttons for listbox and editbutton. The buttons are created and hidden initially to be shown when required.\\ |
+| DataCol()|Calculates and returns the column in pixels from which text is to be displayed.\\ |
+| DataHeight()|Used by Adjust() methods to calculate the height required to display a row, if nDataHeight is not assigned in the program.\\ |
+| DataTextWidth|//( lCurrent := .f.)//\\ Calculates width required to display text part of the cell.\\ If lCurrent is .T., returns the width required to display trimmed current cell value.\\ |
+| DataWidth|Used by Adjust() methods to calculate the width required for the column, if nWidth is not specified.\\ |
+| DefStyle|//( nAlign, lSingleLine )//\\ Flags to use with DrawText() function\\ |
+| DrawChart|//( hDC, aRect )//\\ PaintCell() method calls this method if ::aChartCols is an Array\\ |
+| DrawChartInRect|//( hDC, oRect, aVals, nMaxVal, aColor, cnType )//\\ Draws the chart. Called by ::DrawChart() method.\\ |
+| Edit|//( nKey )//\\ This method performs inline edit of cell value. This method is invoked when user presses Edit key when ::lReadOnly is .F., ::bEditWhen returns .T. and ::nEditType > 0.\\ __EditKey__:By default, Enter key invokes edit. This can be disabled by setting oBrw:lEnterKey2Edit to .F.. If oBrw:lF2keyToEdit is set to .T., pressing F2 invokes edit, as in Excel.\\ When oBrw:lFastEdit is .T., pressing any text key valid for the contents of the column invokes edit. The key pressed is passed to this method as parameter.\\ \\ |
+| EditDateTime|//( nKey )//\\ ::Edit() method calls this method if ::nEditType is EDIT_DATE or EDIT_TIME.\\ |
+| EraseData|//( nRow, nCol, nHeight, hBrush, lFixHeight )//\\ Called by oBrw:Paint() method. This method erases the area below the last visible row.\\ |
+| FooterHeight()|Adjust() method calls this method to calculate the footer height when nFooterHeight is not assigned.\\ |
+| FooterLButtonDown|//( nMRow, nMCol, nFlags, lTouch )//\\ oBrw:LButtonDown() calls this method when the click is on the footer. This method paints footer highlighted\\ |
+| FooterLButtonUp|//( nMRow, nMCol, nFlags )//\\ Called by oBrw:LButtonUp(). This method executes ::bLClickFooter if assigned\\ |
+| footerStr()|Returns formatted footer value. Used by ::PaintFooter()\\ |
+| FooterWidth()|::Adjust() method calls this method to calculate footer width when ::nWidth is not assigned.\\ |
+| GrpFont|Returns font to be used to paint groupd header.\\ |
+| HasBorder|//( nRowPos )//\\ Returns whether bottom border is to be drawn or not. Used by oBrw:Paint() method.\\ |
+| HeaderHeight|//( lGrpHdr )//\\ Used by Adjust() method to calculate header height\\ |
+| HeaderLButtonDown|//( nMRow, nMCol, nFlags, lTouch )//\\ Called by oBrw:LButtonDown()\\ |
+| HeaderLButtonUp|//( nMRow, nMCol, nFlags )//\\ Called by oBrw:LButtonUp().\\ If the column was being moved, the action is completed by calling oBrw:MoveCol()\\ Otherwise executes oCol:SetOrder() and evaluates ::bLClickHeader\\ |
+| HeaderWidth()|Called by ::Adjust() method to calculate header width.\\ |
+| IsEditKey|//( cKey )//\\ In FastEdit mode, this method decides if the key pressed can invoke inline edit.\\ If ::cEditKeys is assigned then returns cKey $ ::cEditKeys.\\ Otherwise returns if cKey is valid for the datatype of the column.\\ |
+| IsMemo()|Returns if ::cDataType $ "MPm". When IsMemo() is true, double click on the cell invokes edit of the contents in a separate dialog, suitable to the contents i.e, text, rtf, gtf, image or hexedit for binary data.\\ |
+| MergeArea|//( nTop, nBottom, nRowPos )//\\ Calculates coordinates of the merge area when ::lMergeVert is true. Used by ::PaintCell()\\ |
+| MouseMove|//( nMRow, nMCol, nFlags )//\\ Called by oBrw:MouseMove(). This method takes suitable action for dragging or resizing column.\\ |
+| PaintBmpAndText|//( aRect, cText, nStrAlign, bLeftText, oFont, nTxtColor, nBmpNo, nBmpAlign, lBmpTransparent, nAlpha, lBmpStretch, cOrder, hDC )//\\ Called by ::PaintHeader(), ::PaintFooter() to paint bitmap and text.\\ |
+| PaintCell|//( nRow, nCol, nHeight, lHighLite, lSelected, nOrder, nPaintRow )//\\ ::PaintData() is responsible for painting the contents of a cell. A cell may contain more than one column arranged vertically. PaintData() calls this method for each column in the cell.\\ |
+| PaintCellBack|//( nRow, nCol, nHeight, lHighLite, lSelected, nOrder, nPaintRow )//\\ Paints background of the cell\\ |
+| PaintCellBtn|//( hDC, oRect )//\\ Paints button in case of listbox, editbutton\\ |
+| PaintCellImage|//( cImageData, oRect )//\\ Paints image where the cell value is an image\\ |
+| PaintCellText|//( hDC, cData, aRect, aColors, lHighLite, nHeight, nFontHeight, oFont )//\\ Paints text returned by ::StrData if not nil.\\ |
+| PaintData|//( nRow, nCol, nHeight, lHighLite, lSelected, nOrder, nPaintRow )//\\ Called by oBrw:Paint(). This method inturn calls ::PaintCell() for each column contained in the cell.\\ |
+| PaintFooter|//( nRow, nCol, nHeight, lInvert )//\\ Paints footer\\ |
+| PaintHeader|//( nRow, nCol, nHeight, lInvert, hDC, nGrpWidth, aBitmap )//\\ Paints header and groupd header\\ |
+| Paste|//( cText )//\\ Converts cText into the datatype of the column, assigns the value to the cell and saves to database, taking all actions consequent to change of data of the cell.\\ |
+| PostEdit|//( xValue, lButton, lDirectAssign )//\\ This method is called after inline edit or direct assign by ::VarPut( xValue ).\\ __1.xValue__: Edited Value\\ __2.lButton__: True if called after EDIT_BUTTON/EDIT_GETBUTTON/EDIT_LISTBOX/EDIT_GET_LISTBOX.\\ __3.lDirectAssign__:True if called by ::VarPut()\\ This method takes the following steps:\\ 1. Saves present ::Value to uOrginal. If the browse has aggregate columns, saves current totals by calling ::oBrw:SaveTotals()\\ 2. Evaluates ::bOnPostEdit with oCol, xValue, nLastKey as parameters. This codeblock is responsible for actual assignment of the value to the data field and also setting record lock where required. This codeblock is automatically constructed by xbrowse if not provided by the programmer.\\ 3. Calls oBrw:SaveData( @lRefresh ). Actual action may be different for different datasources. See oBrw:SaveData() and oBrw:bSaveData.\\ 4. If ::bOnChange has value and the edition really resulted in change of data, Evals( ::bOnChange, oCol, uoriginal). This codeblock can make and consequential changes to other controls, alter values of other columns, fields/tables.\\ 5. Unlocks() record if current record is locked by xbrowse.\\ See oBrw:Lock(), oBrw:Unlock(), oBrw:bLock and oBrw:bUnlock.\\ 6. Refreshes current row or entire browse as required.\\ 7. If any columns have aggregates, they are recalculated with differences in row values and footers refreshed.\\ 8. If the edition requires, moves to next cell.\\ \\ |
+| ResizeBeg|//( nMRow, nMCol, nFlags )//\\ Beginning of resize of column\\ |
+| ResizeEnd|//( nMRow, nMCol, nFlags )//\\ End resizing of column\\ |
+| RunBtnAction|//( nKey )//\\ In case nEditType is EDIT_BUTTON / EDIT_GET_BUTTON, executes ::bEditBlock and submits return value to ::PostEdit()\\ |
+| ShowBtnList|//( nKey )//\\ In case nEditType is EDIT_LISTBOX / EDIT_GET_LISTBOX, shows the listbox for selection.\\ |
+| ShowSeek|//( lOn )//\\ Display seek value in SeekBar if lSeekBar is true else in oBrw:oSeek.\\ |
+| SortArrayData()|::SetOrder() uses this method in case of Array Browse.\\ |
+| SumOfCols|//( aCols, nType ) --> result//\\ Calculates and returns sum of column values to be shown in case of GroupTotals. See oBrw:SetGroupTotals()\\ |
+| SumValue()|oBrw:MakeTotals() uses oCol:SumValue() for computing aggregates, ignoring NIL values.\\ If ::bSumCondition is nil, this method returns ::Value and otherwise evaluates ::bSumCondition with @Value and oCol as paramters. If the result is .F., NIL is returned otherwise @Value is returned.\\ |
+| ToExcel|//( oSheet, nRow, nCol )//\\ When oBrw:lExcelCellWise is .T., this method is called for each column to set the values of cells in excel sheet.\\ |
+
+
+
+====== Example ======
+
+====== See Also ======
+[[fivewin_class_txbrowse|Class TxBrowse]], [[fivewin_commands_xbrowse|Command xBrowse]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TXBRWCOLUMN.PRG

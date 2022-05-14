@@ -1,0 +1,136 @@
+
+====== Class TRas ======
+
+Ras access                                                                     
+====== DATA ======
+^ Data ^ Description ^
+|hRas|Ras handle|
+|cStatus|Status description|
+|nSize|Ras structure size|
+|nStatus|Current connection state|
+|nError|Error code|
+|oWnd|Main window|
+|cDevType|Device type|
+|cDevName|Device name|
+|cError|Error description|
+|cPhone|Phone number to dial|
+|cUser|User name|
+|cPass|Password|
+|lOperation|If the connection is successfully made|
+|lPanic|Immediately stops the currently call in progress|
+|oTimer|Not used|
+|bStatus|The action to perform when the status is requested|
+|nTimeout|Timeout (seconds)|
+|nCurTime|Current time|
+|aMsgStatus|Array of status text messages|
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|Call|Makes a call|
+|Status|Retrieves the current status|
+|HangUp|Hangs up|
+|cCallStatus|Current call status text message|
+====== Example ======
+\Fwh\Samples\TestRas.Prg
+<code clipper>
+#include 'Fivewin.ch'
+static oWnd,oRas
+static aMsgStatus
+
+function main()
+local oLbx,oLbx2,aFiles,aFiles2,nLbx1:=0,nLbx2:=0, oTimer
+
+aMsgStatus := {;
+        {4096,"PAUSA"} ,;                           // RASCS_PAUSED = &H1000
+        {8192,"Conectado correctamente"},;          // RASCS_DONE = &H2000
+        {0,"Abriendo puerto de comunicaciones"},;   // RASCS_OpenPort
+        {1,"Puerto abierto correctamente"},;        // RASCS_PortOpened
+        {2,"Conectando con el dispositivo"},;       // RASCS_ConnectDevice
+        {3,"Dispositivo conectado"},;               // RASCS_DeviceConnected
+        {4,"Todos los dispositivos conectados"},;   // RASCS_AllDevicesConnected
+        {5,"Verificando Nombre y Contraseña"},;     // RASCS_Authenticate
+        {6,"Nombre y Contraseña correctos"},;       // RASCS_AuthNotify
+        {7,"Reintentando confirmación de identidad"},; // RASCS_AuthRetry
+        {8,"Autentificación mediante retorno de llamada"},; // RASCS_AuthCallback =
+        {9,"Obligación de cambiar la contraseña"},; // RASCS_AuthChangePassword
+        {10,"RASCS_AuthProject"},;                  // RASCS_AuthProject
+        {11,"Verificando velocidad de conexión"},;  // RASCS_AuthLinkSpeed
+        {12,"Verificando autentificación de conexión"},; // RASCS_AuthAck
+        {13,"Repitiendo autentificación"},;         // RASCS_ReAuthenticate
+        {14,"Autentificado"} ,;                     // RASCS_Authenticated
+        {15,"Preparando para retorno de llamada"} ,;// RASCS_PrepareForCallback
+        {16,"Esperando inicialización del modem"},; // RASCS_WaitForModemReset
+        {17,"Esperando retorno de llamda"},;        // RASCS_WaitForCallback
+        {4097,"Reintentando autentificación"} ,;
+            ; // RASCS_RetryAuthentication = RASCS_PAUSED + 1
+        {4098,"Retorno de llamada pedido por el llamante"},;
+            ; // RASCS_CallbackSetByCaller = RASCS_PAUSED + 2
+        {4099,"La contraseña ha expirado"},;
+            ; // RASCS_PasswordExpired = RASCS_PAUSED + 3
+        {8193,"Ha sido desconectado"};
+            ; // RASCS_Disconnected = RASCS_DONE + 1
+            }
+
+
+    define WIndow oWnd from 0,0 to 50,30 title 'Ras TEst, please make a call and view listox ...'
+    aFiles:=RaEnumConnections()
+    aFiles2:=RaEnumEntries()
+    @ 0,0 ListBox oLbx var nLbx1 Items aFiles of oWnd size 300,200
+    @ 15,0 ListBox oLbx2 var nLbx2 Items aFiles2 of oWnd size 300,200
+    oWnd:oTop:=oLbx
+    oWnd:oBottom:=oLbx2
+    define timer oTimer of oWnd interval 1000 action (reset(oLbx))
+    activate window oWnd on init oTimer:activate() ;
+        valid (oTimer:deactivate(),.t.)
+
+return nil
+
+//---------------------------------------//
+function reset( o1 )
+    local aConn,aItems:={},n
+    local aStatus := { 0, 0, 0, Space( 80 ), Space( 80 ) }
+    local cTemp,cBuff:=space(256)
+    aConn=RaEnumConnections()
+    if !empty(aConn)
+        n:=1
+        While n< len( aConn )
+            RaGetConSt( aConn[n], aStatus )
+            cTemp:=aConn[n+1]
+            cTemp+=' Estado: '+alltrim(cCallStatus( aStatus[2] ))
+            if aStatus[3]!=0
+                    cBuff:=space(256)
+                    RaGetError( aStatus[ 3 ], @cBuff )
+                    cTemp+=' !! '+alltrim(cBuff)
+//            else
+            end
+            aadd(aItems,cTemp)
+            n+=2
+        end
+    end
+    o1:setitems(aItems)
+//    o1:refersh()
+return nil
+
+function cCallStatus( n )
+
+    local nMsg, cMsg
+
+    nMsg := AScan( aMsgStatus, { | x | x[ 1 ] = n } )
+
+    if nMsg > 0
+       cMsg := aMsgStatus[ nMsg, 2 ]
+    else
+       cMsg := 'Mensaje : '+ Str( n )
+    endif
+
+return cMsg
+</code>
+
+** Screen Snapshot **
+
+{{:ras.jpg|:ras.jpg}}
+
+====== See Also ======
+[[fivewin_commands_ras | Command Ras ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TRAS.PRG

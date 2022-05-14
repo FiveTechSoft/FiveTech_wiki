@@ -1,0 +1,333 @@
+
+====== Class TReport ======
+
+Manages Reports                                                                
+====== DATA ======
+^ Data  ^ Description                    ^
+|oDevice|The target device where to print|
+|oTitle|A TRLine object which contains the report title|
+|oHeader|A TRLine object which contains the report header|
+|oFooter|A TRLine object which contains the report footer|
+|oRptWnd|The related report window|
+|oShdBrush|An optional brush to use for shadowing columns|
+|oPenHorz|Pen to use for horizontal lines|
+|aGroups|An array with all the report TRGroups objects defined|
+|aColumns|An array with all the report TRColumns objects defined|
+|aFont|An array with all the report TFont objects defined|
+|aCols|Array of TRcolumn objects|
+|aText|Internally used while printing. Don't use them!|
+|aData|Internally used while printing. Don't use them!|
+|aDataHeigth|Internally used while printing. Don't use them!|
+|aClrText|Array of text RGB colors (one element per each font)|
+|aPen|An arrays of vertical pens to use with the report|
+|bFor|A codeblock which holds the FOR clause. By default: .T.|
+|bWhile|A codeblock which holds the WHILE clause. By default: .not. EOF()|
+|bInit|A codeblock which holds the ON INIT clause.|
+|bEnd|A codeblock which holds the ON END clause. This codeblock is evaluated before the grand totals are printed|
+|bPostEnd|A codeblock which holds the ON POSTEND clause. This codeblock is evaluated after the grand totals are printed|
+|bStartLine|A codeblock which holds the ON NEWLINE clause.|
+|bEndLine|A codeblock which holds the ON ENDLINE clause.|
+|bStartPage|A codeblock which holds the ON NEWPAGE clause.|
+|bEndPage|A codeblock which holds the ON POSTPAGE clause. This codeblock is evaluated after the page totals are printed|
+|bPostPage|A codeblock which holds the ON ENDPAGE clause. This codeblock is evaluated before the page totals are printed|
+|bStartGroup|A codeblock which holds the ON NEWGROUP clause.|
+|bEndGroup|A codeblock which holds the ON ENDGROUP clause. This codeblock is evaluated before the group totals are printed|
+|bPostGroup|A codeblock which holds the ON POSTGROUP clause. This codeblock is evaluated after the group totals are printed|
+|bSkip|A codeblock which holds how to skip to the next report line.|
+|bStdFont|A codeblock which returns the default report font order to use.|
+|bPreview|An optional codeblock to modify the default preview system|
+|bChange|A codeblock which holds the ON CHANGE clause. This codeblock is evaluated after the record is processed and the current report row is incremented|
+|bStartRecord|A codeblock is evaluated before the record is processed|
+|cRptFile|-Not available yet- The Data-driven file which holds the report.|
+|cResName|-Not available yet- The resource name which holds the report.|
+|cFile|-Not available yet- The name of the target file to produce.|
+|cName|The name of the document to generate.|
+|cPageTotal|Text for page totals|
+|cGrandTotal|Text for grand totals|
+|cCharPattern|Character to use for width measurement, by default 'B'|
+|nWidth|The width of the target device. Pixels per inch.|
+|nHeight|The height of the target device. Pixels per inch.|
+|nMargin|The report left margin after stabilize|
+|nRow|The current report row being printed.|
+|nPage|The current report page being printer.|
+|nMaxTitle|The largest number of title lines used on all column titles.|
+|nMaxData|The largest number of data lines used on all columns body.|
+|nSeparator|The spaces width between columns.|
+|nLeftMargin|The left margin of the page. Default: 0,2 inches.|
+|nRightMargin|The right margin of the page. Default: 0,2 inches|
+|nTopMargin|The top margin of the page. Default: 0,2 inches.|
+|nDnMargin|The down margin of the page. Default: 0,2 inches.|
+|nTitleRow|Row where to start printing the report title.|
+|nBottomRow|Last row available to the report body. (without the footer).|
+|nStdLineHeight|The default report line height|
+|nRptWidth|The width of the report. Automatic updated when Stabilizing.|
+|nLogPixX|Horizontal pixels by inch|
+|nFirstdrow|First body data row|
+|nLogPixY|Vertical pixels by inch|
+|nTitleHeight|Height title in pixels|
+|nLastdrow|Last body data row|
+|nCounter|Counter of records processed|
+|nTotalLine|Line style for totals: #define GRID_ABOVE 0,\\ #define GRID_BELOW 1,\\ #define GRID_ABOBEL 2|
+|nGroupLine|Line style for groups: #define GRID_ABOVE 0,\\ #define GRID_BELOW 1,\\ #define GRID_ABOBEL 2|
+|nTitleUpLine|Line style for title above: #define GRID_ABOVE 0,\\ #define GRID_BELOW 1,\\ #define GRID_ABOBEL 2|
+|nTitleDnLine|Line style for title below: #define GRID_ABOVE 0,\\ #define GRID_BELOW 1,\\ #define GRID_ABOBEL 2|
+|nDataLine|Data line in process. Since a DATA column can have more than one line, this property retrieves the current line of data processed|
+|hOldRes|Old resources handle|
+|lSummary|Not detailed report body information, only report groups.|
+|lTotal|If there is any column with total to be calculated.|
+|IFinish|.T. when the report is finishing. Internally used.|
+|lStable|.T. after the report has been stabilized.|
+|lGroup|If there is any report group defined|
+|lPrinter|If the target device is the printer.|
+|lScreen|-Not available yet- If the target device is the screen.|
+|lFirstRow|.T. only when processing the first body line in each page. Internally used.|
+|lCreated|If the report has been completely created|
+|lPreview|If a report preview is required|
+|lBreak|If .T. the report stops executing|
+|lShadow|If a shadow is going to be displayed|
+|lGrid|If a Grid is going to be displayed|
+|lJoin|If lines edges should be joined|
+|lSeparator|If a separator line should be printed between every record|
+|lAutoland|If the report engine changes the page orientation automatically to landscape if his width is greater than the page width|
+|lIsNarrow|Used internally for page orientation|
+|lBoxOnTotal|If totals shoud have a box|
+|lNoCancel|To avoid cancelling the report|
+|lPageTotal|To avoid printing the column total on every page|
+|Cargo|Generic cargo slot|
+====== METHODS ======
+^ Method ^ Description                        ^
+|New|Method constructor: creates a new report.\\ TReport:New(aTitle, aHead, aFoot, aFont, lSummary, cRptFile, cResName,lPrinter,lScreen, cFile, oDevice,cName, cTFmt, cHFmt, cFFmt )\\ \\ <aTitle> -> An array of codeblocks with all lines of the report title.\\ <AHead> -> An array of codeblocks with all lines of the report header\\ <aFoot> -> An array of codeblocks with all lines of the report footer.\\ <aFont> -> An array of TFonts objects to be used in all the report. \\ <lSummary> -> If the report body should be printed or not. This is only meaningful if some report have been defined.\\ <cRptFile> -> not available yet Report data-driven file name.\\ <cResName> -> Not available yet. Report resource definition.\\ <lPrinter> -> If printer is the target device.\\ <lScreen> -> If the screen is the target device.\\ <cFile> -> Not available yet. The name of the target output file.\\ <oDevice> -> The optional target device. By default: the printer.\\ <cName> -> The name of the document.\\ <cTFmt> -> The pad style for the title: "LEFT", "CENTER-ED", "RIGHT". By default: "CENTERED".\\ <cHFmt> -> The pad style for the header: "LEFT","CENTER-ED", "RIGHT". By default: "LEFT".\\ <cFFmt> The pad style for the footer: "LEFT", "CENTER-ED", "RIGHT". By default: "LEFT".|
+|AddColumn|Add a TRColumn object to the report. Automatically used by the xBase commands. TReport:AddColumn( oColumn ) -> NIL|
+|DelColumn|Del a TRColumn object from the report. TReport:DelColumn(nColumn ) -> NIL|
+|InsColumn|Insert a TRColumn object to the report, at the specified column position. TReport:InsColumn( oColumn, nColPos ) -> NIL|
+|AddGroup|Add a new TRGroup object to the report. TReport:AddGroup(oGroup ) -> NIL|
+|DelGroup|Del a TRGroup from the report. TReport:DelGroup() -> NIL|
+|Stabilize|Stabilizes the report before starting printing (activate). TReport:Stabilize() -> NIL, Stabilizes the report before starting printing. It is automatically called when activating TReport::Activate() the report.|
+|Skip|Skip to next record on the current workarea -or equivalent. By default returns 1 (one record). TReport:Skip() -> nSkipped|
+|Initiate|Evaluate the ::bInit codeblock if defined. TReport:Initiate()-> NIL|
+|End|Forces the termination of the report. According to FiveWin programming style, all objects activation state must be finished using ::End(). A report object will finish when receiving this message. TReport:End() -> NIL|
+|StartLine|Executes the codeblock defined on the start of a line. TReport:StartLine( nHeight ) -> NIL|
+|EndLine|Ends printing the current line. TReport:EndLine(nHeight) -> NIL|
+|StartGroup|Executes the codeblock defined on the start of a group. Automatically called by the TReport::Activate() method.\\ TReport:StartGroup(nGroup ) ->  NIL|
+|EndGroup|Executes the codeblock defined on the end of a group. Automatically called by the TReport::Activate() method. TReport:EndGroup(nGroup) -> NIL|
+|StartPage|Executes the codeblock defined on the start of a page. Automatically called by the TReport::Activate method. TReport:StartPage() -> NIL|
+|EndPage|Executes the codeblock defined on the end of a page. Automatically called by the TReport::Activate method. TReport:EndPage() -> NIL|
+|NeedNewPage|Returns .t. if a new page is needed. (used internally) TReport:NeedNewPage() -> lYesNo|
+|NewLine|Start a new line, and executes the startline codeblock. TReport:NewLine() -> NIL|
+|BackLine|TReport:BackLine() -> NIL|
+|ColTitle|Prints all report columns titles. TReport:ColTitle() -> NIL|
+|TotalLine|Prints every report columns Separator lines. TReport:TotalLine(cChar ) -> NIL, <cChar> is the character to be used for printing those lines.|
+|PageTotal|Prints all report column page & grand totals.TReport::PageTotal() -> NIL|
+|Activate|Starts executing the report.\\ TReport:Activate( For,bWhile,bInit, bEnd, bStartPage,; bEndPage, bStartGroup, bEndGroup, bStartLine,bEndLine ) -> NIL Parameters: All the codeblocks involved in the activation and execution process.|
+|Play|TReport:Play() -> NIL|
+|Margin|Modify any of the top, left, bottom & right of the report margins.\\ TReport:Margin( nValue, nType, nScale ) -> NIL\\ <nValue> -> The value of the new margin to be used.\\ <nType> The type of margin to be changed: LEFT 1, RIGHT 2, TOP 4, BOTTOM 5.\\ <nScale> -> Inches or centimeters to be used: INCHES 1, CENTIMETERS 2|
+|Say|TReport:Say( nCol, xText, nFont, nPad, nRow )|
+|SayBitmap|Draws a bitmap TReport:SayBitmap( nRow, nCol,cBitmap,nWidth, nHeight, nScale )|
+|Box|Draws a box.\\ TReport:Box( nRow, nCol, nBottom, nRight,nPen,nScale )|
+|Line|Draws a line.\\ TReport:Line( nTop, nLeft, nBottom,nRight,nPen, nScale )|
+|Shadow|Shadows an area TReport:Shadow(nHeight) -> NIL|
+|Grid|Places a grid on the report TReport:Grid(nHeight,nRow,cChar) -> NIL|
+|Separator|Prints a separator line TReport:Separator( nPen, nRow)-> NIL|
+|CellView|Prints the report with table view TReport:CellView() -> NIL|
+|PhyWidth|Retrieves the physical width. TReport:PhyWidht(nScale) -> nWidth|
+|PhyHeight|Retrieves the physical height TReport:PhyHeight(nScale) -> nHeight|
+|SetTxtColor|Changes a specific font color TReport:SetTxtColor(nColor,nFont )|
+|SetShdColor|Changes the shadow color, by default light gray.\\ TReport:SetShdColor(nColor )|
+|SetPenColor|Changes the horizontal pen color, by default black.\\ TReport:SetPenColor(nColor )|
+====== Example ======
+Many samples are available in the Folder \Fwh\Samples\Report
+<code clipper >
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep02()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport TITLE  "*** My First Report ***" PREVIEW
+
+     COLUMN TITLE "St"         DATA Test->State
+     COLUMN TITLE "First Name" DATA Test->First
+     COLUMN TITLE "   Salary"  DATA Test->Salary TOTAL
+
+     END REPORT
+
+     ACTIVATE REPORT oReport
+
+     CLOSE TEST
+
+RETURN NIL
+</code>
+
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+STATIC oReport
+
+Function Rep06()
+
+     USE TEST INDEX TEST NEW
+
+     REPORT oReport TITLE  "*** My First Report ***"  ;
+          CAPTION "The Firm - Salary Report" ;
+          PREVIEW
+
+     COLUMN TITLE "St"         DATA Test->State
+     COLUMN TITLE "First Name" DATA Test->First
+     COLUMN TITLE "Last Name"  DATA Test->Last
+     COLUMN TITLE "   Salary"  DATA Test->Salary TOTAL
+
+     END REPORT
+
+     ACTIVATE REPORT oReport
+
+     CLOSE TEST
+
+RETURN NIL
+</code>
+<code clipper>
+#include "FiveWin.ch"
+#include "report.ch"
+
+
+STATIC oReport
+
+Function Rep22()
+
+     LOCAL oFont1, oFont2, oFont3, oPen1, oPen2
+
+     DEFINE FONT oFont1 NAME "ARIAL" SIZE 0,-10
+     DEFINE FONT oFont2 NAME "ARIAL" SIZE 0,-10 BOLD
+     DEFINE FONT oFont3 NAME "ARIAL" SIZE 0,-10 BOLD ITALIC
+
+     DEFINE PEN oPen1 WIDTH 3 COLOR CLR_HGREEN
+     DEFINE PEN oPen2 WIDTH 1 COLOR CLR_HMAGENTA
+
+     USE TEST //INDEX TEST NEW
+
+     GO TOP
+
+     REPORT oReport ;
+          TITLE  "*** FiveWin Report DEMO ***",;
+                 "",;
+                 OemtoAnsi("by FiveTech"),;
+                 "" ;
+          FONT   oFont1,;
+                 oFont2,;
+                 oFont3 ;
+          PEN    oPen1,;
+                 oPen2 ;
+          HEADER "Date: "+dtoc(date()),;
+                 "Time:  "+time() ;
+                 RIGHT ;
+          FOOTER OemtoAnsi("Page: ")+str(oReport:nPage,3) ;
+                 CENTERED ;
+          PREVIEW
+
+     GROUP ON Test->State ;
+           FOOTER "Total State "+oReport:aGroups[1]:cValue+ ;
+                  " ("+ltrim(str(oReport:aGroups[1]:nCounter))+")" ;
+           FONT 2
+
+     COLUMN TITLE "ST" ;
+          DATA Test->State ;
+          FONT 2  ;
+          GRID 2
+
+     COLUMN TITLE "City" ;
+          DATA Test->City ;
+          GRID 2
+
+     COLUMN TITLE "First Name","Last Name" ;
+          DATA Test->First , Test->Last ;
+          GRID 2
+
+     COLUMN TITLE "   Salary" ;
+          DATA Test->Salary ;
+          PICTURE "9,999,999" ;
+          SIZE 9 ;
+          TOTAL ;
+          SHADOW ;
+          GRID
+
+     END REPORT
+
+     IF oReport:lCreated
+
+          /*
+          First line of title bold
+          */
+
+          oReport:oTitle:aFont[1] := {|| 2 }
+
+          /*
+          Total descriptors
+          */
+
+          oReport:cGrandTotal := "Grand Total..."
+          oReport:cPageTotal := "Page Total..."
+
+          /*
+          Italic when salary greater than 100,000
+          */
+
+          oReport:aColumns[4]:bDataFont := {|| iif(Test->Salary>100000,3 ,1 ) }
+
+          /*
+          Change some colors
+          */
+
+          oReport:SetTxtColor(CLR_HBLUE,1)
+          oReport:SetTxtColor(CLR_HRED,2)
+          oReport:SetTxtColor(CLR_YELLOW,3)
+          oReport:SetPenColor(CLR_HCYAN)
+          oReport:SetShdColor(CLR_GREEN)
+
+     ENDIF
+
+     ACTIVATE REPORT oReport ON STARTGROUP oReport:NewLine() ;
+                             ON STARTPAGE StartPage()
+
+     /*
+     Close and release
+     */
+
+     oFont1:End()
+     oFont2:End()
+     oFont3:End()
+     oPen1:End()
+     oPen2:End()
+
+     CLOSE TEST
+
+RETURN NIL
+
+
+STATIC Function StartPage()
+
+     oReport:Box(0.1,                            ;
+                 0.1,                            ;
+                 oReport:PhyHeight()-0.1,        ;
+                 oReport:PhyWidth() -0.1         )
+
+     oReport:Line(0.9, 0.55, 2, 0.55, 2 )
+     oReport:Line(0.55, 0.9, 0.55, 2, 2 )
+     oReport:SayBitmap(.3,.3,"ICO.BMP",.5,.5)
+     oReport:SayBitmap(3,2,"CONFIDEN.BMP",4,4)
+
+RETURN NIL
+</code>
+
+** Screen snapshot of the above given sample **
+
+{{:report.jpg|:report.jpg}}
+
+
+====== See Also ======
+[[fivewin_commands_reports|Command Report]], [[fivewin_class_tprinter | Class TPrinter]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TREPORT.PRG

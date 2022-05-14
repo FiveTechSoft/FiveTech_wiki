@@ -1,0 +1,29 @@
+====== Class TSqlError ======
+
+SQL last error class     
+
+====== DATA ======
+^ Data  ^ Description                       ^
+|hErrEnv|The handle to the environment error|
+|hErrDbc|The handle to the connection error|
+|hErrStmt|The handle to the statement error|
+|cClassError|The class state error|
+|nType|The type of error|
+|cMsgError|The text error message|
+
+====== METHODS ======
+^ Method  ^ Description                       ^
+|New|Constructor from source code|
+|Init|Initializes the class|
+|GenerateError|Generates the error using the given statement handle|
+|CreateError|Creates a specific error|
+|ClassError|Returns the class state error|
+|Type|Returns the error type|
+|MsgError|Returns the text error message|
+
+====== Example ======
+
+====== See Also ======
+[[fivewin_commands_odbc|Command ODBC]], [[fivewin_class_trdd|Class TRdd]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TSQLERROR.PRG

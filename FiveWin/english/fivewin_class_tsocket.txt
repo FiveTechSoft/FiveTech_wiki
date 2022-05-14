@@ -1,0 +1,149 @@
+====== Class TSocket ======
+
+InterNet TCP/IP sockets support                                                
+====== DATA ======
+^Data ^ Description      ^
+|nPort|Socket port number|
+|cIPAddr|Socket IP address|
+|nTimeOut|Connection timeout value|
+|nBackLog|Listen backlog value|
+|nSocket|Socket handle|
+|hFile|Handle of a file transmited in chunks|
+|bAccept|Codeblock to evaluate on accept event.|
+|bRead|Codeblock to evaluate on read event.|
+|bWrite|Codeblock to evaluate on write event|
+|bClose|Codeblock to evaluate on close event.|
+|bConnect|Codeblock to evaluate on connect event.|
+|bOOB|Codeblock to evaluate on out-of-band event.|
+|lDebug|If in debug mode.|
+|cLogFile|Log filename.|
+|cMsg|Not used ???.|
+|nRetCode|Receive and listen operations return code.|
+|Cargo|Generic cargo slot.|
+|aBuffer|Data sending buffer.|
+|lSending|Sending in progress.|
+|aSockets|Array of attending sockets.|
+====== METHODS ======
+^Method ^ Description      ^
+|New|Constructor. nPort = port to use for the socket.|
+|Accept|Constructor. Builds a new socket to accept a|
+|incomming|connection|
+|End|Generic destructor.|
+|HandleEvent|Manages asyncronous connections events.|
+|GetData|Retrieves incomming data.|
+|SendBin|Sends binary data.|
+|SendChunk|Sends chunks of a file (::hFile ).|
+|SendFile|Sends a file.|
+|SendData|Sends data.|
+|Listen|Sets the socket in listening state.|
+|Close|Closes the socket.|
+|Connect|Connects to a specified IP address.|
+|Refresh|Determines the status of the socket.|
+|OnAccept|Accept incomming event method.|
+|OnRead|Read incomming event method|
+|OnWrite|Write incomming event method.|
+|OnClose|Close event action.|
+|OnConnect|On connect event method.|
+|OnOOB|Out-of-band event handler.|
+|ClientIP|Returns the client IP address.|
+====== Example ======
+<code clipper>
+// Socket server connection sample
+
+#include "FiveWin.ch"
+
+#define ST_COMMAND  1
+#define ST_SENDFILE 2
+#define FILE_BLOCK 8000
+
+static oWnd, oSocket, oClient
+
+//------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Server socket"
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D
+
+   DEFINE BUTTON OF oBar ACTION Server() TOOLTIP "Listen"
+
+   DEFINE BUTTON OF oBar ACTION oClient:SendData( "Hello from server!" ) TOOLTIP "Talk to client"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//------------------------------------------------------------------------//
+
+function Server()
+
+   oSocket = TSocket():New( 2000 )
+
+   oSocket:bAccept = { | oSocket | oClient := TSocket():Accept( oSocket:nSocket ),;
+                       oClient:Cargo := ST_COMMAND,;
+                       oClient:bRead := { | oSocket | OnRead( oSocket ) },;
+                       oClient:bClose := { | oSocket | OnClose( oSocket ) } }
+
+   oSocket:Listen()
+
+return nil
+
+//------------------------------------------------------------------------//
+
+function OnRead( oSocket )
+
+   local cData := oSocket:GetData()
+   local cToken
+
+   LogFile( "sockserv.txt", { Len( cData ), cData } )
+
+   do case
+      case oSocket:Cargo == ST_COMMAND
+           cToken = StrToken( cData, 1 )
+           do case
+              case cToken == "SENDFILE"
+                   oSocket:Cargo = ST_SENDFILE
+                   oSocket:hFile = fcreate( StrToken( cData, 2 ) )
+
+              case cToken == "MSG"
+                   MsgInfo( SubStr( cData, 5 ) )
+           endcase
+
+      case oSocket:Cargo == ST_SENDFILE
+           fwrite( oSocket:hFile, cData, Len( cData ) )
+           LogFile( "sockserv.txt", { "writting..." } )
+
+           if Len( cData ) < FILE_BLOCK
+              // fclose( oSocket:hFile )
+              // MsgInfo( Len( cData ) )
+              // oSocket:Cargo = ST_COMMAND
+           endif
+   endcase
+
+return nil
+
+//------------------------------------------------------------------------//
+
+function OnClose( oSocket )
+
+   MsgInfo( "Client has closed!" )
+
+   do case
+      case oSocket:Cargo == ST_SENDFILE
+           fclose( oSocket:hFile )
+   endcase
+
+   oSocket:End()
+
+return nil
+
+//------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+[[fivewin_class_tpop3|Class TPop3]], [[fivewin_class_tsmtp|Class TSmtp]], [[fivewin_class_tinternet|Class TInternet]], [[fivewin_class_tftp|Class TFtp]] 
+====== Source code ======
+FWH\SOURCE\CLASSES\TSOCKET.PRG

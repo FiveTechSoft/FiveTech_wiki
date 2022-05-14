@@ -1,0 +1,96 @@
+
+====== Class TMru ======
+
+MRU means: "Most Recent Used" and let you automatically manage                 
+MRU lists on your menus !!! See SAMPLES\TestMru.prg for a test!                
+====== DATA ======
+^ Data ^ Description      ^
+|aItems|Array of MenuItems|
+|nMaxItems|Max Number of Items in the list.|
+|cIniFile|Name of the associated ini file.|
+|cSection|Section in the ini file|
+|cMsg|Message for all MRU MenuItems|
+|oMenu|oMenu container of the MRU list|
+|oSeparator|A reference of the SEPARATOR menuitem created above the Mru|
+|nMenuPos|oMenu container position of the MRU list|
+|bAction|Action to perform when selecting any of the MRU MenuItems|
+====== METHODS ======
+^ Method ^ Description      ^
+|New|Constructor from source code.|
+|Save|Add a new element to the MRU list.|
+|Clear|Clear all Mru items and also release the INI related section|
+====== Example ======
+\Fwh\Samples\TestMru.Prg
+
+<code clipper>
+// FiveWin new MRU technology !  Really cool !!!
+
+#include "FiveWin.ch"
+
+static oWnd
+static oMru1, oMru2, oMru3      // We are going to manage three MRU objects!
+
+static cPrompt := "                              "
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   SET _3DLOOK ON
+
+   DEFINE WINDOW oWnd TITLE "MRU Technology in FiveWin!!!" ;
+      MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO "FiveWin xBase & OOPS power!" CENTERED
+
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Want to end?" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&First"
+      MENU
+         MENUITEM "&About..." ;
+            ACTION MsgAbout( "FiveWin MRU Technology", "(c) FiveTech" )
+
+         MENUITEM "&Manage this under MRU list" ;
+            ACTION ( MsgGet( "Write something", "Whatever...", @cPrompt ),;
+                     oMru1:Save( cPrompt ) )
+
+         MRU oMru1 ;
+            FILENAME ".\TestMru.ini" ;     // .INI to manipulate. '\.' for local
+            SECTION  "MRU-Customer" ;      // The name of the INI section
+            ACTION   MsgInfo( cMruItem ) ; // cMruItem is automatically provided
+            MESSAGE  "Show this item..." ; // The message for all of them
+            SIZE     10                    // The number of MRU items to manage
+
+         SEPARATOR
+
+         MENUITEM "&Exit..." ACTION oWnd:End()
+      ENDMENU
+
+      MENUITEM "&Second"
+      MENU
+         MENUITEM "&Clear the MRU List" ACTION oMru1:Clear()
+      ENDMENU
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:mru.jpg|:mru.jpg}}
+====== See Also ======
+[[fivewin_commands_mru | Command Mru ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMRU.PRG

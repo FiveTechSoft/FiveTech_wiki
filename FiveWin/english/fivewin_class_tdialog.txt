@@ -1,0 +1,186 @@
+====== Class TDialog ======
+
+Dialog boxes                                                                   
+Inherits from TWindow                                                          
+
+====== DATA ======
+|cResName|Resource Name of the Dialog|
+|cResData|Resource Data of the Dialog|
+|hResources|Handle of the Resource where to find the Dialog|
+|lCentered|Logical value if centering the Dialog when painting|
+|lModal|Logical value if the Dialog Box is modal|
+|lHelpIcon|Windows95 help icon pressed|
+|lResize16|Resizes 32 bit resources to look like 16 bit ones|
+|bStart|Action to be performed automatically just once at start|
+|lModify|Logical value to allow using the Controls -not implemented-|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====== METHODS ======
+^New|Generic constructor method|
+|  |**Syntax:** \\ TDialog():New( <nTop>, <nLeft>, <nBottom>, <nRight>,; \\ <cCaption,<cResName>, <hResources>, <nStyle>,; <ncClrText>, <nClrBack>,<oBrush>,<oWnd>,; \\ <lPixels>, <oIco>, <oFont> ) -><oDialog>|
+| |**Parameters:** \\ **<nTop>, <nLeft>** These two determine the top left corner of the dialog box. \\ **<nBottom>,<nRight>** The right bottom corner of the dialog box. \\ **<cCaption>** The title of the dialog box. \\ **<cResName>** The name of the dialog box structure stored in a resource (either a .DLL or linked to the executable by RC.EXE). \\ **<hResources>** The handle, which points to the resources that are linked to this application. \\ If this parameter is not passed when <cResName> is passed it is assumed that the dialog box \\ structure is stored in either the .EXE file or in the default .DLL. \\ **<nStyle>** Determines the characteristics of the dialog box. These characteristics are defined by the same values that are used \\ for the <nStyle> parameter of the New() method for the TWindow() class (defined in WINAPI.CH) or one of the following constants which can only be used for a Dialog box: \\ **<ncClrText>** The foreground color (the color that is used to draw on the dialog box). This can either be a MS-Windows COLOR number or a CA-Clipper color string (ie "R/G") \\ in which case the nClrBack parameter will be ignored. \\ **<nClrBack>** The background color of the dialog box. This has to be a MS-Windows COLOR number.\\ **<oBrush>** The brush used to paint the client area of the dialog box. It is stored in the instance variable ::oBrush. If none is passed, it will be created by the method SetColor(). \\ **<oWnd>** The TWindow object of which this dialog box is the child window. If this parameter is not passed it means that this dialog will be linked to the main window of the application. \\ **<lPixels>** Logical which determines whether the coordinates passed, will either be in pixels (a la Windows) or on a character base (a la CA-Clipper) \\ **<oIcon>** The icon that will be used whenever this dialog box is minimized. If none is passed the icon is USER.EXE (which means you get a small MS-Windows logo as the icon). \\ **<oFont>** The font that will be used when something is written onto the dialog box or when a control is placed on the dialog box that has no font defined for it \\ **Returns:** \\ **<oDialog>** The TDialog object that was created by the New()method. \\ **Comments:** \\ This constructor has a lot of parameters, so it quite easy to make a mistake. It is easier, both for you and for someone who is reading \\ your code, to use the DEFINE DIALOG statement.|
+^Define|Alternative constructor|
+|  |**Syntax:** TDialog():Define( <nTop>, <nLeft>, <nBottom>,<nRight>,; \\ <cCaption>, <nStyle>, <lVbx>, <nClrText>,;<nClrBack>, <oBrush>) -> <oDialog>|
+|  |**Parameters:** The parameters mentioned for this method have exactly the same purpose and definition as the ones that are defined for the New() \\ method. \\ **Returns:** \\ **<oDialog>** The TDialog object that was created by the New() method \\ **Comments:** The Define() method is another constructor for TDialog() objects. It will also return a TDialog() object however without all the settings that the New() method will handle for you.|
+^Activate|Starts interaction with the Dialog Box|
+|  |**Syntax:** \\ TDialog():Activate( <bClicked>, <bMoved>, <bPainted>, <lCentered>, <bValid>, <lModal>, <bInit>, <bRClicked>, <bWhen> ) -> NIL|
+|  |**Parameters:** \\ **<bClicked>** This codeblock will be executed whenever there is a click of the left mouse button on the dialog box. The codeblock will be called with three parameters: \\ **<nRow>** The pixel row where the mouse cursor was positioned when the mouse click occurred. \\ **<nCol>** The pixel column where the mouse cursor was positioned when the mouse click occurred. \\ **<nKeyFlags>** Indicates which virtual keys are down and if the right or the middle mouse button was pressed also. It can be a combination of the following \\ values which have the following constant names in the MS-Windows API description: \\ MK_RBUTTON 2 The right mouse button was pressed also. \\ MK_SHIFT 4 The <Shift> key was pressed. \\ MK_CONTROL 8 The <Ctrl> key was pressed. \\ MK_MBUTTON 16 The middle mouse button was pressed. \\ **<bMoved>** Currently not used. \\ **<bPainted>** This code block will be called whenever the dialog box is repainted (ie the dialog box receives a WM_PAINT message from MS-Windows). \\ When <bPainted> is called it receives one parameter and that is a reference to the TDialog() object \\ **<lCentered>** Determine whether or not the dialog box should be centered on the screen when it is displayed. If <lCentered> is .T. the dialog will be centered \\ regardless of the coordinates that are stored in ::nTop, ::nLeft. The width and height of the dialog box however are NOT changed. If <lCentered> is .F. \\ however the dialog box will be placed on the screen as the coordinates ::nTop, ::nLeft dictate this. \\ **<bValid>** If this codeblock is passed it will be called whenever the dialog box should be closed. <bValid> has to return a logical value to indicate whether or not the dialog box is allowed to close. \\ **<lModal>** This parameter determines whether or not this dialog box will be a MODAL or a NON MODAL dialog box. The default value is .T. which means that the current dialog box will be a modal dialog box,ie the program will continue only after the dialog box is closed. \\ **<bInit>** This codeblock will be executed after the dialog box is displayed for the first time. It receives one parameter which is a reference to the TDialog() object itself. \\ **<bRClicked>** This codeblock will be executed whenever there is a click of the right mouse button on the dialog box. The codeblock will be called with three parameters: <bWhen> This codeblock will be executed just before the dialog box is shown. The codeblock will be evaluated and called with three parameters: However if the result is .F.then the dialog box will NOT be shown. \\ **Returns:** \\ NIL \\ **Comments:** \\ The Activate() method will actually show the dialog box on the screen. Before a call to this method is made the dialog box is not yet visible. Through the parameters Activate() receives, several aspects of the dialog box are controlled, like whether or not the dialog box is MODAL or NON-MODAL (<lModal>).|
+^AdjTop|Adjust the dialog to the top of its container window|
+^ChangeFocus|Changes the focus|
+^Close|Close dialog box|
+|  |**Syntax:** \\ Tdialog():Close( <nResult> ) -> NIL|
+|  |**Parameters:** \\ **<nResult>** The value the instance variable ::nResult receives when the dialog box is closed. \\ **Returns:** \\ NIL \\ **Comments:** \\ The Close() method is almost identical to the End() method, with regards to its purpose. This purpose is to close the dialog box and remove it from the screen. There is however one difference, unlike the End() method the Close() method has no default value for nResult. This means that if <nResult> is not passed that ::nResult will become NIL.|
+^Command|Handle commands sent to dialog box|
+|  |**Syntax:** \\ TDialog():Command( <nWParam>, <nLParam> ) -> Nil|
+|  |**Parameters:** \\ **<nWParam>** This parameter actually holds two pieces of information which have the following meaning: <nCode> = nHiWord(nWParam). This value specifies the notification code if the message is from a control. If the message is from an accelerator, this parameter is 1. If the message is from a menu, this parameter is 0. nID = nLoWord(wParam); This part represents the identifier of either an item, a control or an accelerator.\\ **<nLParam>** This value contains the handle of the control sending the message if the message is from a control. Otherwise, this parameter is NULL. \\ **Returns:** \\ Nil \\ **Comments:** \\ The Command() method is automatically called (by the eventhandler) when processing a WM_COMMAND WinApi message. If a message is processed it should return 0.|
+^CtlColor|Ctlcolor event handler|
+^cToChar|Translate handle to structure item|
+|  |**Syntax:** TDialog():cToChar( <hActiveWnd> ) -><cDialogStructure>|
+|  |**Parameters:** \\ <hActiveWnd> The handle that should be included in the structure built by cToChar(). \\ **Returns:** \\ <cDialogStructure> The dialog structure created by ::cToChar(). This structure is stored in a character string because CA-Clipper has no provisions for making and using structures. \\ **Comments:** \\ The cToChar() method will translate all the necessary information needed to create a dialog box into one big string. This string has exactly the structure needed by the MS-Windows API functions \\ that create a dialog box. The information is stored in to a character string because CA-Clipper has no knowledge of structure's since this is not part of the CA-Clipper language.|
+^DefControl|Connect control to dialog box|
+|  |**Syntax:** \\ TDialog():DefControl( <oControl> ) -> Nil|
+|  |**Parameters:** \\ **<oControl>** The control that has to be connected to the current dialog box. \\ **Returns:** \\ Nil \\ **Comments:** This method is used when a control is added to a dialog box that gets it's structural information from a resource (either linked to the .EXE by RC.EXE or stored in a .DLL file). \\ Before the control is added a check is made to see whether or not the ::nID instance variable of <oControl> is unique for this dialog box. \\ If the value of <oControl>:nID is already in use a warning will be shown and the control will NOT be added to the ::aControls instance variable.|
+^Destroy|Destroy dialog box|
+|  | **Syntax:** \\ TDialog():Destroy() -> <lxResult> |
+|  | **Returns:** \\ <lxResult> The return value depends upon the fact if the dialog was MODAL. If the dialog box was modal Destroy() will return .T., otherwise Destroy() will return NIL. \\ **Comments:** \\ The Destroy() method handles the actual removal of the dialog box. It should NOT be called directly. If you want to end a Dialog box you should either call the End() \\ method or the Close() method. !seealso wincls.eho:"Destroy" tdialog.eho:"End" tdialog.eho:"Close"| 
+^Display|Displays dialog box|
+|  |**Syntax:** \\ Tdialog():Display() -> .F.|
+|  |**Comments:** \\ The Display() method paints the dialog onto the screen. After the dialog box is painted, Display() will see if the ::bSTartinstance variable <> NIL. If this is the case Display() will evaluate ::bStart.|
+^End|End dialog box|
+|  |**Syntax:** \\ Tdialog():End( <nResult> ) -> .T.|
+|  |**Parameters:** \\ **<nResult>** \\ The numerical value that will be passed on to the::nResult instance variable, when the dialog box is closed. \\ **Comments:** \\ With the End() method the programmer can lose the dialog box and remove it from the screen. However if the ::bValid instance variable contains a code block, then the code block will be evaluated first. If the result of the evaluation is .T. the dialog box will be closed. If the evaluation of ::bValid returns .F., then the dialog box will NOT be ended.|
+^EraseBkGnd|Erase background of dialog box|
+|  |**Syntax:** \\ TDialog():EraseBkGnd( <hDC> ) -> .T.|
+|  |**Parameters:** \\ **<hDC>** \\ The DEVICE CONTEXT handle of this dialog box. \\ **Comments:** \\ This method can be used to repaint the background of the dialog box. It is also used by the eventhandler. However the background will be repainted only if the ::oBrush instance variable contains a brush object.|
+^GetHotPos|Return the handle of the control with the specifiedhotkey|
+^GetItem|Get the handle of a certain control|
+|  |**Syntax:** \\ TDialog():GetItem( <nId> ) -> <nHWnd>|
+|  |**Parameters:** \\ **<nId>** The ID of the control for which the 'window handle' should be returned. \\ **Returns:** \\ <nHWnd> The handle of the control that is identified by <nId>. If a control can be found on the current dialog box, <nHWnd> will be the handle to that control. \\ If no control can be found with id <nId> the return value will be 0. \\ **Comments:** \\ The purpose of this method is to retrieve a WINDOW HANDLE of a specific control, so you can use an API function to do a certain task. However use this with care, because using the wrong API function with a handle can cause serious problems for your application.|
+^GotFocus|Called when dialog receives focus|
+|  |**Syntax:** \\ TDialog():GotFocus() -> <xValue>|
+|  |**Returns:** \\ <xValue> If the ::bGotFocus contains a codeblock the return value will be the value that was the result of the evaluation of ::bGotFocus. Otherwise <xValue> will be NIL. \\ **Comments:** \\ This method is called just after the dialog box has received focus. This allows you to have some work done whenever the dialog receives focus. Whenever a dialog box receives focus the eventhandler will call the GotFocus() method, \\ which in turn evaluates the ::bGotFocs instance variable. !seealso tdialog.eho:"Lostfocus"|
+^HandleEvent|Event handler for dialog boxes|
+|  |**Syntax:** \\ TDialog():HandleEvent(<nMsg>, <nWParam>, <nLParam>) |
+|  |**Comments:** \\ This method handles all the events for a particular TDialog object. It directly calls a C-function ( WndHandleEvent() ). This is done to increase speed. For complete documentation on each and every value of <nMsg> and its associated values of <nWMparam> and <nLParam> \\ please check out a book (or help file) on MS-Windows messages and how they are handled.|
+^Help|Help event handler|
+^Initiate|Handle initialization of dialog box|
+|  |**Syntax:** \\ TDialog():Initiate() -> .T.|
+|  |**Comments:** \\ This method handles the initialization of the dialog box. If the dialog box contains one or more VBX controls the necessary initialization is performed. Also for all controls that are connected to the dialog box their individual \\ Initiate() method is called. Just before the Initiate() method of the dialog ends it evaluates the ::bInit instance variable.|
+^KeyChar|Keychar event handler|
+^LostFocus|Handles losing focus by dialog box|
+|  |**Syntax:** \\ TDialog():LostFocus() -> <xValue>|
+|  |**Returns:** \\ <xValue> If the ::bLostFocus contains a codeblock the return value will be the value that was the result of the evaluation of ::bLostFocus. Otherwise <xValue> will be NIL. \\ **Comments:** \\ The LostFocus() method is called by the eventhandler of the dialog box whenever the dialog box loses focus. When LostFocus() is called it in turn evaluates the ::bLostFocus codeblock.|
+^MouseMove|Mouse move event handler|
+^Paint|Paints the dialog|
+^QueryEndSession|Check if application can be closed|
+|  |**Syntax:** \\ TDialog():QueryEndSession() -> <lNoEnd>|
+|  |**Returns:** \\ <lNoEnd> is a logical which represents whether or not the Windows session may be ended. If <lNoEdn> is .T. the Windows session my NOT be ended. If <lNoEnd> is .T. the Windows session may be ended. \\ **Comments:** \\ The QueryEndSession() method is called by the eventhandler whenever Windows sends a WM_QUEYENDSESSION to a dialog box. This message is sent to a dialog box if the user wants to end the MS-Windows session. \\ The QueryEndSession() will return .T. if the windows session is NOT allowed to end. Otherwise QueryEndSession() returns .F..|
+^SetControl|Sets the control to be resized to fill the client area of the dialog|
+^SetFont|Sets a font for the dialog|
+^SysCommand|System command event handler|
+^VbxFireEvent|Handling of VBX events by dialog box|
+|  |**Syntax:** \\ TDialog():VbxFireEvent( <pEventInfo> ) |
+|  |**Parameters:** \\ **<pEventInfo>**  The <pEventInfo> is a 'pointer' to an event structure used for VBX controls in Borland's BIVBX10.DLL. \\ **Comments:** This method is called by the eventhandler whenever a VBX control generates a WM_VBXFIREEVENT message. \\ The method receives the required information via a pointer to a VBX structure ( <pEventInfo> ).|
+^Help95|Activate the context help button|
+
+====== Example ======
+<code clipper>
+// Our first DialogBox sample
+
+#include "FiveWin.ch"
+
+FUNCTION Main()
+
+   local oDlg, oIco, cTest := "Hello world!   "
+
+   DEFINE ICON oIco FILE "..\icons\fivewin.ico"
+
+   DEFINE DIALOG oDlg TITLE "I am a DialogBox" COLOR "W+/B" ;
+      ICON oIco
+
+   @ 1, 3 GET cTest
+
+   @ 3, 5 BUTTON "&Ok" SIZE 40, 12 ;
+      ACTION MsgInfo( "Any action here!" ) DEFAULT
+
+   @ 3, 16 BUTTON "&Cancel" SIZE 40, 12 ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      VALID MsgYesNo( "Do you want to end ?" )
+
+return nil
+</code>  
+
+** Screen snapshot **
+
+{{:dialog.jpg|:dialog.jpg}}
+
+** Sample Code 2 **
+
+<code clipper>
+// More samples combining windows and dialogboxes
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "A Window"
+
+   ACTIVATE WINDOW oWnd ;
+      ON INIT ShowDlg()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function ShowDlg()
+
+   local oDlg
+
+   DEFINE DIALOG oDlg FROM 5, 5 TO 20, 40 TITLE "A Dialog Box"
+
+   ACTIVATE DIALOG oDlg NOWAIT ;
+      ON PAINT oDlg:Say( 1, 1, "Hello" ) ;
+      VALID ( MsgInfo( "Valid Clause" ), .t. )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code> 
+
+** Screen Snapshot 2 **
+{{:dialog_2.jpg|:dialog_2.jpg}} 
+
+
+====== See Also ======
+[[fivewin_commands_dialogs | Command Dialog ]], [[fivewin_commands_windows | Command Window ]], [[fivewin_class_twindow | Class TWindow ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDIALOG.PRG

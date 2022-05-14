@@ -1,0 +1,40 @@
+====== Class TBlock ====== 
+
+FiveWin disk-storable CodeBlock Class 
+
+====== DATA ====== 
+
+|cExpression|         A string with the block expression|    
+|bBlock|              the expression codeblock|    
+
+====== METHODS ====== 
+
+|New|                 Creates a new codeblock|    
+|Eval / Exec|         Executes the codeblock| 
+
+====== example ======
+FWH\samples\testbloc.prg
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBlock
+
+   oBlock = TBlock():New( "{ | cMsg | MsgInfo( cMsg ) }" )
+
+   oBlock:Eval( "CodeBlocks storables on disk!" )
+
+   // Now lets try to build a 'bad' CodeBlock
+
+   oBlock = TBlock():New( "{ || MsgAlert( cTest )" )   // '}' missing !
+   
+return nil
+</code>
+
+====== source code ======
+FWH\source\classes\block.prg
+
+====== see also ======

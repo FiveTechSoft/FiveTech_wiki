@@ -1,0 +1,135 @@
+====== Class TTitle ======
+
+Inherits from Class TControl
+
+
+
+====== DATA ======
+|oWnd|window, dialog or control container|
+|aImgs|Image Array 9 Positions:|
+|aGrdBase|Gradient Array Base|
+|aGrdBack|Gradient Array Back Color|
+|aText|Text Array: Position 1 Row (Numeric), Position 2 Col (Numeric), Position 3 Text (String), Position 4 Justify (Logical), Position 5 Brush (Brush Object/Handle), Position 6 Pen (Pen Object/Handle), Position 7 Shadow (Numeric),  Position 8 Font (Object), Position 9 Color Text(Numeric)|
+|hBackBrush| PROTECTED, Used Internally save back patern imagen|
+|nAtImg|Mouse Imagen Position|
+|nAtImgPress|Image Pressed|
+|nClrLine1|Color Border Line 1|
+|nClrLine2|Color Border Line 2|
+|nMaxRowAnimate|Max rows to animate|
+|nShadow|Shadow Position see Define|
+|nShadowIntensity|Porcentadge 0-100 shadow intensity|
+|nShadowSize|PROTECTED, Shadow Size|
+|nXOffSetShadow|Offset position X shadow|
+|nYOffSetShadow|Offset position Y shadow|
+|nXOffSetTitle|Offset position X Title|
+|nYOffSetTitle|Offset position Y Title|
+|nShadowTxtClr|Shadow Text color|
+|nShadowTxtDis|Shadow Text Distance|
+|lBase|Paint Base (like Mac OSX dock)|
+|lBorder|Paint Border|
+|lMoveImg|Use internally|
+|lMoveUp|Animation Direction, set on/off depend Height (automaticly)|
+|lRound|Round Border|
+|lTransparent|Transparent no work with window|
+
+
+
+====== METHODS ======
+|<New>|Creates a new TTitle object| 
+|<AddText>|Adds a text to the object|
+|<AnimaImage>||
+|<AtImg>|Check the image where the mouse was clicked on|
+|<Destroy>|Cleans the object used resources|
+|<Display>|Shows the object|
+|<EraseBkGnd>|Fills its surface|
+|<HasAlpha>|Check if transparency is used|   
+|<LButtonDown>|manages mouse button left click events|
+|<LButtonUp>|manages mouse button left click release events|
+|<LoadBitmaps>|Load used bitmaps images|
+|<MouseMove>|manages mouse move events|   
+|<Paint>|paints the control|
+
+====== Example ======
+<code clipper>
+// FiveWin Class TTitle
+
+#include "fivewin.ch"
+#include "ttitle.ch"
+
+Function main()
+
+    local oWnd
+    local oTitle1, oTitle2, oTitle3, oTitle4, oTitle5
+    local oBrush1, oBrush2, oBrush3, oBrush4
+    LOCAL oFont1, oFont2, oFont3
+    
+    DEFINE BRUSH oBrush1 FILE "..\bitmaps\backgrnd\paper.bmp"
+    DEFINE BRUSH oBrush2 FILE "..\bitmaps\backgrnd\iron.bmp"
+    DEFINE BRUSH oBrush3 STYLE "NULL"
+    DEFINE BRUSH oBrush4 FILE "..\bitmaps\backgrnd\wood.bmp"
+    
+    DEFINE WINDOW oWnd TITLE "TTitle Class Test"  BRUSH oBrush1 
+
+    DEFINE FONT oFont1 NAME "Blackoak Std" size 30, 60  
+    DEFINE FONT oFont2 NAME "Times New Roman" size 10, 30  
+    DEFINE FONT oFont3 NAME "Blackoak Std" size 30, 60  NESCAPEMENT 900
+
+
+    // Title 1  Horizontal ( top )
+    @ 015,150 TITLE oTitle1 size 460, 60 of oWnd SHADOW TOPRIGHT 
+    oTitle1:aGrdBack = { { 1, nRGB( 129, 130, 138 ), nRGB( 59, 60, 62 ) } }
+    oTitle1:nShadowIntensity = 70
+    @  10,  10  TITLETEXT OF oTitle1 TEXT "FIVEWIN 9.07"  FONT oFont1 BRUSH oBrush1
+
+ 
+    // Title 2  Vertical( Left )
+    @  50,  80  TITLE oTitle2 size 60, 460 of oWnd SHADOW topleft SHADOWSIZE 5
+    @ 450,  10  TITLETEXT OF oTitle2 TEXT "FIVEWIN 9.07"  FONT oFont3 PEN GetStockObject( 8 )
+
+    
+    //Title 3 Horizontal ( Center )
+    @ 250, 150 TITLE oTitle3 size 460, 60 of oWnd SHADOW topleft BASE TRANSPARENT NOBORDER 
+    @   2,  20 TITLETEXT OF oTitle3 TEXT "FIVEWIN 9.07" FONT oFont1 brush oBrush4 3D SHADOW TOPLEFT
+
+    
+    //Title 4 Vertical ( Right )
+    @  50, 630 TITLE oTitle4 size 60, 460 of oWnd SHADOW TOPRIGHT 
+    @   5,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @  65,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    @ 125,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @ 185,   5 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\movie.BMP"    SIZE 50, 60 ANIMA LEVEL 100
+    @ 245,   5 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\movie.bmp"    SIZE 50, 60 ANIMA LEVEL 255
+    @ 305,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    @ 365,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\32X32\keys.bmp"        SIZE 30, 30 REFLEX TRANSPARENT 
+    @ 425,  10 TITLEIMG OF oTitle4 BITMAP "..\bitmaps\AlphaBmp\explorer.BMP" SIZE 30, 30 REFLEX ANIMA
+    
+
+    //Title 5 Horizontal( Down )
+    @ 480, 150  TITLE oTitle5 size 460, 60 of oWnd SHADOW BOTTOMLEFT SHADOWSIZE 2
+    @   5,  10  TITLEIMG  OF oTitle5 BITMAP "../bitmaps\32X32\keys.bmp" SIZE 30, 30 REFLEX TRANSPARENT ANIMA
+    @  20,  60  TITLETEXT OF oTitle5 TEXT "<== Move over me"  COLOR CLR_BLACK   
+    @ 14,  220  TITLETEXT OF oTitle5 TEXT "FIVEWIN 9.07"  COLOR CLR_BLACK FONT oFont2 3d
+    @  5,  400  TITLEIMG  OF oTitle5 BITMAP "../bitmaps\fivetech.bmp" SIZE 30, 30 REFLEX 
+    oTitle5:nShadowIntensity = 70
+
+    activate window oWnd maximized
+    
+    oBrush4:end()
+    oBrush3:end()
+    oBrush2:End()
+    oBrush1:End()
+    oFont1:End()
+    oFont2:End()
+    oFont3:End()
+ 
+return nil
+</code>
+{{:titles.jpg|:titles.jpg}}
+
+
+====== Source code ======
+FWH\source\classes\ttitle.prg
+
+
+====== See Also ======
+[[fivewin_commands_titles|Commands TITLE]]

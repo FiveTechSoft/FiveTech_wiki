@@ -1,0 +1,73 @@
+
+====== Class TBrush ====== 
+
+Brushes objects 
+
+====== DATA ====== 
+
+|hBrush|              Handle of the brush.|    
+|hBitmap|             Handle of Bitmap if the brush is an image.|    
+|nCount|              Internal counter for life control|    
+|cStyle|              Basic style|    
+|nRGBColor|           Color|    
+|cBmpFile|            Bitmap file|     
+|cBmpRes|             Bitmap resource|    
+|lSystem|             .T. if it is a system brush|    
+|aBrushes|            A CLASSDATA internally used for brush reusing|    
+
+====== METHODS ====== 
+
+|New|                 Constructor from source code.|    
+|cGenPRG|             Returns a string with the source code of the Brush.|    
+|End/Release|         Destroy the Brush image.| 
+
+====== example ======
+FWH\samples\fwborl.prg
+<code clipper>
+...
+DEFINE BRUSH oBrush STYLE BORLAND
+
+   DEFINE WINDOW oWnd FROM 1, 5 TO 20, 75 ;
+      TITLE "Using Dialogs from DLLs and Borland's Dialog Boxes!" ;
+      BRUSH oBrush ;
+      MENU  BuildMenu()     
+</code>
+
+
+====== Sample Code ======
+\FWH\Samples\TestBru1.Prg
+<code clipper>
+// Testing some nice brushes
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBrush, oBar
+
+   DEFINE BRUSH oBrush FILENAME "..\bitmaps\brush1.bmp"
+
+   DEFINE WINDOW oWnd TITLE "Testing brushes" ;
+      BRUSH oBrush
+
+   DEFINE BUTTONBAR oBar _3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION ChangeBrush()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>  
+
+======= Screen Snapshot =======
+{{:brush.jpg|:brush.jpg}}
+
+====== source code ======
+FWH\source\classes\brush.prg
+
+====== See Also ======
+[[fivewin_commands_brushes|Commands BRUSHES ]]  

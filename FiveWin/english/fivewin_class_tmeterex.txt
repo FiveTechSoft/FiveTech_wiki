@@ -1,0 +1,124 @@
+====== Class TMeterEx ======
+
+MeterEx class                                                                    
+Inherits TControl.
+
+This control is available from ver 10.3 onwards. This is a very useful control which can be used to display the progress of any operation. For eg. You can show a progress bar while indexing, while data is getting processed etc.                                                              
+====== DATA ======
+^ Data ^ Description                               ^
+|nTotal|Total amount to be represented by the Meter|
+|nRefresh|SysRefresh interval used in Set method|
+|aGrad| Array containing the Gradient colors for the Meter Track (Background) {{:meterextrack2.jpg|:meterextrack2.jpg}} |
+|aGradMet| Array containing the Gradient colors for the Meter Progress {{:meterexfill2.jpg|:meterexfill2.jpg}}  |
+|lRound| if rounded corner is required then use .T., else .F. .By default it is .F. {{:meterexround2.jpg|:meterexround2.jpg}} |
+|nRound| Round size. Default is 3|
+|lVerical| Can be used if you need the Meter progress indicator to move vertically. By default meter progress indicator moves horizontally {{:meterexvertical.jpg|:meterexvertical.jpg}} |
+|lInverted| Can be used to invert the movement of the progress indicator i.e. the meter progress moves from right to left. By default it is from left to right {{:meterexinverted.jpg|:meterexinverted.jpg}}|
+
+====== METHODS ======
+^ Method ^ Description            ^
+|New|Constructor from source code.|
+|ReDefine|Constructor from resources.|
+|Default|Default meter initialization.|
+|Display|Displays the control|
+|Initiate|Control initialization.|
+|Paint|Paints the Meter.|
+|Set|Changes the value represented and the value of the variable.|
+|SetTotal|Sets the maximum value of the meter|
+|LoadBitMaps| Load BMP |
+====== Example ======
+\Fwh\Samples\TestMex.Prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   LOCAL oWnd, nActual, nActual2, nActual3, nActual4
+   LOCAL oMeter, oMeter2, oMeter3, oMeter4
+
+   DEFINE WINDOW oWnd
+
+   nActual := nActual2 := nActual3 := nActual4 := 0
+   
+   //   meter 1
+   @ 10, 50 METEREX oMeter VAR nActual SIZE 310, 40 BITMAP "..\bitmaps\meterex.bmp" TOTAL 50 PIXEL 
+   @ 60,  50 BUTTON "+" ACTION ( nActual := oMeter:Set( nActual += 1 ) ) SIZE 25, 20 PIXEL
+   @ 60,  80 BUTTON "-" ACTION ( nActual := oMeter:Set( nActual -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 60, 110 BUTTON "Rst" ACTION ( nActual := oMeter:Set( 0 ), oMeter:Refresh() ) SIZE 25, 20 PIXEL
+   @ 60, 140 BUTTON "Auto" ACTION ( Automatic( oMeter, @nActual ) ) SIZE 70, 20 PIXEL
+   @ 60, 215 CHECKBOX oMeter:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 60, 290 CHECKBOX oMeter:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+   
+   // meter 2
+   @ 100, 50 METEREX oMeter2 VAR nActual2 SIZE 310, 20 TOTAL 50 PIXEL;
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } } ;
+             LINECOLORS nRGB( 110, 151,204 ), CLR_WHITE;
+             ROUND INVERTED;
+             ON PAINT( If( nActual2 == oMeter2:nTotal, Msginfo( "Finished" ), ) ) 
+   
+   @ 130,  50 BUTTON "+" ACTION ( nActual2 := oMeter2:Set( nActual2 += 1 ) ) SIZE 25, 20 PIXEL
+   @ 130,  80 BUTTON "-" ACTION ( nActual2 := oMeter2:Set( nActual2 -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 130, 110 BUTTON "Rst" ACTION ( nActual2 := 0, oMeter2:Set( 0 ), oMeter2:Refresh() ) SIZE 25, 20 PIXEL
+   @ 130, 140 BUTTON "Auto" ACTION ( Automatic( oMeter2, @nActual2 ) ) SIZE 70, 20 PIXEL
+   @ 130, 215 CHECKBOX oMeter2:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 130, 290 CHECKBOX oMeter2:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+
+
+   // meter 3
+   @ 180, 50 METEREX oMeter3 VAR nActual3 SIZE 310, 20 TOTAL 50 PIXEL;
+             GRADIENT CHUNK { { 1/2, nRGB( 255, 251, 229 ), nRGB( 250, 223, 143 ) } , ;
+                              { 1/2, nRGB( 244, 194,  51 ), nRGB( 252, 235,  173 ) } };
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } };
+             ROUND LINECOLORS CLR_BLACK, CLR_WHITE
+             
+                
+   @ 210,  50 BUTTON "+" ACTION ( nActual3 := oMeter3:Set( nActual3 += 1 ) ) SIZE 25, 20 PIXEL
+   @ 210,  80 BUTTON "-" ACTION ( nActual3 := oMeter3:Set( nActual3 -= 1 ) ) SIZE 25, 20 PIXEL
+   @ 210, 110 BUTTON "Rst" ACTION ( nActual3 := oMeter3:Set( 0 ), oMeter3:Refresh() ) SIZE 25, 20 PIXEL
+   @ 210, 140 BUTTON "Auto" ACTION ( Automatic( oMeter3, @nActual3 ) ) SIZE 70, 20 PIXEL
+   @ 210, 215 CHECKBOX oMeter3:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 210, 290 CHECKBOX oMeter3:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12 
+   
+   // meter 4 vertical
+   @ 10, 380 METEREX oMeter4 VAR nActual4 SIZE 20, 200 TOTAL 50 PIXEL;
+             GRADIENT TRACK { { 1/2, nRGB( 198, 203, 213 ), nRGB( 219, 224, 233 ) },;
+             	                { 1/2, nRGB( 224, 238,237 ), nRGB( 224, 238,237 ) } } ;
+             LINECOLORS nRGB( 110, 151,204 ), CLR_WHITE;
+             VERTICAL INVERTED
+   
+   @  10, 415 BUTTON "+" ACTION ( nActual4 := oMeter4:Set( nActual4 += 1 ) ) SIZE 25, 20 PIXEL
+   @  40, 415 BUTTON "-" ACTION ( nActual4 := oMeter4:Set( nActual4 -= 1 ) ) SIZE 25, 20 PIXEL
+   @  70, 415 BUTTON "Rst" ACTION ( nActual4 := oMeter4:Set( 0 ), oMeter4:Refresh() ) SIZE 25, 20 PIXEL
+   @ 100, 415 BUTTON "Automatic" ACTION ( Automatic( oMeter4, @nActual4 ) ) SIZE 70, 20 PIXEL
+   @ 130, 415 CHECKBOX oMeter4:lInverted PROMPT "Inveted" PIXEL SIZE 70, 12 
+   @ 160, 415 CHECKBOX oMeter4:lVertical PROMPT "Vertical" PIXEL SIZE 70, 12    
+   
+   ACTIVATE WINDOW oWnd
+
+RETURN NIL
+
+FUNCTION Automatic( oMeter, nActual )
+
+   LOCAL n
+   LOCAL nFrom := nActual
+
+   FOR n = nFrom TO oMeter:nTotal step 0.001
+      nActual = n
+      oMeter:Set( nActual )
+   NEXT
+   nActual = oMeter:nTotal
+   oMeter:Set( nActual )
+   
+RETURN NIL
+</code>
+
+** Screen Snapshot **
+
+{{:meterex.jpg|:meterex.jpg}}
+
+====== See Also ======
+[[fivewin_commands_meter | Command Meter ]], [[fivewin_class_tprogress | Class TProgress ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMETEREX.PRG

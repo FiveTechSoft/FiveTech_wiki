@@ -1,0 +1,365 @@
+
+====== Class TActiveX ====== 
+
+ActiveX support class 
+
+Inherits from TControl 
+
+
+====== DATA ====== 
+
+^ Data      ^ Description        ^
+|hActiveX|ActiveX object handle| 
+|cProgID|The program ID| 
+|cString|The class ID| 
+|aProperties|Not used| 
+|aMethods|Not used| 
+|aEvents|Array of the events supported by the ActiveX object| 
+|bOnEvent|A codeblock that is executed on the event trigger| 
+|oOleAuto|tOleAuto Object | 
+
+
+====== METHOD ====== 
+
+^ Method       ^ Description        ^
+|New|Constructor from source code| 
+|Redefine|Constructor from resources| 
+|Do|Calls the specified method of the ActiveX object| 
+|GetProp|Retrieves the value of the specified ActiveX object property| 
+|ReadTypes|Fills aEvent data with the events supported by the ActiveX object| 
+|ReSize|Resizes the ActiveX object| 
+|SetProp|Sets the value of the specified ActiveX object property|
+
+====== Example ======
+FWH\samples\word.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oActiveX
+
+   DEFINE WINDOW oWnd TITLE "FiveWin ActiveX Support"
+
+   oActiveX = TActiveX():New( oWnd, "Word.Application" )
+
+   oWnd:oClient = oActiveX // To fill the entire window surface
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+FWH\samples\webexp2.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oDlg, oActiveX
+
+   DEFINE DIALOG oDlg RESOURCE "Test"
+
+   REDEFINE ACTIVEX oActiveX ID 10 OF oDlg PROGID "Shell.Explorer"
+   
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT oActiveX:Do( "Navigate2", "http://www.google.com" )
+
+return nil
+</code>
+Call Codejock ActiveX from Richard Huang
+<code clipper>
+
+// FWH ActiveX Call Codejock Ocx Sample //
+// Richard                              //
+
+#include "FiveWin.ch"
+
+#define xtpControlError              0
+#define xtpControlButton             1
+#define xtpControlPopup              2
+#define xtpControlButtonPopup        3
+#define xtpControlSplitButtonPopup   4
+#define xtpControlComboBox           5
+#define xtpControlEdit               6
+#define xtpControlCustom             7
+#define xtpControlLabel              8
+#define xtpControlCheckBox           9
+#define xtpControlGallery           10
+#define xtpControlRadioButton       11
+
+#define xtpImageNormal               0
+#define xtpImageDisabled             1
+#define xtpImageHot                  2
+#define xtpImageChecked              3
+#define xtpImagePressed              4
+
+
+function Main()  
+      
+   local oWnd, oAct 
+   
+   local oRb
+   local oQA, oQBtn1, oQBtn2, oQBtn3 
+   local oSysButton, oControl, oPopupBar  
+   
+   local oStatusBar, oToolTipContext, oIcons
+   local oTabFiles, oGroup1
+   local oTabEdit, oGroup2
+   local oTabBuild
+   
+   local aButtons := {} 
+   local oButton1, oButton2, oButton3, oButton4
+   local oExitBtn, oExitBtn2
+   local oBmp1, oBmp2, oBmp3, obmp4, obmp5, obmp6, obmp7, obmp8, obmp9
+   
+   DEFINE WINDOW oWnd TITLE "FWH Support Codejock ActiveX"
+   
+   oBmp1 := TBitmap():Define( , "..\bitmaps\16x16\new2.bmp", oWnd )
+   oBmp2 := TBitmap():Define( , "..\bitmaps\16x16\open2.bmp", oWnd ) 
+   oBmp3 := TBitmap():Define( , "..\bitmaps\alphabmp\explorer.bmp", oWnd )     
+   oBmp4 := TBitmap():Define( , "..\bitmaps\32x32\open.bmp", oWnd ) 
+   oBmp5 := TBitmap():Define( , "..\bitmaps\32x32\people.bmp", oWnd ) 
+   oBmp6 := TBitmap():Define( , "..\bitmaps\32x32\keys.bmp", oWnd ) 
+   oBmp7 := TBitmap():Define( , "..\bitmaps\32x32\quit.bmp", oWnd ) 
+   oBmp8 := TBitmap():Define( , "..\bitmaps\16x16\copy.bmp", oWnd )
+   oBmp9 := TBitmap():Define( , "..\bitmaps\16x16\info.bmp", oWnd )
+   
+   
+   oAct := TActiveX():New( oWnd, "Codejock.CommandBarsFrame.12.1.1", 0, 0, 0, 0 )  
+   
+   //@ 0, 0 ACTIVEX oAct PROGID "Codejock.CommandBarsFrame.12.1.1" OF oWnd
+
+   oAct:bOnEvent = { | cEvent, aParams, pParams | RibbonBarEvent( cEvent, aParams, pParams, aButtons, oWnd ) }
+
+   oAct:Do( "AttachToWindow", oWnd:hWnd )
+   
+   oAct:Do( "EnableOffice2007Frame", .T. )
+   oAct:Do( "VisualTheme", .T. )
+
+           
+   // ToolTipContext - Richard          
+   oToolTipContext := TOleAuto():New( ActXPdisp( oAct:hActiveX ) )
+   oToolTipContext := oToolTipContext:ToolTipContext()
+   oToolTipContext:Style = 5  && xtpToolTipOffice2007
+   oToolTipContext:ShowTitleAndDescription( .T., 0 )
+   oToolTipContext:ShowImage( .T., 0 )
+   oToolTipContext:SetMargin( 2, 2, 2, 2 )
+   oToolTipContext:MaxTipWidth = 180
+   
+   // StatusBar-Richard
+   oStatusBar := TOleAuto():New( ActXPdisp( oAct:hActiveX ) )
+   oStatusBar:StatusBar:Visible = .T.
+
+   oStatusBar:StatusBar:AddPane( 0 )
+   oStatusBar:StatusBar:AddPane( 59137 )
+   oStatusBar:StatusBar:AddPane( 59138 )
+   oStatusBar:StatusBar:AddPane( 59139 )  
+   oStatusBar:StatusBar:IdleText = "FWH support Codejock RibbonBar"       
+   
+   oIcons := oAct:Do( "icons" )  
+   
+   oIcons:AddBitmap( oBmp1:hBitmap,1,xtpImageNormal,.f. ) 
+   oIcons:AddBitmap( oBmp2:hBitmap,2,xtpImageNormal,.f. ) 
+   oIcons:AddBitmap( oBmp3:hBitmap,3,xtpImageNormal,.t. ) // 4th param, Bool to Alpha Channel Support   
+   oIcons:AddBitmap( oBmp4:hBitmap,4,xtpImageNormal,.f. )
+   oIcons:AddBitmap( oBmp5:hBitmap,5,xtpImageNormal,.f. )
+   oIcons:AddBitmap( oBmp6:hBitmap,6,xtpImageNormal,.f. )
+   oIcons:AddBitmap( oBmp7:hBitmap,7,xtpImageNormal,.f. )
+   oIcons:AddBitmap( oBmp8:hBitmap,8,xtpImageNormal,.f. )
+   oIcons:AddBitmap( oBmp9:hBitmap,9,xtpImageNormal,.f. )
+   oIcons:LoadBitmap( "..\bitmaps\32x32\edit.bmp",4, xtpImageNormal) 
+    
+   //oAct:Hide()
+
+   // RibbonBar - Richard
+   oRb = oAct:Do( "AddRibbonBar", "Ribbon Bar" )
+   
+   oRb:EnableDocking(64)
+   oRb:EnableFrameTheme()               
+   oRb:ShowQuickAccessBelowRibbon(.F.)
+   oRb:ShowCaptionAlways(.T.) 
+   oRb:ShowQuickAccess(.T.)  
+   oRb:ShowGripper()
+   
+   // QuickAccess - Richard   
+   oQA:= oRb:QuickAccessControls() 
+   oQBtn1 := oQA:Add( 1, 1, "&New"         )
+   oQBtn2 := oQA:Add( 1, 2, "&Save"        )
+   oQBtn3 := oQA:Add( 1, 8, "&copy"        )
+   oQA:Add( 1, 9, "&info"        )
+   
+   // Add SysButton - Richard
+   oSysButton := oRb:AddSystemButton()
+   oSysButton:IconId( 5 )
+      
+   oSysButton:CommandBar:Controls:Add( 1, 4, "&New"         )
+   oSysbutton:CommandBar:Controls:Add( 1, 5, "&Open..."     )
+   oSysbutton:CommandBar:Controls:Add( 1, 6, "&Save"        )
+   oSysbutton:CommandBar:Controls:Add( 1, 6, "Save &As..."  )
+   
+   oControl := oSysButton:CommandBar:Controls:Add( 4, 5, "&Print")
+   oControl:BeginGroup = .T.
+   
+   oPopupBar := TOleAuto():New( ActXPdisp( oAct:hActiveX ) )
+          oPopupBar := oPopupBar:CreateCommandBar("CXTPRibbonSystemPopupBarPage")
+
+          oControl:CommandBar = oPopupBar
+          oControl := oPopupBar:Controls:Add( 8, 0, "Preview and print the document")
+          oControl:Width = 296
+          oControl:DefaultItem = .T.
+          oControl:Style = 1  && xtpButtonCaption
+          oPopupBar:DefaultButtonStyle = 5  && xtpButtonCaptionAndDescription
+          oPopupBar:SetIconSize( 32, 32 )
+          oPopupBar:ShowGripper = .F.
+
+             oPopupBar:Controls:Add( 1, 4, "Print Pre&view" )
+          oPrnSetup = oPopupBar:Controls:Add( 1, 5, "Pr&int Setup..." )
+             oPopupBar:Controls:Add( 1, 6, "Print Pre&view" )
+             
+   oSysbutton:CommandBar:Controls:Add( 1, 1230, "Prepare" )
+   oSysbutton:CommandBar:Controls:Add( 1, 1235, "Send" )
+   oSysbutton:CommandBar:Controls:Add( 1, 1230, "Publish" )
+   oExitBtn2 = oSysbutton:CommandBar:Controls:Add( 1, 7, "Close" )
+  
+   oSysbutton:CommandBar:SetIconSize( 32, 32 )    
+   
+   
+   // RibbonBar Table - Richard   
+   oTabFiles = oRb:InsertTab( 0, "&Files" ) 
+   
+   oTabFiles_Grp1 = oTabFiles:Groups:AddGroup("&Clipboard", 0)
+   oTabFiles_Grp1:ShowOptionButton = .T.
+   
+   // TabFiles Group ToolTip - Richard
+   oTabFiles_Grp1:ControlGroupOption:Id = 1000
+   oTabFiles_Grp1:ControlGroupOption:ToolTipText = "Clipboard"
+   oTabFiles_Grp1:ControlGroupOption:DescriptionText = "Show clipboard dialog"
+   oTabFiles_Grp1:ControlGroupOption:IconId(3) 
+      
+   
+   oPaste := oTabFiles_Grp1:Add( 4, 1, "&Paste")
+    oPaste:CommandBar:Controls:Add( 1, 1, "&Paste" )
+    oPaste:CommandBar:Controls:Add( 1, 2, "&Paste Special" )
+   oButton1 = oTabFiles_Grp1:Add( xtpControlButton, 2, "&Cut" )
+   oButton2 = oTabFiles_Grp1:Add( xtpControlButton, 3, "&Copy" )
+          
+   oBtn1 := oTabFiles_Grp1:Add(  1, 9, "Format")
+   oBtn1:Enabled = .F.
+   
+   oBtn2 := oTabFiles_Grp1:Add(  1, 8, "Delete")
+   oExitBtn := oTabFiles_Grp1:Add(  xtpControlButton, 7, "Exit")
+            
+   
+   oTabFiles_Grp2 := oTabFiles:Groups:AddGroup( "&Font", 1)
+  
+   oButton3 = oTabFiles_Grp2:Add( xtpControlButton, 4, NIL )
+   oButton4 = oTabfiles_Grp2:Add( xtpControlButton, 3, "" )
+   oButton4:SetIconSize( 64,64 )
+   oButton4:Width = 70
+   oButton4:Height = 70
+   
+       
+   oTabEdit  = oRb:InsertTab( 1, "&Edit" )  
+   
+   oTabBuild = oRb:InsertTab( 2, "&Build" ) 
+   oTabBuild:Color = 5   
+   oTable_Grp := oTabBuild:Groups:AddGroup( "&Show/Hide", 5025)
+   oTable_Grp:Add( 9, 2807, "Ruler" )
+   oTable_Grp:Add( 9, 2808, "GridLines" )
+   oTable_Grp:Add( 9, 2809, "Properties" )
+   oTable_Grp:Add( 9, 2810, "Document Map" )
+   oTable_Grp:Add( 9, 2811, "Thumbnails" )
+   oTable_Grp:Add( 9, 2812, "Document Action Bar" )
+   
+   oControlOptions := oRb:Controls:Add( 2, 0, "Options")
+   oControlOptions:Flags = 1  && xtpFlagRightAlign
+
+   oControl := oControlOptions:CommandBar:Controls:Add( 2, 0, "Styles")
+   oControl:CommandBar:Controls:Add( 1, 3000, "Blue"   )
+   oControl:CommandBar:Controls:Add( 1, 3001, "Black"  )
+   oControl:CommandBar:Controls:Add( 1, 3003, "Silver" )
+   oControl:CommandBar:Controls:Add( 1, 3002, "Aqua"   )
+
+   oControlPopup := oControlOptions:CommandBar:Controls:Add( 2, 0, "Font", -1, .F.)
+   oControlPopup:CommandBar:Controls:Add( 11, 32883, "System Default", -1, .F.)
+
+   oControl := oControlPopup:CommandBar:Controls:Add( 11, 32884, "Normal", -1, .F.)
+   oControl:BeginGroup = .T.
+   oControlPopup:CommandBar:Controls:Add( 11, 32885, "Large", -1, .F.)
+   oControlPopup:CommandBar:Controls:Add( 11, 32886, "Extra Large", -1, .F.)
+
+   oControl := oControlPopup:CommandBar:Controls:Add( 1, 32887, "Auto Resize Icons", -1, .F.)
+   oControl:BeginGroup = .T.
+
+   oControlOptions:CommandBar:Controls:Add( 1, 3004, "Right To Left" )
+   oControlOptions:CommandBar:Controls:Add( 1, 3005, "Animation" )
+
+   oControlAbout := oRb:Controls:Add( 1, 4000, "&About")
+   oControlAbout&#058;Flags = 1  && xtpFlagRightAlign
+      
+   
+   AAdd( aButtons, oButton1 )
+   AAdd( aButtons, oButton2 )
+   AADD( aButtons, oQBtn1 )
+   AADD( aButtons, oQBtn2 )
+   AADD( aButtons, oQBtn3 )   
+   AADD( aButtons, oExitBtn ) 
+   AADD( aButtons, oExitBtn2 )
+   AADD( aButtons, oControlAbout )
+   AADD( aButtons, oPrnSetup ) 
+      
+   
+   oButton1:Caption = "FiveWin power!"
+   oButton1:TooltipText = "Ribbonbar for FWH"
+     
+   ACTIVATE WINDOW oWnd
+     
+return nil
+
+function RibbonBarEvent( cEvent, aParams, pParams, aButtons, oWnd )
+
+   do case
+      case cEvent == "Execute" .and. Len( aButtons ) > 0
+           do case
+              case aButtons[ 1 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "Button 1" )
+                   
+              case aButtons[ 2 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "Button 2" )
+
+              case aButtons[ 3 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "From Quick Access Button 1" )
+
+              case aButtons[ 4 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "From Quick Access Button 2" + CRLF + "FIVEWIN SHARING POWER" )
+
+              case aButtons[ 5 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "From Quick Access Button 3" )
+                   
+              case aButtons[ 6 ]:hObj == aParams[ 1 ]
+                   oWnd:End()      
+                                
+              case aButtons[ 7 ]:hObj == aParams[ 1 ]
+                   oWnd:End() 
+                   
+              case aButtons[ 8 ]:hObj == aParams[ 1 ]
+                   MsgInfo( "FWH's ActiveX Power support Codejock", "About Codejock" )       
+                   
+              case aButtons[ 9 ]:hObj == aParams[ 1 ]
+                   PrinterSetup()                                                             
+                   
+           endcase        
+   endcase        
+   
+return nil 
+</code>
+
+{{ribbonbar13.jpg}} 
+====== Source code ======
+FWH\source\classes\activex.prg
+
+
+====== See also ======
+
+[[fivewin_commands_activex|Commands ACTIVEX]], [[fivewin_class_twindow|Class TWindow]], [[fivewin_class_tbitmap|Class TBitmap]], [[fivewin_function_msginfo|MsgInfo()]]

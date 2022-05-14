@@ -1,0 +1,47 @@
+
+====== Class TMdiFrame ======
+
+MDI Frame Window class                                                         
+Inherits from Class TWindow                                                    
+====== DATA ======
+^ Data     ^ Description                                             ^
+|oWndClient|The TMDIFrame's client window, an instance of TMDIClient.|
+|oWndActive|The TMDIFrame's active MDI child window.|
+|oMenuStart|Default menu when no child windows exist|
+|nMenuInfo|Position where the MDI menu info should be shown|
+|bOnOpen|Codeblock to evaluate when openning the window|
+====== METHODS ======
+^ Method ^ Description         ^
+|New|Generic constructor method|
+|Tile|Tile Child windows|
+|Cascade|Cascade child windows|
+|CloseAll|Close all the MdiChild windows|
+|IconizeAll|Iconizes all the MdiChild windows|
+|ArrangeIcons|Arrange all minimized document child windows. It does|
+|not|affect child windows that are not minimized.|
+|NextWindow|Activate the child window immediately behind the|
+|currently|active child window and place the currently active child window|
+|behind|all other child windows.|
+|PrevWindow|Activate the child window immediately before the|
+|currently|active child window.|
+|Resize|Behavior when resizing the MdiFrame|
+|Command|Controls the WM_COMMAND messages|
+|End|Ends the window|
+|Paste|Paste the given text or the clipboard content|
+|Print|Prints the entire window|
+|GotFocus|Behavior when getting the focus|
+|Select|Select a MdiChild window|
+|SelectAll|Select all the MdiChild windows|
+|ChildNew|Creates an New TMDIChild.|
+|Release|Destroy a TMDIFrame window and all his child objects|
+|SetMenu|Sets a new menu object for the window. MDI menu info will be shown at nMenuInfo position|
+
+====== Example ======
+FWH\samples\TestMdi.prg
+
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMDIFRAME.PRG
+
+====== See Also ======
+[[fivewin_class_tmdiclient|Class TMdiClient]] [[fivewin_class_tmdichild|Class TMdiChild]]

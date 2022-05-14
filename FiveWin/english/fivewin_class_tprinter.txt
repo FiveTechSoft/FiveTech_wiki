@@ -1,0 +1,331 @@
+
+====== Class TPrinter ======
+
+Printer management as objects                                                  
+
+====== DATA ======
+^ Data ^ Description                           ^
+|hDC|Handle of the Device Context of the Printer|
+|hDCOut|Handle of the current metafile in use if file output specified|
+|aMeta|Arrays of metafiles names generated in disk|
+|cDevice|The name of the output device|
+|cDocument|The name of the spooler document|
+|cDriver|The name of the printer driver in use|
+|cModel|Alternative printer to use|
+|cPort|The name of the port used|
+|cDir|The path for the metafiles storage. By default TEMP|
+|nPage|The page currently printed|
+|nXOffset|Coordinates of the virtual page origin|
+|nYOffset|Coordinates of the virtual page origin|
+|nPad|Default pad for all the Say instructions:|
+| |PAD_LEFT   0|
+| |PAD_RIGHT   1|
+| |PAD_CENTER   2|
+|nOrient|Default orientation for the printed page:|
+| |DMORIENT_PORTRAIT      0|
+| |DMORIENT_LANDSCAPE   1|
+|lModified|If the printer device handle should be initialized again|
+|lMeta|If the output has to go to metafiles in disk|
+|lStarted|If the printing already started|
+|lPrvModal|If the preview window should be executed in modal mode|
+|oFont|Default font to use for printing|
+
+====== METHODS ======
+^ Method ^ Description           ^
+|New| Constructor from source code  |
+| |Syntax: TPrinter():New( <cDocument>, <lUser>, <lMeta>, <cModel>, <lModal>)|
+| |Parameters: <cDocument> = The name to assign to cDocument DATA, which is the name of the spooler document to generate |
+| |<lUser> To let the user interactively select the printer to use. |
+| |<lMeta> To PREVIEW the printout work.|
+| |<cModel> To select a different printer from the default one. It is the name of any printer installed in the system, (FiveWin PrintBegin()generates this name from a partial name or from an index name).See Printer xBase Commands for a sample.|
+| |<lModal> If the preview window should be executed in modal mode|
+|End|Destroys the current printer object Syntax: <oPrn>:End() This method should be used to release the current printer object and all its associated handles. It is to be done as last operation with a printer object. Warning: The printer object does not destroy any related font you may have created. You must destroy the fonts you created for the printer using the command oFont:End(). To Create a Font to be used with the printer, you should use the command DEFINE FONT oFont NAME ... SIZE ... OF oPrn|
+|EndPage|Ends the actual printed page. Syntax: <oPrn>:EndPage() This method completes the current page. Once you do it, there is no way to perform any further printing on this same page.|
+|FillRect|Fills a rectangle with a specified brush object. Syntax:<oPrn>:FillRect( <aRect>, <oBrush> )|
+| |<aRect> It is an array with the rectangle dimensions: { nTop,nLeft,nBottom, nRight } |
+| |<oBrush> It is the brush object to use for filling the rectangle area. To create the brush use: DEFINE BRUSH oBrush|
+|Arc|Draws an elliptical arc. Syntax:<oPrn>:Arc( <nTop>, <nLeft>, <nBottom>, <nRight>, <nXB>, <nYB>,<nXE>,<nYE>, <oPen> )|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|Box|Draws a box.Syntax:<oPrn>:Box( <nTop>, <nLeft>, <nBottom>, <nRight>, <oPen> )|
+| |Parameters:<nTop><nLeft><nBottom><nRight><oPen>  The coordinates of the box to draw. By default they are expressed in pixels, unless a different mode is selected. <oPen> is an optional pen object to use for painting the box. To create it use: DEFINE PEN oPen STYLE... COLOR ... WIDTH ...|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|Chord|Draws a chord. Syntax: <oPrn>:Chord( <nTop>, <nLeft>, <nBottom>, <nRight>, <nXB>, <nYB>,<nXE>,<nYE>, <oPen> )|
+| |<nTop><nLeft><nBottom><nRight> are the coordinates of the bounding rectangle are by default expressed in pixels, unless a different SetMapMode()mode is selected.|
+| |<nXB> The X coordinate of the point of the radial line defining the beginning of the chord ending|
+| |<nYB> The Y coordinate of the  point of the radial line defining beginning of the chord.|
+| |<nXE> The X coordinate of the ending point of radial line defining the end of the chord.|
+| |<nYE> The Y coordinate of the ending point of the radial line defining the end of the chord. |
+| |<oPen> It is an optional pen object to use for painting the chord. To create oPen use: DEFINE PEN oPen STYLE ... COLOR ... WIDTH ...|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|CmRect2Pix|Converts a rect from centimeters coordinates into pixels coordinates Syntax: <oPrn>:CmRect2Pix( <aRect> ) -> <aPoint>|
+| |Parameters: <aRect> The rect in centimeters coordinates.|
+| |Returns: <aPoint> The new rect in pixel coordinates|
+|Cmtr2Pix|Converts a centimeters coordinates into pixels coordinates Syntax: <oPrn>:Cmtr2Pix( <@nRow>, <@nCol> ) -> <aPoint>|
+| |Parameters: <nRow> The centimeters coordinates as numeric values. <nCol>|
+| |Returns: <aPoint> An array with the new point in pixel coordinates: {nTop,nLeft }|
+|DraftMode|Select the draft mode for speed up the printing Syntax: <oPrn>:DraftMode( <lOnOff> ) -> <nRetCode>|
+| |Parameters: <lOnOff> A logical value to turn on or off the draft mode.|
+| |Returns: A numeric value indicating if the operation was successfully performed: Positive value -> The operation was successful, Negative value -> It was not performed|
+|Ellipse|Draws an ellipse. Syntax: <oPrn>:Ellipse( <nTop>, <nLeft>, <nBottom>, <nRight>, <oPen> )|
+| |Parameters: <nTop><nBottom><nRight> <oPen> The coordinates of the bounding rectangle. By default they  are expressed in pixels, unless a different SetMapMode()mode is selected.  <oPen> is an optional pen object to use for painting the ellipse. To create it use: DEFINE PEN oPen STYLE... COLOR ... WIDTH ...|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|GetCopies|Retrieves the number of copies for page selected on the printer dialog. Syntax: <oPrn>:GetCopies() -> <nCopies>|
+| |Parameters: None |
+| |Returns: A numeric value indicating the number of copies|
+|GetDriver|Retrieves the driver name of the printer object Syntax:<oPrn>:GetDriver() -> cDriverName|
+| |Parameters: None|
+| |Returns: Name of driver |
+|GetOrientation|Retrieves the printer orientation. Syntax: <oPrn>:GetOrientation() -> <nOrientation>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the orientation type. 1 -> Portrait, 2 ->LandScape|
+|GetPages|Retrieves the From & To pages selected on the printer dialog Syntax: <oPrn>:GetPages([@nFrom], [@nTo]) -> <{nFrom, nTo}>|
+| |Parameters: nFrom and nTo passed by reference (Optional)|
+| |Returns: A two dimensions array with the nFrom and nTo values|
+|GetPhySize|Retrieves the paper physical dimensions Syntax: <oPrn>:GetPhySize() -> <aSize>|
+| |Parameters: None|
+| |Returns: An array with the dimensions of the paper: {nHeight ,nWidth}|
+|GetPixel|Gets and optionally sets the color of a given pixel Syntax: <oPrn>:GetPixel( <nRow>, <nCol>, <nRGBColor> )|
+| |Parameters: <nRow><nCol> The coordinates of the pixel.   <nRGBColor> The optional new color for the pixel.|
+| |Returns: The current color of the pixel|
+|GetPort|Retrieves the port of the printer object Syntax: <oPrn>:GetPort()|
+| |Parameters: None|
+| |Returns: Name of the port|
+|GetTextHeight|Retrieves text Height for a specific font object Syntax: <oPrn>:GetTextHeight( <cText>, <oFont> ) \\ <nHeight>|
+| |Parameters: <cText> The text to retrieve its height. <oFont> A font object. By default it uses the default font oFont of the printer object.|
+| |Returns: The height for that specified font. In fact, this height is not depended on the text, but just on the font object.|
+|GetTextWidth|Retrieves text Width for a specific font object Syntax: <oPrn>:GetTextWidth( <cText>, <oFont> ) -> <nWidth>|
+| |Parameters: <cText> The text to retrieve its width. <oFont> A font object. By default it uses the default font oFont of the printer object.|
+| |Returns: The width for that specified font.|
+|ImportWMF|Imports a Windows metafile to be used as template Syntax: <oPrn>:ImportWMF( <cFile>, <lPlaceable> ) -> nil|
+| |Parameters: <cFile> The name of the Windows metafile WMF file to use as a template for printing. <lPlaceable> If it is a placeable metafile. By default is .t.|
+| | Comments: This new powerful FiveWin feature lets you use i.e.: Corel Draw to design a form, later you save it as a Windows metafile WMF file and use it from the FiveWin printer object. See SAMPLES\Corel.prg. All the printed pages will show the metafile as their background, letting you place on it certain information. It is a very quick and easy way to design forms.|
+|ImportRaw|Imports a RAW file Syntax:<oPrn>:ImportRAW( <cFile> )|
+| |Parameters:<cFile> The name of the RAW file to import|
+|Inch2Pix|Converts a inches coordinates into pixels coordinates Syntax: <oPrn>:Inch2Pix( <nRow>, <nCol> ) -> <aPoint>|
+| |Parameters: <nRow><nCol> The inches coordinates as numeric values. |
+| |Returns: <aPoint> An array with the new point in pixel coordinates: {nTop,nLeft }|
+|Line|Draws a line. Syntax: <oPrn>:Line( <nTop>, <nLeft>, <nBottom>, <nRight>, <oPen> ) -> <lSuccess>|
+| |Parameters: <nTop>, <nLeft>, <nBottom>, <nRight> The coordinates of the line to draw. By default they are expressed in pixels, unless a different SetMapMode()mode is selected. <oPen> is an optional pen object to use for painting the box. To create it use: DEFINE PEN oPen STYLE... COLOR ... WIDTH ...|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|nHorzRes|Retrieves the horizontal resolution. Syntax: <oPrn>:nHorzRes() -> <nHorzRes>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the horizontal resolution of the printer expressed in pixels.|
+|nHorzSize|Retrieves the width of the physical dimensions Syntax: <oPrn>:nHorzSize() -> <nHorzSize>|
+| |Parameters:None|
+| |Returns:A numeric value indicating the physical dimensions of the printer page expressed in millimeters.|
+|nLogPixelX|Retrieves the number of pixels per logical inch. Syntax: <oPrn>:nLogPixelX() -> <nPixels>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the number of pixels per logical inch along the display width.|
+|nLogPixelY|Retrieves the number of pixels per logical inch. Syntax:<oPrn>:nLogPixelY() -> <nPixels>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the number of pixels per logical inch along the display height.|
+|nVertRes|Retrieves the height of the printer page in raster lines Syntax: <oPrn>:nVertRes() -> <nVertRes>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the vertical resolution of the printer in raster lines.|
+|nVertSize|Retrieves the vertical dimensions in millimeters Syntax: <oPrn>:nVertSize() -> <nVertSize>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the vertical dimensions of the printer page in millimeters.|
+|Pie|Draws a pie-shaped wedge bounded by the intersection of an ellipse and two radials.|
+| |Syntax: <oPrn>:Pie( <nTop>, <nLeft>, <nBottom>, <nRight>, <nXStartArc> <nYStartArc>, <nXEndArc>, <nYEndArc>, <oPen> )|
+| |Parameters: <nTop> <nLeft> <nBottom> <nRight> are the coordinates of the bounding rectangle. By default they are expressed in pixels, unless a different SetMapMode() mode is selected. |
+| |<nXB> The X coordinate of the ending point of the first radial.|
+| |<nYB> The Y coordinate of the ending point of the first radial.|
+| |<nXE> The X coordinate of the ending point of the second radial.|
+| |<nYE> The Y coordinate of the ending point of the second radial.|
+| |<oPen> Is an optional pen object to use for painting the pie. To create it use: DEFINE PEN oPen STYLE ... COLOR ... WIDTH ...|
+| |Returns: A logical value indicating if the operation was successfully performed.|
+|Pix2Inch|Converts pixels coordinates into inches coordinates Syntax: <oPrn>:Pix2Inch( <nRow>, <nCol> ) -> <aPoint>|
+| |Parameters: <nRow><nCol> The pixels coordinates as numeric values.|
+| |Returns: <aPoint> An array with the new point in inches coordinates: {nTop,nLeft }|
+|Pix2Mmtr|Change from pixels to millimeters coordinates Syntax: <oPrn>:Pix2Mmtr( <nRow>, <nCol> ) -> <aPoint>|
+| |Parameters: <nRow><nCol> The pixels coordinates as numeric values. |
+| |Returns: <aPoint> An array with the new point in millimeters coordinates:{nTop, nLeft }|
+|Preview|Make a preview of the print work Syntax:<oPrn>:Preview()|
+| |Parameters: None|
+| |Returns: nil|
+| |Comments: This method invokes the preview mode, which displays a window with a buttonbar, a visual page/s, to interactively let the user preview the print work and optionally to select what pages to finally send to the printer.|
+|Rebuild|Rebuilds all the associated handles and files of the printer Syntax: <oPrn>:Rebuild() -> nil|
+| |Parameters:None|
+| |Returns: Nothing|
+| |Comments: Some printer methods require to rebuild the printer object to properly generate new handle values and also to reset the associated preview metafiles files array. FiveWin Printer object automatically invokes this method when it is required.|
+|ResetDC|Updates the associated device handle of the printer object Syntax: <oPrn>:ResetDC() -> <hNewDC>|
+| |Parameters: None|
+| |Returns: The handle of the original device context with updated values.|
+| |Comments: FiveWin Printer object automatically uses this method when an update of its device handle is required.|
+|RoundBox|Draws a box with rounded corners. Syntax: <oPrn>:RoundBox( <nTop>, <nLeft>, <nBottom>, <nRight>, <nWidth>,<nHeight>,<oPen>, <nBGColor> )|
+| |Parameters: <nTop><nLeft><nBottom><nRight> The coordinates of the box to draw. By default they are expressed in pixels, unless a different SetMapMode()mode is selected.|
+| |<nWidth> The width of the ellipse used to draw the rounded corners. |
+| |<nHeight> The height of the ellipse used to draw the rounded corners.|
+| |<oPen> It is an optional pen object to use for painting the box.|
+| |<nBGColor> It is an optional color to be used for the box background. To create it use: DEFINE PEN oPen STYLE ... COLOR...WIDTH ...|
+| |Returns:Nil.|
+|Say|Prints a text at a certain coordinates. Syntax:<oPrn>:Say( <nRow>, <nCol>, <cText>, <oFont>, <nWidth>,<nClrText>,<nBkMode>, <nPad> )|
+| |Parameters: <nRow> <nCol> The coordinates where to display a text. They are graphical coordinates, and may be pixels, inches, millimeters, twips, etc. accordingly to the current SetMapMode() active on the device. Pixels are used by default.|
+| |<cText> The text to display.|
+| |<oFont> An optional font object to use for printing.|
+| |<nWidth> The total width of the text. By default it is the width of the text.|
+| |<nClrText> An optional color to use for printing the text.|
+| |<nBkMode> A numeric value indicating how to mix the text with the background: 1-> Transparent 2-> Opaque|
+| |<nPad> A numeric value indicating how to align the text to print: ( PAD_LEFT is used by default) #define PAD_LEFT 0, #define PAD_RIGHT 1, #define PAD_CENTER 2|
+|CmSay|Exactly as Say method but the coordinates are in centimeters|
+|InchSay|Exactly as Say method but the coordinates are in inches|
+|SayBitmap|Prints a Bitmap. Syntax:<oPrn>:SayBitmap( <nRow>, <nCol>, <xBitmap>, <nWidth>,<nHeight>,<nRaster>) -> nil|
+| |Parameters: <nRow> <nCol> The start coordinates for the bitmap. By default they are expressed in pixels, unless a different SetMapMode() is used.|
+| |<xBitmap> A string with the name of the BMP file to print, if it exits,or the name of the bitmap resource or a numeric value with the resource identifier, if the bitmap should be loaded from resources.|
+| | <nHeight>|
+| |<nWidth> The dimensions of the image to print. Original dimensions of the bitmap are used by default. Some of the possible values are: |
+| |define MERGEPAINT   12255782 |
+| |define SRCAND 8913094 |
+| |<nRaster> An optional numeric value indicating the kind of raster (To review all possible operations with bitmaps we strongly recommend a Graphics management Windows book)|
+|SayImage|Prints any kind of Image. Syntax: <oPrn>:SayImage( <nRow>, <nCol>, <oImage>, <nWidth>,<nHeight>,<nRaster>|) -> nil|
+| |Parameters: <nRow> <nCol> The start coordinates for the bitmap. By default they are expressed in pixels, unless a different SetMapMode() is used.|
+| |<xBitmap> A string with the name of the BMP file to print, if it exits, or the name of the bitmap resource or a numeric value with the resource identifier if the bitmap should be loaded from resources.|
+| | <nHeight>|
+| |<nWidth> The dimensions of the image to print. Original dimensions of the bitmap are used by default. Some of the possible values are:|
+| | #define MERGEPAINT   12255782 // 0xBB0226|
+| | #define SRCAND 8913094 |
+| |<nRaster> An optional numeric value indicating the kind of raster (To review all possible operations with bitmaps we strongly recommend a Graphics management Windows book)|
+|SetAnisotropicMode|Set the anisotropic mode. Syntax: <oPrn>:SetAnisotropicMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Logical units are converted to arbitrary units with arbitrarily scaled axes. Setting the mapping mode to MM_ANISOTROPIC does not change the current window or viewport settings. To change the units, orientation, and scaling, an application should use the SetWindowExt and SetViewportExt functions.|
+|SetCopies|Set the number of copies to print. Syntax:<oPrn>:SetCopies()|
+| | Parameters: None|
+| |Returns: Nothing|
+|SetHiInchMode|Set the high inch mode. Syntax: <oPrn>:SetHiInchMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Each logical unit is converted to 0.001 inch. Positive x is to the right; positive y is up.|
+|SetHiMetricMode|Set the high metric mode. Syntax: <oPrn>:SetHiMetricMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Each logical unit is converted to 0.01 millimeter. Positive x is to the right; positive y is up.|
+|SetIsotropicMode|Set the Isotropic mode. Syntax:<oPrn>:SetIsotropicMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Logical units are converted to arbitrary units with equally scaled axes; that is, one unit along the x-axis is equal to one unit along the y-axis. The SetWindowExt and SetViewportExt functions must be used to specify the desired units and the orientation of the axes. GDI makes adjustments as necessary to ensure that the x and y units remain the same size.|
+|SetLandscape|Set the printer orientation to Landscape Syntax: <oPrn>:SetLandscape()|
+| |Parameters: None|
+| |Returns: Nothing|
+|SetLoInchMode|Set the low inch mode. Syntax:<oPrn>:SetLoInchMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Each logical unit is converted to 0.01 inch. Positive x is to the right; positive y is up.|
+|SetLoMetricMode|Set the low Metric mode. Syntax: <oPrn>:SetLoMetricMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful.|
+| |Comments: Each logical unit is converted to 0.1 millimeter. Positive x is to the right; positive y is up.|
+|SetPage()| Specifies the size of the paper to print on. Syntax: <oPrn>:SetPage( <nPageType> ) -> nil|
+| |Parameters: <nPageType> Specifies the size of the paper to print on.|
+| |1-> Letter 8 1/2 x 11 in|
+| |2-> Letter Small 8 1/2 x 11 in|
+| |3-> Tabloid 11 x 17 in|
+| |4-> Ledger 17 x 11 in|
+| |5-> Legal 8 1/2 x 14 in|
+| |6-> Statement 5 1/2 x 8 1/2 in|
+| |7-> Executive 7 1/4 x 10 1/2 in|
+| |8-> A3 297 x 420 mm|
+| |9-> A4 210 x 297 mm|
+| |10-> A4 Small 210 x 297 mm|
+| |11-> A5 148 x 210 mm|
+| |12-> B4 250 x 354|
+| |13-> B5 182 x 257 mm|
+| |14-> Folio 8 1/2 x 13 in|
+| |15-> Quarto 215 x 275|
+| |16-> 10x14 in|
+| |17-> 11x17 in|
+| |18-> Note 8 1/2 x 11 in|
+| |19-> Envelope #9 3 7/8 x 8 7/8|
+| |20-> Envelope #10 4 1/8 x 9 1/2|
+| |21-> Envelope #11 4 1/2 x 10 3/8|
+| |22-> Envelope #12 4 \276 por 11|
+| |23-> Envelope #14 5 x 11 1/2|
+| |24-> C size sheet|
+| |25-> D size sheet|
+| |26-> E size sheet|
+| |27-> Envelope DL 110 x 220 mm|
+| |28-> Envelope C5 162 x 229 mm|
+| |29-> Envelope C3 324 x 458 mm|
+| |30-> Envelope C4 229 x 324 mm|
+| |31-> Envelope C6 114 x 162 mm|
+| |32-> Envelope C65 114 x 229 mm|
+| |33-> Envelope B4 250 x 353 mm|
+| |34-> Envelope B5 176 x 250 mm|
+| |35-> Envelope B6 176 x 125 mm|
+| |36-> Envelope 110 x 230 mm|
+| |37-> Envelope Monarch 3.875 x 7.5 in|
+| |38-> 6 3/4 Envelope 3 5/8 por 6 1/2 in|
+| |39-> US Std Fanfold 14 7/8 x 11 in|
+| |40-> German Std Fanfold 8 1/2 x 12 in|
+| |41-> German Legal Fanfold 8 1/2 x 13 in|
+| |Returns: nil|
+|SetPixel|Draws a black pixel Syntax: <oPrn>:SetPixel( <nRow>, <nCol> )|
+| |Parameters: <nRow> <nCol> The coordinates of the pixel.|
+| |Returns: The previous color of the pixel|
+|SetPixelMode|Set the Pixel mode. Syntax:<oPrn>:SetPixelMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful|
+| |Comments: Each logical unit is converted to one device pixel. Positive x is to the right; positive y is down.|
+|SetPortrait|Set the printer orientation to Portrait  Syntax: <oPrn>:SetPortrait()|
+| |Parameters: None|
+| |Returns: Nothing|
+|SetPos|Set a new position on the page for next printing Syntax:<oPrn>:SetPos( <nRow>, <nCol> ) -> <nLPrevPos>|
+| |Parameters: <nRow> <nCol> The coordinates of the new position. By default they are expressed in pixels, unless another mode (SetMapMode())is being used.|
+| |Returns: A numeric long value containing the previous device selected position:<nPrevRow> = nLoWord( <nLPrevPos> ) <nPrevCol> = nHiWord(<nLPrevPos>)|
+|SetSize|Selects a different page dimensions Syntax: <oPrn>:SetSize( <nWidth>, <nHeight> ) -> nil|
+| |Parameters: <nWidth> <nHeight> The new dimensions for the printer page in tenths of millimeters.|
+| |Returns: nothing|
+|SetTwipsMode|Each logical unit is converted to 1/20 of a point Syntax:<oPrn>:SetTwipsMode() -> <nPrevMapMode>|
+| |Parameters: None|
+| |Returns: A numeric value indicating the previous map mode if this operation was successful|
+| |Comments: Each logical unit is converted to 1/20 of a point. (Because a point is 1/72 inch, a twip is 1/1440 inch). Positive x is to the right; positive, y is up.|
+|SetFont|Sets and retrieves the default printer font object Syntax: <oPrn>:SetFont( <oNewFont> ) -> <oFont>|
+| |Parameters: <oNewFont> Is the new font object to set as the printer default one. To create it use: DEFINE FONT oFont NAME ... SIZE ...|
+| |Returns: <oFont> The default font object associated to the printer.|
+|Setup|Standard Setup DialogBox for printing. Syntax:<oPrn>:Setup() -> nil|
+| |Parameters: None|
+| |Returns: Nothing|
+|SetViewPortExt|Sets the X and Y dimensions of the viewport Syntax: <oPrn>:SetViewPortExt( <nXExtent>, <nYExtent> ) -> <nPrevViewPortExt>|
+| |Parameters: <nXExtent> <nYExtent> Specifies the new X-extent and Y-extent,in device units of the viewport.|
+| |Returns: The return value is the previous viewport extents, in device units, if the function is successful. The low-order word contains the previous x-extent; the high-order word contains the previous y-extent. Otherwise, the return value is zero: <nPrevXExtent> = nLoWord(<nPrevViewPortExt>) <nPrevYExtent> = nHiWord( <nPrevViewPortExt> )|
+|SetWindowExt|Sets the X and Y extents of the printer device Syntax: <oPrn>:SetWindowExt( <nWidth>, <nHeight> ) -> <nPrevWindowExt>|
+| |Parameters: Specifies the new X-extent and Y-extent, in logical units, of the device context of the printer.|
+| |Returns: The return value is the previous device extension, in logical units,if the function is successful. The low-order word contains the previous x-extent; the high-order word contains the previous y-extent. Otherwise, the return value is zero: <nPrevXExtent> = nLoWord(<nPrevWindowExt>) <nPrevYExtent> = nHiWord( <nPrevWindowExt> )|
+|StartPage|Begins a new page Syntax: <oPrn>:StartPage(). StartPage starts a new page. From that moment on you may perform any printing action on the printer object, like :Say(),:Box(), :Line(), etc... You may print at any coordinate of the page. Once you have completed the page, an :EndPage() should be done.|
+|SetBin|Changes default bin printer. Syntax: <oPrn>:SetBin(nBin)|
+| |#define DMBIN_FIRST       DMBIN_UPPER|
+| |#define DMBIN_UPPER       1|
+| |#define DMBIN_ONLYONE     1|
+| |#define DMBIN_LOWER       2|
+| |#define DMBIN_MIDDLE      3|
+| |#define DMBIN_MANUAL      4|
+| |#define DMBIN_ENVELOPE    5|
+| |#define DMBIN_ENVMANUAL   6|
+| |#define DMBIN_AUTO      7|
+| |#define DMBIN_TRACTOR     8|
+| |#define DMBIN_SMALLFMT    9|
+| |#define DMBIN_LARGEFMT    10|
+| |#define DMBIN_LARGECAPACITY 11|
+| |#define DMBIN_CASSETTE    14|
+| |#define DMBIN_LAST      DMBIN_CASSETTE|
+|SizeInch2Pix|Converts a inches sizes into pixels sizes Syntax: <oPrn>:SizeInch2Pix( <nHeight>, <nWidth> ) -> <aSize>|
+| |Parameters: <nHeight> <nWidth> The inches sizes as numeric values.|
+| |Returns: <aSize> An array with the new sizes in pixel coordinates: {nWidth,nHeight }|
+|GetModel|Retrieves the printers model name| 
+|CharSay|Simulates MSDOS printing. Syntax: <oPrn>:CharSay(nRow, nCol, cText)|
+|CharWidth|Retrieves MSDOS printing char width|
+|CharHeight|Retrieves MSDOS printing char height|
+
+
+====== Example ======
+
+Fwh\Samples\TstPrn2.Prg
+
+** Screen Snapshot **
+
+{{:print.jpg|:print.jpg}}
+
+====== See Also ======
+[[fivewin_commands_printer|Command Printer]], [[fivewin_class_treport|Class TReport]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TPRINTER.PRG

@@ -1,0 +1,131 @@
+
+====== Description ======
+Used groups from the RibbonBar control
+
+====== DATAS ======
+^ Data ^ Description ^
+|oWnd| Container Object of the Group|
+|oRB| |
+|oGrPopup| |
+|oGrp| |
+|aSeparator| |
+|aGradCaption| |
+|aGradDisable| |
+|aGradDisableCaption| |
+|aGradSel| |
+|aGradUnSel| |   
+|bAction| |
+|bClrText| |
+|bAlphaLevel| |
+|hBrushSel| |
+|hBrushUnsel| |
+|hBack| |
+|hBitmap1| |
+|hPalette1| |
+|hAlphaLevel| |   
+|hRgn| |
+|lEnable| Enable/Disable the group and their controls |
+|lPressed| |
+|lStretch| |
+|lMOverAction| |
+|lMOver| |
+|lAlpha| |
+|nClrBoxOut| |
+|nClrBoxIn| |
+|nClrTxt| Set color of the Prompt |
+|nAlign| Align of the Prompt:  0 = Left ; 1 = Center ; 2 = Right |
+|nPosition| |
+|nRow| |
+|nCol| |
+|nWdSrc| |
+|nHtSrc| |
+|nStretchWidth| |
+|nOldWidth| |
+
+====== METHODS ======
+^ Method ^ Description ^
+|New |New(oWnd, nRow, nCol, nHeight, nWidth, nIndex, cPrompt, bAction, nClrBoxIn, nClrBoxOut,aGradSel, hBrushUnsel, aGradCaption, aGradDisable,aGradDisableCaption, oRB, oFont, cBmpStretch, lTrans, nClrTxt) Class Constructor |
+|AddButton( nRow, nCol, nHeight, nWidth, cPrompt, bAction, nType, bWhen, cFile )| Add a button (TRBtn) to the Group|
+|AddSeparator( nCol )| Add a Separator to the Group at nCol position |
+|CalPos()| |
+|Display()| |
+|Destroy()| |
+|Default()| |
+|Enable( lStatus )| Enable/Disable the Grupo |
+|EraseBkGnd( hDC )| |
+|FreeBitmaps()| |
+|HandleEvent( nMsg, nWParam, nLParam )| |
+|HasAlpha( hBitmap )| |
+|Initiate( hDlg )| |
+|IsOver( nRow, nCol )| |
+|MouseMove( nRow, nCol, nFlags )| |
+|MouseHover( nRow, nCol )| |
+|MouseLeave( nRow, nCol, nFlags )| |
+|LButtonDown( nRow, nCol, nFlags )| |
+|LButtonUp( nRow, nCol, nFlags )| | 
+|LoadBitmaps( cName )| |
+|nAlphaLevel( nLevel )| |
+|Paint()| |
+|PopupGroup()| |
+|ReSize( nType, nWidth, nHeight )| |
+
+====== Example ======
+FWH\samples\Ribbon.prg
+
+Example 2 --> By Carlos Gallego
+
+<code clipper>
+#include "fivewin.ch"
+#include "ribbon.ch"
+
+
+Function main()
+  local oWnd, oBar, oMenu
+  SetDialogEsc(.F.)
+  MENU oMenu 2007
+    // MENUITEM "&Salir" ACTION oWnd:End()
+  ENDMENU
+  DEFINE WINDOW oWnd TITLE "TRBGroup and TRBtn Classes Test" MDI COLORS nRGB(0,0,0),nRGB(255,255,255) MENU oMenu
+    DEFINE BUTTONBAR oBar 3D SIZE 62,80 OF oWnd TOP 2007 // Ancho,Alto
+    oBar:SetColor(CLR_WHITE, RGB(255,255,255))
+    oBar:bRClicked:={||NIL}   // Para desactivar el boton derecho del mouse
+    WndCenter(oWnd:hWnd)
+  activate window oWnd ON INIT (SetRBContrl(oWnd,oBar))
+return nil
+
+
+Procedure SetRBContrl(oWnd,oBar)
+  local oRb1, oBtn1, oBtn2, oBtn3, oBtn4, oBtn5
+
+   @ 07,15 RBGROUP oRB1 OF oBar PROMPT "Borola" SIZE 100,65 // TRANSPARENT
+
+       @ 05, 15 RBBTN oBtn1 OF oRB1 BITMAP "c:\fwh-908\bitmaps\alphabmp\files.bmp";
+               SIZE 80, 33   PROMPT "Test 1" MOSTLEFT TRANSPARENT;
+               ACTION ( MsgInfo("Hello 01") ) PIXEL
+
+   @ 05,192 RBBTN oBtn2 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\files.bmp";
+           SIZE 180, 33   PROMPT "Test 02" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 02") ) PIXEL
+
+   @ 42,192 RBBTN oBtn3 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\graphics.bmp";
+           SIZE 180, 33   PROMPT "Test 03" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 03") ) PIXEL
+
+   @ 05,400 RBBTN oBtn4 OF oBar BITMAP "c:\fwh-908\bitmaps\alphabmp\graphics.bmp";
+           SIZE 180, 33   PROMPT "Test 04" MOSTLEFT TRANSPARENT;
+           ACTION ( MsgInfo("Hello 04") ) PIXEL
+
+   @ 23,600 RBBTN oBtn5 OF oBar BITMAP "C:\FWH-908\bitmaps\32x32\quit.BMP";
+           SIZE 70, 40   PROMPT "Exit" MOSTLEFT TRANSPARENT;
+           ACTION ( oWnd:End() ) PIXEL
+
+Return
+</code>
+ 
+====== Source code ======
+FWH\source\classes\trbgroup.prg
+
+
+====== See Also ======
+[[fivewin_class_tribbonbar|Class TRibbonBar]], [[fivewin_class_trbtn|Class TRBtn]]
+

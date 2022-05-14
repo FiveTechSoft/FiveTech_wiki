@@ -1,0 +1,46 @@
+
+====== Class TParser ======
+
+Dynamic parser machine                                                         
+====== DATA ======
+^ Data ^ Description  ^
+|aRules|Array of rules|
+|aStates|Array of states|
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|Add|Add a new rule|
+====== Example ======
+\Fwh\Samples\TestPars.Prg
+<code clipper>
+// Testing FiveWin parser machine
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oParser := TParser():New()
+
+   oParser:Add( "Program", { "Defines", "Code" } )
+
+   oParser:Add( "Defines", { "Define", "Defines" } )
+
+   oParser:Add( "Define",  { "#", "DEF" } )
+
+   oParser:Add( "Code",    { "Functions" } )
+
+   oParser:Add( "Functions", { "Function", "Functions" } )
+
+   MsgInfo( Len( oParser:aRules ) )  // Result is 5
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TPARSER.PRG

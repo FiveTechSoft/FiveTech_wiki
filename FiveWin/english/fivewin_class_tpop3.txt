@@ -1,0 +1,95 @@
+
+====== Class TPOP3 ======
+
+FiveWin Internet incomming mail Class                                          
+
+====== DATA ======
+^ Data  ^ Description                       ^
+|oSocket|Socket used during the mail session|
+|nPort|Default port|
+|User|User name|
+|Pass|User password|
+|lAllOk|All messages received correctly|
+|aMsgs|Array of incoming messages|
+|nAtMsg|Current message processed|
+|cIpServer|IP of the mail server|
+|AllOk|No errors|
+|nStatus|Temporary session status|
+|lDelMsgs|If messages should be deleted from the mail server|
+|bConnecting|Action to perform while trying to connect|
+|bConnected|Action to perform when already connected|
+|bDone|Action to perform when Msg has been already sent|
+|lHeaderOnly| Default Value is .F., If set to .T. then only the Email headers are downloaded and it is very fast. May be useful in a situation where you want to give the user a preview of the Message header and make him select the messages which he needs to download |
+
+====== METHODS ======
+^ Method ^ Description            ^
+|New|Constructor from source code.|
+|GetMail|Retrieves mail|
+|OnRead|Action to perform on reading|
+|LogError|Generated error log|
+====== Example ======
+\Fwh\Samples\TestPop3
+<code clipper>
+// Testing FiveWin new Internet incoming mail (POP3 protocol) Class
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+
+   DEFINE WINDOW oWnd TITLE "Receiving Internet Mail from FiveWin"
+
+   DEFINE BUTTONBAR oBar _3D OF oWnd
+
+   DEFINE BUTTON OF oBar ACTION GetMail() TOOLTIP "Get Mail"
+
+   SET MESSAGE OF oWnd TO "Ready" NOINSET DATE TIME KEYBOARD
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function GetMail()
+
+   local oInMail
+
+   oWnd:SetMsg( "Geting Internet email..." )
+
+   oInMail = TPop3():New( "194.224.203.2",, "<Your username>", "<Your password>" )  // mail server IP
+
+   oInMail:bConnecting = { || oWnd:SetMsg( "Connecting to 194.224.203.2..." ) }
+   oInMail:bConnected  = { || oWnd:SetMsg( "Connected" ) }
+   oInMail:bDone       = { || ReadEmails( oInMail ) }
+
+   oInMail:GetMail()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function ReadEmails( oInMail )
+
+   local n
+
+   MsgInfo( "Total emails: " + Str( Len( oInMail:aMsgs ) ) )
+
+   for n = 1 to Len( oInMail:aMsgs )
+      MsgInfo( oInMail:aMsgs[ n ] )
+   next
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+[[fivewin_class_tinternet| Class TInternet ]], [[fivewin_class_tsocket| Class TSocket ]], [[fivewin_class_tftp| Class TFtp ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TPOP3.PRG

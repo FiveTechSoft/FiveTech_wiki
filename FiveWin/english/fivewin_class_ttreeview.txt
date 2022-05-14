@@ -1,0 +1,198 @@
+====== Class TTreeView ======
+
+Standard Tree view control of Windows 32 bits API (Commoncontrols.dlg).\\        
+In order to use it from resources you MUST indentify the control as: 'SysTreeView32'\\                                                                
+Inherits from TControl                                                         
+
+====== DATA ======
+^Data  ^ Description             ^
+|aItems|Array of TTVItem objects.|
+|oImageList|TImagelist object|
+|bChanged|CodeBlock to evaluate when changing the state of the Treeview|
+
+====== METHODS ======
+^Method  ^ Description           ^
+|New|Constructor from source code\\ New(nTop, nLeft, oWnd, nClrFore, nClrBack, lPixel, lDesign, nWidth, nHeight, cMsg)|
+|ReDefine|Constructor from resources\\ ReDefine(nId, oWnd, nClrFore, nClrBack, lDesign, cMsg)|
+|Add|Add an item to the Tree view.\\ Parameters:\\ <cPrompt> - String for the new item\\ <nImage> - Ordinal image of the oImageList object\\ <nValue> - A value that can be retrieved later using the function TVIParam() -> Returns a TTVItem object|
+|CollapseAll|Collapses all the TreeView branches|
+|CollapseBranch|Collapses the given item|
+|DeleteAll|Deletes all TTreeview items|
+|Expand|Expands all the TreeView branches|
+|ExpandAll|Expands all the branches of the given item|
+|ExpandBranch|Expands the given item|
+|GetCheck|Returns the checkbox state of an item|
+|GetItem|Returns TTVItem object by ist handle. Parameter: hItem: TTVItem handle|
+|GetSelected|Returns selected TTVItem object|
+|GetSelText|Returns the prompt of current selected item|
+|HitTest|Returns the TTVItem at specific coordinates. Parameters:\\ <nRow>, <nCol>. Returns a TTVItem object or nil\\ This method can be used to change the actual selected Item on left, right or double left mouse click.|
+|Select|Selects a specific item. Parameters oItem: TTVItem object|
+|SelChanged|Selected item change event handler|
+|SetCheck|Sets the checkbox state of an item|
+|SetColor|Sets the foreground and background color of the control|
+|SetImageList|Sets the Imagelist object. Parameters: <oImagList> ie TImagelist object. Returns nil|
+|Toggle|Toggles the expanded/collapsed status of all the TreeView branches|
+|ToggleAll|Toggles the expanded/collapsed status of all the branches of the given item|
+|ToggleBranch|Toggles the expanded/collapsed status of the given item|
+
+
+====== Example ======
+FWH\SAMPLES\TestTre2.prg
+<code clipper>
+// -- testtre2.prg 
+// WinAPI Trees (SysTreeView32) !!! 
+// Window with a Tree, a Vertical Splitter & a resizable dialog 
+
+#include "FiveWin.ch" 
+#include "Splitter.ch" 
+
+//----------------------------------------------------------------------------// 
+
+function Main() 
+
+   local oWnd, oDlg, oBar, oTree, oItem1, oItem2, oImageList, oSplit 
+
+   DEFINE WINDOW oWnd FROM 3, 6 TO 20, 70 ; 
+      TITLE "Welcome to " + FWVERSION COLOR "N/W"
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D 
+
+   DEFINE BUTTON RESOURCE "open" OF oBar ACTION oTree:aItems[ 1 ]:Expand() ; 
+      TOOLTIP "Expand" NOBORDER 
+
+   DEFINE BUTTON RESOURCE "close" OF oBar ACTION oTree:aItems[ 1 ]:Colapse() ; 
+      TOOLTIP "Colapse" NOBORDER 
+
+   DEFINE BUTTON RESOURCE "open" OF oBar ACTION oTree:ExpandAll() ; 
+      TOOLTIP "Expand all items" NOBORDER 
+
+   DEFINE BUTTON RESOURCE "close" OF oBar ACTION oTree:ColapseAll() ; 
+      TOOLTIP "Colapse all items" NOBORDER 
+   // note: next one gpf 
+   DEFINE BUTTON RESOURCE "textbox" OF oBar ACTION if( oTree:GetSelected() # nil, oTree:GetSelected():SetText( Time() ), nil ) ; 
+      TOOLTIP "Change Text" NOBORDER 
+
+   oImageList := TImageList():New()              // imagelist items are zero-based! 
+
+   oImageList:Add( TBitmap():Define( "folder",, oWnd ), ;        // nImage == 0 (default if not specified) 
+                   TBitmap():Define( "fldMask",, oWnd ) ) 
+   oImageList:Add( TBitmap():Define( "form",, oWnd ), ;          // nImage == 1 
+                   TBitmap():Define( "frmMask",, oWnd ) ) 
+   oImageList:Add( TBitmap():Define( "icon",, oWnd ),;           // nImage == 2 
+                   TBitmap():Define( "icoMask",, oWnd ) ) 
+   oImageList:Add( TBitmap():Define( "bitmap",, oWnd ),;         // nImage == 4 
+                   TBitmap():Define( "bmpMask",, oWnd ) ) 
+
+   oTree := TTreeView():New( 2, 0, oWnd ) 
+
+   oTree:bChanged := {|oTree,oItem| ; 
+      oWnd:SetText( If( oTree:GetSelected():GetParent() != nil,; 
+                        oTree:GetSelected():GetParent():cPrompt + " + ", "" ) + ; 
+                    oTree:GetSelText() ), ; 
+      oItem := oTree:GetSelected(), ; 
+      If( oItem # nil .and. ValType( oItem:cargo ) == "B", Eval( oItem:cargo ), nil ) } 
+
+   oTree:SetImageList( oImageList ) 
+
+   oItem1 := oTree:Add( "Hello world!" )                       // uses folder bmp 
+
+   oItem1:Add( "xBase & OOPS", 1, {|| Test1( oDlg ) } )        // uses form bmp 
+
+   oItem2 := oItem1:Add( "Clipper 5" ) 
+      oItem2:Add( "Another", 2, {|| Test2( oDlg ) } )          // uses icon bmp 
+      oItem2:Add( "item", 2 ) 
+
+   oItem2 := oItem2:Add( "and..." ) 
+      oItem2:Add( "more items", 3 )                            // uses bmp bmp 
+
+   oTree:Add( "FiveWin power!" ) 
+
+   oItem2 := oTree:Add( Time() ) 
+      oItem2:Add( Time(), 1 ) 
+
+   SET MESSAGE OF oWnd TO FWVERSION NOINSET CLOCK DATE KEYBOARD 
+
+   DEFINE DIALOG oDlg OF oWnd ; 
+      STYLE nOR( WS_CHILD, WS_VISIBLE ) ; 
+
+   @ 29, 200 SPLITTER oSplit ; 
+      VERTICAL _3DLOOK ; 
+      PREVIOUS CONTROLS oTree ; 
+      HINDS CONTROLS oDlg ; 
+      SIZE 4, 200 PIXEL ; 
+      LEFT MARGIN 20 ; 
+      RIGHT MARGIN 25 ; 
+      OF oWnd 
+
+   ACTIVATE DIALOG oDlg NOMODAL 
+
+   ACTIVATE WINDOW oWnd ; 
+      ON INIT ( oDlg:Move( 0, oSplit:nRight, oWnd:nWidth, oWnd:nHeight, .f. ), ; 
+                oWnd:bResized := {|| oSplit:AdjClient(), oDlg:SetSize( oWnd:nWidth - oTree:nWidth - oSplit:nWidth - 8, oSplit:nHeight - 1, .t. ) }, ; 
+                oDlg:refresh(.t.), oTree:refresh(.t.) )  // required so that objects around splitter paint correctly on init 
+
+   oImageList:End() 
+
+return nil 
+
+//----------------------------------------------------------------------------// 
+
+static function CleanSlate( oDlg ) 
+
+   while Len( oDlg:aControls ) > 0 
+      ATail( oDlg:aControls ):end() 
+   end 
+
+return nil 
+
+//----------------------------------------------------------------------------// 
+
+static function Test1( oDlg ) 
+   Local oGet1, oGet2 
+   Local cGet1 := PadR( "Type something!", 50 ) 
+   Local cGet2 := PadR( "Type something else!", 50 ) 
+
+   CleanSlate( oDlg ) 
+
+   @ 5,10 Say "Some data:" Of oDlg Pixel 
+   @ 3,70 Get oGet1 Var cGet1 Of oDlg Pixel ; 
+      Size 150,22 
+
+   @ 30,10 Say "Other data:" Of oDlg Pixel 
+   @ 28,70 Get oGet2 Var cGet2 Of oDlg Pixel ; 
+      Size 150,22 
+
+Return nil 
+
+//----------------------------------------------------------------------------// 
+
+static function Test2( oDlg ) 
+   Local oCbx1, oChk1 
+   Local cCbx1 := "", lChk1 := .t. 
+
+   CleanSlate( oDlg ) 
+
+   @ 5,10 Say "Choose:" Of oDlg Pixel 
+   @ 3,70 Combobox oCbx1 Var cCbx1 Of oDlg Pixel ; 
+      Items { "Uno", "Dos", "Tres", "Mambo!" } ; 
+      Size 80,18 
+
+   @ 28,70 Checkbox oChk1 Var lChk1 Of oDlg Pixel ; 
+      Prompt "Tick tock tick tock" ; 
+      Size 150,22 
+
+Return nil 
+
+//----------------------------------------------------------------------------// 
+</code>
+
+** Screen Snapshot **
+
+{{:treeview.jpg|:treeview.jpg}}
+
+====== See Also ======
+
+[[fivewin_commands_trees|Commands Tree]], [[fivewin_commands_treeview|Commands TreeView]], [[fivewin_class_ttvitem|Class TTvItem]], [[fivewin_class_timagelist|Class TImageList]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTREEVIEW.PRG

@@ -1,0 +1,150 @@
+====== Class TDBCombo ======
+
+A specialized combobox that loads data directly from a DBF                     
+Inherits from TComboBox                                                        
+====== DATA ======
+|cAlias|Workarea alias for field to display|
+|cFldList|Field to display in the combobox|
+|cFldItem|Field to return in the bound variable|
+|aList|Array of display items corresponding to aItems. Maybe|
+|specified|in the constructor or read from cAlias -> cFldList|
+====== METHODS ======
+|New|Constructor from source code|
+|Redefine|Constructor from resources|
+|Add|Adds an item to the list|
+|Default|Default initialization of the control|
+|Del|Deletes an item from the list|
+|Initiate|Initializes the control|
+|Insert|Inserts an item to the list|
+|LostFocus|Lostfocus event handler|
+|Modify|Modifies an item of the list|
+|Refill|Refill aItems and aList from cFldItem and cFldList|
+|SetItems|Fills aItems and aList with the values taken from the|
+|corresponding|arrays passed as parameters|
+|DrawItem|Drawitem event handler|
+|ListGet|Returns the selected element of aList|
+|Update|Automatically refreshes the items from the associated|
+|DBF||
+|DBCombo|is a subclass of Combobox and thus has the same appearance and|
+|works|very similarly. It has two primary features that a Combobox|
+|doesn't.|The first feature is that you can display a description and|
+|return|a code, for example, you can display item descriptions in the|
+|combobox|and the control assigns the corresponding item code to the|
+|specified|variable. This is a much better way of presenting the data to a|
+|user|than the traditional method of just listing the codes. Users don't|
+|remember|codes. Computers need codes--people don't.|
+|The|code field data can be either character or numeric. The list field|
+|must|be character.|
+|The|second primary feature is that you can automatically read the data|
+|from|a database file. The database file may be indexed and scoped or|
+|filtered.|Just setup the database before calling the control. You can|
+|also|force the database to be re-read by calling the REFILL method. You|
+|may|want to do this after adding a new record to the database.|
+|Alternately,|you can use arrays rather than a database.|
+|This|control has built-in incremental searching which acts very much like|
+|AutoComplete.|The database must be indexed on the displayed field using|
+|the|UPPER() function. The backspace key is functional, and the spacebar|
+|resets|the search. You can also use the up and down arrow keys when the|
+|incremental|search gets close to a match.|
+|To|use a DBCombo from resources, just create a Combobox control as the|
+|resource,|then redefine it as DBCOMBO in the source code.|
+|DBCombo|is XP theme aware.|
+|Keep|in mind that each time a dialog containing a DBCombo is opened, the|
+|data|from the database is going to be re-read into the control's array.|
+|For|small lists this will not create a noticeable delay, however larger|
+|lists|may. If you have a small list that is not going to be changing|
+|often|(like dept, type, group, etc.), you may want to consider using a|
+|static|array which is only read from the disk at the first use.|
+|Trick:|To show multiple fields in the dbcombo list, concatenate them and|
+|put|them into an array.|
+|do|while ! eof()|
+|aadd(|aItem, CUSTNO )|
+|aadd(|aList, COMPANY+" "+CUSTNO)|
+|skip||
+|enddo||
+|Syntax|examples:|
+|This|lists the "descrip" field in the combobox and assigns the selected|
+|value|from the "itemNo" field to the variable cItem.|
+|@|10,30 DBCOMBO oDBC VAR cItem;|
+|ALIAS|cAlias;|
+|ITEMFIELD|itemNo;|
+|LISTFIELD|descrip;|
+|OF|oDlg;|
+|UPDATE||
+|This|uses arrays instead of reading the data from a file.|
+|@|10,30 DBCOMBO oDBC VAR cItem;|
+|ITEMS|aItems;|
+|LIST|aList;|
+|SIZE|100,200;|
+|OF|oDlg;|
+|UPDATE||
+|Here|is an example using a database object:|
+|REDEFINE|DBCOMBO ::oEmployee:deptno;|
+|ID|ID_DEPT;|
+|ALIAS|::oDept:cAlias;|
+|ITEMFIELD|"DEPTNO";|
+|LISTFIELD|"DESCRIP";|
+|OF|oDlg;|
+|UPDATE||
+|Note|that fieldnames can be surrounded by quotes or not.|
+====== Example ======
+\Fwh\Samples\TestDbc1.Prg
+<code clipper>
+#include "fivewin.ch"
+#include "dbcombo.ch"
+//-------------------------------------------//
+Function Main()
+   Local oDlg, oDBC1, oDBC2, cVar, oCust, cStateID:="  ", oBtn, cState:=""
+   Local cDept:= space(3), oStates, aItems, aList
+   Field NAME
+
+   If File("states.dbf")
+      Use states
+      Index on upper(NAME) to temp
+      Database oStates
+   Else
+      msgInfo("File states.dbf not found.")
+   Endif
+
+   Define Dialog oDlg
+
+   @ 10,30 DBCOMBO oDBC1 var cStateID of oDlg;
+      alias oStates:cAlias;
+      size 100,200 pixel;
+      itemfield "CODE" ;
+      listfield "NAME";
+      update;
+
+   aList:= {"Accounting","HR","Marketing","Production","Research","Shipping","Sales"}
+   aItems:= {"100","200","400","300","600","500","700"}
+
+   @ 30,30 DBCOMBO oDBC2 VAR cDept;
+      Items aItems;
+      Size 100,200 pixel;
+      List aList;
+      OF oDlg;
+      update
+
+
+   @ 50, 50 BUTTTON oBtn PROMPT "Selected";
+      OF oDlg pixel ;
+      Action msgInfo( "cStateId: " +cStateID +CRLF+"DeptNo: "+cDept,"Selected" );
+      Default
+
+   Activate Dialog oDlg Center;
+
+   Ferase("temp.ntx")
+
+Return nil
+</code>  
+
+** Screen Snapshot **
+
+{{:dbcombo.jpg|:dbcombo.jpg}}
+
+
+====== See Also ======
+[[fivewin_commands_dbcombo | Command DbCombo ]], [[fivewin_commands_combobox | Command ComboBox ]], [[fivewin_class_Tcombobox | Class TCombobox ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDBCOMBO.PRG

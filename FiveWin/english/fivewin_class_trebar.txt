@@ -1,0 +1,90 @@
+
+====== Class TReBar ======
+
+Win32 RebarWindow common control support                                       
+Inherits from TControl                                                         
+====== DATA ======
+
+====== METHODS ======
+^Method ^ Description            ^
+|New|Constructor from source code|
+|InsertBand|Insert a new band|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oReBar, oToolBar, oPanel, oBtn1, oFolder, oToolBar2
+   local oImageList, oHand
+
+   DEFINE WINDOW oWnd TITLE "Testing rebars and toolbars" ;
+      MENU BuildMenu()
+
+   DEFINE CURSOR oHand RESOURCE "hand"
+
+   oReBar = TReBar():New( oWnd )
+
+   oPanel := TPanel():New( 0, 0, 75, 300, oReBar )
+
+   oImageList = TImageList():New()
+
+   oImageList:AddMasked( TBitmap():Define( , "..\bitmaps\16x16\new2.bmp", oWnd ),;
+                         nRGB( 255, 0, 255 ) )    
+   oImageList:AddMasked( TBitmap():Define( , "..\bitmaps\16x16\open2.bmp", oWnd ),;
+                         nRGB( 255, 0, 255 ) )    
+   
+   oImageList:Add( TBitmap():Define( , "..\bitmaps\16x16\icon.bmp", oWnd ),;
+                   TBitmap():Define( , "..\bitmaps\16x16\icoMask.bmp", oWnd ) )
+
+   oToolBar = TToolBar():New( oPanel, 33, 33, oImageList )
+   oToolBar:nLeft = 5
+   oToolBar:AddButton( { || MsgInfo( "New" ) }, "New" ) // , "new file" )
+   oToolBar:AddButton( { || MsgInfo( "Open" ) }, "Open" )
+   oToolBar:AddButton( { || MsgInfo( "three" ) }, "three" )
+   oToolBar:AddSeparator()
+   oToolBar:AddButton( { || MsgInfo( "four" ) }, "four" )
+   oToolBar:oCursor = oHand 
+
+   oReBar:InsertBand( oPanel )
+
+   @ 10, 2 FOLDER oFolder PROMPTS "One", "Two", "Three" SIZE 400, 62
+
+   oToolBar2 = TToolBar():New( oFolder:aDialogs[ 1 ],,, oImageList )
+   oToolBar2:AddButton( { || MsgInfo( "pointer" ) }, "pointer" )
+   oToolBar2:AddSeparator()
+   oToolBar2:AddButton( ,"label" )
+   oToolBar2:AddButton( ,"button" )
+
+   oReBar:InsertBand( oFolder )
+
+   DEFINE STATUSBAR OF oWnd PROMPT "Rebars and Toolbars test"
+
+   ACTIVATE WINDOW oWnd MAXIMIZED
+   
+   oImageList:End()
+
+return nil
+
+FUNCTION BuildMenu()
+
+   LOCAL oMenu
+
+   MENU oMenu
+      MENUITEM "&File"
+      MENU
+         MENUITEM "&New..." ACTION MsgInfo( "Hello" )
+      ENDMENU
+   ENDMENU
+
+RETURN oMenu
+</code>
+
+** Screen Snapshot **
+
+{{:rebars.jpg|:rebars.jpg}}
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TREBAR.PRG

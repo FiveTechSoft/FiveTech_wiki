@@ -1,0 +1,1879 @@
+====== Class TDockPnel ======
+
+Class TDockPnel                                                                 
+Inherits from TControl, but internally it does not contain a single object.\\
+
+New Container Style: allows simulation of dashboard style.\\
+
+
+
+====== DATAs ======
+
+**Datas: Although they can be used in the definition of the object, the assignment of the data directly, it is recommended to use the related methods, if they are available, so that in the case of future modifications or amplications of operation, it does not affect its code.**
+
+^Data^Method^Type^Default^Details^
+|nMode|//SetModeDock( nMode )//|N| 1 |Type Object container principal: 1 -> TPANEL  -- 2 -> TSCRLPANEL  -- 9 -> TDIALOG |
+|oPnelP|//CreatePnelP( nMode )//|O| |Object for external ( principal ) container.|
+|oPnelH|//CreatePnelH()//|O| |Object for internal container|
+|nHTit|//SetHeightCaption( nHeight )//|N| 40 |Height of Title|
+|nBorder|//SetBorderSize( nBorder )//|N| 1 |Border between oPnelP and oPnelH|
+|lBottom|//SetPosTitle( lBottom )//|L| .F. |Title at bottom of control.|
+|lBoxText| |L| .F. |Draw box in caption|
+|cAlignText| |C| "L" |Alignement of caption. Example: "TL", "TR", ...|
+|aBmps|//SetImgsFiles( aImgs )//|A| |Array Images files for title.|
+|aResources|//SetImgsResources( aImgs )//|A| |Array resources images for title.|
+|nWImg|//SetSizeImgs( nW, nH )//|N| |Width  size images|
+|nHImg|//SetSizeImgs( nW, nH )//|N| |Height size images|
+|lLeftImgs| |L| .T. |Show images at left ( .F. for right ) of title. |
+|lClient| | L | .F. |Control to oClient area|
+|aBtnBmps| | A | |Array for Btns Objects |
+|aBtnRes| | A | |Array for Btns Objects |
+|lSelected| | L | .F. |Used for users|
+|nHeightCtrl|//SetHeightCtrl( nHeight )//| N | 0 |Height at top of control defined|
+|aRectTitH| | A | |Coordinates for TTitle control|
+|lBottomH| | L | .F. |Paint TTitle control at bottom of Interior Panel|
+|cTitH| | C | |cCaption control TTitle of interior Panel|
+|aRectText| | A | |Coordinates, only { row, col } of cTitH|
+|nClrPaneH|//SetColors( nText, nPane, nTextH, nPaneH )//| N | |Color of panel interior|
+|nClrTextH|//SetColors( nText, nPane, nTextH, nPaneH )//| N | |Color of panel interior|
+|nClrPaneT|//SetColors( nText, nPane, nTextH, nPaneH )//| N | |Color of control User predefined|
+|nClrTextT|//SetColors( nText, nPane, nTextH, nPaneH )//| N | CLR_WHITE |Color text control User predefined|
+|nClrPaneX| | N | | | 
+|bPaintH|//SetCtrlsPnel( bCtrls )//| B | |Configure controls paint inside Panel interior|
+|nType|//SetTypeCtrl( nType )//| N | 0 |Predefined control|
+|nTClient|//SetCoorsClient( nTop, nLeft, nBottom, nRight )//| N | |nTop for client area free inside Panel interior|
+|nLClient|//SetCoorsClient( nTop, nLeft, nBottom, nRight )//| N | |nLeft for client area free inside Panel interior|
+|nBClient|//SetCoorsClient( nTop, nLeft, nBottom, nRight )//| N | |nBottom for client area free inside Panel interior|
+|nRClient|//SetCoorsClient( nTop, nLeft, nBottom, nRight )//| N | |nRight for client area free inside Panel interior|
+|bSetupCtrl|//SetSetupCtrls( bSetup )//| B | |Setup for control defined with nType|
+|lShadow| | L |.F.| |
+
+**Datas used internally.**
+
+^Data^Usage^Type^Default^Details^
+|bOldResize|Internal|B| | |
+|nLastRow| |N|0| |
+|nLastCol| |N|0| |
+|oCrsHand| |O| |Object cursor for move control |
+|nOldTop| |N|0| |
+|nOldLeft| |N|0| |
+|nOldWidth| |N|0| |
+|nOldHeight| |N|0| |
+|lResize| | L |.T.| |
+|lRepaint| | L |.F.| |
+|lFromInit| | L |.F.| |
+|oFontBmp| | O |"Segoe UI Symbol"|Object for symbols used as bitmaps|
+
+
+
+
+====== METHODs ======
+
+^Method^Usage^Details^
+|New()|CONTRUCTOR| |
+|Activate()| ||
+|End()|DESTRUCTOR| |
+|ChangeColorsH( nClrT, nClrP )| |Change colors of panel interior |
+|ChangeColorsP( nClrT, nClrP )| |Change colors of panel exterior |
+|CreatePnelP( nMode )| |Constructor panel exterior ( principal ) |
+|CreatePnelH( nMode )| |Constructor panel interior |
+|Refresh()|INLINE| |
+|Restore()| | Restore size initial. |
+|RestoreWndPos()| | |
+|SaveWndPos()| | |
+|SetBorderSize( nBorder )| |Set border size: space between panel exterior and panel interior |
+|SetCaption( cTitle )| |Set text for title ( cCaption DATA ) |
+|SetColors( nText, nPane, nTextH, nPaneH )| |Set colors for panel exterior and interior |
+|SetColorsCtrl( nText, nPane )| |Set colors for control defined by user |
+|SetCoors( nTop, nLeft, nBottom, nRight )| |Set nTop, nLeft, nBottom, nRight of control |
+|SetCoorsClient( nTop, nLeft, nBottom, nRight )| |Set cordinates for area client |
+|SetCtrlsPnel( bCtrls )| |Paint controls of panel interior |
+|SetFont( oFont )| |Set font |
+|SetHeightCtrl( nHeight )| |Height at top of control defined|
+|SetHeightCaption( nHeight )| |Set height for caption ( title ) panel exterior |
+|SetImgsFiles( aImgs )| |Array for images: { { "file", bAction, "tooltip }, .... } |
+|SetImgsResources( aImgs )| |Array for images: { { "resource", bAction, "tooltip }, .... } |
+|SetModeDock( nMode )| |Set nMode DATA: type of container principal|
+|SetPosition( nTop, nLeft, nHeight, nWidth )| | |
+|SetPosTitle( lBottom )| |Position of title: .T. -> Bottom, .F. -> Top |
+|SetSetupCtrls( bSetup )| |Codeblock for configure controls predefined by nType |
+|SetStyle( nStyle, nBorder )| |Select style predefined|
+|SetTypeCtrl( nType )| |Set nType control predefined: 1 -> TTitle, 2 -> TBar, 3 -> TRibbonBar, 4 -> TFolderEx ...|
+
+**Methods used internally**
+^Method^Usage^Details^
+|IsPaintedFromInit()| | | 
+|MoveDockPnel()| | |
+|PaintCtrlsPnelP()| | Paint Panel exterior.|
+|PaintPnelH()| | Paint Panel interior.|
+|PaintCtrlsPnelH()| | |
+|PaintBmps()| | |
+|PaintRes()| | |
+|Repaint( lOnOff )| | |
+|ReSize( nSizeType, nWidth, nHeight )| | |
+|ResizeAll( nTop, nLeft, nWidth, nHeight, lPaint )| | |
+|SetFontSymbols( cFont, nHeight )|SetFontSymbols( "Segoe UI", -12 )|Assign parameters for assign font used for symbols|
+
+====== STYLEs =====
+** List Styles predefined: **
+
+**__How is it used?__**
+
+<code clipper>
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+   oDock5  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock5
+      :SetHeightCaption( 28 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 4 ]:nBottom + 10, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 4 ]:nLeft, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 3 ]:nBottom, o ) }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) + XEval( o:nLeft, o ) - 38 } )
+      :SetCaption( { | o | "Title DockPanel + SourceEdit" } )
+
+      //:SetBorderSize( 1 )
+      //:SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_BLUE )
+      :SetStyle( 5, 1 )
+
+      :nClrPaneT   := CLR_WHITE
+      :SetFont( oFont4 )
+      :SetImgsFiles( { { "..\bitmaps\16x16\max.bmp", , } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB, cT | cT := MemoRead( "\fwh\samples\alert.prg" ), ;
+                        oB := SourceEdit( cT, , Rgb( 255, 255, 234 ), ;
+                        nT, nL, nH, nW, , , ;
+                        , .F., o, .F., , 519, , -10, .F., , .T., .F., ;
+                        , nil, "FixedSys" ) } )
+      :Activate()
+   END
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+</code>
+
+**__Method SetStyle__**
+
+<code clipper>
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+METHOD SetStyle( nStyle, nBorder ) CLASS TDockPnel
+
+   DEFAULT nStyle  := 0
+
+   Do Case
+      Case nStyle = 1
+         ::SetColors( Rgb( 41, 57, 86 ), Rgb( 252, 252, 252 ), Rgb( 99, 73, 121 ), Rgb( 234, 240, 255 ) )
+      Case nStyle = 2
+         ::SetColors( Rgb( 41, 57, 86 ), Rgb( 234, 240, 255 ), Rgb( 99, 73, 121 ), Rgb( 252, 252, 252 ) )
+      Case nStyle = 3
+         ::SetColors( Rgb( 234, 240, 255 ), Rgb( 41, 57, 86 ), Rgb( 99, 73, 121 ), Rgb( 234, 240, 255 ) )
+      Case nStyle = 4
+         ::SetColors( Rgb( 234, 240, 255 ), Rgb( 73, 66, 90 ), Rgb( 99, 73, 121 ), Rgb( 234, 240, 255 ) )
+      Case nStyle = 5
+         ::SetColors( Rgb( 41, 57, 86 ), Rgb( 190, 147, 145 ), Rgb( 99, 73, 121 ), Rgb( 252, 252, 252 ) )
+      Case nStyle = 6
+         ::SetColors( Rgb( 41, 57, 86 ), Rgb( 253, 244, 191 ), Rgb( 99, 73, 121 ), Rgb( 252, 252, 252 ) )
+      Case nStyle = 7
+         ::SetColors( Rgb( 41, 57, 86 ), Rgb( 253, 244, 191 ), Rgb( 99, 73, 121 ), Rgb( 234, 240, 255 ) )
+      Case nStyle = 8
+         ::SetColors( Rgb( 190, 147, 145 ), Rgb( 253, 244, 191 ), Rgb( 99, 73, 121 ), Rgb( 234, 240, 255 ) )
+      Case nStyle = 10
+         ::SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_GRAY )
+      Case nStyle = 11
+         ::SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_HGRAY )
+      Case nStyle = 12
+         ::SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_BLUE )
+      Case nStyle = 13
+         ::SetColors( METRO_OLIVE, CLR_WHITE, METRO_OLIVE, CLR_WHITE )
+      Case nStyle = 14
+         ::SetColors( CLR_WHITE, METRO_OLIVE, CLR_WHITE, METRO_OLIVE )
+      Case nStyle = 15
+         ::SetColors( METRO_STEEL, CLR_WHITE, METRO_STEEL, CLR_WHITE )
+      Case nStyle = 16
+         ::SetColors( CLR_WHITE, METRO_STEEL, CLR_WHITE, METRO_STEEL )
+      Case nStyle = 17
+         ::SetColors( METRO_MAUVE, CLR_WHITE, METRO_MAUVE, CLR_WHITE )
+      Case nStyle = 18
+         ::SetColors( CLR_WHITE, METRO_MAUVE, CLR_WHITE, METRO_MAUVE )
+      Case nStyle = 19
+         ::SetColors( CLR_WHITE, METRO_ORANGE, CLR_GRAY, CLR_WHITE )
+      Case nStyle = 20
+         ::SetColors( CLR_WHITE, METRO_WORD0, CLR_WHITE, METRO_WORD0 )
+      Case nStyle = 21
+         ::SetColors( CLR_WHITE, METRO_WORD1, CLR_WHITE, METRO_WORD1 )
+      Case nStyle = 22
+         ::SetColors( CLR_WHITE, METRO_WORD0, CLR_WHITE, METRO_WORD1 )
+      Case nStyle = 23
+         ::SetColors( CLR_WHITE, METRO_WORD1, CLR_WHITE, METRO_WORD0 )
+      Case nStyle = 24
+         ::SetColors( CLR_WHITE, METRO_EXCEL0, CLR_WHITE, METRO_EXCEL0 )
+      Case nStyle = 25
+         ::SetColors( CLR_WHITE, METRO_EXCEL1, CLR_WHITE, METRO_EXCEL1 )
+      Case nStyle = 26
+         ::SetColors( CLR_WHITE, METRO_EXCEL0, CLR_WHITE, METRO_EXCEL1 )
+      Case nStyle = 27
+         ::SetColors( CLR_WHITE, METRO_EXCEL1, CLR_WHITE, METRO_EXCEL0 )
+      Case nStyle = 28
+         ::SetColors( CLR_WHITE, METRO_POWER0, CLR_WHITE, METRO_POWER0 )
+      Case nStyle = 29
+         ::SetColors( CLR_WHITE, METRO_POWER1, CLR_WHITE, METRO_POWER1 )
+      Case nStyle = 30
+         ::SetColors( CLR_WHITE, METRO_POWER1, CLR_WHITE, METRO_POWER0 )
+      Case nStyle = 31
+         ::SetColors( CLR_WHITE, METRO_POWER0, CLR_WHITE, METRO_POWER1 )
+      Case nStyle = 32
+         ::SetColors( CLR_WHITE, METRO_NOTE0, CLR_WHITE, METRO_NOTE0 )
+      Case nStyle = 33
+         ::SetColors( CLR_WHITE, METRO_NOTE1, CLR_WHITE, METRO_NOTE1 )
+      Case nStyle = 34
+         ::SetColors( CLR_WHITE, METRO_NOTE0, CLR_WHITE, METRO_NOTE1 )
+      Case nStyle = 35
+         ::SetColors( CLR_WHITE, METRO_NOTE1, CLR_WHITE, METRO_NOTE0 )
+      Case nStyle = 36
+         ::SetColors( METRO_WORD0, CLR_WHITE, METRO_WORD0, CLR_WHITE )
+      Case nStyle = 37
+         ::SetColors( METRO_WORD1, CLR_WHITE, METRO_WORD1, CLR_WHITE )
+      Case nStyle = 38
+         ::SetColors( METRO_WORD0, CLR_WHITE, METRO_WORD1, CLR_WHITE )
+      Case nStyle = 39
+         ::SetColors( METRO_WORD1, CLR_WHITE, METRO_WORD0, CLR_WHITE )
+      Case nStyle = 40
+         ::SetColors( METRO_EXCEL0, CLR_WHITE, METRO_EXCEL0, CLR_WHITE )
+      Case nStyle = 41
+         ::SetColors( METRO_EXCEL1, CLR_WHITE, METRO_EXCEL1, CLR_WHITE )
+      Case nStyle = 42
+         ::SetColors( METRO_EXCEL0, CLR_WHITE, METRO_EXCEL1, CLR_WHITE )
+      Case nStyle = 43
+         ::SetColors( METRO_EXCEL1, CLR_WHITE, METRO_EXCEL0, CLR_WHITE )
+      Case nStyle = 44
+         ::SetColors( METRO_POWER0, CLR_WHITE, METRO_POWER0, CLR_WHITE )
+      Case nStyle = 45
+         ::SetColors( METRO_POWER1, CLR_WHITE, METRO_POWER1, CLR_WHITE )
+      Case nStyle = 46
+         ::SetColors( METRO_POWER0, CLR_WHITE, METRO_POWER1, CLR_WHITE )
+      Case nStyle = 47
+         ::SetColors( METRO_POWER1, CLR_WHITE, METRO_POWER0, CLR_WHITE )
+      Case nStyle = 48
+         ::SetColors( METRO_NOTE0, CLR_WHITE, METRO_NOTE0, CLR_WHITE )
+      Case nStyle = 49
+         ::SetColors( METRO_NOTE1, CLR_WHITE, METRO_NOTE1, CLR_WHITE )
+      Case nStyle = 50
+         ::SetColors( METRO_NOTE0, CLR_WHITE, METRO_NOTE1, CLR_WHITE )
+      Case nStyle = 51
+         ::SetColors( METRO_NOTE1, CLR_WHITE, METRO_NOTE0, CLR_WHITE )
+
+   EndCase
+   if !Empty( nStyle ) .and. !Hb_IsNil( nBorder )
+      ::SetBorderSize( nBorder )
+   endif
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+</code>
+
+====== IMAGEs ======
+{{:dock01.png|:dock01.png}}
+{{:dock00.gif|:dock00.gif}}
+{{:dock07.gif|:dock07.gif}}
+{{:dock08.gif|:dock08.gif}}
+{{:dock01.gif|:dock01.gif}}
+{{:dock06.gif|:dock06.gif}}
+
+====== SAMPLEs ======
+
+** Sample 1: **
+
+<code clipper>
+#include "Fivewin.ch"
+#include "colores.ch"
+#include "tgraph.ch"
+
+REQUEST DBFCDX
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static oWindow
+Static nWAncho
+Static nWAlto 
+Static nCol   
+Static nRow   
+
+Static oFont
+Static oFontB
+Static oFontD
+Static oFont1
+Static oFont2
+Static oFont3
+Static oFont4
+Static oFontE
+Static oFontS
+Static oFontCtrl
+Static cPathApp
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   //LOCAL MyObject AS CLASS TDockPnel
+
+   SetResDebug( .T. )
+   FErase( "Checkres.txt" )
+
+   DEFINE FONT oFont  NAME "ROBOTO" SIZE 0,-11    //TAHOMA
+   DEFINE FONT oFontB NAME "ROBOTO" SIZE 0,-14 BOLD  //ARIAL NARROW
+   DEFINE FONT oFont1 NAME "ROBOTO" SIZE 0,-11 BOLD   //CALIBRI
+   DEFINE FONT oFontE NAME "ROBOTO" SIZE 0,-14   //CALIBRI
+   DEFINE FONT oFont2 NAME "ROBOTO" SIZE 0,-16    //TAHOMA
+   DEFINE FONT oFont3 NAME "ROBOTO" SIZE 0,-20 //BOLD //CALIBRI //SEGOE UI SYMBOL
+   DEFINE FONT oFontCtrl NAME "ROBOTO" SIZE 0, -9 BOLD  //TAHOMA
+   DEFINE FONT oFont4 NAME "CALIBRI" SIZE 0,-16    //CALIBRI
+   DEFINE FONT oFontS NAME "FIXEDSYS" SIZE 0,-12
+
+   cPathApp        := cFilePath( GetModuleFileName( GetInstance() ) )
+   
+   TestDockPnel()
+
+   oFont:End()
+   oFont1:End()
+   oFont2:End()
+   oFont3:End()
+   oFont4:End()
+   oFontB:End()
+   oFontE:End()
+   oFontCtrl:End()
+   oFontS:End()
+
+   Checkres()
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function TestDockPnel()
+
+   local nCol
+   local nRow
+
+
+   nWAncho   := Int( GetSysMetrics( 0 ) * 0.90 )
+   nWAlto    := Int( GetSysMetrics( 1 ) * 0.95 )
+   nCol      := Int( ( GetSysMetrics( 0 ) - nWAncho ) / 2 )
+   nRow      := Int( ( GetSysMetrics( 1 ) - nWAlto  ) / 2 ) + 2
+
+   DEFINE WINDOW oWindow FROM nRow, nCol TO nWAlto + nRow, nWAncho + nCol ;
+      PIXEL TITLE "Test DockPnel Control" ;
+      COLOR CLR_WHITE, Rgb( 182, 182, 182 )
+
+      CreaDocks()
+
+   ACTIVATE WINDOW oWindow MAXIMIZED //ON INIT CreaDocks()
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function CreaDocks( )
+
+   local oDock1
+   local oDock2
+   local oDock3
+   local oDock4
+   local oDock5
+   local oDock6
+   local oDock01
+   local oDock02
+   local oDock03
+   local oDock11
+   local oDock21
+   local oDock31
+   local oDock41
+   local oDock51
+   local oDock61
+   local oDock12
+   local oDock22
+   local oDock32
+   local oDock42
+   local oDock52
+   local oDock62
+
+      oDock1  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock1
+         :SetCoors( { || 10 }, { || 10 }, { || 210 }, { || 210 } )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 0 )
+         :SetCaption( "Title" )
+         :SetColors( Rgb( 88, 88, 88 ), CLR_WHITE, CLR_WHITE, Rgb( 88, 88, 88 ) )
+         :SetFont( oFont4 )
+         :Activate()
+      END
+
+      oDock2  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock2
+         :SetCoors( 10, 220, 210, 420 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Other" )
+         :SetColors( CLR_WHITE, Rgb( 7, 71, 166 ), CLR_WHITE, Rgb( 88, 88, 88 ) )
+         :SetFont( oFont4 )
+         :cAlignText  := "TL"
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest( o, nT, nL, nH, nW, 13 ) } )
+
+         // Controls predefined in :oPnelH ( interior Panel )
+         :SetTypeCtrl( 2 )                                   // TTitle
+         :SetHeightCtrl( 32 )
+         :SetColorsCtrl( CLR_WHITE, Rgb( 88, 88, 88 ) )
+         :lBottomH    := .T.
+         :aRectText   := { 8, 60 }
+         :cTitH       := "Title Bottom"
+         :Activate()
+      END
+
+      oDock3  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock3
+         :SetCoors( 10, 430, 210, 630 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Steel" + " - " + "TBTNBMP" )
+         :SetColors( CLR_WHITE, METRO_STEEL, , )
+         :SetFont( oFont4 )
+         :cAlignText  := "TR"
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW  | MyTest( o, nT, nL, nH, nW, 3 ) } )
+         :Activate()
+      END
+
+      oDock4  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock4
+         :SetCoors( 10, 640, 210, 840 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Olive" + " - " + "TGRAPH" )
+         :SetColors( CLR_WHITE, METRO_OLIVE, , )
+         :SetFont( oFont4 )
+         :cAlignText  := "BR"
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1(  o, nT, nL, nH, nW, 3 ) } )
+         :Activate()
+      END
+
+      oDock5  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock5
+         :SetCoors( 10, 850, 210, 1050 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Lime" + " - " + "TGRAPH" )
+         :SetColors( CLR_WHITE, METRO_LIME, , )
+         :SetFont( oFont4 )
+         :cAlignText  := "CC"
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1(  o, nT, nL, nH, nW, 2 ) } )
+         :Activate()
+      END
+
+      oDock6  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock6
+         :SetCoors( 10, 1060, 210, 1260 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Emerald" + " - " + "TGRAPH" )
+         :SetColors( CLR_WHITE, METRO_EMERALD, , )
+         :SetFont( oFont4 )
+         :cAlignText  := "RC"
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW  | MyTest1( o, nT, nL, nH, nW, 4 ) } )
+         :Activate()
+      END
+
+      oDock01  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock01
+         :SetCoors( 10, 1270, GetSysMetrics( 1 ) - 138, GetSysMetrics( 0 ) - 6 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Cyan" )
+         :SetColors( CLR_WHITE, METRO_CYAN, , )
+         :SetFont( oFont4 )
+         :Activate()
+      END
+
+      oDock11  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock11
+         :SetCoors( 214, 10, 414, 210 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 1 )
+         :SetCaption( "Cobalt" + " - " + "FOLDEREX" )
+         :SetColors( CLR_WHITE, METRO_COBALT, , )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 5 ) } )
+         :Activate()
+      END
+
+      oDock21  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock21
+         :SetCoors( 220, 220, 420, 420 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Magenta" + " - " + "SCROLLPANEL" )
+         :SetColors( CLR_WHITE, METRO_MAGENTA, , )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 10 ) } )
+         :Activate()
+      END
+
+      oDock31  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock31
+         :SetCoors( 220, 430, 420, 630 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Taupe" )
+         :SetColors( CLR_WHITE, METRO_TAUPE, , )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest( o, nT, nL, nH, nW, 6 ) } )
+         :Activate()
+      END
+
+      oDock41  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock41
+         :SetCoors( 220, 640, 420, 840 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Mauve" )
+         :SetColors( CLR_WHITE, METRO_MAUVE, , )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 8 ) } )
+         :Activate()
+      END
+
+      oDock51  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock51
+         :SetCoors( 220, 850, 420, 1050 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 1 )
+         :SetCaption( "Teal" )
+         :SetColors( CLR_WHITE, METRO_TEAL, METRO_TEAL, CLR_WHITE )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 9 ) } )
+         :Activate()
+      END
+
+      oDock61  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock61
+         :SetCoors( 220, 1060, 420, 1260 )
+         :SetHeightCaption( 24 )
+         :SetBorderSize( 1 )
+         :SetCaption( "Indigo" )
+         :SetColors( CLR_WHITE, METRO_INDIGO, , )
+         :SetFont( oFont4 )
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 1 ) } )
+         :Activate()
+      END
+
+      oDock12  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock12
+         :SetCoors( 430, 10, 630, 210 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Crimson" )
+         :SetColors( CLR_WHITE, METRO_CRIMSON, , )
+         :SetFont( oFont4 )
+         :lLeftImgs   := .F.
+         :lBottom     := .T.
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 6 ) } )
+         :Activate()
+      END
+
+      oDock22  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock22
+         :SetCoors( 430, 220, 630, 420 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Red" )
+         :SetColors( CLR_WHITE, METRO_RED, , )
+         :SetFont( oFont4 )
+         :lBottom     := .T.
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest( o, nT, nL, nH, nW, 8 ) } )
+         :Activate()
+      END
+
+      oDock32  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock32
+         :SetCoors( 430, 430, 630, 630 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Orange" )
+         :SetColors( CLR_WHITE, METRO_ORANGE, , )
+         :SetFont( oFont4 )
+         :lBottom     := .T.
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 7 ) } )
+         :Activate()
+      END
+
+      oDock42  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock42
+         :SetCoors( 430, 640, 630, 840 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Amber" )
+         :SetColors( CLR_WHITE, METRO_AMBER, , )
+         :SetFont( oFont4 )
+         :lBottom     := .T.
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest( o, nT, nL, nH, nW, 5 ) } )
+         :Activate()
+      END
+
+      oDock52  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock52
+         :SetCoors( 430, 850, 630, 1050 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Brown" )
+         :SetColors( CLR_WHITE, METRO_BROWN, , )
+         :SetFont( oFont4 )
+         :lBottom     := .T.
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest( o, nT, nL, nH, nW, 7 ) } )
+         :Activate()
+      END
+
+      oDock62  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock62
+         :SetCoors( 430, 1060, 630, 1260 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Yellow" )
+         :SetColors( CLR_WHITE, METRO_YELLOW, , )
+         :SetFont( oFont4 )
+         :lBottom     := .T.
+         :nWImg       := 20
+         :SetCtrlsPnel( { | o, nT, nL, nH, nW | MyTest1( o, nT, nL, nH, nW, 99 ) } )
+         :Activate()
+      END
+
+      oDock02  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock02
+         :SetCoors( 640, 10, GetSysMetrics( 1 ) - 38, GetSysMetrics( 0 ) / 2 - 53 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Violet" )
+         :SetColors( CLR_WHITE, METRO_VIOLET, , )
+         :SetFont( oFont4 )
+         :Activate()
+      END
+
+      oDock03  := TDockPnel():New( oWindow )
+      WITH OBJECT oDock03
+         :SetCoors( 640, 640, GetSysMetrics( 1 ) - 38, GetSysMetrics( 0 ) - 53 * 2 )
+         :SetHeightCaption( 40 )
+         :SetBorderSize( 4 )
+         :SetCaption( "Pink" )
+         :SetColors( CLR_WHITE, METRO_PINK, , )
+         :SetFont( oFont4 )
+         :Activate()
+      END
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function MyTest( oP, nT, nL, nH, nW, n )
+
+   local oFont9, oFontG, oBold, oFont91
+   local nClrBack   := CLR_WHITE
+   local nCBorder   := 0xC38B2B
+   local nClrText   := CLR_BLACK
+   local nClrBorder := 0xE6E6E6
+   local x
+   local oBtn
+   local aBtns    := { ;
+                      { "System" + CRLF + "Screen, notifications," + CRLF + "power", 0xE770, { || Dummy() } }, ;
+                      { "Devices" + CRLF + "Bluetooth, printers," + CRLF + "mouse", 0xE772, { || Dummy() } }, ;
+                      { "Mobile" + CRLF + "Link your Android, iPhone" + CRLF, 0xE1C9, { || Dummy() } }, ;
+                      { "Network && Internet" + CRLF + "WIFI, flight mode" + CRLF + "VPN", 0xE12b, { || Dummy() } }, ;
+                      { "Personalization" + CRLF + "Background, lock screen" + CRLF, 0xE771, { || Dummy() } }, ;
+                      { "Apps" + CRLF + "Uninstall defaults" + CRLF + "Optional Features", 0xE179, { || Dummy() } }, ;
+                      { "Account" + CRLF + "Your account, email sync" + CRLF + "Work family", 0xE77B, { || Dummy() } }, ;
+                      { "Time and language" + CRLF + "Voice, region, date" + CRLF, 0xE775, { || Dummy() } }, ;
+                      { "Games" + CRLF + "Game bar, DVR," + CRLF + "retransmission and game mode", 0xE909, { || Dummy() } }, ;
+                      { "Accessibility" + CRLF + "Narrator, magnifying glass," + CRLF + "high contrast", 0xE776, { || Dummy() } }, ;
+                      { "Cortana" + CRLF + "Language of Cortana," + CRLF + "permissions, notifications", 0xECCA, { || Dummy() } }, ;
+                      { "Privacy" + CRLF + "Location Camera" + CRLF, 0xE1F6, { || Dummy() } }, ;
+                      { "Update && Security" + CRLF + "Windows Update" + CRLF + "Recovery", 0xE777, { || Dummy() } } ;
+                     }
+   DEFAULT nT     := -1
+   DEFAULT nH     := 10000
+   DEFAULT n      := 1
+
+   DEFINE FONT oFont9  NAME "Segoe UI" SIZE 0,-14
+   DEFINE FONT oFontG  NAME "Segoe UI" SIZE 0,-18
+   DEFINE FONT oBold   NAME "Segoe UI SemiBold" SIZE 0,-16 // BOLD
+   DEFINE FONT oFont91 NAME "Segoe UI Light" SIZE 0,-24
+
+   x := n
+
+   @ nT, nL BTNBMP oBtn PROMPT aBtns[ x ][ 1 ]  ;
+      RESOURCE aBtns[ x ][ 2 ] ;
+      SIZE nW, nH PIXEL OF oP FLAT NOBORDER ;
+      COLOR nClrText, nClrBack
+      WITH OBJECT oBtn
+         :SetFont( oFont9 )
+         :bAction     := aBtns[ x ][ 3 ]
+         :nClrBorder  := nClrBorder
+         :bColorMap   := { | o | o:lBorder := o:lMOver, nCBorder }
+         :oFontBold   := oBold
+         :lRound      := .F.
+      END
+
+   RELEASE FONT oFont9, oBold, oFont91, oFontG
+
+Return oBtn
+
+//----------------------------------------------------------------------------//
+
+Function Dummy()
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function MyTest2( oP, nT, nL, nH, nW, n )
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function MyTest1( oP, nT, nL, nH, nW, n )
+
+   local oBrw
+   local oGraph
+   local aVals1
+   local aVals2
+   local cClrBack  := RGB( 0x33, 0x66, 0xCC )
+   local nOpt
+   local oFld12
+   local nClrL   := Rgb( 0, 188, 142 )
+   local cText
+   local oDlg
+   local oPanel
+   local oBarTitle
+   local aCols := {  ;
+      { "MONTH",     'C',  3, 0  }, ;
+      { "USAS",      'N',  4, 0  }, ;
+      { "EUROS",     'N',  4, 0  }, ;
+      { "ASIAS",     'N',  4, 0  }, ;
+      { "USAC",      'N',  4, 0  }, ;
+      { "EUROC",     'N',  4, 0  }, ;
+      { "ASIAC",     'N',  4, 0  }  }
+   local aData := {  { "JAN", 1000, 1200,  900,  400,  700,  400 },  ;
+                     { "FEB", 1100, 1300, 1000,  500,  800,  500 },  ;
+                     { "MAR", 1050, 1800, 1900,  700, 1400, 1600 },  ;
+                     { "APR", 1825, 1975, 1850,  675, 1100, 1425 },  ;
+                     { "MAY", 2000, 1670, 1550,  675, 1100, 1425 },  ;
+                     { "JUN", 0970, 1025, 1100,  675, 1100, 1425 },  ;
+                     { "JUL", 1150, 1600, 1750,  675, 1100, 1425 },  ;
+                     { "AUG", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "SEP", 1150, 1320, 1450,  675, 1100, 1425 },  ;
+                     { "OCT", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "NOV", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "DEC", 1250, 1700, 1850,  675, 1100, 1425 }   ;
+                  }
+
+   if n = 1
+   @ nT, nL XBROWSE oBrw SIZE nW, nH PIXEL OF oP ;
+      DATASOURCE aData ; 
+      COLUMNS 1, 2, 3, 4 ; //AUTOCOLS ;
+      HEADERS "MONTH", "USA", "EUROPE", "ASIA" ;
+      FASTEDIT LINES NOBORDER STYLE FLAT
+
+   WITH OBJECT oBrw
+      :lHScroll         := .f.
+      :lVScroll         := .f.
+      :l2007            := .f.
+      :nStretchCol      := 1
+      :nMarqueeStyle    := MARQSTYLE_HIGHLROW
+      :bClrRowFocus     := { || { CLR_BLACK, RGB( 185,220,255 ) } }
+      :SetFont( oFont1 )
+      AEVal( :aCols, { | o | o:cEditPicture := "9,999" }, 2, 4 )
+      :CreateFromCode()
+   END
+   endif
+   if n = 2
+   if !File( cPathApp + "SALECOST.DBF" )
+      DBCREATE( cPathApp + "SALECOST.DBF", aCols, "DBFCDX", .T., "SC1" )
+      FW_ArrayToDBF( aData )
+   else
+      DbUseArea( .F., "DBFCDX", cPathApp + "SALECOST.DBF", "SC1", .T., .F. )
+   endif
+   GO TOP
+   @ nT, nL GRAPH oGraph SIZE nW, nH  PIXEL OF oP ;
+      TITLE "Sales and Costs" ;
+      XVALUES YVALUES TYPE GRAPH_TYPE_BAR //LEGENDS
+
+   oGraph:cTitY      := SC1->MONTH
+   //oGraph:l3D        := .T.
+   aVals1            := { SC1->USAS, SC1->EUROS } //, SC1->ASIAS }
+   aVals2            := { SC1->USAC, SC1->EUROC } //, SC1->ASIAC }
+   ADD SERIE TO oGraph SERIE aVals1 LEGEND "Sales" COLOR CLR_HRED
+   ADD SERIE TO oGraph SERIE aVals2 LEGEND "Costs" COLOR CLR_GREEN
+   SET Y LABELS OF oGraph TO { "USA", "EUROPE" } //, "ASIA" }
+   oGraph:nMaxVal    := 2000
+   oGraph:SetArrayFonts( { oFont2, oFont,  oFont1, oFont,  oFontB, oFontE, oFont1, oFont1, oFontB } )
+   endif
+   if n = 3
+   if !File( cPathApp + "SALECOST.DBF" )
+      DBCREATE( cPathApp + "SALECOST.DBF", aCols, "DBFCDX", .T., "SC1" )
+      FW_ArrayToDBF( aData )
+   else
+      DbUseArea( .F., "DBFCDX", cPathApp + "SALECOST.DBF", "SC1", .T., .F. )
+   endif
+   GO TOP
+   @ nT, nL GRAPH oGraph SIZE nW, nH PIXEL OF oP ;
+      TITLE "Sales and Costs" ;
+      XVALUES YVALUES TYPE GRAPH_TYPE_BAR //LEGENDS
+
+   oGraph:cTitY      := SC1->MONTH
+   //oGraph:l3D        := .T.
+   aVals1            := { SC1->USAS, SC1->ASIAS }
+   aVals2            := { SC1->USAC, SC1->ASIAC }
+   ADD SERIE TO oGraph SERIE aVals1 LEGEND "Sales" COLOR CLR_HRED
+   ADD SERIE TO oGraph SERIE aVals2 LEGEND "Costs" COLOR CLR_GREEN
+   SET Y LABELS OF oGraph TO { "USA", "ASIA" }
+   oGraph:nMaxVal    := 2000
+   oGraph:SetArrayFonts( { oFont2, oFont,  oFont1, oFont,  oFontB, oFontE, oFont1, oFont1, oFontB } )
+   endif
+   if n = 4
+   if !File( cPathApp + "SALECOST.DBF" )
+      DBCREATE( cPathApp + "SALECOST.DBF", aCols, "DBFCDX", .T., "SC1" )
+      FW_ArrayToDBF( aData )
+   else
+      DbUseArea( .F., "DBFCDX", cPathApp + "SALECOST.DBF", "SC1", .T., .F. )
+   endif
+   GO TOP
+   @ nT, nL GRAPH oGraph SIZE nW, nH PIXEL OF oP ;
+      TITLE "Sales and Costs" ;
+      XVALUES YVALUES TYPE GRAPH_TYPE_BAR //GRAPH_TYPE_PIE //LEGENDS
+
+   oGraph:cTitY      := SC1->MONTH
+   oGraph:l3D        := .T.
+   aVals1            := { SC1->EUROS, SC1->ASIAS }
+   aVals2            := { SC1->EUROC, SC1->ASIAC }
+   ADD SERIE TO oGraph SERIE aVals1 LEGEND "Sales" COLOR CLR_HRED
+   ADD SERIE TO oGraph SERIE aVals2 LEGEND "Costs" COLOR CLR_GREEN
+   SET Y LABELS OF oGraph TO { "EUROPE", "ASIA" }
+   oGraph:nMaxVal    := 2000
+   oGraph:SetArrayFonts( { oFont2, oFont,  oFont1, oFont,  oFontB, oFontE, oFont1, oFont1, oFontB } )
+   endif
+   if n = 5
+      @ nT, nL FOLDEREX oFld12 ;
+         PROMPTS "RECENTS", "HISTORIC" PIXEL ;
+         OF oP SIZE nW, nH ; //TRANSPARENT ;
+         FONT oFont COLOR CLR_WHITE
+   
+      WITH OBJECT oFld12
+         :nFolderHeight  := 24
+         :nRound         := 0
+         :nSeparator     := 0
+         :aGradSel       := { { 1, CLR_WHITE, CLR_WHITE } }
+         :aGradUnSel     := { { 1, CLR_WHITE, CLR_WHITE } }
+         :bClrText       := { | o, n | if( n = o:nOption, ;
+                              METRO_GRIS2, Rgb( 184, 184, 184 ) ) }
+         :aGradOver      := { { 0.8, CLR_WHITE, CLR_WHITE }, { 0.2, nClrL, nClrL } }
+         :aGradOverUnSel := :aGradOver
+         :Default()
+      END
+   endif
+   if n = 6
+
+   endif
+   if n = 7
+
+   endif
+   if n = 8
+   /*
+      DEFINE DIALOG oDlg TITLE "Dialog" ;
+         SIZE oP:nWidth - 8, oP:nHeight - 31 OF oP PIXEL
+         oDlg:nTop      := 0
+         oDlg:nLeft     := 0
+         oDlg:lHelpIcon := .F.
+      ACTIVATE DIALOG oDlg NOWAIT ;
+         ON INIT ( SetParent( oDlg:hWnd, oP:hWnd ), MyTest1( oDlg, 5 ) ) ;
+         ON MOVE oDlg:Move( 0, 0, , , .T. )
+   */
+   endif
+   if n = 9
+   /*
+      DEFINE WINDOW oDlg TITLE "Window" ;
+         FROM 0, 0 TO oP:nHeight - 1, oP:nWidth - 1 OF oP PIXEL ;
+         NOMAXIMIZE NOMINIMIZE NOSYSMENU
+         //oDlg:nStyle    -= WS_CAPTION
+      ACTIVATE WINDOW oDlg ; 
+         ON INIT MyTest( oDlg, 9 ) ; //SetParent( oDlg:hWnd, oP:hWnd ) //;
+         ON MOVE oDlg:Move( 0, 0, , , .T. )
+   */
+   endif
+   if n = 10
+     oPanel := TScrollPanel():New( nT, nL, nH, nW, oP, .T. )
+     MyTest( oPanel, 1, 1, Int( 2 * nH / 3 ), Int( nW / 2 ), 11 )
+     oPanel:SetRange()
+   endif
+   if n = 11
+      oBarTitle := TTitle():New( oP, 0, 0, oP:nWidth - 2, 20, , , , , , , , , , , 0 )
+      oBarTitle:AddText( 4, 4, "Text Title", , , , , , CLR_WHITE, )
+   endif
+   if n = 99
+
+   endif
+
+Return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Sample 2: **
+
+<code clipper>
+#include "Fivewin.ch"
+#include "colores.ch"
+#include "tgraph.ch"
+#include "ribbon.ch"
+
+REQUEST DBFCDX
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static oWindow
+Static nWAncho
+Static nWAlto 
+Static nCol   
+Static nRow   
+
+Static oFont
+Static oFontB
+Static oFontD
+Static oFont1
+Static oFont2
+Static oFont3
+Static oFont4
+Static oFontE
+Static oFontS
+Static oFontCtrl
+Static cPathApp
+
+Static oDock1
+Static oDock2
+Static oDock3
+Static oDock4
+Static oDock5
+
+Static cText := ""
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   local cFont         := "Liberation Mono"   //TAHOMA   //CALIBRI  //SEGOE UI SYMBOL
+
+   SetResDebug( .T. )
+
+   cPathApp        := cFilePath( GetModuleFileName( GetInstance() ) )
+
+   FErase( cPathApp + "Checkres.txt" )
+
+   DEFINE FONT oFont  NAME cFont SIZE 0,-11
+   DEFINE FONT oFontB NAME cFont SIZE 0,-14 BOLD     //ARIAL NARROW
+   DEFINE FONT oFont1 NAME cFont SIZE 0,-11 BOLD
+   DEFINE FONT oFontE NAME cFont SIZE 0,-14
+   DEFINE FONT oFont2 NAME cFont SIZE 0,-16
+   DEFINE FONT oFont3 NAME cFont SIZE 0,-20 //BOLD
+   DEFINE FONT oFont4 NAME "CALIBRI" SIZE 0,-16
+   DEFINE FONT oFontCtrl NAME cFont SIZE 0, -9 BOLD
+   DEFINE FONT oFontS NAME "FIXEDSYS" SIZE 0,-12
+
+   TestDockPnel()
+
+   oFont:End()
+   oFont1:End()
+   oFont2:End()
+   oFont3:End()
+   oFont4:End()
+   oFontB:End()
+   oFontE:End()
+   oFontCtrl:End()
+   oFontS:End()
+
+   Checkres()
+   
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function TestDockPnel()
+
+   local nCol
+   local nRow
+
+   nWAncho   := Int( GetSysMetrics( 0 ) * 0.95 )
+   nWAlto    := Int( GetSysMetrics( 1 ) * 0.95 )
+   nCol      := Int( ( GetSysMetrics( 0 ) - nWAncho ) / 2 )
+   nRow      := Int( ( GetSysMetrics( 1 ) - nWAlto  ) / 2 ) // + 2
+
+   DEFINE WINDOW oWindow FROM nRow, nCol TO nWAlto + nRow, nWAncho + nCol ; //MDI ;
+      PIXEL TITLE "Test TDockPnel Control - " + FWVERSION ;
+      COLOR CLR_WHITE, Rgb( 182, 182, 182 )
+
+      CreaDocks()
+
+   ACTIVATE WINDOW oWindow // ON INIT CreaDocks()
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function CreaDocks()
+
+   oDock1  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock1
+
+      //:nHTit       := 40
+      :SetHeightCaption( 40 )
+
+      //:nTop        := { | o | 10 }
+      //:nLeft       := { | o | 10 }
+      //:nBottom     := { | o | Int( o:oWnd:nHeight / 2 ) + 54 }
+      //:nRight      := { | o | Int( o:oWnd:nWidth / 3 ) - XEVal( o:nLeft, o )  }
+      :SetCoors( { | o | 10 }, { | o | 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + 54 }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) - XEVal( o:nLeft, o ) } )
+
+      //:cCaption    := { | o | "Title" }
+      :SetCaption( { | o | "Title" } )
+
+      //:nClrTextH   := Rgb( 88, 88, 88 )
+      //:nClrPaneH   := CLR_HGRAY
+      //:nClrText    := METRO_RED
+      //:nClrPane    := CLR_WHITE
+      :SetColors( METRO_RED, CLR_WHITE, Rgb( 88, 88, 88 ), CLR_HGRAY )
+
+      :SetFont( oFont4 )
+
+      //:nBorder     := 1
+      :SetBorderSize( 1 )
+
+      //:aBmps       := { { "..\bitmaps\16x16\panel.bmp", ;
+      //                  { || oDock1:aBtnBmps[ 1 ]:SetImages( if( oDock1:lSelected, "..\bitmaps\16x16\panel.bmp", "\Fwh\bitmaps\16x16\check.bmp" ) ), ;
+      //                       oDock1:lSelected := !oDock1:lSelected }, "ToolTip" } }
+      :SetImgsFiles( { { "..\bitmaps\16x16\panel.bmp", ;
+                        { || oDock1:aBtnBmps[ 1 ]:SetImages( if( oDock1:lSelected, "..\bitmaps\16x16\panel.bmp", "\Fwh\bitmaps\16x16\check.bmp" ) ), ;
+                             oDock1:lSelected := !oDock1:lSelected }, "ToolTip" } } )
+
+      //:bPaintH     := { | o, nT, nL, nH, nW, oB | oB := Test1( o, nT, nL, nH, nW ) }
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test1( o, nT, nL, nH, nW ) } )
+
+      :bRClicked   := { || MsgInfo( oDock1:oWnd:aControls[ 1 ]:ClassName() ) }
+
+      //
+      // Controls predefined in :oPnelH ( interior Panel )
+      //
+
+      :lBottomH    := .T.
+
+      //:nType       := 2                       // TTitle
+      :SetTypeCtrl( 2 )
+
+      //:nHeightCtrl := 32
+      :SetHeightCtrl( 32 )
+
+      //:nClrTextT   := CLR_WHITE
+      //:nClrPaneT   := METRO_OLIVE
+      :SetColorsCtrl( CLR_WHITE, METRO_OLIVE )
+
+
+      :aRectText   := { 8, 60 }
+      :cTitH       := "Control Title - " + if( :lBottomH, "TOP", "BOTTOM" )
+
+      :Activate()
+
+   END
+
+   oDock2  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock2
+
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 1 ]:nTop, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 1 ]:nRight, o ) + 10 }, ;
+                 { | o | XEval( o:oWnd:aControls[ 1 ]:nBottom, o ) }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) + XEval( o:nLeft, o ) - 40 } )
+      :SetCaption( { | o | "Login Process" } )
+      :SetColors( CLR_WHITE, METRO_AMBER, METRO_AMBER, CLR_WHITE )
+      :SetBorderSize( 1 )
+      :SetFont( oFont4 )
+
+      //:aResources  := { { "info_on", { | o | MyPopupMnu( o ) }, } }
+      //:SetImgsResources( { { "info_on", { | o | MyPopupMnu( o ) }, } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\options.bmp", { | o | MyPopupMnu( o ) }, "ToolTip" } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test3( o, nT, nL, nH, nW ) } )
+      :bRClicked   := { || MsgInfo( oDock2:oPnelH:aControls[ 1 ]:ClassName() ) }
+      :Activate()
+
+   END
+
+   oDock3  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock3
+
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 2 ]:nBottom, o ) + 10 }, ;
+                 { | o | 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + XEval( o:oWnd:aControls[ 2 ]:nHeight, o ) - 94 }, ;
+                 { | o | XEVal( o:oWnd:aControls[ 2 ]:nRight, o )  } )
+      :SetCaption( { | o | "Title" } )
+      :SetBorderSize( 4 )
+      :SetColors( CLR_WHITE, METRO_RED, Rgb( 88, 88, 88 ), CLR_WHITE )
+      :SetFont( oFont4 )
+      :SetImgsFiles( { { "..\bitmaps\16x16\min.bmp", ;
+                       { || oDock1:aBtnBmps[ 1 ]:SetImages( if( oDock1:lSelected, "\Fwh\bitmaps\16x16\panel.bmp", "\Fwh\bitmaps\16x16\check.bmp" ) ), ;
+                            oDock1:lSelected := !oDock1:lSelected }, "ToolTip" } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test2( o, nT, nL, nH - 1, nW, 4 ), ;
+                        Test2( o, nT, oB:nRight + 2, nH - 1, nW - 2, 1 ) } )
+      :bRClicked   := { || MsgInfo( oDock1:oWnd:aControls[ 1 ]:ClassName() ) }
+      :Activate()
+
+   END
+
+   oDock4  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock4
+
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 2 ]:nTop, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 2 ]:nRight, o ) + 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) - o:nHTit - XEval( o:nTop, o ) }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) + XEval( o:nLeft, o ) + 2 } )
+      :SetCaption( { | o | "Title DockPanel Top" } )
+      :SetBorderSize( 1 )
+      :SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_GRAY )
+      :nClrPaneT   := CLR_WHITE
+      :SetFont( oFont4 )
+      //:SetImgsResources( { { "info_on", , } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\max.bmp", , } } )
+      :Activate()
+
+   END
+
+   oDock5  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock5
+
+      :lBottom     := .T.
+      :SetHeightCaption( 40 )
+      :SetBorderSize( 1 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 4 ]:nBottom + 10, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 4 ]:nLeft, o ) }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + XEval( o:oWnd:aControls[ 4 ]:nHeight, o ) + 10 }, ;
+                 { | o | XEval( o:oWnd:aControls[ 4 ]:nRight, o ) } )
+      :SetCaption( { | o | "Title DockPanel Bottom [ Top + Right ]" } )
+      :cAlignText  := "TR"
+      :SetColors( CLR_WHITE, METRO_ORANGE, CLR_GRAY, METRO_OLIVE )
+      :SetFont( oFont4 )
+      :lLeftImgs   := .F.
+      //:SetImgsResources( { { "info_on", , } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\closew.bmp", , } } )
+      :Activate()
+   END
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Test1( oP, nT, nL, nH, nW )
+
+   local oBrw
+   local oBar
+   local aData := {  { "JAN", 1000, 1200,  900,  400,  700,  400 },  ;
+                     { "FEB", 1100, 1300, 1000,  500,  800,  500 },  ;
+                     { "MAR", 1050, 1800, 1900,  700, 1400, 1600 },  ;
+                     { "APR", 1825, 1975, 1850,  675, 1100, 1425 },  ;
+                     { "MAY", 2000, 1670, 1550,  675, 1100, 1425 },  ;
+                     { "JUN", 0970, 1025, 1100,  675, 1100, 1425 },  ;
+                     { "JUL", 1150, 1600, 1750,  675, 1100, 1425 },  ;
+                     { "AUG", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "SEP", 1150, 1320, 1450,  675, 1100, 1425 },  ;
+                     { "OCT", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "NOV", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "DEC", 1250, 1700, 1850,  675, 1100, 1425 }   ;
+                  }
+
+   @ nT, nL XBROWSE oBrw ;
+      SIZE nW, nH OF oP PIXEL ;
+      DATASOURCE aData ; 
+      COLUMNS 1, 2, 3, 4, 5, 6 ;
+      HEADERS "MONTH", "USA", "EUROPE", "ASIA", "OTHERS", "REST" ;
+      AUTOSORT LINES STYLE FLAT // NOBORDER
+
+   WITH OBJECT oBrw
+      :lRecordSelector := .F.
+      :lHScroll        := .F.
+      :lVScroll        := .F.
+      :l2007           := .F.
+      :nStretchCol     :=  1
+      :lFitGridHeight  := .T.
+      :nHeaderHeight   := 32
+      :nRowHeight      := 27
+      :nMarqueeStyle   := MARQSTYLE_HIGHLROW
+      :bClrRowFocus    := { || { CLR_BLACK, RGB( 185, 220, 255 ) } }
+      :bClrStd         := { || { Rgb( 88, 88, 88 ), CLR_WHITE } }
+      :nColorPen       := CLR_HGRAY
+      :bClrHeader      := { || { CLR_BLACK, CLR_WHITE, CLR_HGRAY } }
+      :lFullGrid       := .T.
+      :SetFont( oFontCtrl )
+      AEVal( :aCols, { | o | o:cEditPicture := "999,999.99", o:nWidth := Int( o:oBrw:nWidth / 6 ) }, 2, Len( :aCols ) )
+      AEVal( :aCols, { | o | o:oHeaderFont := oFont1 } )
+      :CreateFromCode()
+   END
+
+Return oBrw
+
+//----------------------------------------------------------------------------//
+
+Static Function Test2( oP, nT, nL, nH, nW, nType )
+
+   local oGraph
+   local aVals1
+   local aVals2
+   local aVals3
+   local aCols := {  ;
+      { "MONTH",     'C',  3, 0  }, ;
+      { "USAS",      'N',  4, 0  }, ;
+      { "EUROS",     'N',  4, 0  }, ;
+      { "ASIAS",     'N',  4, 0  }, ;
+      { "USAC",      'N',  4, 0  }, ;
+      { "EUROC",     'N',  4, 0  }, ;
+      { "ASIAC",     'N',  4, 0  }  }
+   local aData := {  { "JAN", 1000, 1200,  900,  400,  700,  400 },  ;
+                     { "FEB", 1100, 1300, 1000,  500,  800,  500 },  ;
+                     { "MAR", 1050, 1800, 1900,  700, 1400, 1600 },  ;
+                     { "APR", 1825, 1975, 1850,  675, 1100, 1425 },  ;
+                     { "MAY", 2000, 1670, 1550,  675, 1100, 1425 },  ;
+                     { "JUN", 0970, 1025, 1100,  675, 1100, 1425 },  ;
+                     { "JUL", 1150, 1600, 1750,  675, 1100, 1425 },  ;
+                     { "AUG", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "SEP", 1150, 1320, 1450,  675, 1100, 1425 },  ;
+                     { "OCT", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "NOV", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "DEC", 1250, 1700, 1850,  675, 1100, 1425 }   ;
+                  }
+   DEFAULT nT    := 2
+   DEFAULT nL    := 2
+   DEFAULT nH    := oP:nHeight - 4
+   DEFAULT nW    := oP:nWidth  - 4
+   DEFAULT nType := 1
+
+   if !File( cPathApp + "SALECOST.DBF" )
+      DBCREATE( cPathApp + "SALECOST.DBF", aCols, "DBFCDX", .T., "SC1" )
+      FW_ArrayToDBF( aData )
+   else
+      DbUseArea( .F., "DBFCDX", cPathApp + "SALECOST.DBF", "SC1", .T., .F. )
+   endif
+   GO TOP
+   @ nT, nL GRAPH oGraph SIZE Int( nW / 2 ) - 2, nH PIXEL OF oP ;
+      TITLE "Sales and Costs" ;
+      XVALUES YVALUES LEGENDS
+   //oGraph:lBorders   := .T.
+   oGraph:nType      := nType
+   oGraph:SetColor( oP:nClrText, oP:nClrPane )
+   oGraph:cTitY      := SC1->MONTH
+   oGraph:l3D        := .T.
+   aVals1            := { SC1->USAS, SC1->EUROS }
+   aVals2            := { SC1->USAC, SC1->EUROC }
+   ADD SERIE TO oGraph SERIE aVals1 LEGEND "Sales" COLOR METRO_OLIVE
+   ADD SERIE TO oGraph SERIE aVals2 LEGEND "Costs" COLOR METRO_STEEL
+   SET Y LABELS OF oGraph TO { "USA", "EUROPE" } //, "ASIA" }
+   oGraph:nMaxVal    := 2000
+   oGraph:SetArrayFonts( { oFont4, oFont, oFont1, oFont, oFontB, oFontE, oFont1, oFont1, oFontB } )
+
+Return oGraph
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function MyPopupMnu( o )
+
+   local oMnu
+   local nRow  := o:nTop  + Int( o:nHeight / 2 ) 
+   local nCol  := o:nLeft + Int( o:nWidth / 2 ) 
+
+   MENU oMnu POPUP 2013 ;
+      COLORSELECT METRO_STEEL, METRO_STEEL, CLR_WHITE ;
+      COLORMENU CLR_WHITE, CLR_BLUE ;
+      COLORSEPARATOR METRO_STEEL ;
+      COLORLEFT CLR_WHITE ;
+      FONT oFont4
+
+      MENUITEM "Save Prompt"    ACTION cText := oDock2:SetCaption()
+      MENUITEM "Change Prompt"  ACTION oDock2:SetCaption( "New Caption" + CRLF + "Second Line" )
+      MENUITEM "Restore Prompt" ACTION oDock2:SetCaption( cText )
+      SEPARATOR
+      MENUITEM "Change Colors Panel Main"     ACTION oDock2:ChangeColorsP( { || CLR_RED },   { || CLR_WHITE } )
+      MENUITEM "Change Colors Panel Controls" ACTION oDock2:ChangeColorsH( { || CLR_WHITE }, { || CLR_RED } )
+      SEPARATOR
+      MENUITEM "Exit" ACTION o:oWnd:oWnd:End()
+
+   ENDMENU
+   ACTIVATE MENU oMnu AT nRow, nCol OF o:oWnd
+
+Return oMnu
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Test3( oP, nT, nL, nH, nW )
+
+   local oWnd, oImage, oFontSay
+   local oNameUser, oPassword
+   local oBtn1, oBtn2
+   local oFontI, oFontBtn
+   local cNameUser := space( 40 )
+   local cPassword := SPACE( 40 )
+   
+   DEFINE FONT oFontI NAME "CALIBRI" SIZE 0,-15
+   DEFINE FONT oFontBtn NAME "VERDANA" SIZE 0,-17 BOLD
+   DEFINE FONT oFontSay NAME "VERDANA" SIZE 0,-25 BOLD //ITALIC
+
+   DEFINE DIALOG oWnd STYLE nOr( 0, WS_CHILD ) COLOR CLR_BLACK, nRGB( 253, 254, 254 ) ;
+      FROM nT, nL TO nH, nW PIXEL TRUEPIXEL OF oP
+
+   //DEFINE WINDOW oWnd STYLE nOr( WS_POPUP, WS_BORDER ) COLOR CLR_BLACK, nRGB( 253, 254, 254 )
+   //   oWnd:nHeight := 320
+   //   oWnd:nWidth := 400
+   //oWnd  := oP
+
+      @ 15, 0 SAY "Cristóbal Navarro ( ® ) " PIXEL SIZE 400,30 OF oWnd ;
+         FONT oFontSay CENTER TRANSPARENT
+      @ 45, 0 SAY Upper( "FiveTech:  ") + "Enter your Credentials" PIXEL ;
+         SIZE 400,30 OF oWnd FONT oFontI CENTER TRANSPARENT
+
+      @ 110, 50 GET oNameUser VAR cNameUser OF oWnd;
+         COLOR Rgb( 128, 128, 128 ), CLR_WHITE PICTURE "@!" ;
+         CUEBANNER "User" PIXEL BOTTOMBORDER ;
+         FONT oFontBtn ;
+         INFIELD INFONT oFontI INCLRTXT CLR_GRAY INCLRBORDER Rgb( 204, 204, 204 ) ;
+         INCLRLINE CLR_RED DYNAMIC //GROUP
+   
+      @ 110, 50 GET oPassword VAR cPassword OF oWnd;
+         COLOR Rgb( 128, 128, 128 ), CLR_WHITE;
+         CUEBANNER "Enter Password" PASSWORD PIXEL BOTTOMBORDER ;
+         FONT oFontBtn PICTURE "@40" ;
+         INFIELD INFONT oFontI INALIGN 0
+
+      @ 260, 40 FLATBTN oBtn1 PROMPT "Access" OF oWnd SIZE 140, 40 ;
+         FONT oFontBtn;
+         COLOR CLR_WHITE, METRO_STEEL ;
+         ACTION ( oFontI:End(), oFontBtn:End(), oFontSay:End(), oWnd:End() )
+
+      @ 260,210 FLATBTN oBtn2 PROMPT "Exit" OF oWnd SIZE 140, 40 ;
+         FONT oFontBtn;
+         COLOR CLR_WHITE, METRO_STEEL ;
+         ACTION ( oFontI:End(), oFontBtn:End(), oFontSay:End(), oWnd:End() )
+
+   ACTIVATE DIALOG oWnd ON INIT ( oNameUser:SetFocus() ) NOWAIT
+
+   //ACTIVATE WINDOW oWnd CENTER ON INIT ( oNameUser:SetFocus() )
+   oFontI:End()
+   oFontBtn:End()
+   oFontSay:End()
+
+RETURN oWnd
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+</code>
+
+** Sample 2: **
+
+<code clipper>
+#include "Fivewin.ch"
+#include "colores.ch"
+#include "tgraph.ch"
+#include "ribbon.ch"
+
+REQUEST DBFCDX
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static oWindow
+Static nWAncho
+Static nWAlto 
+Static nCol   
+Static nRow   
+
+Static oFont
+Static oFontB
+Static oFontD
+Static oFont1
+Static oFont2
+Static oFont3
+Static oFont4
+Static oFontE
+Static oFontS
+Static oFontCtrl
+Static cPathApp
+
+Static oDock1
+Static oDock2
+Static oDock3
+Static oDock4
+Static oDock5
+
+Static cText := ""
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   local cFont         := "Liberation Mono"   //TAHOMA   //CALIBRI  //SEGOE UI SYMBOL
+
+   SetResDebug( .T. )
+
+   cPathApp        := cFilePath( GetModuleFileName( GetInstance() ) )
+
+   FErase( cPathApp + "Checkres.txt" )
+
+   DEFINE FONT oFont  NAME cFont SIZE 0,-11
+   DEFINE FONT oFontB NAME cFont SIZE 0,-14 BOLD     //ARIAL NARROW
+   DEFINE FONT oFont1 NAME cFont SIZE 0,-11 BOLD
+   DEFINE FONT oFontE NAME cFont SIZE 0,-14
+   DEFINE FONT oFont2 NAME cFont SIZE 0,-16
+   DEFINE FONT oFont3 NAME cFont SIZE 0,-20 //BOLD
+   DEFINE FONT oFont4 NAME "CALIBRI" SIZE 0,-16
+   DEFINE FONT oFontCtrl NAME cFont SIZE 0, -9 BOLD
+   DEFINE FONT oFontS NAME "FIXEDSYS" SIZE 0,-12
+
+   TestDockPnel()
+
+   oFont:End()
+   oFont1:End()
+   oFont2:End()
+   oFont3:End()
+   oFont4:End()
+   oFontB:End()
+   oFontE:End()
+   oFontCtrl:End()
+   oFontS:End()
+
+   Checkres()
+   
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Static Function TestDockPnel()
+
+   local nCol
+   local nRow
+
+   nWAncho   := Int( GetSysMetrics( 0 ) * 0.95 )
+   nWAlto    := Int( GetSysMetrics( 1 ) * 0.95 )
+   nCol      := Int( ( GetSysMetrics( 0 ) - nWAncho ) / 2 )
+   nRow      := Int( ( GetSysMetrics( 1 ) - nWAlto  ) / 2 ) // + 2
+
+   DEFINE WINDOW oWindow FROM nRow, nCol TO nWAlto + nRow, nWAncho + nCol ; //MDI ;
+      PIXEL TITLE "Test TDockPnel Control - " + FWVERSION ;
+      COLOR CLR_WHITE, Rgb( 182, 182, 182 )
+
+      CreaDocks()
+
+   ACTIVATE WINDOW oWindow // ON INIT CreaDocks()
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function CreaDocks()
+
+   oDock1  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock1
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | 10 }, { | o | 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + 54 }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) - XEVal( o:nLeft, o ) } )
+      :SetCaption( { | o | "Title" } )
+      :SetColors( METRO_RED, CLR_WHITE, Rgb( 88, 88, 88 ), CLR_HGRAY )
+      :SetFont( oFont4 )
+      :SetBorderSize( 1 )
+      :SetImgsFiles( { { "..\bitmaps\16x16\panel.bmp", ;
+                        { || oDock1:aBtnBmps[ 1 ]:SetImages( if( oDock1:lSelected, "..\bitmaps\16x16\panel.bmp", "\Fwh\bitmaps\16x16\check.bmp" ) ), ;
+                             oDock1:lSelected := !oDock1:lSelected }, "ToolTip" } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test1( o, nT, nL, nH, nW ) } )
+      :bRClicked   := { || MsgInfo( oDock1:oWnd:aControls[ 1 ]:ClassName() ) }
+      //
+      // Controls predefined in :oPnelH ( interior Panel )
+      //
+      :lBottomH    := .T.
+      :SetTypeCtrl( 2 )
+      :SetHeightCtrl( 32 )
+      :SetColorsCtrl( CLR_WHITE, METRO_OLIVE )
+      :aRectText   := { 8, 60 }
+      :cTitH       := "Control Title - " + if( :lBottomH, "TOP", "BOTTOM" )
+      :Activate()
+   END
+
+   oDock2  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock2
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 1 ]:nTop, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 1 ]:nRight, o ) + 10 }, ;
+                 { | o | XEval( o:oWnd:aControls[ 1 ]:nBottom, o ) }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) + XEval( o:nLeft, o ) - 40 } )
+      :SetCaption( { | o | "Login Process" } )
+      :SetColors( CLR_WHITE, METRO_AMBER, METRO_AMBER, CLR_WHITE )
+      :SetBorderSize( 1 )
+      :SetFont( oFont4 )
+
+      //:aResources  := { { "info_on", { | o | MyPopupMnu( o ) }, } }
+      //:SetImgsResources( { { "info_on", { | o | MyPopupMnu( o ) }, } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\options.bmp", { | o | MyPopupMnu( o ) }, "ToolTip" } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test3( o, nT, nL, nH, nW ) } )
+      :bRClicked   := { || MsgInfo( oDock2:oPnelH:aControls[ 1 ]:ClassName() ) }
+      :Activate()
+   END
+
+   oDock3  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock3
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 2 ]:nBottom, o ) + 10 }, ;
+                 { | o | 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + XEval( o:oWnd:aControls[ 2 ]:nHeight, o ) - 94 }, ;
+                 { | o | XEVal( o:oWnd:aControls[ 2 ]:nRight, o )  } )
+      :SetCaption( { | o | "Title" } )
+      :SetBorderSize( 4 )
+      :SetColors( CLR_WHITE, METRO_RED, Rgb( 88, 88, 88 ), CLR_WHITE )
+      :SetFont( oFont4 )
+      :SetImgsFiles( { { "..\bitmaps\16x16\min.bmp", ;
+                       { || oDock1:aBtnBmps[ 1 ]:SetImages( if( oDock1:lSelected, "\Fwh\bitmaps\16x16\panel.bmp", "\Fwh\bitmaps\16x16\check.bmp" ) ), ;
+                            oDock1:lSelected := !oDock1:lSelected }, "ToolTip" } } )
+      :SetCtrlsPnel( { | o, nT, nL, nH, nW, oB | oB := Test2( o, nT, nL, nH - 1, nW, 4 ), ;
+                        Test2( o, nT, oB:nRight + 2, nH - 1, nW - 2, 1 ) } )
+      :bRClicked   := { || MsgInfo( oDock1:oWnd:aControls[ 1 ]:ClassName() ) }
+      :Activate()
+   END
+
+   oDock4  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock4
+      :SetHeightCaption( 40 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 2 ]:nTop, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 2 ]:nRight, o ) + 10 }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) - o:nHTit - XEval( o:nTop, o ) }, ;
+                 { | o | Int( o:oWnd:nWidth / 3 ) + XEval( o:nLeft, o ) + 2 } )
+      :SetCaption( { | o | "Title DockPanel Top + RibbonBar" } )
+      :SetBorderSize( 1 )
+      :SetColors( CLR_WHITE, METRO_STEEL, METRO_TEAL, CLR_GRAY )
+      :nClrPaneT   := CLR_WHITE
+      :SetFont( oFont4 )
+      //:SetImgsResources( { { "info_on", , } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\max.bmp", , } } )
+      :SetTypeCtrl( 3 )                                    // TRibbonBar
+      :SetHeightCtrl( 24 * 2 )
+
+      //:bSetupCtrl  := { | oCtrl, oParent | MyRibbonSetup( oCtrl, oParent ) }
+      :SetSetupCtrls( { | oCtrl, oParent | MyRibbonSetup( oCtrl, oParent ) } )
+      :Activate()
+   END
+
+   oDock5  := TDockPnel():New( oWindow )
+   WITH OBJECT oDock5
+      :lBottom     := .T.
+      :SetHeightCaption( 40 )
+      :SetBorderSize( 1 )
+      :SetCoors( { | o | XEval( o:oWnd:aControls[ 4 ]:nBottom + 10, o ) }, ;
+                 { | o | XEval( o:oWnd:aControls[ 4 ]:nLeft, o ) }, ;
+                 { | o | Int( o:oWnd:nHeight / 2 ) + XEval( o:oWnd:aControls[ 4 ]:nHeight, o ) + 10 }, ;
+                 { | o | XEval( o:oWnd:aControls[ 4 ]:nRight, o ) } )
+      :SetCaption( { | o | "Title DockPanel Bottom [ Top + Right ] + ButtonBar" } )
+      :cAlignText  := "TR"
+      :SetColors( CLR_WHITE, METRO_ORANGE, CLR_GRAY, METRO_OLIVE )
+      :SetFont( oFont4 )
+      :lLeftImgs   := .F.
+      //:SetImgsResources( { { "info_on", , } } )
+      :SetImgsFiles( { { "..\bitmaps\16x16\closew.bmp", , } } )
+      :lBottomH    := .T.
+      :SetTypeCtrl( 1 )                                   // ButtonBar
+      :SetHeightCtrl( 48 )
+      :SetSetupCtrls( { | oCtrl, oParent | MyButtonBarSetup( oCtrl, oParent ) } )
+      :Activate()
+   END
+
+Return nil
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Test1( oP, nT, nL, nH, nW )
+
+   local oBrw
+   local oBar
+   local aData := {  { "JAN", 1000, 1200,  900,  400,  700,  400 },  ;
+                     { "FEB", 1100, 1300, 1000,  500,  800,  500 },  ;
+                     { "MAR", 1050, 1800, 1900,  700, 1400, 1600 },  ;
+                     { "APR", 1825, 1975, 1850,  675, 1100, 1425 },  ;
+                     { "MAY", 2000, 1670, 1550,  675, 1100, 1425 },  ;
+                     { "JUN", 0970, 1025, 1100,  675, 1100, 1425 },  ;
+                     { "JUL", 1150, 1600, 1750,  675, 1100, 1425 },  ;
+                     { "AUG", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "SEP", 1150, 1320, 1450,  675, 1100, 1425 },  ;
+                     { "OCT", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "NOV", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "DEC", 1250, 1700, 1850,  675, 1100, 1425 }   ;
+                  }
+
+   @ nT, nL XBROWSE oBrw ;
+      SIZE nW, nH OF oP PIXEL ;
+      DATASOURCE aData ; 
+      COLUMNS 1, 2, 3, 4, 5, 6 ;
+      HEADERS "MONTH", "USA", "EUROPE", "ASIA", "OTHERS", "REST" ;
+      AUTOSORT LINES STYLE FLAT // NOBORDER
+
+   WITH OBJECT oBrw
+      :lRecordSelector := .F.
+      :lHScroll        := .F.
+      :lVScroll        := .F.
+      :l2007           := .F.
+      :nStretchCol     :=  1
+      :lFitGridHeight  := .T.
+      :nHeaderHeight   := 32
+      :nRowHeight      := 27
+      :nMarqueeStyle   := MARQSTYLE_HIGHLROW
+      :bClrRowFocus    := { || { CLR_BLACK, RGB( 185, 220, 255 ) } }
+      :bClrStd         := { || { Rgb( 88, 88, 88 ), CLR_WHITE } }
+      :nColorPen       := CLR_HGRAY
+      :bClrHeader      := { || { CLR_BLACK, CLR_WHITE, CLR_HGRAY } }
+      :lFullGrid       := .T.
+      :SetFont( oFontCtrl )
+      AEVal( :aCols, { | o | o:cEditPicture := "999,999.99", o:nWidth := Int( o:oBrw:nWidth / 6 ) }, 2, Len( :aCols ) )
+      AEVal( :aCols, { | o | o:oHeaderFont := oFont1 } )
+      :CreateFromCode()
+   END
+
+Return oBrw
+
+//----------------------------------------------------------------------------//
+
+Static Function Test2( oP, nT, nL, nH, nW, nType )
+
+   local oGraph
+   local aVals1
+   local aVals2
+   local aVals3
+   local aCols := {  ;
+      { "MONTH",     'C',  3, 0  }, ;
+      { "USAS",      'N',  4, 0  }, ;
+      { "EUROS",     'N',  4, 0  }, ;
+      { "ASIAS",     'N',  4, 0  }, ;
+      { "USAC",      'N',  4, 0  }, ;
+      { "EUROC",     'N',  4, 0  }, ;
+      { "ASIAC",     'N',  4, 0  }  }
+   local aData := {  { "JAN", 1000, 1200,  900,  400,  700,  400 },  ;
+                     { "FEB", 1100, 1300, 1000,  500,  800,  500 },  ;
+                     { "MAR", 1050, 1800, 1900,  700, 1400, 1600 },  ;
+                     { "APR", 1825, 1975, 1850,  675, 1100, 1425 },  ;
+                     { "MAY", 2000, 1670, 1550,  675, 1100, 1425 },  ;
+                     { "JUN", 0970, 1025, 1100,  675, 1100, 1425 },  ;
+                     { "JUL", 1150, 1600, 1750,  675, 1100, 1425 },  ;
+                     { "AUG", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "SEP", 1150, 1320, 1450,  675, 1100, 1425 },  ;
+                     { "OCT", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "NOV", 1250, 1700, 1850,  675, 1100, 1425 },  ;
+                     { "DEC", 1250, 1700, 1850,  675, 1100, 1425 }   ;
+                  }
+   DEFAULT nT    := 2
+   DEFAULT nL    := 2
+   DEFAULT nH    := oP:nHeight - 4
+   DEFAULT nW    := oP:nWidth  - 4
+   DEFAULT nType := 1
+
+   if !File( cPathApp + "SALECOST.DBF" )
+      DBCREATE( cPathApp + "SALECOST.DBF", aCols, "DBFCDX", .T., "SC1" )
+      FW_ArrayToDBF( aData )
+   else
+      DbUseArea( .F., "DBFCDX", cPathApp + "SALECOST.DBF", "SC1", .T., .F. )
+   endif
+   GO TOP
+   @ nT, nL GRAPH oGraph SIZE Int( nW / 2 ) - 2, nH PIXEL OF oP ;
+      TITLE "Sales and Costs" ;
+      XVALUES YVALUES LEGENDS
+   //oGraph:lBorders   := .T.
+   oGraph:nType      := nType
+   oGraph:SetColor( oP:nClrText, oP:nClrPane )
+   oGraph:cTitY      := SC1->MONTH
+   oGraph:l3D        := .T.
+   aVals1            := { SC1->USAS, SC1->EUROS }
+   aVals2            := { SC1->USAC, SC1->EUROC }
+   ADD SERIE TO oGraph SERIE aVals1 LEGEND "Sales" COLOR METRO_OLIVE
+   ADD SERIE TO oGraph SERIE aVals2 LEGEND "Costs" COLOR METRO_STEEL
+   SET Y LABELS OF oGraph TO { "USA", "EUROPE" } //, "ASIA" }
+   oGraph:nMaxVal    := 2000
+   oGraph:SetArrayFonts( { oFont4, oFont, oFont1, oFont, oFontB, oFontE, oFont1, oFont1, oFontB } )
+
+Return oGraph
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function MyPopupMnu( o )
+
+   local oMnu
+   local nRow  := o:nTop  + Int( o:nHeight / 2 ) 
+   local nCol  := o:nLeft + Int( o:nWidth / 2 ) 
+
+   MENU oMnu POPUP 2013 ;
+      COLORSELECT METRO_STEEL, METRO_STEEL, CLR_WHITE ;
+      COLORMENU CLR_WHITE, CLR_BLUE ;
+      COLORSEPARATOR METRO_STEEL ;
+      COLORLEFT CLR_WHITE ;
+      FONT oFont4
+
+      MENUITEM "Save Prompt"    ACTION cText := oDock2:SetCaption()
+      MENUITEM "Change Prompt"  ACTION oDock2:SetCaption( "New Caption" + CRLF + "Second Line" )
+      MENUITEM "Restore Prompt" ACTION oDock2:SetCaption( cText )
+      SEPARATOR
+      MENUITEM "Change Colors Panel Main"     ACTION oDock2:ChangeColorsP( { || CLR_RED },   { || CLR_WHITE } )
+      MENUITEM "Change Colors Panel Controls" ACTION oDock2:ChangeColorsH( { || CLR_WHITE }, { || CLR_RED } )
+      SEPARATOR
+      MENUITEM "Exit" ACTION o:oWnd:oWnd:End()
+
+   ENDMENU
+   ACTIVATE MENU oMnu AT nRow, nCol OF o:oWnd
+
+Return oMnu
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function Test3( oP, nT, nL, nH, nW )
+
+   local oWnd, oImage, oFontSay
+   local oNameUser, oPassword
+   local oBtn1, oBtn2
+   local oFontI, oFontBtn
+   local cNameUser := space( 40 )
+   local cPassword := SPACE( 40 )
+   
+   DEFINE FONT oFontI NAME "CALIBRI" SIZE 0,-15
+   DEFINE FONT oFontBtn NAME "VERDANA" SIZE 0,-17 BOLD
+   DEFINE FONT oFontSay NAME "VERDANA" SIZE 0,-25 BOLD //ITALIC
+
+   DEFINE DIALOG oWnd STYLE nOr( 0, WS_CHILD ) COLOR CLR_BLACK, nRGB( 253, 254, 254 ) ;
+      FROM nT, nL TO nH, nW PIXEL TRUEPIXEL OF oP
+
+   //DEFINE WINDOW oWnd STYLE nOr( WS_POPUP, WS_BORDER ) COLOR CLR_BLACK, nRGB( 253, 254, 254 )
+   //   oWnd:nHeight := 320
+   //   oWnd:nWidth := 400
+   //oWnd  := oP
+
+      @ 15, 0 SAY "Cristóbal Navarro ( ® ) " PIXEL SIZE 400,30 OF oWnd ;
+         FONT oFontSay CENTER TRANSPARENT
+      @ 45, 0 SAY Upper( "FiveTech:  ") + "Enter your Credentials" PIXEL ;
+         SIZE 400,30 OF oWnd FONT oFontI CENTER TRANSPARENT
+
+      @ 110, 50 GET oNameUser VAR cNameUser OF oWnd;
+         COLOR Rgb( 128, 128, 128 ), CLR_WHITE PICTURE "@!" ;
+         CUEBANNER "User" PIXEL BOTTOMBORDER ;
+         FONT oFontBtn ;
+         INFIELD INFONT oFontI INCLRTXT CLR_GRAY INCLRBORDER Rgb( 204, 204, 204 ) ;
+         INCLRLINE CLR_RED DYNAMIC //GROUP
+   
+      @ 110, 50 GET oPassword VAR cPassword OF oWnd;
+         COLOR Rgb( 128, 128, 128 ), CLR_WHITE;
+         CUEBANNER "Enter Password" PASSWORD PIXEL BOTTOMBORDER ;
+         FONT oFontBtn PICTURE "@40" ;
+         INFIELD INFONT oFontI INALIGN 0
+
+      @ 260, 40 FLATBTN oBtn1 PROMPT "Access" OF oWnd SIZE 140, 40 ;
+         FONT oFontBtn;
+         COLOR CLR_WHITE, METRO_STEEL ;
+         ACTION ( oFontI:End(), oFontBtn:End(), oFontSay:End(), oWnd:End() )
+
+      @ 260,210 FLATBTN oBtn2 PROMPT "Exit" OF oWnd SIZE 140, 40 ;
+         FONT oFontBtn;
+         COLOR CLR_WHITE, METRO_STEEL ;
+         ACTION ( oFontI:End(), oFontBtn:End(), oFontSay:End(), oWnd:End() )
+
+   ACTIVATE DIALOG oWnd ON INIT ( oNameUser:SetFocus() ) NOWAIT
+
+   //ACTIVATE WINDOW oWnd CENTER ON INIT ( oNameUser:SetFocus() )
+   oFontI:End()
+   oFontBtn:End()
+   oFontSay:End()
+
+RETURN oWnd
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function MyRibbonSetup( oCtrl, oP )
+
+   local oGr1
+   
+   oCtrl:aPrompts[ 1 ] := "NEW"
+   ADD GROUP oGr1 RIBBON oCtrl TO OPTION 1 PROMPT "New" WIDTH Int( oP:nWidth / 3 ) ;
+       GRADIANT { { 1, Rgb( 192, 192, 192 ), Rgb( 192, 192, 192 ) } }
+   oCtrl:AddTab( "OTHER" )
+
+   //oCtrl:SetStyles( .F., .T. )
+
+Return oP
+
+//----------------------------------------------------------------------------//
+//
+//----------------------------------------------------------------------------//
+
+Function MyButtonBarSetup( oCtrl, oP )
+
+   local oBtt1
+   local oBtt2
+
+   DEFINE BUTTON oBtt1 PROMPT "Exit" OF oCtrl ACTION MsgInfo( "ButtonBar" ) ;
+      TOOLTIP "TDockPnel Power" GROUP LEFT FILE "..\bitmaps\16x16\close.bmp" FLAT
+   oBtt1:nClrText  := CLR_BLUE
+   oBtt1:nWidth := 48 * 2
+
+   DEFINE BUTTON oBtt2 PROMPT "Button" OF oCtrl ACTION MsgInfo( "Button" ) ;
+      TOOLTIP "TDockPnel Power" GROUP LEFT FILE "..\bitmaps\16x16\folder.bmp" FLAT
+   oBtt2:nClrText  := CLR_BLUE
+   oBtt2:nWidth := 48 * 2
+
+Return oP
+
+//----------------------------------------------------------------------------//
+</code>

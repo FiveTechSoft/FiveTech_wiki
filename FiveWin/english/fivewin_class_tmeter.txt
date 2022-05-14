@@ -1,0 +1,59 @@
+
+====== Class TMeter ======
+
+Meter class                                                                    
+Inherits TControl                                                              
+====== DATA ======
+^ Data ^ Description                               ^
+|nTotal|Total amount to be represented by the Meter|
+|nRefresh|SysRefresh interval used in Set method|
+|nClrBar|RGB color to use for the filled background of the meter|
+|nClrBText|RGB color to use for the filled text of the meter|
+|cText|The text to show on the meter|
+|lPercentage|If the % sign is to be painted|
+====== METHODS ======
+^ Method ^ Description            ^
+|New|Constructor from source code.|
+|ReDefine|Constructor from resources.|
+|Default|Default meter initialization.|
+|Display|Displays the control|
+|Initiate|Control initialization.|
+|Paint|Paints the Meter.|
+|Set|Changes the value represented and the value of the variable.|
+|SetTotal|Sets the maximum value of the meter|
+====== Example ======
+\Fwh\Samples\TestMetr.Prg
+<code clipper>
+// Testing FiveWin own meter controls
+#include "FiveWin.ch"
+static oDlg
+
+//----------------------------------------------------------------------------//
+function Main()
+
+   local nActual := 0, oMeter
+
+   DEFINE DIALOG oDlg FROM 1, 1 TO 12, 44 ;
+      TITLE "Testing the Meter controls"
+
+   @ 2, 2 METER oMeter VAR nActual TOTAL 50 OF oDlg SIZE 135, 12
+
+   @ 3, 5 BUTTON "&Decrease" OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual - 1 )
+
+   @ 3, 16 BUTTON "&Increase"   OF oDlg SIZE 40, 14 ;
+      ACTION oMeter:Set( nActual + 1 )
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:meter.jpg|:meter.jpg}}
+
+====== See Also ======
+[[fivewin_commands_meter | Command Meter ]], [[fivewin_class_tprogress | Class TProgress ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TMETER.PRG

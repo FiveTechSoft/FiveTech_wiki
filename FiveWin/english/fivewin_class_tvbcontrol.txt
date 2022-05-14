@@ -1,0 +1,141 @@
+====== Clase TVbControl ======
+
+CLASS TVbControl\\ Inherits from TControl    
+
+====== DATAS ======
+^ Data      ^ Description                            ^
+|aEventNames|A CLASSDATA with the names of all events|
+|lRegistered|ClassData to store the WinApi registered state of the Class|
+|hCtl|The handle of the VBX control (internal API value)|
+|aEvents|An array with all the defined events and its related actions.|
+
+====== METHODS ======
+^ Method      ^ Description                            ^
+|New|Creates a new VBX control from source code\\ Syntax: TVbControl():New(nRow, nCol, nWidth, nHeight, oWnd, cVbxFile, cVbxClass, aEvents ) |
+|ReDefine|Redefine a VBX to be used from resources\\ Syntax: TVbControl():ReDefine(nId, oWnd, nClrFore, nClrBack, aEvents ) |
+|Initiate|Generic initialization of a VBX|
+|GetPropName|Retrieves the name of a VBX property by its order|
+|aGetProps|Returns an array with all the properties names|
+|Default|Default values for the initialization of the VBX|
+|SetProp|Changes a VBX property by its order|
+|GetName|Retrieves the class name of the VBX control (API value) |
+|nGetProps|Retrieves the number of properties of the VBX |
+|nGetEvents|Retrieves the number of events of the VBX |
+|GetEvent|Retrieves the name of a VBX event by its name |
+|GetEnums|Retrieves an array with a VBX enum all possible values |
+|Get|Retrieves the value of a property by its name|
+|Set|Changes a VBX property the value of a property by its name |
+|GetProp|Retrieves the value of a property by its order |
+|GetPropType|Retrieves the type of a VBX property |
+|HandleEvent|VBX specifically HandleEvent (inherits from TControl) |
+|VbxEvent|Internal VBX events management function support |
+|VbxInherit|Internal automatic inherit process for 5W VBX system |
+|cToChar|Generates a data template to build a Dialog|
+
+====== Example ======
+<code clipper>
+// Using Borland's BiVbx10.dll VBX Controls support
+
+#include "FiveWin.ch"
+#include "Testbvbx.ch"
+
+static oDlg, oVbx
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oName, oProperties, oEvents
+   local oNProps, oNEvents
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Test" VBX
+
+   REDEFINE VBX oVbx ID ID_VBX OF oDlg  ;
+                COLOR "N/W"             ;
+                ON ON  WQOut( { PCOUNT(), bP1 } ) ;
+                ON OFF WQOut( { PCOUNT(), bP1 } )
+
+   REDEFINE LISTBOX oProperties ;
+      FIELDS "" ;
+      HEADERS "Properties" ;
+      ID ID_PROPERTIES OF oDlg
+
+   REDEFINE LISTBOX oEvents ;
+      FIELDS "" ;
+      HEADERS "Events" ;
+      ID ID_EVENTS OF oDlg
+
+   REDEFINE SAY oName    PROMPT oVbx:GetName()    ID ID_NAME        OF oDlg
+   REDEFINE SAY oNProps  PROMPT oVbx:nGetProps()  ID ID_NPROPERTIES OF oDlg
+   REDEFINE SAY oNEvents PROMPT oVbx:nGetEvents() ID ID_NEVENTS     OF oDlg
+
+   // REDEFINE BUTTON ID ID_LOAD OF oDlg ACTION LoadVbx()
+   REDEFINE BUTTON ID ID_LOAD OF oDlg ;
+                ACTION WQOut( oVbx:GetEnums( "DragMode" ) )
+
+   ACTIVATE DIALOG oDlg CENTERED ;
+      ON INIT ( oName:Refresh(), oNProps:Refresh(), oNEvents:Refresh(),;
+                PropertiesInit( oProperties, oVbx ),;
+                oEvents:SetArray( oVbx:aEventNames ) )
+
+return nil
+
+//---------------------------------------------------------------------------//
+
+static function ParamInfo( pCount, cEvent, aParams )
+
+    local aTest := array( 2 + pCount * 2 )
+    local i, n := 1
+
+    aTest[ n++ ] = pCount
+    aTest[ n++ ] = cEvent
+
+    for i = 1 to pCount
+        aTest[ n++ ] = valtype( aParams[ i ] )
+        aTest[ n++ ] = aParams[ i ]
+    next
+
+    WQOut( aTest )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function PropertiesInit( oProps, oVbx )
+
+   oProps:nAt       = 1
+   oProps:bLine     = { || { oVbx:GetPropName( oProps:nAt ),;
+                             cValToChar( oVbx:GetProp( oProps:nAt ) ) } }
+   oProps:bGoTop    = { || oProps:nAt := 1 }
+   oProps:bGoBottom = { || oProps:nAt := oVbx:nGetProps() }
+   oProps:bLogicLen = { || oVbx:nGetProps() }
+   oProps:bSkip     = { | nSkip, nOld | nOld := oProps:nAt,;
+                        oProps:nAt += nSkip,;
+                        oProps:nAt := Min( Max( oProps:nAt, 1 ),;
+                        Eval( oProps:bLogicLen ) ), oProps:nAt - nOld }
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function LoadVbx( oDlg )
+
+   local cVbxFile := cGetFile( "*.vbx", "Select a VBX" )
+
+   if ! Empty( cVbxFile )
+      oVbx:End()
+      SysRefresh()
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+[[fivewin_class_TVbxArray|Class TVbxArray]], [[fivewin_commands_vbxs| Command Vbxs]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TVBCONTROL.PRG

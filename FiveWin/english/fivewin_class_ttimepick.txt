@@ -1,0 +1,18 @@
+====== Class TTimePick ======
+
+Time Picker control                                                            
+Inherits from TControl                                                         
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor from resources|
+|cText|Sets the text of the control|
+|SetTime|Sets the current time for the control|
+|GetTime|Returns the current time of the control|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTIMEPICK.PRG

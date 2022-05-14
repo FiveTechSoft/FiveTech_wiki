@@ -1,0 +1,202 @@
+====== Class FWMaria RowSet ======
+
+Rowset object is similar to RecordSet of ADO, TDatabase for DBF and oQuery of TMySql and TDolphin.
+
+===== Creating RowSet =====
+==== Syntax: ====
+ 
+<code clipper>
+oRs := oCn:RowSet( cTable/cSql [, aParams] [, nRows] [, lReadOnly]
+//Alternative method name **Query(...)** also can be used in place of **RowSet(...)**.//
+oRs := oCn:Call( cStoredProc, params, ... )
+oRsClone := oRs:Clone()
+</code>
+
+In case of failure, the return value is nil. After calling this method it is necessary to the check the success before using the rowset object. Example:
+<code clipper>
+oRs := oCn:RowSet( params )
+if oRs == nil
+   oCn:ShowError()
+   return nil
+endif
+</code>
+
+==== Options ====
+
+**Option (1):** //Reading table fully//
+
+**oRs := oCn:RowSet( cTable/cSql, [lReadOnly] )\\ oRs := oCn:RowSet( cTable/cSql, aParams, [lReadOnly] )**\\ If the last parameter is .T., the table/query is read as readonly.
+
+**Option (2):** //Reading table in parts// 
+
+**oRs := oCn:RowSet( cTable/cSql, NumRows, [lReadOnly] )\\ oRs := oCn:RowSet( cTable/cSql, aParams, NumRows, [lReadOnly] )**\\ This method works only for either (a) simple table name or (b) if the sql statements ends with "ORDER BY <x>", where <x> is primary/unique key. This method internally uses LIMIT/OFFSET clauses to retrieve the first NumRows records. If the last parameter is .T., the table/query is read as readonly.
+
+**oRs:nFoundRows** indicates the total number of rows if the query is read fully.\\ oRs:lMore is .t. if more records can be read.
+
+Later we can keep expanding the rowset:\\ **oRs:ReadNext( n )** --> lMoreRecsRemaining\\ to read next n records or
+**oRs:ReadNext()**\\ to read all remaining records.
+
+If **oRs:lAutoExtend** is set to .T., whenever user navigates past the last record read, next NumRows are automatically read till all records are read.\\ Alternatively, if **oRs:lAutoPage** is set to .t., user can navigate forward and backward by pages.
+
+Or we can page through the rowset using\\ **oRs:FirstPage(), oRs:PrevPage(), oRs:NextPage(), oRs:LastPage, oRs:GoToPage( nPage )**.\\ Default **oRs:nPageStep** is NumRows.
+
+**Option (3):** //Using parameterized queries//
+
+**oCn:RowSet( cParameterizedSql, aParams, [...] )**\\ Example:
+<code clipper>cState := "NY"
+nMinAge := 41
+nMaxAge := 50
+oRs := oCn:RowSet( "select * from `customer` where `state` = ? and 'age' between ? and ?", { cState, nMinAge, nMaxAge } )</code>
+Later we can use :
+**oRs:Requery( aNewParams )**\\ In the above example we can use
+<code clipper>
+cState  := "WA"
+nMinAge := 51
+nMaxAge := 60
+oRs:Requery( { cState, nMinAge, nMaxAge } )
+</code>
+The data in the same rowset is replaced with the results of the new query.
+
+**Option - 4:** //Using Stored Procedures//
+
+**oRs := oCn:Call( cStoredProc, aParams )**\\ A RowSet can also be created by calling a Stored Procedure returning a result set. In case the stored procedure is called with parameters, subsequenlty oRs:Requery( params ) can be called with same parameters with different values.\\ Though in such cases, the real SQL statement executed by the stored procedure is not visible, the rowset object makesw its best efforts to identify the base table and prepares appropriately to Requery, Refresh and Resync.
+
+**Option-5:** //Cloning//
+
+**oRs2 := oRs:Clone()**\\ This works similar to the ADO method Clone().
+All the Clones work on the same data but can be sorted / filtered independantly.\\ All changes in one RowSet are automatically seen in all the Clones.\\ The internal linkage of the Clones does not work / broken in the following cases.\\ a) Deletions and Inserts are not seen by other clones. (differs from ADO)\\ b) ReQuery() of a Clone totally de-links it from other clones. (like ADO)
+
+
+===== Functional comparison =====
+
+^Function^TMySql & Dolphin^FWMYSQL^ADO^
+|Uses|  Libmysql.dll / libmaria.dll  ||  ODBC  |
+|Read data|  Reads into Buffer in client's memory  |||		
+|Buffer managed by|  DLL  |  FWMYSQL  |   ADO   |
+|Filter / Sort|  Filtered / Sorted on Server & reads full data again  |  By FWH on the client  |  By ADO On Client  |
+|Insert / Modify Data|  Writes to server & Reada full data again for every modification  |  Writes to server & refreshes modified row only  ||
+|Delete|  Writes to server & Read full data again  |  Writes to server & deletes in memory  |  Writes to server & Reads full data again  |
+|If Connection lost|  Reconnects  |  Continues and reconnects  |  Stops working  |
+|Bachmode working|  NO  |  NO  |  YES  |
+|Requery/Refresh|  Requery  |  Requery/Refresh  |  Requery  |
+|Support for OUT and INOUT\\ parameters in Stored Procedures|  NO  |  Fully supported  |  NO  | 
+|FWH Required|  NO  |  YES  |  NO  |
+|Is Source code provided?|  YES  |  NO  ||
+
+====== DATA ======
+^Data^Usage^Type^Default^Details^
+|aOrder| |A|{0}|Array of field numbers in multiple field sort. -ve numbers indicate descending|
+|//aStructure//|ReadOnly|A| |Strucure of the fields. Similr to DBSTRUCT()|
+|bOnChangePage| |B| |Executed on change of page, when paging is active|
+|bOnExpand| |B| |Executed on expanding rowset, when expanding is active|
+|BookMark| |N| |ACCESS ::BookMark --> ::RecNo()\\ ASSIGN ::BookMark := n --> ::GoTo( n )|
+|bResyncSQl| |B| |When rowset is created, internally ::cResyncSQL is prepared for use to Resync current record. In cases where programmer observes that the default ::ResyncSQL is incorrect or empty, programmer may sypply ::bResyncSQL.|
+|bSaveRow| |B| |Programmer's own save function, overriding default ::Save() method.|
+|bSort| |B| |Programmer's own Sort algorithm overriding default Sorting|
+|bTrigger| |B| |If assigned, executed after each ::FieldPut(), with RowSet object and fieldname as parameters|
+|//cBaseDB//|ReadOnly|C|""|Database of the basetable|
+|//cBaseTable//|ReadOnly|C|""|BaseTable name.|
+|cRefreshSQL| |C| |Internally prepared SQL to refresh modified data from the server. See ::Refresh() method.|
+|cResyncSql| |C| |Internally prepared sql statement for ReSyncing a row after update/insert.|
+|Filter| |L| |Current filter expression.\\ Assigning a new filter expression sets new filter. Assigning "" clears filter|
+|lAutoAppend| |L|.f.|If set to .T., skipping one record after last record automatically appends a ghost blank record. If modified and saved, the modified record is physicall inserted. Used for inline appends in browses.|
+|lAutoExpand| |L|.f.|If set to .T., moving past EOF automatically reads next batch of records and adds to the rowset.|
+|lAutoPage| |L|.f.|If set to .T., moving past the end or beginning of current page moves to next/previous page.|
+|//lDescend//|ReadOnly|L| |Whether the current sort order is descending|
+|lMore| |L|.f.|True if more records are to be read|
+|//lReadOnly//|ReadOnly|L| |True if the rowset can not be updated.|
+|lShowErrors| |L|.f.|If .t., error messages are displayed|
+|lTinyIntAsLogical| |L| |True, if this rowset treats tiny integer as logical|
+|//nCurrentPage//|ReadOnly|N|1|Current page number when paging system is on|
+|//nFoundRows//|ReadOnly|N|0|Total rows that can be read|
+|//nMaxPages//|ReadOnly|N| |Maximum pages|
+|nPageStep| |N| |Number of rows in each page|
+|oChild| |O| |Child Rowset. See ::AddChild()|
+|//oCn//|ReadOnly|O| |Connection Object|
+|Sort| |C| |ACCESS: Sort Expression\\ ASSIGN: Assigning new value invokes ::SetOrder()|
+|//Source//|ReadOnly|C| |Source SQL|
+
+
+====== METHODS ======
+
+===== Navigation Methods =====
+
+^DBF Functionality^RowSet methods^
+|DBGOTOP()|::GoTop(), ::MoveFirst()|
+|DBGOBOTTOM()|::GoBottom(), ::MoveLast()|
+|DBSKIP( n )|::Skip( n ), ::Move( n )|
+|DBSKIP( 1 )|::Skip( 1 ), ::MoveNext()|
+|DBSKIP( -1 )|::Skip( -1 ), ::MovePrevious()|
+|DBGOTO( nRecNo )|::GoTo( nRecNo ), ::BookMark := nRecNo|
+|RECNO()|::RecNo(), ::BookMark|
+|LASTREC()|::LastRec() //Includes deleted records//|
+|RECCOUNT()|::RecCount(), ::RecordCount() //Excludes deleted records//|
+|ORDKEYNO()|::KeyNo(), ::AbsolutePosition|
+|ORDKEYGOTO( nPos )|::KeyGoTo( nPos ), ::AbsolutePosition := nPos|
+|ORDKEYCOUNT()|::KeyCount()|
+|BOF()|::Bof()|
+|EOF()|::Eof()|
+
+===== Sort, Search and Filter Methods =====
+
+
+Sorting is done on client using Harbour collation and does not use Server. Connection to server is not required for this operation.
+^DBF Functionality^RowSet Methods^
+|ORDSETFOCUS() --> cIndexTag|::SetOrder() --> cSortFields, ::OrdSetFocus() --> cSortFields, ::Sort --> cSortFields||
+|ORDSETFOCUS(0)|::SetOrder( 0 ), ::OrdSetFocus( 0 ), ::Sort := ""|
+|ORDSETFOCUS( ncIndexTag )|::SetOrder( cFieldList ), ::OrdSetFocus( cFieldList ), ::Sort := cFieldList|
+|ORDKEYVAL()|::OrdKeyVal()|
+|DBSEEK( uExpr, [lSoft] ) --> lFound|::Seek( uExpr, [lSoft], [lWild] ) --> lFound|
+|ORDWILDSEEK( cWild, lCurrPos, lBack )|::OrdWildSeek( cWild, lFromCurRec, lReverse ) --> lFound|
+|LOCATE FOR <cond>|::Locate( <cond>, nil, <lNext> ) --> lFound |
+|DBSETFILTER( cFilter )|::SetFilter( cFilter, [aParams]\\ ::ReFilter( aParams ) ) --> cFilter|
+|DBCLEARFILTER()|::SetFilter( "" )|
+
+
+===== Other Methods =====
+
+^Method^Usage^Details^
+|AddChild| |See OrdSetRelation()|
+|Append\\ AddNew| |**( aFields, aVals ) --> lSuccess**\\ 1) If called without parameters, a blank row is created ready for edit. Any skip clears the blank row and hence not suitable for browse.Eg:\\ <code clipper>oRs:Append()
+oRs:fld1 := uVal
+oRs:Save()</code>\\ 2) If called with parameters, a new record is inserted with the values, rowset refreshed and record pointer moved to new record.\\ //Functionality similar to ADO//|
+|AppendBlank| |**( [aNewRow] )** --> lSuccess\\ Create a new blank record in memory and adds to rowset, without affecting the data on the server. It is possibel to initialize some values by providing optional aNewRow. After modifying/editing fields, ::Save() should be called to phyisically insert the row in the table and update rowset. This is useful for browses.|
+|Cancel()| |Cancel pending edits/appends|
+|CancelAppend()| |Cancel append started by ::AppendBlank()|
+|Clone()| |Creates a clone of rowset|
+|Close()| |Closes rowset|
+|Delete()| |Deletes current record and repositions to next available record|
+|EditBaseRecord| |**( cFieldList, lNew, bEdit, oBrw )**\\ Enables edit of all/selected fields of the corresponding record of basetable though only a few fields are included in the current rowset.|
+|FieldGet| |**( nFld/cField/cExpr ) --> uValue**\\ Parameter can be FieldNo, FieldName (in the rowset or correspodning original fieldname) or an expression.|
+|FieldPos| |**( cnFld ) --> nPos**\\ Parameter can be field name as in rowset or corresponding original name in the table.|
+|FieldPut| |**( cnFld, uVal )**\\ **cnFld:** FieldNo or field name\\ **uVal** Value to be assigned.\\ After assigning the value, ::bTrigger is executed with rowset object and fieldname|
+|Fields| |**( u )**\\ Compatible with ADO syntax. Sample uses:\\ oRs:Fields( 0 ):Value\\ oRs:Fields( "salary" ):Len|
+|FirstPage()| |Goes to firstpage|
+|Gather\\ PasteRec| |**( aRec )**\\ **aRec** should be an array of fieldname/value pairs. Values are written to the table and rowset updated|
+|GetRows| |**( [lwithRowNum:= .f.] ) --> aData**\\ Same as ADO GetRows()\\ Reads rowset data into a 2 dimentional array|
+|GoToPage| |**( nPage )** Goes to specified page|
+|LastPage()| |Goto last page|
+|OrdDescend| |**( aOrder, u, lDesc )**|
+|OrdSetRelation| |**( oChildRs, cFilter, aParams )**Same as scoped relation in DBF.|
+|PrevPage()| |Goto previous page|
+|Record| |**( cFieldList, lAppend ) --> DataRow object**|
+|ReFilter| |**( aParams )** Resets the same filter with new params|
+|Refresh()| |Applies only to rowsets/tables having update timestamp. \\ Reads from Server rows with timestamp later than the max timestamp in the rowset and updates the rowset with new values and returns number of rows updated|
+|ReQuery| |**( [aNewParams] )**\\ Reads data fully again from the server, optionally applying new parameters|
+|ReSync()| |Reads current record from the server and updates the values in the rowset|
+|ResyncWhere| |**( cWhere, [oBrw] )**\\ Resyncs record coplying with the cWhere condition|
+|Save| |Saves changes made to current record or blank record in case of append and resyncs the data with the server. Returns lSuccess|
+|Scatter| |**( [lValuesOnly] ) --> aRow**\\ Returns an array of fieldname/value pairs of current record. If lValuesOnly is .T., a single dimentional array of values only is returned|
+|SetDefault| |**( uFld, uVal, [lReadOnly] )**\\ Sets uVal as default value for uField (field number or name) when appending. If lReadOnly is set to .t., the value is not editable|
+|SyncChild()| |Synchronizes child rowset with current record|
+|ToExcel()| |Exports data of the rowset to Excel|
+|Truncate| |::Zap( .T. )|
+|Update| |**( aFields, aVals )**|
+|WhereLikeCurrentRow()| |Creates a where condition matching the contents of the current record|
+|Zap| |**( [lTruncate := .f.] )**\\ If lTruncate is .T., truncates the basetable else deletes all records. Note: In case of truncation, autoinc values are reinitialized.\\ **CAUTION**: This method truncates/deletes the entire basetable, even though only a limited records are contained in the rowset.|
+
+====== Example ======
+
+====== See Also ======
+
+[[fivewin_class_fwmariaconnection|FWMariaConnection Object]]

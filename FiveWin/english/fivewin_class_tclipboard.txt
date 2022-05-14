@@ -1,0 +1,67 @@
+
+
+====== Class TClipBoard ======
+
+** Windows clipboard as an Object. **
+
+The clipboard provides a mechanism that makes it possible for applications to pass data handles to other applications. Clipboard functions carry out data interchange between Windows applications.  
+
+====== DATAs  ======
+| nFormat | Type of data placed in Clipboard | 
+| oWnd | Container object | 
+
+====== METHODs ======
+| New | Constructor from source code |
+| Clear | Open, clear Clipboard contents and close it |
+| Close | Close the Clipboard to end using it |
+| Empty | Clear Clipboard contents if it's open |
+| End | Open, clear Clipboard contents and close it |
+| GetBitmap | Get the content of Clipboard in bitmap format |
+| GetData | Get the content of Clipboard |                    
+| GetText | Get the text placed in the Clipboard |
+| IsEmpty | Checks if the clipboard is empty |
+| Open | Open the Clipboard to start using it |
+| SetBitmap | Places the given bitmap in the Clipboard |
+| SetData | Set the content of Clipboard |               
+| SetText | Places text in the Clipboard |
+
+====== Example ======
+\Fwh\Samples\TestClip.Prg
+<code clipper>
+// This sample shows how to use Windows ClipBoard from FiveWin.
+// To FiveWin, the ClipBoard is also an object!
+
+#include "FiveWin.ch"
+
+static oWnd, oClp
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 70 ;
+      TITLE "Using Windows ClipBoard" 
+
+
+   DEFINE CLIPBOARD oClp OF oWnd
+
+   SET MESSAGE OF oWnd TO FWVERSION CENTERED
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+// To Copy some text to the Clip Board, you may use the following command
+oClp:SetText( "Hello, This is the placed in clipboard now" )
+
+// To retrieve text from the  Clip Board, you may use the following command
+cText := oClp:GetText()
+</code>  
+
+====== Screen snapshot ======
+{{:clipboard.jpg|:clipboard.jpg}}
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCLIPBOARD.PRG
+
+====== See Also ======
+[[fivewin_commands_clipboard | Command Clipboard]]

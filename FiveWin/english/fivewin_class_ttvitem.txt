@@ -1,0 +1,33 @@
+====== Class TTVItem ======
+
+Item objects for the TTreeView object.                                         
+====== DATA ======
+^ Data ^ Description ^
+|hItem|Item handle|
+|oTree|TTreeView object|
+|aItems|Array of TTVitem objects (branches from actual item)|
+|cPrompt|Prompt for the item|
+|nImage|Ordinal Image for the item of oTree:oImageList|
+|Cargo|Container data for your own use|
+====== METHODS ======
+^ Method ^ Description ^
+|New|Constructor from source code\\ New(hItem, oTree, Cargo, cPrompt, nImage)\\ Used internally by TTreeView class|
+|Add|Add an item to the oTree.\\ Parameters:\\ <cPrompt> - String for the new item\\ <nImage> - Ordinal image of the oImageList object\\ Cargo: For your own use\\ Returns a TTVItem object|
+|Collapse|Collapse all item branches|
+|DeleteBranches|Deletes all item branches|
+|Expand|Expands all item branches|
+|GetParent|Retrieves the parent item of the current item|
+|MakeVisible|Ensures that the item is visible, expanding the parent item or scrolling the treeview, if necessary|
+|Set|Sets the prompt and the image of the item|
+|SetText|Sets the prompt of the item|
+|Toggle|Toggles the expanded/collapsed status of the item|
+
+====== Example ======
+\FWH\SAMPLES\TestTre4.Prg
+
+====== See Also ======
+
+[[fivewin_commands_trees|Commands Trees]],[[fivewin_commands_treeview|Commands TREEVIEW]], [[fivewin_class_TTreeView|Class TTreeView]], [[fivewin_class_timagelist|Class TImageList]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTVITEM.PRG

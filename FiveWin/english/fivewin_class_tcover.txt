@@ -1,0 +1,78 @@
+
+====== Description ======
+Each of the cover objects managed from the Class TCoverFlow
+
+
+====== DATAS ======
+|hBmp, hBmpSrc, hBmpCenter|Handles of used bitmaps, current, original and center|
+|hBmpPersL, hBmpPersLM|Handles of used bitmaps for left side|
+|hBmpPersR, hBmpPersRM|Handles of used bitmaps for right side|
+|nTop, nLeft, nWidth, nHeight|Coordinates and dimension of the cover|
+|oCoverFlow|Container coverflow object|
+|cText, nClrText|related prompt and color to display it|
+
+
+====== METHODS ======
+|New( cBmpName, oCoverFlow )|Constructor given a bitmap file name and coverflow container|
+|NewBmp( hBmp, nTop, nLeft, oCoverFlow )|Constructor given a bitmap handle, coordinates and coverflow container|
+|Initialize()|Initializes cover data|
+|Paint()|Paints the cover|
+|CleanM()|Cleans the temporary used bitmap handles|
+|End()|Releases all the used bitmap handles|
+
+
+====== Example ======
+FWH\samples\TestCF1.prg
+<code clipper>
+// CoverFlow example
+
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd, oCF
+   LOCAL oBrush := TBrush():New( ,CLR_CYAN )
+
+   DEFINE WINDOW oWnd  FROM 2, 2 TO 40, 96 color CLR_BLACK, CLR_CYAN BRUSH oBrush
+
+   oWnd:Center()
+ 
+   oCF = TCoverFlow():New( 30, 30 )
+
+   oCF:bAction = { | o, nCover, nOld | msginfo( "Seleted: " + str( nCover, 2 ) + CRLF + "From: " + str( nold ) ) }
+
+   oCF:nMaxCover    = 5
+   
+   oCF:lAnimated= .T.
+   oCF:SetColor( 0, CLR_WHITE )
+   
+   oCF:AddCover( "..\bitmaps\shakira.bmp", "shakira.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLUE )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\007.bmp", "007", CLR_YELLOW )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_BLACK )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_BLUE )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_RED )   
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp",CLR_RED )
+   oCF:AddCover( "..\bitmaps\shakira.bmp" )
+   oCF:AddCover( "..\bitmaps\naomi.bmp", "naomi.bmp", CLR_YELLOW )
+
+   oWnd:oClient = oCF
+
+   ACTIVATE WINDOW oWnd on init( oCF:Resize(), oCF:Refresh() )
+                       
+return nil
+</code>
+
+====== Source code ======
+FWH\source\classes\TCvrFlow.prg
+
+====== See Also ======
+[[fivewin_class_tcoverflow|Class TCoverFlow]]

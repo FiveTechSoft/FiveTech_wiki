@@ -1,0 +1,88 @@
+
+====== Class TMsgBar ======
+
+Message bar class                                                              
+Inherits from TWindow                                                          
+====== DATA ======
+^ Data  ^ Description               ^
+|cMsgDef|The default message to show|
+|lCentered|If the message should look centered at screen|
+|lInset|If the message bar should look inset|
+|oTimer|Timer for MsgItems repaint|
+|aItem|Array of MsgItems|
+|nItem|The index of the current item|
+|oKeyNum|MsgItem for Num Lock|
+|oKeyCaps|MsgItem for Caps Lock|
+|oKeyIns|MsgItem for Ins state|
+|oClock|MsgItem for Clock|
+|oDate|Msgitem for Date|
+|nSizeItem|Not used|
+|nHeight|The height of the message bar|
+|lCheckRes|If .t. then memory and resources consumption is show|
+|in|the message bar|
+|lInfoRes|As lCheckRes|
+|l2007|If the MsgBar should look 2007 style|
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|AddItem|Adds an Item to the MsgBar.|
+|InsItem|Inserts an Item to the MsgBar at a specific location.|
+|Adjust|Adjust the MsgBar dimensions to its container window|
+|CheckTimer|Creates the MsgBar internal timer|
+|ClockOff|Turn off the clock.|
+|ClockOn|Turn on the clock.|
+|DateOff|Turn off the date.|
+|DateOn|Turn on the date.|
+|Default|Default initialization|
+|DelItem|Deletes an Item from the MsgBar.|
+|Destroy|Destroys the MsgBar. Automatically called.|
+|Display|Display the MsgBar|
+|EraseBkGnd|Erases the background of the MsgBar|
+|GetItem|Retrieves the number of items of the MsgBar|
+|Height|Retrieves the MsgBar Height.|
+|KeybOff|Turn the keyboard off.|
+|KeybOn|Turn the Keyboard on.|
+|LButtonDown|Action to be performed when clicking the mouse|
+|LDblClick|Action to be performed when double-clicking the mouse|
+|MouseMove|Mouse move event handler|
+|Paint|Draws the control. This process occurs inside Display.|
+|Refresh|Repaints the control|
+|SetMsg|Set the text of the MsgBar|
+|ShowTooTip|Shows the tooltip|
+|TimerEval|Refreshes the MsgBar items at the timer event|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+//------------------------------------------------------//
+Function Main()
+   Local oWnd,oAppIcon,cAppUserName
+
+   cAppUserNAme:="Fernandez"
+   DEFINE ICON  oAppIcon RESOURCE "AppIcon"
+   DEFINE WINDOW oWnd FROM 0,0  TO GetSysMetrics(1), GetSysMetrics(0) MDI ;
+         TITLE "My Test Application" ;
+         ICON  oAppIcon 
+
+   SET MESSAGE OF oWnd TO " " 2007
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "My Company Name" SIZE 160  // Company Name
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "Location : UK" SIZE 90  // Branch Information
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "User : "+cAppUserName SIZE 100   ACTION ChangeUser() // On Click change User Name
+   DEFINE MSGITEM OF oWnd:oMsgBar PROMPT "Fn.Year : 2009-2010"SIZE 110 ACTION SelFnYear() // On click User function to change Fin.Year
+   oWnd:oMsgBar:DateOn()  // displays Date
+   oWnd:oMsgBar:ClockOn()  // Displays Time
+   oWnd:oMsgBar:oClock:bMsg   := { || AMPM( Time() ) } // Displays Time in AmPm format
+   oWnd:oMsgBar:oClock:nWidth += 20  // Increase width of Time column on Msg Bar
+
+   ACTIVATE WINDOW oWnd 
+
+RETURN NIL
+oAppIcon:End()
+</code>
+
+** Screen snapshot **
+
+{{:msgbar.jpg|:msgbar.jpg}}
+====== See Also ======
+[[fivewin_commands_msgbar|Command MsgBar]], [[fivewin_class_tmsgitem|Class TMsgItem]]    
+====== Source code ======
+FWH\SOURCE\CLASSES\TMSGBAR.PRG

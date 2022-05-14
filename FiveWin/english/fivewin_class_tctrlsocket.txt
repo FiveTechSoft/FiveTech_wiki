@@ -1,0 +1,23 @@
+
+====== Class TCtrlSocket ======
+
+TCP/IP multiple clients layer                                                  
+====== DATA ======
+|aRequests|Active sockets|
+|abEnd|Array of codeblocks to perform action when|
+|multiplexor|end a socket|
+|abChance|Array of codeblocks to perform action when|
+|multiplexor|gives a chance to a socket|
+|anSended|Array of bytes sent per socket|
+|lServerWorking|Is the server working?|
+|nPendings|Totale sockets in list|
+====== METHODS ======
+|New|Constructor from source code|
+|ServeClients|Serves the clients|
+|AddRequest|Adds a socket to the list|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCTRLSOCKET.PRG

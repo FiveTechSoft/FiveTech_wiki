@@ -1,0 +1,254 @@
+====== Class TFTPFile ======
+
+Microsoft WinINet.dll FTP files object oriented management                     
+====== DATA ======
+|oFTP|TFTP container object|
+|cFileName|Name of the file|
+|hFile|Internet handle of the file|
+|lBinary|Binary management vs. ascii management|
+====== METHODS ======
+|New|Constructor. cFileName = name of the file to manage|
+|oFTP|= a previous built TFTP object..|
+|End|Generic destructor|
+|OpenRead|Opens the file for reading|
+|OpenWrite|Opens the file for writting|
+|Write|Write data to the file|
+|Read|Read n bytes from the file|
+|Seek|Skips + / - bytes file pointer|
+
+====== Example ======
+<code clipper>
+// Visually copy a group of files from local to the Internet
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   SET 3DLOOK ON
+
+   FTPSendFiles( "194.224.203.41",;
+                 { "c:\command.com",;
+                   "c:\win95\system\wininet.dll" },;
+                 { "fivewin\command.com",;
+                   "fivewin\wininet.dll" } )
+
+   FTPGetFiles( "194.224.203.41",;
+                { "fivewin\command.com",;
+                  "fivewin\wininet.dll" },;
+                { "c:\temp\command.com",;
+                  "c:\temp\wininet.dll" } )
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function FTPSendFiles( cFTPSite, aSource, aTarget )
+
+   local oDlg, oSay1, oSay2, oSay3, oBtnCancel
+   local oMeter1, oMeter2
+   local nAmount1, nAmount2
+   local lEnd := .f.
+   local nBufSize := 2000
+   local oInternet, oFTP
+
+   MsgRun( "Connecting to FTP...", "Please, wait",;
+           { || oInternet := TInternet():New(),;
+                If( Empty( oInternet:hSession ),;
+                MsgAlert( "Internet session not available!" ),),;
+                oFTP := TFTP():New( cFTPSite, oInternet ) } )
+
+   if Empty( oFTP:hFTP )
+      MsgStop( "Cannot connect to the specified FTP site!" )
+      return nil
+   endif
+
+   DEFINE DIALOG oDlg RESOURCE "ICopyFiles" ;
+      TITLE "Copying files to " + cFTPSite
+
+   REDEFINE SAY oSay1 ID 110 OF oDlg
+   REDEFINE SAY oSay2 ID 120 OF oDlg
+
+   REDEFINE METER oMeter1 VAR nAmount1 ID 130 OF oDlg
+
+   REDEFINE SAY oSay3 ID 140 OF oDlg
+   REDEFINE METER oMeter2 VAR nAmount2 ID 150 OF oDlg
+
+   REDEFINE BUTTON oBtnCancel ID 2 OF oDlg ;
+      ACTION ( lEnd := .t., SysRefresh(), oDlg:End() )
+
+   oDlg:bStart := { || SendFiles( aSource, aTarget, nBufSize,;
+                                  oSay1, oSay2, oMeter1, oSay3, oMeter2,;
+                                  @lEnd, oDlg, oFTP ),;
+                       oBtnCancel:SetText( "&Ok" )  }
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oInternet:End()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function SendFiles( aSource, aTarget, nBufSize, oSay1, oSay2,;
+                          oMeter1, oSay3, oMeter2, lEnd, oDlg, oFTP )
+   local n
+   local hSource
+   local cBuffer := Space( nBufSize )
+   local nBytes, nFile := 0, nTotal := 0
+   local nTotSize := 0
+   local oFile
+
+   for n = 1 to Len( aSource )
+      if ! File( aSource[ n ] )
+         MsgStop( "File not found: " + aSource[ n ] )
+         oDlg:End()
+         exit
+      endif
+      hSource = FOpen( aSource[ n ] )
+      nTotSize += FSeek( hSource, 0, 2 )
+      FClose( hSource )
+      SysRefresh()
+   next
+
+   oMeter2:nTotal = nTotSize
+
+   for n = 1 to Len( aSource )
+      hSource = FOpen( aSource[ n ] )
+
+      oFile = TFtpFile():New( aTarget[ n ], oFTP )
+      oFile:OpenWrite()
+
+      oSay1:SetText( "Source: " + aSource[ n ] )
+      oSay2:SetText( "Target: " + aTarget[ n ] )
+      oMeter1:Set( 0 )
+      oMeter1:nTotal = FSeek( hSource, 0, 2 )
+      FSeek( hSource, 0, 0 )
+      nFile := 0
+      SysRefresh()
+      while ( nBytes := FRead( hSource, @cBuffer, nBufSize ) ) > 0 .and. ! lEnd
+         oFile:Write( SubStr( cBuffer, 1, nBytes ) )
+         oSay3:SetText( "Bytes copied: " + ;
+                        AllTrim( Str( nTotal += nBytes ) ) )
+         oMeter1:Set( nFile += nBytes )
+         oMeter2:Set( nTotal )
+         SysRefresh()
+      end
+      FClose( hSource )
+      oFile:End()
+      if lEnd
+        exit
+      endif
+   next
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function FTPGetFiles( cFTPSite, aSource, aTarget )
+
+   local oDlg, oSay1, oSay2, oSay3, oBtnCancel
+   local oMeter1, oMeter2
+   local nAmount1, nAmount2
+   local lEnd := .f.
+   local nBufSize := 2000
+   local oInternet, oFTP
+
+   MsgRun( "Connecting to FTP...", "Please, wait",;
+           { || oInternet := TInternet():New(),;
+                oFTP := TFTP():New( cFTPSite, oInternet ) } )
+
+   if Empty( oFTP:hFTP )
+      MsgStop( "Cannot connect to the specified FTP site!" )
+      return nil
+   endif
+
+   DEFINE DIALOG oDlg RESOURCE "ICopyFiles" ;
+      TITLE "Getting files from " + cFTPSite
+
+   REDEFINE SAY oSay1 ID 110 OF oDlg
+   REDEFINE SAY oSay2 ID 120 OF oDlg
+
+   REDEFINE METER oMeter1 VAR nAmount1 ID 130 OF oDlg
+
+   REDEFINE SAY oSay3 ID 140 OF oDlg
+   REDEFINE METER oMeter2 VAR nAmount2 ID 150 OF oDlg
+
+   REDEFINE BUTTON oBtnCancel ID 2 OF oDlg ;
+      ACTION ( lEnd := .t., SysRefresh(), oDlg:End() )
+
+   oDlg:bStart := { || GetFiles( aSource, aTarget, nBufSize,;
+                                  oSay1, oSay2, oMeter1, oSay3, oMeter2,;
+                                  @lEnd, oDlg, oFTP ),;
+                       oBtnCancel:SetText( "&Ok" )  }
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oInternet:End()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function GetFiles( aSource, aTarget, nBufSize, oSay1, oSay2,;
+                          oMeter1, oSay3, oMeter2, lEnd, oDlg, oFTP )
+   local n
+   local hTarget
+   local cBuffer := Space( nBufSize )
+   local nBytes, nFile := 0, nTotal := 0
+   local nTotSize := 0
+   local oFile, aFiles, aSizes := {}
+
+   for n = 1 to Len( aSource )
+      aFiles = oFTP:Directory( aSource[ n ] )
+      if Len( aFiles ) > 0
+         AAdd( aSizes, aFiles[ 1 ][ 2 ] ) // first file, size
+         nTotSize += ATail( aSizes )
+      else
+         AAdd( aSizes, 0 )
+      endif
+      SysRefresh()
+   next
+
+   oMeter2:nTotal = nTotSize
+
+   for n = 1 to Len( aSource )
+      hTarget = FCreate( aTarget[ n ] )
+
+      oFile = TFtpFile():New( aSource[ n ], oFTP )
+      oFile:OpenRead()
+
+      oSay1:SetText( "Source: " + aSource[ n ] )
+      oSay2:SetText( "Target: " + aTarget[ n ] )
+      oMeter1:Set( 0 )
+      oMeter1:nTotal = aSizes[ n ]
+      nFile := 0
+      SysRefresh()
+      while ( nBytes := Len( cBuffer := oFile:Read( nBufSize ) ) ) > 0 .and. ! lEnd
+         FWrite( hTarget, cBuffer, nBytes )
+         oSay3:SetText( "Bytes copied: " + ;
+                        AllTrim( Str( nTotal += nBytes ) ) )
+         oMeter1:Set( nFile += nBytes )
+         oMeter2:Set( nTotal )
+         SysRefresh()
+      end
+      FClose( hTarget )
+      oFile:End()
+      if lEnd
+        exit
+      endif
+   next
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+
+
+====== See Also ======
+[[fivewin_class_tinternet | Class TInternet ]], [[fivewin_class_tftp | Class TFtp ]], [[fivewin_class_tftpserver | Class TFtpServer ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTPFILE.PRG

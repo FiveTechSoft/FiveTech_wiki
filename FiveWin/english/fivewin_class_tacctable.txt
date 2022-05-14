@@ -1,0 +1,34 @@
+
+====== Class TAccTable ======
+
+
+Accelerators table class 
+
+====== DATA ======
+
+|nHandle|             Accelerators table handle    |
+|aItems|              An array holding each accelerator item array    |
+
+====== METHODS ======
+
+|New|                 Creates a new accelerators table    |
+|Activate|            Sets this accelerators table as the active one    |
+|Add|                 Adds a new accelerator item    |
+|DeActivate|          Deactivates this accelerator table    |
+|Del|                 Deletes an accelerator item    |
+|End|                 Destroys the accelerators table and deactivates it if used  |
+
+====== example ======
+FWH\source\classes\menuitem.prg
+<code clipper>
+      if ::oMenu:oAccTable == nil
+         ::oMenu:oAccTable = TAccTable():New()
+      endif
+      ::oMenu:oAccTable:Add( nVirtKey, nVKState, ::nId )
+</code>
+
+====== source code ======
+FWH\source\classes\tacctbl.prg
+
+====== see also ======
+[[fivewin_class_tmenuitem|Class TMenuItem]]

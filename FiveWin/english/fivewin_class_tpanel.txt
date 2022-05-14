@@ -1,0 +1,77 @@
+====== Class TPanel ======
+
+Mainly used for automatic alignment techniques.
+
+Inherits from [[fivewin_class_tcontrol|Class TControl]]                                                         
+
+====== DATA ======
+
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|EraseBkGnd|Erases the background of the control|
+|Paint|Paints the control|
+|Display|Displays the control|
+|Notify|Notify event handler|
+====== Example ======
+\Fwh\Samples\TestAlig.Prg
+<code clipper>
+// New FiveWin powerfull automatic alignment techniques
+
+#include "FiveWin.ch"
+
+static oWnd
+
+//-------------------------------------------------------------------//
+
+function Main()
+
+   local oBar, oPanel, oLbx, oTabs
+   local cItem
+
+   DEFINE WINDOW oWnd ;
+      TITLE "FiveWin Automatic Alignment capabilities"
+
+   DEFINE BUTTONBAR oBar _3D SIZE 33, 33 OF oWnd
+
+   DEFINE BUTTON OF oBar
+   DEFINE BUTTON OF oBar
+
+   #ifndef __XPP__
+      oPanel       = TPanel():New()
+   #else
+      oPanel       = TPanel():New():_New()
+   #endif
+
+   oWnd:oClient = oPanel     // It is the client control of oWnd
+
+   @ 0, 0 LISTBOX oLbx VAR cItem ;
+      ITEMS { "One", "Two", "Three" } SIZE 200, 100 OF oPanel
+
+   oPanel:oLeft = oLbx
+
+   // oTabs belongs to oPanel and it is its bottom control
+   // so it will automatically resize inside oPanel
+   // when oPanel automatically resizes inside oWnd
+   @ 4, 0 TABS oTabs PROMPT "&One", "&Two", "T&hree" OF oPanel
+   oPanel:oBottom = oTabs
+
+   SET MESSAGE OF oWnd ;
+      TO "This unique feature saves hours of work!" NOINSET
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//-------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:panel.jpg|:panel.jpg}}
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TPANEL.PRG
+
+====== See Also ======
+[[fivewin_class_ttabs | Class TTabs ]], [[fivewin_class_tpages | Class TPages ]]

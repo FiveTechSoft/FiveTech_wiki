@@ -1,0 +1,67 @@
+====== Class TTimer ======
+
+Windows timers                                                                 
+====== DATA ======
+^ Data  ^ Description                               ^
+|bAction|The action to be performed on each interval|
+|lActive|If the timer is currently active|
+|nId|The API identifier of the timer|
+|nInterval|The interval of each action in 1/1000 secs|
+|hWndOwner|The handle of the window container of the timer|
+|Cargo|Generic cargo slot|
+====== METHODS ======
+^ Method  ^ Description                               ^
+|New|Constructor method TTimer:New( nInterval, bAction,oWnd)|
+|Activate|Activates the timer TTimer:Activate() -> NIL|
+|DeActivate|Deactivates the timer TTimer:DeActivate() -> NIL|
+|End|Destroys the timer TTimer:End() -> NIL|
+====== Example ======
+<code clipper>
+// This sample shows how to call a function in an interval time.
+
+#include "FiveWin.ch"
+
+static oWnd
+static lActive := .f.
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oTmr
+
+   DEFINE WINDOW oWnd TITLE "FileControl"
+
+   DEFINE TIMER oTmr INTERVAL 10000 ACTION CheckFile() OF oWnd
+
+   ACTIVATE TIMER oTmr
+
+   ACTIVATE WINDOW oWnd ICONIZED
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function CheckFile()
+
+   if ! lActive
+      lActive = .t.
+      MsgInfo( "I check anything from here" )
+      lActive = .f.
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:timer2.jpg|:timer2.jpg}}
+
+
+====== See Also ======
+[[fivewin_commands_timers|Command Timer]], [[fivewin_class_ttime| Class TTime]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTIMER.PRG

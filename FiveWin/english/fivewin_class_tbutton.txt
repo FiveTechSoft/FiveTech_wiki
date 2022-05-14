@@ -1,0 +1,120 @@
+
+====== Class TButton ====== 
+
+Command buttons Controls. 
+
+Inherits from TControl 
+
+====== DATA ====== 
+
+^ Data ^ Descript ^
+|bAction| CodeBlock for the click event.|    
+|lDefault| The button has default style.|    
+|lProcessing| If .t. then bAction is been evaluated at this time|    
+
+====== METHOD ====== 
+
+^ Method ^ Descript ^
+|New| Constructor from source code.|    
+|ReDefine| Constructor for resources.|    
+|cGetPRG| Generates the source code of the button.|    
+|Click| Mouse left button event handler.|    
+|Colors| Overrides control Color() management.|    
+|cToChar| Generates a data template to build a Dialog.|    
+|GotFocus| Action to be performed when getting the focus.|    
+|Initiate| Action to be performed on init.|    
+|KeyDown| Action to be performed when a key is pressed down.|    
+|LostFocus| Action to be performed when losing the focus.|    
+|MouseMove| Action to be performed when moving the mouse over.|
+
+
+
+====== Example ======
+FWH\samples\testbtn.prg
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oBar
+   local oBrush
+   local oPopup
+
+   DEFINE BRUSH oBrush COLOR nRGB( 12, 129, 87 )
+
+   DEFINE WINDOW oWnd FROM 1, 10 TO 20, 60 ;
+      TITLE "Testing Buttons from disk" ;
+      BRUSH oBrush
+
+   DEFINE BUTTONBAR oBar OF oWnd _3D
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\exit.bmp" ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "You can place..."
+
+   MENU oPopup POPUP
+      MENUITEM "Test" WHEN .f.
+      MENUITEM "Test" ACTION MsgInfo( "Any action" )
+      MENU
+         MENUITEM "Another" WHEN .f.
+         MENUITEM "More..."
+      ENDMENU
+   ENDMENU
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\Open.bmp" GROUP ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "Any BMP File here..." ;
+      MENU oPopup
+
+   DEFINE BUTTON OF oBar FILE "..\bitmaps\16x16\Cut.bmp" ;
+      ACTION MsgInfo( FWVERSION ) ;
+      MESSAGE "Reading it from disk !!!"
+
+   SET MESSAGE OF oWnd TO FWVERSION + " " + FWCOPYRIGHT
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:button2.jpg|:button2.jpg}}
+
+** Sample code 2 **
+<code clipper>
+#include 'FIVEWIN.CH'
+static oWinMain := nil
+
+FUNCTION Main()
+   LOCAL oFont
+   DEFINE FONT oFont NAME 'MS Sans Serif' SIZE 6,15
+
+   DEFINE WINDOW oWinMain from 5,5 to 30,85 TITLE "TestBtns" MENU BuildMenu()
+
+   @ 3,10 BUTTON "Button 01 Test" size 100,50 FONT oFont OF oWinMain ACTION MsgInfo("Button 01 Test on oWinMain")
+   @ 3,40 BUTTON "Button 02 Test" size 100,50 FONT oFont OF oWinMain ACTION MsgInfo("Button 02 Test on oWinMain")
+
+   ACTIVATE WINDOW oWinMain
+RETURN
+</code> 
+
+** Screen Snapshot 2 **
+
+{{:button.jpg|:button.jpg}} 
+
+====== Source code ======
+FWH\source\classes\button.prg
+
+
+
+
+
+====== See also ======
+[[fivewin_command_button | Command Button]], 
+[[fivewin_commands_btnbmp | Command BtnBmp]], 
+[[fivewin_class_tbtnbmp | Class TBtnBmp]]

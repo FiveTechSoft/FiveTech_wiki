@@ -1,0 +1,71 @@
+====== Class TTrayIcon ======
+
+Tray icon management                                                           
+====== DATA ======
+^ Data ^ Description        ^
+|oTray|Tray object structure|
+|oWnd|Owner window object|
+|oIcon|Tray icon object|
+|cCaption|Tray icon tooltip|
+|bLClicked|Action to perform when left mouse clicking|
+|bRClicked|Action to perform when right mouse clicking|
+|bMMoved|Action to perform when mouse moving|
+|bLDblClick|Action to perform when left mouse double clicking|
+|bLButtonUp|Action to perform when left mouse releasing|
+|bRButtonUp|Action to perform when right mouse releasing|
+====== METHODS ======
+^ Method ^ Description        ^
+|New|Constructor from source code|
+|End|Destroys the tray icon|
+|Refresh|Refreshes the tray icon|
+|SetIcon|Sets a new tray icon and tooltip|
+|SetText|Sets a new tray icon tooltip|
+|Command|Command event handler|
+====== Example ======
+\Fwh\Samples\TestTray.Prg
+<code clipper>
+#include "Fivewin.CH"
+
+static oWnd, oTray, oIcon
+
+function TESTIT()
+
+  local oIcon1
+
+  DEFINE ICON oIcon  FILE "..\icons\fivewin.ICO"
+  DEFINE ICON oIcon1 FILE "..\icons\folder.ico"
+
+  DEFINE WINDOW oWnd TITLE "Icon Tray Class for FiveWin! from Jim Gale" ICON oIcon
+
+  ACTIVATE WINDOW oWnd ;
+     ON INIT oTray := TTrayIcon():New( oWnd, oIcon, "Testing tray ...",;
+             { || MsgInfo( "Left CLick" ) },;
+             { | nRow, nCol | MenuTray( nRow, nCol, oTray ) } ) ;
+     VALID oTray:End() ;
+     ON RIGHT CLICK oTray:SetIcon( oIcon1, "Another" )
+
+return NIL
+
+function MenuTray( nRow, nCol, oTray )
+
+   local oMenu
+
+   MENU oMenu POPUP
+      MENUITEM "Show" ACTION oWnd:Show(), oWnd:SetFocus()
+      MENUITEM "Hide" ACTION oWnd:Hide()
+      SEPARATOR
+      MENUITEM "Close Application" ACTION oWnd:end()
+   ENDMENU
+
+   ACTIVATE POPUP oMenu AT nRow, nCol OF oTray:oWnd
+
+return NIL
+</code>
+
+** Screen Snapshot **
+
+{{:trayicon.jpg|:trayicon.jpg}}
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTRAYICON.PRG

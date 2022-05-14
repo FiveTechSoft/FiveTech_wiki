@@ -1,0 +1,90 @@
+====== Class TComboBox ======
+
+Windows ComboBoxes as an Object.                                               
+Inherits from TControl                                                         
+
+====== DATA ======
+|aItems|Array of Items of the ComboBox|
+|nAt|Index of the current select item|
+|aBitmaps|Array of Bitmaps of the ComboBox if ownerdraw style used|
+|lOwnerDraw|If it is an ownerdraw style ComboBox|
+|nBmpHeight|Height to use for painting the ownerdraw bitmaps|
+|nBmpWidth|Width to use for painting the ownerdraw bitmaps|
+|bDrawItem|CodeBlock to evaluate to select a ownerdraw bitmap to paint|
+|bCloseUp|CodeBlock to evaluate when the combobox closes-up|
+|cError|Error description when using a ComboBox for browse|
+|cell|editing|
+|oGet|Contained GET for DropDown ComboBoxes if STYLE CBS_DROPDOWN specified|
+|cSearchKey|Holds current search key for incremental search|
+
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|Add|Add an item to the combobox items list|
+|cToChar|Generates a data template to build a DialogBox|
+|Change|Changed event response|
+|CloseUp|CloseUP event response|
+|Default|Default initialization|
+|DefControl|Register the control as a contained child of a|
+|container|object|
+|Del|Deletes an item|
+|Destroy|Destroys the control|
+|DrawItem|OwnerDraw items painting|
+|FillMeasure|Calculates the dimension of an ownerdraw item|
+|Find|Checks if a specific string is contained at its items list|
+|FindString|Returns the specific index position of an item in its list|
+|GetMinVisible|Gets the minimum number of visible items in the|
+|drop-down|list of a combo box|
+|Initiate|Generic initialization on DialogBoxes|
+|Insert|Insert an item|
+|IsClosed|Determines if the list box of a combo box is closed|
+|IsOpen|Determines if the list box of a combo box is open|
+|LostFocus|Action to be performed when loosing the focus|
+|lValid|ComboBox validation when loosing the focus|
+|Modify|Modify the text of an item|
+|MouseMove|Action to be performed when moving the mouse over it|
+|Open|Opens the ComboBox related list|
+|Refresh|Forces the control to be repainted|
+|Reset|Empty all contents of the ComboBox and the array aItems|
+|Select|To select a string in the list box of a combo box by index|
+|Set|To select a string in the list box of a combo box by text|
+|SetBitmaps|To set the bitmaps to be used by the ownerdraw|
+|SetItems|Changes the items shown in the combobox|
+|SetMinVisible|Sets the minimum number of visible items in the|
+|drop-down|list of a combo box|
+|ShowTooltip|Shows its tooltip|
+|State|Determines whether the list box of a combo box is dropped down|
+|VarGet|Retrieves the associated Clipper variable value|
+
+====== Example ======
+\Fwh\Samples\Combo3d.Prg
+<code clipper>
+#include "fivewin.ch"
+
+function main()
+
+   local oDlg, cCombo := "2"
+   local aItems := { "1", "2", "3" }
+
+   DEFINE DIALOG oDlg FROM 2, 2 TO 18, 60 TITLE "Test" ;
+      STYLE nOr( DS_MODALFRAME, WS_POPUP, WS_CAPTION, WS_SYSMENU, 4 )
+
+   @ 2, 2 COMBOBOX cCombo ITEMS aItems SIZE 200, 100
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>  
+
+** Screen snapshot **
+
+{{:combobox.jpg|:combobox.jpg}}
+
+
+====== See Also ======
+[[fivewin_commands_combobox | Command Combobox]], 
+[[fivewin_class_tdbcombo | Class TDbCombo]] , 
+[[fivewin_commands_dbcombo | Command DbCombo]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCOMBOBOX.PRG

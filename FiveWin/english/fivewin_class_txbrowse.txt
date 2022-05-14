@@ -1,0 +1,1144 @@
+====== Class TXBrowse ======
+
+Class TXBrowse                                                                 
+Inherits from TControl.\\ 
+
+This control intends to substitute completely all the previous Browse control developed by FiveTech.\\ The first thing you should know is that the construction of the            
+control is done in two phases:\\ \\ 
+- Creation of the TXBrowse control\\  
+- Creation of the Windows API control based on the TXBrowse control\\ 
+
+This modification has been done in order to let the programmer the assignment of any object property before the window is truly created.\\ For example,you may disable a scrollbar easily by just changing the data lVScroll or lHScroll before the window is created.\\ As usual on all Fivewin controls the creation of the object is done with the constructor 'New', which now only receives one parameter which its container window\\ \\
+
+oMyBrw:= TXBrowse():New( oWnd )\\ \\
+
+Afterwards you can change any property of the control, like adding columns to it etc. When the entire configuration has been made then you call the window creation method which can be:\\ \\
+- CreateFromCode\\ 
+OR\\ 
+- CreateFromResource( nId )\\ 
+
+The methods name are self explanatory. The first one creates a TXBrowse window as you would have done with the typical '@ nRow, nCol' and the second one is used when creating the control from resources and you give as parameter just the ID of the control.\\ \\
+
+The TXBrowse class also uses another class named TXBrwColumn to manage its columns. To add a new column to the TXBrowse object you only need to call the method **'AddCol'**
+
+oCol := oBrw:AddCol()\\ \\
+
+The TXBrowse control internally calls the method 'Adjust' when it is completely created. This method is responsible for calculating the dimension of each and every column data, header and footer and adjusts the browse adequately. The method 'Adjust' is also present on every column object and is also called within TXBrowse 'Adjust' method.\\ \\ 
+
+The method 'Adjust' only modifies the properties of the object if they were 'NIL' before the method is called. So if you call the method 'Adjust' manually you should be aware that you also will need to assign 'NIL' to all the properties that you want to be recalculated, for example the header height.\\ \\
+
+We highly recommend looking at the sample Testxbr3.prg to gain a better understanding of the TXBrowse control.
+
+**Important**
+
+We highly recommend the usage of command syntax. When you use the command syntax, xBrowse will internally create the most appropriate code for you. This will help you to create faster, shorter, portable  and bug-free code. On a later date, if you ever decide to change the RDD, you don't have to make any changes in the code related to xBrowse. Xbrowse will internally identify the RDD/Datasource and behaves intelligently. This approach also helps taking the best advantage of the full built-in power of xBrowse. 
+
+
+====== CLASSDATAs ======
+^Data^Usage^Type^Default^Details^
+|lInheritStyle| |  L  |  .F.  |By default, XBrowse is created with 2007 style, if monitor supports more than 256 colors and otherwise standard style.\\ If ::lInheritStyle is set to .T., all xbrowses created inherit style of MainWindow's Menu/ButtonBar. If this is the required behavior, set TXBrowse():lInheritStyle := .T., at the beginning of function Main() |
+|lKinetic| |  L  | SetKinetic() |When .T., flipping up and down with mouse, scrolls browse up and down with inertia.\\ In case of touch screens, this may be set to .F., not to conflict with the pan and flip provided for touch screens |
+|oActive|ReadOnly|  O  |  nil  |XBrowse object that has focus currently|
+
+
+====== DATAs ======
+
+**Datas set and used by SetDataSource methods like SetRDD(), SetADO(), etc. The values may be overridden by the programmer only when it is absolutely necessary.**
+
+^Data^Usage^Type^Default^Details^
+|oDbf| |O| |Data object being browsed, when ::nDataType is DATATYPE_ODBF, set by ::SetODbf(). This can be an instance of TDatabase, TRecSet, fwmariadb RowSet, etc.|
+|oMysql| |O| |TMySql or TDolphin query object being browsed. ::nDataType is DATATYPE_MYSQL set by ::SetDolphin() or ::SetTMySql() method.|
+|oRs| |O| |ADO RecordSet object or oExcelRange being browsed. ::nDataType is DATATYPE_ADO or DATATYPE_EXCEL. Set by ::SetADO() or ::SetExcelRange()|
+|oTree| |O| |Tree object (class TLinkList) being browsed. ::nDataType is DATATYPE_TREE. Set by ::SetTree().|
+|//oTreeItem//|ReadOnly|O| |TreeItem object on current row. Set internally when the browse is navigated.|
+|aArrayData| |A| |Array data being browsed. Assigned by SetArray() method|
+|bBof| |B| |Codeblock returning true if record pointer is beyong beginning of table. Eg: { %%|%%%%|%% ( ::cAlias )->( Bof() ) }\\ |
+|bBookMark| |B| |SETGET codeblock to be used for bookmarking a specific row. When no parameter is passed it should return a bookamark value,when a parameter is passed it should go to that bookmark position.\\ \\ **Example:**\\ {%%|%%n%%|%% iif( n == nil, Recno(), DbGoto(n) }|
+|bDelete| |B| |This codeblock should delete the current record from the datasource and reposition the record pointer to the next record. XBrowse provides default codeblock during corresponding SetDatasource() method. ::Delete() method evaluates this codeblock. Programmer may override the default if needed.|
+|bEdit| |B| |Format: { %%|%%oRec%%|%% EditFunc( oRec ) }\\ By default, ::Edit() and ::EditSource() methods use TDataRow's default dialog to edit the record. Programmer may provide his own dialog to edit by specifying this codeblock|
+|bEof| |B| |Should return .T. when record poiner is beyond the end of table.|
+|bGoBottom| |B| |Codeblock for going to the last record|
+|bGoTop| |B| |Codeblock for going to the first record|
+|bKeyCount| |B| |Codeblock that returns the total number of records of the table being browsed. Should exclude filtered records.|
+|bKeyNo| |B| |SETGET codeblock to be used for positioning the vertical scrollbar. When no parameter is passed it should return the actual position, when a parameter is passed it should perform a jump to that position. The codeblock also receives a second parameter with a reference to Self\\ \\ **Example:**\\ {%%|%%n%%|%% iif( n == nil, OrdKeyNo(),OrdKeyGoto(n)}|
+|bLock| |B|%%{ | | .t. }%%|Codeblock that applies record lock on the table before saving data. XBrowse provides default codeblock in SetRdd() method.|
+|bOnSkip| |B|%%{ | | nil }%%|Optional. Applies to Array and Tree browses. If specified, executed after every skip.|
+|BookMark| |B| |ACCESS ::BookMark --> Current bookmark/recno\\ ASSIGN ::BookMark := uBm : Goes to bookmark uBm|
+|bPastEof| |B| |Block to evaluate if trying to go down after the last row. This can be used for inline appends|
+|bSaveData| |B|%%{ | | .t. }%%|Codeblock to save changes of cell value to the database. Eg: { %%|%%%%|%% oDbf:Save() }, { %%|%%%%|%% oRs:Update() }, etc.\\ XBrowse automatically creates this codebock in the SetXXX() method. Programmer may override the default only when necessary|
+|bSeek| |B| |Block expresion for auto incremental search. It should return .T. when found. It receives the proposed seek string.|
+|bSkip| |B| |Codeblock for skiping rows, it receives the number of rows to skip. IT SHOULD RETURN THE NUMBER OF ROWS SKIPPED|
+|bUnLock| |B|%%{ | | nil }%%|Codeblock to unlock record, if locked. XBrowse automatically creates this codeblock in SetRDD() method. Programmer may override the default only when necessary.|
+|cAlias| |C| |Alias of DBF being browsed. Set by ::SetRDD()|
+|KeyNo| |K| |Returns ordered serial number of the current row counted from top.\\ When a new number is assigned, goes to the row whose serial number counted from top is the number assigned.\\ This is ACCESS/ASSIGN method which evaluates ::bKeyNo code block.|
+|lAdoOverRideConflicts| |L|.T.|Applies to ADO browses. When set to .T. (default), changes to data are saved by oRs:Update() after calling oRs:ReSync(). This results in ignoring any changes made by other users after reading data by the current oRs.\\ If set to .F., saving data fails if the data is modified by other users.|
+|//lRelyOnKeyNo//|Internal|L|.T.|Used internally|
+|//lRsCanResync//|Internal|L|.F.|Internal flag to indicate if the ADO Recorset supports ReSync.|
+|nArrayAt| |N| |Ordinal number of current row in array browse.|
+|nDataType| |N| |DataType of datasource being browsed, set by appropriate SetXXX() method ( eg. SetRDD, SetADO, etc). \\ DATATYPE_RDD           1\\ DATATYPE_ARRAY         2\\ DATATYPE_ADO           4\\ DATATYPE_ODBF         16\\ DATATYPE_TREE         32\\ DATATYPE_MYSQL        64\\ DATATYPE_EXCEL       128\\ DATATYPE_USER       4096\\ \\ |
+|//nSqlRddMode//|Internal|N|0|Internally used|
+|//uDataSource//|ReadOnly|U| |//:= IfNil( ::oDbf, ::oRs, ::oMySql, ::oTree, ::cAlias, ::aArrayData )//|
+
+
+**Datas used by Kinetic scroll system.**
+
+^Data^Usage^Type^Default^Details^
+|//hCursorHand//|Internal|H|CursorOpenHand()|Used for Kinetic scroll|
+|//lDown//|Internal|L|.T.|Used internally by Kinetic|
+|//lDrawSelected//|Internal|L|.T.|Used by Kinetic|
+|lKineticBrw| |L|.T.|Setting .F., disables Kinetic scroll behavior|
+|//lMoved//|Protected|L|.F.|Used by kinetic scrolling|
+|//lPressed//|Internal|L| |Used by Kinetic scroll|
+|//nColAdvance//|Internal|N| |Used by Kinetic scroll|
+|//nEllapsed//|Internal|N| |Used by kinetic scroll|
+|//nEndMRow//|Internal|N| |Used by kinetic scroll|
+|//nMaxRowToAdvance//|Internal|N|40|Used by Kinetic scroll|
+|//nMinVelocity//|Internal|N|50|Used by Kinetic Scroll|
+|//nRowAdvance//|Internal|N| |Used by Kinetic Scroll|
+|//nStartMRow//|Internal|N| |Used by Kinetic Scroll|
+|//nStartTime//|Internal|N| |Used by Kinetic scroll|
+|//nStopRatio//|Internal|N|4|Used by Kinetic scroll|
+
+**Other Datas**
+^Data^Usage^Type^Default^Details^
+|//oCapCol//|Internal|O| |Captured column object while swapping/resizing|
+|//oClp//|Internal|O| |Clipboard object used internally for copy/paste operations.|
+|//oColToolTip//|Internal|O| |Column object relating to the active tooltip|
+|oFilterCol| |O| |Programmer needs to set this data when lSeekbar is .t. and ::lIncFiltter is .t.. Otherwise, ::cSeek is displayed in the sorted column, which may not be the filter column.|
+|//oHScroll//|Internal|O| |Horizontal scroll object used internally|
+|oRecSelFont| |O|::oFont|Font used to paint data on recordselector|
+|oRightCol| |O| |Assign any column to freeze on right.\\ Eg: oBrw:oRightCol := oCol|
+|oSeek| |O| |Optional TSay control to display the value of current ::cSeek value|
+|//oSortCol//|ReadOnly|O| |Presently sorted column object|
+|//oVScroll//|Internal|O| |Vertical Scroll Object|
+|aBitmaps| |A|Array( 0 )|Array of bitmaps attached to the browse. Added using oBrw:AddBitmap() method.|
+|//abOnAdjust//|Protected|A|Array( 0 )|Array if codeblocks to be executed immediately after ::Adjust() method. Used internally.|
+|//aCols//|ReadOnly|A| |Array of column objects in the order rearranged by user after swapping/moving columns. The order may be different from the creation order|
+|//aDisplay//|ReadOnly|A| |Array of ordinal positions in ::aCols, of columns being displayed. Excludes columns hidden and columns left to the first column after freeze. This array is generated by ::GetDisplayCols()|
+|//aHeaderTop//|Obsolete|A| | |
+|aJustify| |A| |SETGET data. Array of columns' alignments. For compatibility with WBrowse.|
+|aSelected| |A| |Currently selected records (only use with marquee style MARQSTYLE_HIGHLROWMS|
+|aSortBmp| |A| |Two element array containing handles of asc and desc sort bitmaps used for painting headers of sorted columns. Programmer may substitute his own bitmap handles.|
+|//aStretchInfo//|Internal|A| |Used internally|
+|//aSumCols//|Readonly|A|Array( 0 )|Array of column objects displaying aggregates like totals, avgs, etc. in footers.|
+|//aSumSave//|Internal|A| |Saved values of total info of ::aSumCols.|
+|bChange| |B| |Format: { %%|%%oBrw,lRowChanged%%|%% <action> }\\ By default, evaluated whenever selected row changes.\\ When oBrw:lColChangeNotify is set to .T., this is evaulated even when selected column is changed. The parameter lRowChanged is .T. only when row is changed.|
+|bClrFooter| |B|::bClrHeader|Returns array of 2 or 3 colors { clrText, clrBack, [clrLines] }. See Method PaintHeader() for usages of these colors.|
+|bClrGrad| |B| |Format: { %%|%%lInvert%%|%% If( lInvert, aGrad2, aGrad1 ) }.\\ Used for painting header/footer when Style is 2007+. See Method PaintHeader() for details of usage.|
+|bClrHeader| |B| |Returns array of 2 or 3 colors { clrText, clrBack, [clrLines] }. See Method PaintHeader() for usages of these colors.|
+|bClrRowFocus| |B| |Optional codeblock returning array of { nClrText, nClrBack/aGrad }. When MarqueeStyle highlights full row, this color, if specified, is used to paint all columns other than the selected column.|
+|bClrSel| |B| |Color pair { clrText, clrBack/aGrad } used to paint selected cell/row when browse does not have focus.|
+|bClrSelFocus| |B| |Color pair { clrText, clrBack/aGrad } used to paint selected cell/row when browse has focus.|
+|bClrStd| |B| |Color pair { clrText, clrBack/aGrad } used to paint unselected rows/cells.|
+|bColClass| |B|{%%| |%% TxBrwColumn() }|Enables programmer to specify a derived class for creation of columns of the browse. Eg:\\ oBrw:bColClass := { %%|%%%%|%% MyDerivedClass() }\\ \\ |
+|bFilterExp| |B| |Optional. Format for array browses: { %%|%%cSeek,aRow,oBrw%%|%% lMatched }.\\ Other browses { %%|%%cSeek%%|%% lMatched }.\\ Used for filtering in case of incremental filters, if specified.|
+|bOnMultiSelect| |B| |Optional. Executed on change of Multiselection.|
+|bOnRefresh| |B| |Optional. Executed immediately after Refresh().|
+|bOnRowLeave| |B| |Not implemented|
+|bOnSwapCol| |B| |Optional. Executed after a column is moved with oBrw, nFrom, nTo as parameters|
+|bPaintFooter| |B| |Optional for implementing custom function for painting footers.\\ Format: { %%|%%oBrw, hDC, aCols, nLast, nGridWidth, nBrwHeight, hWhitePen, hGrayPen%%|%% <customfunc> }\\ |
+|bPaintHeader| |B| |Optional for implementing custom function for painting header:\\ Format: { %%|%%oBrw, hDC, aCols, nLast, hWhitePen, hGrayPen, hColPen%%|%% <customfunc> }\\ |
+|bPaintRow| |B|%%{ | | .t. }%%|Optional. For implementing custom function for painting row.\\ Format: { %%|%%oBrw, nRow, aCols[ 1 ], nHeight, lHighLite, .f., nRowPos%%|%% <customfunc> }\\ Note: Return .T. or .F. \\ If .T. is returned internal method is used to paint row.|
+|bPopUp| |B| |If specified should return PopupMenu object of nil. The popupmen is displayed precisely positioned below the active cell. Column object's bPopup, if any, supercedes oBrw:bPopup.|
+|bRecSelClick| |B| |Optional action when recsel header is clicked.|
+|bRecSelData| |B| |Data to be displayed on recselector|
+|bRecSelFooter| |B| |Data to be shown in recsel footer|
+|bRecSelHeader| |B| |Data to be shown in recsel header|
+|//cBmpAdjBrush//|Obsolete|C| | |
+|cFilterFld| |C| |When ::lIncrFilter is set to .t., xbrowse automatically uses currently sorted column to set filter. This may not always be required beahvior. Programmer is advised to set this DATA when setting ::lIncrFilter.|
+|cSeek| |C| |String that hold the current string searched (for auto incremental seek)|
+|//hBmpRecSel//|Internal|H| |Bitmap Handle for the record selector triangle (used internally)|
+|//hBrushRecSel//|Internal|H| |Brush Handle for the record selector (used internally)\\ |
+|//hBtnShadowPen//|Internal|H| |Pen handle for shadow buttons color (used internally)|
+|hColPen| |H| |Pen for column lines (used internally)|
+|//hRowPen//|Internal|H| |Pen for row lines (used internally)|
+|//hScrnBmp//|Internal|H| |Browse window saved as bitmap. When ::lScreenUpdating is set to .F., this bitmap is displayed without reading data, till ::lSecreenUpdating is reset to .T.|
+|//hWhitePen//|Internal|H| |Pen handle for white color (used internally)|
+|//l2000//|ReadOnly|L| |.T. when browse's style is set to 2007 or above.|
+|l2007| |L|.T.|True when l2007 style is activated. Setting to .F. sets standard style.|
+|lAdjusted| |L|.F.|This DATA is set to .T. by ::Adjust() method after execution.|
+|lAllowColHiding| |L|.T.|If true column hiding is allowed|
+|lAllowColReGroup| |L|.F.|Applies when some columns are grouped. If set to .F. (default) columns are not allowed to be moved in and out of a group. Setting .T. allows it|
+|lAllowColSwapping| |L|.T.|If true column swapping is allowed|
+|lAllowCopy| |L|.T.|When set to .T., data of cell or row or mlutiple selected rows can be copied to clipboard by pressing Ctrl-C. Setting .F. inhibits copying. Also see Method Copy()|
+|lAllowRowSizing| |L|.T.|When .t. (default), user can resize rows, by dragging row-divider up/down. Setting to .f., disables it.|
+|lAutoAppend| |L|.T.|If .T., (default), in fast edit mode, after edition of last column of last row, browse tries to go down and executes ::bPastEof.|
+|lAutoSort| |L|.F.|If set to .T., clicking on header sorts the column.|
+|lCanPaste| |L|.F.|If set to .T., pressing Ctrl-V on any cell executes ::Paste() method which pastes the contents of the clipboard into the browse and also saves data to the database. Please see METHOD Paste() for details of paste behavior.|
+|lColChangeNotify| |L|.F.|By default, oBrw:bChange is executed only when selected row is changed. It set to .T., ::bChange is evaluated even when selected column is changed.|
+|lColDividerComplete| |L|.F.|If true the vertical lines are displayed to the bottom of the browse even if there are not enough data rows|
+|lContrastClr| |L|.T.|When browse uses a brush, cell data is painted with a color that contrasts with the background visible in that cell. Setting the data to .F. disables this behavior.|
+|//lCreated//|Internal|L|.F.|True when control is completaly created (used internally)|
+|lDisplayZeros| |L|.T.|Works similar to Excel. By default, empty numeric and date values are displayed as "0", " / /  ". When set to .f., empty values are displayed as blank cells. oCol:lDisplayZeros setting applies to that particular column only.\\ |
+|lDrawBorder| |L|.F.|If set to .T., draws single line border around the browse. This is useful when headers, footers, recordselector, scrollbars are not shown.|
+|//lEdited//|Internal|L|.F.|Used internally|
+|//lEditMode//|Internal|L|.T.|True when cell is being edited inline|
+|lEnterKey2Edit| |L|.T.|By default, pressing Enter key on an editable cell invokes inline edit of the cell. If this data is set to .F., pressing enter key does not invoke edit but moves to next cell as in Excel.|
+|lExcelCellWise| |L|.F.|By default, ::ToExcel() method copies large chunks of data to clipboard and pastes into Excel sheet. This method is fast. But in some cases, like arrays, when data has images, etc, this is not suitable. In such cases, xbrowse switches to ::lExcelCellWise mode. In this mode, value of each cell of the browse is assigned to each corresponding cell of Excel sheet. Programmer may also try to switch ::lExcelCellWise to .T., when experiencing problems with the default method.|
+|lExitGetOnTypeOut| |L|.F.|By default, inline GET is confimed only when Enter key is pressed. This works like SET CONFIRM ON. When this data is set to .T., overtyping also exits the get with comfirm.|
+|lF2KeyToEdit| |L|.F.|If set to .T., pressing F2 key on an editable cell invokes edit like in Excel|
+|lFastDraw| |L|.F.|Setting ::lFastDraw improves the speed of full refresh() in case of simple browses. Use when all cells display only bitmaps/single line text and use the same colors and font of the browse.|
+|lFastEdit| |L|.F.|If true, editable columns go to edit mode by just pushing an alpha or digit character. This feature is incompatible with Incremental seek and is only available when the marquee style is cell based.|
+|lFitGridHeight| |L|.F.|In many cases, number of rows displayed X row height does not exactly match the display height. In all such cases, a small gap is left after the last row and  the footer. When ::lFitGridHeight is set to .T., this gap is not shown by suitably padding header and fooer heights.|
+|lFlatStyle| |L|.F.|When lFlatStyle is set to .T., headers and footers are not painted with bClrGrad but use ::bClrHeader and ::bClrFooter.|
+|lFooter| |L|.F.|Browse diplays footer only when ::lFooter is set to .T.|
+|lFormulaEdit| |L|.F.|If set to .T., pressing '=' key on an editable numeric cell invokes formula edit. Starting with '=', user can enter any valid numeric expression and the result is saved to the cell data. Examples of valid entries are:\\ "=2345*45%+45"\\ "=DATE()-DUEDATE", where duedate is a fieldname\\ \\ |
+|lFreezeLikeExcel| |L|.F.|Default behavior of xbrowse when one or more columns are frozen on left: When user navigates to the last cell, some unfrozen columns next to frozen columns are hidden. Eg:\\ 1,2,[5],6,7,8. In this case, columns 3 and 4 are hidden and column 5 is selected. If user moves to left, xbrowse moves to the cursor to column 2 and then 1. If the user still presses left key then the hidden columns are revealed one by one, 4 and 3.\\ In case of Excel, moving left from column [5], first reveals columns 4 and 3 before moving to column 2.\\ Setting this data to .T., enables Excel like behavior.\\ |
+|lFullGrid| |L|.F.|If set to .T., vertical and horizontal lines are drawn even for unoccupied rows and columns.|
+|lFullPaint| |L|.F.|If .T., change in row/column results in full refresh of the browse.|
+|lGDIP| |L|!IsXhbCom()|When .T. (default) all bitmaps/images are read and rendered using GDI+. It set to .F. class GDI calls are used.|
+|lGetBar| |L|.F.|GetBar is visible and active when set to .T.|
+|lGradientComplete| |L|.F.|Background of headers and footers are painted using aHdrClr[ 2 ]/aFooterClr[ 2 ]. In case of 2007+ styles, column headers and footers are painted using bClrGrad. Space not occupied by columns is not painted in grdient. If this data is set to .T., full headers/footers are painted with gradient.|
+|//lGrpHeader//|Internal|L| |Internally set to .T. if any columns have group headers.|
+|lHeader| |L|.T.|By default headers are displayed. If this data is set to .F., headers are not displayed|
+|lHoverSelect| |L|.F.|When .T., hovering of mouse changes selection of row and column.|
+|lHScroll| |L|.T.|If set to .F., before calling ::CreateFromCode(),  horizontal scroll bar is not displayed. Does not apply to browse created from resources.|
+|lIncrFilter| |L|.F.|Setting .T., enables incremental filtering instead of incremenal seek.|
+|lLimitChars| |L|.F.|In a Unicode application, setting .T. indicates that the field length in characters but not in bytes. This depends on the datasource. XBrowse automatically sets this flag for ADO and RowSets|
+|lLockFreeze| |L|.F.|If set .T., user can not navigate into cells freezed.|
+|//lMergeVert//|Internal|L|.F.|Set internally when one or more columns' :lMergeVert is true|
+|//lMultiSelect//|ReadOnly|L| |.T. when multiselect feature is on.|
+|lOemAnsi| |L|.F.|If set .T., character values are translated using OemToAnsi() and AnsiToOem()|
+|//lPasteReady//|ReadOnly|L| |Indicates if clipborad has any contents|
+|lReadOnly| |L|.F.|If .T., edit of any cell is disabled|
+|lRecordSelector| |L|.T.|If true a record selector column is displayed|
+|//lRefreshOnlyData//|Not used|L| |Not used|
+|lRowDividerComplete| |L|.F.|If .T., rowdivider is drawn even when there are no rows to display|
+|lScreenUpdating| |L|.T.|If set to .F., Paint() method does not read data but only displays bitmap of the browse window.|
+|lSeekBar| |L|.F.|If set to .T., SeekBar is displayed and ::cSeek is displayed in the seekbar|
+|lSeekWild| |L|.F.|If set to .T., incremental seek/filters match pattern anywhere in the field.|
+|lSortDescend| |L|.T.|By default, clicking on header of sorted column sorts in descending order. If set to .F., this behavior is disabled.|
+|//lSqlRDD//|ReadOnly|L|.F.|Set to .T., by ::SetRDD() when browsing an SQLRDD table.|
+|lTabLikeExcel| |L|.F.|By default, pressing TAB key switches focus to next control. When set to .T., pressing TAB navigates to next column, like Excel.|
+|lVScroll| |L|.T.|Setting .F. before calling ::CreateFromCode() hides display of Vertical ScrollBar. Does not apply to browse created from Resource.|
+|lVThumbTrack| |L|.F.|When set to .T., moving vertical scroll bar thumbtrack simultanously scrolls browse. XBrowse automatically sets this data suitably depending on the datasource.|
+|//n2KStyle//|ReadOnly|N|2007|Returns the style as number. Eg; 2007, 2010, 2013, 2015, 0 (for standard) and -1 (for Flat style). Use method ::SetStyle( n ) to change the style.|
+|nBottomMargin| |N| |Margin between ::nBottom of browse and ::nHeight of the container window/dialog. When specified, this margin is maintained during resize.|
+|//nCaptured//|Internal|N| |Internally used when column of row divider is captured for dragging|
+|nColDividerStyle| |N|0|Column divider style:\\ 0 -> No lines\\ 1 -> Black line\\ 2 -> Dark gray line\\ 3 -> Raised\\ 4 -> Inset\\ 5 -> Fore Color\\ 6 -> Light gray|
+|nColOffset| |N| |Actual first column to be shown after freeze|
+|nColorBox| |N|CLR_BLACK|nRGB Color or hPen or CodeBlock eval with Col object returning nClr/hPen. Used by oCol:Box() method to draw box around the cell|
+|nColorPen| |N|CLR_BLACK|Color used to create column/row divider pen|
+|nColSel| |N| |Currently selected column based on current display|
+|nDataLines| |N| |Number of lines of data to be displayed in a cell. oCol:nDataLines can override this setting for that column. Used to calculate row height required|
+|nDataRows| |N| |Number of data rows that can fit in the browse area, excluding header and footer areas.|
+|nFooterHeight| |N| |Footer height. If this value is NIL, then it is calculated in the Method Adjust|
+|nFooterLines| |N| |Number of lines of the footer|
+|//nFooterPad//|ReadOnly|N|0|Number of pixels padded to footer height when ::lFitGridHeight is set to .T.|
+|nFreeze| |N| |Number of columns to freeze on left|
+|//nGetBarHeight//|Internal|N| |Height of Get/Seek bar|
+|nHeadDividerStyle| |N|::nColDividerStyle|Used to draw divider lines in header|
+|//nHeader//|Obsolete|N| | |
+|nHeaderHeight| |N| |Header height. If this value is NIL, then it is calculated in the Method Adjust|
+|nHeaderLines| |N| |Number of lines of the header|
+|//nHeaderPad//|ReadOnly|N|0|Number of pixels padded to header height when ::lFitGridHeight is set to .T.|
+|nLastEditCol| |N| |Last edited column (display based)|
+|nLen| |N| |Number of records in the table being browsed. Result of method ::KeyCount(). This value is updated on every call to ::Refresh()|
+|nMarqueeStyle| |N| |Marquee style (row selected) \\ 0 No Marquee\\ 1 Dotted cell\\ 2 Solid cell\\ 3 Highlight cell\\ 4 Highlight row & Raise Cell\\ 5 Highlight row\\ 6 Highlight row & multiselect\\ 7 Windows 7 style\\ Notes: a. Fastedit works only when MarqueeStyle <= 3.\\ b. When inline edit is enabled, it is deirable to select marqueestyle where user knows which is the highlighted cell he is going to edit.\\ c. Marqueestyle 6 for multiselect:\\ User can select / deselect rows with Shift-Click / Ctrl-Click. ::aSelected holds the rows selected. When it is required to select a block of rows spanning multiple pages/screens, he can navigate to the last row, with mouse-wheel / vscroll thumbtrack. The last row is displayed in a dotted box without disturbing the hightlight on the start-row. When the user Shift-Clicks entire block is selected.|
+|nMoveType| |N| |Define the direction of cursor movement after edition of a cell.  \\ 1 Move Right                    \\ 2 Move Left        \\ 3 Move Up          \\ 4 Move down        \\ 5 No Move          \\ 6 Move Right with lFastedit features, only work with lFastEdit := .t.\\ 7 Move left with lFastedit features, only work with lFastEdit := .t.\\ The default movement post edition is highly intutive and is suitable in many cases. Use this option only where necessary.\\ |
+|nRecSelColor| |N| |Background color for the record selector column. By default it uses the background footer|
+|nRecSelHeadBmpNo| |N| |Ordinal position in oBrw:aBitmaps to be used for painting on RecSelector header.|
+|nRecSelWidth| |N|25|Default 25. Can be set to any value above 25 or 1.|
+|//nRefreshSecs//|ReadOnly|N|0|Time taken for last refresh(). This includes time taken to read the data.|
+|nRightMargin| |N| |Margin between oBrw:nRight and width of container window/dialog. If specified, this margin is maintained when resized.|
+|nRowDividerStyle| |N|0|Row divider style:\\ 0 -> No lines\\ 1 -> Black line\\ 2 -> Dark gray line\\ 3 -> Raised\\ 4 -> Inset\\ 5 -> Fore Color\\ 6 -> Light gray|
+|nRowHeight| |N| |Data row height. If this value is NIL, then it is calculated in the Method Adjust|
+|nRowSel| |N| |Current row selected based on the current display|
+|//nRowToolTip//|Internal|N| |Row number relating to active cell tooltip|
+|//nSaveMarq//|Internal|N| |Shift-Click temporarily changes MARQSTYLE_HIGHLCELL to MARQSTYLE_HIGHLROWMS and restored after multiple selection is over. This DATA is a temporary holder for the marqueestyle|
+|nSaveSecs| |N|0|Time taken to save data last time|
+|nSizePen| |N|1|Size used to create row/col divider pen|
+|nSortSecs| |N|0|Time taken to sort data last time|
+|nStretchCol| |N| |Column number to be stretched to fit width of the browse. This can also be a constant:\\ STRETCHCOL_LAST       -1\\ STRETCHCOL_WIDEST     -2\\ |
+|//nVScrollPos//|ReadOnly|N| |Vertical Scroll bar positon|
+|//uSortVal//|ReadOnly|U| |Value of the sorted column. Used to check if the value is changed, to decide if a full refresh is required.|
+|<coldata>+"s"| | | |ACCESS: Array of all oCol:<coldata>\\ ASSIGN: If single value, this is assigned to oCol:<coldata> of all columns and if array, each value in the array is assigned to each colimn in the order of nCreationOrder|
+
+
+
+====== METHODs ======
+
+**SetDataSource() methods:**
+
+These methods attach a datasource to the xbrowse for browsing.
+
+If browse is created using :New() method, it is necessary to call a suitable Set method. It is __desirable__ to call soon after creating the browse and before creating any columns.
+These methods create all navigational and seek codeblocks suitable to the datasource.
+
+While calling these methods, it is also __desirable__ to create all the columns by providing an array of fieldnames/expressions/codeblocks as parameter aCols.
+This enables xbrowse to match the fieldsnames with fieldstructure of the datasource and initialize all column datas like, bEditValue, cDataType, nDataLen, nDataDec,
+cEditPicture, bStrData, nWidth, nDataStrAlign, cSortOrder, bOnPostEdit, etc.
+
+**It is highly recommended to use command syntax specifying datasource and columns clause. XBrowse system examines the datasource and applies to suitable Set method.**
+
+Common parameters:\\ **[lAddColumns]**: Defaults to .T., if no columns are already added to the browse, else .F.. If the parameter is .T. and parameter aCols is empty, all columns of the table are automatically added. (autocols).
+\\ **[lAutoOrder]**: Default oBrw:lAutoSort.
+\\ **[aCols]**: Array of field names, expressions or codeblocks. In case of arrays, column numbers. In case of Tree, column numbers of Cargo array.
+\\ Codeblocks are assigned to oCol:bEditValue and the format is:
+\\ { |xNewValue, oCol| If( xNewValue == nil, <access>, <assign> ) }.
+
+^Method^Usage^Details^
+|SetAdO|ADO RecordSet|__( oRs, lAddCols, lAutoOrder, aCols)__\\ __oRs__: ADO RecordSet|
+|SetArray|Array/Hash|__( aData, lAutoOrder, nColOrder, aCols, bOnSkip )__\\ __1.aData__: Array or Hash. Array can be single or multi-dimentional and can contain any scalar values, hashes, objects.\\ __3.nColOrder__: If specified, the array is initially sorted on this column.\\ __4.aCols__:Array of column numbers, expressions, codeblocks.\\ In case of Array of Hashes, names of the keys.\\ In case of Array of Objects, names of Datas.\\ __5.bOnSkip__:If specified, executed on every skip.\\ **Special DATA/METHODs:**\\ This method creates an additional DATA and 2 METHODS that are available only for array browses.\\ **DATA aDeleted INIT {}**:All rows deleted using oBrw:Delete() are added to this array, if the default ::bDelete is not overriden.\\ **METHODS SwapUp(), SwapDn()**:Pressing Ctrl_Up/Ctrl-Dn keys swaps the current row up/down, if default ::bKeyDown is not overridden.|
+|SetDolphin|TDolphinQry|__( oQry, lAddCols, lAutoOrder, aCols, bSeptup )__\\ __oQry:__ TDolphinQry object|
+|SetExcelRange|Excel Range Obj|__( oRange, lHeaders, aCols )__\\ __1.oRange__: Excel Range object.\\ __2.lHeaders__: If the first row of the range is to be treated as headers\\ __3.aCols__:Array of column numbers. If not specified, all columns.|
+|SetMySql|TMySqlQry|__( oMysql, lAddCols, lAutoOrder, aCols )__\\ __oMySql:__ TMySql query object.|
+|SetoDbf|Data classes|__( oDbf, aCols, lAutoSort, lAutoCols, aRows )__\\ **oDbf** can be an object belonging to TDataBase, TRecSet, FWMariaDB RowSet and RecSet classes, TArrayData, TTxtFile or any of their derived classes or any class complying with the following requirements can use this method:\\ \\ Either the class should have a method\\ SetXBrowse( oBrw, aCols, lAutoSort, lAutoCols )\\ or\\ should have these methods:\\ Minimum Required:\\ a) Bof(), Eof(), GoTop(), GoBottom(), Skipper(n)\\ b) BookMark(n) or RecNo(), GoTo(n)\\ c) RecCount() or KeyCount(), KeyNo(), KeyGoTo(n)\\ d) DATA aStruct (similar to dbstruct())\\ Optional methods that enhance the use:\\ e) Delete(), Save(), Seek( c ), SetOrder(c)\\ \\ Whether a class complies with the requirements or not can be tested with this function\\ **XBROWSABLEOBJ( oObj ) --> lYesNo**\\ \\ It is possible to browse any class by including these methods in the class.\\ \\ **Parameter aRows** is applicable only to TDatabase. If specified only the rows with recno()s included in the array are displayed in that order.\\ |
+|SetPostGre|TPqQuery|__( oQry, lAddCols, lAutoOrder, aFldNames )__\\ __oQry:__ TPqQuery object.\\ This method creates additional **DATA ::aStructPG**|
+|SetRDD|DBF/ADT|__( lAddColumns, lAutoOrder, aCols, aRows )__\\ \\ **Setting correct Alias:**\\ (1) Ensure oBrw:cAlias is empty and call ( cAlias )->( oBrw:SetRDD( ... ) )\\ or\\ (2) oBrw:cAlias := <desiredalias>; oBrw:SetRDD(...)\\ \\ **Parameter aRows:**If specified, only record numbers included in the array are displayed in that order. This is not compatible with AutoSort.\\ \\ |
+|SetTree|TLinkList Tree|__( oTree, aResource, bOnSkip, aCols )__\\ __1.oTree__: TLinkList object.\\ __2.aResource__: Array of bitmaps.\\ __3.bOnSkip__: Executed on every skip\\ __4.aCols__: If oTree:Cargo is an array, column numbers of the array, any expression/codeblock.\\ |
+
+
+**Report and Export Methods**
+^Method^Usage^Details^
+|Report| |__( [cTitle], [lPreview], [lModal], [bSetUp], [aGroupBy], [cPDF] )__\\ Generates report, using TReport class, for printing the contents of the browse.\\  \\ Parameters:\\ __1. [cTitle]:__ Title of report. Default oBrw:oWnd:cTitle\\ __2. [lPreview]:__ Default .T.\\ __3. [lModal]:__ Default ,T,\\ __4. [bSetUp]:__ Optional. Format: { %%|%%oRep,oBrw,n%%|%% <setup> }\\ The codeblock is evaluated with 3rd parameter as 1 after creating the report object and before creating any columns. It is possible to create any columns of programmer's choice.\\ If the return value is .T., the Report method does not add any columns to the report on its own and continues to activate the report.\\ If the return value is 2, the codeblock is again evaluated after adding all columns with 3rd parameter as 2.\\ Any other return value is ignored.\\ __5. [aGroupBy]:__ Optional Array of visible column numbers or column objects. If specified, Report is grouped on the values of these columns.\\ __6. [cPDF]:__ Optional PDF file name. If specifed, the report is saved as PDF with that name. The PDF contains images of the preview, but not data as text.|
+|ToCalc|CALC,PDF,HTML|__( bProgress, nGroupBy, nPasteMode, aSaveAs, aCols )__\\ Exports contents of xBrowse to OpenOffice Calc (MS-Excel Equivalent)\\ Parameters __bProgress, nGroupBy, aCols__ are same as in ::ToExcel()\\ __aSaveAs__ An array containig the Export format. For eg. { { “PDF“,”MyFileName” } }\\ If you pass the above array as parameter to ToCalc, xBrowse will export the data to a PDF file named ‘MyFileName.Pdf’. Possible export formats are PDF,XLS, HTML\\ You may also export the xbrowse data to Pdf,xls and Html formats simultaneously. You can do this by passing the array as\\ {{”PDF“,”MyFileName”},{”XLS”,”MyExcelFile”},{”HTML“,”MyHtmlFile”}}|
+|ToDbf|DBF|__( cFile, [bProgress], [aCols], [lPrompt] )__\\ Exports contents of browse to DBF file. This method uses headers as field names. It may be ensured  that all headers are valid as dbf field names before using this method.\\ __1. cFile:__ Dbf file name.\\ __bProgress and aCols:__ Same as in ::ToExcel()\\ __4. [lPrompt]:__ Default .f. If .t., field structure is prompted for edit before saving.|
+|ToExcel|XLS,PDF|__( [bProgress], [nGroupBy], [aCols], [lShow], [cPDF], [bPrePDF] ) --> oSheet__\\ Exports contents of the browse to a new Excel Sheet and returns the sheet object.\\ \\ If Excel is not installed and OpenOffice is installed, the call is transferred to ::ToCalc() using bProgress, nGroupBy and aCols.\\ \\ Parameters:\\ __1. [bProgress]:__ By default, progress is shown in tex form on oBrw:oWnd:oMsgBar if exists. If bProgress bar is specified, the same is used with parameters nRowsExported, nTotal\\ __2. [nGroupBy]:__If specified, this number indicates the column number of the exported columns. If any columns have totals, the exported sheet is grouped by nGroupBy column and subtotals displayed. For this purpose, Excel's subtotal method is used so that the results can be used for futher computations.\\ __3. [aCols]:__ By default, all visible columns are exported in that order. __See ::GetVisibleCols()__. If aCols is specified, only the specified columns are exported, in that order. aCols is an array of ordinal positions in oBrw:aCols array.\\ __4. [lShow]:__ Default .T. and shows the result of export. i.e., Excel Sheet or PDF as the case may be.\\ __5. [cPDF]:__ Optional. Name of PDF file to be exported. If specified, the exported Excel sheet is saved as PDF. This PDF contains table with contents as text for futher use.\\ |
+|ToHtml|HTML|__( [cHtml], [lShow] )__\\ Exports to Excel and then saves as html file and displays optionally.|
+|ToWord|DOC,PDF|__( [bProgress], [aCols], [nWrdTblFormat], [nPageOrientation] ) --> oWordDocument Object__\\ Creates a new MSWord document and exports contents of browse as table. The programmer can use the returned value to save as Word document or PDF or deal with it any other mannter.\\ Please note that large tables with many columns are not suitable for export to Word.\\ \\ Parameters bProgress and aCols are same as in ::ToExcel()\\ __3. [nWrdTblFormat]:__ Default wdTableFormatGrid8. Refer to xbrowse.ch for other possible formats.\\ __4. [nPageOrientation]:__ Default Potrait (0). Optionally LandScape( 1 ) can be specified. |
+
+**Other methods**
+
+^Method^Usage^Details^
+|New| |__( oWnd )__ **Constructor**|
+|aBitmap| |__( n )__\\ Returns bitmap array at ordinal position 'n' in ::aBitmaps. Used internally for painting bitmaps|
+|aCellCoor| |__( nRow, nCol ) --> { nTop, nLeft, nBottom, nRight} in pixels__\\ Parameters nRow, nCol are visible row and column numbers of cell. Returns coordinates of the cell in pixels relative to Browse.|
+|AddBitmap| |__( uBmp, [ {w,h} ] ) --> nBmpNo__\\ Adds one or an array of bitmaps to array ::aBitmaps and returns the ordinal position of the last bitmap added. Bitmaps can be any imagesource. For large images, it is desirable to limit the size by specifying maximun dimentions {w,h}.|
+|AddCol()| |Adds column of class ::bColClass (default TXBrwColumn) to the browse.|
+|AddVar| |__( cName, uVal )__\\ You can add additional DATAs/METHODs for this browse at the time of creation or at runtime. For examples, see additional DATA ::aDeleted and METHODS ::SwapUp and ::SwapDn created in the ::SetArray() method.|
+|Adjust()| |Configures browse and all columns, taking into account various settings made by the program. If the browse is created in a Window, this method is called by ::CreateFromCode() and if created in a Dialog, by ::Initiate() method when the Dialog() is activated.|
+|//AdoIncrSeek//|Internal|__( uSeek )__\\ By default, XBrowse uses this method for incremental seek/filter for ADO Recordset.|
+|aJustify| |SETGET method, Returns array of alingments of columns. When assigned with an array sets alignments of columns. Columns in the array are in the order of oCol:nCreationOrder.|
+|aRow| |Same as //( ::aArrayData[ ::nArrayAt ] )//|
+|//ArrayIncrFilter//|Internal|__( cSeek, @nGoTo )__\\ Used for incremental filters for ArrayBrowse. Called by ::ArrayIncrSeek|
+|//ArrayIncrSeek//|Internal|__( cSeek, @nGoTo )__\\ Used for incremental seek in array browse.|
+|//ArrCell//|Internal|__( nRow, nCol, cPic, lDispZeros )__\\ Retrieve value from ::aArrayData|
+|//ArrCellSet//|Internal|__( nRow, nCol, uNewVal )__\\ Save value to ::aArrayData|
+|AutoFit| |__( [aColsToFit], [lnRows], [lDataOnly], [nMaxWidth] )__\\ Similar to Excel, automatically adjusts widths of columns to just fit the longest value.\\ __1. [aColsToFit]:__ Default all columns.\\ __2. [lnRows]:__ (N) Number of rows to be considered. (L). If logical and .T., only rows visible are considered.\\ __3. [lDataOnly]:__ Default .F. If .t., header and footer widths are ignored.\\ __4. [nMaxWidth]:__ Limits width even if text is longer.|
+|Bof()| |returns //Eval( ::bBof )\\ //|
+|BrwFitSize| |__( [lReSize], [nMaxRows] ) --> { width, height}__\\ Calculates returns exact width and height required to fit the browse.\\ __[lResize]:__ If .T., also resizes the browse.\\ __[nMaxRows]:__ Limits the rows to calculate the height required.|
+|//BrwHeight()//|Internal|returns GetClientRect( ::hWnd )[ 3 ]|
+|//BrwWidth()//|Internal|returns GetClientRect( ::hWnd )[ 4 ]|
+|//CalcHdrHeight()//|Internal|Called by ::Adjust() method if nHeaderHeight is not specified.|
+|//CalcRowSelPos()//|Internal|Internally used by ::Refresh() and ::Paint() methods to calculate maximum rows and appropriate position of ::nRowSel|
+|//CancelEdit()//|Internal|Ends or Cancels any pending edit.|
+|<del>cBmpAdjBrush</del>|Obsolete|__( cFile )__|
+|CellBitmap| |__( nRow, nCol ) --> hBitmap__\\ Bitmap of the contents of a cell at vsible row and column|
+|//Change//|Internal|__( lRow )__\\ Internally called when row/column is changed. This method evaluates ::bChange codeblock when row is changed and also when column is changed if ::lColChangeNotify is .T.|
+|//CheckSize()//|Internal|Used by ::Adjust() and ::Paint() methods|
+|ClearBlocks()| |Clears all navigational codeblocks for resetting again. Under development and do not use.|
+|ClpRow| |__( lFullRow, aCols, lFormatted )__\\ Used by Copy(), ToExcel() methods. Returns text to be copied to clipboard for current row if lFullRow is true and otherwise selected cell.\\ .|
+|ColAtPos| |__( nPos ) --> oCol__\\ Column object at visible number of column|
+|ColPos| |__( oCol ) --> nPos__\\ Visible position of the column. Can be zero if the column is hidden.|
+|//ColStretch//|Internal|__( nStretchCol )__\\ Recalculate widths considering column to stretch.|
+|Copy()| |Copies contents of selected rows/cells to clipboard. If ::lAllowCopy is .T. (default), pressing Ctr-C invokes this method. Application also can call this method directly.\\ \\ If MarqueeStyle ( <=3 ) highlights cell only, value of the selected cell is copied and when row is hightlighted, the entire row is copied. In case of multiselect all selected rows are copied. Cell contents are delimited by TABs and row contents are delimited by CRLF. Contents of each cell are formatted to suit paste into Excel/Word.|
+|CreateFromCode()| |When browse is created from source code, this method should be called after all datas are set and before activating the window/dialog.|
+|CreateFromResource| |__( nResourceId )__\\ If the browse is created by calling :New() method, eg: oBrw := TXBrows():New( oDlg ), then this method **should be called** before activating the dialog.\\ If the browse is created using command syntax, then this method is automatically executed when the command is executed. So, this method **should not be called** in the program.|
+|//DataHeight()//|Internal|Row Height as reduced by row divider line height|
+|DataRect()| |TRect object excluding headers, footers and recordselector areas available for display of data.|
+|DataRow| |__( [lNew], [cFieldList], [lSourceData] ) --> oRec (TDataRow object)__\\ Used by methods ::Edit() and ::EditSource()\\ 1.__[lNew]:__ Default .f. If .t., blank record for appending.\\ 2.__[cFieldList]:__ Default all fields.\\ 3.__[lSourceData]:__ Default .F.\\ If .t., DataRow is created from the data source, i.e., ::cAlias, ::oDbf, etc.\\ If .f., DataRow is created from xbrowse, treating headers as fields and oCol:Value is field values.|
+|DelCol| |__( nPos )__\\ End()s and Deletes the column at position nPos.|
+|Delete()| |Deletes current record, if .not. ::lReadOnly and not empty, by executing Eval( ::bDelete, Self ), reposition the record to the next position, recomputes column aggregates, refreshes browse and sets focus to browse.\\ Note: ::bDelete is created by the SetDatasource method appropriate to the datasource.|
+|//DelRepos()//|Internal|Called by ::Refresh(). Repositions record pointer, if the current record is found deleted.|
+|Destroy()| |Called automatially when the container window/dialog is closed. This method releases all resources and End()s all column objects.|
+|DrawLine| |__( [lSelected], [nRowSel] )__\\ Repaints current row. Application may call ::RefreshCurrent() instead of calling this method for refershing current row data.|
+|DrawSelect()| |Same as calling ::DrawLine( .t. ). Exists only for compatibility with WBrowse.|
+|Edit| |__( lNew, cFieldList, lSourceData, lNavigate )__\\ Called by ::EditBrowse() and ::EditSource().|
+|EditBrowse| |__( lNew, cFieldList, lNavigate )__\\ Calls ::Edit( lNEw, cFieldList, .f., lNavigate )|
+|EditSource| |__( lNew, cFieldList, lNavigate )__\\ ::Edit( lNew, cFieldList, .t., lNavigate )|
+|Eof()| |Returns //Eval( ::bEof )//|
+|//EraseData//|Internal|__( nRow )__\\ Erases data from last visible row till the bottom of the browse.|
+|Eval| |__( bBlock, [bFor], [bWhile], [nNext], [nRec], [lRest] )__\\ Evaluates bBlock with oBrw as parameter traversing from top to bottom of the browse. Syntax of parameters is same as DBEVAL().|
+|//FirstRow()//|Internal|First row in pixels from which painting of data to start.|
+|FontSize| |__( nPlus )__\\ Increases size of font when nPlus is +ve and decreases when nPlus is -ve and refreshes the browse. Datawidths are recaculated acccordingly. This method is called when user presses Ctrl+ and Ctrl- or when user uses pinch/zoom gestures on touch screen|
+|FooterHeight()| |Height of footer.|
+|FooterRow()| |Footer top row in pixels.|
+|//FullPaint()//|Internal|Returns .T., when ::lFullPaint is set to .T. or ::lTransparent is .T. or some columns use MergeVert feature or MarqueeStyle is Windows 7 style. When FullPaint() returns .t., browse is fully refreshed on every change of row / column.|
+|//GesturePan//|Internal|__( aPanInfo )__\\ Internally called. This method scrolls the browse in response to Pan gesture on touch screen.|
+|GetDisplayCols()| |Returns array of ordinal positions in ::aCols, of columns to be displayed. This array excludes columns hidden by oCol:Hide() and columns to the left of the browse window and columns covered by Freeze columns. This method is used to update the value of ::aDisplay.|
+|GetDisplayColsWidth| |__( @aSizes ) --> nWidth__ \\ Returns total width of ::aDisplay (::GetDisplayCols) and optionally returns array of widths by reference. Internally used by ::BrwFitSize() and ::ColStretch() methods.|
+|GetPaintCols| |__( @nLast )__\\ ::aDisplay truncated to the columns that can fit the browse width.|
+|GetVisibleCols()| |Array of column objects that are not hidden, in the order of ::aCols.|
+|GoBottom()| |Goes to bottom of the table by executing Eval( ::bGoBottom ), repositions highlight row, repositions vertical scrollbar and refreshes browse.|
+|GoDown| |__( [nDown := 1] )__\\ Goes down by nDown lines and refreshes VScroll and Browse|
+|GoFirstEditCol()| |Goes to first editable column in the current row.|
+|GoLeft| |Moves selection by one column to left|
+|GoLeftMost()| |Goes to the first column, if necessary bringing to view all columns from the first column. If ::lLockFreeze is .T., goes to the first column after freeze. Any columns under freeze also are brought to view. Repositions HScroll.|
+|//GoNextCtrl//|Internal|__(hWnd)__\\ After pressing Tab key, when ::lTabLikeExcel is .f., focus moves to next control in the dialog/window.\\ In other cases, selection goes to next cell.|
+|GoRight| |moves selection by one column to right.|
+|GoRightMost()| |Moves selection to last unhidden column|
+|GoToCol| |__( oCol )__\\ __oCol__ can be column object, nCreationOrder or unique cHeader. If oCol:lHide is not .t., oCol is selected and brought to view if necessary.|
+|GoTop()| |Moves to first row of the table|
+|GoUp| |__( [nUp] )__\\ Movesup by nUp ( default 1 ) lines|
+|GridWidth()| |BrwWidth() less width of ::oRightCol ( right freeze column ) if any.|
+|//HandleEvent//|Internal|__( nMsg, nWParam, nLParam )__\\ Event handler|
+|//HandleGesture//|Internal|__( nGesture, nLParam )__\\ Event handler of touch events.|
+|HasBorder| |True if has border|
+|HeaderHeight| |__( [lFull] )__\\ Height of header in pixels. If lFull (default .f.) is .t., includes height of GetBar if visible.|
+|//HorzLine//|Internal|__( nRow, nOperation, nLine )__\\ Used internally during row-sizing by user with mouse.|
+|//HScroll//|Internal|__( nWParam, nLParam )__\\ Horizontal scroll bar event handler|
+|//Initiate//|Internal|__( hDlg )__\\ Called by owner dialog's Initiate method, when the dialog is activated. This method calls ::Adjust() method.|
+|InsCol| |__( nPos )__\\ Creates new column and inserts at nPos|
+|InvertPivot()| |Inverts pivot when browsing Pivot Array|
+|IsDisplayPosVisible| |__( nPos, [lComplete = .f.] ) --> lVisible__\\ Whether column at odrinal position nPos in ::aDisplay is visible in the browse window or not. If lComplete is .T., returns .T. only if the entire column is visible.|
+|//KeyChar//|Internal|__( nKey, nFlags )__\\ Key chat handler|
+|KeyCount()| |Evaluates ::bKeyCount and updates ::nLen|
+|//KeyDown//|Internal|__( nKey, nFlags )__\\ KeyDown handler|
+|LastDisplayPos| |__( [lComplete := f.] )__\\ Visible column number of last visible column. If lComplete is .t., last column completely visible.|
+|LastRow()| |Last pixel available for painting data|
+|//LButtonDown//|Internal|__( nRow, nCol, nFlags, lTouch )__|
+|//LButtonUp//|Internal|__( nRow, nCol, nFlags )__|
+|//LDblClick//|Internal|__( nRow, nCol, nKeyFlags )__|
+|Lock()| |Locks current record or ensures that the current record is locked by evaluating ::bLock and returns if locked.\\ In case of DBFCDX, if the record is already locked by the application with FLock() or RecLock( RecNo() ), it is not locked again to ensure the the existing locks are not disturbed.|
+|//MakeBrush()//|Internal|Resizes brush in case of brush set by ::SetBackGround().|
+|MakeTotals| |__( [aCols] )__\\ __aCols__: Defaults to all columns with aggregate footers. If specified, aCols can be a single column or array of columns. Columns can be specified as objects, nCreationOrder or cHeader.\\ This method traverses the entire table to calculate aggregates and can be slow on large tables. In such cases adopting alternative means to ascertain aggregates and assignign to oCol:nTotal/nCount,etc is advised. \\ Once aggregates are calculated/assigned, changes due to inline edits (or oCol:VarPut(newvalue)) are optimized.|
+|MouseAtFooter| |__( nRowPixel, nColPixel )__\\ Returns .t. if the pont is in footer area|
+|MouseAtHeader| |__( nRowPixel, nColPixel )__\\ Returns .t., of the point is in Header area.|
+|MouseColPos| |__( nColPixel )__\\ Corresponding visible column number.|
+|//MouseMove//|Internal|__( nRow, nCol, nKeyFlags )__\\ Evaluates ::bMMoved if speicifed|
+|MouseRowPos| |__( nRowPixel )__\\ Visible row number corresponding to the pixel position.|
+|//MouseWheel//|Internal|__( nKeys, nDelta, nXPos, nYPos )__\\ Mousewheel handler.\\ 1. Moving wheel up and down scrolls browse up/down.\\ 2. Pressing mouse wheel while scrolling executes page up and page down.\\ 3. Pressing Shifkey scrolls left and right.\\ 4. Pressing CtrlKey Zooms and Unzooms by increasing/decreasing fontsize. Same as zoom and pinch gestures.|
+|MoveCol| |__( xFrom, xTo, [lRefresh], [lUser] )__\\ __xFrom and xTo__ can be column objects or ordinal positon in ::aCols array.\\ __[lRefresh]__ Default .t.\\ __[lUser]__ Set to .T. internally when user drags columns. When programmer calls this method, this parameter may be left as nil or .f.\\ The method moves column from position from xFrom and inserts at xTo and optionally refreshes the browse.\\ When lUser is .T., i.e., when user is moving columns with mouse, following restrictions apply:\\ a) Columns can not be moved into and out of freezed columns.\\ b) Columns can not moved into or outof a group, unless ::lAllowColReGroup is set to .T. by the programmer.|
+|nAt()| |Visible position of Selected Column.|
+|oCol| |__( u )__\\ __u__ can be nCreationOrder, cHeader or oCol.\\ Returns column object identified by the parameter.|
+|//OldRestoreState//|Internal|__( cState )__\\ Restores state from cState saved in format used upto FWH version 10.8. Called by ::RestoreState() when required|
+|PageDown| |__( [nLines] )__\\ __nLines__ defaults to ::RowCount().  Moves record pointer by Lines, refreshes and repostions the VScroll|
+|PageUp| |__( [nLines] )__\\ __nLines__ defaults to ::RowCount(). Moves up by nLines, Refreshes browse and resets VScroll.|
+|//Paint()//|Internal|Main paint() method of browse.|
+|PaintFooter| |__( hDC, aCols, nLast, nGridWidth, nBrwHeight, hWhitePen, hGrayPen )__\\ Called by ::Paint(). \\ If ::bPaintFooter is specified, it is evaluated.|
+|//PaintHDivider//|Internal|__( hDC, nRow, nLeft, nRight, nStyle, hRowPen, hWhitePen )__\\ Used when row resizing|
+|PaintHeader| |__( hDC, aCols, nLast, hWhitePen, hGrayPen, hColPen )__\\ Called by ::Paint()\\ Executes ::bPaintHeader if specified|
+|//PaintVDivider//|Internal|__( hDC, nCol, nTop, nBottom, nStyle, hColPen, hWhitePen )__\\ Used when col resizing|
+|Paste| |__( [cText] )__\\ \\ If ::lCanPaste is .T., pressing Ctrl-V invokes this method. Application can call this method directly.\\ If DATA ::bPaste is a codeblock, it is evaluated with oBrw and cText as parameters.\\ If the browse is ::lReadOnly, no action is taken.\\ if parameter cText is not provided, clipboard contents are obtained.\\ if the clipboard contains file name(s) (copy file name from file explorer), first file's contents are treated as clipboard contents.\\ If the contents are binary/image data it is saved, if the field of active cell can accept binary data.\\ If the contents are text and not TAB/CRLF delimited, the contents are converted to the datatype of active cell and saved.\\ If the text is TAB/CRLF delimited, the contents are converted into a two dimentional array and saved to the table, starting from the active cell and row, after converting each item to the fieldtype till the end of array/table.\\ If an array is being browsed, additonal rows are created to accommodate all the clip contents.|
+|//RButtonDown//|Internal|__( nRow, nCol, nKeyFlags )__|
+|//RddIncrFilter//|Internal|__( cExpr, uSeek )__\\ Called by ::RddIncrSeek() if ::lIncrSeek is .t.|
+|//RddIncrSeek//|Internal|__( cExpr, uSeek )__\\ Default ::bSeek created by ::SetRDD() uses this method for incremental seeks/filters.|
+|ReArrangeCols| |__( aSeq, lRetainRest, lReNumber )__\\ Rearranges columns according to order in the aSeq|
+|ReCalcTotals| |__( [lReduce := .f.] )__\\ When any columns contain aggregates and it is required to modify data, first call ::SaveTotals(), modify data and then call ::ReCalcTotals(). This method applies the differences between saved values and the current values to the  totals. This is very fast when compared with re-execution of ::Maketotals().\\ When data is modified by inline edit or using oCol:VarPut( newValue ), these methods are automatically called transparently.\\ Program needs to call these methods explicitly when modifying data directly.\\ Parameter __lReduce__ should be set to .T. when row is deleted.\\ Also see ::SaveTotals( [lBlank] )|
+|Refresh| |__( [lComplete := .f.] )__\\ Updates ::nLen by executing ::KeyCount()\\ In case of array browses, if lComplete is .t., moves to the top of array. (Legacy behavior retained)\\ Readusts the nRowSel, if necessary, to fill the rows to full screen.\\ Executes ::bOnRefresh if assigned.\\ Forces full paint of browse.|
+|RefreshCurrent()| |Normally, refreshes and redraws current row. If the method notices change in the value of sorted column, append or delete, then call is transferred to full ::Refresh()|
+|RefreshFooters()| |Redraws footers only|
+|RefreshHeaders()| |Redraws headers only|
+|RestoreState| |__( cState )__\\ Restores datas saved previously by ::SaveState(). Also see ::SaveState()|
+|RowCount()| |Number of maximum rows that can be displayed in the browse area.|
+|SaveData| |__( @lRefresh )__\\ Calls bSaveData created by SetDatasource methods.|
+|SaveState| |__( [aAdditionalData] ) --> cState__\\ Saves present configuration as string. This string can be used to restore the same configuration in another session, using ::RestoreSate( cState ).\\ By default, the method saves (1) column order (2) rowheight (3) column widths (4) column visible status (5) group headers and (6) column headers. It is possible to save additional datas by specifying in the parameter aAdditionalDatas.|
+|SaveTotals| |__( lBlank )__\\ Methods ::SaveTotals() and ::RecalcTotals() are meant for fast updation of column totals/aggregates consequent of change of data.\\ If data is changed by inline edit, oCol:VarPut(), or by ::EditBrowse()/::EditSource() methods these methods are called transpaently and totals/aggregates are recaculated and refreshed.\\ \\ If the application directly changes data, appends or deletes rows, these methods may be called, instead of having to call time consuming ::MakeTotals() after the change.\\ Modifying data:\\ ::SaveTotals(), Modify data, ::RecalcTotals(), ::RefreshFooters()\\ Appending Row:\\ ::SaveTotals( .t. ), Append, RecalcTotals(), ::Refresh()\\ Deleting Row:\\ ::SaveTotals(), Delete, RecaclcTotals( .t. ), ::Refresh()|
+|//Seek//|Internal|__( cSeek )__\\ When incremental seek/filer is active, KeyChar method calls this method when a key is pressed. This method uses ::bSeek to perform incremental seek/filter operation.|
+|//Select//|Internal|__( nOperation )__\\ Select operation when Multiselect marquee is used: \\ 0 ? Delete all keys\\ 1 ? Add current key\\ 2 ? Swap current key (Ctrl+lClick)\\ 3 ? Typical Shift with mouse\\ 4 ? Select all|
+|SelectAll()| |Same as ::Select( 4 )|
+|SelectCol| |__( nCol, [lOffset] )__\\ Selects column at visible position nCol., i.e., position nCol in ::aDisplay.|
+|SelectedCol()| |Column Object currently selected|
+|SelectNone()| |Same as ::Select( 0 )|
+|SelFont()| |User can select font to be set the browse.|
+|<del>SetBackGround</del>|Obsolete|__( uBack, uBckMode )__\\ This method was originally created to set gradient/image background of the browse, at a time when brush class was unable to handle resizeable gradients and brushes.\\ It is now recommended to create a resizeable brush and oBrw:SetBrush( oBrush ).|
+|SetChecks| |__( aBmp, lEdit, aPrompt )__\\ Calls SetCheck() method of all columns with logical type with the same parameters|
+|//SetColFromADO//|Internal|__( cnCol, lAutoOrder, aRsColNames, l1900 )__\\ Called by ::SetADO()|
+|//SetColFromMySQL//|Internal|__( cnCol, cHeader, lAutoOrder, aQryFldNames )__\\ Called by ::SetMySql|
+|//SetColsForTree//|Internal|__( uData )__\\ Called by ::SetTree()|
+|//SetColumns//|Internal|__( nRow, nCol, nFlags )__\\ Right click on header invokes this method. Popsup a menu with all column headers with option to hide/show.|
+|SetFont| |__( oFont, [lResizeCols := .f.] )__\\ Used to change font. Optionally, recaculates column widths and heights.|
+|SetGroupHeader| |__( cGrpHdr, nFrom, nUpto, [oFont], [nAlign] )__\\ __[oFont]:__ Default oCol:oHeaderFont\\ __[nAlign]:__ AL_CENTER\\ Sets group header cGrpHdr foc columns nFrom to nUpto.|
+|SetGroupTotal| |__( aCols, cHead, [nType], [oFont] )__\\ Creates a new column with header cHead which displays horizontal Aggregate of the values of columns in aCols.\\ 1.__aCols__: Can be an array of columns. If GroupHeader is specified all columns in the group\\ 2.__cHead__: Header of the aggregate column.\\ 3.__[nType]__: Default AGGR_SUM\\ 4.__[oFont]__: oBrw:oFont\\ Example:\\ <code clipper>oBrw:SetGroupHeader( "SALES", 4, 6 )
+oBrw:SetGroupTotal( "SALES", "TOTAL", AGGR_SUM )</code>|
+|SetPos| |__( [nRow], [nCol], [lPixel], [bAction] )__\\ 1.__[nRow]:__ Default ::nRowSel. nRow is visible row number. If lPixel is .t., pixel value is converted to visible row number.\\ 2.__[nCol]:__ Default: ::nColSel. nCol is visible column number. If lPixel is .t., pixel value is converted to visible column number.\\ 3.__[lPixel]:__ Default .f.\\ \\ Cell at nRow,nCol is selected.\\ If bAction is specified, it is executed with parameters oBrw, nRow, nCol and the selection is restored the current position.\\ If bAction is nil, browse is refreshed after moving to the new position|
+|//SetPostGreCol//|Internal|__( nCol, oQry, cHead, aStruct )__\\ Called by ::SetPostGre|
+|SetRecSelBmp| |__( uNew )__\\ Allows display of programmer selected bitmap on recordselector instead of the default right-arrow bitmap.\\ uNew can be any valid imagesource. It is desirable to choose a bitmap of size 16x16 or less.|
+|SetRightFreeze| |__( oCol )__\\ Sets oCol as right freeze|
+|SetStyle| |__( nStyle )__\\ Sets the style of the browse. nStyle can be 2007,2010,2013,2015 or 0 for standard and -1 for flat style.|
+|//ShowSeek//|Internal|__( cSeek )__\\ Called by ::Seek() method. This method displays the ::cSeek value in SeekBar if ::lSeekBar is .t. and otherwise updates ::oSeek if specified|
+|Skip| |__( [n] ) --> nSkipped__\\ [n] defaults to 1.\\ Skips n rows by calling Eval( ::bSkip, n )\\ , evaluates ::bChange and resets VScrollPos|
+|SwapCols| |__( xCol1, xCol2, [lRefresh] )__\\ __xCol1 and xCol2__ can be column objects or ordinal position of columns in ::aCols array. \\ __[lRefresh]:__ Default .t.. \\ Swaps position of two columns and optionally refreshes the browse.|
+|UnLock()| |Evaluates ::bUnlock to unlock the current record if locked by xbrowse. This method is called by oCol:PostEdit() after saving changes to the datasource.|
+
+
+See also TXBrwColumn class
+
+See also [[http://wiki.fivetechsoft.com/doku.php?id=fivewin_class_txbrwcolumn|TXBrwColumn class]]
+
+
+
+
+====== Examples ======
+
+==== Xbrowse used to display directory tree ====
+Similar to Windows Explorer, The sample also shows how to use Tree object along with xBrowse
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, oTree, oFont, b
+
+   SET DATE ITALIAN
+
+   oTree := MakeTree()
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      TITLE 'Directory' ;
+      FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE 300,200 PIXEL OF oDlg
+
+   oBrw:SetTree( oTree, { "CLOSE", "OPEN", "TXTMIN" } )
+   oBrw:bKeyChar  := { |nKey| If( nKey == VK_RETURN .and. ! Empty( oBrw:oTreeItem:bAction ), ;
+                                Eval( oBrw:oTreeItem:bAction, oBrw:oTreeItem ), nil ) }
+ 
+
+   WITH OBJECT oBrw:aCols[ 1 ]
+
+      :nWidth     := 300
+      :cHeader    := 'File/Folder'
+      b           := :bLDClickData
+
+      :bLDClickData  := { |r,c,f,o| ToggleFolder( r,c,f,o,b ) }
+
+      :bBmpData   := { || If( 'D' $ oBrw:oTreeItem:Cargo[ 5 ], ;
+                          If( oBrw:oTreeItem:lOpened, 1, 2 ), ;
+                           3 ) ;
+                     }
+
+   END
+
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 2 ] ;
+         PICTURE '@EZ 999,999,999' HEADER 'Bytes'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 3 ] HEADER 'Date'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 4 ] HEADER 'Time'
+   ADD TO oBrw DATA oBrw:oTreeItem:Cargo[ 5 ] HEADER 'Attr'
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTER
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function ToggleFolder( r, c, f, oCol, b )
+
+   local oBrw  := oCol:oBrw
+   local oItem := oBrw:oTreeItem
+
+   If ! oItem:lOpened .and. ! Empty( oItem:bAction )
+      Eval( oItem:bAction, oItem )
+   endif
+
+   Eval( b, r, c, f, oCol )
+
+return nil
+
+
+//----------------------------------------------------------------------------//
+static function MakeTree()
+
+   local oTree, oItem
+   local cPath := 'D:\FWH'
+
+   TREE oTree
+      TREEITEM oItem PROMPT cPath
+      oItem:Cargo    := { cPath, 0, CtoD( '' ), Space( 8 ), 'D', cPath }
+      oItem:SetTree( SubTree( oItem ) )
+      oItem:Open()
+   ENDTREE
+
+return oTree
+
+//----------------------------------------------------------------------------//
+
+static function SubTree( oParent )
+
+   local oTree, n, oItem, nLevel
+   local cFolder := oParent:Cargo[ 6 ]
+   local aDir     := Directory( cFolder + '\*.*', 'D' )
+
+   nLevel   := oParent:nLevel + 1
+
+   TREE oTree
+   for n := 1 to Len( aDir )
+      if ! ( aDir[ n ][ 1 ] = '.' )
+
+         TREEITEM oItem PROMPT aDir[ n ][ 1 ]
+
+         oItem:nlevel := nLevel
+         oItem:Cargo  := aDir[ n ]
+
+         AAdd( oItem:Cargo, cFolder + '\' + aDir[ n ][ 1 ] )
+
+         if 'D' $ aDir[ n ][ 5 ]
+            oItem:bAction  := { |o| o:SetTree( SubTree( o ) ), o:bACtion := nil }
+         else
+            oItem:bAction  := { |o| MsgInfo( o:cPrompt ) }
+         endif
+      endif
+   next
+   ENDTREE
+
+return oTree
+//----------------------------------------------------------------------------//
+</code> 
+
+** Screen Snapshot **
+
+{{:xbrowse1.jpg|:xbrowse1.jpg}}
+
+** Sample Code 2 **
+
+** A sample demonstrating the capability of displaying Alpha Channel Images on Header, Footer and Data Rows **
+<code clipper>
+#include "FiveWin.ch"
+#include "xbrowse.ch"
+
+REQUEST DBFCDX
+
+static hLib
+
+function main()
+
+   local oDlg
+   local oBrw
+   local nI
+   local hBitMap1, hBitMap2, hBitMap3, hBitMap4
+   local aArray:={}
+   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\text.bmp", 50 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\phone.bmp", 100 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\ichat.bmp", 150 } )   
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\settings.bmp", 200 } )
+   aadd( aArray, { "", "..\bitmaps\AlphaBmp\movie.bmp", 255 } )      
+
+
+   DEFINE DIALOG oDlg title "TEST" size 800,600
+
+   @ 0,0 XBROWSE oBrw OF oDlg columns {1,2,3};
+      Array aArray sizes {100,300, 100} LINES CELL autocols fastedit
+
+   oBrw:nMarqueeStyle              := 1
+   oBrw:nRowHeight                 := 100
+   oBrw:lFooter                    := .t.
+        
+   oBrw:aCols[ 1 ]:nEditType       := TYPE_IMAGE
+   oBrw:aCols[ 1 ]:lBmpStretch     := .f.
+   oBrw:aCols[ 1 ]:lBmpTransparent := .t.
+   oBrw:aCols[ 1 ]:bStrImage       := {|oCol, oBrw| oBrw:aRow[ 2 ] }
+   oBrw:aCols[ 1 ]:nDataBmpAlign   := AL_CENTER
+   oBrw:aCols[ 1 ]:bPopUp          := { | o | ColMenu( o ) } 
+   oBrw:aCols[ 1 ]:bAlphaLevel     := { | o | o:oBrw:aRow[ 3 ] }
+   
+   oBrw:aCols[ 2 ]:nEditType       := EDIT_BUTTON
+   oBrw:aCols[ 2 ]:bEditBlock      := {|nRow, nCol, oCol| oCol:Value := cGetFile( "*.*", "Select a file" )  }
+   oBrw:aCols[ 2 ]:AddBmpFile( "..\bitmaps\AlphaBmp\sound.bmp" )
+   oBrw:aCols[ 2 ]:nHeadBmpNo      := 1
+   
+   
+   oBrw:aCols[ 3 ]:nEditType       := 1
+   oBrw:aCols[ 3 ]:bOnPostEdit     := {|oCol, xVal, nKey| oCol:Value( xVal ) }
+   oBrw:aCols[ 3 ]:AddBmpFile( "..\bitmaps\AlphaBmp\video.bmp" )
+   oBrw:aCols[ 3 ]:nFootBmpNo      := 1
+   
+   oDlg:oClient                    := oBrw
+   
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED ON INIT oDlg:Resize()
+
+return nil 
+
+static function ColMenu( ocol )
+
+   local oPop
+
+   MENU oPop POPUP 2007
+      MENUITEM "Left Align" WHEN oCol:nDataBmpAlign > 0 ;
+         ACTION ( oCol:nDataBmpAlign:= AL_LEFT, oCol:oBrw:Refresh() )
+      MENUITEM "Center Align" WHEN oCol:nDataBmpAlign != AL_CENTER ;
+         ACTION ( oCol:nDataBmpAlign := AL_CENTER, oCol:oBrw:Refresh() )
+      MENUITEM "Right Align" WHEN oCol:nDataBmpAlign != AL_RIGHT ;
+         ACTION ( oCol:nDataBmpAlign := AL_RIGHT , oCol:oBrw:Refresh() )
+
+      MenuAddItem( "Transparent", ,oCol:lBmpTransparent, .t., ;
+         { |oItem| oCol:lBmpTransparent := !oCol:lBmpTransparent, ;
+            oItem:SetCheck( oCol:lBmpTransparent ), ;
+            oCol:oBrw:refresh() } )
+
+      MenuAddItem( "Stretch", ,oCol:lBmpStretch, .t., ;
+         { |oItem| oCol:lBmpStretch := !oCol:lBmpStretch, ;
+            oItem:SetCheck( oCol:lBmpStretch ), ;
+            oCol:oBrw:refresh() } )
+
+   ENDMENU
+
+return oPop
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot 2 **
+
+{{:xbrowsealpha.jpg|:xbrowsealpha.jpg}}
+
+** Sample Code 3 **
+
+** A sample demonstrating the capability of displaying Gradient colors **
+\Fwh\Samples\XbrGrad.Prg
+<code clipper>
+/*
+*  xbrgrad.prg
+*  Grandient fills on Xbrowse
+*  Dynamic modifications
+*
+*/
+
+#include 'fivewin.ch'
+#include 'ord.ch'
+#include 'xbrowse.ch'
+
+REQUEST DBFCDX
+
+static aStack  := {}
+static cGrad
+static nGrad := 50
+
+//------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oBrw, cAlias := cGetNewAlias( "CUST" )
+   local oBr, oFont
+   local aGrad := ;
+      { ;
+         { 0.5,    RGB( 140,  56,   6 ),  RGB( 237, 234, 109 )   }, ;
+         { 0.5,    RGB( 237, 234, 109 ),  RGB(  85,  62,  84 )   }  ;
+      }
+   SET DATE ITALIAN
+   SET CENTURY ON
+   XBrNumFormat( 'E', .t. )
+   SetBalloon( .t. )
+
+   USE CUSTOMER NEW ALIAS (cAlias) SHARED VIA "DBFCDX"
+   SET ORDER TO TAG FIRST
+   GO TOP
+
+   DEFINE FONT oFont   NAME "TAHOMA" SIZE 0,-11 BOLD
+   DEFINE BRUSH oBr    RESOURCE "beige2"
+
+   DEFINE DIALOG oDlg SIZE 760,460 FONT oFont BRUSH oBr ;
+      TITLE 'Xbrowse Color Gradient Designer'
+
+   @ 10,10 XBROWSE oBrw  ;
+            COLUMNS "First", "City", "State", "Married", "HireDate", "Age", "Salary" ;
+            COLSIZES nil,10 OF oDlg ;
+            SIZE 360,170 PIXEL ;
+            ALIAS cAlias AUTOSORT FOOTERS LINES CELL ;
+            BACKGROUND aGrad VERTICAL
+
+   oBrw:nStretchCol   := 2
+   oBrw:Married:SetCheck( , .t. )
+
+   WITH OBJECT oBrw:Salary
+      :nTotal   := 0 ; :lTotal   := .t. ; :nEditType := EDIT_GET
+   END
+
+   oBrw:MakeTotals()
+   oBrw:CreateFromCode()
+
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+
+   @ 189,354 BUTTONBMP BITMAP 'COPY' SIZE 16,16 PIXEL OF oDlg ;
+      ACTION CopyToClipBoard( oBrw )
+   ATail( oDlg:aControls ):cToolTip :=  'Copy Gradient Array to Clip Board'
+
+   @ 185, 10 SAY 'Gradient Array :' SIZE 60,10 PIXEL OF oDlg TRANSPARENT
+
+   @ 195, 10 GET cGrad ;
+         SIZE 340,10 PIXEL OF oDlg COLOR CLR_BLACK,CLR_WHITE UPDATE ;
+         VALID { |oGet| SetGradArray( oGet, oBrw ) }
+
+   @ 210, 10 BUTTON 'Orientation'  SIZE 40,12 PIXEL OF oDlg ;
+      ACTION oBrw:SetBackGround( ,!oBrw:oBrush:Cargo[2] )
+   ATail( oDlg:aControls ):cToolTip := 'Change Orientaion of Gradient'
+
+   @ 210, 52 BUTTON 'Top Color'    SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 1 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Top Color of Gradient'
+
+   @ 210, 94 BUTTON 'Center Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 2 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Center Color of Gradient'
+
+   @ 210,136 BUTTON 'Bottom Color' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION SelBrwGradClr( oBrw, 3 )
+   ATail( oDlg:aControls ):cToolTip := 'Select Bottom Color of Gradient'
+
+   @ 210,178 BUTTON 'Undo' SIZE 40,12 PIXEL OF oDlg ;
+      ACTION ( oBrw:SetBackGround( ATail( aStack ) ), ;
+               ASize( aStack, Len( aStack ) - 1 ), ;
+               oDlg:Update(), oDlg:aEvalWhen() ) ;
+      WHEN Len( aStack ) > 0
+   ATail( oDlg:aControls ):cToolTip := 'Undo Last Change'
+
+   @ 210,220 GET nGrad PICTURE '999 %' SIZE 20,12 PIXEL OF oDlg ;
+      SPINNER MIN 10 MAX 90 RIGHT UPDATE ;
+      ON CHANGE SetGradTrans( Self, oBrw ) ;
+      VALID { |oGet| SetGradTrans( oGet, oBrw ) }
+
+   @ 210,330 BUTTON 'Close' SIZE 40,12 PIXEL OF oDlg CANCEL ;
+      ACTION oDlg:End()
+   ATail( oDlg:aControls ):cToolTip := 'Exit Application'
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   RELEASE BRUSH oBr
+   RELEASE FONT oFont
+
+   CLOSE (cAlias)
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function SelBrwGradClr( oBrw, nPart )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+   local aSave := AClone( aGrad )
+   local lVert := oBrw:oBrush:Cargo[ 2 ]
+   local nClr
+
+   nClr  := If( nPart == 1, aGrad[ 1 ][ 2 ], If( nPart == 2, aGrad[ 1 ][ 3 ], aGrad[ 2 ][ 3 ] ) )
+   nClr  := ChooseColor( nClr )
+   SetBrwGradClr( oBrw, nPart, nClr )
+   AAdd( aStack, aSave )
+   cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+   oBrw:oWnd:Update()
+   oBrw:oWnd:aEvalWhen()
+   oBrw:SetFocus()
+
+return aSave
+
+//------------------------------------------------------------------//
+
+static function SetBrwGradClr( oBrw, nPart, nClr )
+
+   local aGrad := oBrw:oBrush:Cargo[ 1 ]
+
+   if nPart == 1
+      aGrad[ 1 ][ 2 ] := nClr
+   elseif nPart == 2
+      aGrad[ 1 ][ 3 ] := aGrad[ 2 ][ 2 ] := nClr
+   elseif nPart == 3
+      aGrad[ 2 ][ 3 ] := nClr
+   endif
+   oBrw:SetBackGround( aGrad )
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradTrans( oGet, oBrw )
+
+   local n  := oGet:oGet:VarGet() * 0.01
+   local aGrad := AClone( oBrw:oBrush:Cargo[ 1 ] )
+
+   if n >= .1 .and. n <= .9
+      aGrad[ 1 ][ 1 ] := n; aGrad[ 2 ][ 1 ] := 1 - n
+      oBrw:SetBackGround( aGrad )
+      cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+      oBrw:oWnd:Update()
+
+   endif
+
+return .t.
+
+//------------------------------------------------------------------//
+
+static function CopyToClipBoard( oBrw )
+
+   local oClip
+
+   DEFINE CLIPBOARD oClip OF oBrw:oWnd
+
+   if oClip:Open()
+      oClip:SetText( cClrToCode( oBrw:oBrush:Cargo[ 1 ] ) )
+      oClip:Close()
+   endif
+   oClip:End()
+
+return nil
+
+//------------------------------------------------------------------//
+
+static function SetGradArray( oGet, oBrw )
+
+   local lValid   := .f.
+   local cText := StrTran( AllTrim( oGet:oGet:VarGet() ), 'RGB','nRGB' )
+   local aGrad
+
+   TRY
+      aGrad := &cText
+      if IsVaildGradArray( aGrad )
+         AAdd( aStack, oBrw:oBrush:Cargo[ 1 ] )
+         oBrw:SetBackGround( aGrad )
+         cGrad := PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 )
+         oBrw:oWnd:Update()
+         oBrw:oWnd:aEvalWhen()
+         lValid   := .t.
+      endif
+   CATCH
+      oGet:oGet:VarPut( PadR( GradStr( oBrw:oBrush:Cargo[ 1 ] ), 128 ) )
+      oGet:Refresh()
+   END
+
+   if ! lValid
+      MsgInfo( 'Not a valid Gradient Array' )
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+
+static function IsVaildGradArray( aGrad )
+
+   local lValid   := .t.
+   local n, x
+
+   if Len( aGrad ) == 2
+      for n := 1 to 2
+         if Len( aGrad[ n ] ) == 3
+            if ( ( x := aGrad[ n ][ 1 ] ) > 0 .and. x < 1 ) .and. ;
+               ( ( x := aGrad[ n ][ 2 ] ) >= 0 .and. x <= CLR_WHITE ) .and. ;
+               ( ( x := aGrad[ n ][ 3 ] ) >= 0 .and. x <= CLR_WHITE )
+            else
+               lValid   := .f.
+               exit
+            endif
+         else
+            lValid   := .f.
+            exit
+         endif
+      next n
+   endif
+
+   if lValid
+      aGrad[ 2 ][ 1 ] = 1 - aGrad[ 1 ][ 1 ]
+   endif
+
+return lValid
+
+//------------------------------------------------------------------//
+static function GradStr( aGrad )
+return StrTran(StrTran( cClrToCode( aGrad ), ';' + CRLF, '' ),' ','' )
+//------------------------------------------------------------------//
+
+EXTERNAL nRGB
+</code>
+
+** Screen Snapshot 3 **
+
+{{:xbrowsegradient.jpg|:xbrowsegradient.jpg}}
+
+
+** Sample Code 4 **
+
+** A sample demonstrating the the usage of Windows 7 row selection colors in xBrowse **
+
+\Fwh\Samples\Xbrwin7.Prg
+<code clipper>
+// Using Windows 7 row selection colors in xbrowse
+
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+function Main()
+
+   local oDlg, oBrw, oFont
+
+   USE CUSTOMER ALIAS CUST
+
+   DEFINE FONT oFont NAME 'Tahoma' SIZE 0, -14
+   
+   DEFINE DIALOG oDlg SIZE 640,440 PIXEL ;
+      FONT oFont TITLE 'XBrowse Gradient Rows'
+
+   @ 10, 10 XBROWSE oBrw OF oDlg ;
+      SIZE 300, 200 PIXEL ;
+      AUTOCOLS ALIAS 'CUST' BACKGROUND ""
+      
+   oBrw:nRowDividerStyle = LINESTYLE_NOLINES
+   oBrw:nColDividerStyle = LINESTYLE_NOLINES
+   oBrw:nMarqueeStyle    = MARQSTYLE_HIGHLROW
+
+   AEval( oBrw:aCols, { | oCol | oCol:bPaintText := { | oCol, hDC, cData, aRect | ;
+          PaintCol( oCol, hDC, cData, aRect ) } } )
+
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+   oFont:End()
+
+return nil
+
+static function PaintCol( oCol, hDC, cData, aRect )
+
+   if oCol:oBrw:VGetPos() == Cust->( OrdKeyNo() )
+      GradientFill( hDC, aRect[ 1 ] - 2, aRect[ 2 ] - 3, aRect[ 3 ] + 1, aRect[ 4 ] + 5,;
+                    { { 1, RGB( 220, 235, 252 ), RGB( 193, 219, 252 ) } }, .T. )
+      RoundBox( hDC, 2, aRect[ 1 ] - 1, WndWidth( oCol:oBrw:hWnd ) - 22, aRect[ 3 ] + 1, 2, 2,;
+                RGB( 235, 244, 253 ), 1 ) 
+      RoundBox( hDC, 1, aRect[ 1 ] - 2, WndWidth( oCol:oBrw:hWnd ) - 21, aRect[ 3 ] + 2, 2, 2,;
+                RGB( 125, 162, 206 ), 1 ) 
+   endif
+
+   SetTextColor( hDC, 0 )
+   DrawTextEx( hDC, cData, aRect, oCol:nDataStyle )
+
+return nil
+</code>
+
+** Screen Snapshot 4 **
+
+{{:xbrowsewin7.jpg|:xbrowsewin7.jpg}}
+
+** Sample Code 5 **
+
+** A sample demonstrating the Vertical font headers in xBrowse **
+
+\Fwh\Samples\TestXbr5.Prg
+<code clipper>
+#include 'fivewin.ch'
+#include 'xbrowse.ch'
+
+static oFont, ovFont
+
+function main()
+
+   local oWnd, oBrw
+
+   use customer
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE FONT oVfont NAME 'TAHOMA' SIZE 0,-12 NESCAPEMENT 900
+
+   DEFINE WINDOW oWnd
+   oWnd:SetFont( oFont )
+
+   @ 0,0 XBROWSE oBrw ;
+      COLUMNS 'First', 'Last', 'Age' ;
+      OF oWnd ;
+      ALIAS 'CUSTOMER' ;
+      LINES CELL
+
+   WITH OBJECT oBrw:oCol( "Age" )
+      :oHeaderFont := oVFont
+      :cHeader := "Age Of Employee"
+      :AddBmpFile( '..\bitmaps\attach.bmp' )
+      :nHeadBmpNo := 1
+   END
+
+
+   oBrw:CreateFromCode()
+   oWnd:oClient := oBrw
+
+   SET MESSAGE OF oWnd TO "XBrowse Vertical Fonts" 2007
+   ACTIVATE WINDOW oWnd
+
+return nil
+//===========================
+</code>
+
+** Screen Snapshot 5 **
+
+{{:xbrowsevertical.jpg|:xbrowsevertical.jpg}}
+
+** Sample 6: How to use xBrowse to display data from multiple Alias **
+
+//Difference between COLUMNS and FIELDS//
+
+COLUMNS CLAUSE is a list of column names of the Alias assigned to the browse.
+FIELDS clause is for any expressions. FIELDS clause is to be used for data from other related Aliases or any complext expressions.
+
+When we want to display any field of the alias assigned to XBrowse, it is desirable to use COLUMNS clause but not FIELDS clause. When we use COLUMNS clause, XBrowse automatically reconginses fieldtype,fieldlen, fielddec and suitably decides, alignment, picture clauses and also automatically generates bOnPostEdit blocks and cSortOrder. We forgo this advantage if we use FIELDS clause or use OOPS syntax of creating columns by oBrw:AddCol(), etc. methods. We deirve the maximum power of XBrowse when we use the COMMAND syntax.
+
+When both COLUMNS and FIELDS clauses are speicified, XBrowse places the columns first and then the fields. We can later rearrange the sequence of xbrowse columns.
+
+Here is an example assuming 2 DBFs BILLS and CUSTOMER.
+
+<code clipper>
+USE BILLS
+USE CUSTOMER ALIAS CUST
+SET ORDER TO CUSTID
+SELECT BILLS
+SET RELATION TO CUSTID INTO CUST
+
+@ 10,10 XBROWSE oBrw SIZE 400,300 PIXEL OF oDlg ;
+  COLUMNS 'NUMBER', 'CUSTID', 'QUANTITY', 'RATE' ;
+  FIELDS CUST->CUSTNAME, CUST->STATE, BILLS->QUANTITY * BILLS->RATE ;
+  HEADERS 'BillNo', 'ID', 'Quantity', 'Rate', 'Customer', 'State', 'Amount' ;
+  PICTURES nil, nil, nil, nil, nil, nil, '999,999.99' ;
+  ALIAS BILLS
+
+  // we defined picture clause only for the last calculated column.
+  // XBrowse automatically decides picture clauses for NUMBER,CUSTID,QUANITY and RATE
+  // based on the DbStruct() of BILLS.
+
+  oBrw:ReArrangeCols( 'BillNo', 'ID', 'Customer', 'State', 'Quantity', 'Rate', 'Amount' )
+  oBrw:nStretchCol := STRETCHCOL_WIDEST
+</code>
+
+FiveWin discourages use of bStrData directly. This should be left for internal use by the XBrowse column object. Instead, it is desirable to assign the codeblock to oCol:bEditValue and specify the picture in oCol:cEditPicture. Still it is a lot more advantageous to use the COMMAND syntax rather than the OOPS style.
+
+** Sample 7: How to use xBrowse to display Array Data **
+
+Using command syntax helps faster, shorter, bug-free and portable coding than using methods like oBrw:SetArray, oBrw:SetRDD, etc. This approach also helps taking the best advantage of the full built-in power of xBrowse.
+
+<code clipper>
+#include "FiveWin.Ch"
+#include "xbrowse.ch"
+
+//-----------------------//
+Function Main()
+
+   Local aData := { ;
+     { 1, 'One',     45, date(),   .t. }, ;
+     { 2, 'Two',   2222, date()-1, .f. } , ;
+     { 3, 'Three', 3333, date()-2, .t. }, ;
+     { 4, 'Four',  4444, date()-3, .f. } }
+   Local oDlg, oBrw, oFont
+
+   DEFINE FONT oFont NAME 'TAHOMA' SIZE 0,-12
+   DEFINE DIALOG oDlg SIZE 440,240 PIXEL FONT oFont
+
+   @ 10,10 XBROWSE oBrw SIZE -10,-10 PIXEL OF oDlg ;
+      DATASOURCE aData ;
+      COLUMNS 1, 2, 3, 5, 4 ;
+      HEADERS 'No', 'Description', 'Number', 'Status', 'Date' ;
+      PICTURES '99', nil, '@E 99,999.99', nil, 'dd-mmm-yyyy' ;
+      CELL LINES NOBORDER FASTEDIT
+
+   oBrw:Status:SetCheck( , .t. )
+   AEval( oBrw:aCols, { |o| o:nEditType := EDIT_GET } )
+
+   oBrw:nStretchCol  := STRETCHCOL_WIDEST
+   oBrw:CreateFromCode()
+
+   ACTIVATE DIALOG oDlg CENTERED
+   RELEASE FONT oFont
+
+Return ( 0 )
+</code>
+
+{{:xbrarr.jpg|:xbrarr.jpg}}
+
+{{:xbrwgroups.png|:xbrwgroups.png}}
+
+
+
+====== See Also ======
+[[fivewin_commands_xbrowse|command XBrowse]], [[fivewin_class_txbrwcolumn|Class TXBrwColumn]],  [[fivewin_commands_browse|Commands BROWSE]] \\
+[[xbrowse | xBrowse Miscellaneous Notes]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TXBROWSE.PRG

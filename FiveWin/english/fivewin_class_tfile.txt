@@ -1,0 +1,69 @@
+
+====== Class TFile ======
+
+Low level files management as Objects                                          
+Class TFile is the base class for binary files manipulation From this          
+class we inherit all file manager sub classes.                                 
+====== DATA ======
+|cName|File name.|
+|hFile|Handle of the file|
+|nLen|Length of the file|
+|nBufferLen|Buffer length.|
+|nMode|Opening Mode.|
+====== METHODS ======
+|New|Constructor from source code|
+|Create|Creates the file.|
+|End|Ends control and make it disappear.|
+|AppByte|Adds a Byte to the end of the file.|
+|AppStr|Adds a String to the end of the file.|
+|AppWord|Adds a word to the end of the file.|
+|cGetStr|Retrieves a String from the file.|
+|Close|Closes the file.|
+|Count|Number of times that a string appears in the file.|
+|CRLF|as default.|
+|DelBytes|Deletes a specified number of bytes from the current position.|
+|GoBottom|Go to the bottom of the file.|
+|GoTo|Go to a specified file offset.|
+|GoTop|Go to the top of the file.|
+|InsBytes|Inserts a specified numbers of bytes always from current position.|
+|lBoF|True if at the begining of the file.|
+|lEoF|True if at the end of the file.|
+|nGetByte|Get a byte from the actual file offset.|
+|nGetWord|Get a word (two bytes) from the actual file offset.|
+|nRecNo|Actual offset position inside the file.|
+|Open|Open the file.|
+|PutByte|Write a byte at the current file offset.|
+|PutStr|Write a String at the current file offset.|
+|PutWord|Write a Word (two bytes) at the current file offset.|
+|Seek|Search for determinate String. Starts from the current position.|
+|Skip|Skips a determinate number of bytes.|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oFile  := TFile():New( "TestFBin.prg" )
+   local nWords := 0
+
+   while ! oFile:EoF()
+      MsgInfo( oFile:cGetToken() )
+      nWords++
+   end
+
+   MsgInfo( "Number of words: " + Str( nWords ) )
+
+   oFile:Close()
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+====== See Also ======
+[[fivewin_class_ttxtfile | Class TTxtFile ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFILE.PRG

@@ -1,0 +1,28 @@
+
+====== Class TMci ======
+
+Media Control Interface object oriented management                             
+====== DATA ======
+|nError|Last MCI error|
+|nId|MCI device identifier|
+|cType|Type of Device|
+|cFileName|Name of the file associated with the MCI|
+|oWnd|Reference of the container window of the MCI Object|
+|cBuffer|A data buffer|
+====== METHODS ======
+|New|Constructor from source code|
+|lOpen|Opens the Mci file.|
+|Play|Start the reproduction of the file.|
+|PlayFull|Start the reproduction of the file in full screen.|
+|cGetError|Retrieves any errors.|
+|SetWindow|Set the windows for the Mci object.|
+|SendStr|Send a Mci string command to the Mci object.|
+|Position|Return the current position of the Mci file.|
+|Length|Return the total length of the Mci file.|
+|End|Close the Mci file.|
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TMCI.PRG

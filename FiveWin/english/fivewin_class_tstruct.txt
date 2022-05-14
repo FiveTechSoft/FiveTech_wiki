@@ -1,0 +1,70 @@
+====== Class TStruct ======
+
+C language low level structs object oriented management                        
+
+====== DATA ======
+^Data ^ Description             ^
+|aMembers|Array with struct members description|
+|cBuffer|Buffer to hold the struct containts|
+
+====== METHODS ======
+^Method ^ Description             ^
+|New|CONSTRUCTOR|
+|AddMember|Adds a new struct member|
+|SetMember|Changes a struct member value|
+|GetMember|Retrieves a struct member value|
+|SizeOf|Retrieves the struct total length|
+|OnError|ERROR HANDLER|
+
+====== Example ======
+<code clipper>
+#Include "Fivewin.ch"
+#Define  WM_COPYDATA  74 //0x04A
+
+/****************/
+ Function Main()
+/****************/
+ Private oStruct,oMyStruct,TestStr,oWnd
+ oStruct    := TStruct():New()
+ oMyStruct  := TStruct():New()
+ oStruct:AddMember('dwdata',DWORD,4)
+ oStruct:AddMember('cbdata',DWORD,4)
+ oStruct:AddMember('lpdata',DWORD,4)
+
+ oMyStruct:AddMember('F1',DWORD,4)
+ oMyStruct:AddMember('F2',DWORD,4)
+ oMyStruct:AddMember('F3',STRING,100)
+
+ oMyStruct:SetMember(1,10)
+ oMyStruct:SetMember(2,11)
+ oMyStruct:SetMember(3,'This is a demo to test passing data between 16 to 32')
+
+ oStruct:SetMember(1,6)
+ oStruct:SetMember(2,oMyStruct:SizeOf())
+ oStruct:SetMember(3,StrPtr( oMyStruct:cBuffer ) )
+
+ DEFINE WINDOW oWnd FROM 1, 5 TO 20, 65   ;
+             TITLE "WM_COPYDATA Message Demo"  MDI
+ BuildMenu()
+ Activate window oWnd
+
+Return NIL
+
+FUNCTION BuildMenu()
+Local oMenu
+   MENU oMenu
+      // Create a File Option and Sub menu Options
+      MENUITEM "&File"
+      MENU
+         MENUITEM "&Send Data"  MESSAGE "Copy data to another Application" Action SendMessage(FindWindow(NIL,'32-bit App'),WM_COPYDATA,oWnd:Hwnd(),oStruct:cBuffer)
+         MENUITEM "&Exit" MESSAGE "Exit Application" ;
+         ACTION IF(MsgYesNo("Do you wish to exit App?", "Exit"),oWnd:end(),)
+      ENDMENU
+    EndMenu
+    OWnd:SetMenu(oMenu)
+ Return NIL
+</code>
+====== See Also ======
+[[fivewin_commands_struct|Command Struct]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TSTRUCT.PRG

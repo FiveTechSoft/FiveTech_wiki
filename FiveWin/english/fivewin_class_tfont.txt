@@ -1,0 +1,68 @@
+====== Class TFont ======
+
+Fonts Objects Class                                                            
+====== DATA ======
+|cFaceName|Typeface name used (i.e.: "Arial" )|
+|hFont|The WinApi handle of the font|
+|hFontOld|The handle of the font that was selected previously|
+|lBold|If it is bold|
+|lItalic|If it is italic|
+|lUnderline|If it is underline|
+|lStrikeOut|If it is strikeout|
+|nInpHeight|The height of the font|
+|nInpWidth|The width of the font|
+|nHeight|The height of the font|
+|nWidth|The width of the font|
+|nEscapement|The escapement of the font|
+|nOrientation|The orientation of the font|
+|nWeight|The weight of the font|
+|nCharSet|The charset of the font|
+|nOutPrecision|The outprecision of the font|
+|nClipPrecision|The clipprecision of the font|
+|nQuality|The quality of the font|
+|nPitchFamily|The pitch family of the font|
+|nCount|Internal counter for life control|
+|lDestroy|If .t. the font is destroyed|
+|lNew|.T. if it is the first time the font is created (for|
+|reference|counting)|
+====== METHODS ======
+|New|Constructor method. Builds a new font|
+|Choose|Builds a new font interactively|
+|End|Finish the use of a font and release it|
+|Release|Finish the use of a font and release it|
+|Activate|Set a font as defined for a specific device context|
+|DeActivate|Deselects the current font from the device context|
+|nSize|Return the size of the font|
+
+====== Example ======
+<code clipper>
+// Testing fonts
+#include "FiveWin.ch"
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oWnd, fntArial
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 20, 80 ;
+      TITLE "Testing Fonts"
+
+   DEFINE FONT fntArial NAME "Arial" SIZE 0, -25
+
+   @ 2, 2 SAY "Hello world" FONT fntArial SIZE 180, 80
+
+   ACTIVATE WINDOW oWnd
+
+   fntArial:End()
+
+RETURN NIL
+</code>  
+
+** Screen Snapshot **
+
+{{:font.jpg|:font.jpg}}
+
+====== See Also ======
+[[fivewin_commands_fonts | Command Font ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFONT.PRG

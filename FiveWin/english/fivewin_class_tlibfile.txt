@@ -1,0 +1,40 @@
+
+====== Class TLibFile ======
+
+Provides manipulation for LIB files                                            
+Inherits from TFile                                                            
+====== METHODS ======
+|nSignature|Signature of a LIB file|
+|nPageSize|Number of pages inside LIB|
+|nDirPages|Number of pages of LIB dir|
+|aModules|Array with all module names|
+====== Example ======
+\Fwh\Samples\TestLib2.Prg
+<code clipper>
+// Testing the new FiveWin TLibFile Class
+
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oLib := TLibFile():New( "..\lib\501_520.lib" )
+
+   MsgInfo( oLib:nSignature )
+   MsgInfo( oLib:nPageSize )
+   MsgInfo( oLib:nDirPages )
+
+   MsgInfo( oLib:aModules() )
+
+   oLib:Close()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+</code>
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TLIBFILE.PRG

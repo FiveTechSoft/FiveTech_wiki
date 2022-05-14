@@ -1,0 +1,22 @@
+====== Class TTable ======
+
+Tables (single DBF) management                                                 
+====== DATA ======
+^Data ^ Description ^
+|cName|Table name|
+|cAlias|Table alias|
+|lShared|Shared mode|
+|cComments|Table comments|
+|aFields|Array of fields|
+|aIndexes|Array of indexes|
+====== METHODS ======
+^Data ^ Description ^
+|New|Constructor from source code|
+|Import|Import from a DBF file|
+|Create|Create the table|
+====== Example ======
+
+====== See Also ======
+[[fivewin_class_tdatabase | Class TDatabase]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TTABLE.PRG

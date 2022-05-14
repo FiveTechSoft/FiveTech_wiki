@@ -1,0 +1,32 @@
+
+====== Class TDbms ======
+
+Class DataBase Manager                                                         
+====== DATA ======
+|cFile|The filename|
+|aDb|Array of database objects|
+|aField|Array of fields objects|
+|aIndex|Array of index objects|
+
+====== METHODS ======
+|New|Constructor|
+|Redefine|Changes and rereads the database definition|
+|Update|Rereads the database definition|
+|AddField|Adds a new field description|
+|AddIndex|Adds a new index description|
+|AddDb|Adds a new database|
+|ReadFields|Load the fields descriptions from the database definition|
+|ReadIndex|Load the indexes descriptions from the database definition|
+|ReadDb|Load the databases from the database definition|
+|WriteFields|Save the fields descriptions from the database definition|
+|WriteIndex|Save the indexes descriptions from the database definition|
+|WriteDb|Save the databases to the database definition|
+|Create|Creates the DataBase file DBF from the aFields description|
+|Read|Load the fields, indexes and databases from the databasedefinition|
+
+====== Example ======
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TDBMS.PRG

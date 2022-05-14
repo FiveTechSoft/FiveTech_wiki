@@ -1,0 +1,71 @@
+
+====== Class TExStruct ======
+
+Fivewin Structures                                                             
+These Class has some benefits over the TStruc class, wich are:                 
+- Structures can be nested                                                     
+- A member of a structure can be of any data type                              
+- Length and type of the members is optional                                   
+Because the two classes use the same syntax is important that you do not       
+mix                                                                            
+bouth on the same PRG file.                                                    
+TStruc should be used when you need 'C' like structures that can be used       
+to call any external DLL, TExStruc can be used in the rest of cases.           
+====== DATA ======
+|aMembers|Array of all structure members|
+|lGenError|If a runtime error should be done if a non existing|
+|member|is called|
+====== METHODS ======
+|New|Constructor|
+|AddMember|Adds a new member to the structure|
+|MemberList|Returns a string with all the structure members|
+|GetMember|Returns the position index of a member of the structure|
+|SetValue|Sets the value of a member of the structure|
+|OnError|Error handler|
+====== Example ======
+<code clipper>
+// Testing FiveWin structs
+
+#include "FiveWin.ch"
+#include "struct.ch"
+
+function Main()
+
+   local oStruct
+
+   STRUCT oStruct
+      MEMBER nTest AS BYTE
+   ENDSTRUCT
+
+   oStruct:nTest = 123
+
+   MsgInfo( oStruct:nTest )
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:struct.jpg|:struct.jpg}}
+
+** Sample Code 2 **
+
+<code clipper>
+    STRUCT oRect
+        MEMBER nLeft   AS LONG
+        MEMBER nTop    AS LONG
+        MEMBER nRight  AS LONG
+        MEMBER nBottom AS LONG
+    ENDSTRUCT
+    oRect:nLeft   = 1
+    oRect:nTop    = 10
+    oRect:nRight  = 3
+    oRect:nBottom = 40
+</code>
+
+
+====== See Also ======
+[[fivewin_commands_struct | Command Struct ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TEXSTRUCT.PRG

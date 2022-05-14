@@ -1,0 +1,86 @@
+
+====== Class TRect ======
+
+Basic rectangle class                                                          
+====== DATA ======
+^ Data ^ Description         ^
+|nTop|Coordinates of the rect|
+|nLeft|Coordinates of the rect|
+|nBottom|Coordinates of the rect|
+|nRight|Coordinates of the rect|
+====== METHODS ======
+^ Method ^ Description        ^
+|New|Constructor for the rect|
+|nWidth|The width of the rect|
+|nHeight|The height of the rect|
+====== Example ======
+<code clipper>
+#include "Fivewin.ch"
+
+#define BUTTON_ROWS 10
+#define BUTTON_COLS 10
+#define TIMER_TICKS 5000
+
+function main()
+	local oWin := TWindow():new( 0, 0, 20, 50 )
+
+  oWin:SetText( "FiveTech WinPop" )
+	CreateBtns( oWin, BUTTON_ROWS, BUTTON_COLS, {|| ShowDialog( oWin )} )
+	ShowDialog( oWin )
+	oWin:Activate()
+RETURN ( nil )
+
+function ShowDialog( oWnd )
+
+  local oBtn, bAction
+
+	static oDlg
+
+  if oDlg == nil
+     DEFINE DIALOG oDlg FROM -38, -38 TO -10, 68 OF oWnd
+     bAction := {|| oDlg:Cargo[ 1 ] := .t., oDlg:Cargo[ 2 ] := .t., oDlg:End()}
+     CreateBtns( oDlg, BUTTON_ROWS, BUTTON_COLS, bAction )
+     ACTIVATE DIALOG oDlg NOWAIT
+  else   
+    if oDlg:nTop != 30
+       oDlg:SetCoors( TRect():New( 30, 20, oDlg:nHeight, oDlg:nWidth - 48 ) )
+    endif   
+    oDlg:bValid = { || oWnd:Enable(), oDlg:Hide(), oDlg:Cargo[ 2 ] := .t., .f. }
+    oDlg:Cargo = { .t., .f. }
+    while oDlg:Cargo[ 1 ]
+		   oDlg:Cargo[ 1 ] = .f.
+		   oDlg:Cargo[ 2 ] = .f.
+		   oWnd:Disable()
+		   oDlg:Show()
+		   oDlg:SetFocus()
+		   while ! oDlg:Cargo[ 2 ]
+		      SysRefresh()
+		   end
+		   oWnd:Enable()
+		   oDlg:Hide()   
+		end   
+	endif
+RETURN ( nil )
+
+function CreateBtns( oParent, nRows, nCols, bAction )
+	local oBtn, i, j
+
+	FOR i := 1 TO nRows
+		FOR j := 1 TO nCols
+			oBtn := TButton():new( i-1, (j-1)*6, lTrim( Str( (i-1)*10+j)), oParent )
+			oBtn:bAction := bAction
+		NEXT
+	NEXT
+RETURN ( nil )
+
+function IsAppThemed();  return (.f.)
+function ChildLevel();   return 0
+</code>
+
+** Screen Snapshot **
+
+{{:trect.jpg|:trect.jpg}}
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TRECT.PRG

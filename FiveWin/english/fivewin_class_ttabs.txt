@@ -1,0 +1,66 @@
+====== Class TTabs ======
+
+Tab control                                                                    
+Inherits from TControl                                                         
+====== DATA ======
+|oBtnLeft|Left button object|
+|oBtnRight|Right button object|
+|aPrompts|Labels of tab.|
+|aSizes|Sizes of tab.|
+|bAction|CodeBlock to evaluate when changing the tab label|
+|nOption|Current tab label|
+|nOffset|The index of the leftmost tab showed|
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor from resources|
+|AddItem|Add an item to the folder.|
+|Default|Default initialization|
+|DelItem|Delete an item from the folder.|
+|Destroy|Destroys the control|
+|Display|Displays the control. Use :Refresh() to force repaint|
+|End|Ends the control|
+|GetHotPos|Returns the tabs option that matches a specified|
+|HotKey|char|
+|Initiate|Generic Control initialization method|
+|Inspect|Object inspector|
+|LButtonDown|Action to be performed when clicking the mouse|
+|Paint|Paints the control|
+|RButtonDown|Action to be performed when right clicking the mouse|
+|SetOption|Select the active tab option.|
+|SetTabs|Set the array of tabs and option. Default "One", "Two" and "Three".|
+|SysCommand|Behavior when pressing Alt+... combinations|
+|EditPrompts|Edits the tab labels|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+FUNCTION MAIN()
+
+local odlg
+local otabs
+
+DEFINE DIALOG oDlg TITLE "Selecci¢n  articulos" FROM 77,178 TO 353,662 ;
+    PIXEL //FIVEWIDI
+
+ACTIVATE DIALOG odlg ;
+   ON INIT PlaceTabs( oDlg, oTabs )
+
+RETURN Nil
+
+function PlaceTabs( oDlg, oTabs )
+
+@ 119.00,1.00 TABS oTabs OF oDlg ITEMS "Ordre Natural","Codi Article", ;
+    "AlfabŠtica" ACTION (MSGALERT("Error en TABS", "Ah¡ va") ) ;
+    PIXEL SIZE 242.00,;
+    32.00 MESSAGE "Orden de la llista" //FIVEWIDI
+
+return nil
+</code>
+
+{{:ttab.jpg|:ttab.jpg}}
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TTABS.PRG

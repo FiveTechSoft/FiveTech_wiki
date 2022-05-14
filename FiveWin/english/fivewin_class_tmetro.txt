@@ -1,0 +1,103 @@
+====== Class TMetro ======
+
+Metro class                                                                    
+
+
+This control is available from FWH ver 11.9 onwards. Using this class you can develop FWH applications similar to the Windows 8 Metro user interface. Your application will have a very modern look.
+
+====== Example ======
+
+<code clipper>
+
+    #include "FiveWin.ch"
+
+    //----------------------------------------------------------------------------//
+
+    function Main()
+
+       local oMetro
+
+       DEFINE METRO oMetro ;
+          TITLE "My FWH Metro app" ;
+          BACKGROUND "..\bitmaps\hires\earth.bmp"
+         
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Files" COLOR CLR_WHITE, RGB( 2, 174, 224 ) ;
+          IMAGE "..\bitmaps\AlphaBmp\files.bmp" ;
+          ACTION Files()  
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Customers" COLOR CLR_WHITE, RGB( 234, 112, 39 ) ;    
+          IMAGE "..\bitmaps\32x32\users.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Stock" COLOR CLR_WHITE, RGB( 181, 31, 60 ) LARGE ;
+          IMAGE "..\bitmaps\32x32\task.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Utilities" COLOR CLR_WHITE, RGB( 24, 152, 78 ) ;
+          IMAGE "..\bitmaps\32x32\setup.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Reports" COLOR CLR_WHITE, RGB( 2, 174, 224 ) ;    
+          IMAGE "..\bitmaps\32x32\print.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Graphics" COLOR CLR_WHITE, RGB( 234, 112, 39 ) LARGE ;  
+          IMAGE "..\bitmaps\32x32\graphics.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Internet" COLOR CLR_WHITE, RGB( 2, 70, 133 ) LARGE ;
+          IMAGE "..\bitmaps\32x32\internet.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Calculator" COLOR CLR_WHITE, RGB( 86, 177, 14 ) ;
+          IMAGE "..\bitmaps\32x32\calc.bmp" ;
+          ACTION WinExec( "calc" )
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Contact" COLOR CLR_WHITE, RGB( 213, 177, 1 ) ;  
+          IMAGE "..\bitmaps\32x32\info.bmp"
+
+       DEFINE METROBUTTON OF oMetro ;
+          PROMPT "Exit" COLOR CLR_WHITE, RGB( 2, 174, 224 ) ;    
+          IMAGE "..\bitmaps\32x32\quit.bmp" ;
+          ACTION If( MsgYesNo( "Want to exit ?" ), oMetro:End(),)
+
+       ACTIVATE METRO oMetro
+
+    return nil  
+
+    //----------------------------------------------------------------------------//
+
+    function Files()
+
+       local oWnd, oBar
+       
+       DEFINE WINDOW oWnd TITLE "Files"
+       
+       DEFINE BUTTONBAR oBar OF oWnd 2007 SIZE 80, 80
+       
+       DEFINE BUTTON OF oBar FILENAME "..\bitmaps\32x32\new.bmp" PROMPT "New"
+
+       DEFINE BUTTON OF oBar FILENAME "..\bitmaps\32x32\edit.bmp" PROMPT "Edit"
+
+       DEFINE BUTTON OF oBar FILENAME "..\bitmaps\32x32\quit.bmp" PROMPT "Exit" ;
+          ACTION oWnd:End()
+       
+       DEFINE MESSAGE OF oWnd 2007 PROMPT "Files management"
+       
+       ACTIVATE WINDOW oWnd
+       
+    return nil  
+
+    //----------------------------------------------------------------------------//
+
+</code>
+
+** Screen Snapshot **
+
+{{:tmetro1.png|:tmetro1.png}}
+{{:tmetro2.jpg|:tmetro2.jpg}}
+
+{{:tmetro3.png|:tmetro3.png}}

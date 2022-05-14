@@ -1,0 +1,16 @@
+
+====== Class TIconGet ======
+
+IconGet control                                                                
+Inherits from TMultiGet                                                        
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code|
+|KeyDown|Keydown event handler|
+====== Example ======
+
+====== See Also ======
+[[fivewin_commands_icons | Command Icon ]], [[fivewin_class_ticon | Class Icon ]], [[fivewin_class_ticongroup | Class TIconGroup ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TICONGET.PRG

@@ -1,0 +1,132 @@
+====== Class TSwitch ======
+
+Logical Switch Control
+
+Inherits from [[fivewin_class_tcontrol|Class TControl]]                
+
+====== CLASSDATA ======
+^ Data   ^ Description    
+|lRegistered|Logical ClassData|
+====== DATA ======
+^ Data   ^ Description                              ^
+|nBorderSize|Size border control default 4|
+|nThumbSize|Size control default 16|
+|nClrThumb|Color control defatul CLR_BLACK|
+|nClrBorder|Border Color defatul CLR_HGRAY|
+|lHover|If Hover control INIT .F.|
+|lRadioStyle|If RadioStyle control INIT .F.|
+|lOvalStyle|If Ovalstyle control INIT .F.|
+|lReadOnly|If ReadOnly control INIT .F.|
+====== METHODS ======
+|New|Constructor from source code.|
+|Default|Default initialization.|
+|Initiate|Generic initialization.|
+|Reset|Resets the control|
+|LButtonUp|Button up event, returns super button up event|
+|Change|Evalues codeblock bChange without change state.|
+|Click|Before change state and evalues codeblock.|
+|Check|Sets the switch on|
+|UnCheck|Sets the switch off|
+|SetCheck|Sets the switch on or off on the given logical .T. on|
+|Toggle|changes control state on or off|
+|Display|Shows control|
+|Paint|Paint Control|
+|PaintBox|Paint box Control|
+|PaintCheck|Paint CheckButton Control|
+|PaintRadio|Paint ORadioStyle Control|
+|PaintOval|Paint OValStyle Control|
+|GotFocus( hCtlLost )|Gotfocus event handler|
+|LostFocus( hWndGetFocus )|Lostfocus event handler|
+|MouseLeave( nRow, nCol, nFlags )|Action to be performed when leave the mouse over.|
+|MouseMove( nRow, nCol, nKeyFlags )|Action to be performed when moving the mouse over, returns 0.|
+|HandleEvent( nMsg, nWParam, nLParam )|Handle event, returns Super handle Event.|
+|KeyDown( nKey, nFlags )|KeyDown event, returns super KeyDown event|
+
+
+
+
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+FUNCTION Main()
+
+   LOCAL oDlg, oSay, oSw, lSw, oBtn, aColors:={CLR_RED,CLR_BLUE,CLR_GREEN,CLR_YELLOW}, i:=1
+
+   DEFINE DIALOG oDlg SIZE 400, 300 TITLE "Test Switch Class"
+
+   @ 3, 1 BUTTON oBtn PROMPT "Change Style" OF oDlg SIZE 63,25 ;
+   ACTION (IIF(oSw:lOValStyle,(oSw:lRadioStyle:=.T.,oSw:lOValStyle:=.F.), ;
+   (oSw:lRadioStyle:=.F.,oSw:lOValStyle:=.T.) ), oDlg:Update() )
+
+   @ 5, 1 BUTTON oBtn PROMPT "Change Color" OF oDlg SIZE 63,25 ;
+   ACTION (oSw:nClrThumb:= aColors[i++] , oDlg:Update(), IF(i==4,i:=1,) )
+
+   @ 5, 15 SWITCH oSw VAR lSw OF oDlg ;
+      SIZE 80, 20 ON CLICK ( IIF( lSw, MsgInfo( "Activated Switch" ), ) ) ;
+      COLORS "B" UPDATE OVALSTYLE
+
+   @ 2, 1 SAY oSay PROMPT "Test TSwitch Class " + IF(oSw:lOvalStyle,"OValStyle","RadioStyle") ;
+   OF oDlg SIZE 80, 20 UPDATE
+
+   ACTIVATE DIALOG oDlg CENTERED
+   RETURN NIL
+</code>
+{{:wiki:switch.jpg|:wiki:switch.jpg}}
+
+
+** Sample code 2 **
+\Fwh\Samples\Switchtst.Prg
+<code clipper>
+#include "fivewin.ch"
+
+function Main()
+
+   local oWnd, oFont
+   local lVar1, lVar2, lVar3
+   local oYn1, oYn2, oYn3, oSay1, oSay2, oSay3
+
+   lVar1 := lVar2 := lVar3 := .t.
+
+   DEFINE FONT oFont NAME "Segoe UI Light" SIZE 0,-18 BOLD
+
+   DEFINE WINDOW oWnd COLOR CLR_GRAY,CLR_WHITE
+   oWnd:SetFont( oFont )
+//   oWnd:nOpacity := 140
+
+   @  98, 40 SAY oSay1 PROMPT If( lVar1, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 100,207 SWITCH oYn1 VAR lVar1 PIXEL OF oWnd UPDATE ;
+      COLOR CLR_GREEN, CLR_GRAY ;
+      ON CHANGE oWnd:Update()
+
+   @ 128, 40 SAY oSay2 PROMPT If( lVar2, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 130,207 SWITCH oYn2 VAR lVar2 PIXEL OF oWnd UPDATE OVALSTYLE ;
+      COLOR CLR_GREEN, CLR_GRAY ;
+      THUMBSIZE 16 THUMBCOLOR CLR_BLUE ;
+      ON CHANGE oWnd:Update()
+
+   @ 158, 40 SAY oSay3 PROMPT If( lVar3, 'On', 'Off' ) SIZE 60,30 PIXEL OF oWnd UPDATE
+
+   @ 160,207 SWITCH oYn3 VAR lVar3  PIXEL OF oWnd UPDATE RADIOSTYLE ;
+      ON CHANGE oWnd:Update()
+
+   ACTIVATE WINDOW oWnd
+   RELEASE FONT oFont
+
+return nil
+</code>  
+
+** Screen snapshot 2 **
+
+{{:wiki:switch2.jpg|:wiki:switch2.jpg}}
+
+
+
+====== See Also ======
+[[fivewin_commands_switch | Command Switch ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSWITCH.PRG

@@ -1,0 +1,156 @@
+
+====== Class TRddOdbc ======
+
+RDD ODBC class                                                                 
+====== DATA ======
+^ Data ^ Description ^
+|oOdbc|TOdbc object|
+|aDbOdbc|Array of workareas|
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|End|Close workareas and TOdbc object|
+|IsWorkArea|Returns .T. if the given workarea exists|
+|GetTable|Returns the workarea with the specified alias|
+|Append|Appends a blank record|
+|Alias|Retrieves the alias of a given workarea|
+|Bof|If begining of file is encountered|
+|CloseArea|Closes a workarea|
+|Create|Creates a new table|
+|Delete|Deletes the current record|
+|Deleted|If the current record is deleted|
+|Eof|If end of file is encountered|
+|Error|Error handler|
+|FieldInfo|Retrieves field informations|
+|Found|If the last search operation was successful|
+|GetValue|Retrieves a field value|
+|GoBottom|Moves the record pointer to the last record|
+|GoToId|Moves the record pointer to the given record id|
+|GoTop|Moves the record pointer to the first record|
+|Lock|Applies a lock to the current record or file|
+|Open|Open a database|
+|OrdCreate|Creates a new index|
+|OrdInfo|Retrieves index informations|
+|OrdListAdd|Add an index to the index list|
+|OrdListClear|Empties the index list|
+|OrdListFocus|Sets the active index|
+|Pack|Compacts the database|
+|PutValue|Assigns a value to a field|
+|Recall|Restores a deleted record|
+|RecCount|Returns the total number of records|
+|RecNo|Returns the current record number|
+|Seek|Seeks a record|
+|SetFilter|Activates a filter|
+|Skip|Moves the record pointer|
+|StructSize|Returns the size of the database structure|
+|SysName|Returns the database system name|
+|UnLock|Remove the lock from the current record or file|
+====== Example ======
+<code clipper>
+// FiveWin ODBC RDD test with SQL SERVER
+// You must create an ODBC connection to SQL SERVER first
+// Your ODBC configuration file should include name and password
+// in order to avoid the show of ODBC dialogs.
+// Your stacksizs should be at least 11500 or more if you show ODBC dialogs
+
+#include "FiveWin.ch"
+#include "sql.ch"
+
+//----------------------------------------------------------------//
+
+function Main()
+
+   Local oDlg, oRdd, oDbf
+   Local aDsn, aFiles
+   local cDsn, cName, cPass, cTable, cFile
+   local lOk, lStatic
+
+   SET 3D LOOK ON
+
+   aDsn    := OdbcDsnEntries()
+   cName   := ""
+   cPass   := ""
+   cFile   := ""
+   lOk     := .f.
+   lStatic := .f.
+
+   if len(aDsn) == 0
+      MsgAlert("You must create a ODBC DSN configuration from your control panel",;
+               "ODBC DSN selection")
+      return nil
+   endif
+
+   cDsn := aDsn[1]
+
+   DEFINE DIALOG oDlg RESOURCE "ODBCLOGIN"
+
+   REDEFINE COMBOBOX cDsn ID 101 ITEMS aDsn OF oDlg
+   REDEFINE GET cName ID 102 OF oDlg MEMO
+   REDEFINE GET cPass ID 103 OF oDlg MEMO
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION (lOk := .t. , oDlg:End())
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg
+
+   If !lOk
+      return nil
+   Endif
+
+   oRdd := TRddOdbc():New(cDsn, cName, cPass)
+
+   If !oRdd:oOdbc:lSuccess
+      oRdd:oOdbc:ShowErrorList("ODBC session not successfully initialized, aborting...")
+      oRdd:End()
+      return nil
+   Endif
+
+//   oRdd:oOdbc:lAbort := .f.
+
+   aFiles := oRdd:oOdbc:GetTables("*", .F. )
+
+   if len(aFiles) == 0
+      MsgAlert("There are not tables on that database, aborting...",;
+               "ODBC Table selection")
+      oRdd:End()
+      return nil
+   endif
+
+   cTable := aFiles[1]
+
+   DEFINE DIALOG oDlg RESOURCE "ODBCTABLE"
+
+   REDEFINE LISTBOX cTable ID 101 ITEMS aFiles OF oDlg
+   REDEFINE CHECKBOX lStatic ID 102 OF oDlg
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION OpenTable(cTable, lStatic, oRdd)
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg
+
+   oRdd:End()
+
+return nil
+
+
+STATIC FUNCTION OpenTable(cTable, lStatic, oRdd)
+
+   oRdd:oOdbc:lCsrDyn := !lStatic
+
+   USE (cTable) VIA "ODBC" NEW ALIAS "__ODBC__"
+
+   if oRdd:oOdbc:IsError()
+      oRdd:oOdbc:ShowErrorList()
+      oRdd:oOdbc:aErrors := {}
+      DbCloseArea()
+      return nil
+   endif
+
+   Browse(cTable)
+
+   DbCloseArea()
+
+Return nil
+</code>
+====== See Also ======
+[[fivewin_class_todbc| Class TOdbc]], [[fivewin_class_tdatabase| Class TDatabase]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TRDDODBC.PRG

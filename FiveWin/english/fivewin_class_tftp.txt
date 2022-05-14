@@ -1,0 +1,55 @@
+
+====== Class TFTP ======
+
+Microsoft WinINet.dll FTP object oriented management                           
+====== DATA ======
+|oInternet|TInternet container object|
+|cSite|URL address|
+|hFTP|Handle of the FTP connection|
+|cUserName|User name to login|
+|cPassword|Password to login|
+====== METHODS ======
+|New|Constructor. cFTPSite = URL to connect to. oInternet|
+|=|previous created TInternet object|
+|End|Generic destructor|
+|DeleteFile|Deletes a remote FTP file|
+|Directory|As Clipper Directory() but on a FTP site!|
+|RenameFile|Renames a remote FTP file|
+|SetCurrentDirectory|Sets the remote FTP current directory|
+|CreateDirectory|Create a remote FTP directory|
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oInternet := TInternet():New()
+   local oFTP      := TFTP():New( "ftp.microsoft.com", oInternet ) // Microsoft FTP
+   local aFiles
+
+   if ! Empty( oFTP:hFTP )
+      aFiles = oFTP:Directory( "*.*" )
+      AEval( aFiles, { | aFile | MsgInfo( aFile[ 1 ], aFile[ 3 ] ) } )
+   else
+      MsgAlert( "oFTP:hFTP is null" )
+   endif
+
+   oInternet:End()
+
+   MsgInfo( "Done!" )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+
+
+
+====== See Also ======
+[[fivewin_class_tinternet | Class TInternet ]], [[fivewin_class_tftpclient | Class TFtpClient ]], [[fivewin_class_tftpserver | Class TFtpServer ]] 
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TFTP.PRG

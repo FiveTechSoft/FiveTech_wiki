@@ -1,0 +1,174 @@
+====== Class TToolBar ======
+
+Win32 common controls ToolBar\\                                                  
+Inherits from TControl                                                         
+
+====== DATA ======
+^ Data    ^ Description            ^
+|nBtnWidth|The width of the buttons|
+|nBtnHeight|The height of the buttons|
+|aButtons|An array with the action codeblocks and the tooltips of the buttons|
+|oImageList|The imagelist object associated with the buttons|
+|lTTBalloon|True to set the balloon style for the tooltip|
+
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|AddButton|Adds a button to the toolbar|
+|AddMenu|Adds a menu button to the toolbar|
+|AddSeparator|Adds a separator to the toolbar|
+|ChangeBitmap|Changes the bitmap for a button of the toolbar|
+|Create|Creates the control|
+|DelButton|Removes the specified button from the toolbar|
+|EnableButton|Enables or disables the specified button|
+|HideButton|Hides the specified button|
+|IsButtonHidden|Returns .T. if the specified button is hidden|
+|IsChecked|Returns .T. if the specified button is checked|
+|SetChecked|Sets or resets the checked status of the specified button|
+|SetMessage|Sets the message for the specified button|
+|SetPressed|Sets or resets the pressed status of the specified button|
+|SetTextSets|the text of the specified button|
+|SetTextRows|Sets the maximum number of text rows displayed on a button|
+|SetTooltip|Sets the tooltip for the specified button|
+|ShowButton|Shows the specified button|
+|ToggleCheck|Toggles the checked status of the specified button|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oToolBar
+
+function Main()
+
+   local oWnd, oImageList
+
+   DEFINE WINDOW oWnd TITLE "FWH - Testing Win32 Toolbars" ;
+      MENU BuildMenu()
+
+   // First we build an ImageList with all the bitmaps 
+   DEFINE IMAGELIST oImageList SIZE 32, 32
+
+   DEFINE IMGBITMAP OF oImageList NAME "new"      COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "open"     COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "check"    COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "search"   COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "print"    COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "internet" COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "keys"     COLOR nRGB( 255, 0, 255 )
+   DEFINE IMGBITMAP OF oImageList NAME "quit"     COLOR nRGB( 255, 0, 255 )
+
+   // Now we create the toolbar and add the buttons
+   
+   DEFINE TOOLBAR oToolBar OF oWnd SIZE 50, 58 ; // 50, 50 ;
+      IMAGELIST oImageList BALLOON // tooltips balloon style
+   
+   oToolBar:SetTextRows( 2 )
+   
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  oToolbar:SetText( 1, "Hello" ) ; // Modify first button text
+      TOOLTIP "New" ;
+      PROMPT  "&New project" ;
+      MESSAGE "New"
+   
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  oToolBar:SetChecked( 2, .t. ) ; // Set pressed the second button 
+      TOOLTIP "Open" ;
+      PROMPT  "Open project" ;
+      MESSAGE "Open"
+      
+   DEFINE TBSEPARATOR OF oToolBar
+   
+   DEFINE TBMENU OF oToolBar ;
+      ACTION  MsgInfo( "Menu" ) ;
+      TOOLTIP "Menu" ;
+      PROMPT  "Menu" ;
+      MENU    BuildPopup()
+   
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  oToolBar:SetChecked( 2, .f. ) ; // MsgInfo( "Search" ) ;
+      TOOLTIP "Search" ;
+      PROMPT  "Search"
+
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  MsgInfo( "Print" ) ;
+      TOOLTIP "Print a report" ;
+      PROMPT  "Print a report"
+
+   DEFINE TBSEPARATOR OF oToolBar
+      
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  MsgInfo( "Upgrade" ) ;
+      TOOLTIP "Search for new versions" ;
+      PROMPT  "Upgrade"
+      
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION MsgInfo( "Users" ) ;
+      TOOLTIP "Users management" ;
+      PROMPT "Users"   
+
+   DEFINE TBSEPARATOR OF oToolBar
+
+   DEFINE TBBUTTON OF oToolBar ;
+      ACTION  oWnd:End() ;
+      TOOLTIP "End Application" ;
+      PROMPT  "Exit"
+
+   DEFINE STATUSBAR OF oWnd PROMPT "Toolbars test"
+
+   ACTIVATE WINDOW oWnd MAXIMIZED
+   
+   oImageList:End()
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&Project"
+      MENU
+         MENUITEM "&New..." ACTION MsgInfo( "New" ) MESSAGE "New"
+         MENUITEM "&Open..." ACTION MsgInfo( "Open" ) MESSAGE "Open"
+         SEPARATOR
+         MENUITEM "&Exit..." ACTION MsgInfo( "End" ) MESSAGE "Exit"
+      ENDMENU
+
+      MENUITEM "&Edit"
+      MENU
+         MENUITEM "&Search..." ACTION MsgInfo( "Search" )
+         MENUITEM "&Print..." ACTION MsgInfo( "Print" )
+      ENDMENU
+
+      MENUITEM "&Utilities"
+      MENU
+         MENUITEM "&Disable button..." ACTION oToolBar:EnableButton( 3, .f. )
+         MENUITEM "&Enable button..." ACTION oToolBar:EnableButton( 3, .t. )
+      ENDMENU
+   ENDMENU
+
+return oMenu
+
+function BuildPopup()
+
+   local oMenu
+   
+   MENU oMenu POPUP
+      MENUITEM "One"   ACTION MsgInfo( "One" )
+      MENUITEM "Two"   ACTION MsgInfo( "Two" )
+      MENUITEM "Three" ACTION MsgInfo( "Three" )
+   ENDMENU
+   
+return oMenu      
+</code>
+
+** Screen Snapshot **
+
+{{:toolbar.jpg|:toolbar.jpg}}
+
+====== See Also ======
+[[fivewin_class_tbuttonbar|Class TButtonBar ]]
+====== Source code ======
+
+FWH\SOURCE\CLASSES\TTOOLBAR.PRG

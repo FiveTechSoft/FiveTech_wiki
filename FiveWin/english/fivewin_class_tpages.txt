@@ -1,0 +1,68 @@
+
+====== Class TPages ======
+
+Multiple DialogBox Pages management                                            
+====== DATA ======
+^ Data  ^ Description         ^
+|nOption|Current selected page|
+|aDialogs|Array of NonModal DialogBox objects|
+|aHelps|Array with the IDs or names (also mixed) from the help-file; each for every page|
+====== METHODS ======
+^ Method ^ Description                  ^
+|New|Method Constructor from source code|
+|Redefine|Method Constructor from resources|
+|AddPage|Adds a new page|
+|Initiate|Generic control initialization|
+|Default|Control default initialization. Called from Init|
+|DelPage|Deletes a page|
+|Destroy|Generic destructor method|
+|SetOption|Sets a different selected page|
+|GoPrev|Selects the previous page to the current one selected|
+|GoNext|Selects the next page to the current one selected|
+|GotFocus|Gotfocus event handler|
+|ReSize|Resize event handler|
+
+
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Folder.ch"
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local oDlg, oPags
+   local lTest  := .t.
+   local lTest2 := .t.
+   local cText := Space( 50 )
+
+   SET _3DLOOK ON
+
+   DEFINE DIALOG oDlg RESOURCE "Main"
+
+   REDEFINE PAGES oPags ID 110 OF oDlg ;
+      DIALOGS "One", "Two", "Three"
+
+   // The same as we do with folders
+   REDEFINE CHECKBOX lTest  ID 110 OF oPags:aDialogs[ 1 ]
+
+   REDEFINE CHECKBOX lTest2 ID 120 OF oPags:aDialogs[ 1 ]
+
+   REDEFINE GET cText ID 120 OF oPags:aDialogs[ 2 ] MEMO
+
+   REDEFINE BUTTON ID 120 OF oDlg ACTION oPags:GoPrev()
+
+   REDEFINE BUTTON ID 130 OF oDlg ACTION oPags:GoNext()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+{{:tpages.jpg|:tpages.jpg}}
+
+====== See Also ======
+[[fivewin_commands_pages | Command Pages ]] ,[[fivewin_class_toutlook | Class TOutLook ]], [[fivewin_class_ttitle | Class TTitle ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TPAGES.PRG

@@ -1,0 +1,303 @@
+====== Class TTxtFile ======
+
+Ascii files management as objects. See Also Class TTxtEdit for editing         
+text files.                                                                    
+====== DATA ======
+^ Data ^ Description                           ^
+|cLine|The latest ascii line read from the file|
+|nTLines|The number of lines contained inside the ascii file|
+|nLine|Current ascii line number|
+|nMaxLineLength|The maximum ascii line size permitted to be read. Default 1024|
+|nOffset|The binary position inside the ascii file|
+====== METHODS ======
+^ Method ^ Description  ^
+|New|Constructor method|
+|Add|Adds a new line to the ascii file|
+|AppendLn|Adds a new line to the ascii file|
+|Advance|Skips to the next ascii line|
+|DelLine|Deletes an ascii line|
+|GetValue|Retrieves an ascii INI file section and key value|
+|GoTo|Jumps to a specific ascii line number|
+|GoTop|Jumps to the beginning of the ascii file|
+|GoBottom|Jumps to the end of the ascii file|
+|InsLine|Insert an ascii line in the current line position|
+|LastRec|Returns number of ascii text lines|
+|nRecno|Returns the current ascii line number|
+|ReadLine|Returns the current ascii line text|
+|ReadLn|Returns the current ascii line text|
+|RecCount|Returns the number of ascii text lines|
+|RecNo|Returns the current ascii line number|
+|RepLine|Duplicates the current ascii text line|
+|Rewind|Skips to a previous line position|
+|SetValue|Changes an ascii INI file section and key value|
+|Skip|Skips a certain number of ascii text lines|
+====== Example ======
+\Fwh\Samples\SrcView.Prg
+<code clipper>
+#include "FiveWin.ch"
+#include "RichEdit.ch"
+#include "Splitter.ch"
+
+static oWnd, oTree
+
+//----------------------------------------------------------------------------//
+
+function Main( cFileName )
+
+   local oBar, oItem1, oItem2, oImageList, oSplit, oSplit2, oFnt
+   local oMenuNew, oSay, oEditor, oFuncList, nFunc := 1
+   local oBtnSave, oItemPrj, oTreeItem, cFile := ""
+   local hRichDLL := LoadLibrary( "riched20.dll" )
+
+   DEFINE WINDOW oWnd FROM 3, 6 TO 20, 70 ;
+      TITLE "Source code viewer" ;
+      MENU BuildMenu() ICON "hbide"
+
+   DEFINE BUTTONBAR oBar SIZE 24, 27 OF oWnd _3D
+
+   DEFINE BUTTON OF oBar  ;
+      TOOLTIP "New" NOBORDER RESOURCE "New"
+
+   DEFINE BUTTON OF oBar  ;
+      TOOLTIP "Open" NOBORDER RESOURCE "Open" ;
+      ACTION OpenRCFile()
+
+   DEFINE BUTTON oBtnSave OF oBar  ;
+      TOOLTIP "Save" NOBORDER RESOURCE "Save" ;
+      ACTION If( cFileName != nil .and. File( cFileName ),;
+                 MemoWrit( cFileName, oEditor:GetText() ),), oBtnSave:Disable()
+
+   oBtnSave:Disable()
+
+   DEFINE BUTTON OF oBar GROUP ;
+      TOOLTIP "help" NOBORDER RESOURCE "Help"
+
+   DEFINE BUTTON OF oBar GROUP ;
+      TOOLTIP "Exit" NOBORDER RESOURCE "Exit" ACTION oWnd:End()
+
+   oImageList = TImageList():New()
+
+   oImageList:Add( TBitmap():Define( , "..\bitmaps\16x16\folder.bmp", oWnd ),;
+                   TBitmap():Define( , "..\bitmaps\16x16\fldMask.bmp", oWnd ) )
+   oImageList:Add( TBitmap():Define( , "..\bitmaps\16x16\form.bmp", oWnd ),;
+                   TBitmap():Define( , "..\bitmaps\16x16\frmMask.bmp", oWnd ) )
+   oImageList:Add( TBitmap():Define( , "..\bitmaps\16x16\icon.bmp", oWnd ),;
+                   TBitmap():Define( , "..\bitmaps\16x16\icoMask.bmp", oWnd ) )
+   oImageList:Add( TBitmap():Define( , "..\bitmaps\16x16\bitmap.bmp", oWnd ),;
+                   TBitmap():Define( , "..\bitmaps\16x16\bmpMask.bmp", oWnd ) )
+
+   @ 20, 0 LISTBOX oTree VAR cFile OF oWnd SIZE 119, 200 PIXEL
+   GetPrgs( oTree )
+
+   DEFINE FONT oFnt NAME "FixedSys" SIZE -10, 0
+
+   @ 2, 23 RICHEDIT oEditor VAR cFile SIZE 562, 200 OF oWnd ;
+      HIGHLIGHT
+
+   oEditor:SetFont( oFnt )
+
+   oEditor:bChange = { || oBtnSave:Enable() }
+
+   if cFileName != nil .and. File( cFileName )
+      oEditor:SetText( MemoRead( cFileName ) )
+   else
+      oEditor:SetText( "/* PRG: noname.prg" + CRLF + ;
+                    " * Developer:                     Date:      */" + CRLF + CRLF + ;
+                    "function Main()" + CRLF + CRLF + CRLF + CRLF + ;
+                    "return nil" + CRLF )
+   endif
+
+   @ 29, 704 LISTBOX oFuncList VAR nFunc SIZE 100, 200 PIXEL OF oWnd
+
+   LookForFuncs( oEditor:GetText(), { | c | oFuncList:Add( c ) } )
+   oTree:bChange = { || oEditor:SetText( MemoRead( cFile ) ),;
+ oFuncList:Reset(), LookForFuncs( MemoRead( cFile ), { | c | oFuncList:Add( c ) } ) }
+
+   SET MESSAGE OF oWnd TO "Ready" NOINSET CLOCK DATE KEYBOARD
+
+   @ 29, 121 SPLITTER oSplit ;
+      VERTICAL _3DLOOK ;
+      PREVIOUS CONTROLS oTree ;
+      HINDS CONTROLS oEditor ;
+      SIZE 4, 200 PIXEL ;
+      OF oWnd
+
+   @ 29, 700 SPLITTER oSplit2 ;
+      VERTICAL _3DLOOK ;
+      PREVIOUS CONTROLS oEditor ;
+      HINDS CONTROLS oFuncList ;
+      SIZE 4, 200 PIXEL ;
+      OF oWnd
+
+   ACTIVATE WINDOW oWnd MAXIMIZED ;
+      ON RESIZE ( oSplit:AdjLeft(), oSplit2:AdjRight() ) ;
+      VALID MsgYesNo( "Want to end ?" )
+
+   oImageList:End()
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "&File"
+      MENU
+         MENUITEM "&New"  RESOURCE "new"
+         MENUITEM "&Open" RESOURCE "Open" ;
+            ACTION OpenRCFile()
+
+         MENUITEM "&Save as..."
+         SEPARATOR
+         MENUITEM "&Exit..." ACTION oWnd:End() RESOURCE "Exit"
+      ENDMENU
+      MENUITEM "&Edit"
+      oMenu:AddHelp( "Source code viewer", "FiveTech" )
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function OpenRCFile()
+
+   local cRCFile := cGetFile( "*.rc", "Select a resources file" )
+   local oTxtFile
+   local oBmpItem, oDlgItem, oIcoItem
+
+   if ! Empty( cRCFile )
+      oTxtFile = TTxtFile():New( cRCFile )
+
+      if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "BITMAP"
+         oBmpItem = oTree:Add( "Bitmaps" )
+         oBmpItem:Add( StrToken( oTxtFile:cLine, 1 ), 3, StrToken( oTxtFile:cLine, 3 ) )
+      endif
+
+      if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "DIALOG"
+         oDlgItem = oTree:Add( "Dialogs" )
+         oDlgItem:Add( StrToken( oTxtFile:cLine, 1 ), 1 )
+      endif
+
+      if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "ICON"
+         oIcoItem = oTree:Add( "Icons" )
+         oIcoItem:Add( StrToken( oTxtFile:cLine, 1 ), 2, StrToken( oTxtFile:cLine, 3 ) )
+      endif
+
+      while oTxtFile:Skip()
+         if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "BITMAP"
+            if oBmpItem == nil
+               oBmpItem = oTree:Add( "Bitmaps" )
+               oBmpItem:Add( StrToken( oTxtFile:cLine, 1 ), 3,;
+                             StrToken( oTxtFile:cLine, 3 ) )
+            else
+               oBmpItem:Add( StrToken( oTxtFile:cLine, 1 ), 3,;
+                             StrToken( oTxtFile:cLine, 3 ) )
+            endif
+         endif
+
+         if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "DIALOG"
+            if oDlgItem == nil
+               oDlgItem = oTree:Add( "Dialogs" )
+               oDlgItem:Add( StrToken( oTxtFile:cLine, 1 ), 1 )
+            else
+               oDlgItem:Add( StrToken( oTxtFile:cLine, 1 ), 1 )
+            endif
+         endif
+
+         if Upper( StrToken( oTxtFile:cLine, 2 ) ) == "ICON"
+            if oIcoItem == nil
+               oIcoItem = oTree:Add( "Icons" )
+               oIcoItem:Add( StrToken( oTxtFile:cLine, 1 ), 2,;
+                             StrToken( oTxtFile:cLine, 3 ) )
+            else
+               oIcoItem:Add( StrToken( oTxtFile:cLine, 1 ), 2,;
+                             StrToken( oTxtFile:cLine, 3 ) )
+            endif
+         endif
+      end
+
+      oTxtFile:End()
+   endif
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function LookForFuncs( cCode, bAction )
+
+   local nFrom := 1, cLine, cToken
+
+   if Right( cCode, 2 ) != CRLF
+      cCode += CRLF
+   endif
+
+   while nFrom < Len( cCode )
+      cLine  := ExtractLine( cCode, @nFrom )
+      cToken := __StrToken( cLine, 1 )
+
+      do case
+         case Left( Upper( cToken ), 4 ) == "FUNC"
+              Eval( bAction, "function " + __StrToken( cLine, 2 ) )
+
+         case Left( Upper( cToken ), 4 ) == "PROC"
+              Eval( bAction, "procedure " + __StrToken( cLine, 2 ) )
+
+         case Upper( cToken ) == "STATIC"
+              cToken = __StrToken( cLine, 2 )
+
+              do case
+                 case Left( Upper( cToken ), 4 ) == "FUNC"
+                      Eval( bAction, "static function " + __StrToken( cLine, 3 ) )
+
+                 case Left( Upper( cToken ), 4 ) == "PROC"
+                      Eval( bAction, "static procedure " + __StrToken( cLine, 3 ) )
+              endcase
+      endcase
+   end
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+static function ExtractLine( cText, nFrom )
+
+  local cLine, nAt, nTo
+
+  nAt = At( CRLF, cText, nFrom )
+
+  if nAt > 0
+    cText = Substr( cText, nFrom, nAt - nFrom )
+    nFrom = nAt + 2
+  else
+    cText = Substr( cText, nFrom )
+    nFrom = Len( cText ) + 1
+  endif
+
+return cText
+
+//----------------------------------------------------------------------------//
+
+static function GetPrgs( oLbx )
+
+   local aFiles := Directory( "*.prg" )
+   local aPRGs  := {}
+
+   AEval( aFiles, { | a | AAdd( aPRGs, Lower( a[ 1 ] ) ) } )
+   ASort( aPRGs )
+   AEval( aPRGs,  { | c | oLbx:Add( c ) } )
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+** Screen Snapshot **
+
+{{:txtfile.jpg|:txtfile.jpg}}
+====== See Also ======
+[[fivewin_class_ttxtedit|Class TTxtEdit]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TTXTFILE.PRG

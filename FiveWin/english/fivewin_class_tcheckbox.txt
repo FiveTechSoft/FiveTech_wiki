@@ -1,0 +1,88 @@
+====== Class TCheckBox ======
+
+Logical CheckBox Control
+
+Inherits from [[fivewin_class_tcontrol|Class TControl]]                                                         
+
+====== DATA ======
+|None||
+====== METHODS ======
+|New|Constructor from source code.|
+|ReDefine|Constructor for resources.|
+|Click|Mouse left button event handler.|
+|Default|Default initialization.|
+|cToChar|Generates a data template to build a Dialog.|
+|EraseBkGnd|Erases the background of the control|
+|LostFocus|Lostfocus event handler|
+|Initiate|Generic initialization.|
+|MouseMove|Action to be performed when moving the mouse over.|
+|Refresh|Repaints the control.|
+|cGenPRG|Generates the source code of the control.|
+|Reset|Resets the checbox|
+|Check|Sets the check on|
+|UnCheck|Sets the check off|
+|SetCheck|Sets the check on or off on the given logical|
+|parameter||
+|SetText|Changes the caption of the control|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local lValue := .t., oChk
+
+   DEFINE WINDOW oWnd TITLE "Testing CheckBox ON CHANGE clause"
+
+   @ 3, 3 CHECKBOX oChk VAR lValue PROMPT "&ClickMe" SIZE 100, 20 OF oWnd ;
+      ON CHANGE oChk:SetText( "New Text" ) COLOR "W+/B"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+</code>
+{{:checkbox.jpg|:checkbox.jpg}}
+
+
+** Sample code 2 **
+\Fwh\Samples\TestChk2.Prg
+<code clipper>
+#include "Fivewin.ch"
+
+FUNCTION MAIN()
+
+    LOCAL oDlg
+
+    LOCAL oChk, lChk := .F., lChk2 := .t.
+
+    DEFINE DIALOG oDlg
+
+    @ 0.7, 1 CHECKBOX oChk VAR lChk OF oDlg COLOR CLR_YELLOW, CLR_GREEN
+
+    @ 2, 1 CHECKBOX lChk2 OF oDlg COLOR CLR_YELLOW, CLR_GREEN
+
+    @ 3, 1 BUTTON "&Close" ACTION oDlg:End()
+
+    ACTIVATE DIALOG oDlg;
+             CENTER
+
+    RETURN NIL
+</code>  
+
+** Screen snapshot 2 **
+
+{{:checkbox2.jpg|:checkbox2.jpg}}
+
+
+
+====== See Also ======
+[[fivewin_commands_checkbox | Command Checkbox ]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCHECKBOX.PRG

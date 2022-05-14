@@ -1,0 +1,36 @@
+
+====== Class TRadMenu ======
+
+Manages a group of TRadio controls                                             
+====== DATA ======
+^ Data ^ Description                             ^
+|aItems|An array with all the Radio control items|
+|bSetGet|A codeblock to control the related numeric variable|
+|bChange|Action to perform when changing the radio selected|
+|cMsg|MsgBar text for its container window|
+|cVarName|A variable name to identifier this object|
+|lUpdate|If the radio menu has to be updated from a TDialog:Update()|
+====== METHODS ======
+^ Method ^ Description           ^
+|New|Constructor from source code|
+|ReDefine|Constructor from resources|
+|Define|Builds a radio menu without building its items|
+|AddRadio|Adds a new radio element|
+|nOption|SETGET Method which simulates the nOption DATA|
+|Refresh|Forces the whole control to be repainted|
+|Set3DLook|Activates the 3D look if its container is a window|
+|End|End all the radio elements|
+|Disable|Disables all the radio elements|
+|Enable|Enables all the radio elements|
+|SetOption|Changes the current selected radio option|
+|Select|Select a different radio element|
+|GoNext|Skips to next radio element|
+|GoPrev|Skips to previous radio element|
+|Show|Shows all the radio elements|
+|Hide|Hides all the radio elements|
+====== Example ======
+
+====== See Also ======
+[[fivewin_commands_radiobuttons | Command RadioButton]], [[fivewin_class_tradio| Class TRadio]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TRADMENU.PRG

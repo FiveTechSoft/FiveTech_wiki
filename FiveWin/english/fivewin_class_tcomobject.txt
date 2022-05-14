@@ -1,0 +1,40 @@
+
+====== Class TComObject ======
+
+COM interface support                                                          
+====== DATA ======
+|nIDispatch|COM object handle|
+====== METHODS ======
+|New|Creates a new OLE object instance|
+|End|Ends the OLE object|
+|ClassName|Retrieves the OLE object class name|
+|Invoke|Calls a method of the OLE object|
+|OnError|Error handler|
+
+====== Example ======
+\Fwh\Samples\ComObj.Prg
+<code clipper>
+// testing FiveWin new Class TComObject to manage OLE objects
+
+function Main()
+
+   local oWord := TComObject():New( "Word.Application" )
+   local oDocuments, oDoc
+
+   oWord:Visible := .t.
+
+   oDocuments = oWord:Documents
+   oDoc = oDocuments:Invoke( "Add" )
+
+   oDoc:Invoke( "Write", "Test" )
+   MsgInfo( oDoc:Name )
+
+   oWord:End()
+
+return nil
+</code>
+
+====== See Also ======
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TCOMOBJECT.PRG

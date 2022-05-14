@@ -1,0 +1,162 @@
+====== Class TBitmap ====== 
+
+Bitmaps Objects. 
+
+Inherits from TControl 
+
+
+====== DATA ====== 
+
+|nX| Relative origin coordinates of the picture.| 
+|nY| Relative origin coordinates of the picture| 
+|nOldX, nOldY| Last relative origin of the picture| 
+|hBitmap| Handle of the Bitmap| 
+|hPalette| Handle of the palette of the Bitmap| 
+|cBmpFile| Name of the BMP file to display| 
+|cResName| Name of the BMP resource to display| 
+|lStretch| True if image has to be adjusted to all visible area| 
+|lScroll| True if image may be scrolled into its own visible area| 
+|lTransparent| If the bitmap is transparent. Pixel 0,0 (Top-left) indicates the mask color| 
+|aHotAreas| An array with some hot-areas on the bitmap| 
+|nVStep| Units to scroll on vertical scroll| 
+|nHStep| Units to scroll on horizontal scroll| 
+|nZoom| Units to zoom the picture| 
+
+
+
+====== METHODS ====== 
+
+|New| Constructor from source code| 
+|Define( //cResName, cBmpFile, oWnd// )| Constructor for resources from file or dll. Will only return the image object, it won't create any control| 
+|ReDefine| Constructor for resources| 
+|End| Ends control and make it disappear| 
+|AdjControls| Adjust controls conteined in the bitmap object| 
+|Center| Centers the bitmap in the conteiner window| 
+|CopyToClipboard| Copy the bitmap to the clipboard| 
+|Command| Processes WM_COMMAND WinApi messages| 
+|Default| Default initialization of the Bitmap| 
+|Destroy| Destroy the bitmap object.| 
+|Display| Displays the bitmap. Use :Refresh() instead to force it.| 
+|EraseBkGnd| Erases control background.| 
+|GotFocus| Action to be performed when getting the focus| 
+|HandleEvent| Generic event handler.| 
+|HScroll| Horizontal ScrollBar messages dispatcher| 
+|Initiate| Generic Control initialization method| 
+|Inspect| Interactive load of Bitmap| 
+|Keydown| Keydown event handler.| 
+|LButtonDown| Action to be performed when clicking the mouse.| 
+|LoadImage| Load the bitmap from resources| 
+|LoadBmp| Load bitmap from disk.| 
+|LoadFromClipboard| Load the bitmap from clipboard.| 
+|nHeight| Retrieves height of the image.| 
+|nWidth| Retrieves width of the image.| 
+|nXExtra| Retrieves the size of image which it is not visible| 
+|nYExtra| The same for the other axis| 
+|Paint| Draws the bitmap| 
+|PageUp| Performs a PageUp of the bitmap if lScroll is .t.| 
+|PageDown| Performs a PageDown of the bitmap if lScroll is .t.| 
+|PageLeft| Performs a PageLeft of the bitmap if lScroll is .t.| 
+|PageRight| Performs a PageRight of the bitmap if lScroll is .t.| 
+|Reload| Load again a bitmap| 
+|Resize| Changes the dimension of the bitmap| 
+|ScrollAdjust| Updates the values on the scrollbars| 
+|ScrollDown| Scrolls the bitmap DOWN if lScroll is .t.| 
+|ScrollLeft| Scrolls the bitmap LEFT if lScroll is .t.| 
+|ScrollRight| Scrolls the bitmap RIGHT if lScroll is .t.| 
+|ScrollUp| Scrolls the bitmap UP if lScroll is .t.| 
+|SetBmp| Load bitmap from resource.| 
+|SetFore| Set this bitmap palette as the main active palette| 
+|VScroll| Vertical ScrollBar messages dispatcher| 
+|HScroll| Horizontal ScrollBar messages dispatcher| 
+|Zoom| Zoom the picture.|
+
+
+====== example ======
+FWH\samples\testbmp.prg
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   #ifndef __CLIPPER__
+       SET RESOURCES TO "Fishes32.dll"    // 32 bits DLL version
+   #else
+       SET RESOURCES TO "Fishes16.dll"    // 16 bits DLL version for Clipper users
+   #endif
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 22, 75 ;
+      TITLE "Bitmap Test" MENU BuildMenu()
+
+   SET MESSAGE OF oWnd TO "FiveWin - Fishes Database!"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "Dialog Box"
+      MENU
+         MENUITEM "&Activate..." ACTION DlgFish() ;
+            MESSAGE "Show the images"
+         SEPARATOR
+         MENUITEM "&End..."    ACTION oWnd:End() ;
+            MESSAGE "Thats all folks!"
+      ENDMENU
+      oMenu:AddHelp( "FiveWin", "FiveTech" )
+   ENDMENU
+
+return oMenu
+
+//----------------------------------------------------------------------------//
+
+function DlgFish()
+
+   local oDlg
+   local n := 1
+   local bmpFish
+
+   DEFINE DIALOG oDlg RESOURCE "Fish"
+
+   REDEFINE BITMAP bmpFish ID 110 OF oDlg NAME "Fish1"
+
+
+   bmpFish:bLDblClick = { | nRow, nCol, nFlags | ;
+                          MsgInfo( "DblClick on the bitmap" ) }
+
+   REDEFINE BUTTON ID 120 OF oDlg ;
+      ACTION If( n > 1, bmpFish:SetBMP( "Fish" + AllTrim( Str( --n ) ) ), ;
+                        Tone( 956, 2 ) )
+
+   REDEFINE BUTTON ID 130 OF oDlg ;
+      ACTION If( n < 6, bmpFish:SetBMP( "Fish" + AllTrim( Str( ++n ) ) ), ;
+                        Tone( 956, 2 ) )
+
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+</code>
+
+** Screen Snapshot **
+
+{{:bitmap2.jpg|:bitmap2.jpg}}
+
+====== source code ======
+FWH\source\classes\bitmap.prg
+
+
+====== see also ======
+[[fivewin_commands_bitmaps | Bitmap ]]
+     
+
+Note:  The ScrollXXX Methods assume that lScroll is TRUE AND that the BitMap is larger than the visible area 

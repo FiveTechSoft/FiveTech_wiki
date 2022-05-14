@@ -1,0 +1,108 @@
+
+====== Class TDatePick ======
+
+Standard DateTime picker control of Windows 32 bits API                        
+(Commoncontrols.dlg).                                                          
+In order to use it from resources you MUST indentify the control as:           
+'SysDateTimePick32'                                                            
+Inherits from TControl                                                         
+====== METHODS ======
+|New|Constructor from source code|
+|ReDefine|Constructor for resources|
+|cText|Get/Set the text of the TGet Object.|
+|cToChar|Generates a data template to build a Dialog|
+|Initiate|Generic control initialization|
+|SetDate(|date )     Sets control date|
+|GetDate|Retrieves control date|
+|LostFocus|Action to be performed when losing the focus|
+|Change|Notification that the control has change|
+|Changed|Change event handler|
+|Refresh|Refresh data control|
+|Consult|the sample TESTDTP.PRG on samples directory.|
+====== Example ======
+\Fwh\Samples\DateTime.Prg
+<code clipper>
+// Date picker and Time picker samples
+#include "FiveWin.ch"
+#include "dtpicker.ch"
+
+//----------------------------------------------------------------------------//
+
+Function Main()
+
+   local oDlg, aGet[5], aVAR[5], aSAY[5]
+
+   Set Date British
+   
+   DEFINE DIALOG oDlg RESOURCE "Main"
+
+   aVAR[1] := Date()
+   REDEFINE DTPicker aGet[1] VAR aVAR[1] ID 120 UPDATE OF oDlg
+   REDEFINE SAY aSAY[1] ID 130 UPDATE OF oDlg
+
+   aVAR[2] := Date()
+   REDEFINE DTPicker aGet[2] VAR aVAR[2] ID 121 UPDATE OF oDlg
+   REDEFINE SAY aSAY[2] ID 131 UPDATE OF oDlg
+
+   aVAR[3] := ctod('')
+   REDEFINE DTPicker aGet[3] VAR aVAR[3] ID 122 UPDATE OF oDlg
+   REDEFINE SAY aSAY[3] ID 132 UPDATE OF oDlg
+
+   aVAR[4] := Hora()
+   REDEFINE TMPicker aGet[4] VAR aVAR[4] ID 123 UPDATE OF oDlg 
+   REDEFINE SAY aSAY[4] ID 133 UPDATE OF oDlg
+
+   aVAR[5] := ''
+   REDEFINE TMPicker aGet[5] VAR aVAR[5] ID 124 UPDATE OF oDlg 
+   REDEFINE SAY aSAY[5] ID 134 UPDATE OF oDlg
+
+   REDEFINE BUTTON ID IDOK OF oDlg ACTION ps_Show(aGet, aSAY)
+   REDEFINE BUTTON ID 4 OF oDlg ACTION ps_Clean(aSAY)
+   REDEFINE BUTTON ID IDCANCEL OF oDlg ACTION oDlg:End()
+
+   ACTIVATE DIALOG oDlg CENTERED
+
+return nil
+
+static proc ps_Show(aGet, aSAY)
+   local i, xValor
+
+   for i:= 1 to len(aGet)
+     xValor := Eval(aGet[i]:bSetGet)
+     xValor := if( Empty(xValor), 'EMPTY', xValor )
+     xValor := if( Valtype(xValor)='D', dtoc(xValor), xValor )
+     aSAY[i]:SetText( xValor )
+   next
+return
+
+static proc ps_Clean(aSAY)
+   local i, xValor
+
+   for i:= 1 to len(aSAY)
+     aSAY[i]:SetText( '' )
+   next
+return
+
+FUNCTION Hora()
+
+  local nAux, nMin, nHor, nSec, cMin, cHor, cSec
+  nSec := Seconds()
+  nAux := Int(nSec) / 3600
+  nHor := Int(nAux)
+  nAux := (nAux - nHor) * 60
+  nMin := Int(nAux)
+  nSec := Int( (nAux - nMin) * 60 )
+  cHor := Padl( alltrim(str(nHor)), 2, '0')
+  cMin := Padl( alltrim(str(nMin)), 2, '0')
+  cSec := Padl( alltrim(str(nSec)), 2, '0')
+
+return cHor + cMin + cSec
+</code>  
+
+** Screen Snapshot **
+
+{{:dtpicker.jpg|:dtpicker.jpg}}
+====== See Also ======
+[[fivewin_commands_dtpicker | Command DatePicker ]]
+====== Source code ======
+FWH\SOURCE\CLASSES\TDATEPICK.PRG

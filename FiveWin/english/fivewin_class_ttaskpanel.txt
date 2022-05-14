@@ -1,0 +1,92 @@
+====== Description ======
+Class TTaskPanel objects are managed from a Class TExplorerBar object, one for each panel kept in the ExplorerBar.
+
+A panel contains a header area, where a bitmap and a text label are shown, plus an expanded and collapsed bitmap on the right side indicating the state of the panel.
+
+The panel contains a group of an selectable items, where each of them shows a label text, a bitmap and can perform an action.
+
+
+{{:taskpanel.jpg|:taskpanel.jpg}}
+
+====== DATAs ======
+^ Name ^ Description ^
+| cTitle | The header area label of the panel |
+| nIndex | The order of the panel on the array or panels managed by the ExplorerBar |
+| nTopMargin, nLeftMargin, nRightMargin | Top, left and right margins of the panel to the borders of the ExplorerBar |
+| nTitleHeight | The height of the header area of the panel |
+| nBodyHeight | The height of the body area of the panel |
+| lSpecial | If the panel header has to be painted in a different color, usually used for the first panel only |
+| lCollapsed | A logical value to know if the panel is collapsed or expanded |
+| lOverTitle | A logical value to know if the mouse is over the header area of the panel |
+| aLinks | An array that holds the items used in the panel |
+| nClrTextSpecial | A RGB color used for the label of the header when the panel has its data lSpecial as true |
+| nClrHover | A RGB color used for the label of the header when the mouse is over it |
+| hRegion | a Windows handle of a "region" internally used for the panel painting |
+| aBitmaps | An array of the bitmaps used for the panel header painting for expanded and collapsed status |
+| hBmpPanel | The handle of the bitmap to paint at the left side of the header area of the panel |
+
+====== METHODs ======
+^ Name ^ Description ^
+| New( cTitle, oWnd, nIndex, cBmpPanel ) | constructor |
+| AddLink( cPrompt, bAction, cBitmap ) | Adds a new item to the panel |
+The rest of implemented methods are internally used from the Class TTaskPanel itself
+
+====== Parameters ======
+^Name^Description^
+|cTitle|The header area label of the panel|
+|oWnd|A reference to the Explorerbar|
+|nIndex|The order position of the panel in the array of panels managed by the ExplorerBar|
+|cBmpPanel|The name of the bitmap to display at the top-left side of the panel|
+|cPrompt|The prompt of an item|
+|bAction|The action to be performed when an item is clicked|
+|cBitmap|The name of the bitmap to display for an item|
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+
+//----------------------------------------------------------------------------//
+Function Main()
+
+   local oWnd, oExBar, oPanel1, oPanel2, oPanel3, oPanel4
+   local bClick := { | o | MsgInfo( o:GetText() ) }
+     
+   DEFINE WINDOW oWnd TITLE "FWH Class TExplorerBar"
+   
+   oWnd:SetSize( 350, 600 )
+
+   @ 0, 0 EXPLORERBAR oExBar OF oWnd
+
+   oPanel1 = oExBar:AddPanel( "One", "..\bitmaps\32x32\people.bmp" )
+   oPanel1:lSpecial = .T.
+   oPanel1:AddLink( "First item", bClick, "..\bitmaps\16x16\additem.bmp" )
+   oPanel1:AddLink( "Second item", bClick, "..\bitmaps\16x16\copy.bmp" )
+     
+   oPanel2 = oExBar:AddPanel( "Two", "..\bitmaps\32x32\case.bmp" )
+   oPanel2:AddLink( "First item", bClick, "..\bitmaps\16x16\adddbf.bmp" )
+   oPanel2:AddLink( "Second item", bClick, "..\bitmaps\16x16\delete0.bmp" )
+   oPanel2:AddLink( "Third item", bClick, "..\bitmaps\16x16\envelope.bmp" )
+   oPanel2:AddLink( "Fourth item", bClick, "fourthBMP" )
+
+   oPanel3 = oExBar:AddPanel( "Three", "..\bitmaps\32x32\graphics.bmp" )
+   
+   oPanel4 = oExBar:AddPanel( "Four" )
+   oPanel4:AddLink( "First item", bClick, "firstBMP" )
+   oPanel4:AddLink( "Second item", bClick, "secondBMP" )
+
+   oWnd:oClient = oExBar
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+//----------------------------------------------------------------------------//
+</code>
+
+{{:explbar1.jpg|:explbar1.jpg}}
+
+====== Source code ======
+FWH\Classes\TExplBar.Prg
+
+====== See Also ======
+[[fivewin_class_texplorerbar| Class TExplorerBar ]], [[fivewin_commands_explorerbar|EXPLORERBAR Commands]]

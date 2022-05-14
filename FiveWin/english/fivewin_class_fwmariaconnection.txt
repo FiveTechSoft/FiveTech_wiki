@@ -1,0 +1,239 @@
+====== Class FWMaria Connection ======
+
+===== Connecting to Server =====
+
+
+====Connecting to MySql/MariaDB Server====
+**Creating Connection Object**
+
+Command syntax:
+<code clipper>
+FWCONNECT oCn HOST cHost USER cUser PASSWORD cPwd [DB cdb] [PORT nPort] [FLAGS nFlags]
+</code>
+
+Using functions:
+<code clipper>
+oCn := maria_Connect( cHost, [cDB], cUser, cPwd, [nPort], [nFlags] )
+oCn := maria_Connect( { server, database, user, password, port, flags } ) // database,port,flags are optional
+oCn := maria_Connect( "server,database,user,password" )
+oCn := maria_Connect( oAdoCn (or) oTMySqlCon ) // If already ADO/TMySql connection exists
+</code>
+Optionally, port number can also be specified as "server:port"
+The command/functions return FWMariaDBConnection Object. In case of failure, NIL is returned.
+Note: It is not possible to use :New() constructor of the class.
+
+Example:
+<code clipper>FWCONNECT oCn HOST "localhost" USER "root" PASSWORD "secret" DB "fwh"
+if oCn == nil
+   ? "Connect Fail"
+   return nil
+else
+   XBROWSER oCn:customer // where customer is a table or view
+   oCn:Close()
+endif
+</code>
+
+**Unicode Support:**
+If FW_SetUnicode() is set to .T., then the connection is opened with utf8 character set and if not with the default character set of the Server (usually latin1)
+
+**Note: Application should be linked with libmysql.lib or libmariadb.lib and libmysql.dll or libmariadb.dll should be kept in the path of executable**
+
+====Connecting to MySql Embedded Server locally====
+
+Syntax:
+<code clipper>
+FWCONNECT oCn HOST cDataFolder [LANGFOLDER cLangFolder] [DATABASE cDatabase]
+//OR
+oCn := maria_Embedded( cDataFolder, [cDataBase], [cLangFolder] )
+</code>
+Notes:
+If cDataFolder contains "errmsg.sys" file, cLangFolder can be omitted.
+All other functionality remains same as FWMARIADB server and rowsets
+
+Usage:
+
+1) Download libmysqld.dll
+2) Build implib libmysqld.lib for borland or msvc compiler as required.
+3) Link the application with this implib instead of libmariadb.dll (or libmysql.lib)
+4) Locate or create a folder containing "errmsg.sys" file for the language required. (cLangFolder)
+5) Creae a folder for creation of the embedded server.(cDataFolder)
+6) Use the same command for connection, specifying cDatFolder (with trailing backslash) as HOST and cLangFolder as LANGFOLDER. Important: cDataFolder should contain trailing backslash.
+
+Unicode
+
+To work with Unicode data, set FW_SetUnicode( .T. ) and then connect to the Server. To get best results, set FW_SetUnicode( .T. ) before creating the server for the first time.
+
+Sample:
+\fwh\samples\mysqlmbd.prg
+build*.bat needs to modified to include the implib ( libmysqld.lib )
+
+===== Parameterized Queries: =====
+
+FWMariaDB supports parameterized queries with placeholders for variables, which can later be substituted with Harbour Variables/constants from an array, with syntax similar to:
+<code clipper>
+cCompleteSql := oCn:ApplyParams( cParameterizedSql, aParams )
+</code>
+
+Place holders in parameterized queries can be in the form of 
+1.a)  ? ? ? ... (standard sql practice)
+1.b)  &1, &2, &3, ... (compatible with TDolphin)
+or named parameters
+2.a) :param1, :param2, ..., :paramN (standard sql practice)
+2.b) &param1, &param2, ..., &paramN (compatible with TDolphin)
+
+Examples:
+<code clipper>
+oCn:ApplyParams( "select * from tbl where `state` = ? and age > ? and dept = ?", { "NY", 21, 19 } ) --> "select * from tbl where `state` = 'NY' and age > 21 and dept = 19"
+oCn:ApplyParams( "select * from tbl where `state` = &2 and age > &3 and dept = &1", { 19, "NY", 21 } ) --> "select * from tbl where `state` = 'NY' and age > 21 and dept = 19"
+oCn:ApplyParams( "select * from tbl where `state` = :state and age > :age and dept = :dept", { { { "dept", 19 }, { "state", "NY" }, { "age", 21 } } ) --> "select * from tbl where `state` = 'NY' and age > 21 and dept = 19"
+</code>
+
+
+====== DATA ======
+
+^Data^Usage^Type^Default^Details^
+|bMeter| |B| |If specified, used by method ::UploadFromAlias(). Evaluated with nRecsUploaded, nTotalRecs|
+|//cDataFolder//|ReadOnly|C| |**Only for embedded server**\\ Folder containing data.|
+|//cDB//|ReadOnly|C| |Name of database connected, if any|
+|//cError//|ReadOnly|C|""|MySql error messsage, if last executed sql statement resulted in error.|
+|//cLangFolder//|ReadOnly|C| |**Only for embedded server**\\ Folder containing language error messages|
+|//cLastSQL//|ReadOnly|C|""|Last SQL statement executed|
+|cLogFile| |C|<exename>.log|Default: <exename>.log. User can set a different log file. Connection object writes all logged messages to this file|
+|//cMsgLang//|ReadOnly|C| |Language used by Server to display error messages. Can be set by ::SetMsgLang( cLang )\\ |
+|//cServerInfo//|ReadOnly|C| |Server information. MySql/MariaDB and version.|
+|//cSqlInfo//|ReadOnly|C|""|Server message, if any, set when last sql statement was executed|
+|//cTimeLang//|ReadOnly|C| |Language in which server displays month/week names. Can be set by ::SetLocale()|
+|//IsMariaDB//|ReadOnly|L|.F.|If server is MariaDB|
+|//IsMySQL//|ReadOnly|L| |If server is MySql (i.e., not mariadb)|
+|//lConnected//|ReadOnly|L| |True if still connected to server (last known status)|
+|//lDisconnected//|ReadOnly|L| |True if server is disconnected (last known status)|
+|//lEmbedded//|ReadOnly|L|.F.|True if Embedded Server|
+|lLog| |L|.F.|If set to .T., all messages from server are logged to ::logfile|
+|lLogErr| |L|.F.|If set to .T., all error messages from server are logged to ::logfile|
+|//lMultiStmt//|ReadOnly|L| |True if server is capable and set to execute multiple statements. By defaiult this is set when connected.\\ Always False for embedded server.|
+|lShowErrors| |L|.F.|If set to .T., all error messages from server are displayed|
+|lShowMessages| |L|.F.|If set to .T., all messages from Server are displayed.|
+|//lUnicode//|ReadOnly|L|FW_SetUnicode()|True if connection is UTF8. If FW_SetUnicode() is .T. at the time of connecting, the connection is established as Unicode connection.|
+|//nConnectSecs//|ReadOnly|N|0|Total time taken for establishing connection|
+|//nError//|ReadOnly|N|0|Server Error No. during last execution of sql statement|
+|//nExecSecs//|ReadOnly|N|0|Time taken for executing last sql statement|
+|//nRealConnectSecs//|ReadOnly|N|0|Time taken for establishing connection, excluding time taken for initial settings|
+|//nVersion//|ReadOnly|N|0.0|Server version as numeric|
+|Cargo| |U| |For use by programmer|
+
+====== VIRTUAL DATAs ======
+
+^Data^Usage^Type^Details^
+|<tablename>|ReadOnly|O|Returns RowSet object of the table/view if exists. Example:\\ <code clipper>XBROWSER oCn:customer</code>|
+|<systemvariable>| |C|Can be used like built-in readonly DATAs. Example:\\ <code clipper>? oCn:max_allowed_packet</code>|
+
+
+====== METHODS ======
+^Method^Usage^Details^
+|New|**constructor**|It is not possible to create a new object using New() method. A new connection object can be created only using command syntax or functions as described at the outset.|
+|AddAutoInc| |**( cTable, cCol ) --> lSuccess**\\ Adds autoincrement column with name cCol as the first column to an existing table cTable. The call fails if cCol is duplicate or autoinc column or a primary key already exists.|
+|AddColumn| |**( cTable, aColSpec )  --> lSuccess**\\ Adds a new column to an existing table with column specification in aColSpec (same format used in createtable)|
+|AlterColumn| |**( cTable, aColSpec )**\\ Alters an existing column in cTable as in aColSpec (same format as in CreateTable)|
+|ApplyParams| |**( cSql, aParams ) --> cSql**\\ **1. cSql:** Parameterized sql query.\\ **2. aParams:** Array of Harbour variables/constatns to replace the place holders.\\ See [[fivewin_class_fwmariaconnection#Parameterized Queries:|Parameterized Queries]]|
+|BackUp| |**( [acSource], [cDest], [bProgress], [nMaxRecs], [nMaxBuf] ) --> cBackupFileName**\\ **Param-1: Source**:\\ (a) Defaults to current database. Full database will be backedup\\ (b) cDataBasename:  If the parameter is a character value, it is considered as Database name and the full database is backedup.\\     eg: oCn:BackUp( "fwh" )\\ ( c) aTables: If the parameter is an array, it is treated as list of tables in the current database and all the tables in the array are backedup.\\ \\ **Param-2: Destination**\\ (a) Defaults to current folder\\ (b) cFolderName: If the parameter is a character value without extension or terminated with '\', it is considered as folder name. The folder is created if it does not exist.\\ ( c) cFileName: If the parameter is a character value with extension, it is considered a file name. The file is created if does not exist and is overwritten if exists.\\ \\ Notes:\\ (a) & (b): Saving to folder.\\ The system is primarily designed for silent scheduled backups overnight. Depending on the date and time of backup, a sub-folder with the name of the weekday is created and the backup is saved with the name of the database and extention ".sql".\\ Example:\\   oCn:Backup( "fwh", "c:\mybackups" ) --> cBackupFilename\\   Assuming that this command is executed silently every night, each day the backups are created as:\\   c:\mybackups\sunday\fwh.sql\\   c:\mybackups\monday\fwh.sql, etc.\\   After one complete week, the previous week's file is overwritten. In other words, we always have one week's backup at any time. Since it is the general practice to run such a backup routine in the midnight around 00:00 hours or early small hours, the weekday name corresponds to the day before midnight.\\   Eg: Backup created at 5th August 2016 11:00 pm and also 6th August 2016 04:00 am are both saved to "friday" folder, indicating that the data is at the end of friday.\\ ( c) Saving to a filename:\\ This option is suited for adhoc backups of selected tables.\\   Eg: oCn:Backup( { "states", "customer" }, "c:\mybackups\adhoc\stcust.bkp" )\\ \\ **Param-3: [bProgress]**\\ If provided, this codeblck is evaluated for every table with table-name, serial-number, total-number-of-tables, time-in-seconds-from-start. It is generally not recommended to use this parameter since it only delays the process. On local host, even one million records table is saved within 5 seconds.\\ \\ **Param-4: [Number of records per SQL]**\\ Default = 100 records.\\ **Param-5: [Maximum bytes in single SQL statement:**]Default = 4 MB.\\ \\ Notes: These two parameters may be used keeping in view the max_packet_size permitted for the connection.\\ In case the table contains a blob or text (large memo) field, the number of records per sql is internally reduced to only 1 and this can not be changed.\\ \\ **Encrypted Backup**\\ <code clipper>MYSQL_CRYPTKEY( "My Encryption Key" )
+oCn:Backup( { <aTables> }, <cFile> )
+MYSQL_CRYPTKEY( nil )</code>|
+|BackUpIndex| |**( cBackUpFile, [lView := .f.] ) --> aIndex**\\ Every backup file contains an index of the tables saved. The information can be obtained and viewed using this method. If the optional second parameter is .t., the information is displayed in a browse.\\ \\ In case of encrypted backup, first set MYSQL_CryptKey( <yourkey> ) and then call this method and cleary the key by calling MYSQL_CryptKey( nil )|
+|BeginTrans| |Begins Transsaction|
+|BeginTransaction()| |Begins Transsaction|
+|Call| |**Syntax**\\ // Functions//\\ [uRet := ] oCn:Call( "<function>",  [p1], ... [pN] )\\ [uRet := ] oCn:Call( "<function>", aParams )\\ [uRet := ] oCn:<functioname>( paramslist )\\ // Stored Procedures//\\ [oRs  := ] oCn:Call( "<procedure>", [[@]p1],...[[@]pN] )\\ [oRs  := ] oCn:Call( "<procedure>", aParams )\\ [oRs  := ] oCn:<procedurename>( [p1], ... [pN] )\\ [oRs  := ] oCn:<procedurename>( aParams )\\ [oRs  := ] oCn:RowSet( "<procedurename>",  aParams )\\ \\ See http://forums.fivetechsupport.com/viewtopic.php?f=3&t=33280|
+|character_set_name| |Default characterset name of current connection|
+|Close()| |Closes connection to the Server.\\ Calling ::ReConnect() reconnects to the server.\\ Execution of any sql statement by application or any rowset automatically reconnects to the server and if successful, continues with execution|
+|CommitTrans| |Commits and ends transation started with Begin Transaction|
+|CommitTransaction()| |Commits and ends transation started with Begin Transaction|
+|CopyStructure| |**( [dbsrc.]cSrcTable, [dbdst.]cDstTable ) --> Success**\\ Creates cDstTable with the same structure as the cSrcTable. Fails if cSrcTable does not exist or cDstTable already exists.|
+|CopyTable| |**( [dbsrc.]cSrcTable, [dbdst.]cDstTable, [cSrcFields], [cDstFields], [cWhere], [cUpdate] ) --> lSuccess**\\ Copies data from cSrcTable to cDstTable. \\ if cDstTable is created if does not exist.\\ if provided, cSrcFields are mapped to cDstFields.\\ If provided cWhere condition is applied to the cSrcTable\\ **cUpdate** can be "UPDATE" or "IGNORE" to indicate the action to be taken when duplicate key fields are found.|
+|CopyTableSQL| |**( [dbsrc.]cSrcTable, [dbdst.]cDstTable, [cSrcFields], [cDstFields], [cWhere], [cUpdate] ) --> cSql**\\ Prepares SQL statement to be used by ::Copytable() method.|
+|CountActiveConnections()| |Number of connections active currently on the Server|
+|CreateDB| |**( cDB, [cCharSet] ) --> lSuccess**\\ Creates a new database cDB with optional charset specified|
+|CreateTable| |**( cTable, aStruct, lAddAutoInc, char_set )  --> lSuccess**\\ **1st Param: cTable:** Table name. The function fails if table already exists.\\ **2nd Param: aStruct:** This is normally the familiar DBF structure, with some extensions where required.\\ a) To create a binary memo field (BLOB) for holding binary data, specify Type as "m" ( small m ) instead of 'M'. This column can be used for storing binary data like images.\\ b) To create a computed column ( virtual ) specify the field name as formula like:\\ { "amount = qty * price", 'N', 12, 2 }, ...\\ This column will be created as\\ amount DECIMAL( 12, 2 ) AS ( qty * price ),\\ c) To spcify primary key add one more element to the array with "PRI". Eg:\\ { "custid", 'C', 5, 0, "PRI" }\\ d) Specify character set in extended element like\\ { "custname", 'C', 30, 0, "utf8" }\\ char sets can be specified as "latin1", "utf8", "utf8mb4" or as full collating spec\\ e) Where a diffent specification is requied, same can be written as text in 2nd element of array eg:\\ { "_" "ENUM( 'male', 'female' )" }\\ \\ **3rd Param: [lAddAutoInc] ( default .T. )**\\ It is very strongly recommended that every table should have one unique primary key to make stable application. While you may decide which column is to be primary key, good practice is to have a numeric column, hidden from the user as primary key, which will not be altered during life of the database.\\ One easy way to create and maintain such a primary key is to have AutoInc column. By default, the method prepends an Auto Inc primary key with name "ID".\\ This can be disabled by specifying .F. \\ \\ **4th param : [character set]** for the table.\\ \\ //Note:\\ During development of software it is quite useful to use MYSQL_CreateTableSQL( .. ) with the same params. This function returns the Sql Statement that can be examined by the programmer before finailizing the structure//|
+|CreateTableSQL| |**( cTable, aStruct, lAddAutoInc, cCharSet ) --> cSql**\\ \\ If the method is called with a **single parameter cExistingTable**, returns SQL statement to create the exising table.\\ \\ If the method is called with 2 or more parameters, prepares SQL statement to create the table. \\ \\ //Method CreateTable() calls this method to prepare the sql statement and then executes it.//|
+|CurrentDB()| |Database name currently selected|
+|DropTable| |**( cTable )**\\ Drops a table if exists in the current database|
+|End()| |Calls ::Close()|
+|Execute\\ SqlQuery| |**(cSqlStatement, [aParams], [lShowError := .f.]) --> uResult**\\ uResult can be \\ a) nil if there is no result or if error occured.\\ In case of error, oCn:nError and oCn:cError provide teh error information\\ Optionally setting lShowError displays ther error or result of sql statement,\\ b) Numeric: In case of insert, update, etc indicating the affected rows\\ c) If the result is a result-set, it is returned as Multi-Dim array|
+|Explain| |**( cSql, [aParams], [lShow] )**\\ Can be used only with SELECT, INSERT and UPDATE Sql statements only. By default (lShow := .t.), the method displays the execution plan of the sql statement in a browse. Knowledgeable programmers can use this information for optimizing the queries.\\ \\ Param-2: aParams. If provided, the value are applied to cSql\\ Param-3: lShow. Default .T., Specifying .F. can be used for quickly testing validity of sql without executing it.|
+|FindRelation| |**( [db.]parent_table, [db.]child_table ) --> aRef**\\ Returns array of { referenced colum name, referring column name }|
+|FKeyColumns| |**( cTable, cDB ) --> array**\\ Returns a two-dimentional array:\\ {{thistablecolumn,foreigndb,foreigntable,foreigncolumn}, ... \\ }|
+|FKReferencedBy| |**( cTable, cDB ) --> aTables**\\ Returns {{ db.table}} referencing to this table|
+|FKReferencedTables| |**( cTable )**\\ Returns list of tables referenced by this table|
+|GetAutoCommit()| |Status of AutoCommit()|
+|GetLocale()| |--> Locale setting|
+|GetPrimaryFields| |**( cTable, cDB )**\\ List of primary fields|
+|GetUniqueFields| |**( cTable, cDB, lPrimary )**\\ List of unique fields|
+|GetVariables| |**( [cMask] )**\\ Array of system variables and values.|
+|ImportFromDBF| |**( cDbf, [cTable], [cColPrefix], [nMultiRowSize], [aFields], [cAutoIncFld], [cCharSet], [lAddTimestamps], [bProgress] ) --> lSuccess**\\ \\ **1. cDbf:** dbfname (with extension) or alias name\\ **2. [cTable]:** defaults to Lower( cdbf file name without extension ). If the table exists, user is prompted whether to overwrite the table or exit.\\ **3. [cColPrefix]:** if specified this value is prefixed to each dbf field name\\ **4. nMultiRowSize:** default 20 rows inserted at a time:\\ **5. [aFields]:** Can be part of dbfstruct() or comma separated list of fields\\ If afields is like dbstruct, this is used to create table\\ **6. [cAutoIncfld (default.T.)]:** insert autoinc field\\ If .f. do not insert autoinc field\\ If char insert autoinc field with this name.\\ **7. [cCharSet]:** character-set to be used to create the table.\\ **8. [lAddTimestamps (default .F.)]:** If .T., two additional columns **createdt and changedt** are created, which are automatically maintained by the server.|
+|Insert| |**( cTable, caFields, aValues, [lUpdateOrIgnore] ) --> nRowsInserted**\\ \\ **1. cTable:** Should be an existing table.\\ **2. caFields:** Can be array of field names or comma delimited list of field names\\ **3. aValues:** Array of values corresponding to the fields. A Single dim array for inserting single row and multi-dim array for inserting multiple rows in one operation.\\ The values can be constants or variables or expressions,\\ \\ Examples:\\ <code clipper>oCn:Insert( "emp", "name, age, dob", { cName, nAge, dDateofBirth } )
+oCn:Insert( "emp", "name,photo", { "John", MemoRead( "john.jpg" ) } )
+oCn:Insert( "emp", "name,age", { { "John", 32 },{ "James",40 } } ) // inserts 2 rows//</code>\\ The method handes all necessary conversions of the values to suit the Sql syntax.\\ \\ **4. [lUpdateOrIgnore] (default NIL):**\\ Inserting duplicate values in Primary/Unique fields results in error and the execution fails.\\ Logical FALSE: If .F. is sprecified as 4th param, "INSERT IGNORE " sql satement is generated and execution continues ignoring duplicate insertions.\\ Logical TRUE: If .T. is specified as 4th param, the function verifies if the fields list contains any primary or unique fields and in that case adds the clause "ON DUPLICATE KEY UPDATE" suitably.\\ \\ //Note: This method executes SQL generated by ::InsertSQL(...) called with the same paramters //|
+|InsertSQL| |**( cTable, caFields, aValues, [lUpdateOrIgnore] ) --> cSql**\\ \\ Please see method ::Insert()|
+|IsBinaryField| |**( cTable, cField ) --> lTrue**|
+|IsFunction| |**( [db.]cFunc ) --> lExists**|
+|IsProcedure| |**( [db.]cProc ) --> lExists**|
+|LCase| |**( cValue ) --> cValue converted to LCase by Server **|
+|ListBaseTables| |**( cMask, cDB, [lExtendedInfo := .f.] )**\\ Array of tables ( not views )|
+|ListColumns| |**( cTable, [lShow := .f.] ) --> aCols**\\ List of columns with properties. If lShow is .T., displayed in XBrowse|
+|ListDbs| |**( cMask )**\\ If( ::Check(), mysql_list_dbs( ::pMySql, cMask ), {} )|
+|ListEngines| |**( lAll, [lShow := .f.] ) --> aEngines**\\ List of database engines supported by the server|
+|ListFunctions| |**( [cMask], [cDB], [lExtendedInfo := .f.] )**\\ List of functions|
+|ListIndexes| |**( cTable )**\\ List of indexes|
+|ListProcedures| |**( [cMask], [cDB], [lExtendedInfo] )**\\ List of procedures|
+|ListProcess| |**( lShow )**\\ Array of processes running on server|
+|ListTables| |**( cMask )**\\ List of tables and views in the current DB|
+|ListTriggers| |**( cTable, [cDB], [lExtendedInfo] )**\\ List of triggers on the table|
+|ListViews| |**( cMask, [cDB], [lExt] )**\\ List of views|
+|MakePrimaryKey| |**( cTable, cCol ) --> lSuccess**\\ Make cCol the primary key of cTable|
+|max_allowed_packet_MB| |**( nNewVal )**\\ Maximum allowed packet size by the connection in MB. It is desriable to set this a high enough value|
+|ParseTableName| |**( cName, @cTable, @cDB ) --> cDB.cTable**|
+|Ping()| |If the connection is not closed but disconnected, ping() may reconnect. This is called internally where necessary|
+|PivotArray| |**( cTable, cRowFld, cColFld, cValFld, cAggrFunc ) --> aPivot**\\ Param cTable can be a table name or any complex Sql statement\\ Returns a Pivot array formatted for diplay in xbrowse. Functions similar to the ADO function.|
+|PivotRS| |**( cTable, cRowFld, cColFld, cValFld, cAggrFunc ) --> oRs**\\ Same as ::PivotArray() but returns RowSet object|
+|QueryResult| |**( cSql ) --> uResult**\\ Similar to Execute() but greatly simplifies the result conversion.\\ Eg:\\ oCn:QueryResult( "SELECT COUNT(*) FROM CUSTOMER" ) --> 500\\ oCn:QueryResult( "select sum(amount),sum(qty) from bills" ) --> { 40000, 40 }|
+|ReConnect()| |Reconnects() a closed connection returning lSuccess|
+|RenameColumn| |**( cTable, cOldName, cNewName ) --> lSuccess**\\ Renames a column|
+|RenameTable| |**( cOld, cNew ) --> lSuccess**\\ Renames a table|
+|Replace| |**( cTable, aFields, aValues )**\\ Functionally similar to Insert with update on duplicate key\\ //Executes cSql generated by ::ReplaceSQL with same parameters//|
+|ReplaceSQL| |**( cTable, aFields, aValues )**\\ See ::Replace()|
+|Restore| |**( cFile, [aTables], [bProgress], [cNewDB] )**\\ **Param-1: Backup file name:** This parameter is necessary\\ This file should be a valid backup file created by METHOD Backup or a valid SQLDump file. **In case of SQLDump file, parameters 2 and 4 are ignored even if provided.**\\ \\ **Param-2: [One table name or an array of table names.]**\\ \\ (a) If the second parameter is ommitted or NIL:\\   (i) If the backup file is for a full database, the entire database is created if does not exist on the server and all the tables are created/overwritten in that database.\\  (ii) If the backup file is for some tables only, all these tables are created/overwritten in the currently selected database on the server.\\ (b) If the second parameter is supplied:\\     All the tables specified, if exist in the backupfile, are created/overwritten in the currently selected database on the server.\\ \\ **Param-3: [bProgress]**. If specified, this codeblock is evaluated with each table name.\\ \\ **Param-4: [cNewDB]** If specified for a full database backup, the backup will be restored with new database name : cNewDB. This parameter enables duplication of an existing database.\\ \\ **Explanation**:\\ 1) When cBackUpFile is Full Database Backup and 2nd and 4th parameters are omitted, full database and tables are restored to the same database from which the backup was made.\\ 2) When cBackUpFile is Full Database Backup and 4th parameter is specified, new database cNewDB is created and all tables are restored to cNewDB.\\ 3) If 2nd parameter is specified, table[s] named in the 2nd parameter are restored to the Currently logged in database, irrespective of the database from which the backup was made.\\ \\ Encrypted backup:\\ <code clipper>MYSQL_CRYPTKEY( "My Encryption Key" )
+oCn:Restore( <cFile> )
+MYSQL_CRYPTKEY( nil )</code>|
+|RollBack()| |Rollbacks a transaction started by ::BeginTransaction()|
+|RollBackTrans| |Rollbacks a transaction started by ::BeginTransaction()|
+|RowSet\\ Query| |**( cSql, aParams, lReadOnly )**\\ Full syntax is explained in RowSet class|
+|SaveToDBF| |**( cSql, cDbf, [lForUpdate] )**\\ Saves the contents of a table or result of an sql statement to a DBF. \\ **[lForUpdate (default .F.)]** If .T., adds an additinal column to be used by programmer to mark if the row is updated. This mark can be used to filter records to be updated back to server using ::UpdateFromAlas()|
+|SelectDB| |**( cDB )**\\ Select cDB as current database|
+|SetAutoCommit| |**( lOnOff)**\\ If( ::Check(), mysql_autocommit( ::pMySql, lOnOff ), nil )|
+|SetLocale| |**( cLangID )**\\ Language in which Server displays week/month names. Automatically set for en,es,fr,pt,de or it based on FW_SetLanguage() or HB_LangSelect(). \\ List of supported languages: https://dev.mysql.com/doc/refman/5.7/en/locale-support.html|
+|SetMsgLang| |**( cLangID )**\\ Sets language in which Server sends error and other messages to the client. This method is automatically executed while connecting. The default language is en_US.\\ If FWSetLanguage() is already set or if HB_LangSelect() is one of es,fr,pt,de or it, then the corresponding language is automatically set.\\ In case the programmer wants any other language he may call this method explicitly.\\ Eg: oCn:SetMsgLang( "ja_JP" )|
+|SetMultiStatement| |**( lOnOf )**|
+|ShowError| |**( cTitle )**\\ Displays last error message|
+|SqlToText| |**( cSql ) --> cText**\\ Outputs results in tab delimited text format|
+|TableExists| |**(cTable, [db] ) --> lExists**\\ Checks existence of table/view with the name|
+|TableExists2| |**( [db.]cTable ) --> lExists**\\ Checks existence of table (not view)|
+|TableStructure| |**( cTable ) --> aStructure**\\ cTable should be a table in the curreent db. We can query the structure of a table without opening the table. The result is identical to oRs:aStructure. oCn:ListColumns( [db.]cTable ) gives more information about the columns.|
+|UCase| |**( cValue ) --> cValue converted to UCase by Server**|
+|Update| |**( cTable, caFields, aValues, cWhere ) --> nRowsUpdated**\\ \\ **1. cTable:** Must be an existing table\\ **2. caFields:** As in ::Insert()\\ **3. aValues:** As in ::Insert() but only single dim array\\ **4. acWhere:** Character exprn: Example "ID = 340"\\ or a multi-dim array with field-value pairs\\ Eg: { { "AGE", 40 }, { "DEPT", "AB" } }\\ \\ //This method executes SQL generated by  ::UpdateSQL(...) called with the same parameters//|
+|UpdateSQL| |**( cTable, aFields, aValues, cWhere ) -- cSql**\\ See method ::Update()|
+|UpdateSummary| |**( cMaster, cMasKey, acMasCols, cTrnTable, cTrnKey, acTrnCols, cTrnWhere, cOperator )**\\ Updates master table from transaction table.|
+|UploadFromAlias| |**( cTable, cSrcFieldList, cDstFieldList, nMultiRowSize, lUpdate )**\\ Updates data from DBF to an existing table|
+|Val2Escape| |**( cString ) --> cConvertedString**|
+|ValToSQL| |**( uVal ) --> Harbour value converted to SQL constant**|
+
+
+====== VIRTUAL METHODS ======
+
+
+^Name^Details^
+|<mysqlfunction>|Use built-in mysql functions as methods of connection object, using Harbour variables,constants and functions as parameters. Example:\\ <code clipper>? oCn:DATEDIFF( Date(), dOldDate )
+? oCn:UTC_TIMESTAMP()</code>|
+|<User defined functions/\\ stored procedures>|Can also be used like as methods of connection object.|
+
+====== Example ======
+
+====== See Also ======
+

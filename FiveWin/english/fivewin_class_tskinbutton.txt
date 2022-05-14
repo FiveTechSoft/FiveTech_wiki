@@ -1,0 +1,33 @@
+====== Description ======
+
+It holds all the required settings for a Buttons skin
+
+
+====== DATAS ======
+|aClrFocused|Array of colors for focused state|
+|aClrPressed|Array of colors for pressed state|
+|aClrNormal|Array of colors for normal state|
+|nClrBorder0_F|Outer border color when focused state|
+|nClrBorder1_F|Inner border color when focused state|
+|nClrBorder0_P|Outer border color when pressed state|
+|nClrBorder1_P|Inner border color when pressed state|
+|nClrBorder0_N|Outer border color when normal state|
+|nClrBorder1_N|Inner border color when normal state|
+|nClrTextDisable_0|First color used for disabled text|
+|nClrTextDisable_1|Second color used for disabled text|
+
+
+====== METHODS ======
+|New()|constructor|
+
+
+====== Example ======
+FWH\samples\TestSk1.prg
+
+
+====== Source code ======
+Internal, not provided
+
+
+====== See Also ======
+[[fivewin_function_skinbuttons|SkinButtons()]]

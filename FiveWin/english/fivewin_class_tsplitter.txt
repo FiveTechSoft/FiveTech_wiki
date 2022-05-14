@@ -1,0 +1,109 @@
+====== Class TSplitter ======
+
+Splitter control                                                               
+Inherits from TControl                                                         
+====== DATA ======
+^ Data    ^ Description                                     ^
+|lVertical|True for vertical splitters, false for horizontal|
+|aPrevCtrols|Array of previous controls|
+|aHindCtrols|Array of hinds controls|
+|bFirstMargin|Codeblock with the splitter first margin|
+|bLastmargin|Codeblock with the splitter last margin|
+|nLong|Splitter length|
+|nWidth|Splitter width|
+|nBreadth|Used internally|
+|nAdjust|Used internally|
+|nAdjTop|Used internally|
+|nAdjLeft|Used internally|
+|nFirst|Measure in pixels from the splitter to the left or|
+|front|edge of the conteiner window|
+|nLast|Measure in pixels from the splitter to the right or|
+|bottom|edge of the conteiner window|
+|lStatic|If TRUE the splitter can not be moved|
+|lCaptured|TRUE when moving the splitter, used internally|
+|l3D|TRUE for 3D look|
+|lMoving|TRUE if the splitter is moving|
+
+
+====== METHODS ======
+^ Method  ^ Description           ^
+|New|CONSTRUCTOR|
+|ReDefine|Constructor from resources|
+|Default|Default initialization of the Splitter|
+|Display|Displays the control|
+|EraseBkGnd|Erase the background of the control|
+|Initiate|Generic Control initialization method|
+|HandleEvent|Generic events handler|
+|AdjClient|Adjust the splitter to his conteiner window. This|
+|method|shoud be called on every resize event of the conteiner window|
+|AdjTop|Adjust the splitter to the top of his conteiner window|
+|AdjBottom|Adjust the splitter to the bottom of his conteiner window|
+|AdjLeft|Adjust the splitter to left of his conteiner window|
+|AdjRight|Adjust the splitter to the right of his conteiner window|
+|Paint|Displays the splitter|
+|FirstMargin|Returns the splitter first margin|
+|LastMargin|Returnss the splitter last margin|
+|SetPosition|Changes the splitter position (in pixels)|
+|Move|Move the splitter|
+|lButtonDown|Action to be performed when clicking the mouse.|
+|lButtonUp|Action to be performed when unclicking the mouse.|
+|MouseMove|Action to be performed when moving the mouse.|
+|Invert|Paints the inverted bar during splitter resizing|
+|Adjust|Adjust the splitter to his conteiner window|
+|AdjustCtrols|Adjust the prewvious and hind controls. Used internally|
+|_CoorsUpdate|Update the control data to reflect the current coordinates|
+
+
+====== Example ======
+<code clipper>
+#include "FiveWin.ch"
+#include "Splitter.ch"
+
+
+static oWnd
+
+static oLbx, oGet
+
+static oSplit
+
+//----------------------------------------------------------------------------//
+
+function Main()
+
+   local cTitle := "Testing the Splitter controls"
+
+   DEFINE WINDOW oWnd FROM 1, 1 TO 400, 600 PIXEL ;
+      TITLE cTitle
+
+   SELECT 1
+   USE EJEMPLO1.DBF
+
+   @ 0,0 LISTBOX oLbx FIELDS SIZE 500,200 PIXEL OF oWnd
+
+   @ 205,0 GET oGet VAR EJEMPLO1->SINTAX TEXT SIZE 500,150 PIXEL OF oWnd
+
+   oLbx:bChange:={|| oGet:Refresh() }
+
+   @ 200,0  SPLITTER oSplit ;
+            HORIZONTAL ;
+            PREVIOUS CONTROLS oLbx ;
+            HINDS CONTROLS oGet ;
+            TOP MARGIN 80 ;
+            BOTTOM MARGIN 80 ;
+            SIZE 500, 4  PIXEL ;
+            OF oWnd ;
+            _3DLOOK
+
+  ACTIVATE WINDOW oWnd ;
+    ON RESIZE oSplit:AdjClient()
+
+return nil
+</code>
+
+{{:splitter.jpg|:splitter.jpg}}
+
+====== See Also ======
+[[fivewin_commands_splitter|Command Splitter]]
+
+====== Source code ======
+FWH\SOURCE\CLASSES\TSPLITTER.PRG
