@@ -1,0 +1,54 @@
+====== Creating Buttons from source code ======
+<code clipper>
+@ <nRow>, <nCol> BUTTON [ <oBtn> ][ PROMPT <cCaption> ] ; 
+ [ SIZE <nWidth>, <nHeight> ] ;  
+ [ ACTION <uAction> ] ;  
+ [ OF | WINDOW | DIALOG <oWnd> ] ;  
+ [ MESSAGE <cMsg> ] ;  
+ [ WHEN <WhenFunc> ] ;  
+ [ DEFAULT ] ;  
+ [ HELP | HELPID | HELP ID <nHelpId> ] ;  
+ [ FONT <oFont> ] ;  
+ [ PIXEL ] ;  
+ [ DESIGN ] ;  
+ [ UPDATE ] ;  
+ [ VALID <uValid> ] ;  
+ [ CANCEL ]  
+</code> 
+====== Using Buttons from resources ====== 
+<code clipper>
+REDEFINE BUTTON [<oBtn>] ;
+ [ ID <nId> ] ;  
+ [ OF | WINDOW | DIALOG <oDlg> ] ;  
+ [ ACTION <uAction> ] ;  
+ [ HELP | HELPID | HELP ID <nHelpId> ] ;  
+ [ MESSAGE <cMsg> ];  
+ [ UPDATE ];  
+ [ WHEN <WhenFunc> ] ;  
+ [ VALID <uValid> ];  
+ [ PROMPT <cCaption> ] ;  
+ [ CANCEL ]  
+</code> 
+|<nRow>,<nCol>|The coordinates of the Button. They mimic text mode coordinates|
+|<oBtn>|A reference to the Button Object|    
+|<cCaption>|The label of the Button|    
+|<nHelpId>|The help topic identifier of the Button|    
+|<oWnd>|The container window of the Button|    
+|<uAction>|The action to be performed when the Button is pressed|    
+|<oFont>|A reference to the Font Object to use with the Button|    
+|<nWidth>,<nHeigth>|The dimensions of the Button|    
+|<cMsg>|The associated message of this control|    
+|<WhenFunc>|It is an expression to evaluate indicating if the control is or not enable|    
+|<nId>|The numeric resource identifier of the Control|    
+|<uValid>|An expression to validate when the control is going to lose the focus|    
+
+====== CLAUSES ======
+
+|DEFAULT|For default PushButtons: Automatically executes when the user press Enter, even from other controls. Use this clause only when building the Button from source code. When using resources, this clause must be specifies from the resource editor.|    
+|DESIGN|Allows the user to move and resize with the mouse|    
+|PIXEL|To use pixel coordinates instead of Text coordinates|    
+|UPDATE|This control may be updated from Method TDialog:Update()|    
+|CANCEL|Using this clause you may bypass any current VALID clause and cancel the entire DialogBox|    
+
+====== See also ====== 
+[[fivewin_class_tbutton|Class TButton]] 
