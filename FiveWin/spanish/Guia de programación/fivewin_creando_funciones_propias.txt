@@ -1,0 +1,38 @@
+Conectar Clipper con el API de Windows es muy sencillo. Sólo hay dos cosas que debe tener en cuenta:
+
+ 
+
+  * Clipper usa su propia pila para las variables. Para obtener los parámetros de Clipper desde C, debe usar las funciones _par...() de Clipper, que puede encontrar en el sistema extendido de Clipper. Asimismo, para devolver los valores de C a Clipper, debe utilizar las funciones _ret...().
+
+ 
+  * Clipper usa símbolos PASCAL como identificadores y 10 es la máxima longitud de sus símbolos. Por tanto, si utiliza un identificador de Windows con 10 o menos caracteres, puede generar símbolos duplicados.
+
+ 
+
+Hemos renombrado todos los símbolos de Windows con 10 caracteres o menos a _name. Compruebe que el nombre de la función de la API de Windows que va a utilizar está en WinTen.h, y utilice siempre el siguiente orden para los archivos de cabecera:
+
+ 
+<code c>
+      #include <WinTen.h>
+
+      #include <Windows.h>
+
+      #include <ClipApi.h>
+</code>
+
+ 
+
+FiveWin incluye WinTen.h y ClipApi.h. Su compilador C incluye Windows.h. Nosotros usamos Borland C++:
+
+ 
+
+BCC -c -ml func.c o TCC -c -ml func.c
+
+ 
+
+ 
+Cuando se registre le enviaremos todo el código fuente C, donde encontrará muchos ejemplos para desarrollar sus propias rutinas. Obtenga un compilador C si no cuenta con uno. Es muy sencillo usar Clipper + C + API de Windows!
+
+
+Contacte con el servicio de soporte técnico de su distribuidor para obtener más información sobre las mejoras de FiveWin. Nos gustaría conocer las nuevas extensiones que cree para FiveWin e incluirlas, bajo su nombre, en las siguientes versiones de FiveWin.
+

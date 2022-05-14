@@ -1,0 +1,79 @@
+En DOS, las aplicaciones xBase suelen manejar muy pocas clases de eventos:
+
+ 
+
+            ciertas pulsaciones:                    SET KEY ... TO ...(estilo Clipper)
+
+                                                    ON KEY ... ...(estilo dBase)
+
+            gestión de errores:                     ON ERROR ...(estilo dBase)
+
+ 
+
+En Windows hay más situaciones de control de eventos que deben gestionarse. Esta es la sintaxis xBase que usa FiveWin:
+
+ 
+<code clipper>
+            ...
+
+      **ON <EventName> <uAction>**
+
+            ...
+
+ 
+</code>
+La <uAction> definida se mantiene en un bloque de código, que se evalúa cuando <EventName> se produce.
+
+ 
+
+ 
+
+Estos son algunos eventos típicos de Windows:
+
+ 
+
+**ON PAINT ...**
+
+**ON MOVE ...**
+
+**ON RESIZE ...**
+
+**ON LEFT CLICK ...**
+
+**ON RIGHT CLICK ...**
+
+**ON LEFT DOUBLE CLICK ...**
+
+ 
+
+ 
+
+No piense que los eventos sólo se relacionan con la actividad de Windows. Muchas circunstancias pueden generar eventos. 
+
+ 
+
+Por ejemplo, durante la elaboración de un informe, se producen muchos eventos:
+
+ 
+
+**ON STARTPAGE ...**
+
+**ON ENDPAGE ...**
+
+**ON STARTLINE ...**
+
+**ON ENDLINE ...**
+
+**ON STARTGROUP ...**
+
+**ON ENDGROUP ...**
+
+ 
+
+FiveWin le permite definir las acciones a ejecutar cuando dichos eventos se producen. 
+
+ 
+
+La acción definida se denomina 'call-back', puesto que FiveWin evaluará (call back) esas acciones al producirse los eventos.
+
+ 

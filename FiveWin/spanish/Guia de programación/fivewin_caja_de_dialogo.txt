@@ -1,0 +1,50 @@
+En Windows, la interacción con el usuario para obtener datos se hace usando cajas de diálogo.
+
+Las cajas de diálogo ventanas especializadas que contienen ciertos controles a través de los cuales el usuario completa alguna información. Debe evitar usar la ventana principal para capturar datos. Cada vez que vaya a requerir información, lo hará a través de cajas de diálogo.
+
+FiveWin implementa el soporte para cajas de diálogo construidas y almacenadas en recursos y también para cajas de diálogo directamente construidas en su programa fuente por medio de código.
+
+Recomendamos que adquiera un editor de recursos para construir las cajas de diálogo de su programa. Borland usualmente ofrece ofertas de introducción a muy buen precio para sus productos con los que puede programar en Windows y la mayoría de ellos incluyen el  Resource WorkShop que es un excelente editor de recursos. Sólo debe diseñar las cajas de diálogo mediante código si va a diseñar ventanas muy sencillas o si no cuenta con un editor de recursos.
+
+En Windows, las cajas de diálogo entran en dos categorías: Modal y No-Modal. Las cajas de diálogo Modales son aquellas que no permiten al usuario hacer otra cosa hasta que no termine de trabajar con ese diálogo. En DOS se usan cajas de diálogo Modales.
+
+Las cajas de diálogo No-Modal nos permiten hacer otras cosas, por lo que podemos tener muchas cajas de diálogo abiertas al mismo tiempo. Los usuarios DOS no están acostumbrados a la ejecución no-modal, sin embargo más y más usuarios las demandan.
+
+Una caja de diálogo es un Objeto, así que para construirlo usaremos, la sintaxis típica para la creación de objetos:
+<code clipper>
+local oDlg
+
+DEFINE DIALOG oDlg ;
+
+[ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+[ NAME <cName> ] ; // Dialog Box resource name
+
+                          // desde una DLL construir con un editor de recursos
+
+<cName> es el nombre que hemos asignado a la caja de diálogo asumiendo que la hemos construido con un editor de recursos.
+</code>
+Después de eso tenemos que asignar los controles que vamos a usar. Si lo está diseñando desde código entonces usará la sintaxis xBase que le es familiar:
+
+@ <nRow>, <nCol> ...    OF oDlg
+
+Recuerde especificar la cláusula OF <oDlg> para que el control reconozca su objeto contenedor.
+
+Si construimos la caja de diálogo usando un editor de recursos entonces tendremos que redefinir los controles para asociar ciertos comportamientos -revise la sección recursos de Windows de esta guía-.
+
+Una vez más todo está listo, activaremos la caja de diálogo:
+
+ACTIVATE DIALOG oDlg
+
+Eso es todo.. Básicamente este es el sistema que vamos a usar con todas las cajas de diálogo. Revise los ejemplos que suministramos con FiveWin para entender como funciona en detalle este proceso.
+
+ **NOTAS ADICIONALES SOBRE DIÁLOGOS NO-MODALES**
+
+Hacer un diálogo No-Modal es tan fácil como incluir la cláusula 'NOWAIT':
+
+DEFINE DIALOG oDlg RESOURCE "Test"
+
+ACTIVATE DIALOG oDlg NOWAIT                // No Modal!!!
+
+Tenga cuidado en la ejecución Non-Modal. Es muy peligrosa si el usuario no es experto. Cuando usted llame una caja de diálogo No-Modal, la ejecución del programa no se detiene ahí! así que no puede cerrar una DBF que use en los controles del Diálogo. También el usuario puede elegir la opción una y otra vez, creando la caja de diálogo en cada ocasión que lo haga. Debido a que Clipper/(x)Harbour mantiene "referencias vivas" a variables locales, no existen conflicto con el uso de diálogos No-Modal.
+
+La cajas de diálogo No-Modales y las ventanas MDI son de las mejores características de Fivewin -vea como funciona IDE con MDI-.

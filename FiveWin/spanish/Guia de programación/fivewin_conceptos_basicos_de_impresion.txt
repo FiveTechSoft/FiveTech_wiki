@@ -1,0 +1,9 @@
+La mayor diferencia entre manejar la impresora en MsDos y en Windows, es el hecho de que en Windows manejamos la impresora en modo gráfico.
+
+Esto significa que vamos a manejar diferente tamaños de fuentes, que vamos a manejar texto y dibujos, que podríamos necesitar una vista previa de todo en la pantalla, y lo más importante: que las diferentes impresoras pueden tener diferentes resoluciones y tenemos que controlar todo eso.
+
+FiveWin automatiza todos esos procesos dándole el máximo poder con el mínimo de complejidad. FiveWin clasifica los procesos de impresión como sigue:
+
+  * [[fivewin_tecnicas_rapidas| Técnicas de impresión rápida]]
+  * [[fivewin_objeto_impresora| Manejando la impresora como objeto]]
+  * [[fivewin_reporteador| El reporteador de Fivewin]]

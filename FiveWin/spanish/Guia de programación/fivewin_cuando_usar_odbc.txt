@@ -1,0 +1,26 @@
+Aunque ODBC es un concepto muy atractivo y muchos controladores ODBC funcionan muy bien, creemos por nuestra experiencia con usuarios de FiveWin que ODBC no es tan simple y rápido como la gestión de bases de datos propia de CA-Clipper (en especial, si utiliza SixDriver o Comix).
+
+ 
+
+Le sugerimos que conserve sus diseños de DBFs de CA-Clipper actuales y sus rutinas y aplicaciones.
+
+ 
+
+En algunos casos, no obstante, utilizar ODBC puede resultar muy útil. Creemos que las funcionalidades ODBC de FiveWin son realmente interesantes para llevar a cabo el proceso de ‘downsizing’. 
+
+ 
+
+Imagine una empresa que utiliza bases de datos a las que se puede acceder mediante ODBC. Puede utilizar CA-Clipper y FiveWin y convertir esas bases de datos en DBFs e índices estándares de CA-Clipper (gestionados con sus RDDs). Resulta una buena oportunidad para la gestión de su negocio.
+
+ 
+
+Muchas empresas desean migrar sus actuales programas a plataformas PC. Y CA-Clipper y FiveWin-ODBC pueden ser la clave.
+
+ 
+
+Por supuesto, puede utilizar ODBC si lo desea o es necesario. En estas circunstancias recuerde que no todos los controladores ODBC son tan potentes como Clipper, y es posible que descubra, con gran sorpresa, que sus procesos 'habituales' en Clipper no pueden realizarse bajo ODBC.
+
+ 
+
+No hemos cubierto todas las posibilidades y situaciones que puede encontrarse al trabajar con controladores ODBC. Sin embargo, FiveWin ofrece una arquitectura abierta que puede utilizar y ampliar de acuerdo a sus necesidades.
+
