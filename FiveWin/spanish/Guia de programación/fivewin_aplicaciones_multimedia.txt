@@ -1,0 +1,63 @@
+Las aplicaciones multimedia típicamente se refieren a aplicaciones que usan sonido y visión de manera extensa para interactuar con el usuario final. Pero, de hecho, estas aplicaciones pueden usar mas de una forma para tener una mejor interacción con el usuario, principalmente usando nuevos dispositivos externos controlados por la aplicación, tales como pantalla táctiles, plumas electrónicas, lectores de tarjetas plásticas, fax-modems, grabadoras de voz, visión artificial, etc...
+
+FiveWin ofrece todas las extensiones necesarias para desarrollar aplicaciones multimedia sofisticadas. Aquí vamos a ver como usar sonido, visión, y como manipular cualquier dispositivo externo que podamos encontrar útil. También, vamos a explicar algunas técnicas que usadas convenientemente nos permitirán hacer nuestras aplicaciones multimedia luzcan como cualquier otra que hayamos visto.
+
+Sonido: Hay dos formas para reproducir sonido en nuestras aplicaciones: Tocando un archivo WAV y tocando uno MDI.
+
+Los archivos WAV son grabaciones digitales de sonidos. Un archivo WAV puede ser la voz de na persona, una canción, ruidos, etc... Tenemos las siguientes funciones para reproducirlos:
+
+<code clipper
+·	SndPlaySound( <cFileName>, <nMode> ) --> <lSuccess>
+Toca un archivo WAV desde el disco. (Ver SndPlaySound() en la sección de funciones para una explicación completa)
+
+·	MsgSound() la cual es exactamente igual a la anterior SndPlaySound()
+Toca un archivo WAV desde disco pero usando el estilo de las funciones Msg de Fivewin.
+
+·	SndPlayRes( <cResName>, <nMode> ) --> <lSuccess>
+Toca un archivo WAV desde recursos. (Ver SndPlaySound() en la sección de funciones para una explicación completa)
+</code>
+Visión: Hay dos formas para desplegar imágenes en nuestra aplicación: Manejando archivos de mapa de bits BMP y reproduciendo archivos de video animados.
+
+Los archivos de mapa de bits BMP son la forma que usa Windows para almacenar imágenes digitales y después mostrarlas en la pantalla o en la impresora. Usted puede almacenar sus imágenes digitales en cualquier otro formato (usando las bibliotecas DLLs convenientes) pero posteriormente se convertirán en bitmaps ya que es la única forma que Windows conoce para manipularlas. Tenemos el soporte para los bitmaps siguiente:
+
+·	Clase TBitmap: Controla el archivos bitmap relacionado a mostrar.
+
+·	Class TBtnBmp: Controla lo que se muestra en uno o dos archivos bitmap, y el comportamiento como un PushButton, así el usuario puede dar click en ellos y ejecutar una acción.
+
+·	Funciones para cargar y desplegar dinámicamente un bitmap:
+<code clipper>
+LoadBitmap( <hInst>, <cBmpName> ) --> <hBitmap>
+(ver LoadBitmap() en la sección de funciones para una explicación completa)
+
+DrawBitmap( <hDC>, <hBitmap>, <nRow>, <nCol>, <nWidth>, <nHeight>,
+            <nRaster> ) --> nil
+(ver DrawBitmap() en la sección de funciones para una explicación completa)
+
+
+PalBmpDraw( <hDC>, <nCol>, <nRow>, <hPalBmp>, <nWidth>, <nHeight>,
+            <nRaster> ) --> nil
+(ver PalmBmpDraw() en la sección de funciones para una explicación completa)
+
+
+DeleteObject( <hBitmap> ) (para LoadBitmap(), para un objeto TBitmap ver TBitmap METHOD End() )
+(ver DeleteObject() en la sección de funciones para na explicación completa)
+
+</code>
+Los archivos de video animado AVI son la forma en que Windows almacena una secuencia de bitmaps mezclados con audio (grabados desde una videocámara, caricaturas, etc...). FiveWin implementa la Clase TVideo para fácilmente reproducirlos. (Ver la Clase TVideo para una explicación completa).
+
+Windows tiene un poderoso subsistema llamado MCI (Media Control Interface) que le permite fácilmente acceder a cualquier clase de dispositivo que sea compatible con MCI. Lo primero que debe  hacer cuando estudie un nuevo dispositivo para manipularlo es verificar si es compatible con MCI. FiveWin implementa la Clase TMCI para fácilmente manejar cualquier clase de dispositivo compatible con MCI  (Ver Clase TMCI para una explicación completa).
+
+Para hacer que finalmente su aplicación luzca de una forma única (el usuario final no recocerá que está usando una aplicación Windows) hay algunas técnicas sencilla que podría usar. Puede sencillamente evitar usar un marco en su ventana principal, así no será visible el encabezado y los botones típicos de de Windows en las esquinas. Básicamente esto puede hacerse así:
+
+<code clipper>
+DEFINE WINDOW oWnd STYLE nOr( WS_POPUP, WS_VISIBLE ) COLOR ...
+
+ACTIVATE WINDOW oWnd MAXIMIZED ;
+
+ON PAINT ... (usted podría dibujar un Bitmap completo en la superficie de la ventana,
+
+ 			podrá llenarlo con ciertos efectos de dibujo, etc...)
+</code>
+Ver SAMPLES\Install.prg, como un ejemplo funcional de esta técnica que evita mostrar el marco de la ventana y los botones relacionados.
+
+Las aplicaciones Multimedia abren un amplio rango de posibilidades donde únicamente su imaginación y su experiencia en Windows son los límites. Una vez que usted inicie practicando con estos conceptos, fácilemente reconocerá estos elementos en la mayorías de las aplicaciones Multimedia existente, y comenzará a incorporarlas en su propia aplicación FiveWin.

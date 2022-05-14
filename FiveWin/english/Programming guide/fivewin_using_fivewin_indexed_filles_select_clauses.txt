@@ -1,0 +1,67 @@
+FiveWin Browses implement a powerful feature that allows us to retrieve just a part of a DataBase similar as a FILTER, but based on Indexes which makes it extremely fast and efficient (Clipper SET FILTER must not be used with medium-big DataBases). Advanced Clipper RDDs like Comix or SixDriver implements some features that allow similar results. Anyhow we decided to keep the SELECT clause for users of standard Clipper.
+
+Lets see a sample of its use: Suppose you have a clients database indexed by surname. Lets suppose that you just want to review clients whose names start with L, M, N. Then you do:
+
+<code clipper>
+REDEFINE LISTBOX oBrw FIELDS Surname, Address, ...
+ ... SELECT Surname FOR "L" TO "N" ...
+</code>
+
+This will make the browse just show from "L" up to "N" surnames.
+
+We called them Indexed Filters and we manage them using the LISTBOX ... FIELDS ... SELECT ... clause:
+
+<code clipper>
+... 
+SELECT <cField> FOR <uValue1> [ TO <uValue2> ] ;
+...
+</code>
+
+Basically what FiveWin does is a SEEK of the <uValue1> when going TOP: to find the first element to be showed. If <uValue2> is provided (it is optional) we do a SEEK of the <uValue2> when going BOTTOM: (to find  the last element to be showed). If <uValue2> is not provided then we use the following index value to stop the records showed.
+
+From <uValue1> to <uValue2> (if defined) we check that <cField> is included in that range.
+
+In order to make this powerful clause work properly some requirements are necessary:
+
+
+
+·	The DataBase showed on the browse ( LISTBOX ... FIELDS ... ) must be indexed and the active Key must be the same as the <uValue1> we are going to seek. Please check carefully the types of the index expression and the type of the <uValue1> and <uValue2> (this one if defined).
+
+
+
+·	FiveWin does not check it <uValue1> exists. This is very important: You have to check it YOURSELF: How ? Just do a SEEK <uValue1>. If exist ( If Find() ) then proceed with the browse.  There are many different possible default behaviors when the <uValue1> is not  found, this is why we have decided that it is your responsibility to decide what to do if <uValue1> is not found.
+
+
+FiveWin also offers a :SetFilter() method to change dynamically the current SELECTion, without having to create again the DialogBox (or the window):
+
+<code clipper>
+:SetFilter( <cExpression>, <uValue1>, [<uValue2>] )
+</code>
+
+Sample:
+
+The browse gets defined with:
+
+<code clipper>
+SELECT StrZero( Page, 3 ) + StrZero(  1, 4 ) ;
+FOR StrZero( nPage, 3 ) + StrZero(    1, 4 ) ;
+TO  StrZero( nPage, 3 ) + StrZero( 9999, 4 ) ;
+
+</code>
+And later we do:
+
+(previously, we have changed the value of Page and nPage variables)
+
+<code clipper>
+oBrw:SetFilter( "StrZero( Page, 3 ) + StrZero( 1, 4 )",;
+
+StrZero( nPage, 3 ) + StrZero( 1, 4 ),;
+StrZero( nPage, 3 ) + StrZero( 9999, 4 ) )
+
+oBrw:GoTop()
+oBrw:Refresh()
+
+</code>
+This clause has been extensively tested, and we guaranty it works properly. If you don't get a proper behavior it could be that you are not using it properly. Please review your code and check that all the rules that we show here are being observed in your code.
+
+If you get strange behavior it is a clear sign that you have some other problems. We offer an extensive working sample in the IDE\SOURCE\DOC.prg. Review and you will see how to get all the power from this really useful clause.

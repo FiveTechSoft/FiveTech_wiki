@@ -1,0 +1,31 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsupport.com
+
+  * [[http://forums.fivetechsupport.com|Fivewin Official Forum]] - Come here for support and/or discussions
+  * [[http://www.gointellitech.com/program.htm|James Bott's Fivewin Stuff]] - Contains a number of interesting articles and utilities for download
+  * [[http://www.fwcodesnips.com|A repository of FW code snippets]] by [[http://fivetechsoft.com/forums/profilp.php?
+mode=viewprofile&u=51|Otto]]
+  * [[http://fivewin.info|Fivewin.info]] - Patrick's Fivewin site. Contains a lot of codes and articles
+  * [[http://fivewin.info/html/ng_archive.php|NG's Archive]] - An archive of postings on old FW's NG compiled by Boris Pekic
+  * [[http://www.andywos.ih.co.za/xmate/|xMate Project Manager]] - A freeware project manager to automate compile and linking by Andy Wos
+  * [[fivewin_resources_editor|FWH Resources Editor]] - A FWH example for a Resources Editor
+  * [[fwqt_english|FiveWin for QT]]
+  * [[http://bielsys.blogspot.com/|Blog By Gabriel Maimó "Biel"]] - Has some tricks explained such as writing program to auto-update using ftp
+  * [[http://www.pflegeplus.com/fivewin|Uwe's website]] - Some generic codes made available by Uwe
+== Uwe's Utilities ==
+  * [[http://www.pflegeplus.com/fw_downloads/bartools2.zip|BarTools v1.2 program]]
+  * [[http://www.pflegeplus.com/fw_downloads/btntools4.zip|Button Tools 4c]]
+  * [[http://www.pflegeplus.com/fw_downloads/borderedit1.zip|BorderEdit 1.2]]
+  * [[http://www.pflegeplus.com/fw_downloads/Skintool4.zip|Buttonskin-Painter v3.0b program]] - Might require freeimage 3 (http://www.pflegeplus.com/fw_downloads/Freeimg3_12.zip)
+  * [[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=22435&p=119513#p119513|Debugging tool]]
+  * [[http://www.pflegeplus.com/fw_downloads/fontedit2.zip|Fontedit Rel. 2.1b]]
+  * [[http://www.pflegeplus.com/fw_downloads/Grdtools4.zip|Gradient Tool v2.0a program]]
+  * [[http://www.pflegeplus.com/fw_downloads/FConvert1.zip|Image Converter 1.1 (binaries only)]] 
+  * [[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=22254|Image Converter with source code]] 
+  * [[http://www.pflegeplus.com/fw_downloads/viadesigner.zip|Infobar Designer 1.8b]]
+  * [[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=18181&|VTitle-Painter v5.2a - Follow link to the forum to obtain complete list of files needed to be downloaded]]
+  * [[http://www.pflegeplus.com/fw_downloads/VTitlesImg.zip|Some images for use with Uwe's VTitle-Painter program]]
+  * [[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=21371|xBrowse Image Viewer 1.5]]
+  * [[http://www.pflegeplus.com/fw_downloads/BrwTools5.zip|xBrowse Tools v3a program]]
+  * [[http://www.pflegeplus.com/fw_downloads/xBrwHlp.zip|xBrowse Tools Help 1.0a file]]
+
+See http://wiki.fivetechsoft.com/doku.php?id=graphics for Uwe's list of tutorials in manipulating graphics

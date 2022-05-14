@@ -1,0 +1,14 @@
+The major difference between managing the printer in MsDos and in Windows is the fact that in Windows we manage the printer in graphical mode.
+
+This means that we are going to manage different sizes of fonts, that we are going to manage text and drawings, that we may need to preview all that on the screen, and the most important thing: that different printers may have different resolutions, and we have to control all that.
+
+FiveWin automatize all these processes giving you maximum power with minimum complexity. FiveWin categorizes all printing works in these different types:
+
+
+
+· Quick printinng techniques!
+· Managing the printer object
+· The Report Engine
+
+
+

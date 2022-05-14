@@ -1,0 +1,259 @@
+====== Desarollo de Aplicaciones ======
+
+^  Clases  ^  Descripción  ^
+|[[fivewin_clase_tapplication|TApplication]]|Objeto Aplicación - En desarrollo-  |
+|[[fivewin_clase_tdict|TDict]]| Objeto Diccionario de Datos |
+|[[fivewin_clase_tform|TForm]]| Objeto Formas -En desarrollo- |
+
+====== Controles ======
+
+===== Controles de Fivewin =====
+
+
+
+==== Controles de Barra ====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tbar|TBar ]]|Objeto Barra de Botones|
+|[[fivewin_clase_tmsgbar|TMsgBar]]|Barra de mensajes|
+|[[fivewin_clase_tmsgitem|TMsgItem]]|Elemento de barra de mensajes|
+
+
+==== Controles de Bitmap ====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tbitmap|TBitmap ]]| Manejo de imágenes BMP|
+|[[fivewin_clase_tbtnbmp|TBtnBmp ]]|Manejo de botones de barra con imágenes|
+|[[fivewin_clase_tbuttonbmp|TButtonBmp]]|Manejo de botones con imágenes|
+|[[fivewin_clase_timage|TImage ]]|Manejo de todas las imágenes|
+
+
+
+
+==== Controles de Bases de Datos ====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tcbrowse|TcBrowse ]]|Navegación por columnas|
+|[[fivewin_clase_tccolumn|TcColumn ]]|Objeto columna de TcBrowse|
+|[[fivewin_clase_tdbcombo|TDBCombo ]]|Lista de despliegue de Bases de datos|
+|[[fivewin_clase_tindex|TIndex ]]|Manejo de archivos de índices como Objetos  |
+|[[fivewin_clase_twbrowse|TWBrowse ]]|Navegación por filas|
+|[[fivewin_clase_txbrowse|TXBrowse ]]|Nueva clase para navegación (para sustituir anteriores)  |
+|[[fivewin_clase_txbrwcolumn|TXBrwColumn ]]| Objeto columna de TXBrowse |
+
+
+
+
+
+
+
+
+
+
+==== Otros Controles ====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tactivex|TActiveX]]|Clase para soporte de controles ActiveX|
+|[[fivewin_clase_tanimate|TAnimate ]]|Clase para soporte de Sysanimate de Windows|
+|[[fivewin_clase_tcomponent|TComponent ]]|Manejo visual de Objetos no visuales|
+|[[fivewin_clase_tdatepick|TDatePick ]]|Control para obtener fecha y hora del sistema|
+|[[fivewin_clase_tenhmetafile|TEnhMetaFile ]]|Manejo de archivos EMF| 
+|[[fivewin_clase_tfget|TFget ]]| Clase Get con formato|
+|[[fivewin_clase_tfline|TFLine ]]|Manejo del Objeto línea para el control Fget|
+|[[fivewin_clase_tfolder|TFolder ]]|Objeto Folder|
+|[[fivewin_clase_tgraph|TGraph]]|Manejo de Gráficas|
+|[[fivewin_clase_theader|THeader ]]|Control de encabezado de ventanas|
+|[[fivewin_clase_ticonget|TIconGet ]]|Control para obtención de iconos|
+|[[fivewin_clase_ticongroup|TIconGroup ]]|Clase para manejo de grupo de iconos|
+|[[fivewin_clase_timagelist|TImageList ]]|Clase para manejo de lista de imágenes estándar del API de Windows|
+|[[fivewin_clase_tlistview|TListView ]]|Soporte para el control común de Win32: SysListView|
+|[[fivewin_clase_tmetafile|TMetaFile ]]|Soporte para manejo de archivos WMF|
+|[[fivewin_clase_tmeter|TMeter ]]|Clase medidor|
+|[[fivewin_clase_tmnucomp|TMnucomp]]|Componente Menú| 
+|[[fivewin_clase_toutlook|TOutlook ]]|Clase para control tipo Outlook|
+|[[fivewin_clase_toutlook2003|TOutlook2003 ]]|Clase para control tipo Outlook 2003|
+|[[fivewin_clase_toutlook2003Group|TOutlook2003Group ]]|Clase para control de grupo tipo Outlook 2003|
+|[[fivewin_clase_tpages|TPages ]]|Manejo de cajas de diálogo múltiples en páginas|
+|[[fivewin_clase_tpanel|TPanel ]]|Objeto Panel ténica de alineación|
+|[[fivewin_clase_tprogress|TProgress ]]|Objeto Control de Progreso |
+|[[fivewin_clase_trebar|TReBar ]]|Soporte para el control genérico de Win32 ReBar|
+|[[fivewin_clase_tselector|TSelector ]]| Control Selector|
+|[[fivewin_clase_tslider|TSlider ]]| Control de señalador|
+|[[fivewin_clase_tsplitter|TSplitter ]]|Control de separador| 
+|[[fivewin_clase_ttabcontrol|TTabControl ]]| Soporte para control genérico Win32 de cejas|
+|[[fivewin_clase_ttabs|TTabs ]]| Control para cejas|
+|[[fivewin_clase_ttimepick|TTimePick ]]|Clase para obtener la hora|
+|[[fivewin_clase_ttoolbar|TToolBar ]]| Soporte para el control genérico de Win32 para barras de herramientas|
+|[[fivewin_clase_ttrackbar|TTrackBar ]]| Soporte para control genérico Win32 Barra de seguimiento|
+|[[fivewin_clase_ttreeitem|TTreeItem ]]|Elemento de árbol Fivewin|
+|[[fivewin_clase_ttreeview|TTreeView ]]|Objeto Visor de Árbol|
+|[[fivewin_clase_ttvitem|TTVItem ]]| Objeto elemento de objeto Visor de árbol|
+|[[fivewin_clase_ttxtedit|TTxtEdit ]]| Edición visual de archivos ASCII -en desarrollo-|
+|[[fivewin_clase_turllink|TUrlLink ]]| Objeto etiquetas de enlace URL|
+|[[fivewin_clase_tvbcontrol|TVbControl ]]| Clase para manejo de controles VB|
+|[[fivewin_clase_tvbxarray|TVbxArray ]]|Soporte para manejo de arreglos con propiedades de controles VBX|
+|[[fivewin_clase_tvideo|TVideo ]]|Soporte Fivewin para video|
+
+
+
+
+===== Controles Estándar =====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tbutton|TButton]]|Botones de comando |
+|[[fivewin_clase_tcheckbox|TCheckbox]]|Casillas de selección|
+|[[fivewin_clase_tcombobox|TComboBox ]]|Lista de despliegue|
+|[[fivewin_clase_tcontrol|TControl ]]| Clase base para todos los control GUI |
+|[[fivewin_clase_tget|TGet ]]|Clase para Objeto de captura|
+|[[fivewin_clase_tgroup|TGroup ]]| Objeto grupo de diálogo|
+|[[fivewin_clase_tlistbox|TListBox ]]|Cuadro de lista|
+|[[fivewin_clase_tmultiget|TMultiGet ]]|Objeto de captura de campos memo|
+|[[fivewin_clase_tradio|TRadio ]]|Manejo de Botón de selección|
+|[[fivewin_clase_tradmenu|TRadMenu ]]|Grupo de botones de selección| 
+|[[fivewin_clase_tsay|TSay ]]| Objeto desplegado|
+|[[fivewin_clase_tscrollbar|TScrollBar ]]|Objeto Barra de desplazamiento|
+|[[fivewin_clase_tstatusbar|TStatusBar ]]|Objeto Barra de estado|
+
+
+
+
+====== Database ======
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tdatabase|TDatabase]]|Manejo de Objeto Base de datos  |
+|[[fivewin_clase_tdbase|TDBase]]|Manejo de bases de datos SQL  |
+|[[fivewin_clase_tdbfcomp|TDbfComp]]|Componente DBF  |
+|[[fivewin_clase_tdbm|TDbm]]| Clase Manejador Base de Datos| 
+|[[fivewin_clase_tdbms|TDbms]]|Clase Manejador Base de Datos|
+|[[fivewin_clase_tdbodbc|TDbOdbc]]|Solo para 16 bits (consulte FiveODBC)|
+|[[fivewin_clase_tdict|TDict]]| Diccionario de datos Fivewin|
+|[[fivewin_clase_tfield|TField]]|Manejo de campos de bases de datos|
+|[[fivewin_clase_tlocks|TLocks]]|Bloqueos SQL|
+|[[fivewin_clase_todbc|TOdbc]]|Consulte la documentación FiveODBC|
+|[[fivewin_clase_tordinfo|TOrdInfo]]|Información de órdenes de datos usado por TODBC|
+|[[fivewin_clase_trdd|TRdd]]|RDD virtual|
+|[[fivewin_clase_trddodbc|TRddOdbc]]| Clase RDD para ODBC|
+|[[fivewin_clase_tsqlerror|TSqlError]]|Clase para último error de SQL|
+|[[fivewin_clase_ttable|TTable]]|Manejo de tablas (DBF simples)|
+|[[fivewin_clase_tview|TView]]|Visor de Objetos -en desarrollo-|
+
+
+====== DDE ======
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tdde|TDDE]]|Intercambio dinámico de datos como objeto |
+|[[fivewin_clase_tddeclient|TDDEClient]]| Objeto Cliente DDE |
+|[[fivewin_clase_tddemlclient|TDDEMLClient]]| Objeto cliente de la biblioteca de Intercambio dinámico de datos|
+|[[fivewin_clase_tddemlserver|TDDEMLServer]]|Objeto servidor de la biblioteca de Intercambio dinámico de datos|
+|[[fivewin_clase_tddeserver|TDDEServer]]|Objeto Servidor DDE|
+
+
+
+
+====== Manejo de Archivos ======
+
+^ Clase  ^  Descripción  ^
+|[[fivewin_clase_tfile|TFile]]|Manejo de archivos a bajo nivel |
+|[[fivewin_clase_tini|TIni]]|Manejo de archivos INI |
+|[[fivewin_clase_tlex|TLex]]|Analizador de texto |
+|[[fivewin_clase_tlibfile|TLibFile]]|Manipulación de archivos LIB |
+|[[fivewin_clase_tlinklist|TLinkList]]|Manejo de listas de estructuras de datos encadenadas  |
+|[[fivewin_clase_tng|TNg]]| Manejo de archivos Norton Guides  |
+|[[fivewin_clase_tobjfile|TobjFile]]|Manipulación de archivos OBJ  |
+|[[fivewin_clase_trtffile|TRtfFile]]|Clase para manejo de Texto Enriquecido  |
+|[[fivewin_clase_ttxtfile|TTxtFile]]|Clase para manejo de archivos de texto  |
+
+
+====== Internet ======
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tinternet|TInternet]]|Soporte a Micrososft WinInet.dll|
+|[[fivewin_clase_tctrlsocket|TCtrlSocket]]|Clientes TCP/IP de capas múltiples|
+|[[fivewin_clase_tftp|TFTP]]|Objeto FTP basado en Microsoft WinINet.dll|
+|[[fivewin_clase_tftpclient|TFTPClient]]|Cliente Internet FTP|
+|[[fivewin_clase_tftpfile|TFTPFile]]|Objeto archivos FTP basado en Microsoft WinINet.dll|
+|[[fivewin_clase_tftpserver|TFTPServer]]|Clase para crear un servidor Internet FTP|
+|[[fivewin_clase_tftpsession|TFTPSession]]| Clase para crear sesiones de Internet FTP (usado por TFTPServer)|
+|[[fivewin_clase_thtmlpage|THtmlPage]]|Visor de páginas HTML|
+|[[fivewin_clase_tnewsinstance|TNewsInstance]]|Cliente para noticias|
+|[[fivewin_clase_tnewsserver|TNewsServer]]|Servidor de noticias|
+|[[fivewin_clase_tpop3|TPOP3]]|Cliente para correo entrante SMTP|
+|[[fivewin_clase_tproxy|TProxy]]|Servidor Proxy de Internet (multi-protocolo)|
+|[[fivewin_clase_tras|TRas]]|Acceso RAS|
+|[[fivewin_clase_tsmtp|TSMTP]]|Clase para manejo de Correo SMTP saliente|
+|[[fivewin_clase_tsocket|TSocket]]|Soporte a sockets TCP/IP de Internet|
+|[[fivewin_clase_twebclient|TWebClient]]|Cliente Web|
+|[[fivewin_clase_twebserver|TWebServer]]|Servidor de páginas Web y PROXY|
+
+====== Menús ======
+
+^Clase^Descripción^
+|[[fivewin_class_tacctable|tAcctable]]|Clase para aceleradores|
+|[[fivewin_class_tmenu|tMenu]]|Clase para Manejo del Objeto Menú|
+|[[fivewin_class_tmenuitem|TMenuitem]]|Clase para menejo de elementos de menú|
+|[[fivewin_class_tmru|TMru]]|Clase para manejo de opciones recientes|
+
+====== Misceláneos ======
+
+
+
+
+
+===== Estándar =====
+
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tblock|TBlock]]|Clase para almacenamiento de bloques de código|
+|[[fivewin_clase_TExStruct|TExStruct]]|Estructuras Fivewin|
+|[[fivewin_clase_trect|TRect]]| Clase para rectángulos básicos|
+|[[fivewin_clase_tstring|TString]]|Manejo de cadenas mayores a 64Kb|
+|[[fivewin_clase_tstruct|TStruct]]|Clase para manejo de estructura a bajo nivel en lenguaje C|
+|[[fivewin_clase_tsymbol|TSymbol]]|Manipulación de símbolos internos de Clipper|
+|[[fivewin_clase_tsymtable|TSymTable]]|Manipulación de la tabla de símbolos internos de Clipper|
+|[[fivewin_clase_ttime|TTime]]|Manejo de Objeto de tiempo|
+
+
+
+
+
+
+===== Windows =====
+
+^ Clase  ^  Descripción  ^
+|[[fivewin_clase_tbrush|TBrush]]| Manejo de Brochas|
+|[[fivewin_clase_tclipboard|TClipborad]]| Manejo de portapapeles|
+|[[fivewin_clase_tcomm|TComm]]| Manejo de puertos COMM y LPT |
+|[[fivewin_clase_tcomobject|TCommObject]]| Soporte interfase COMM|
+|[[fivewin_clase_tcursor|TCursor]]| Objeto cursor|
+|[[fivewin_clase_tfont|TFont]]| Manejo de fuentes|
+|[[fivewin_clase_ticon|TIcon]]| Manejo de iconos|
+|[[fivewin_clase_tmail|TMail]]|Manejo de MAPI|
+|[[fivewin_clase_tmci|TMCI]]| Objeto Multimedia|
+|[[fivewin_clase_tpen|TPen]]| Objeto pluma |
+|[[fivewin_clase_treg32|TReg32]]|Manejo del registro de Windows|
+|[[fivewin_clase_ttimer|TTimer]]| Objeto Temporizador|
+|[[fivewin_clase_ttrayicon|TTrayIcon]]|Icono en el área de notificación|
+
+
+
+====== Impresión======
+^  Clase  ^  Descripción  ^
+|[[fivewin_clase_tdosprn|TDosPrn]]|Clase para impresión tipo DOS|
+|[[fivewin_clase_tpreview|TPreview]]|Clase para manejar la vista preliminar de la impresión|
+|[[fivewin_clase_tprinter|TPrinter]]|Clase para manejar la impresora como Objeto|
+|[[fivewin_clase_trcolumn|TRColumn]]|Clase para definir las columnas de un reporte|
+|[[fivewin_clase_treport|TReport]]|Clase para manejar el Objeto Reporte|
+|[[fivewin_clase_trfile|TRFile]]| Clase para enviar el reporte a un archivo|
+|[[fivewin_clase_trgroup|TrGroup ]]| Clase para manejar los grupos de un reporte|
+|[[fivewin_clase_trline|TrLine ]]|Clase para impresión de línea en un reporte|
+
+
+
+
+====== Ventanas y Diálogos ======
+
+^Clase^Descripción^
+|[[fivewin_clase_tdialog|TDialog ]]|Cajas de Diálogo|
+|[[fivewin_clase_tDlgFnd|TDlgFnd ]]|Diálogo estándar para búsqueda  |
+|[[fivewin_clase_tmdichild|TMDIChild]]| Ventanas hija MDI |
+|[[fivewin_clase_tMdiclient|TMdiClient ]]| Ventanas Cliente MDI|
+|[[fivewin_clase_tMdiFrame|TMdiFrame ]]| Ventanas marco MDI |
+|[[fivewin_clase_tWindow|TWindow ]]| Ventanas|

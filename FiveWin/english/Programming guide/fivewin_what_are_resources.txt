@@ -1,0 +1,121 @@
+
+Resources are one of the most important parts of Windows programming.To understand them you should consider that your program can be divided in two parts:
+
+
+·	What the program does -behaviors-
+·	The different pieces used to build the program -Data-
+
+
+Once again we are talking about Object Oriented Programming. Obviously, both parts are highly dependant upon each other.
+
+Some of the pieces used to build your program may be stored in a separate .DLL file or even inside the EXE file. Those pieces, let's call them resources, can be managed and changed externally from the program. This is probably the most important reason for the birth of what is called "Visual Programming".
+
+"Visual Programming" is mainly about resources. The programmer may draw resources using the mouse and certain design programs. In the next stage, those resources get related to some behaviors. From that moment you are building, and using, Objects!
+
+
+FiveWin has been designed to obtain high performance from Windows resources. FiveWin proposes a way of programming based on resource usage. We are convinced that drawing screens and other resources is the easiest and quickest way to develop a program. Thanks to this technology you can easily build 'Data-driven' programs. This means that your user interface is based on external and modifiable data.  You can   easily modify a screen and use it without having to recompile or relink.
+
+
+The most important part of this process is to understand how to build an Object from a resource, and how to define -redefine- its  behaviors. There are three main ways to build an Object in xBase:
+
+<code clipper>
+1. @ nRow, nCol ...
+</code>
+This kind of construction builds an Object and displays it. When you do, @ ... GET ... you are building a GET Object with Clipper, and you also display it. This way of building Objects is not based on resources.
+
+<code clipper>
+2. DEFINE <ObjectClass> <ObjectName>
+</code>
+
+
+This is the main way of building an Object in xBase. The Object is created, but it is not shown. To display it and activate it, you do:
+
+<code clipper>
+ACTIVATE <ObjectClass> <ObjectName>
+</code>
+
+This system was proposed and used by dBase IV, and it is going to be the most important way to build Objects in xBase.This system it is also not based on resources.
+
+3. REDEFINE <ObjectClass> <ObjectName> ID <Identifier>
+
+In this case you are using resources. The Object is already created in the resource, but you need a way to modify and define its behaviors. This is why the REDEFINE command is going to be the most important command to modify behaviors in xBase.
+
+
+Once you have redefined its behaviors, the Object will be activated using the command:
+
+ACTIVATE <ObjectClass> <ObjectName>
+
+In many cases the Objects are contained by a 'container' Object.This would be the case of a Window or a Dialog Box which contains certain controls. To activate those controls it is not necessary to use the command ACTIVATE ... for each of them.  It is enough to ACTIVATE the container Object.
+
+Lets review now, step by step, the process you should follow to use resources in your programs:
+
+
+
+1.	You need a resource designer. We like to use Borland's Resource WorkShop. This designer comes with Borland's products for Windows, such as C++ and Turbo Pascal. You should contact Borland or a software distributor and get one!  You'll thank us!
+
+
+
+2.	Using that designer you may start drawing the different screens of your program. This is a standard system for Windows programming. The screens you design must be stored inside a DLL. In the \FiveWin\DLL directory there is an 'empty' DLL you may use to store your screens in. (make a copy for every new project). You should tell the resource editor to 'open' and use that DLL. Select open file  and type the name of that DLL.
+
+
+
+3.	When you design your screens you should give a name to each of them.   This name will let you select them from inside your program. You should specify a unique identifier, a number, for each element of a screen. This number will be used by the REDEFINE command to tell FiveWin which Object you are using.
+
+
+Practice with your resource editor to understand it and to become familiar with its usage.
+
+After that, from inside your program you should tell FiveWin that your program is going to use resources. To do this,  use the following command at the beginning of your program:
+
+<code clipper>
+#include 'FiveWin.ch'
+
+SET RESOURCES TO <DLLFileName>
+
+And when you are about to end the execution of your program, you should tell FiveWin that you have finished using them:
+
+SET RESOURCE TO  // Release the resource
+</code>
+
+To use any of the Dialog Boxes you have defined in your DLL all you   have to do is the following:
+
+<code clipper>
+function TestDialogBox()
+
+
+local oDlg
+
+local cName := "FiveWin"
+
+DEFINE DIALOG oDlg NAME "MyDialog"
+
+REDEFINE GET ID 110 VAR cName OF oDlg
+
+REDEFINE BUTTON ID 120 OF oDlg ACTION nMsgBox( "Hello" )
+REDEFINE BUTTON ID 130 OF oDlg ACTION oDlg:End()
+
+ACTIVATE DIALOG oDlg
+
+
+return
+</code>
+
+In this example we are building a Dialog Box from the screen "MyDialog" stored inside the DLL we have specified in a SET RESOURCES TO "MyDLL.dll" earlier in the program.
+
+In that screen there is a GET Object and two PushButtons (Command Buttons). From the resource editor we have assigned a value of 110 to the GET control and 120 to the first button and 130 to the second.
+
+Remember that the syntax for redefining is:
+
+REDEFINE <ObjectClass> <ObjectName> ;
+
+ID <Identifier> ;
+OF <ContainerObjectName> ;
+...
+
+
+Every kind of control will have certain extensions typical to this command. As an example, BUTTON has the clause ACTION to let us specify what the Object will do when the button is pressed.
+
+Review the source code of \EXAMPLES\FwBorl.prg where you will find several examples of using resources from DLLs.
+
+When you get used to this system you will understand that it is the easiest and quickest way of building programs.
+
+

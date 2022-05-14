@@ -1,0 +1,18 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+
+Para poder generar el primer programa usaremos el archivo tutor01.prg que se encuentra en la carpeta ~/FWH/fivemac/samples .
+
+   * Abriremos el terminal de MacOSx ( Aplicaciones->Utilidades->Terminal.app ) 
+  * Iremos hasta nuestra carpeta samples :
+     
+    cd /FWH/fivemac/samples ( ojo con las mayusculas y minusculas que es case sensitive ). 
+
+   Tip:
+  Una manera rápida de ir a una carpeta en Mac es :
+   Usar el finder para encontrar la carpeta 
+   Ir al Terminal escribir en él "cd "( con un espacio al final)
+   Arrastra la carpeta del finder al terminal .
+   Se escribirá la ruta completa a la carpeta , dando un enter te llevará a ella .
+ 
+ 
+   * Dentro de samples en el terminal escribiremos ./build.sh tutor01 y se nos generará nuestro primer programa . 

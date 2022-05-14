@@ -1,0 +1,17 @@
+La barra de botones se ha convertido en uno de los componentes estándar que puede encontrar en casi todas las aplicaciones Windows.
+
+El propósito de la barra de botones es proporcionar un acceso rápido a las opciones más frecuentes de su aplicación. Tiene la ventaja que usa imágenes en lugar de texto para mostrar que es lo que hacen.
+
+Una barra de botones bien diseñada ayuda mucho en el manejo y entendimiento rápido de una aplicación. No use imágenes sin significado. Use dibujos intuitivos que permitan a todos usar la aplicación fácilmente.
+
+Una barra de botones es una área de la pantalla dones hay algunos botones con iconos (FiveWin usa bitmaps) ofreciendo diferentes acciones. Normalmente cuando usted mueve el mouse sobre esos botones, el mensaje en la barra inferior es el mismo que se muestra cuando selecciona la misma opción del menú descolgante.
+
+FiveWin nos seleccionar barras de botones con vista 3D(ver comandos xBase ButtonBar) y para seleccionar las dimensiones deseadas para sus botones. También es posible usar bitmaps que automáticamente se ajusten a la superficie de los botones.
+
+La mayorías de las aplicaciones usa barras de botones que tienen la habilidad de cambiar su posición en la pantalla. FiveWin le permite colocar su barra de botones arriba, abajo, a la izquierda o a la derecha de la ventana que lo contiene y opcionalmente puede ser una barra flotante. Para elegir su posición inicial use los comandos xBase que se incluyen para su manejo. Para cambiar su posición durante la ejecución solo de click derecho sobre la barra (no sobre los botones). Un menú contextual le permitirá al usuario hacer la selección de la posición.
+
+También es posible destruir durante la ejecución la barra puede usarla y reemplazarla por una nueva . Todas las ventanas tienen un  :oBtnBar  DATA que puede libremente manipularse. Recuerde que destruir cualquier control se necesita usar el mensaje :End().
+
+La siguiente versión de FiveWin ofrecerá nuevas y poderosas posibilidades en las que estamos trabajando (como reglas, barras múltiples, barras desplazables, barras configurables por el usuario y más...).
+
+Por favor déjenos saber de sus necesidades y siéntase en confianza de enviarnos cualquier mejora que deseara revisemos. Una bien diseñada y poderosa barra de botones es un componente muy importante de una aplicación Windows.

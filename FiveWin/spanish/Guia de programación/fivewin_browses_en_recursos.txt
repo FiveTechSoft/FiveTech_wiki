@@ -1,0 +1,23 @@
+· Como colocar un navegador de FiveWin en una caja de diálogo:
+
+   1. Elija botón custom control barra de herramientas (s emuestra una pequeña llave en él).
+
+   2. Se le preguntará por el nombre del custom control a usar: Escriba TWBrowse.
+
+   3. Dibuje el área de navegación en la caja de diálogo y de doble cick en él.
+
+   4. Agregue el siguiente estilo en la parte baja:
+
+
+... | WS_TABSTOP | WS_BORDER | WS_VSCROLL | WS_HSCROLL
+
+   5. Para verficiar que todo está correcto desde dentro del Resource WorkShop, elija la opción del menú descolgante: "Edit as text"
+
+      El texto puede mostrar una entrada como esta:
+
+
+CONTROL "", 110, "TWBrowse", 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_VSCROLL | WS_BORDER, 4, 23, 117, 104
+
+      En lugar de 110 elegirá el ID que desee para su control browse.
+
+   6. Revise el RC y las DLLs que suministramos en la carpeta SAMPLES para que vea como lo hicimos.

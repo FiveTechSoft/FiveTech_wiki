@@ -1,0 +1,17 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+
+Para instalarlo, debe ejecutar las siguientes aplicaciones, una vez descargadas desde FiveTech:
+
+  * fivemac.zip (comercial)
+
+  * Descarga Harbour para Mac ( Harbour.zip ) desde Fivetech. ( Recomendado ) .
+   o 
+  * Descargar y construir Harbour desde su repositorio libre [[Harbour_build|==>]]
+  * Descargar y construir xHarbour desde su repositorio libre [[xHarbour_build|==>]]
+
+ Una vez dispongas de los dos archivos zip crea una carpeta preferiblemente dentro de tu usuario y descomprime en ella los dos zip generando una extructura :
+
+{{:fwh.jpg|:fwh.jpg}}
+
+  * Descargar e instalar las utilidades de programación de Apple o bien cogerlas e instalarlas del disco de instalación del sistema .Se llama xcode y son gratuitas .Dentro de ellas se encuentra el compilador de c que se utiliza para compilar los archivos generados por Harbour .
+[[http://developer.apple.com/technologies/tools/|Descarga de xcode 3]]

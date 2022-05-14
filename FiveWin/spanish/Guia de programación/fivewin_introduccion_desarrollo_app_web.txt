@@ -1,0 +1,13 @@
+Desarrollo de aplicaciones IntraNet/InterNet usando FiveWin
+
+La implementación de la poderosa clase TSocket de Fivewin le permite construir aplicaciones para bases de datos en IntraNet/InterNet robustas y poderosas.
+
+El fundamento de FiveWin Internet ofrece un manejo sencillo de TCP/IP y orientada al objeto WinSock.dll, y dirige el control sobre Microsoft 32 bits WinINet.dll. Microsoft 32 bits WinINet.dll es una DLL de servicios de Internet de alto nivel.
+
+No se requiere software extra (como WebSite, Windows NT IIS, Personal WEB server o similar), así FiveWin se convierte a sí mismo en una de las más poderosas herramientas para desarrollar aplicaciones de bases de datos en ambiente IntraNet/InterNet.
+
+Soporte de API
+
+WINAPI\WinSock.c
+WINAPI\WinINet.prg
+

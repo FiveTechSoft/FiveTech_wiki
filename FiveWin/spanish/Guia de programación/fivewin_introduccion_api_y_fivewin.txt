@@ -1,0 +1,14 @@
+Programar en Windows es una tarea muy difícil. Windows es completamente diferente a DOS y tiene tatas nuevas características que es virtualmente imposible para cualquier programador recordarlas todas.
+
+Para quienes son nuevos en la interfase gráfica del usuarios GUI, la curva de aprendizaje de Windows lleva alrededor de dos años, solo para manejar las tareas básicas. Es necesario también, progrmar en lenguaje C, que se traduce a un año más de entrenamiento.
+
+La forma tradicional de programación Windows claramente se representa en el libro de Charles Petzold 'Programando en Windows'. La forma Petzold implica usar lenguaje C el SDK de Windows SDK (Software Development Kit) de Microsoft.
+
+Con la ventaja de la tecnología Orientada a Objetos, principalmente basada en C++, apareció otra forma de desarrollaaplicaciones en Windows, la que se representa claramente en el libro de Paul Dilascia 'Windows++' , de la serie Andrew Schulman, Addison Wesley ISBN 0-201-60891-X-. La manera de Dilascia implica usar el lenguaje C++ que va dirigida a un proceso de rediseño completo del paradigma de Windows, convertiéndolo en un entorno real Orientado a Objeto.
+
+Gracias a la arquitectura Orientada a Objeto interna de Clipper 5 y a las extensiones POO proporcionadas por nuestra biblioteca OBJECTS.lib, incluida con  FiveWin, hemos desarrollado una poderosa aproximación a la programación en  Windows basada en las ideologías de Paul Dilascia.
+
+
+En este capítulo vamos a echar un vistazo a la arquitectura Orientada a Objeto de FiveWin, las conexiones entre el API de Windows API y el kernel Orientado a Objeto de Clipper, así comprenderá claramente todos los procesos involucrados y como puede crear de manera sencilla nuevas Clases conectadas con el API de Windows.
+
+

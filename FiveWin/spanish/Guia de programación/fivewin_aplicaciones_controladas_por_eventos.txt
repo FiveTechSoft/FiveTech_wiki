@@ -1,0 +1,10 @@
+Mientras que en una aplicación DOS siempre hay un ciclo principal donde la aplicación verifica si existe una entrada del usuario, normalmente un tecla presionada o actividad del mouse, Windows mantiene un ciclo principal y reporta a la aplicación toda la actividad el usuario. Esta es la diferencia fundamental entre las aplicaciones DOS y las aplicaciones Windows.
+
+Cada vez que el usuario presiona una tecla o hace algo con el mouse, Windows lo detecta y envía a la aplicación un mensaje informando que ha ocurrido un evento.
+
+
+Sólo recuerde, que en DOS USTED tiene el control del ciclo principal, pero en Windows no es así, y Windows le reportara, enviándole un mensaje con toda la información de lo que está sucediendo.
+
+En una aplicación manejada por eventos, definimos diferentes acciones a ejecutar en ciertos eventos. Estas acciones son como 'call-backs' a donde la ejecución del programa saltará cuando se procese un determinado evento.
+
+

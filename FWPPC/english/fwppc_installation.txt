@@ -1,0 +1,8 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+
+In order to install it, you have to run the following setup applications, once downloaded from FiveTech:
+
+  * fwppc.exe (commercial)
+  * harb_arm.exe (free)
+  * vce.zip (free)
+  * emulator.msi (free) Pocket PC emulator on your PC

@@ -1,0 +1,264 @@
+====== FiveWin Tutorial ======
+[[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] 
+
+|Official website|http://www.fivetechsoft.com|
+|Tech support forums|http://forums.fivetechsupport.com|
+|Free contributions|http://code.google.com/p/fivewin-contributions/downloads/list|
+|Harbour docs|http://www.fivetechsoft.com/harbour-docs/harbour.html|
+|Applications gallery|http://forums.fivetechsupport.com/viewtopic.php?f=17&t=24170&start=0|
+
+====== Hello world ======
+tutor01.prg
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   MsgInfo( "Hello world!" )
+
+return nil
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor01
+</code>
+{{:helloworld.png|:helloworld.png}}
+
+
+====== Your first window ======
+tutor02.prg
+
+<code clipper>
+#include "FiveWin.ch"
+
+function Main()
+
+   local oWnd
+
+   DEFINE WINDOW oWnd TITLE "My window"
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor02
+</code>
+{{:mywindow.png|:mywindow.png}}
+
+
+
+====== A menu for your window ======
+tutor03.prg
+
+<code clipper>
+#include "FiveWin.ch"
+
+static oWnd
+
+function Main()
+
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+
+function BuildMenu()
+
+   local oMenu
+
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+
+return oMenu
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor03
+</code>
+{{:mymenu.png|:mymenu.png}}
+
+
+
+
+====== A ButtonBar and a MessageBar for your window ======
+tutor04.prg
+
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+   
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION MsgInfo( "customers" )
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor04
+</code>
+{{:mybars.png|:mybars.png}}
+
+
+
+
+====== A dialog box for your app ======
+tutor05.prg
+
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+ 
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION MsgInfo( "customers" )
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         MENUITEM "Customers..." ACTION Customers()
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu
+
+function Customers()
+
+   local oDlg
+   
+   DEFINE DIALOG oDlg TITLE "Customers" SIZE 500, 300
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+return nil   
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor05
+</code>
+{{:mydialog.png|:mydialog.png}}
+
+
+
+
+
+====== Using controls to input data from your dialog box ======
+tutor06.prg
+<code clipper>
+#include "FiveWin.ch"
+ 
+static oWnd
+ 
+function Main()
+ 
+   local oBar
+ 
+   DEFINE WINDOW oWnd TITLE "My window" MENU BuildMenu()
+ 
+   DEFINE BUTTONBAR oBar OF oWnd 2010 SIZE 50, 50
+ 
+   DEFINE BUTTON FILENAME "..\bitmaps\32x32\people.bmp" OF oBar ACTION Customers()
+ 
+   DEFINE MSGBAR PROMPT "my message bar" OF oWnd 2010
+ 
+   ACTIVATE WINDOW oWnd
+ 
+return nil
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "My app"
+      MENU
+         MENUITEM "About..." ACTION MsgInfo( "My FiveWin app" )
+         MENUITEM "Customers..." ACTION Customers()
+         SEPARATOR
+         MENUITEM "Exit..." ACTION If( MsgYesNo( "Want to end ?" ), oWnd:End(),)
+      ENDMENU
+   ENDMENU
+ 
+return oMenu
+
+function Customers()
+
+   local oDlg, cFirst := Space( 20 ), cLast := Space( 20 ) 
+   
+   DEFINE DIALOG oDlg TITLE "Customers" SIZE 500, 300
+   
+   @ 1.8, 3 SAY "First:" OF oDlg
+   
+   @ 2, 5 GET cFirst OF oDlg
+   
+   @ 3, 3 SAY "Last:" OF oDlg
+   
+   @ 3.4, 5 GET cLast OF oDlg
+   
+   @ 6, 12 BUTTON "Ok" OF oDlg ACTION oDlg:End()
+
+   @ 6, 20 BUTTON "Cancel" OF oDlg ACTION oDlg:End()
+   
+   ACTIVATE DIALOG oDlg CENTERED
+   
+return nil   
+</code>
+To build it simply do from FWH\samples folder:
+<code>
+buildh.bat tutor06
+</code>
+{{:mycontrols.png|:mycontrols.png}}

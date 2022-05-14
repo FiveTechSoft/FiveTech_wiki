@@ -1,0 +1,20 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+
+
+In order to install it, you have to run the following setup applications, once downloaded from FiveTech:
+
+
+  * fivemac.zip (commercial)
+  * Harbour.zip (free)
+
+Alternatively you can download and build Harbour yourself: 
+
+  * Download and build Harbour from its free repository [[Harbour_build|==>]]
+
+Once you unzip FiveMac and Harbour, please go to FiveMac/samples folder and give execution permissions to build.sh:
+
+   chmod +x build.sh
+
+You may also need to give execution permissions to Harbour in Harbour/bin folder:
+
+   chmod +x harbour

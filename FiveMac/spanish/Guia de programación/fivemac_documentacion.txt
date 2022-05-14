@@ -1,0 +1,74 @@
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsupport.com
+
+
+
+
+====== Instalación ======
+  * [[fivemac_instalacion|Instrucciones básicas para la instalación]]
+  * [[fivemac_miprimerprograma|Crear mi primer programa ]]
+
+
+
+
+
+
+====== Guía de Programación ======
+  * [[fivemac_guia_de_programacion|==>]]
+
+
+
+====== Guía de Referencia ======
+  * [[fivemac_guia_de_programacion|==>]]
+
+===== Comandos =====
+
+==== Orden Alfabético ====
+[[fivemac_comandos_orden_alfabetico|==>]]
+
+
+===== Classes =====
+  * [[fivemac_classes_ordenadas_alfabeticamente|Ordenadas alfabéticamente]]
+
+  * [[fivemac_classes_por_categoria|Por categoría]]
+
+  * [[fivemac_classes_jerarquia|Jerarquía de Clases]]
+
+==== Ordenadas alfabeticamente ====
+[[fivemac_classes_ordenadas_alfabeticamente|==>]]
+==== Por categoria ====
+[[fivemac_classes_por_categoria|==>]]
+==== Jerarquia de Classes ====
+[[fivemac_classes_jerarquia|==>]]
+
+
+===== Funciones =====
+
+  * [[fivemac_funciones_ordenadas_alfabeticamente|Ordenadas alfabéticamente]]
+
+  * [[fivemac_funciones_por_categoria|Por categoría]]
+
+
+
+
+
+
+====== FAQ ======
+  * [[fivemac_esp_faq|==>]]
+
+
+
+
+
+====== Recursos ======
+  * [[fivemac_rescursos|==>]]
+  * Descargar e instalar las utilidades de programación de Apple o bien cogerlas e instalarlas del disco de instalación del sistema .Se llama xcode y son gratuitas .Dentro de ellas se encuentra el compilador de c que se utiliza para compilar los archivos generados por Harbour .
+[[http://developer.apple.com/technologies/tools/|Descarga de xcode 3]]
+
+
+====== Harbour ======
+
+
+===== Descargarlo y construirlo =====
+[[building_harbour|==>]]
+
+[[http://www.fivetechsoft.com/harbour-docs/harbour.html|Harbour Guía de programación]]

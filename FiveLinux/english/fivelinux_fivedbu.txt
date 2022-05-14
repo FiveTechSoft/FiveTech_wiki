@@ -1,0 +1,11 @@
+Built using Harbour and FiveLinux. Full source code provided.
+
+{{:fivelinux-fivedbu.gif|:fivelinux-fivedbu.gif}}
+
+
+
+====== See Also ======
+
+[[fivewin_fivedbu]]
+[[fivemac_fivedbu]]
+[[fivedbu_english|FiveDBU for the Web]]

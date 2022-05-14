@@ -1,0 +1,37 @@
+
+FiveWin imposes no restriction at all to your current DataBase designs and techniques acquired in MsDos. You may feel free to continue working as you normally do with DataBases.
+
+There are just some points you should keep in mind for a better understanding of Windows processes:
+
+By default any Windows task is given a maximum of 20 files opened at the same time. In order to have the same conditions as we have in MsDos you have to use the SetHandleCount() function that FiveWin supplies:
+
+<code clipper>
+SetHandleCount( <nMaxFiles> )  --> <nMaxFilesAutorized>
+</code>
+If your application is going to manage 40 files at the same time, you will have to do at the beginning of your application:
+<code clipper>
+SetHandleCount( 40 )
+</code>
+Remember that DBFs that use memos also open an associated file DBT, and  also remember that normally when Windows is printing it opens some  temporary files (also FiveWin opens some more when doing PREVIEWs of  printing works). If you get an error it may be that there are not enough files available. Increase its number with SetHandleCount(). There is a maximum of 255 files available per application.
+
+
+Also it is not a good idea to give 255 files to all your applications for you will consume a lot of memory resources!
+
+If you are working with NonModal designs, the same DataBase may get opened several times at the same time! By the same user! Clipper allows this but, in fact, your application is acting like an application for a NetWork. You have to provide Multi-User control to your application!
+
+For this, if you are using Windows 3.1 loading SHARE.EXE before loading Windows, this is a MUST! If you are using Windows 3.11 or Windows 95 (pre-releases versions) this is no needed as these new versions automatically load SHARE.EXE when starting.
+
+
+Converting an application for working in a NetWork is quite easy. Review this documentation for our recommendations and guidance for  NetWork programming. Don't worry if you have never code a multi-user application. It is really easy!
+
+FiveWin offers you a powerful DataBase Class that in fact saves  you a lot of tedious work. Just give a little of your time to understand  the FiveWin DataBase Class and you will save a lot of your precious  time!
+
+DataBase objects saves you from coding a _lot_ of source code lines!  Go for DataBase objects right now!
+
+
+If you are working with older versions of CA-Clipper (older than  5.2 d) you may have serious troubles working with some CA-Clipper RDDs. Some of them cause big problems in MsDos but in Windows they may crash your system. DbfCdx is not working properly even in version  5.2 d. There is a late patch for 5.2 d but we have not tested it yet, since we work most of the time, with Comix and SixDriver.
+
+We do recommend working with compound indexes CDX as they save a lot of work. Get Comix or SixDriver and use them! They are excellent!
+
+
+

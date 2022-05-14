@@ -1,0 +1,72 @@
+FiveWin DataBase objects have been designed with the purpose of reducing the size of your code when you have to manipulate a DBF. They simplify very much all the work required to work with DataBases and they are totally compatible with the standard way of manipulating DBFs in Clipper.
+
+1. What is a DataBase Object ?
+
+A DataBase object works mainly as a buffer, where you manipulate the Data, and lately you save it to the real DBF.
+
+2. How do I create a DataBase object ?
+
+
+After you do the typical USE <cDbfName> ALIAS ..., then following this sentence you write:
+
+<code clipper>
+local oDbf
+
+USE <cDbfName> [ ALIAS ... INDEX ... ... ]
+
+DATABASE oDbf
+</code>
+
+FiveWin will create automatically a DataBase object and will keep its reference inside the oDbf variable.
+
+The DataBase object will have as DATA the name of the fields of your DBF. Sample:
+
+<code clipper>
+USE Customer      // Customer has a field called "First"
+DATABASE oDbf
+
+oDbf:Load()       // Loads values from the real DBF
+
+
+MsgInfo( oDbf:First )  // There is a DATA "First" there,
+
+// ready to be used!
+</code>
+
+3. Why a FiveWin DataBase object reduces my code ?
+
+Traditionally all Clipper programmers need to declare and use LOCAL variables as buffers where they manipulate the DBF values, and later they save the contents to the real DBF. This is a must if you are coding for NetWorking, as you can not manipulate the fields directly when you are sharing a DataBase (you have to lock, replace and then unlock).
+
+Another alternative used by Clipper programmers is to use an array as a buffer, where they load the initial DBF values, then they are manipulated and later they are saved to disk. Normally those operations are named Scatter() and Gather(). The disadvantage of using arrays is that you can not use your fields names directly, instead you have to define labels (#defines) with the risk of altering those sequences and generating errors.
+
+
+FiveWin DataBase objects solve those problems totally, as you no longer need to declare local variables one for each field. You just need to declare one local variable for holding the DataBase Object.
+
+In fact, the DataBase object keeps internally an array, in the same way as you would use an array for a buffer, but with the benefit that now you can use the names of the fields to manipulate each field!
+
+4. What cautions may I have when using DataBase objects ?
+
+Clipper restricts symbols names up to 10 characters length, so you can not use fields names with 10 characters, as in Clipper OOPS when you are assigning a DATA, Clipper internally places an underscore at the beginning of the DATA name:
+
+<code clipper>
+// ABCDEFGHIJ ==> Your field name
+
+MsgInfo( oDbf:Abcdefghij )	// Will work fine!
+
+oDbf:Abcdefghij = ...       	// Will not work!
+
+// as Clipper will do:
+// oDbf:_Abcdefghij
+// so exceeding 10 characters
+
+</code>
+
+Remember: If you are going to use FiveWin DataBase objects then you can not use fields with names longer than 9 characters !!!
+
+5. Where can I find a working sample ?
+
+Look at SAMPLES\Dbf01.prg for a working sample using a FiveWin DataBase object.
+
+Enjoy DataBase objects, they are extremely powerful and saves you from a lot of work! And they are 100% compatible with your existing code !!!
+
+

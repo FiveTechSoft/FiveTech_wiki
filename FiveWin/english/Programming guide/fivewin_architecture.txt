@@ -1,0 +1,72 @@
+If you have some experience with Object Oriented Programming (OOP), or just beginning with it, we guarantee you will love to know how Fivewin implements the OOP structure and how it has been designed.
+
+The implementation of OOP FiveWin takes four levels:
+
+  - **XBase commands**
+  - **Classes and Objects**
+  - **Functions and Data Structures**
+  - **Windows API wrappers**
+
+===== XBase commands =====
+ are the highest level of abstraction, that is, is it level at which you do not care much about how we do things, you only care about how they work, ie "make work".
+
+XBase commands originally came from dBase, and have been evolving into a standard called "xBase". These commands are built on objects. These objects and their classes are the second level of abstraction.
+
+
+===== Classes and Objects =====
+
+To use **classes and objects**, you must have some OOP skills. 
+
+Objects are also based on **functions (methods) and properties (data)**. This is the next level of abstraction. As you can see as we go forward, the complexity is greater and there are more details to understand.
+
+Eventually most of the functions we use are based on the Windows API.
+
+A high productivity is achieved rapidly with xBase commands. As you approach the Windows API growing power and possibilities but obviously their productivity is impaired. As application programmer should try to maintain an intermediate level: a balance between productivity and power.
+
+In spite of the low popularity of dBase IV, this version took a major step to consolidate the commands to create and manage objects, but offered no OOP.
+
+So in xBase standard states that for an Object CERAR use the command:
+<code clipper>
+DEFINE <ObjectClass> <objectname> [ADDITIONAL CLAUSES]
+</code>
+Note that if we use the command to create any object, in some cases we will be using a "message" generic constructor. We therefore recommend implementing this syntax for creating new objects.
+
+
+To activate any object, use:
+<code clipper>
+ACTIVATE <ObjectClass> <objectname>
+</code>
+Last but not always necessary in Clipper, to destroy an object, use the command:
+
+<code clipper>
+<objectname> <ObjectClass> RELEASE
+</code>
+
+These commands are processed in their respective messages sent to the object that we are handling. Thus:
+<code clipper>
+DEFINE WINDOW oWnd ==> It becomes ==> oWnd: = TWindow (): New (...)
+</code>
+The use of these commands allows the use of a single common syntax for all objects. You may think this is one of the goals of OOP: We must focus on our goal, not a particular implementation, in other words, we must use a single interface.
+Since FiveWin includes the latest version of Objects, you can use to create new classes from which FiveWin offers. Examine the class hierarchy FiveWin and design and code them to understand how to use the power of OOP inheritance.
+In FiveWin has been implemented for the first time, a mixed system for the development of object-oriented environments. The system developed allows you to use the power of OOP and the additional capabilities offered by spotters, called 'code blocks' in Clipper.
+There is some controversy between both approaches. There is no agreement on what the optimal system. That is why we decided to create a mixed system that uses both technologies.
+When a program is needed to change behavior temporarily (for example, define the behavior of an event), use the pointer-based system, ie, blocks of code. The reason for this is that we assume that this behavior will not be necessary in the future, so no need to create a new class.
+When you:
+
+<code clipper>
+      ACTIVATE WINDOW oWnd;
+         ON PAINT ON ...
+</code>
+
+We are modifying the behavior of the window when it receives the event PAINT. This system is based on blocks of code, it is logical that such conduct will not be reused in the future.
+But if you want to create a system that will be reused in the future, then it makes sense to create a new class, according to tradition in OOP. Thus, FiveWin TMsgBar class, which is often used in other programs, we inherited as a new class of TWindow and redefine its method PAINT.
+We believe that good OOP architecture should use these two building models. As you gain experience in OOP, you will understand our point of vista.POO is fantastic, but there are certain aspects that need to evolve. The construction of a mixed model can be a good way to discover new possibilities.
+
+
+
+===== Functions and Data structures =====
+Methods finally access to the Windows API through the use of functions. Windows provides lots of APIs that expose many functions that FiveWin invoke from the methods. These functions usually require some data to be provided and sometimes, that will be returned back (with some required information). 
+
+
+===== Windows API wrappers =====
+Usually the calls to the Windows API functions are easily implemented as a "wrapper" to the Windows function. FiveWin provides all its source code to access the Windows API so you will master how to access any Windows API that you may need to use.

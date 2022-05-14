@@ -1,0 +1,11 @@
+La barra de mensajes se ha convertido también en un componente estándar que podemos encontrar en casi todas las aplicaciones Windows.
+
+Una barra de mensajes es un control colocado en la parte baja de su ventana contenedora, que muestra información relacionada a la opción seleccionada del menú descolgante actual, o al botón de la barra de botones que está bajo el cursor del mouse.
+
+También es posible desplegar mensajes de controles de una ventana hija o de una caja de diálogo, para ayudar a los usuarios a comprender el significado de cada control de la caja de diálogo. (vea explicaciones de cajas de diálogos)
+
+FiveWin automáticamente aplica en la barra de mensajes la vista 3D, y opcionalmente podemos seleccionar la posición del mensaje ya sea a la izquierda o centrado (ver comando xBase de MessageBar).
+
+En el código fuente del IDE de Fivewin encontrará ejemplos que  muestran como colocar un reloj en la barra de mensajes. Planeamos extender la barra de mensajes de FiveWin con todas esas características.
+
+Una aplicación bien diseñada que usa suficiente información en la barra de mensajes ayuda al usuario a comprender rápidamente lo que reduce tiempos de entrenamiento y hace el software mucho más orientado a las personas.

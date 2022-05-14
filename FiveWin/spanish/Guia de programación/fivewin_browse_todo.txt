@@ -1,0 +1,38 @@
+La mayor ventaja del TWBrowse de Fivewin (ampliamente basado en el modelo TBrowse de Clipper) es la capacidad de navegar cualquier cosa que necesite.
+
+TWBrowse de FiveWin es una máquina de navegación genérica capaz de mostrar información de cualquier tipo, aunque es más común navegar en una base de datos, hemos agregado cierta funcionalidad interna para construir navegadores de bases de datos rápidamente.
+
+Hay ciertos DATAs y METHODs en un Objeto TWBrowse, que convenientemente inicializando le permiten navegar cualquier cosa:
+
+DATAs :	
+
+·	bLine: Se usa para mostrar cada línea del browse. Debe devolver un arreglo con todas las columnas a representar.
+·	bSkip: Usado para avanzar cierta cantidad de líneas. Este bloque de código es evaluado cada vez que la línea actualmente seleccionada va a cambiar. bSkip recibe un parámetro numérico que indica el número de líneas que se desea avanzar, y tiene que confirmar que devuelva un número, o un número alternativo con el número real de línea a avanzar:
+<code clipper>
+bSkip = { | nWant, nDo | ..., nDo }
+</code>
+nWant 	representa el número deseado de línea a avanzar. nDo indicará el número final de lineas a avanzar.
+
+·	bGoTop: Estso bloque de código se evalúan para la navegación.
+·	bGoBottom: a través de los datos representados. Propiamente asignados, podrá navegar cualquier cosa.
+·	bLogicLen: Debe asignar aquí la longitud lógica total del browse, para ajustar apropiadamente la barra de desplazamiento.
+
+Como ejemplo, veamos como podemos navegar en un arreglo solo manipulando estos DATAs:
+<code clipper>
+@ 1, 2 LISTBOX oBrw FIELDS aSample[ nItem ] ;
+
+HEADERS "Reviewing Array" ;
+FIELDSIZES 200 ;
+OF oDlg ;
+SIZE 100, 100 ;
+ON CLICK MsgInfo( "Click" )
+
+oBrw:bGoTop    = { || nItem := 1 }
+oBrw:bGoBottom = { || nItem := Eval( oBrw:bLogicLen ) }
+oBrw:bSkip     = { | nWant, nOld | nOld := nItem, nItem += nWant,;
+                     nItem := Max( 1, Min( nItem, Eval( oBrw:bLogicLen )),;
+                     nItem - nOld }
+oBrw:bLogicLen = { || Len( aSample ) }
+oBrw:cAlias    = "Array"
+oBrw:bKeyChar  = {| nKey | MsgInfo( nKey ) }
+</code>

@@ -1,0 +1,51 @@
+====== FiveDBU ======
+
+FiveDBU is a DataBase Utility for the Cloud:
+
+http://www.fivetechsoft.com/fivedbu
+
+FiveDbu is being built using [[fiveweb_english|FiveWeb]] and our intention is to provide it to you as an example of [[fiveweb_english|FiveWeb]] use so you can see
+for yourself how easy to use and learn [[fiveweb_english|FiveWeb]] is.
+
+
+
+
+
+====== FiveDBU Architecture ======
+
+1. a default.htm file that provides the main menu and includes the fiveweb.js (funcions and classes) and fivedbu.js (source code of fivedbu based on [[fiveweb_english|FiveWeb]])
+
+2. fiveweb.js is a javascript file that provides the [[fiveweb_english|FiveWeb]] functions and GUI classes for the web client side and to access the remote server functionality
+
+3. fivedbu.js is a javascript file that provides the main logic of [[http://www.fivetechsoft.com/fivedbu|FiveDBU]]
+
+====== Main menu ======
+
+
+
+===== File =====
+
+==== New... ====
+Creates a new DBF file
+
+
+==== Open... ====
+Opens an existing DBF file
+
+===== Help =====
+
+==== Wiki ====
+Access this wiki documentation
+
+==== About ====
+Shows the FiveDBU about info
+
+
+====== See Also ======
+
+[[fiveweb_english|FiveWeb]]
+[[fivegen_english|FiveGen]]
+
+[[fivewin_fivedbu]]
+[[fivemac_fivedbu]]
+[[fivelinux_fivedbu]]

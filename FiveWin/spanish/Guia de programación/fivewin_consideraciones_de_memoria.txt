@@ -1,0 +1,130 @@
+Cuando cree una aplicación muy grande con Clipper y FiveWin, siga estas recomendaciones:
+ 
+
+La actualización FiveWin 1.9.2 dispone de un nuevo conjunto de funciones para analizar el DGroup de su aplicación. Un nuevo ErrorSysW.prg utiliza estas funciones para analizar su memoria DG y ayudarle a ajustarla.
+
+ 
+
+Básicamente, hay dos reglas principales:
+
+ 
+
+1.   Reducir la cantidad de variable estáticas de su aplicación. Es muy fácil; simplemente    use un array estático en lugar de varias variables:
+
+<code clipper>  
+
+      static one
+
+      static two
+
+      static three
+</code>
+cámbielo por:
+<code clipper>
+      static aVars :={,,}
+
+ 
+
+donde
+
+ 
+
+      #define ONE aVars[ 1 ]
+
+      #define TWO aVars[ 2 ]
+
+      etc..
+</code>
+ 
+
+Puede no ser útil si usa unas cuantas variables estáticas, pero tiene mucho sentido si el número de variables estáticas es elevado (algunos clientes usan más de 1000). FiveWin 1.9.2 tiene una nueva función que cuenta el número de variables estáticas de su aplicación.
+
+ 
+
+2.   Existe una potente utilidad llamada DGPIG (puede encontrarla en el fórum de CA-Clipper) creada por Michael Devore (CauseWay) que analiza LIBs y OBJs y determina su consumo de DG. Los OBJs de Clipper OBJs consumen 8 bytes, lo que es normal y no puede variarse. Pero el problema surge al usar módulos de lenguaje C. Hay muchas razones por las que un módulo C puede consumir espacio DG, como declarar un literal en el código C o un array estático.
+
+ 
+
+Ambos problemas pueden solucionarse utilizando la cláusula ‘far’ de C que los ubica en un segmento de datos diferente:
+
+ 
+
+Aquí tiene un ejemplo:
+
+ 
+
+<code clipper>
+// Forma correcta:
+
+static far char Alert[] = "Alerta";
+
+ 
+
+CLIPPER nMsgBox()
+
+
+     _MsgBox( Alert, 0 );
+
+
+      // Forma incorrecta:
+
+     CLIPPER nMsgBox()
+
+      _MsgBox( "Alert", 0 );
+
+ 
+
+      // Forma incorrecta:
+
+      static byte Buffer[200];
+
+      // Forma correcta:
+
+      static far byte Buffer[200];
+
+ 
+</code>
+
+DGPIG le informará sobre estos problemas.
+
+ 
+
+Tenga en cuenta lo siguiente:
+
+ 
+
+Cuanto menor sea el consumo inicial de DGroup de su aplicación (FiveWin 1.9.2 le informa del estado inicial) y menos variables estáticas tenga, mayor será la pila de Clipper que tenga:
+
+<code c>
+
+<----------------------------- 64 Ks -------------------------------->
+
+DATA,_BSS (SYMP) | STACK_C | HEAP_C | CLIPPER STACK |  CLIPPER STATICS
+
+<----------- initial DG size ------->
+
+</code>
+
+ 
+
+Clipper usa el espacio restante de DG para su pila.
+
+ 
+
+A partir de FiveWin 1.9.2 se ubica espacio de heap dinámico al crear Gets y MultiGets con el código fuente ( @ ..., ... GET ... ). Con ello, se ha conseguido reducir el valor de HeapSize del archivo LNK (o DEF) hasta 1024 bytes sin que las aplicaciones se vean afectadas. Esto no era posible antes, dado que los Gets y MultiGets usaban esta área internamente. Con la reducción de HeapSize, ahora dispone de 7,5 Kb adicionales para la pila de Clipper.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

@@ -1,0 +1,12 @@
+A buttonbar is an area of the screen where there are some buttons with icons (FiveWin uses bitmaps) offering different actions. Normally when you move the mouse over those buttons, the message of the bottom bar is the same as selecting the same option from the pulldown menu.
+
+FiveWin let us select a 3D looking buttonbar (see ButtonBar xBase commands) and to select the desired dimensions for its buttons. Also  it is possible to use bitmaps that automatically adjust to the surface  of the buttons.
+
+Most applications use buttonbars that have the ability to changing its  position on the screen. FiveWin lets you place a buttonbar at the Top, Left, Bottom and right position of the window that holds it, and  optionally it may be a floating buttonbar. To select its starting position use the xBase commands we provide to manage it. To change its  position on the fly just right click on it (not over the buttons). A popup menu will let the user make the position selection.
+
+Also it is possible to destroy on the fly the buttonbar you may be using and replace it for a new one. All the windows have a :oBtnBar  DATA that may be freely manipulated. Remember that to destroy any control  we use the message :End().
+
+The next version of FiveWin will offer new and powerful possibilities  that we are working on (like rulers, multiple buttonbars, scrollable  buttonbars, user guided configurable buttonbars, and more...).
+
+Please let us know your needs, and feel free to send us any enhancement  you would like us to review. A good designed and powerful buttonbar is  a very important component of a Windows application.
+

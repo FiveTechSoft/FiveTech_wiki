@@ -1,0 +1,80 @@
+<code clipper>
+// Reviewing arrays - using FiveWin TWBrowse
+
+#include "FiveWin.ch"
+
+//------------------------------------------------------------------//
+
+function Main()
+
+
+local oDlg, oBrw
+local aSample := { "The standard", "has", "a name...",;
+
+        	           "CA-Clipper 5.", "Wellcome", "to", "FiveWin",;
+               	    "the CA-Clipper 5", "Windows", "Library" }
+
+local nItem := 1
+
+
+
+DEFINE DIALOG oDlg FROM 2, 2 TO 20, 50 TITLE "FiveWin TWBrowse Power!!!"
+
+
+
+@ 1, 2 LISTBOX oBrw FIELDS aSample[ nItem ] ;
+
+HEADERS "Reviewing Array" ;
+FIELDSIZES 200 ;
+OF oDlg ;
+SIZE 100, 100 ;
+ON CLICK MsgInfo( "Click" ) ;
+
+ON RIGHT CLICK ShowPopup( oBrw, nRow, nCol )
+
+
+
+oBrw:bGoTop    = { || nItem := 1 }
+oBrw:bGoBottom = { || nItem := Eval( oBrw:bLogicLen ) }
+oBrw:bSkip     = { | nWant, nOld | nOld := nItem, nItem += nWant,;
+
+                     nItem := Max( 1, Min( nItem, Eval( oBrw:bLogicLen ) ) ),;
+                     nItem - nOld }
+
+oBrw:bLogicLen = {mple ) }
+oBrw:cAlias    = "Array"                
+oBrw:bKeyChar  = { | nKey | MsgInfo( nKey ) } 
+
+
+
+@ 1, 20 BUTTON "&End" OF oDlg ACTION oDlg:End()
+
+
+
+ACTIVATE DIALOG oDlg CENTERED
+
+
+return nil
+
+//--------------------------------------------------------------------//
+
+function ShowPopup( oBrw, nRow, nCol )
+
+local oPopup
+
+
+MENU oPopup POPUP
+   MENUITEM "&One"
+   MENUITEM "&Two"
+ENDMENU
+
+
+
+ACTIVATE MENU oPopup OF oBrw AT nRow, nCol
+
+
+return nil
+
+//--------------------------------------------------------------------//
+
+</code>

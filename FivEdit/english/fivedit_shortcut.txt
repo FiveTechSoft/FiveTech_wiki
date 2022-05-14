@@ -1,0 +1,33 @@
+**__[ SPANISH ]__**
+
+Puede crear un acceso directo al fichero .EXE ( Fivedit.EXE ) como realiza normalmente, pero el programa acepta dos parámetros:
+  - Programa fuente ( .PRG ) para abrir directamente
+  - Fichero de configuración (.INI), si no se indica ninguno, el fichero de configuración tiene el nombre del .EXE, en este caso ( FIVEDIT.INI ), si no existe lo crea
+
+  * Ejemplo: Fivedit
+  * Ejemplo: Fivedit myprog.prg
+  * Ejemplo: Fivedit Antonio.ini
+  * Ejemplo: Fivedit myprog.prg Antonio.ini
+
+Recomiendo crear un acceso directo con el nombre del usuario que va a utilizar el Editor, si no la aplicación tomará el fichero de configuración genérico, que ha podido ser modificado por otro usuario.
+Así:
+    Ejemplo: Fivedit Antonio.ini
+Usted puede copiar el fichero genérico al nombre que usted decida para poder utilizar la configuración existente
+
+**__[ ENGLISH ]__**
+
+You can create a shortcut to the .EXE file (Fivedit.EXE) as it normally does, but the program accepts two parameters:
+
+  - Source program (.PRG) to open directly
+  - Configuration file (.INI), if none is indicated, the configuration file has the name of the .EXE, in this case (FIVEDIT.INI), and if it does not exist create it
+
+  * Example: Fivedit
+  * Example: Fivedit myprog.prg
+  * Example: Fivedit Antonio.ini
+  * Example: Fivedit myprog.prg Antonio.ini
+
+I recommend creating a shortcut with the name of the user who will be using the Editor, if not using the application will take the generic configuration file, which has been modified by another user.
+
+    **Example: Fivedit Antonio.ini**
+
+You can copy the generic file to the name that you decide to be able to use the existing configuration

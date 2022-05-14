@@ -1,0 +1,16 @@
+Installation is very simple
+== Download the .zip file that you will find in the following link ==
+
+[[https://bitbucket.org/fivetech/fivewin-contributions/downloads/FE_Install.zip]]
+
+== And then check if there is an updated version in ==
+
+[[https://bitbucket.org/fivetech/fivewin-contributions/downloads/FIVEDIT.EXE]]
+
+These links will be updated in later versions.
+
+== There is also a lot of information available on the Fivewin forums ==
+
+[[http://forums.fivetechsupport.com/viewtopic.php?f=3&t=29991&start=375#p208717]]
+
+

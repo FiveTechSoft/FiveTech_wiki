@@ -1,0 +1,32 @@
+Though Windows offers a lot of new and powerful capabilities, we insist in the idea that business-application components are still the same. We keep this idea very much in mind in order to be highly productive as xBase programmers.
+
+In other words, we mean that you may try to cover the main parts of your application as you normally do, and later you will enhance your application with all the new fancy and powerful Windows new features.
+
+**What are the basic parts of a business application ?**
+
+Of course, the heart of a business applications is the database design and implementation, and here CA-Clipper is, with no doubt,  the king. In FiveWin you may keep all your existing database strategies and programming systems you normally use (though we will show how to get much more database development power then what you have, through FiveWin database objects and Windows Non-Modal designs).
+
+Lets focus now on the user interface, and in all of the different parts of a Windows application. The more Windows applications you  start developing, you will discover you always go through the same steps:
+
+1.	The main Window: In Windows, an application is always associated with a Window. We will see all the different kind of Windows you may build and how to build them.
+
+2.	The PullDown Menu: From the main Window the user may select through a PullDown menu all the different options of your application.
+
+3.	The Main Window ButtonBar and MessageBar are two components that you will find in many Windows applications. FiveWin provides all the necessary ingredients for building great looking and performing ButtonBars and Messagebar. The ButtonBar usually   executes actions that you also provide through the PullDown menu.
+
+4.	From the main Window you will open DialogBoxes to interact with the user. Coming from Dos, now you are used to work with 'Modal' execution which means: Do just one thing at a time. But in Windows you may also take advantage of the Non-Modal execution. This means you may have several DialogBoxes at the same time.You will learn how easily this can be done in FiveWin.
+
+5.	In some of these DialogBoxes you will use Browses. Normally a business application uses Browses extensively. You will learn to use FiveWin's powerful browses, which let you design any kind of browse you may need.
+
+6.	To have a complete business application you need printing. All kind of reports, listings and printouts. FiveWin offers you a powerful built-in report engine to design any kind of business report in just few minutes.
+
+A typical Windows business-application structure:
+
+
+__**DataBase design and implementation -plus- Multi Document interface MDI design
+**__
+
+
+{{:busstruc.jpg|:busstruc.jpg}}
+
+It is very important that you focus now on these parts, to quickly start building business applications. As you go on from here, you will start learning many new things that you will surely be adapting to your applications.

@@ -1,0 +1,58 @@
+====== FiveGen ======
+
+FiveGen is a RAD (Rapid Application Development) for the Cloud:
+
+http://www.fivetechsoft.com/fivegen  (send an email to alinares@fivetechsoft.com to request beta-tester access)
+
+FiveGen is being built using [[fiveweb_english|FiveWeb]] and it generates [[fiveweb_english|FiveWeb]] based apps
+
+
+
+
+
+
+
+
+
+====== FiveGen Dictionaries ======
+
+FiveGen uses these dictionaries to build and manage your application:
+
+Interface components:
+|**Menu**|The main menu of your app|
+|**Forms**|The forms used in your app|
+|**Browses**|The browses used in your app|
+|**Reports**|The reports used in your app|
+
+Functionality components:
+|**Variables**|Public variables of your app|
+|**Scripts**|Processes to be used in your app|
+
+
+
+
+
+
+
+
+
+
+
+====== FiveGen Methods ======
+
+These methods are built-in FiveGen and provide a great RAD functionality for your apps:
+
+|**Browse( cDbfName )**|Launches a generic FiveGen browse for a given DBF filename|
+|**BrowseBrowses()**|Launches the FiveGen browses designer|
+|**BrowseForms()**|Launches the FiveGen forms designer|
+|**BrowseMenu()**|Launches the FiveGen menu designer|
+|**Form( cFormName )**|Shows a form defined from the FiveGen dictionaries|
+|**Go()**|Launches your app main menu|
+|**Quit()**|Ends the application and returns to FiveGen|
+|**Script( cScriptName )**|Executes the specified script from the FiveGen dictionaries|
+
+
+====== See Also ======
+
+[[fiveweb_english|FiveWeb]]
+[[fivedbu_english|FiveDBU]]

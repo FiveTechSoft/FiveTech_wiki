@@ -1,0 +1,337 @@
+====== Introduction ======
+The FWPPC Programming Guide offers a guided introduction to Windows Mobile applications development techniques using Harbour & FiveWin. It will explain to you the basic concepts you must understand in order to properly build your Windows Mobile applications.
+
+Use this section to look for recommendations and programming techniques, not for details. Here you will begin to understand the different components to use when building a Windows Mobile application and how they should be combined.
+
+The FWPPC Programming Guide teaches you how to build applications using FiveWin, step by step.
+
+The FWPPC Reference Guide explains in more depth all the necessary details you will need when building those applications.
+
+====== Organizing Your Working Desktop ======
+
+===== Installing The Software =====
+FWPPC automatically installs in your computer generating the following directories trees:
+
+  * include
+  * source
+  *   * classes
+  *   * functions
+  *   * winapi
+  * samples
+  * lib
+  * help
+
+It is best that every time you install FiveWin, you select a different directory, and that you try the new version for a while before destroying your previous versions. Normally there are no compatibility problems with previous versions, as we pay special care to keep backwards compatibility.
+
+·  Important: For FWPPC upgrades, please read the file whatsnew.txt in order to know what bug corrections, enhancements and modifications have been made.
+
+· The latest process here is to modify the SAMPLES\Buildce.bat to SET appropriate your paths. Edit SAMPLES\Buildce.bat and modify the used paths.
+
+· If everything is installed properly, you may go to the SAMPLES directory, and try to build any sample:
+
+                SAMPLES\Buildce.bat Tutor01
+
+This generates a stand alone EXE file, Tutor01.exe. This may be run from the Windows Mobile emulator: select "Programs" - "File Explorer" - Click on the "Storage card" button in the bottom buttonbar. You will see your shared PC folder where you may have copied Tutor01.exe. Click on Tutor01.exe and it will properly run. You can also copy it to your real Pocket PC device and test it there too.
+
+
+===== Required Tools =====
+Hardware requirements :
+
+· FWPPC requires ARM architecture based Pocket PC devices. These are the most common and popular ones. For example, those devices that use Intel XScale processor.
+
+· FWPPC works fine on 64 Kbs based Pocket PC devices, though 128 Kbs will provide you a better performance.
+
+· FWPPC has been successfully tested with many Pocket PC devices and different emulators versions from Microsoft.
+
+· FWPPC has been successfully tested in local area networks and on Internet..
+
+Software requirements:
+
+· Harbour for Pocket PC. Provided with FWPPC.
+
+· Microsoft VCE (free) provided with FWPPC. You can locate it and download it from Microsoft websites. We simply   provide it to easier to locate it.
+
+· A Windows Resource Editor is HIGHLY recommended. We normally use Borland's Resource WorkShop. We have also successfully tested Microsoft Visual Studio resources editor. You can find a list of free Windows resources editors 
+here: http://forums.fivetechsoft.com/viewtopic.php?t=12773
+
+· The Windows Mobile Emulator. Once installed we recommend you to use this batch file to execute it:
+<code>
+..\deviceemulator ppc_2003_se_wwe_armv4.bin /skin Pocketpc_2003_skin.xml /memsize 128 /sharedfolder c:\pocketpc
+</code>
+Please change the used filenames based on the emulator version that you decide to use. The one that we provide, for Windows Mobile 2003 it is very fast, so it is highly recommended for development. More recent emulators are slower to load. The /sharedfolder specifies the PC folder that is shared with the Windows Mobile emulator and used as a "Storage Card". From your PC you place in that folder the EXEs that you want to run from the emulator.
+===== Organizing your programming desktop =====
+Clipper programmers traditionally select certain tools to build their own work environments. These are the tools that we strongly recommend to be used in Windows programming:
+
+|Source code editor and project manager (fully compatible with FWPPC)|UEStudio | http://www.ultraedit.com/products/uestudio.html ||
+|File Manager | Total Commander | http://www.ghisler.com ||
+|A Resources Editor | Select the one of your choice | http://forums.fivetechsoft.com/viewtopic.php?t=12773 ||
+|DataBases manager | WDbu for Windows | http://forums.fivetechsoft.com/viewtopic.php?t=12718 |
+
+We have compared our development cycle (editing-compiling-linking-testing) speed and easy of use with other Windows development tools and platforms, and  we are proud to say, that FWPPC and Harbour are one of the fastest Windows Mobile development tools for a professional programmer.
+
+====== The components of Windows applications ======
+ 
+
+===== The business-application point of view =====
+Though Windows offers a lot of new and powerful capabilities, we insist in the idea that business-application components are still the same. We keep this idea very much in mind in order to be highly productive as xBase programmers.
+
+In other words, we mean that you may try to cover the main parts of your application as you normally do, and later you will enhance your application with all the new fancy and powerful Windows new features.
+
+**What are the basic parts of a business application ?**
+
+Of course, the heart of a business applications is the database design and implementation, and here Harbour ( as a 32 bits Clipper clone) is, with no doubt, one of the best available tools. In FiveWin you may keep all your existing database strategies and programming systems you normally use (though we will show how to get much more database development power then what you have, through FiveWin database objects and Windows Non-Modal designs).
+
+Lets focus now on the user interface, and in all of the different parts of a Windows application. The more Windows applications you  start developing, you will discover you always go through the same steps:
+
+1.	The main Window: In Windows, an application is always associated with a Window. We will see all the different kind of Windows you may build and how to build them.
+
+2.	The PullDown Menu: From the main Window the user may select through a PullDown menu all the different options of your application.
+
+3.	The Main Window ButtonBar and MessageBar are two components that you will find in many Windows applications. FiveWin provides all the necessary ingredients for building great looking and performing ButtonBars and Messagebar. The ButtonBar usually   executes actions that you also provide through the PullDown menu.
+
+4.	From the main Window you will open DialogBoxes to interact with the user. Coming from Dos, now you are used to work with 'Modal' execution which means: Do just one thing at a time. But in Windows you may also take advantage of the Non-Modal execution. This means you may have several DialogBoxes at the same time.You will learn how easily this can be done in FiveWin.
+
+5.	In some of these DialogBoxes you will use Browses. Normally a business application uses Browses extensively. You will learn to use FiveWin's powerful browses, which let you design any kind of browse you may need.
+
+6.	To have a complete business application you need printing. All kind of reports, listings and printouts. FiveWin offers you a powerful built-in report engine to design any kind of business report in just few minutes (this report engine is not available yet in FWPPC, though you get full printing capabilities).
+
+
+===== The main window =====
+Normally, to build your main window application you do as follows:
+
+<code clipper>
+#include "FWCE.ch"
+
+static oWnd
+
+function Main()
+
+DEFINE WINDOW oWnd TITLE "My application"
+
+ACTIVATE WINDOW oWnd
+return nil
+</code>
+
+In this sample you are selecting the most typical window, with default coordinates and style, and you start it at full open screen mode by defualt.
+
+ACTIVATE WINDOW will invoke automatically the main application event loop if it is not working yet. Internally, the application only need one event loop for all the windows.
+
+There are two main different ways to build your application window:
+
+  * Defining a standard window (like the sample above). Please review samples\Tutor02.prg
+
+  * Defining a DialogBox as the main application window: There are some situations where you don't need to implement a main window, with pulldown menu, buttonbar, etc... and you just need some operations to be done, and just a DialogBox should be the perfect way.
+
+FiveWin lets you start the application with all these above styles.
+
+FiveWin will automatically control all Windows messages that it receives. But, based on a xBase syntax, you may specify certain behaviors ON some events occurring.
+<code clipper>
+ACTIVATE WINDOW oWnd ;
+   ON PAINT ... ;
+   ON LEFT CLICK ... ;
+   VALID ...
+</code>
+
+Please review FWCE.ch for a list of all the events we support. Normally this kind of control will not be necessary, but in some circumstances you  may need it. 
+
+To end the execution of your main window -or any other window or  DialogBox- you use the :End() method:
+
+oWnd:End()
+
+This tells the window object oWnd to finish working. If you specified  a VALID clause when activating the window, the VALID clause will have  to return .t. to allow ending the window. This is a typical situation:
+<code clipper>
+ACTIVATE WINDOW oWnd ;
+   VALID MsgYesNo( "Do you want to end ?" )
+</code>
+During your application, if you call oWnd:End(), or the user double click the window close button, or if the user decided to end Windows, the VALID will be executed and according to its result it will let or not end the window.
+
+Remember you may use oWnd:End() to end any kind of window or DialogBox: oDlg:End().
+
+There is no way to build the main window from resources, unless you start your application with a DialogBox:
+<code clipper>
+DEFINE DIALOG oDlg RESOURCE "Main"
+
+ACTIVATE DIALOG oDlg CENTERED
+</code>
+In this situation, we are loading as a main application window the dialog  box stored in resources as "main".
+
+Use a DialogBox as your main window only when you don't need a pulldown  menu, neither a message bar or a buttonbar. Remember that normally a DialogBox will not maximize or iconize, so plan carefully what kind of window you may use as your main application window.
+
+Most of the time a normal window -as the first sample above- will be perfect.
+
+==== Additional notes about MODAL and NON MODAL execution ====
+
+The main window of your application behaves MODAL, once you call ACTIVATE WINDOW ... This means that the code
+execution will not continue to next PRG sentence until the window has been closed.
+
+===== The Pulldown menu =====
+The typical structure of a Windows program is to build a Window and to assign it a main menu that will be useful as main organizer of the application.
+
+From the menu, the user can select the different tasks of a program. Thanks to the pulldown menu structure of Windows we can implement an easy and intuitive user interface.
+
+You should try to use good design techniques for the main menu of your application. Don't make it too complicated. The idea is to implement just a few main options at the bar menu so the user will easily select what he needs, and from there you should presents new submenus that will contain all the possible options.
+
+FiveWin has been designed so you don't need to code DO CASE...ENDCASE  options to select from the different actions the user may choose.
+
+When a MenuItem is defined, we will specify the action we want to be automatically executed when the user selects that option. It is very  easy to control all the possible options of the program.
+<code clipper>
+MENU oMenu
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+MENUITEM <cItem> MESSAGE <cMessage>  // No action here
+MENU                                     // Submenu
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+ENDMENU
+...
+SEPARATOR
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+
+ENDMENU
+</code>
+MESSAGE & ACTION are optional clauses.  If an Action clause is not defined, except in the case of a heading for a submenu, then nothing happens when you select that menu option.
+
+You can have as many SubMenus as you need. To create a SubMenu you only have
+ to specify a new MENU ... ENDMENU combination under a MenuItem and complete it as usual.
+<code clipper>
+MENUITEM <cItem> MESSAGE <cMessage>
+MENU                               // The new Submenu starts here
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction>
+   ...
+
+ENDMENU
+
+MENUITEM <cItem> MESSAGE <cMessage> ACTION <uAction> // More Items
+</code>
+To activate the menu:
+
+To activate the menu first you have to assign it to a Window. The easiest way to do this is when you are building your Window:
+<code clipper>
+DEFINE WINDOW <oWnd> <otherClauses> ;
+MENU BuildMenu()
+
+...
+
+function BuildMenu()
+
+local oMenu
+
+MENU oMenu
+MENUITEM <cItem> MESSAGE <cMessage> ...
+      ...
+ENDMENU
+
+Return oMenu
+</code>
+or you can do it later using the command:
+<code clipper>
+SET MENU OF <oWnd> TO <oMenu>
+</code>
+
+===== The ButtonBar =====
+A buttonbar is an area of the screen where there are some buttons with icons (FiveWin uses bitmaps) offering different actions. Normally when you move the mouse over those buttons, the message of the bottom bar is the same as selecting the same option from the pulldown menu.
+
+FiveWin let us select a 3D looking buttonbar (see ButtonBar xBase commands) and to select the desired dimensions for its buttons. Also  it is possible to use bitmaps that automatically adjust to the surface  of the buttons.
+
+Most applications use buttonbars that have the ability to changing its  position on the screen. FiveWin lets you place a buttonbar at the Top, Left, Bottom and right position of the window that holds it, and  optionally it may be a floating buttonbar. To select its starting position use the xBase commands we provide to manage it. To change its  position on the fly just right click on it (not over the buttons). A popup menu will let the user make the position selection.
+
+Also it is possible to destroy on the fly the buttonbar you may be using and replace it for a new one. All the windows have a :oBtnBar  DATA that may be freely manipulated. Remember that to destroy any control  we use the message :End().
+
+The next version of FiveWin will offer new and powerful possibilities  that we are working on (like rulers, multiple buttonbars, scrollable  buttonbars, user guided configurable buttonbars, and more...).
+
+Please let us know your needs, and feel free to send us any enhancement  you would like us to review. A good designed and powerful buttonbar is  a very important component of a Windows application.
+
+===== The dialog boxes =====
+In Windows, the interaction with the user to get data is done using Dialog Boxes.
+
+Dialog Boxes are specialized Windows containing certain controls through which the user completes some information. You should avoid using the main window of the program to collect data.  Every time you are going to request some information, you will do it through a Dialog Box.
+
+FiveWin implements support for Dialog Boxes constructed and stored as resources and also for Dialog Boxes directly constructed in the source code of your program.
+
+We recommend you to get a resource editor and that you use it to build the Dialog Boxes of your program. Borland usually offers introductory offers, at a very good price, for its products to program in Windows and most of them include the Resource WorkShop which is an excellent resource editor. You should only design Dialog Boxes in source code if you are going to design very easy windows or if you don't have af resource editor.
+
+In Windows, Dialog Boxes fall in two categories: Modal and Non-Modal Dialog Boxes. Modal Dialog Boxes are those that don't let the user do other things until they finish working in that dialog. In DOS we are used to using Modal Dialog Boxes.
+
+Non-Modal Dialog Boxes let us do other things, so we can have many Dialog Boxes opened at the same time. DOS users are not accustomed to non-modal execution, but more and more users are demanding them.
+
+A Dialog Box is an Object, so to create them you will use the typical syntax for creating Objects:
+<code clipper>
+local oDlg
+
+DEFINE DIALOG oDlg ;
+
+[ FROM <nTop>, <nLeft> TO <nBottom>, <nRight> ] ;  
+[ NAME <cName> ] ; // Dialog Box resource name
+
+                          // from a DLL built with a resource editor
+</code>
+<cName> is the name we have assigned to that Dialog Box assuming that we have built it using a resource editor.
+
+After that you have to assign the controls it is going to use. If you are designing it from your source code then you will use the familiar xBase syntax:
+<code clipper>
+@ <nRow>, <nCol> ...    OF oDlg
+</code>
+Remember to specify OF <oDlg> clause so the control will know which is its container Object.
+
+If we built the Dialog Box using a resource editor then we have to redefine the controls to associate certain behaviors -review the Windows resources section of this guide-.
+
+Once again everything is ready, we will activate the Dialog Box:
+<code clipper>
+ACTIVATE DIALOG oDlg
+</code>
+That's all. Basically this is the system we are going to use with all Dialog Boxes. Review the examples we provide with FiveWin to understand how this process works in detail.
+
+==== Additional notes about Non Modal dialogs ====
+
+Dialogs are MODAL by default. This means that the PRG execution will wait once the ACTIVATE DIALOG oDlg is called.
+
+Dialogs can also behave as non modal if the clause "NOWAIT" or "NONMODAL" is used:
+
+DEFINE DIALOG oDlg RESOURCE "Test"
+
+ACTIVATE DIALOG oDlg NOWAIT                // Non Modal!!!
+
+Be careful about Non-Modal execution. It is very dangerous if the user is not an expert. When you call a Non-Modal 
+Dialog Box, program execution does not stops there! So you can not Close a DBF you are using from Dialog Controls, 
+also if you are using private variables from a function, they will be released once you return from the function!
+ 
+Also, the user may select that option again and the Dialog Box will be created again and again. Because Clipper keeps 
+'live references' to local variables, there is no conflict with using NonModal Dialogs. 
+
+===== Controls Management =====
+In Windows, a distinct component of a Dialog Box through which the user interacts to select and complete certain information is a 'Control'
+
+In Clipper, the only control we have really used is the typical GET. Through a GET the user completes certain information. In Windows this concept gets extended and, so, the user may interact with command buttons -PushButtons-, selection boxes -CheckBoxes-, single selection options -RadioButtons-, etc...
+
+There is no limit to the variety of controls we can find or design in a program. Essentially, a control has been designed to obtain or show certain information to the user of the program.
+
+In xBase, this kind of action usually has been identified with the syntax:
+<code clipper>
+@ <nRow>, <nCol> GET ...
+</code>
+Now, in Windows xBase we extend that syntax towards new types of controls:
+<code clipper>
+@ <nRow>, <nCol> BUTTON ...    OF <ContainerObject>
+@ <nRow>, <nCol> CHECKBOX ...  OF <ContainerObject>
+
+etc...
+</code>
+With every one of those lines of code we are building an Object. An Object that inherits from the FiveWin TControl CLASS is specialized in the way it interacts with the user. You don't have to worry too much about the existence of this Object, FiveWin controls all these processes automatically.  However, it is convenient to understand the basis of this functionality.
+
+Controls may be created from inside the same source code of your program, using the syntax we have shown you:
+<code clipper>
+@ <nRow>, <nCol> <ObjectClass> ... OF <ContainerObject>
+</code>
+If you are using Dialog Boxes designed with a resource editor, then you have to REDEFINE certain behaviors of those controls, because those Objects are already 'built' inside Window's resources:
+<code clipper>
+REDEFINE <ObjectClass> ID <nIdentifier> OF <ContainerObject> ;
+....
+</code>
+Remember that in FiveWin the READ command is GONE. The program is in a constant state of interaction with Windows. A Dialog Box will start working when you activate it:
+<code clipper>
+ACTIVATE DIALOG <oDlg>
+</code>
+Consult and review the examples we included with FiveWin. Through them you will understand the design and management of Windows controls.
+
+Review the file FWCE.CH which is located in the \FWPPC\INCLUDE directory to see the different commands syntax supported by FWPPC.

@@ -1,0 +1,19 @@
+Podemos crear nuevas Clases desde las que ya tenemos. A eso le llamamos 'herencia': nuevas Clases desde las anteriores.
+
+En esas Clases usamos lo que ya tenemos, pero podemos:
+
+  * Modificar ó añadir algunos comportamientos.
+  * Agregar algunos nuevas propiedades.
+
+
+Usando la herencia de Clases podemos construir una jerarquía de Clases.
+
+En el lenguaje Clipper hacemos:
+
+<code clipper>
+CLASS TDialog FROM TWindow
+   ...
+ENDCLASS
+</code>
+
+Un objeto TDialog tiene toda la funcionalidad de un objeto TWindow pero agregamos algunas nuevas propiedades y modificamos y añadimos algunos comportamientos.

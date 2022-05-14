@@ -1,0 +1,63 @@
+======= Building the Sample Code =======
+
+===== Building Your First FiveLinux Application =====
+
+The sample code can be built using the supplied shell script file.  If you wish to build using Harbour you will need to use build.sh.  If you wish to build using xHarbour you will need to use buildx.sh.  These files should be in your fivelinux/samples directory along with the code samples themselves.  We'll start off by building tutor01.prg.  Here's the relevant code.
+<code clipper>
+   #include "FiveLinux.ch"
+
+   function Main()
+
+      MsgInfo( "Hello world!" )
+   
+   return nil
+</code>
+In order to build tutor01.prg go to the /fivelinux/samples directory.  Then run either
+<code>
+   ./build.sh tutor01
+</code>
+or
+<code>
+   ./buildx.sh tutor01
+</code>
+if you want to build this test application using xHarbour rather than Harbour. \\
+\\
+If you get a message like the following:
+<code>
+   bash: ./build.sh: Permission denied 
+</code>
+then the most likely explanation is that build.sh is not flagged executable.  This can be fixed by entering the following:
+<code>
+   chmod +x build.sh
+</code>
+Substitute buildx for build in the above if you are using xHarbour. \\
+\\
+Note that the parameter passed to build.sh is tutor01 and not tutor01.prg.  If you pass tutor01.prg by mistake you will get a series of error messages which start along the lines of the following:
+<code>
+   gcc: tutor01.prg.c: No such file or directory
+   gcc: no input files
+</code>  
+If you get error messages starting 
+<code>
+   Cannot open input file: tutor01.prg 
+</code>
+then either you don't have a copy of tutor01.prg or it isn't in the current directory.  You can copy the contents of tutor01.prg from this page and paste them into your text editor and save as tutor01.prg in the /fivelinux/samples directory.\\
+\\
+If you get the following error:
+<code>
+bash: ./build.sh: No such file or directory
+</code>
+Then you don't have build.sh in your current directory.  You can obtain it from the page describing the operation of [[fivelinux_build|build.sh]].  Similarly you can obtain buildx.sh from the page describing the operation of [[fivelinux_buildx|buildx.sh]]. \\
+\\
+If everything is installed correctly and you have followed the above you should have just created and run your first FiveLinux appliaction. It should look like this: \\
+\\
+{{Example5L3.png}} \\
+\\
+Congratulations!
+
+
+===== Where To from Here? =====
+tutor01 is a traditional "Hello World" program and about as simple a program as one can write using FiveLinux.  It's a great way to test that you have succeeded in installing FiveLinux but it won't teach you a lot about FiveLinux programming.  There is a series of sample code to give you a better feel for FiveLinux programming which can be accessed through this [[fivelinux_sampleslist|Sample Code page]].\\
+\\
+build.sh and buildx.sh, whilst adequate for their intended purpose of building and running these samples are probably not ideal for building the sort of real world applications you will want to produce.  So you should read more about [[fivelinux_buildingapps|building FiveLinux applications]]. \\
+\\

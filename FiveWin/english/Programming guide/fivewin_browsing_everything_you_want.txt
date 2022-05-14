@@ -1,0 +1,49 @@
+
+The major advantage of FiveWin TWBrowse (strongly based on Clipper TBrowse model) is the capability of browsing anything you may need.
+
+FiveWin TWBrowse is a generic browser machine capable of browsing information of any type, though as DataBase browsing is usually more common, we have added certain built-in functionality to quickly build DataBases browsers.
+
+There are certain DATAs and METHODs in a TWBrowse object, that conveniently initialized will let you browse anything:
+
+
+//**DATAs**// :	
+
+·	**bLine**: It will be used to display each browse line. It must return an array with all the columns elements to represent.
+
+·	**bSkip**: Used to skip certain amount of lines. This codeblock is evaluated every time the current selected line is going to change. bSkip receives a numeric parameter indicating the desired number of lines to be skipped, and it has to confirm that number returning it, or an alternative number with the real number of lines to skip:
+
+<code clipper>
+bSkip = { | nWant, nDo | ..., nDo }
+</code>
+**nWant 	**represent the desired number of lines to skip. nDo will indicate the final number of lines to skip.
+
+·	**bGoTop**: These codeblocks are evaluated for navigating
+
+·	**bGoBottom**: through the represented data. Properly assigned will let you browse anything.
+
+·	**bLogicLen**: You must assign here the logical total length of the browse, to properly set the browse scrollbar.
+
+As an example, lets see how we can browse an array just manipulating these DATAs:
+
+<code clipper>
+@ 1, 2 LISTBOX oBrw FIELDS aSample[ nItem ] ;
+
+HEADERS "Reviewing Array" ;
+FIELDSIZES 200 ;
+OF oDlg ;
+SIZE 100, 100 ;
+ON CLICK MsgInfo( "Click" )
+
+
+oBrw:bGoTop    = { || nItem := 1 }
+oBrw:bGoBottom = { || nItem := Eval( oBrw:bLogicLen ) }
+oBrw:bSkip     = { | nWant, nOld | nOld := nItem, nItem += nWant,;
+                     nItem := Max( 1, Min( nItem, Eval( oBrw:bLogicLen )),;
+                     nItem - nOld }
+oBrw:bLogicLen = { || Len( aSample ) }
+oBrw:cAlias    = "Array"
+oBrw:bKeyChar  = {| nKey | MsgInfo( nKey ) }
+
+</code>
+
+

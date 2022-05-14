@@ -1,0 +1,139 @@
+====== The Standard FiveLinux Directory Structure ======
+
+==== Why use this structure? ====
+
+You can, of course, install Five Linux, Harbour and / or xHarbour wherever suits you.  However if you don't follow the standard layout you will have to modify all the build files to suit your structure so I strongly suggest that you stick to the following.
+
+
+
+
+
+==== Where should it be installed? ====
+
+In your home directory, that is in /home/<your-user-login>/.
+
+   home
+      <your-user-name>
+         fivelinux
+            doc
+            include
+            lib
+            samples
+            source
+               classes
+               functions
+               winapi
+            <your-project-name>
+         harbour
+            bin
+            doc
+            include
+            lib
+         xharbour
+            bin
+            doc
+            include
+            lib
+=== fivelinux/doc ===
+
+This should contain the fivelinux documentation.  Currently that means fivelinux.pdf.
+
+=== fivelinux/include ===
+
+This should contain the fivelinux include files.  Currently that means FiveLinux.ch and msgs.h.
+
+=== fivelinux/lib ===
+
+This should contain the fivelinux lib files.  Note that lib files have a .a extension in Linux.  The current lib files are
+   libfive.a  (the lib file for Harbour)
+   libfivec.a (the lib file common to both Harbour and xHarbour)
+   libfivex.a (the lib file for xHarbour)
+
+=== fivelinux/samples ===
+
+This should contain a series of sample code (.prg files) designed to demonstrate different aspects of FiveLinux along with several support files.  Most importantly it contains two shell script files which can be used to compile, link and run FiveLinux applications:
+
+  build.sh for Harbour builds and 
+  buildx.sh for xHarbour builds.  
+
+The function of these shell scripts (shell scripts are analagous to DOS batch files) is described elsewhere.
+
+=== fivelinux/source/classes ===
+
+This should contain the (x)Harbour source for the FiveLinux classes.  The current contents are:
+
+   bar.prg
+   button.prg
+   checkbox.prg
+   clipboard.prg
+   combobox
+   control.prg
+   dialog.prg
+   folder.prg
+   get.prg
+   group.prg
+   image.prg
+   listbox.prg
+   menu.prg
+   menuitem.prg
+   mget.prg
+   messagebar.prg
+   pdmenu.prg
+   printer.prg
+   progres.prg
+   radio.prg
+   radmenu.prg
+   say.prg
+   scrollbar.prg
+   timer.prg
+   wbcolumn.prg
+   wbrowse.prg
+   window.prg
+
+The above source is compiled and the resultant object code used to update the FiveLinux Harbour library, libfive.a and the FiveLinux xHarbour library, libfivex.a.  This process is explained elsewhere.
+
+=== fivelinux/source/function ===
+
+This should contain the C source and .prg source for the FiveLinux functions.  Its current contents are:
+
+   errsys.prg
+   file.prg
+   files.c
+   harbour.prg
+   valblank.prg
+
+=== fivelinux/source/winapi ===
+
+This should contain the C source for the FiveLinux classes.  Its current contents are:
+
+   bars.c
+   buttons.c
+   checkboxes.c
+   clipboards.c
+   comboboxes.c
+   dialogs.c
+   folders.c
+   getcolor.c
+   getfile.c
+   getfont.c
+   gets.c
+   groups.c
+   images.c
+   listboxes.c
+   menus.c
+   mgets.c
+   msgbars.c
+   msgbox.c
+   printers.c
+   progress.c
+   radios.c
+   says.c
+   scrollbars.c
+   wbrowses.c
+   windows.c
+
+The above source is compiled and the resultant object code used to update the FiveLinux common library, libfivec.a.  This process is explained elsewhere.
+
+=== fivelinux/<your-project-name> ===
+
+Create a folder(s) at this level for your project(s).

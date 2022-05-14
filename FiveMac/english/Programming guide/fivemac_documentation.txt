@@ -1,0 +1,41 @@
+[[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+====== Installation ======
+[[fivemac_installation|==>]]
+
+====== Programming guide ======
+[[fivemac_programming_guide|==>]]
+
+====== Reference guide ======
+===== Commands =====
+==== Alphabetically ordered ====
+[[fivemac_commands_alphabetically_ordered|==>]]
+==== By Category ====
+[[fivemac_commands_by_category|==>]]
+
+===== Classes =====
+==== Alphabetically ordered ====
+[[fivemac_classes_alphabetically_ordered|==>]]
+==== By Category ====
+[[fivemac_classes_by_category|==>]]
+==== Classes Hierarchy ====
+[[fivemac_classes_hierarchy|==>]]
+==== Non-documented classes ====
+==== Objects engine syntax ====
+
+===== Functions =====
+==== Alphabetically ordered ====
+[[fivemac_functions_alphabetically_ordered|==>]]
+==== By Category ====
+[[fivemac_functions_by_category|==>]]
+
+====== FAQ ======
+[[fivemac_faq|==>]]
+====== Resources ======
+[[fivemac_resources|==>]]
+
+====== Harbour ======
+
+===== Download and build it =====
+[[building_harbour|==>]]
+
+[[http://www.fivetechsoft.com/harbour-docs/harbour.html|Harbour Programmers Guide]]

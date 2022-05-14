@@ -1,0 +1,63 @@
+======= Building Harbour from its Free Repository =======
+
+===== Installing svn =====
+Since Harbour uses svn (an open source version control system) you will need to install svn if you haven't already done so.  This can be done by:
+<code>
+   sudo apt-get install svn
+</code>
+The svn (subversion) web site is at http://subversion.tigris.org/.  A book on it can be found at http://svnbook.red-bean.com/.
+
+Update
+
+The svn package is now known as subversion so to install it on the latest versions of Ubuntu you need to type
+<code>
+   sudo apt-get install subversion
+</code>
+
+
+
+===== Retrieving the Source Code =====
+You need to enter the following command:
+<code>
+svn co https://harbour-project.svn.sourceforge.net/svnroot/harbour-project/trunk harbour
+</code>
+
+===== Building Harbour =====
+In order to build harbour you need to run make_gnu.sh.  First up you have to change into the directory where it is located.  Currently that requires:
+<code>
+   cd ./harbour-project/branches/harbour-1.0 
+</code>
+If that doesn't work click on [Places] [Search for Files] and locate it.
+Next we have to flag make_gnu.sh executable with:
+<code>
+   chmod +x ./make_gnu.sh
+</code>
+Now we can run it with:
+<code>
+   ./make_gnu.sh
+</code>
+If all goes well (it should) it will build the Harbour compiler and its libraries.
+===== Copying the Built Files =====
+All that remains is to copy the built files to the folders from which they can be used by FiveLinux.  This is best done using the GUI that [Places] provides, although you could do it the hard way, using cp from the command line.  I will explain where you will currently find the files you need to copy, but these could vary with subsequent builds of Harbour.  If you need to go looking [Places] [Search for Files] would be the best way. \\
+\\
+Please note that the destination directories referred to below are documented [[fivelinux_directories|here]].
+
+<code>
+   cd ./source/main/linux/gcc 
+</code>
+should take you to where the harbour executable is (harbour-project/branches/harbour-1.0/source/main/linux/gcc).  Copy harbour to your /home/<my-login-name>/harbour/bin directory. \\
+\\
+<code>
+  cd ./../../../../lib/linux/gcc
+</code>
+should take you to where the harbour lib files are. (harbour-project/branches/harbour-1.0/lib/linux/gcc).  Copy them to your /home/<my-login-name>/harbour/lib directory. \\
+\\
+<code>
+  cd ./../../../include
+</code>
+should take you to where the harbour include files are. (harbour-project/branches/harbour-1.0/include).  Copy them to your /home/<my-login-name>/harbour/include directory. \\
+\\
+<code>
+   cd ./../doc
+</code>
+should take you to where the documentation files are. (harbour-project/branches/harbour-1.0/doc).  Copy them if you wish to your /home/<my-login-name>/harbour/doc directory.  Please note that under harbour-project/branches/harbour-1.0/doc there are folders with documentation in a range of different languages. 

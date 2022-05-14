@@ -1,0 +1,6 @@
+Decimos que un lenguaje de programación proporciona "programación orientada al objeto" cuando cumple las siguientes tres reglas:
+
+^Regla^Descripción^
+|Encapsulamiento|Los datos y métodos de un objeto son una unidad inseparable|
+|Polimorfismo|El mismo mensaje enviado a objetos de distintas clases, puede generar comportamientos diferentes|
+|Herencia|Podemos crear una nueva clase a partir de una ya existente, en la que podemos añadir nuevos datos ó modificar ó añadir nuevos métodos|

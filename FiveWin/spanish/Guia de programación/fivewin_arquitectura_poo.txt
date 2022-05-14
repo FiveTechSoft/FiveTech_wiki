@@ -1,0 +1,63 @@
+Si usted tiene algo de experiencia con Programación Orientada a Objetos (POO), o si apenas comienza, le aseguramos que le encantará saber como Fivewin implementa la estructura POO.
+
+La implementación de la POO de FiveWin se hace en cuatro niveles básicos:
+
+
+1.	Comando xBase
+2.	Clases y Objetos
+3.	Funciones y Estructuras de Datos
+4.	El API de Windows
+
+
+Los comandos xBase son el más alto nivel de abstracción, esto es, es le nivel en el cual usted no se preocupa mucho por como se hacen las cosas, usted solo se preocupa por como funcionan, es decir "hacer que trabajen".
+
+Los comandos xBase originalmente vinieron de dBase, y han estado evolucionando hacia un estándar llamado "xBase". Estos comando están construidos sobre Objetos. Estos Objetos y sus clases son el segundo nivel de abstracción.
+
+Para usar Clases y Objetos, es necesario que  tenga algunas habilidades POO. FiveWin usa nuestra biblioteca de Objetos para usar las capacidades POO de CA-Clipper. Puede contactarnos para obtener la más reciente versión comercial de los Objetos, a muy bajo costo, que incluye toda la documentación, ejemplos y código fuente, con lo que podrá utilizar el increíble mundo de la tecnología POO.
+
+Los Objetos también están basados en funciones (métodos) y propiedades (data). Este es el siguiente nivel de abstracción. Como puede observar mientras vamos avanzando, que la complejidad es mayor y que hay más detalles por entender.
+
+Finalmente la mayoría de las funciones que usamos se basan en el API de Windows.
+
+La máxima productividad se alcanza rápidamente al nivel de los comandos xBase. Conforme se acerque al API de Windows su poder y posibilidades crecen pero obviamente su productividad se ve mermada. Como programador de aplicaciones debe tratar de mantener un nivel intermedio: un balance entre productividad y poder.
+
+
+A despecho de la baja popularidad alcanzada por dBase IV, esta versión dió un gran paso para consolidar los comandos para crear y manejar Objetos, aunque no ofreciera POO.
+
+Así en xBase el estándar establece que para cerar un Objeto usamos el comando:
+<code clipper>
+DEFINE <ObjectClass> <ObjectName> [ ADDITIONAL CLAUSES ]
+</code>
+Note que si usamos el comando para crear cualquier Objeto, en algunos casos estaremos usando un"mensaje" constructor genérico. Por esto recomendamos implementar esa sintaxis para la creación de nuevos Objetos.
+
+
+Para activar cualquier Objeto, usamos:
+<code clipper>
+ACTIVATE <ObjectClass> <ObjectName>
+</code>
+Finalmente, aunque no siempre es necesario en Clipper, para destruir un Objeto, usamos el comando:
+
+<code clipper>
+RELEASE <ObjectClass> <ObjectName>
+</code>
+
+Estos comandos se procesan en sus correspondientes mensajes enviados al Objeto que estamos manejando. Así:
+<code clipper>
+DEFINE WINDOW oWnd  ==> Se transforma en ==>  oWnd := TWindow():New( ... )
+</code>
+El uso de estos comandos nos permite el uso de una sintaxis única y común para todos los Objetos. Puede pensar que este es uno de los objetivos de POO: Debemos concentrarnos en nuestra meta y no en una implementación particular, dicho de otro modo, debemos usar una interfase única.
+Puesto que FiveWin incluye la última versión de Objects, puede usarla para crear nuevas clases a partir de las que FiveWin le ofrece. Examine la jerarquía de clases de FiveWin y el diseño y código de las mismas para comprender la forma en que usar la potencia de la herencia POO.
+En FiveWin se ha implementado, por vez primera, un sistema mixto para el desarrollo de entornos orientados a Objeto. El sistema creado le permite usar la potencia de POO y las capacidades adicionales ofrecidas por los 'apuntadores', denominados 'bloques de código' en Clipper.
+Existe una cierta controversia entre ambas aproximaciones. No hay un acuerdo sobre cual es el sistema óptimo. Es por ello que se decidió crear un sistema mixto que usará ambas tecnologías.
+Cuando en un programa se necesita modificar un comportamiento de forma temporal (como por ejemplo, definir el comportamiento de un evento), se usa el sistema basado en apuntadores, es decir, bloques de código. La razón para ello es que suponemos que ese comportamiento no será necesario en el futuro, por lo que no hay necesidad de crear una nueva clase. 
+Cuando se hace:
+
+<code clipper>
+      ACTIVATE WINDOW oWnd ;
+
+      ON PAINT ...
+</code>
+
+Estamos modificando el comportamiento de esa ventana cuando se recibe el evento PAINT. Este sistema se basa en bloques de código, es lógico ya que ese comportamiento no se reutilizará en el futuro.
+Pero si desea crear un sistema que se vaya a reutilizar en el futuro, entonces tiene sentido crear una nueva clase, según la tradición en OOP. Así, en la clase TMsgBar de FiveWin, que se usa con frecuencia en otros programas, la heredamos como una nueva clase de TWindow y le redefinimos su método PAINT.
+Creemos que una buena arquitectura POO debe usar estos dos modelos de construcción. A medida que adquiera experiencia en POO, entenderá nuestro punto de vista.POO es fantástico, pero hay ciertos aspectos que deben evolucionar. La construcción de un modelo mixto puede ser una buena forma de descubrir nuevas posibilidades.

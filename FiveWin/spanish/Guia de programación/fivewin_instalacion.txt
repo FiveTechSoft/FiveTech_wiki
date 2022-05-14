@@ -1,0 +1,23 @@
+Para inslatar Fivewin, debe ejecutar las siguientes aplicaciones de configuración:
+
+  * [[http://www.fivetechsoft.com|fwh.exe (comercial)]]
+  * [[http://code.google.com/p/harbour-and-xharbour-builds/downloads/list|harbour.exe (gratuito)]]
+  * [[http://code.google.com/p/harbour-and-xharbour-builds/downloads/list|xharbour.exe (gratuito)]]
+  * [[https://downloads.embarcadero.com/free/c_builder|Borland C 5.82 (prueba gratuita)]]
+
+FiveWin tambien puede usarse con el [[http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express|compilador Visual C de Microsoft]] (incluyendo la versión gratuita "Express"), y tambien con el compilador [[http://www.mingw.org|GNU MinGW (gcc)]].
+
+Fivewin automáticamente instala y genera el siguiente árbol de carpetas:
+
+{{:fwtree.jpg|:fwtree.jpg}}
+
+Es mejor que cada vez que instale Fivewin, seleccione una carpeta diferente, y que pruebe la nueva versión por un tiempo antes de destruir sus versiones anteriores. Normalmente no existen problemas de compatibilidad con versiones anteriores. 
+
+- Como último proceso modifique c:\fwh\samples\buildh.bat para ajustar apropiadamente sus PATHS. Edite c:\fwh\samples\buildh.bat y modifique los PATHS.
+
+- Si todo se instaló correctamente, puede ir directamente a la carpeta SAMPLES, e intente construir cualquier ejemplo:
+
+                cd c:\fwh\samples
+                buildh.bat tutor01
+
+Esto crea un archivo tutor01.EXE, el cual puede ejecutar directamente desde el explorador de Windows ó desde una ventana de comandos (cmd.exe).

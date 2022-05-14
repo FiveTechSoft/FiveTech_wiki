@@ -1,0 +1,154 @@
+
+
+====== Tutorial ======
+
+
+
+
+
+
+
+===== tutor01 - Showing a simple message =====
+tutor01.prg
+<code clipper>
+#include "FiveMac.ch"
+
+function Main()
+
+   MsgInfo( "Hello world" )
+
+return nil
+</code>
+./build.sh tutor01
+
+{{:fivemac1.png|:fivemac1.png}}
+
+
+
+===== tutor02 - The main window =====
+tutor02.prg
+<code clipper>
+// Building our first window
+
+#include "FiveMac.ch"
+
+function Main()
+
+   local oWnd
+   
+   DEFINE WINDOW oWnd TITLE "Tutor02" ;
+       FROM 200, 250 TO 550, 750
+
+   DEFINE MSGBAR OF oWnd
+
+   @ 0, 10 SAY "A FiveMac MsgBar" OF oWnd SIZE 150, 20 RAISED
+  
+   ACTIVATE WINDOW oWnd ;
+      ON CLICK MsgInfo( "click" ) ;
+      VALID MsgYesNo( "Want to end ?" )
+
+return nil
+</code>
+./build.sh tutor02
+
+{{:fivemac2.png|:fivemac2.png}}
+
+
+
+
+
+===== testmenu.prg - The pulldown menu =====
+testmenu.prg
+<code clipper>
+#include "FiveMac.ch"
+
+static oWnd
+
+//----------------------------------------------------------------------------//
+
+function Main()
+ 
+   BuildMenu()
+ 
+   DEFINE WINDOW oWnd TITLE "Hello world"
+ 
+   ACTIVATE WINDOW oWnd ;
+      VALID MsgYesNo( "Want to end ?" )
+ 
+return nil
+
+//----------------------------------------------------------------------------//
+ 
+function BuildMenu()
+ 
+   local oMenu
+ 
+   MENU oMenu
+      MENUITEM "Files"
+      MENU
+         MENUITEM "New..."
+         MENUITEM "Open..."
+         SEPARATOR
+         MENUITEM "Exit..." ACTION oWnd:End()
+      ENDMENU
+      
+      MENUITEM "Help"
+      MENU
+         MENUITEM "Wiki..."
+         MENUITEM "About..." ACTION MsgAbout( "(C) FiveTech Software 2012", "FiveMac" )
+      ENDMENU
+   ENDMENU
+ 
+return oMenu
+
+//----------------------------------------------------------------------------//
+</code>
+./build.sh testmenu
+
+{{:screen_shot_2012-05-10_at_10.25.17_pm.png|:screen_shot_2012-05-10_at_10.25.17_pm.png}}
+
+
+===== A browse =====
+browse.prg
+
+<code clipper>
+#include "FiveMac.ch"
+
+function Main()
+
+   local oWnd, oBrw
+
+   USE ./Test
+
+   DEFINE WINDOW oWnd TITLE "DBF Browse" ;
+      FROM 213, 109 TO 650, 820
+
+  @ 48, 20 BROWSE oBrw ;
+      FIELDS If( Int( RecNo() % 2 ) == 0, "./../bitmaps/ok.png", "./../bitmaps/alert.png" ), Test->Last, Test->First ;
+      HEADERS "Image", "Last", "First" ;
+      OF oWnd SIZE 672, 363 ALIAS Alias()
+
+   @ 8,  10 BUTTON "Top"    OF oWnd ACTION oBrw:GoTop()
+   @ 8, 130 BUTTON "Bottom" OF oWnd ACTION oBrw:GoBottom()
+   @ 8, 250 BUTTON "Delete" OF oWnd ACTION oBrw:SetColWidth( 2, 300 )
+   @ 8, 370 BUTTON "Search" OF oWnd ACTION MsgAlertSheet( oBrw:GetColWidth( 2 ), oWnd:hWnd )
+   @ 8, 490 BUTTON "Grid"  OF oWnd ACTION ( oBrw:SetGridLines( 2 ), MsgInfo( oBrw:GetGridLines() ) )
+   @ 8, 610 BUTTON "Exit"   OF oWnd ACTION oWnd:End()
+
+   oBrw:SetColBmp( 1 ) // Column 3 will display images
+   
+   oBrw:bHeadClick:= { | obj , nindex| if(nindex== 1, msginfo("clickada cabecera"+str(nindex)),)  } 
+   
+   oBrw:bChanged := { | obj , nindex|   msginfo("cambio a reg:"+str(obj:nRowPos()) ) } 
+
+   ACTIVATE WINDOW oWnd
+
+return nil
+</code>
+
+{{:browsemac.png|:browsemac.png}}
+
+====== Mac OSX Referefence Library: ======
+
+
+[[http://developer.apple.com/mac/library/navigation/index.html]]

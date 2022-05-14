@@ -1,0 +1,26 @@
+Si usted elige desarrollar su aplicación usando el estilo No-modal debe seguir ciertas reglas de diseño:
+
+1. Qué es una aplicación No-modal ?
+
+Si usa ventanas MDI en su aplicación, o si usa cajas de diálogo con la cláusula NOWAIT, entonces está implementando diseños No-modales.
+
+Un diseño no-modal le permitirá al usuario elegir varias cosas al mismo tiempo. Si coloca un navegador (browse) dentro de una ventana MDIChild, esta ventana puede abrirse varias veces! O si una caja de diálogo está editando una cierta base de datos, puede editarlo varias veces.
+
+2. Cómo afecta el diseño no-modal mi diseño de manipulación  de mi  base de  datos ?
+
+Un diseño no-modal funciona exactamente como si trabajara en red, por lo que tiene que usar las reglas de programación en red. Si una ventana MdiChild abre varias veces (al mismo tiempo) la misma Base de datos, se encontrará en la misma situación que si diferentes usuarios estuvieran abriendo esa base de datos en una red.
+
+3. Clipper ofrece la capacidad para la programación No-modal ?
+
+Sí! Clipper le permite abrir la misma base de datos física con diferente alias, aunque actuando de la misma forma que lo hace cuando trabaja en red.
+
+Importante:	Con objeto de permitir a Clipper que maneje la misma base de datos con diferente alias, TIENE que especificar diferentes ALIAS:
+<code clipper>
+USE Customer ALIAS Cust1 NEW
+USE Customer ALIAS Cust2 NEW
+</code>
+ Desde ese momento tiene que usar Cust1 o Cust2 para referirse a sus campos.
+
+4. Qué tan difícil es programar para red ?
+
+Si nunca ha programado en red, no se asuste. En el siguiente tema de esta documentación le explicaremos los fundamentos para hacerlo con Clipper. Es muy sencillo!
