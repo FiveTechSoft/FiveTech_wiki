@@ -1,0 +1,187 @@
+WARNING: This page is under construction and is incomplete
+
+
+
+[[http://www.fivetechsoft.com/wiki|{{logo5t2.gif}}]] http://www.fivetechsoft.com http://forums.fivetechsoft.com
+====== CLASS TSay ======
+
+Displays text on a Twindow or TDialog.  Text content is not editable but may be altered programmatically.
+
+
+===== Inherits from =====
+
+[[fivelinux_class_tcontrol|TControl]] which inherits from [[fivelinux_class_twindow|TWindow]]
+
+===== Inherited by =====
+
+nil
+
+
+
+
+===== Instantiation =====
+
+**@** <nRow>, <nCol> **SAY** [ <oSay>  **PROMPT** | **VAR** ] <cText> [ **OF** | **WINDOW** | **DIALOG** <oWnd> ] [ **SIZE** <nWidth>, <nHeight> ] 	[ **UPDATE** ] [ **PIXEL** ] \\
+\\
+where: \\
+\\
+^<oSay> |a variable to receive a pointer to the newly instantiated TSay object.|
+^<nRow> |the simulated row number at which the TSay object is to be located.  However if PIXEL is specified <nRow> is interpreted as the pixel coordinate of the top of the TSay object.|
+^<nCol> |the simulated column number at which the TSay object is to be located.  However if PIXEL is specified <nCol> is interpreted as the pixel coordinate of the left of the TSay object.|
+^<cText> |the (initial) text contents of the TSay object - that is the text to be displayed. |
+^<oWnd> |the Twindow or TDialog object to which the TSay object is being added - that is the window or dialog on which the text will be displayed. |
+^<nWidth> |the width of the TSay object in pixels. If not specified it will default to 60|
+^<nHeight> |the height of the TSay object in pixels. If not specified it will default to 25|
+^UPDATE|if specified will flag that the TSay object should be updated whenever its parent object ( a Twindow or TDialog) is refreshed.|
+^PIXEL|if specified will cause <nRow> and <nCol> to be interpreted as pixel values rather than simulated row and column numbers.|
+
+
+
+===== Properties =====
+
+
+^Type ^Defined In ^Name ^Type ^Description^Default Value^
+|**The following properties are inherited from parent class TControl:** ||||||
+|DATA|Tcontrol^**bSetGet**|codeblock|A bSetGet codeblock to manage a related variable value|
+|DATA|TControl^**bWhen**|codeblock|A codeblock to evaluate to activate or not the control| |
+|DATA|TControl^**lUpdate**|logical|Update the control contents if its container is updated|.F.|
+|**The following properties are inherited from parent class TWindow:** ||||||
+|DATA|TWindow^**hWnd**|handle|An internal handle of the window, dialog or control| |
+|DATA|TWindow^**oWnd**|object|The container parent window or dialog|GetWndDefault()|
+|DATA|TWindow^**oMenu**|object|The pulldown menu object if defined| |
+|DATA|TWindow^**oPopup**|object|The popup menu object if defined| |
+|DATA|TWindow^**oMsgBar**|object|The message bar object if defined| |
+|DATA|TWindow^**aControls**|array|An array with all the child controls objects| |
+|DATA|TWindow^**bValid**|codeblock|Evaluated to allow the close or focus loose on controls| |
+|DATA|TWindow^**bLClicked**|codeblock|Evaluate when the left mouse button is clicked| |
+|DATA|TWindow^**bLDblClick**|codeblock|Evaluated when the left mouse button is double clicked| |
+|DATA|TWindow^**bRClicked**|codeblock|Evaluated when the right mouse button is clicked| |
+|DATA|TWindow^**bRDblClick**|codeblock|Evaluated when the right mouse button is double clicked| |
+|DATA|TWindow^**bReSized**|codeblock|Evaluated when the object is resized| |
+|DATA|TWindow^**bKeyDown**|codeblock|Evaluated when a key is pressed| |
+|DATA|TWindow^**bLostFocus**|codeblock|Evaluated when the focus is lost| |
+|DATA|TWindow^**bInit**|codeblock|Evaluated when the window is created| |
+|DATA|TWindow^**cargo**|variant|User defined cargo value| |
+|static|TWindow^**aWindows**|array|  | |  
+|static|TWindow^**oWndDefault**|object|  | | 
+
+
+
+
+
+===== Methods =====
+
+
+^Type^Defined In^Name^Details^
+|CONSTRUCTOR|TSay^**New**(<nRow>, <nCol>, <oWnd>, <cText>, <nWidth>, <nHeight>, <lUpdate>, <lPixel>) --> self|creates a TSay object at position <nRow>, <nCol> size <nWidth> pixels wide by <nHeight> pixels high.  If <lUpdate> is set to .T. the TSay will be updated when its parent window or dialog is refreshed.  If <lPixel> is set to .T. <nRow> and <nCol> will be interpreted as pixel coordinates rather than row column positions to be simulated. Returns a pointer to the newly instantiated TSay|
+|INLINE METHOD|TSay^**SetText**(<cText>)|sets the text contents of the TSay to <cText>|
+|INLINE METHOD|TSay^**GetText**() --> cText|retrieves the current text contents of the TSay|
+|**The following methods are inherited from parent class TControl:** ||||
+|METHOD|TControl^**LostFocus**()  --> nil|  |
+|INLINE METHOD|TControl^**End**()|  |
+|VIRTUAL METHOD|TControl^HandleEvent(<nMsg>, <nWParam>, <nLParam>)|  |
+|INLINE METHOD|TControl^Show()||
+|**The following methods are inherited from parent class TWindow:** ||||
+|METHOD|TWindow^**Activate**(<bValid>, <bLClicked>, <bRClicked>, <lMaximized>, <bInit> --> nil|Activates the window. <bValid> will be evaluated when there is an attempt to close the window, <bLClicked>  when the left mouse button is clicked, <bRClicked> on the right mouse button. If <lMaximised> is  .T. the window will be created maximised|
+|INLINE METHOD|TWindow^**AddControl**(<oCtrl>)--> self ???|Adds the control <oCtrl> to the window|
+|METHOD|TWindow^**AEvalWhen**() --> nil|Evaluates the WHEN condition of all the object's child controls|
+|INLINE METHOD|TWindow^**Center**() --> ???|Centers the window on the screen|
+|INLINE METHOD|TWindow^**_cToolTip**(<cText>) --> ???|Sets the associated tooltip text for the object to <cText>|
+|INLINE METHOD|TWindow^**Disable()** --> ???|Disable the window / dialog / control|
+|INLINE METHOD|TWindow^**Enable()** --> ???|Enable the window / dialog / control|
+|INLINE METHOD|TWindow^**Hide**() --> ???|Hide the window / dialog / control|
+|INLINE METHOD|TWindow^**LButtonDown**() --> ???|Invokes the Left Button Down Code Block|
+|INLINE METHOD|TWindow^**lFocused**() --> <lHasFocus>|Returns .T. if the window / dialog / control has the focus|
+|METHOD|TWindow^**Link**() --> nil|Adds the window / dialog / control to the aWindows array|
+|INLINE METHOD|TWindow^**Maximize**() --> ???|Maximize the window / dialog / control|
+|INLINE METHOD|TWindow^**nLeft**() --> <nPixLeft>|Returns the left coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow^**nHeight**() --> <nPixHeight>|Returns the height of the window / dialog / control|
+|INLINE METHOD|TWindow^**nTop**() --> <nPixTop>|Returns the top coordinate of the window / dialog / control|
+|INLINE METHOD|TWindow^**nWidth**() --> <nPixWidth>|Returns the width of the window / dialog / control|
+|INLINE METHOD|TWindow^**RButtonDown**() --> ???|Invokes the Right Button Down Code Block|
+|INLINE METHOD|TWindow^**Refresh**() --> ???|Refreshes the window / dialog / control|
+|METHOD|TWindow^**Resize**(<nSizeType>, <nWidth>, <nHeight>) --> nil|Resizes the window / dialog / control to <nWidth> pixels wide by <nHeight> pixels high|
+|INLINE METHOD|TWindow^**SetFocus**() --> ???|grabs the focus for the window / dialog / control|
+|METHOD|TWindow^**SetMenu**(<oMenu>) --> nil|Adds menu object <oMenu> to the window / dialog / control|
+|INLINE METHOD|TWindow^**Update**() --> ???|Updates children of the window / dialog / control|
+
+
+
+
+
+
+
+===== Programming Notes =====
+
+Although a TSay object may be positioned using simulated row and column positions or alternatively in pixels, its size is always in pixels.  If no size is specifically set it will default to a width of 60 and a height of 25.  Text will be shown centered with the TSay both horizontally and vertically if it will fit without being clipped.   This means that a series of TSay objects all with the same nCol setting wont be displayed with their starting positions vertcally aligned.  Rather their mid points will be vertically aligned. If the text contents has to be clipped horizontally to fit into the TSay then it will be shown left justified. GTK+ does have the capability to control the justification and colors but this has not yet been implemented in the standard FiveWin class.  It is the programmer's responsibility to ensure that the TSay is large enough to display its text contents.
+
+Information to do with the placement( <nRow>, <nCol> and <lPixel> ), size ( <nHeight> and <nWidth> ) and text contents ( <cText> ) are passed to and read from GTK+ as required but are not properties per se of the TSay Class.  A consequence of this is that when you retrieve the position of the TSay using :nLeft() and :nTop() these will always be in pixels regardless of whether or not you set them in simulated rows and columns.  This is illustrated in the examples below.
+
+
+
+
+
+===== Example =====
+
+For a more complete example see [[fivelinux_tdialog|TDialog]] \\
+<code clipper>
+      #include "FiveLinux.ch"
+      FUNCTION Main()
+         DEFINE DIALOG oDlg TITLE "FiveLinux TSay Example"
+         @ 3, 1 SAY "Hello World" OF oDlg
+         @ 6, 1 SAY "This is a rather longer greeting to you all" OF oDlg SIZE 300, 25
+         ACTIVATE DIALOG oDlg CENTERED
+      RETURN nil
+</code>
+{{Example5L2.png}}
+
+Note how the text "Hello World" is clipped and the two do not align vertically. To avoid the clipping of "Hello World" line 4 in the above example should be changed to something like:
+<code clipper>
+         @ 3, 1 SAY "Hello World" OF oDlg SIZE 120, 25
+</code>
+If you wanted to update and / or retrieve the text contents of the second TSay above you would change line 5 above to:
+<code clipper>
+         @ 6, 1 SAY oGreeting PROMPT "This is a rather longer greeting to you all" OF oDlg SIZE 300, 25
+</code>
+Then you could change its text contents when some event occurred with code such as:
+<code clipper>
+         oGreeting:SetText( "NOW I AM SHOUTING!" )
+</code>
+Or retrieve its text contents with code such as:
+<code clipper>
+         cCurrentText := oGreeting:GetText()
+</code>
+This is illustrated in the following sample:
+<code clipper>
+    #include "FiveLinux.ch"
+    FUNCTION Main()
+       LOCAL oDlg
+       LOCAL oSay
+       DEFINE DIALOG oDlg TITLE "FiveLinux TSay Example 2"
+       @ 3, 1 SAY oSay PROMPT "Hello" OF oDlg 
+       @ 6, 1 BUTTON "Swap" OF oDlg ACTION( IIF( oSay:GetText() = "Hello", oSay:SetText( "Goodbye" ), oSay:SetText( "Hello" ) ) )
+       ACTIVATE DIALOG oDlg CENTERED
+    RETURN nil
+</code>
+ A TSay may be resized dynamically as per the following code example:
+<code clipper>
+    #include "FiveLinux.ch"
+    FUNCTION Main()
+       LOCAL oDlg
+       LOCAL oSay
+       DEFINE DIALOG oDlg TITLE "FiveLinux TSay Example 3"
+       @ 3, 1 SAY oSay PROMPT "Hello to all FiveLinux Programmers" OF oDlg 
+       @ 6, 1 BUTTON "Get Left" OF oDlg ACTION( MsgInfo( oSay:nLeft() ) )
+       @ 9, 1 BUTTON "Get Width" OF oDlg ACTION( MsgInfo( oSay:nWidth() ) )
+       @12, 1 BUTTON "Make Big" OF oDlg ACTION SetSize( oSay:hWnd, 300, 25 )
+       @15, 1 BUTTON "Make Small" OF oDlg ACTION SetSize( oSay:hWnd, 60, 25 )
+       @18, 1 BUTTON "Hide" OF oDlg ACTION oSay:Hide()       
+       @21, 1 BUTTON "Show" OF oDlg ACTION oSay:Show()
+       ACTIVATE DIALOG oDlg CENTERED
+    RETURN nil
+</code>
+The above example also shows how to retrieve the current position of the TSay and how to hide it and make it visible again using :Hide() and :Show().
+
+===== Files =====
+fivelinux/source/classes/say.prg \\
+fivelinux/source/winapi/says.c

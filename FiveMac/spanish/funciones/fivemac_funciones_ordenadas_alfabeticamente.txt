@@ -1,0 +1,11 @@
+
+====== N ======
+^Función^Descripción^
+|[[fivemac_funcion_nrgb|Nrgb()]]|Genera un valor numérico RGB.|
+
+
+
+
+====== S ======
+^Función^Descripción^
+|[[fivemac_funcion_strtoken|Strtoken()]]|Devuelve un token de una cadena.|

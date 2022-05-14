@@ -1,0 +1,18 @@
+Returns the visible height of the screen. 
+
+====== Syntax: ======
+ 
+ ScreenVisibleHeight() --> nHeight
+   
+  
+====== Returns: ======
+
+ <nHeight> The visible height of the screen, excluding the height of the dock if it's on the top or bottom side of the screen.  
+ 
+====== Sample: ======
+ <code clipper>
+ local nHeight := ScreenVisibleHeight() 
+ </code>
+====== Source code: ======
+
+source/winapi/system.m

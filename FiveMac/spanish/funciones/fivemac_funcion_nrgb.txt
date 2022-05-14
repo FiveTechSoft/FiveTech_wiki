@@ -1,0 +1,16 @@
+
+====== nRGB() ====== 
+nRGB()
+
+Genera el valor numérico RGB de un color
+====== Sintaxis ======
+ nRGB( <nRed>, <nGreen>, <nBlue> ) --> nRGB 
+====== Parámetros ======
+  <nRed>    El valor numerico del color rojo. 
+  <nGreen>  El valor numerico del color verde. 
+  <nBlue>   El valor numerico del color Azul. 
+====== Devuelve ======
+ <nRGB> Un Valor numérico (RGB) que corresponde al color resultante de mezclar los valores de rojo, verde y azul. 
+
+====== Código fuente ======
+ SOURCE\function\colors.prg 

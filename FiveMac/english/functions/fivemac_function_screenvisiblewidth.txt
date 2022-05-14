@@ -1,0 +1,18 @@
+Returns the visible width of the screen. 
+
+====== Syntax: ======
+ 
+ ScreenVisibleWidth() --> nWidth
+   
+  
+====== Returns: ======
+
+ <nWidth> The visible width of the screen, excluding the width of the dock if it's on the left or right side of the screen.  
+ 
+====== Sample: ======
+ <code clipper>
+ local nWidth := ScreenVisibleWidth() 
+ </code>
+====== Source code: ======
+
+source/winapi/system.m

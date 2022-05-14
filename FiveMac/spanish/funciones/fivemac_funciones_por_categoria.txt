@@ -1,0 +1,6 @@
+
+
+====== Color ======
+^Función^Descripción^
+|[[fivemac_funcion_nrgb|Nrgb()]]|Genera un valor numérico RGB.|
+

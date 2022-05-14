@@ -1,0 +1,54 @@
+StrToken()
+
+
+Devuelve un elemento desde una cadena de caracteres
+
+
+
+====== Sintaxis ======
+
+
+ StrToken( <cText>, <nOcurrence> [,<cSepChar>] ) --> cToken 
+
+ 
+
+
+
+====== Parámetros ======
+
+ 
+
+
+ <cText> El texto del que se quiere extraer el elemento. 
+
+ <nOcurrence> El número de coincidencia del elemento dentro de <cText>. 
+
+ <cSepChar> El caracter que separa los distintos elementos. Por defecto es un espacio (" "). 
+
+
+
+
+
+
+====== Devuelve ======
+
+
+
+
+ <cToken> El elemento que se quiere extraer. 
+
+
+
+====== Ejemplo ======
+
+
+ SAMPLES\DbfBuild.prg 
+
+
+====== Código fuente ======
+
+ SOURCE\FUNCTION\StrToken.c 
+
+
+====== Ver también ======
+

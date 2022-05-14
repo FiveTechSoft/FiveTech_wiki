@@ -1,0 +1,18 @@
+Returns the total height of the screen. 
+
+====== Syntax: ======
+ 
+ ScreenHeight() --> nHeight
+   
+  
+====== Returns: ======
+
+ <nHeight> The total height of the screen, including the height of the dock if it's on the top or bottom side of the screen.  
+ 
+====== Sample: ======
+ <code clipper>
+ local nHeight := ScreenHeight() 
+ </code>
+====== Source code: ======
+
+source/winapi/system.m
