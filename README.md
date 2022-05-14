@@ -1,11 +1,28 @@
 # FiveTech_wiki
 
- ====== FiveTech Software Wiki ====== [[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] |Official website|http://www.fivetechsoft.com| |Tech support forums|http://forums.fivetechsupport.com| |Free contributions|http://code.google.com/p/fivewin-contributions/downloads/list| |More contributions|https://bitbucket.org/fivetech/fivewin-contributions/downloads/| |Harbour docs|http://www.fivetechsoft.com/harbour-docs/harbour-reference-guide.htm| |Harbour &amp;amp;amp;amp; xHarbour builds|https://bitbucket.org/fivetech/harbour-xharbour-builds/downloads/|
+ ====== FiveTech Software Wiki ====== [[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] 
+ 
+ |Official website|http://www.fivetechsoft.com| 
+ 
+ |Tech support forums|http://forums.fivetechsupport.com| 
+ 
+ |Free contributions|http://code.google.com/p/fivewin-contributions/downloads/list| 
+ 
+ |More contributions|https://bitbucket.org/fivetech/fivewin-contributions/downloads/| 
+ 
+ |Harbour docs|http://www.fivetechsoft.com/harbour-docs/harbour-reference-guide.htm| 
+ 
+ |Harbour &amp;amp;amp;amp; xHarbour builds|https://bitbucket.org/fivetech/harbour-xharbour-builds/downloads/|
+ 
  ===== FiveWin for [x]Harbour (FWH) ===== [[fivewin_documentation|English]] [[fivewin_documentacion|Español]] [[fivewin_documentacao|Português]]
+ 
  ===== FiveWin for Pocket PC (FWPPC) ===== [[fwppc_documentation|English]] [[fwppc_documentacion|Español]]
+ 
  ===== FiveLinux (FLH) ===== [[fivelinux_documentation|English]] [[fivelinux_documentacion|Español]]
+ 
  ===== FiveMac (FMC) ===== [[fivemac_documentation|English]] [[fivemac_documentacion|Español]]
-===== FivePhone (FPH) =====
+=
+==== FivePhone (FPH) =====
 
 [[fivephone_documentation|English]] [[fivephone_documentacion|Español]]
 
