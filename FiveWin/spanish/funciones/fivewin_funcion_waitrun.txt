@@ -27,7 +27,8 @@ Ejecuta otra aplicación de Windows y espera
 ====== Retorno ======
 
 |<hInstance>|El valor de retorno identifica la instancia del módulo de carga, si la función tiene éxito. De lo contrario, el valor de retorno es un valor de error de menos de 32| 
-    0 sistema estaba fuera de la memoria, archivo ejecutable era corrupto, o las deslocalizaciones no eran válidos. 
+    0 sistema estaba fuera de la memoria, archivo ejecutable era corrupto, o las deslocalizaciones no eran válidos.
+    1 El sistema no tiene memoria 
     2 El archivo no fue encontrada. 
     Ruta 3 no fue encontrada. 
     5 Se ha intentado enlazar dinámicamente a una tarea, o que hubo un intercambio de red o error de protección. 
