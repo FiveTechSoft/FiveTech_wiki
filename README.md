@@ -1,18 +1,21 @@
-# FiveTech_wiki
+  * [FiveWin for Harbour/xHarbour](mod_harbour-setup-for-Windows-Xampp)
+  * [mod_harbour for Windows Linux Subsystem](mod_harbour-setup-for-Windows-Linux-Subsystem)
+  * [mod_harbour for Linux](https://github.com/FiveTechSoft/mod_harbour/blob/master/linux/readme.md)
+  * [mod_harbour for Apple OSX](https://github.com/FiveTechSoft/mod_harbour/blob/master/osx/readme.md)
 
- ====== FiveTech Software Wiki ====== [[http://wiki.fivetechsoft.com|{{logo5t2.gif}}]] 
- 
- |Official website|http://www.fivetechsoft.com| 
- 
- |Tech support forums|http://forums.fivetechsupport.com| 
- 
- |Free contributions|http://code.google.com/p/fivewin-contributions/downloads/list| 
- 
- |More contributions|https://bitbucket.org/fivetech/fivewin-contributions/downloads/| 
- 
- |Harbour docs|http://www.fivetechsoft.com/harbour-docs/harbour-reference-guide.htm| 
- 
- |Harbour &amp;amp;amp;amp; xHarbour builds|https://bitbucket.org/fivetech/harbour-xharbour-builds/downloads/|
+  * Reference guide
+    * [Functions](Functions-provided-by-the-mod-Harbour)
+    * [Classes](modharbour_classes)
+
+  * How to build Harbour to build mod_harbour yourself
+    * [Harbour](How_to_build_Harbour_to_build_mod_harbour_yourself)
+
+  * Install MariaDb in case you want to use it
+    * [Linux](Install_MariaDB_on_Linux)
+
+  * FiveTech Software
+    * [Please donate](Please-donate) 
+    
  
  ===== FiveWin for [x]Harbour (FWH) ===== [[fivewin_documentation|English]] [[fivewin_documentacion|Español]] [[fivewin_documentacao|Português]]
  
