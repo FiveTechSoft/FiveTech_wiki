@@ -2,6 +2,7 @@
   * [english](FiveWin/english)
     * [Programming Guide](FiveWin/english/Programming%20guide)
     * [Classes](FiveWin/english/classes)
+    * [Commands](FiveWin/english/commands)
     * [Functions](FiveWin/english/functions)
   * [spanish](FiveWin/spanish) 
 * [FiveLinux](FiveLinux)
