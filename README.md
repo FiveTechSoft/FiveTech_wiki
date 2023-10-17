@@ -6,7 +6,7 @@
 
 FWH Built-in MySql/MariaDB functionality
 
-http://forums.fivetechsupport.com/viewtopic.php?f=3&amp;amp;amp;amp;amp;t=32657
+http://forums.fivetechsupport.com/viewtopic.php?f=3&;t=32657
 
 FWH MariaDb/MySql Backup and Restore
 
