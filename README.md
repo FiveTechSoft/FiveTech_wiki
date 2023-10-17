@@ -1,6 +1,6 @@
 * [FiveWin](FiveWin)
-* [FiveLinux](mod_harbour-setup-for-Windows-Linux-Subsystem)
-* [FiveMac](https://github.com/FiveTechSoft/mod_harbour/blob/master/linux/readme.md)
+* [FiveLinux](FiveLinux)
+* [FiveMac](FiveMac)
 
 ===== FWMYSQL support =====
 
