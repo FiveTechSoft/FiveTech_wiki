@@ -8,7 +8,7 @@
     * [Guía de Programación](FiveWin/spanish/Guia%20de%20programación)
     * [Classes](FiveWin/spanish/classes)
     * [Commandos](FiveWin/spanish/commandos)
-    * [Fuciones](FiveWin/spanish/funciones)
+    * [Funciones](FiveWin/spanish/funciones)
 * [FiveLinux](FiveLinux)
   * [english](FiveLinux/english) 
   * [spanish](FiveLinux/spanish) 
