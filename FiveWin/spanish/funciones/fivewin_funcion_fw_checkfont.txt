@@ -1,0 +1,21 @@
+====== FW_CheckFont() ======
+
+Comprueba si un nombre de font está instalado en Windows
+
+====== Sintaxis ======
+ FW_CheckFont( cFontName ) --> lFound
+====== Parameters: ======
+^ Parametro ^ Descripción                         ^
+| <cFontName> | El nombre de la fuente a comprobar
+ 
+====== Devuelve ======
+^ Returns ^ Description                         ^
+| <lFound> | Verdadero .T. si la encuentra
+ 
+====== Ejemplo ======
+ <code clipper>
+ local lFound := FW_CheckFont( "MyFontName" )
+ </code>
+====== Código fuente ======
+ 
+ SOURCE\CLASSES\FONT.PRG   
