@@ -1,0 +1,133 @@
+FWH ADO support is similar to the FWH architecture:
+
+1. ADO functions (low level)
+
+2. ADO related classes  (medium level)
+
+3. Browse and records management (high level) 
+
+====== FWH ADO functions ======
+^Syntax^Returns^
+|function FW_OpenAdoConnection( cConnStr, lShowError )|oConnection|
+|function FWAdoAppendBlank( oRS )|lAdded|
+|function FW_AdoConnectionString( cConnSpec, nDb )|cConnectionString|
+|function FWAdoDelRecord( oRs )|lDeleted|
+|function FW_OpenRecordSet( oCn, cSql, nLockType, nCursorType, nMaxRecords, nOpt )|oRs  // recordset object|
+|function FW_ShowAdoError( oCn, lSilent )|oError|
+|function FW_CreateMDB( cDb, cPassWord )|lCreated|
+|function FWAdoFieldDec( oRs, n )|nDecimals|
+|function FWAdoFieldType( oRs, n )|cType|
+|function FW_AdoFieldUpdateable( oRs, uField )|lUpdateable|
+|function FW_RDBMSName( oCn )|cRdbms|
+|function FWAdoCreateTable( cTable, aCols, oCn, lAddAutoInc )|lCreated|
+|function FW_AdoCreateTableSQL( cTable, aCols, oCn, lAddAutoInc )|cSql|
+|function ADOCreateColSQL( aCol, nVer )|cSql|
+|function FW_AdoAddModiColSQL( cTable, aCol, cAddOrModi )|cSql|
+|function FW_AdoAddCol( oCn, cTable, aCol )|lSuccess|
+|function FW_AdoModifyCol( oCn, cTable, aCol )|lSuccess|
+|function FW_AdoImportFromDBF( oCn, cDbf, cAdoTable, cColPrefix, nMultiRowSize, aFields )|lSuccess|
+|function FW_AdoExportToDBF( oRs, cDbf, lEditStruct )|lSuccess|
+|function FWAdoLoadRecord( oRS, lBlank )|aRecord|
+|function FWAdoSaveRecord( oRS, aRecord, nRecNo )|lSaved|
+|function FW_AdoTableExists( cTable, oCn )|lExist|
+|function FW_AdoTables( oCn )|aTables|
+|function FWAdoStruct( oRs )|aStruct|
+|function FWAdoFieldStruct( oRs, n )|aField|
+|function FWAdoMemoSizeThreshold( nNew )|nFWAdoMemoSizeThreshold|
+|function FW_DateToADO( dDate, cType )|cAdoDate|
+|function FW_DateToSQL( dDate, cType, lOracle )|cSQLDate|
+|function FW_ValToSQL( uVal, lBinaryFld )|cSQLValue|
+|function FW_QuotedColSQL( cCol )|cSQLColumn|
+|function FW_FilterDBF2ADO( cFilter )|cADOWhere|
+|function uTypetoBlank( cType, nLen, nDec )|cADOBlankExpression|
+
+
+
+
+
+
+
+
+
+
+
+
+====== FWH ADO API examples ======
+
+Install ADO MySQL drivers:
+http://dev.mysql.com/downloads/connector/odbc/
+
+[[ado_connect_database|Connecting to a SQL server]]
+
+[[ado_create_database|Create a database]]
+
+[[ado_import_dbf|Import a Dbf and browse it]]
+
+[[ado_mdi_browse|Using an ADO browse from a MDI child window]]
+
+====== How to create an ADO report ======
+
+
+===== simplest way =====
+
+<code>oBrw:Report(...)</code>
+
+Most commonly we generate reports during a browse. 
+
+Easiest and the best way is to use oBrw:Report(....).  As you know user can rearrange the columns and hide columns. oBrw:Report() geneates report with columns as rearranged by the user at runtime.
+
+
+
+===== similar to a browse =====
+
+
+Sometimes we also need to generate reports without displaying a browse.
+Easiest (but less known) way is to use the XBREPORT command. This command is identical to XBROWSE command, but this prints a report without displaying a browse.
+
+Syntax:
+<code>
+XBREPORT oRepBrw DATASOURCE oRs COLUMNS "First","City", ..
+  <same syntax as of xbrowse> ...
+  [BRWSETUP { |oBrw| MyBrwSetup( oBrw ) }] ;
+  [REPSETUP { |oRep| MyRepSetup( oRep ) }]
+</code>
+Normally the SETUP clauses are not necessary.
+
+Just please try any one simple report using XBREPORT.
+This automatically takes care of Picture clauses, widths, etc.
+
+
+
+===== using REPORT command =====
+
+
+Standard Report command:
+
+<code>
+REPORT oRep .....<etc>
+ COLUMN TITLE "City" DATA oRs:Fields( "City" ):Value ...etc...
+
+oRep:bInit := { || oRs:MoveFirst() }
+oRep:bSkip := { || oRs:MoveNext() }
+
+uSaveBm := oRs:BookMark
+oRs:MoveFirst()
+ACTIVATE REPORT ..... WHILE !oRs:Eof()
+oRs:MoveFirst()
+</code>
+
+We use most frequently oBrw:Report() from within the browse.
+Next XBREPORT. If you use it you will find this very easy yet powerful.
+
+
+
+
+
+
+====== FWH ADO Classes ======
+
+[[Class TXBrowse|Class_TXBrowse]]
+
+[[Class TRecSet|Class_TRecSet]]
+
+[[Class TDataRow|Class_TDataRow]]

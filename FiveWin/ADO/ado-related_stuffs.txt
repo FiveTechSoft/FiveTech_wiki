@@ -1,0 +1,248 @@
+====== ADO-related Stuffs ======
+ 
+
+===== What The Heck Is ADO? =====
+ADO, Microsoft **ActiveX Data Objects** is a layer for accessing data objects. Theoretically with this, you can manipulate data using a set of standards irregardless of the type of data source. You can read the detailed explanations [[http://en.wikipedia.org/wiki/ActiveX_Data_Objects|here]].
+
+
+===== How Do I Use ADO From Within Fivewin? =====
+You have a few choices actually. Among them:
+  - [[http://fivetechsoft.com/forums/viewtopic.php?t=6814&start=0|The free AdoRDD]]
+  - OLEDB in [x]Harbour
+  - 3rd party libs
+
+
+
+===== Could you show me how to start using ADO? =====
+[[http://fivetechsoft.com/forums/profilp.php?mode=viewprofile&u=35|Rick Lipkin]] has written a [[http://fivetechsoft.com/forums/viewtopic.php?t=4357|beginner's guide]].
+
+>To All \\
+> \\
+>Over the past few days I have had to learn how to connect and manipulate an Access database .mdb. with xHarbour and FWH. \\
+>
+>I would like to dedicate my “Beginners Guide for ADO” to [[http://fivetechsoft.com/forums/profilp.php?mode=viewprofile&u=6|Enrico Maria Giordano]] who has been an inspiration and a tireless help in answering every one of my questions. \\
+> \\
+>For anyone who has had to deal with MS Access .. here is a general guideline as to how to work with ADO .. \\
+>
+>Here is the MSDN link for more info: \\
+> \\
+>http://msdn.microsoft.com/library/default.asp?url=/library/en-us/ado270/htm/mdmscadoapireference.asp 
+> \\
+>Again .. many thanks Enrico !! \\
+> \\
+>Rick Lipkin \\
+>SC Dept of Health, USA \\
+
+
+** ADO general connections and methods: **
+
+There are 4 types of cursors supported by ADO: ( first parameter ) 
+
+**(0)adOpenForwardOnly **: This is the lightest (cheapest) [[http://en.wikipedia.org/wiki/Cursor_(databases)|cursor]], and the default when opening a recordset. It allows only forwards movement. Only the most minimal information about the recordset is calculated 
+by Jet (eg you can't even get a .recordCount of the total number of records in the recordset). If you try to move backwards using this cursor, the recordset is closed, and the query re-executed. __Avoid doing this!__ 
+
+**(1)adOpenKeyset **: A static snap-shot of the primary key values of the records that match your search criteria are put into the recordset. As you scroll backwards and forwards, the primary key value in the recordset is used to fetch the current data for that record from the database. This cursor thus allows you to see updates to the data made by other users, but it doesn't let you see new records that have been added by other users (because the primary key values for those records are not in your recordset). 
+
+** (2)adOpenDynamic **: A dynamic snapshot of the database is maintained by OLEDB/ADO. All changes by other users to the underlying database are visible. Obviously this is the most sophisticated cursor, and thus is usually the most expensive. Because the data in the recordset is dynamic, 
+attributes like AbsolutePosition and AbsolutePage can not be set. The adOpenDynamic cursor is not supported by the Jet OLEDB Provider. 
+
+** (3)adOpenStatic **: A static snap-shot of the records that match your search criteria are put into the recordset. You can scroll forwards and backwards, and set bookmarks. Changes made to the database by other users however are not visible - all you can see are the records that matched your search at the point in time when the query was executed 
+
+( second parameter ) 
+
+(1) adlockReadOnly 
+(2) adlockPessimistic 
+(3) adlockOptomistic 
+(4) adlockBatchOptomistic 
+
+  * How to Open a recordset .. this example is for MS Access .mdb 
+<code visualfoxpro>
+oRs := CREATEOBJECT( "ADODB.Recordset" ) 
+
+TRY 
+  oRS:Open( "SELECT * FROM LWMFS ORDER BY FILE_NUM" , "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LWMFS.mdb", 1, 3 ) 
+CATCH oErr 
+  MsgInfo( "Error in Opening LWMFS table" ) 
+  RETURN NIL 
+END TRY 
+
+IF oRS:eof // query resulted with no records 
+   Msginfo( "not found" ) 
+   RETURN(NIL) 
+ENDIF 
+</code>
+
+  * How to Open a connection .. like for running global inserts, deletes 
+<code visualfoxpro>
+oCn := CREATEOBJECT( "ADODB.Connection" ) 
+oCn:Open( "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=lwmfs.mdb" ) 
+oCn:Execute( "DELETE FROM LWMFS WHERE IsNull(FILE_NUM)" ) 
+oCn:Close() 
+</code>
+
+  * Various Methods for ADO recordsets 
+<code visualfoxpro>
+oRs:Delete() - delete 
+oRs:MovePrevious() - skip -1 
+oRs:MoveNext() - skip +1 
+oRs:MoveLast() - go bott 
+oRs:MoveFirst() - go top 
+oRs:AddNew() - append blank 
+oRs:Update() - commit 
+oRs:Find() - seek, locate 
+</code>
+
+  * some examples 
+<code visualfoxpro>
+oRs:Find( "file_num = '"+cFIND+"'" ) 
+oRs:Fields("fieldname"):Value := 'MyValue' - replace 
+oRS:Filter := "file_num = '"+cFIND+"'" - scope condition 
+</code>
+
+  * sample twbrowse for FWH 
+<code visualfoxpro>
+STATIC oRs1, oBrow 
+#INCLUDE “FIVEWIN.CH” 
+
+//--------------------------------------------- 
+Static Func _Cercla( cFILENUM ) 
+
+LOCAL oErr, oDLG1, nREC, cSQL 
+
+oRs1 := CREATEOBJECT( "ADODB.Recordset" ) 
+cSQL := "SELECT * FROM CERCLA_INDEXING cercla " 
+cSQL += "WHERE cercla.ASSOCIATED_FILE_NUM ='"+cFILENUM+"'"+" order by date_" 
+
+TRY 
+  oRS1:Open( cSQL, "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=LWMFS.mdb", 1, 3 ) 
+CATCH oErr 
+  MsginFo( "failed to open table" ) 
+  RETURN NIL 
+END TRY 
+
+IF oRS1:eof 
+   Msginfo( "not found" ) 
+   RETURN(NIL) 
+ENDIF 
+
+oRS1:MoveFirst() 
+
+DEFINE DIALOG oDLG1 ; 
+  FROM 7,7 to 35,104 ; 
+  TITLE "Matching CERCLA Docket Browse for File Number "+cFILENUM 
+
+  @ 0, 0 LISTBOX oBrow FIELDS ; 
+    oRs1:Fields("associated_file_num" ):Value,; 
+    DTOC( oRs1:Fields( "DATE_" ):Value ),; 
+    oRs1:Fields( "associated_permit_num" ):Value,; 
+    oRs1:Fields( "docket_num" ):Value,; 
+    oRs1:Fields( "from_to"):Value,; 
+    oRs1:Fields( "description"):Value,; 
+    oRs1:Fields( "added_by"):Value; 
+    SIZES 80,80,100,100,200,500,80; 
+    HEADERS "File_num",; 
+      "Date",; 
+      "Permit_num",; 
+      "Docket_num",; 
+      "From_to",; 
+      "Description",; 
+      "Added_by" 
+
+oBrow:bLogicLen = { || oRs1:RecordCount } 
+oBrow:bGoTop = { || oRs1:MoveFirst() } 
+oBrow:bGoBottom = { || oRs1:MoveLast() } 
+oBrow:bSkip = { | nSkip | Skipper( oRs1, nSkip ) } 
+oBrow:cAlias = "ARRAY1" 
+
+ACTIVATE DIALOG oDlg1; 
+  ON INIT oDlg1:SetControl( oBrow ) 
+
+oRs1:Close() 
+
+RETURN NIL 
+
+//------------------------------- 
+STATIC FUNCTION SKIPPER( oRsx, nSkip ) 
+
+LOCAL nRec := oRsx:AbsolutePosition 
+
+oRsx:Move( nSkip ) 
+
+IF oRsx:EOF; oRsx:MoveLast(); ENDIF 
+IF oRsx:BOF; oRsx:MoveFirst(); ENDIF 
+
+RETURN( oRsx:AbsolutePosition - nRec )
+</code>
+
+===== Sample ADo & XBrowse =====
+Code by [[http://fivetechsoft.com/forums/profilp.php?mode=viewprofile&u=868|nageswaragunupudi]]
+
+<code visualfoxpro>
+FUNCTION rsxbrowse( rs )
+
+LOCAL   oWnd, oBrw, oCol
+
+
+   DEFINE WINDOW oWnd
+
+   oBrw                 := TXBrowse():New(oWnd)
+
+   oBrw:bGoTop          := {|| rs:moveFirst() }
+   oBrw:bGoBottom       := {|| rs:moveLast() }
+   oBrw:bSkip           := {| n | rsSkipper( n, rs ) }
+   oBrw:bBof            := {|| rs:Bof() }
+   oBrw:bEof            := {|| rs:Eof() }
+   oBrw:bBookMark       := {| bmNew | IIF( bmNew == NIL, rs:bookMark, rs:bookMark := bmNew) }
+   oBrw:bKeyNo          := {|| rs:AbsolutePosition }
+   oBrw:bKeyCount       := {|| rs:RecordCount() }
+
+   oCol                 := oBrw:AddCol()
+   WITH OBJECT oCol
+      :bStrData         := {|| cValToChar( rs:fields(0):Value ) }
+      :cHeader          := rs:fields(0):Name
+   END
+
+   oCol                 := oBrw:AddCol()
+   WITH OBJECT oCol
+      :bStrData         := {|| cValToChar( rs:fields(1):Value ) }
+      :cHeader          := rs:fields(1):Name
+   END
+
+   // and so on for other columns
+
+   oBrw:CreateFromCode()
+   oWnd:oClient         := oBrw
+
+   ACTIVATE WINDOW oWnd
+
+   RETURN NIL
+//------------------------------------------------------------------------------
+STATIC FUNCTION RsSkipper( nToSkip, rs )
+
+   LOCAL nSkipped    := 0
+   LOCAL nCurPos
+
+   IF nToSkip == NIL
+      nToSkip     := 1
+   ENDIF
+
+   IF rs:RecordCount() > 0
+
+      nCurPos              := rs:AbsolutePosition
+      rs:AbsolutePosition  := MAX( 1, MIN( nCurPos + nToSkip, rs:RecordCount() ) )
+      nSkipped             := rs:AbsolutePosition - nCurPos
+
+   ENDIF
+
+   RETURN nSkipped
+//------------------------------------------------------------------------------ 
+</code>
+
+===== Disconnect a recordset =====
+Code by [[http://fivetechsoft.com/forums/profilp.php?mode=viewprofile&u=868|nageswaragunupudi]]
+
+<code visualfoxpro>
+oRs:oConnection:hObj := NIL
+</code>
+
+**Note:** Save the value of //hObj// and reassign to get reconnected 
