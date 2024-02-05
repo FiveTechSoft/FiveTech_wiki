@@ -12,3 +12,6 @@ https://forums.fivetechsupport.com/viewtopic.php?f=3&t=32736
 
 FWH MYSQL/MARIADB Stored Procedures and Functions
 https://forums.fivetechsupport.com/viewtopic.php?f=3&t=33280
+
+Using FWMARIADB for Embedded Server
+https://forums.fivetechsupport.com/viewtopic.php?f=3&t=33798
