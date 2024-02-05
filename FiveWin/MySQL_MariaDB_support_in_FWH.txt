@@ -1,5 +1,5 @@
 FWH Built-in MySql/MariaDB functionality
-viewtopic.php?f=3&t=32657
+https://forums.fivetechsupport.com/viewtopic.php?f=3&t=32657
 
 FWH MariaDb/MySql Backup and Restore
 viewtopic.php?f=3&t=32791
