@@ -1,0 +1,15 @@
+Sintaxis:
+
+ADiff( aArray1, aArray2 ) --> aArrayDiferencias
+
+Parametros:
+
+Los dos arrays a comparar
+
+Devuelve:
+
+Un array con las diferencias entre aArray1 y aArray2
+
+Código fuente:
+
+source\function\matrices.prg
