@@ -9,3 +9,7 @@ The two arrays to compare
 Returns:
 
 An array with the differences between aArray1 and aArray2
+
+Source:
+
+source\function\matrices.prg
