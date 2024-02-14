@@ -1,0 +1,11 @@
+Syntax:
+
+ADiff( aArray1, aArray2 ) --> aArrayDifferences
+
+Parameters:
+
+The two arrays to compare
+
+Returns:
+
+An array with the differences between aArray1 and aArray2
