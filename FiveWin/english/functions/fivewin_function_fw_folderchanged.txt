@@ -1,0 +1,21 @@
+====== FW_FolderChanged( cFolderPath ) --> { nDay, nMonth, nYear, nHours, nMinutes, nSeconds } ======
+
+Returns an array of six elements with the last date and time a folder was changed
+
+====== Syntax ======
+ FW_FolderChanged( cFolderPath ) --> { nDay, nMonth, nYear, nHours, nMinutes, nSeconds }  
+====== Parameters: ======
+^ Parameter ^ Description                         ^
+| <cFolderPath> | The path and name of the folder|
+ 
+====== Returns ======
+^ Returns ^ Description                         ^
+| <aDateTime> | an array of six elements with the last date and time a folder was changed { nDay, nMonth, nYear, nHours, nMinutes, nSeconds } |
+ 
+====== Sample ======
+ <code clipper>
+ XBrowse( FW_FolderChanged( "c:\fwh" ) ) 
+ </code>
+====== Source code: ======
+ 
+ SOURCE\WINAPI\GETDIR.C  
