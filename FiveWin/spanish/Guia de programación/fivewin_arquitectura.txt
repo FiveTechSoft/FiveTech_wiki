@@ -7,11 +7,6 @@ La implementación de la POO en FiveWin consta de cuatro niveles:
   - **Funciones y estructuras de datos**
   - **Acceso al API de Windows**
 
-
-
-
-
-
 ===== Comandos XBase =====
 Son el nivel más alto de abstracción, esto es, es el nivel en el que no te importa tanto como se hacemos las cosas, y solo te preocupa que funcionen. Por ejemplo, cuando usas un coche lo que cuenta es que el coche funcione y te lleve a donde desees, y no te importa como el coche hace su "trabajo".
 
