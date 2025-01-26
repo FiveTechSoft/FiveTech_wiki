@@ -1,4 +1,5 @@
-Si tienes alguna experiencia con programación orientada al objeto (POO), ó simplemente si estás empezando a aprenderla, te garantizamos que te encantará conocer como FiveWin implementa la POO y cómo ha sido diseñado.
+Si tienes alguna experiencia con programación orientada al objeto (POO), ó simplemente si estás empezando a aprenderla, te garantizamos que te encantará
+conocer como FiveWin implementa la POO y cómo ha sido diseñado.
 
 La implementación de la POO en FiveWin consta de cuatro niveles:
 
