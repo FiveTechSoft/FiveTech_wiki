@@ -31,7 +31,12 @@ oWnd:Activate()
 
 Para usar **clases y objetos** debes tener algunos conocimientos de PPO, asi que continúa leyendo: 
 
-Los objetos están formados por propiedades (datos) y por tener ciertos comportamientos (métodos). Por ejemplo, un coche tiene puertas, ruedas, un volante, un motor, etc. estas son sus propiedades. Sus comportamientos son: puede arrancar, puede ser conducido, puede acelerar, frenar, repostar gasolina, etc. Como ves, sus datos y sus comportamientos forman una unidad inseparable a la que llamamos "objeto". Los "objetos" pueden ser identificados como pertenecientes a una determinada "clase" de objetos. La "clase" coche sería la descripción genérica de lo que un coche debe "tener" y "hacer". Como ves, conforme avanzamos al siguiente nivel de los 4 niveles iniciales, la complejidad va en aumento, puesto que tenemos que comprender más cosas y saber como funcionan.
+Los objetos están formados por propiedades (datos) y por tener ciertos comportamientos (métodos). Por ejemplo, un coche tiene puertas, ruedas, 
+un volante, un motor, etc. estas son sus propiedades. Sus comportamientos son: puede arrancar, puede ser conducido, puede acelerar, frenar, 
+repostar gasolina, etc. Como ves, sus datos y sus comportamientos forman una unidad inseparable a la que llamamos "objeto". Los "objetos" pueden 
+ser identificados como pertenecientes a una determinada "clase" de objetos. La "clase" coche sería la descripción genérica de lo que un coche debe
+"tener" y "hacer". Como ves, conforme avanzamos al siguiente nivel de los 4 niveles iniciales, la complejidad va en aumento, puesto que tenemos 
+que comprender más cosas y saber como funcionan.
 
 Normalmente la mayoria de los comportamientos que vamos a usar se basan en el API de Windows.
 
