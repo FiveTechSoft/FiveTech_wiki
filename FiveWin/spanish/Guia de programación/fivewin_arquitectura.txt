@@ -9,9 +9,12 @@ La implementación de la POO en FiveWin consta de cuatro niveles:
   - **Acceso al API de Windows**
 
 ===== Comandos XBase =====
-Son el nivel más alto de abstracción, esto es, es el nivel en el que no te importa tanto como se hacemos las cosas, y solo te preocupa que funcionen. Por ejemplo, cuando usas un coche lo que cuenta es que el coche funcione y te lleve a donde desees, y no te importa como el coche hace su "trabajo".
+Son el nivel más alto de abstracción, esto es, es el nivel en el que no te importa tanto como se hacemos las cosas, y solo te preocupa que 
+funcionen. Por ejemplo, cuando usas un coche lo que cuenta es que el coche funcione y te lleve a donde desees, y no te importa como el coche 
+hace su "trabajo".
 
-Los comandos Xbase fueron originalmente implementados en dBase, y han ido evolucionando hasta lo que se llama "xBase". Estos comandos sirven para usar "objetos", para que hagan determinadas cosas. Estos objetos y las clases a los que perteneces son el segundo nivel de abstracción.
+Los comandos Xbase fueron originalmente implementados en dBase, y han ido evolucionando hasta lo que se llama "xBase". Estos comandos sirven 
+para usar "objetos", para que hagan determinadas cosas. Estos objetos y las clases a los que perteneces son el segundo nivel de abstracción.
 
 Gracias al preprocesador de Harbour, similar al de Clipper, los comandos se traducen en mensajes enviados a objetos:
 
