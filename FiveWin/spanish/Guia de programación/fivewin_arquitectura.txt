@@ -27,9 +27,6 @@ se traduce en:
 oWnd:Activate()
 </code>
 
-
-
-
 ===== Clases y Objetos =====
 
 Para usar **clases y objetos** debes tener algunos conocimientos de PPO, asi que continúa leyendo: 
