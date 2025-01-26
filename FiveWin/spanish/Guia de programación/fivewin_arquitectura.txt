@@ -34,15 +34,18 @@ Para usar **clases y objetos** debes tener algunos conocimientos de PPO, asi que
 Los objetos están formados por propiedades (datos) y por tener ciertos comportamientos (métodos). Por ejemplo, un coche tiene puertas, ruedas, 
 un volante, un motor, etc. estas son sus propiedades. Sus comportamientos son: puede arrancar, puede ser conducido, puede acelerar, frenar, 
 repostar gasolina, etc. Como ves, sus datos y sus comportamientos forman una unidad inseparable a la que llamamos "objeto". Los "objetos" pueden 
-ser identificados como pertenecientes a una determinada "clase" de objetos. La "clase" coche sería la descripción genérica de lo que un coche debe
-"tener" y "hacer". Como ves, conforme avanzamos al siguiente nivel de los 4 niveles iniciales, la complejidad va en aumento, puesto que tenemos 
-que comprender más cosas y saber como funcionan.
+ser identificados como pertenecientes a una determinada "clase" de objetos. La "clase" coche sería la descripción genérica de lo que un coche 
+debe "tener" y "hacer". Como ves, conforme avanzamos al siguiente nivel de los 4 niveles iniciales, la complejidad va en aumento, puesto que 
+tenemos que comprender más cosas y saber como funcionan.
 
 Normalmente la mayoria de los comportamientos que vamos a usar se basan en el API de Windows.
 
-Cuando se usan comandos xBase se consigue un alto nivel de productividad. Conforme te aproximas al API de Windows aumentan las posibilidades de lo que puedes hacer pero esto conlleva una cierta perdida de productividad. Como programador tienes que intentar mantenerte en un nivel intermedio: un equilibrio entre productividad y potencia.
+Cuando se usan comandos xBase se consigue un alto nivel de productividad. Conforme te aproximas al API de Windows aumentan las posibilidades de 
+lo que puedes hacer pero esto conlleva una cierta perdida de productividad. Como programador tienes que intentar mantenerte en un nivel intermedio: 
+un equilibrio entre productividad y potencia.
 
-A pesar de la baja popularidad de dBase IV, esta versión hizo un avance decisivo para consolidar el uso de los comandos para crear y manejar objetos, pero no ofreció verdadera programación orientada al objeto, algo que si implementó Clipper y posteriormente Harbour.
+A pesar de la baja popularidad de dBase IV, esta versión hizo un avance decisivo para consolidar el uso de los comandos para crear y manejar objetos, 
+pero no ofreció verdadera programación orientada al objeto, algo que si implementó Clipper y posteriormente Harbour.
 
 Asi que en xBase estandard se establece que la forma de crear un objeto usando un comando es:
 <code clipper>
@@ -63,9 +66,11 @@ Estos comandos son preprocesados en sus respectivos mensajes enviados al objeto 
 <code clipper>
 DEFINE WINDOW oWnd ==> Se convierte en ==> oWnd := TWindow():New(...)
 </code>
-El uso de estos comandos permite el usar una sintaxis común para todos los objetods. Piensa que este es uno de los objetivos de la POO: Nos enfocamos en nuestro objetivo, no en una implementación particular, lo que se traduce en usar un interface común.
+El uso de estos comandos permite el usar una sintaxis común para todos los objetods. Piensa que este es uno de los objetivos de la POO: Nos enfocamos 
+en nuestro objetivo, no en una implementación particular, lo que se traduce en usar un interface común.
 
-En FiveWin se implementa un modelo mixto de desarrollo POO. Este sistema permite el uso del poder de la POO y a la vez el uso de partes facilmente configurables gracias a los bloques de código ("codeblocks"). Existe una cierta controversia entre estos ds modelos. No hay un acuerdo en cual es el modo óptimo. Es por esto que FiveWin usa ambos modelos lo que se traduce en una mayor flexibilidad puesto que se aprovecha lo mejor de ambas técnicas.
+En FiveWin se implementa un modelo mixto de desarrollo POO. Este sistema permite el uso del poder de la POO y a la vez el uso de partes facilmente configurables gracias a los bloques de código ("codeblocks"). Existe una cierta controversia entre estos ds modelos. No hay un acuerdo en cual es el 
+modo óptimo. Es por esto que FiveWin usa ambos modelos lo que se traduce en una mayor flexibilidad puesto que se aprovecha lo mejor de ambas técnicas.
 
 Cuando un programa necesita cambiar un comportamiento temporalmente (por ejemplo, definir el comportamiento de un evento), usamos bloques de código. La razón de hacer esto es que es un comportamiento que entendemos que no será necesario convertir en estandard en el futuro. En caso de que se vaya a usar una y otra vez, entonces es razonable y adecuado el crear una nueva clase que implemente dicho comportamiento de forma permanente.
 Cuando hacemos:
@@ -75,17 +80,16 @@ Cuando hacemos:
          ON PAINT ON ...
 </code>
 
-Estamos modificando el comportamiento de la ventana cuando se recibe el evento PAINT. Este sistema se basa en los bloques de código ("codeblocks"), y se entiende que son comportamientos que no necesitaremos "reusar" en el futuro.
+Estamos modificando el comportamiento de la ventana cuando se recibe el evento PAINT. Este sistema se basa en los bloques de código ("codeblocks"), y 
+se entiende que son comportamientos que no necesitaremos "reusar" en el futuro.
 
 Pero si quieres construir un sistema que se reuse en el futuro, entonces tiene sentido el crear una nueva clase, de acuerdo a la forma de programar en POO. Así, la Clase FiveWin TMsgBar, que a menudo se usa en diversos programas, heredamos una nueva clase a partir de TWindow y redefinimos su método PAINT.
 
-Creemos que una correcta arquitectura POO debe usar estos dos modelos de constucción. Conforme tengas más experiencia en POO, entenderás nuestro punto de vista. POO es fantástico, pues permite controlar mucha más información en nuestras aplicaciones de un modo mucho más ordenado y controlado.
+Creemos que una correcta arquitectura POO debe usar estos dos modelos de constucción. Conforme tengas más experiencia en POO, entenderás nuestro punto 
+de vista. POO es fantástico, pues permite controlar mucha más información en nuestras aplicaciones de un modo mucho más ordenado y controlado.
 
 ===== Funciones y estructuras de datos =====
 Los métodos finalmente acceden al API de Windows a través del uso de funciones. Windows proporciona muchos APIs que ofrecen muchas funciones a las que FiveWin accede desde los métodos ó directamente. Estas funciones requiren de ciertos parámetros y a veces, estructuras de datos (struct en C) que han de ser rellenadas y que pueden devolver ciertos datos de regreso.
-
-
-
 
 ===== Acceso al API de Windows =====
 Usualmente las llamadas a las funciones del API de Windows se implementan facilmente como "envolturas" a las funciones de Windows. FiveWin proporciona todo el código fuente para acceder al API de Windows lo que te permite aprender a acceder a cualquier API de Windows que puedas necesitar.
